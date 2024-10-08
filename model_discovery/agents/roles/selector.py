@@ -49,23 +49,49 @@ DEFAULT_CONFIDENCE_POINTS = {
 
 DEFAULT_SCALE_WEIGHTS = {
     '14M': 1,
-    '31M': 2,
-    '70M': 3,
-    '125M': 4,
-    '350M': 5,
-    '760M': 6,
-    '1300M': 7,
-    '2700M': 8,
-    '6700M': 9,
-    '13B': 10,
-    '175B': 11,
-    '1T': 12,
+    '31M': 1,
+    '70M': 1,
+    '125M': 1,
+    '350M': 1,
+    '760M': 1,
+    '1300M': 1,
+    '2700M': 1,
+    '6700M': 1,
+    '13B': 1,
+    '175B': 1,
+    '1T': 1,
 }
 
 
 DEFAULT_RANDOM_EVAL_THRESHOLD = 0.02
 
 
+# https://github.com/wattlebird/ranking
+RANKING_METHODS = [
+    'average',
+    'massey',
+    'colley',
+    'markov'
+]
+
+MERGE_METHODS = ['borda','average']
+
+DEFAULT_RANKING_ARGS = {
+    'ranking_method':'massey', # or a list of ranking methods, and aggregated by borda
+    'normed_only':True,
+    'draw_margin':0.01,
+    'drop_na':True,
+    'drop_zero':True,
+    'metric_wise_merge':None, # if Set, it will rank for each metric and then aggregate by borda
+    'multi_rank_merge': 'borda', # 'borda', 'average'
+    'markov_restart': 0.3,
+    'convergence_threshold': 1e-4,
+}
+
+DEFAULT_QUADRANT_ARGS = {
+    'design_quantile':0.25, # upper quantile regarded as good
+    'confidence_quantile':0.25, # upper quantile regarded as good
+}
 
 class Selector:
     def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,allow_temporal_budget=True):

@@ -3,12 +3,19 @@ import json
 import time
 import pathlib
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
 import sys,os
 import numpy as np
 from model_discovery.agents.flow.gau_flows import DesignModes
-from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,\
-    SCHEDULER_OPTIONS,DEFAULT_RANDOM_EVAL_THRESHOLD,DEFAULT_CONFIDENCE_POINTS,DEFAULT_SCALE_WEIGHTS
+from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,DEFAULT_RANKING_ARGS,\
+    SCHEDULER_OPTIONS,DEFAULT_RANDOM_EVAL_THRESHOLD,DEFAULT_CONFIDENCE_POINTS,\
+        DEFAULT_SCALE_WEIGHTS,RANKING_METHODS,MERGE_METHODS,DEFAULT_QUADRANT_ARGS
 from model_discovery.evolution import DEFAULT_N_SOURCES
+
+from rankit.Table import Table
+import rankit.Ranker as Ranker
+from rankit.Merge import borda_count_merge,average_ranking_merge
 
 
 sys.path.append('.')
@@ -90,7 +97,7 @@ unknown spaces, we can use the following information to value a design:
 1. **Design artifacts**: Including design proposal, implementation, GAU tree, etc.
 2. **Verification results**: Including the training and evaluation metrics under different scales.
 
-Correspondingly, the confidance of a valuation is determined by:
+Correspondingly, the confidence of a valuation is determined by:
 
 1. **The number of information that is available.** For example, a newly produced design has only design artifacts, 
 the confidence of its valuation is low, and we can increase the confidence of its valuation by verifying it at 
@@ -284,6 +291,8 @@ def eval_results_getter(eval_results):
                 metrics[metric][alias] = data[_metric_name]
     return metrics,stderrs
 
+
+
 def group_results(eval_results):
     grouped_results = {}
     for scale in eval_results:
@@ -292,12 +301,14 @@ def group_results(eval_results):
         grouped_results[scale] = _group_results(eval_results[scale])
     return grouped_results
 
+
+_GROUP_KEYWORDS = ['blimp','inverse_scaling']
+
 def _group_results(results):
-    groups = ['blimp','inverse_scaling']
     grouped_results = {}
 
     def _in_group(alias):
-        for g in groups:
+        for g in _GROUP_KEYWORDS:
             if g in alias:
                 return g
         return False
@@ -318,6 +329,109 @@ def _group_results(results):
             grouped[group] = np.mean(grouped[group])
         grouped_results[metric] = grouped
     return grouped_results
+
+def scale_weight_results(evosys,eval_results): # WILL REMOVE SCALES
+    weights = U.safe_get_cfg_dict(evosys.selector.select_cfg,'scale_weights',DEFAULT_SCALE_WEIGHTS)
+    total_weights = 0
+    weighted_results = {}
+    for scale in eval_results:
+        total_weights+=weights[scale]
+        for metric in eval_results[scale]:
+            if metric not in weighted_results:
+                weighted_results[metric] = {}
+            results = eval_results[scale][metric]
+            for task in results:
+                if task not in weighted_results[metric]:
+                    weighted_results[metric][task] = 0
+                weighted_results[metric][task]+=results[task]*weights[scale]
+    for metric in weighted_results:
+        for task in weighted_results[metric]:
+            weighted_results[metric][task]/=total_weights
+    return weighted_results
+
+
+
+_01_NORMED_METRIC_KEYWORDS = [
+    'acc',
+    'mcc',
+    'contains',
+    'exact_match'
+]
+
+def _is_01_normed(metric):
+    for i in _01_NORMED_METRIC_KEYWORDS:
+        if i in metric:
+            return True
+    return False
+
+def _get_acc_norm(scale_free_eval_metrics,mean=False,acc_norm_exclude=['mmlu']): # if no acc_norm, use acc
+    accs = {}
+    acc = scale_free_eval_metrics['acc,none,H']
+    acc_norm = scale_free_eval_metrics['acc_norm,none,H']
+    for task in acc:
+        if task in acc_norm and task not in acc_norm_exclude:
+            accs[task+'/acc_norm'] = acc_norm[task]
+        else:
+            accs[task+'/acc'] = acc[task]
+    return accs
+
+def _flat_weighted_metrics(scale_weighted_eval_metrics,acc_norm_exclude=['mmlu']):
+    # https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard/discussions/106 
+    _01_normed_metrics = {} # from 0 to 1, the higher the better
+    _unnormed_metrics_h = {} # unknown unnormalized metrics, higher is better
+    _unnormed_metrics_l = {} # unknown unnormalized metrics, lower is better
+    if len(scale_weighted_eval_metrics) == 0:
+        return _01_normed_metrics,{'higher_is_better':{},'lower_is_better':{}}
+    accs = _get_acc_norm(scale_weighted_eval_metrics,acc_norm_exclude=acc_norm_exclude)
+    scale_weighted_eval_metrics.pop('acc,none,H')
+    scale_weighted_eval_metrics.pop('acc_norm,none,H')
+    _01_normed_metrics.update(accs)
+
+    for _metric in scale_weighted_eval_metrics:
+        if _is_01_normed(_metric):
+            for task in scale_weighted_eval_metrics[_metric]:
+                result = scale_weighted_eval_metrics[_metric][task]
+                if 'mcc' in _metric:
+                    result = (result+1)/2
+                if _metric.endswith(',L'): # although I think people already did this
+                    result = 1-result
+                metric = _metric.replace(',L','').replace(',H','')
+                metric,tail=metric.split(',')
+                if tail!='none':
+                    metric+=f'({tail})'
+                _01_normed_metrics[task+'/'+metric] = result
+        else:
+            for task in scale_weighted_eval_metrics[_metric]:
+                result = scale_weighted_eval_metrics[_metric][task]
+                metric,tail,LH = _metric.split(',')
+                if tail!='none':
+                    metric+=f'({tail})'
+                if LH == 'H':
+                    _unnormed_metrics_h[task+'/'+metric] = result
+                else:
+                    _unnormed_metrics_l[task+'/'+metric] = result
+    _unnormed_metrics = {
+        'higher_is_better':_unnormed_metrics_h,
+        'lower_is_better':_unnormed_metrics_l,
+    }
+    return _01_normed_metrics,_unnormed_metrics
+
+def get_ranking_metrics(evosys,design_vector,normed_only=True):
+    proposal_rating,training_metrics,eval_metrics,_ = get_raw_metrics(evosys,design_vector)
+    scale_weighted_grouped_metrics = scale_weight_results(evosys,group_results(eval_metrics))
+    _01_normed_metrics,_unnormed_metrics = _flat_weighted_metrics(scale_weighted_grouped_metrics)
+    
+    ranking_metrics = _01_normed_metrics
+    scale_weighted_training_metrics = scale_weight_results(evosys,training_metrics)
+    ranking_metrics.update(scale_weighted_training_metrics)
+    ranking_metrics['proposal_rating'] = proposal_rating/5.0
+    if normed_only:
+        return ranking_metrics,None
+    ranking_metrics_unnormed=_unnormed_metrics['higher_is_better']
+    for i in _unnormed_metrics['lower_is_better']:
+        ranking_metrics_unnormed[i.replace(' - ','')] = -_unnormed_metrics['lower_is_better'][i]
+    return ranking_metrics,ranking_metrics_unnormed
+
 
 def get_raw_metrics(evosys,design_vector):
     proposal_rating = design_vector['proposal_rating'] if 'proposal_rating' in design_vector else None
@@ -411,38 +525,18 @@ def _mean_eval_metrics(eval_metrics):
             mean_metrics[scale][metric] = np.mean([result[i] for i in result])
     return mean_metrics
 
-def _get_acc_norm(eval_metrics,mean=False): # if no acc_norm, use acc
-    accs = {}
-    for scale in eval_metrics:
-        accs[scale] = {}
-        acc = eval_metrics[scale]['acc,none,H']
-        acc_norm = eval_metrics[scale]['acc_norm,none,H']
-        for task in acc:
-            if task in acc_norm:
-                accs[scale][task] = acc_norm[task]
-            else:
-                accs[scale][task] = acc[task]
-    if mean:
-        for scale in accs:
-            accs[scale] = np.mean(list(accs[scale].values()))
-    return accs
-
 
 
 
 def design_utility_simple(evosys,design_vector):
-    weights = U.safe_get_cfg_dict(evosys.selector.select_cfg,'scale_weights',DEFAULT_SCALE_WEIGHTS)
     proposal_rating,_,eval_metrics,_ = get_raw_metrics(evosys,design_vector)
-    mean_grouped_accs = _get_acc_norm(group_results(eval_metrics),mean=True)
-    weighted_acc = 0
-    for scale in mean_grouped_accs:
-        weighted_acc+=mean_grouped_accs[scale]*weights[scale]/len(mean_grouped_accs)
-    return proposal_rating,weighted_acc
+    scale_weighted_grouped_metrics = scale_weight_results(evosys,group_results(eval_metrics))
+    _01_normed_metrics,_ = _flat_weighted_metrics(scale_weighted_grouped_metrics)
+    return proposal_rating,np.mean(list(_01_normed_metrics.values()))
 
 def get_random_metrics(evosys):
     eval_metrics,eval_stderrs = eval_results_getter(evosys.ptree.random_baseline)
     return None,None,eval_metrics,eval_stderrs
-
 
 def design_confidence_simple(evosys,design_vector):
     verifications = design_vector['verifications']
@@ -452,74 +546,303 @@ def design_confidence_simple(evosys,design_vector):
     total_points = sum(confidence_points.values())
     return confidence,total_points
 
-def design_ranks(evosys,design_vectors):
-    proposal_ratings = {}
-    weighted_accs = {}
-    confidence_points = {}
-    for design in design_vectors:
-        proposal_ratings[design],weighted_accs[design] = design_utility_simple(evosys,design_vectors[design])
-        confidence_points[design],_ = design_confidence_simple(evosys,design_vectors[design])
-    
-    def _sort_dict(d,tiering=True):
-        d = sorted(d.items(),key=lambda x:float(x[1]),reverse=True)
-        if tiering:
-            tiers = {}
-            for acronym,rating in d:
-                if rating not in tiers:
-                    tiers[rating] = []
-                tiers[rating].append(acronym)
-            # tiers = {k:v for k,v in sorted(tiers.items(),key=lambda x:float(x[0]),reverse=True)}
-            return tiers
-        else:
-            return {acronym:rank for acronym,rank in d}
-    proposal_ranks = _sort_dict(proposal_ratings)
-    weighted_ranks = _sort_dict(weighted_accs)
-    confidence_ranks = _sort_dict(confidence_points)
-    return proposal_ranks,weighted_ranks,confidence_ranks
-
-
 
 def show_design(evosys,design_vector,relative=None,threshold=None):
     confidence,total_points = design_confidence_simple(evosys,design_vector)
     confidence_percentage = confidence / total_points * 100
-    st.write(f'###### Design confidence (simple count points): ```{confidence_percentage:.2f}%``` ({confidence}/{total_points})')
     proposal_rating,weighted_acc = design_utility_simple(evosys,design_vector)
-    st.write(f'###### Proposal rating: ```{proposal_rating}/5.0```') if proposal_rating else st.write('Proposal rating: ```N/A```')
-    st.write(f'###### Weighed mean grouped norm-prioritized accuracy: ```{weighted_acc}```')
-
     proposal_rating,training_metrics,eval_metrics,eval_stderrs=get_raw_metrics(evosys,design_vector)
+    grouped_metrics = group_results(eval_metrics)
+    scale_weighted_grouped_metrics = scale_weight_results(evosys,grouped_metrics)
+    _01_normed_metrics,_unnormed_metrics = _flat_weighted_metrics(scale_weighted_grouped_metrics)
+    
+    ranking_metrics,ranking_metrics_unnormed = get_ranking_metrics(evosys,design_vector,False)
+    cols=st.columns(2)
+    with cols[0]:
+        st.write(f'###### Design confidence (simple count points): ```{confidence_percentage:.2f}%``` ({confidence}/{total_points})')
+        st.write(f'###### Proposal rating: ```{proposal_rating}/5.0```') if proposal_rating else st.write('Proposal rating: ```N/A```')
+        st.write(f'###### Scale-Weighted mean 01 normed metrics: ```{weighted_acc}```')
+    
+    with cols[1]:
+        with st.expander('**Ranking metrics (0-1 normed)**',expanded=False):
+            st.json(ranking_metrics)
+        with st.expander('***Ranking metrics (Unnormed)***',expanded=False):
+            st.json(ranking_metrics_unnormed)
 
     cols=st.columns(2)
     with cols[0]:
         st.write('##### Raw metrics')
-        with st.expander('Training metrics'):
-            st.json(training_metrics)
-        with st.expander('Evaluation metrics'):
-            st.json(eval_metrics)
-        with st.expander('Evaluation stderrs'):
-            st.json(eval_stderrs)
-        with st.expander('Group evaluation metrics'):
-            st.json(group_results(eval_metrics))
-        with st.expander('Accuracy (Norm prioritized)'):
-            st.json(_get_acc_norm(eval_metrics))
+        RAW_METRICS = [
+            'Training metrics',
+            'Evaluation metrics',
+            'Evaluation stderrs',
+            'Grouped evaluation metrics',
+            'Scale Weighted Grouped Evaluation Metrics',
+        ]
+        selected_raw_metrics = st.selectbox('Select raw metrics to show',options=RAW_METRICS)
+        with st.expander(selected_raw_metrics,expanded=True):
+            if selected_raw_metrics == 'Training metrics':
+                st.json(training_metrics)
+            elif selected_raw_metrics == 'Evaluation metrics':
+                st.json(eval_metrics)
+            elif selected_raw_metrics == 'Evaluation stderrs':
+                st.json(eval_stderrs)
+            elif selected_raw_metrics == 'Grouped evaluation metrics':
+                st.json(grouped_metrics)
+            elif selected_raw_metrics == 'Scale Weighted Grouped Evaluation Metrics':
+                st.json(scale_weighted_grouped_metrics)
 
     with cols[1]:
         st.write('##### Processed metrics')
-        with st.expander('Mean grouped evaluation metrics'):
-            st.json(_mean_eval_metrics(group_results(eval_metrics)))
-        with st.expander('Random normalized evaluation metrics'):
-            st.json(random_normalized_eval_metrics(evosys,design_vector,threshold))
-        with st.expander('Relative evaluation metrics'):
-            if relative and relative != 'none':
-                st.json(get_relative_metrics(evosys,design_vector,relative)[2])
+        PROCESSED_METRICS = [
+            'Mean grouped evaluation metrics',
+            'Random normalized evaluation metrics',
+            'Relative evaluation metrics',
+            'Scale Weighted Grouped 0-1 Normed Metrics',
+            'Scale Weighted Grouped Unnormed Metrics',
+            'Tie sensitivity normalized metrics'
+        ]
+        selected_processed_metrics = st.selectbox('Select processed metrics to show',options=PROCESSED_METRICS)
+        with st.expander(selected_processed_metrics,expanded=True):
+            if selected_processed_metrics == 'Mean grouped evaluation metrics':
+                st.json(_mean_eval_metrics(group_results(eval_metrics)))
+            elif selected_processed_metrics == 'Random normalized evaluation metrics':
+                st.json(random_normalized_eval_metrics(evosys,design_vector,threshold))
+            elif selected_processed_metrics == 'Relative evaluation metrics':
+                if relative and relative != 'none':
+                    st.json(get_relative_metrics(evosys,design_vector,relative)[2])
+                else:
+                    st.info('No relative metrics to show.')
+            elif selected_processed_metrics == 'Scale Weighted Grouped 0-1 Normed Metrics':
+                st.json(_01_normed_metrics)
+            elif selected_processed_metrics == 'Scale Weighted Grouped Unnormed Metrics':
+                st.json(_unnormed_metrics)
+
+def around_ranking_matrix(ranking_matrix,draw_margin=0.01):
+    ranking_matrix = ranking_matrix.apply(lambda x: np.around(x/draw_margin)*draw_margin)
+    return ranking_matrix
+
+def get_ranking_matrix(evosys,design_vectors,normed_only=True,verified_only=True,
+        drop_na=True,drop_zero=True):
+    ranking_matrix = pd.DataFrame()
+    for acronym in design_vectors:
+        design_vector = design_vectors[acronym]
+        ranking_metrics,ranking_metrics_unnormed = get_ranking_metrics(evosys,design_vector,normed_only)
+        if verified_only and len(ranking_metrics)<=1: # only proposal rating
+            continue
+        ranking_matrix = pd.concat([ranking_matrix,pd.DataFrame(ranking_metrics,index=[acronym])],axis=0)
+        if not normed_only:
+            ranking_matrix = pd.concat([ranking_matrix,pd.DataFrame(ranking_metrics_unnormed,index=[acronym])],axis=0)
+    # drop cols with any N/A, drop all 0 cols
+    if drop_na:
+        ranking_matrix=ranking_matrix.dropna(axis=1)
+    if drop_zero:
+        ranking_matrix = ranking_matrix.loc[:, (ranking_matrix != 0).any(axis=0)]
+    return ranking_matrix
+
+
+def column_to_pairs(column):
+    pairs = []
+    for i in range(len(column)):
+        for j in range(i+1,len(column)):
+            obj1 = column.index[i]
+            obj2 = column.index[j]
+            v1 = column[obj1]
+            v2 = column[obj2]
+            if v1 > v2:
+                pairs.append((obj1,obj2,v1,v2))
             else:
-                st.info('No relative metrics to show.')
-        with st.expander('Grouped Accuracy (Norm prioritized)'):
-            st.json(_get_acc_norm(group_results(eval_metrics)))
-        with st.expander('Mean Grouped Accuracy (Norm prioritized)'):
-            st.json(_get_acc_norm(group_results(eval_metrics),mean=True))
+                pairs.append((obj2,obj1,v2,v1))
+    cols=['design1','design2','metric1','metric2']
+    return pd.DataFrame(pairs,columns=cols)
 
 
+def ranking_matrix_to_pairs(ranking_matrix:pd.DataFrame):
+    # convert to pairs of winner_name,loser_name,winner_score,loser_score
+    columns = []
+    for metric in ranking_matrix.columns:
+        column = ranking_matrix[metric]
+        pairs = column_to_pairs(column)
+        columns.append(pairs)
+    merged_columns = pd.concat(columns,axis=0)
+    return merged_columns
+
+def __rank_designs(ranking_matrix,ranking_args,ranking_method):
+    cols=['design1','design2','metric1','metric2']
+    data = Table(ranking_matrix, col = cols)
+    if ranking_method == 'massey':
+        ranker = Ranker.MasseyRanker(drawMargin = ranking_args['draw_margin'])
+    elif ranking_method == 'colley':
+        ranker = Ranker.ColleyRanker(drawMargin = ranking_args['draw_margin'])
+    elif ranking_method == 'markov':
+        ranker = Ranker.MarkovRanker(restart = ranking_args['markov_restart'], 
+            threshold = ranking_args['convergence_threshold'])
+    else:
+        raise ValueError(f'Unknown ranking method: {ranking_method}')
+    return ranker.rank(data)
+
+def _merge_ranks(ranks,merge_method):
+    _ranks=[ranks[i] for i in ranks]
+    if merge_method == 'borda':
+        rank = borda_count_merge(_ranks)
+        rank.rename(columns={'BordaCount':'rating'},inplace=True)
+        return rank
+    elif merge_method == 'average':
+        return average_ranking_merge(_ranks)
+    else:
+        raise ValueError(f'Unknown merge method: {merge_method}')
+    
+
+def _rank_designs(ranking_matrix,ranking_args,ranking_method):
+    metric_wise_merge = ranking_args['metric_wise_merge']
+    metric_wise_merge = None if metric_wise_merge in ['None','none'] else metric_wise_merge
+    if ranking_method not in ['colley','massey']:
+        ranking_matrix = around_ranking_matrix(ranking_matrix,ranking_args['draw_margin']) 
+    ranks = {}
+    if metric_wise_merge and ranking_method != 'markov':
+        # separte each column 
+        for metric in ranking_matrix.columns:
+            column = ranking_matrix[metric]
+            if ranking_method == 'average':
+                # directly convert the to the format name, rating, rank
+                ranki = column.sort_values(ascending=False)
+                ranki = ranki.to_frame(name='rating')
+                ranki.reset_index(inplace=True)
+                ranki.rename(columns={'index':'name'},inplace=True)
+                ranki['rank'] = ranki['rating'].rank(method='min', ascending=False).astype(int)
+                ranks[metric] = ranki
+            else:
+                pairs = column_to_pairs(column)
+                ranks[metric] = __rank_designs(pairs,ranking_args,ranking_method)
+        rank = _merge_ranks(ranks,metric_wise_merge)
+    else:
+        # merge all columns, concate the index
+        if ranking_method == 'average':
+            rank = ranking_matrix.rank(method='average')
+            cols = rank.columns
+            rank['rating'] = rank.mean(axis=1)
+            rank = rank.drop(cols,axis=1)
+            rank = rank.reset_index()
+            rank = rank.rename(columns={'index':'name'})
+            rank['rank'] = rank['rating'].rank(method='min', ascending=False).astype(int)
+        else:   
+            merged_columns = ranking_matrix_to_pairs(ranking_matrix)
+            rank = __rank_designs(merged_columns,ranking_args,ranking_method)
+    return rank,ranks
+
+
+def rank_designs(ranking_matrix,ranking_args):
+    ranking_methods = ranking_args['ranking_method']
+    if isinstance(ranking_methods,str):
+        ranking_methods = [ranking_methods]
+    subranks = {}
+    subsubranks = {}
+    for ranking_method in ranking_methods:
+        _subrank,_subsubranks = _rank_designs(ranking_matrix,ranking_args,ranking_method)
+        subranks[ranking_method] = _subrank
+        subsubranks[ranking_method] = _subsubranks
+    if len(ranking_methods) > 1:
+        merge_method = ranking_args['multi_rank_merge']
+        rank = _merge_ranks(subranks,merge_method)
+    else:
+        rank = subranks[ranking_methods[0]]
+    return rank,subranks,subsubranks
+
+def rank_confidences(evosys,design_vectors,filter=[]):
+    rank={}
+    for acronym in design_vectors:
+        if filter and acronym not in filter:
+            continue
+        design_vector = design_vectors[acronym]
+        confidence,total_points = design_confidence_simple(evosys,design_vector)
+        rank[acronym] = confidence
+    # to df of Nx1, each row is a confidence, indexed by design
+    rank = pd.DataFrame(list(rank.items()), columns=['name', 'confidence'])
+    rank = rank.sort_values(by='confidence',ascending=False)
+    rank.reset_index(inplace=True)
+    rank.drop(columns=['index'],inplace=True)
+    rank['rank'] = rank['confidence'].rank(method='min', ascending=False).astype(int)
+    return rank
+
+# def _shuffle_within_rank(df):
+#     return df.groupby('rank').apply(lambda x: x.sample(frac=1)).reset_index(drop=True)
+
+def _divide_rank(df,quantile):
+    # divide into upper quantile and lower quantile
+    upper_quantile = df['rank'].quantile(quantile)
+    lower_quantile = df['rank'].quantile(1-quantile)
+    upper_df = df[df['rank'] > upper_quantile]
+    lower_df = df[df['rank'] < lower_quantile]
+    return upper_df,lower_df
+
+def get_ranking_quadrant(evosys,design_rank,confidence_rank,ranking_args):
+    quadrant_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'quadrant_args',DEFAULT_QUADRANT_ARGS)
+    # confidence_rank = _shuffle_within_rank(confidence_rank)
+    # design_rank = _shuffle_within_rank(design_rank)
+    design_upper,design_lower = _divide_rank(design_rank,quadrant_args['design_quantile'])
+    confidence_upper,confidence_lower = _divide_rank(confidence_rank,quadrant_args['confidence_quantile'])
+    return {
+        'design_upper':design_upper,
+        'design_lower':design_lower,
+        'confidence_upper':confidence_upper,
+        'confidence_lower':confidence_lower
+    }
+
+def visualize_ranking_quadrant(quadrants):
+    design_upper = quadrants['design_upper']
+    design_lower = quadrants['design_lower']
+    confidence_upper = quadrants['confidence_upper']
+    confidence_lower = quadrants['confidence_lower']
+
+    # Combine design and confidence data
+    design_data = pd.concat([design_upper, design_lower])
+    confidence_data = pd.concat([confidence_upper, confidence_lower])
+    
+    # Merge design and confidence data on 'name'
+    combined_data = pd.merge(design_data, confidence_data, on='name', suffixes=('_design', '_confidence'))
+
+    fig, ax = plt.subplots(figsize=(12, 12))
+
+    # Calculate the midpoints for x and y axes
+    x_midpoint = (confidence_upper['confidence'].min() + confidence_lower['confidence'].max()) / 2
+    y_midpoint = (design_upper['rating'].min() + design_lower['rating'].max()) / 2
+
+    # Adjust the data points relative to the midpoints
+    combined_data['confidence_adjusted'] = combined_data['confidence'] - x_midpoint
+    combined_data['rating_adjusted'] = combined_data['rating'] - y_midpoint
+
+    # Plot the points
+    scatter = ax.scatter(combined_data['confidence_adjusted'], combined_data['rating_adjusted'], 
+                         c=combined_data['rank_design'], cmap='viridis', alpha=0.7)
+
+    # Add labels and title
+    ax.set_xlabel('Confidence')
+    ax.set_ylabel('Design Rating')
+    ax.set_title('Confidence vs Design Rating Quadrant')
+
+    # Add colorbar
+    plt.colorbar(scatter, label='Design Rank')
+
+    # Add gridlines
+    ax.grid(True)
+
+    # Add quadrant labels
+    ax.text(0.95, 0.95, 'Good Design\nHigh Confidence', ha='right', va='top', transform=ax.transAxes, fontsize=12)
+    ax.text(0.05, 0.95, 'Good Design\nLow Confidence', ha='left', va='top', transform=ax.transAxes, fontsize=12)
+    ax.text(0.95, 0.05, 'Poor Design\nHigh Confidence', ha='right', va='bottom', transform=ax.transAxes, fontsize=12)
+    ax.text(0.05, 0.05, 'Poor Design\nLow Confidence', ha='left', va='bottom', transform=ax.transAxes, fontsize=12)
+
+    # Add axes at the midpoint
+    ax.axhline(y=0, color='k', linestyle='--')
+    ax.axvline(x=0, color='k', linestyle='--')
+
+    # Add name labels to points
+    for idx, row in combined_data.iterrows():
+        ax.annotate(row['name'], (row['confidence_adjusted'], row['rating_adjusted']), 
+                    xytext=(5, 5), textcoords='offset points', fontsize=8, alpha=0.7)
+
+    return fig
+    
 
 LEADERBOARD_1 = [
     'blimp',
@@ -563,16 +886,19 @@ def export_leaderboard(evosys,design_vectors, baseline_vectors, scale):
 
 
 
+
+
 def selector_lab(evosys,project_dir):
     st.header('*Selector Lab*')
     
     with st.expander('Notes for Selector and the Evolution System (For internal reference)',icon='🎼'):
         st.markdown(SELECTOR_NOTES)
 
-    st.subheader('Design scores')
+    st.subheader('Design metrics explorer')
 
-    design_vectors = evosys.ptree.get_design_vectors()
-    baseline_vectors = evosys.ptree.get_baseline_vectors()
+    with st.status('Loading data...'):
+        design_vectors = evosys.ptree.get_design_vectors()
+        baseline_vectors = evosys.ptree.get_baseline_vectors()
 
     cols = st.columns(3)
     with cols[0]:
@@ -615,20 +941,87 @@ def selector_lab(evosys,project_dir):
     show_design(evosys,design_vector,relative,threshold)
 
 
-    st.subheader('Design ranks')
-    proposal_ranks,weighted_ranks,confidence_ranks = design_ranks(evosys,design_vectors)
-    cols = st.columns(3)
+    st.subheader('**Design Ranking**')
+    ranking_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+    cols = st.columns([5,1.5,0.8,0.8])
     with cols[0]:
-        with st.expander('Proposal rating',expanded=True):
-            st.json(proposal_ranks)
+        _cols=st.columns([2,1])
+        with _cols[0]:
+            _value = ranking_args['ranking_method']
+            if isinstance(_value,str):
+                _value = [_value]
+            ranking_args['ranking_method'] = st.multiselect('Ranking method (Required)',options=RANKING_METHODS,default=_value,
+                help='Ranking method to use, if muliple methods are provided, will be aggregated by the "multi-rank merge" method')
+        with _cols[1]:
+            ranking_args['multi_rank_merge'] = st.selectbox('Multi-rank merge',options=MERGE_METHODS)
     with cols[1]:
-        with st.expander('Weighted accuracy',expanded=True):
-            st.json(weighted_ranks)
+        st.write('')
+        normed_only = st.checkbox('Normed only',value=ranking_args['normed_only'])
     with cols[2]:
-        with st.expander('Confidence points',expanded=True):
-            st.json(confidence_ranks)
+        st.write('')
+        drop_zero = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+    with cols[3]:
+        st.write('')
+        drop_na = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
+    # with cols[4]:
+    #     st.write('')
+    #     rank_design_btn = st.button('Rank',use_container_width=True)
 
+    with st.expander('Ranking method arguments',expanded=True):
+        cols = st.columns(4)
+        with cols[0]:
+            ranking_args['draw_margin'] = st.number_input('Draw margin',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['draw_margin'], format="%0.3f",
+                help='Margin for draw (tie)')
+        with cols[1]:
+            ranking_args['convergence_threshold'] = st.number_input('Convergence threshold',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['convergence_threshold'], format="%0.5f",
+            help='Convergence threshold for iterations in methods like Markov chain')
+        with cols[2]:
+            ranking_args['markov_restart'] = st.number_input('Markov restart',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['markov_restart'], format="%0.3f")
+        with cols[3]:
+            ranking_args['metric_wise_merge'] = st.selectbox('Metric-wise merge',options=['None']+MERGE_METHODS,
+                help='If set, will rank for each metric separately and then aggregate by the "metric-wise merge" method, not available for markov method')
 
+    # if rank_design_btn:
+    assert ranking_args['ranking_method'], 'Ranking method is required'
+    with st.status('Generating ranking matrix...',expanded=True):
+        ranking_matrix = get_ranking_matrix(evosys,design_vectors,normed_only,
+            drop_na=drop_na,drop_zero=drop_zero)
+        # compute average at the end of each row
+        _ranking_matrix = ranking_matrix.copy()
+        _ranking_matrix['avg.'] = _ranking_matrix.mean(axis=1)
+        st.dataframe(_ranking_matrix)
+    
+    with st.status('Ranking designs...',expanded=True):
+        design_rank,subranks,subsubranks = rank_designs(ranking_matrix,ranking_args)
+    
+    with st.expander('Design Ranking',expanded=True):
+        cols=st.columns(3)
+        with cols[0]:
+            st.subheader('Design Ranking')
+            st.write(design_rank)
+        with cols[1]:
+            select_subrank = st.selectbox('Select subrank',options=subranks.keys())
+            st.write(subranks[select_subrank])
+        with cols[2]:
+            select_subsubrank = st.selectbox('Select subsubrank',options=subsubranks[select_subrank].keys())
+            if select_subsubrank:
+                st.write(subsubranks[select_subrank][select_subsubrank])
+            else:
+                st.info('No subsubrank to show')
+
+    st.subheader('Ranking Quadrant')
+    cols = st.columns([1,2])
+    with cols[0]:
+        with st.status('Ranking confidence filter by design rank...',expanded=True):
+            st.subheader('Confidence Ranking')
+            confidence_rank = rank_confidences(evosys,design_vectors,design_rank['name'].tolist())
+            st.dataframe(confidence_rank)
+
+    with cols[1]:
+        with st.status('Generating ranking quadrant...',expanded=True):
+            ranking_quadrants = get_ranking_quadrant(evosys,design_rank,confidence_rank,ranking_args)
+            fig = visualize_ranking_quadrant(ranking_quadrants)
+            st.pyplot(fig)
 
 
 

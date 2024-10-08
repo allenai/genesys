@@ -831,7 +831,7 @@ class Verification:
 
 @dataclass
 class DesignArtifact(NodeObject):
-    sess_id: str # design session id
+    sess_id: str # design session id, time info can be parsed from sess_id
     proposal: Proposal
     implementation: Implementation = None # find by modelname/id
     verifications: Dict[str, Verification] = field(default_factory=dict) # find by modelname/id
@@ -843,7 +843,14 @@ class DesignArtifact(NodeObject):
             return 'DesignArtifactImplemented'
         else:
             return 'DesignArtifact'
-            
+    
+    @property
+    def timestamp(self) -> datetime:
+        tail = self.sess_id.split('-')[-1]
+        timestr=self.sess_id[:-len(tail)-1]
+        timeformat='%Y-%m-%d-%H-%M-%S'
+        return datetime.strptime(timestr, timeformat)
+        
     @classmethod
     def load(cls, design_dir: str):
         metadata = U.load_json(U.pjoin(design_dir, 'metadata.json'))

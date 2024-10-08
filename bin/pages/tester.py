@@ -21,3 +21,7 @@ def tester(evosys,project_dir):
 
     st.title('Testing page (for internal use)')
 
+    sess_id='2024-09-17-16-43-41-6f5f87'
+    tail = sess_id.split('-')[-1]
+    timestr=sess_id[:-len(tail)-1]
+    st.write(timestr)
