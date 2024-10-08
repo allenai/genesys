@@ -686,7 +686,8 @@ def selector_lab(evosys,project_dir):
             _rerank_method = st.selectbox('Rerank merge method',options=MERGE_METHODS)
             ranked_quadrants = _rank_combined_quadrant(combined_quadrant,_rerank_method,rename=False)
             _category = st.selectbox('Select a category',options=ranked_quadrants.keys())
-    
+            st.dataframe(ranked_quadrants[_category])
+        
     # with st.expander('Exploration settings'):
     #     design_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'explore_args',DEFAULT_DESIGN_EXPLORE_ARGS)
     #     verify_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS)
