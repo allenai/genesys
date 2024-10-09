@@ -1494,7 +1494,6 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         implemented_designs=[]
         other_designs=[]
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
-            print(id)
             artifact = DesignArtifact.load(self.design_dir(id))
             if artifact.type=='DesignArtifactImplemented':
                 implemented_designs.append(artifact)
