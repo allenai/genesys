@@ -1932,9 +1932,12 @@ class EvolutionSystem(exec_utils.System):
     def sync_to_db(self):
         collection=self.remote_db.collection('experiments')
         config=U.load_json(U.pjoin(self.evo_dir,'config.json'))
+        design_cfg = copy.deepcopy(self.design_cfg)
+        if 'running_mode' in design_cfg:
+            design_cfg['running_mode'] = design_cfg['running_mode'].value
         config.update({
             'params': self.params,
-            'design_cfg': self.design_cfg,
+            'design_cfg': design_cfg,
             'search_cfg': self.search_cfg,
             'select_cfg': self.select_cfg,
         })

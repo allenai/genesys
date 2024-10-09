@@ -107,7 +107,10 @@ the main interface to the system instead of the common command-line interface
   create a subprocess to run the low-level CLI instructions. See details below.
 ''')
 
-    title_color = 'rainbow' if st.session_state.current_theme['base']=='light' else 'violet'
+    if st.session_state.current_theme:
+        title_color = 'rainbow' if st.session_state.current_theme['base']=='light' else 'violet'
+    else:
+        title_color = 'violet'
     st.markdown(f'''
 ## :{title_color}[How to launch the evolution?] 
 
@@ -115,23 +118,21 @@ The evolution is distributed, asynchronous and parallel (see details below), it
 can be launched by:
  1. Configure the experiment settings in the **Config** tab. Save and upload to
     the cloud. (*CLI mode is working in progress*)
- 2. Launch by `bash scripts/run_node.sh [--node_id <node_id>] [--group_id <group_id>]
-    [--max_design_threads <max_design_threads>] [--no_gpus]`. Or play with it in the **Listen** tab. 
-    - `--node_id` is optional, if not specified, a random node id will be assigned;
-    - `--group_id` is default to `default`, set it if you need to run multiple
-      experiments at the same time, one evolution can only be run in one network
-      group and one network group can run one evolution at the same time;
-    - `--max_design_threads` is default to 5, it is the maximum number of design threads on this node;
-    - if `--no_gpus` is specified, the node will not accept verifications jobs, otherwise, it will
-      accept verifications jobs on all GPUs.
+ 2. Launch nodes by `bash scripts/run_node.sh [-i <node_id>] [-g <group_id>]
+    [-m <max_design_threads>] [-n]`. Or play with it in the **Listen** tab. 
+    - `-i, --node_id` is optional, if not specified, a random node id will be assigned;
+    - `-g, --group_id` is default to 'default', set it if you need to run multiple
+      experiments at the same time;
+    - `-m, --max_design_threads` is default to 5, it is the maximum number of design threads on this node;
+    - `-n, --no_gpus` if specified, the node will not accept verification jobs.
  3. Run the evolution in the **Evolve** tab. Or directly launch by `bash
-    scripts/run_evo.sh [--evoname <evoname>] [--group_id <group_id>] [--design_to_verify_ratio <design_to_verify_ratio>]`. 
-    - `--evoname` is the name of the evolution, it is the same as the namespace;
-    - `--group_id` is the same as the one in the node;
-    - `--design_to_verify_ratio` is the ratio of the number of design threads to the number of available verification nodes, it is the same as the one in the node;
+    scripts/run_evo.sh [-e <evoname>] [-g <group_id>] [-r <design_to_verify_ratio>]`. 
+    - `-e, --evoname` is the name of the evolution (default: 'test_evo_000');
+    - `-g, --group_id` is default to 'default', should match the one used for the nodes;
+    - `-r, --design_to_verify_ratio` is the ratio of design threads to verification nodes (default: 4).
 
-**NOTE:** Do not run multiple nodes in the same user space as it will cause the
-file access conflict. Just use all the GPUs in each node.
+**NOTE:** Do not run multiple nodes in the same user space as it will cause
+file access conflicts. Use all available GPUs in each node instead.
 ''')
 
     # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))

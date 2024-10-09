@@ -376,10 +376,10 @@ if __name__ == "__main__":
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--node_id', type=str, default='None', help='Node ID (empty for random)')
-    parser.add_argument('--no_gpus', action='store_true', help='Do not use GPUs (will not accept verify jobs)')
-    parser.add_argument('--max_design_threads', type=int, default=5, help='Max number of design threads can accept')
-    parser.add_argument('--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
+    parser.add_argument('-i','--node_id', type=str, default='None', help='Node ID (empty for random)')
+    parser.add_argument('-n','--no_gpus', action='store_true', help='Do not use GPUs (will not accept verify jobs)')
+    parser.add_argument('-m','--max_design_threads', type=int, default=5, help='Max number of design threads can accept')
+    parser.add_argument('-g','--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
     args = parser.parse_args()
 
     node_id = args.node_id if args.node_id != 'None' else None
@@ -395,7 +395,15 @@ if __name__ == "__main__":
         _group_id = local_doc['group_id']
         _max_design_threads = local_doc['max_design_threads']
         _accept_verify_job = local_doc['accept_verify_job'] 
-        print(f'Local running listener detected:\nNode ID: {_node_id}.\nGroup ID: {_group_id}.\nMax design threads: {_max_design_threads}.\nAccept verify job: {_accept_verify_job}.\nPlease view it in the GUI Listen tab.')
+        print(
+            f'Local running listener detected:\n'
+            f'Node ID: {_node_id}.\n'
+            f'Network Group ID: {_group_id}.\n'
+            f'Max design threads: {_max_design_threads}.\n'
+            f'Accept verify job: {_accept_verify_job}.\n'
+            f'Please view it in the GUI Listen tab.\n'
+            'If you just stopped it, please wait for 20 seconds to let it cool down.'
+        )
     else:
         evosys = BuildEvolution(
             params={'evoname':'test_evo_000'}, # doesnt matter, will switch to the commanded evoname

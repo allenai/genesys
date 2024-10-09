@@ -217,7 +217,7 @@ def evolve(evosys,project_dir):
         if stop_evo_btn:
             if st.session_state.command_center:
                 with st.spinner('Stopping... Note, the nodes will keep working on the unfinished jobs'):
-                    stop_evo(evosys)
+                    stop_evo()
 
     if not evosys.remote_db:
         st.warning("Now only support distributed mode, all working nodes should run in listening mode.")
@@ -294,13 +294,13 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--evoname", default='test_evo_000', type=str) # the name of the whole evolution
-    parser.add_argument("--design_to_verify_ratio", type=int, default=4) # the max number of threads to use
-    parser.add_argument("--group_id", default='default', type=str) # the group id of the evolution
+    parser.add_argument('-e','--evoname', default='test_evo_000', type=str) # the name of the whole evolution
+    parser.add_argument('-r','--design_to_verify_ratio', type=int, default=4) # the max number of threads to use
+    parser.add_argument('-g','--group_id', default='default', type=str) # the group id of the evolution
     args = parser.parse_args()
 
     evosys = BuildEvolution(
-        params={'evoname':args.evoname, }, 
+        params={'evoname':args.evoname, 'group_id':args.group_id}, 
         do_cache=False,
         # cache_type='diskcache',
     )
