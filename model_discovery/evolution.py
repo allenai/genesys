@@ -395,7 +395,7 @@ class FirestoreManager:
                 trace_path=U.pjoin(design_dir,'proposal_traces',trace_id+'.json')
                 if not U.pexists(trace_path) or overwrite:
                     U.mkdir(U.pjoin(design_dir,'proposal_traces'))
-                    trace=self.collection.document(design_id).collection('proposal_traces').document(trace_id).get().to_dict()
+                    trace=self.collection.document(design_id).collection('proposal_traces').document(trace_id).get().to_dict()[trace_id]
                     U.save_json(trace,trace_path)
                     print(f'Downloaded proposal trace {trace_id} for design {design_id}')
 
@@ -408,7 +408,7 @@ class FirestoreManager:
                 implementation=Doc['implementation']
                 implementation['history']=[]
                 for idx in index_term['implementation_history']:
-                    step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()
+                    step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
                     implementation['history'].append(step)
                 U.save_json(implementation,implementation_path)
                 print(f'Downloaded implementation for design {design_id}')
@@ -421,7 +421,7 @@ class FirestoreManager:
                     implementation=Doc['implementation']
                     implementation['history']=_implementation['history']
                     for idx in range(len(_implementation['history']),len(index_term['implementation_history'])):
-                        step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()
+                        step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
                         implementation['history'].append(step)
                     U.save_json(implementation,implementation_path)
                     print(f'Downloaded implementation for design {design_id}')
@@ -750,21 +750,21 @@ class ImplementationAttempt:
         return cls(**dict)
 
 
-def _patch__try_fix_history(history): # FIXME: figure out why it happens
-    if isinstance(history,dict):
-        if '0' in history:
-            return [history[k] for k in history]
-        else:
-            return [history]
-    new_history=[]
-    if len(history)>0:
-        if '0' in history[0]: # not sure why like that, but do it for now
-            for _history in history:
-                for _,v in _history.items():
-                    new_history.append(v)
-        else:
-            new_history=history
-    return new_history
+# def _patch__try_fix_history(history): # FIXME: figure out why it happens
+#     if isinstance(history,dict):
+#         if '0' in history:
+#             return [history[k] for k in history]
+#         else:
+#             return [history]
+#     new_history=[]
+#     if len(history)>0:
+#         if '0' in history[0]: # not sure why like that, but do it for now
+#             for _history in history:
+#                 for _,v in _history.items():
+#                     new_history.append(v)
+#         else:
+#             new_history=history
+#     return new_history
 
 
 @dataclass
@@ -785,7 +785,7 @@ class Implementation:
 
     @classmethod
     def from_dict(cls, _dict: Dict):
-        _dict['history']=_patch__try_fix_history(_dict['history'])
+        # _dict['history']=_patch__try_fix_history(_dict['history'])
         for i in range(len(_dict['history'])):
             if 'design_cfg' in _dict['history'][i]:
                 _dict['history'][i]['design_cfg']['running_mode']=RunningModes(_dict['history'][i]['design_cfg']['running_mode'])
@@ -1494,6 +1494,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         implemented_designs=[]
         other_designs=[]
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
+            print(id)
             artifact = DesignArtifact.load(self.design_dir(id))
             if artifact.type=='DesignArtifactImplemented':
                 implemented_designs.append(artifact)

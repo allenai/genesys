@@ -8,6 +8,7 @@ Library of methods and theory that may inspire the language modeling designs. Ar
 - https://github.com/BlinkDL/RWKV-LM/tree/main/RWKV-v7 RWKV-v7
 - https://www.liquid.ai/liquid-foundation-models LFM
 - https://arxiv.org/html/2410.01201v1 minGRU, minLSTM
+- https://arxiv.org/pdf/2410.05258 Differential Transformer
 
 
 ## Baselines and Core Reference Designs (155)
