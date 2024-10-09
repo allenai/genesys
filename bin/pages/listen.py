@@ -373,7 +373,7 @@ if __name__ == "__main__":
     from model_discovery.evolution import BuildEvolution
     import argparse
 
-    AU.print_title()
+    AU.print_cli_title()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-i','--node_id', type=str, default='None', help='Node ID (empty for random)')

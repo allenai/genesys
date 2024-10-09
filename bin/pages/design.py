@@ -748,6 +748,8 @@ if __name__ == '__main__':
     from model_discovery.evolution import BuildEvolution
     import argparse
 
+    AU.print_cli_title()
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--evoname", default='test_evo_000', type=str)
     parser.add_argument("--resume", action='store_true') # the name of the whole evolution
@@ -755,7 +757,6 @@ if __name__ == '__main__':
     parser.add_argument("--sess_id", default=None, type=str)
     parser.add_argument("--node_id", default=None, type=str)
     parser.add_argument("--pid", default=None, type=int)
-    parser.add_argument("-h","--help", action='store_true')
     args = parser.parse_args()
 
     args.sess_id = None if args.sess_id == 'None' else args.sess_id

@@ -657,7 +657,7 @@ if __name__ == "__main__":
     import argparse
     from art import tprint
 
-    AU.print_title()
+    AU.print_cli_title()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-u','--upload', action='store_true', help='Upload all local configs to remote DB')

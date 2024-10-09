@@ -10,7 +10,7 @@ from art import tprint
 CLI_TITLE = 'GENESYS'
 
 
-def print_title():
+def print_cli_title():
     tprint(CLI_TITLE, font='modular')
     print('Welcome to the Model Discovery System!')
 

@@ -292,7 +292,7 @@ if __name__ == '__main__':
     from model_discovery.evolution import BuildEvolution
     import argparse
 
-    AU.print_title()
+    AU.print_cli_title()
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-e','--evoname', default='test_evo_000', type=str) # the name of the whole evolution

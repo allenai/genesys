@@ -200,15 +200,13 @@ on a given scale and evaluate the performance using the customed LM-Eval.
 The evolutionary system continuously runs two threads asynchronously in multiple
 nodes until the budget is exhausted: 1. **Design Threads**: Continuously sample
 new designs on selected nodes. It is driven by the *Model Design Engine* in the
-**Design** tab. You can also run it in CLI by `python -m model_discovery.design`
-or `bash script/run_design.sh`. 2. **Verify Threads**: Continuously run
-verifications on the selected design and scale. It is driven by the
-*Verification Engine* in the **Verify** tab. You can also run it in CLI by
-`python -m model_discovery.verify` or `bash script/run_verify.sh`.
+**Design** tab. You can also run it in CLI by `genesys design [args]`. 2.
+**Verify Threads**: Continuously run verifications on the selected design and
+scale. It is driven by the *Verification Engine* in the **Verify** tab. You can
+also run it in CLI by `genesys verify [args]`.
 
 The network of working nodes are orchestrated by a master node through the
-**Firebase**. To add a node to the network, simply run `python -m
-model_discovery.listen` or `bash script/run_node.sh` on the node. It is
+**Firebase**. To add a node to the network, check run node above. It is
 recommended to run it in GPU-available sessions. You can also launch a node in
 the master machine.
 ''')

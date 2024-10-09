@@ -29,6 +29,22 @@ def evo(ctx):
     cmd = [sys.executable, '-m', 'bin.pages.evolve'] + ctx.args
     subprocess.run(cmd)
 
+
+@cli.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),add_help_option=False)
+@click.pass_context
+def design(ctx):
+    """Sample a design"""
+    cmd = [sys.executable, '-m', 'bin.pages.design'] + ctx.args
+    subprocess.run(cmd)
+
+
+@cli.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),add_help_option=False)
+@click.pass_context
+def verify(ctx):
+    """Do verification"""
+    cmd = [sys.executable, '-m', 'bin.pages.verify'] + ctx.args
+    subprocess.run(cmd)
+
 @cli.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True), add_help_option=False)
 @click.pass_context
 def gui(ctx):
