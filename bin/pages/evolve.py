@@ -15,7 +15,6 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
-from art import tprint
 
 
 def _is_running(evosys,zombie_threshold=30):
@@ -293,23 +292,23 @@ if __name__ == '__main__':
     from model_discovery.evolution import BuildEvolution
     import argparse
 
+    AU.print_title()
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-e','--evoname', default='test_evo_000', type=str) # the name of the whole evolution
     parser.add_argument('-r','--design_to_verify_ratio', type=int, default=4) # the max number of threads to use
     parser.add_argument('-g','--group_id', default='default', type=str) # the group id of the evolution
     args = parser.parse_args()
-
+        
     evosys = BuildEvolution(
         params={'evoname':args.evoname, 'group_id':args.group_id}, 
         do_cache=False,
         # cache_type='diskcache',
     )
-
     command_center = CommandCenter(evosys,args.design_to_verify_ratio,st,cli=True)
     command_center.build_connection()
     command_center_thread=x_evolve(command_center,cli=True)
     
-    tprint(AU.CLI_TITLE, font='modular ')
     print("Evolution launched!")
     try:
         # Keep the main thread alive

@@ -104,7 +104,8 @@ the main interface to the system instead of the common command-line interface
 
 * ***Can I use a CLI instead?*** Yes, you can always use the CLI to run the
   system. The GUI essentially integrated experiment monitors and runners to
-  create a subprocess to run the low-level CLI instructions. See details below.
+  create a subprocess to run the low-level CLI instructions. You can install the
+  CLI by `pip install -e .` and run it by `genesys <command> [args]`. See details below.
 ''')
 
     if st.session_state.current_theme:
@@ -114,25 +115,41 @@ the main interface to the system instead of the common command-line interface
     st.markdown(f'''
 ## :{title_color}[How to launch the evolution?] 
 
-The evolution is distributed, asynchronous and parallel (see details below), it
-can be launched by:
- 1. Configure the experiment settings in the **Config** tab. Save and upload to
-    the cloud. (*CLI mode is working in progress*)
- 2. Launch nodes by `bash scripts/run_node.sh [-i <node_id>] [-g <group_id>]
-    [-m <max_design_threads>] [-n]`. Or play with it in the **Listen** tab. 
-    - `-i, --node_id` is optional, if not specified, a random node id will be assigned;
-    - `-g, --group_id` is default to 'default', set it if you need to run multiple
-      experiments at the same time;
-    - `-m, --max_design_threads` is default to 5, it is the maximum number of design threads on this node;
-    - `-n, --no_gpus` if specified, the node will not accept verification jobs.
- 3. Run the evolution in the **Evolve** tab. Or directly launch by `bash
-    scripts/run_evo.sh [-e <evoname>] [-g <group_id>] [-r <design_to_verify_ratio>]`. 
-    - `-e, --evoname` is the name of the evolution (default: 'test_evo_000');
-    - `-g, --group_id` is default to 'default', should match the one used for the nodes;
-    - `-r, --design_to_verify_ratio` is the ratio of design threads to verification nodes (default: 4).
+The evolution is distributed, asynchronous and parallel (see details below). To set it up:
 
-**NOTE:** Do not run multiple nodes in the same user space as it will cause
-file access conflicts. Use all available GPUs in each node instead.
+1. Configure the experiment settings:
+   - Use the **Config** tab in the UI to set up your experiment. Save and upload to the cloud.
+   - Alternatively, you can manually edit the experiment folders.
+   - For command-line configuration, run:
+     ```
+     genesys cfg [-u] [-d] [-h]
+     ```
+     - `-u, --upload`: Upload all local configs to the remote DB
+     - `-d, --download`: Download all configs from the remote DB
+   - **Always remember to upload the local configs, otherwise it will be overwritten by remote DB.**
+
+2. Launch nodes:
+   ```
+   genesys node [-i <node_id>] [-g <group_id>] [-m <max_design_threads>] [-n] [-h]
+   ```
+   - `-i, --node_id`: Optional. If not specified, a random node id will be assigned.
+   - `-g, --group_id`: Default is 'default'. Set it if you need to run multiple experiments simultaneously.
+   - `-m, --max_design_threads`: Default is 5. Maximum number of design threads on this node.
+   - `-n, --no_gpus`: If specified, the node will not accept verification jobs.
+
+   You can also use the **Listen** tab in the UI to manage nodes.
+
+3. Run the evolution:
+   - Use the **Evolve** tab in the UI to start and manage the evolution.
+   - Or launch directly from the command line:
+     ```
+     genesys evo [-e <evoname>] [-g <group_id>] [-r <design_to_verify_ratio>] [-h]
+     ```
+     - `-e, --evoname`: Name of the evolution (default: 'test_evo_000')
+     - `-g, --group_id`: Default is 'default'. Should match the one used for the nodes.
+     - `-r, --design_to_verify_ratio`: Ratio of design threads to verification nodes (default: 4).
+
+**NOTE:** Avoid running multiple nodes in the same user space to prevent file access conflicts. Instead, utilize all available GPUs in each node.
 ''')
 
     # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))

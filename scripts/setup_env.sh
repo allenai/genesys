@@ -99,3 +99,6 @@ from model_discovery.configs.gam_config import GAMConfig_14M
 config = GAMConfig_14M() # dataset setting should be the same across all model scales, so just use the 14M setting to initialize the datasets
 load_datasets(config)
 "
+
+pip install -e .
+

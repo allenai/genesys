@@ -1,0 +1,1 @@
+python -m bin.pages.config "$@"

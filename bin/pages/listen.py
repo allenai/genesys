@@ -20,8 +20,6 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 from bin.pages.design import design_command
 from bin.pages.verify import verify_command
 
-from art import tprint
-
 
 def get_process(pid):
     try:
@@ -375,6 +373,8 @@ if __name__ == "__main__":
     from model_discovery.evolution import BuildEvolution
     import argparse
 
+    AU.print_title()
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-i','--node_id', type=str, default='None', help='Node ID (empty for random)')
     parser.add_argument('-n','--no_gpus', action='store_true', help='Do not use GPUs (will not accept verify jobs)')
@@ -384,11 +384,9 @@ if __name__ == "__main__":
 
     node_id = args.node_id if args.node_id != 'None' else None
 
-    print("Running in CLI mode.")
-
-
     # run in CLI mode
 
+        
     _node_id = _listener_running(os.environ.get("CKPT_DIR"))
     if _node_id:
         local_doc = U.load_json(U.pjoin(os.environ.get("CKPT_DIR"),'.node.json'))
@@ -414,7 +412,6 @@ if __name__ == "__main__":
         listener.build_connection()
         listener_thread = start_listener_thread(listener,add_ctx=False)
 
-        tprint(AU.CLI_TITLE, font='modular ')
         print(f"Listener launched: \nNode ID: {listener.node_id} \nGroup ID: {listener.group_id} \nMax design threads: {listener.max_design_threads} \nAccept verify job: {listener.accept_verify_job}")
         try:
             # Keep the main thread alive

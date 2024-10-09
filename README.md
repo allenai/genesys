@@ -2,6 +2,15 @@
 
 Utils and code for model discovery experiments. 
 
+
+# How to use (CLI/GUI)
+
+
+1. Set up  first (see below)
+2. Run `genesys <command> [args]` to use the CLI
+3. Run `genesys gui` to start the GUI
+
+
 # Setting up 
 
 
@@ -38,6 +47,7 @@ Currently, the agent portion relies on a private agent repo [**here**](https://g
 ```shell
 pip install git+https://{TOKEN}@github.com/allenai/exec_utils
 pip install -r requirements.txt # use `requirements_linux.txt` for linux
+pip install -e .
 ```
 
 This will install all agent associated requirements. You will also need to incorporate one or more of the following API
@@ -48,14 +58,6 @@ export MY_OPENAI_KEY=XXXXXXXXXXXXX
 export TOGETHER_API_KEY=XXXXXXXXXXXXX
 export HF_KEY=XXXXXXXXXXXXX
 export GITHUB_TOKEN=XXXXXXXXXXXXX
-```
-
-To check that the installation works correctly, you can try to the following: 
-```python
-from exec_utils import BuildModel
-
-llm = BuildModel()
-llm("what is your name?")
 ```
 
 ### Build search library
@@ -128,7 +130,6 @@ You can run:
 
 sh run_demo.sh
 ```
-
 
 
 

@@ -755,12 +755,13 @@ if __name__ == '__main__':
     parser.add_argument("--sess_id", default=None, type=str)
     parser.add_argument("--node_id", default=None, type=str)
     parser.add_argument("--pid", default=None, type=int)
+    parser.add_argument("-h","--help", action='store_true')
     args = parser.parse_args()
 
     args.sess_id = None if args.sess_id == 'None' else args.sess_id
     args.node_id = None if args.node_id == 'None' else args.node_id
     args.pid = None if args.pid == 'None' else args.pid
-
+    
     if args.daemon:
         evosys = BuildEvolution(
             params={'evoname':args.evoname,'db_only':True,'no_agent':True}, 

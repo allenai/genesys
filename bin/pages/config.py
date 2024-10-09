@@ -652,7 +652,32 @@ def config(evosys,project_dir):
             st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,),disabled=st.session_state.evo_running)
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
+    from model_discovery.evolution import BuildEvolution
+    import argparse
+    from art import tprint
+
+    AU.print_title()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-u','--upload', action='store_true', help='Upload all local configs to remote DB')
+    parser.add_argument('-d','--download', action='store_true', help='Download all configs from remote DB')
+    args = parser.parse_args()
+
+    if args.upload:
+        evosys = BuildEvolution(
+            params={'evoname':'test_evo_000','db_only':True,'no_agent':True}, 
+            do_cache=False,
+        )
+        sync_exps_to_db(evosys)
+    elif args.download:
+        evosys = BuildEvolution(
+            params={'evoname':'test_evo_000','db_only':True,'no_agent':True}, 
+            do_cache=False,
+        )
+        sync_exps_from_db(evosys)
+    else:
+        parser.print_help()
 
 
 

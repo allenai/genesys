@@ -4,8 +4,16 @@ import io
 import numpy as np
 import uuid
 
+from art import tprint
+
 
 CLI_TITLE = 'GENESYS'
+
+
+def print_title():
+    tprint(CLI_TITLE, font='modular')
+    print('Welcome to the Model Discovery System!')
+
 
 SQUARE_LOGO_SVG = """
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
