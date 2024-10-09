@@ -18,7 +18,8 @@ import numpy as np
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
 from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES
-from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS
+from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,BUDGET_TYPES,\
+    DEFAULT_BUDGET_TYPE,DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
@@ -147,7 +148,15 @@ def design_config(evosys):
         select_cfg['n_sources']=n_sources
         select_cfg['seed_dist']=seed_dist
 
-        st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
+
+        cols=st.columns([1,7])
+        with cols[1]:
+            # st.write('')
+            is_design_bound=st.checkbox('Design Budget Bound',value=select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)=='design_bound',
+                help='If set, the design budget will be used to limit the number of designs sampled, otherwise the verify budget will be used')
+            select_cfg['budget_type']='design_bound' if is_design_bound else 'verify_bound'
+        with cols[0]:
+            st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
 
 
 
@@ -420,7 +429,80 @@ def advanced_config(evosys):
         )   
         
     with st.expander(f"Selector Ranking and Exploration Settings for ```{evosys.evoname}```",expanded=False,icon='🧰'):
-        st.write("**TODO:** Refer to viewer page for more details")
+        
+        select_cfg=copy.deepcopy(evosys.selector.select_cfg)
+        # st.write("##### Selector Ranking settings")
+        ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+        cols = st.columns([5,1,0.8,0.8])
+        with cols[0]:
+            _cols=st.columns([2,1])
+            with _cols[0]:
+                _value = ranking_args['ranking_method']
+                if isinstance(_value,str):
+                    _value = [_value]
+                ranking_args['ranking_method'] = st.multiselect('Ranking method (Required)',options=RANKING_METHODS,default=_value,
+                    help='Ranking method to use, if muliple methods are provided, will be aggregated by the "multi-rank merge" method')
+            with _cols[1]:
+                ranking_args['multi_rank_merge'] = st.selectbox('Multi-rank merge',options=MERGE_METHODS)
+        with cols[1]:
+            st.write('')
+            ranking_args['normed_only'] = st.checkbox('Normed only',value=ranking_args['normed_only'])
+        with cols[2]:
+            st.write('')
+            ranking_args['drop_zero'] = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+        with cols[3]:
+            st.write('')
+            ranking_args['drop_na'] = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
+
+        cols = st.columns(4)
+        with cols[0]:
+            ranking_args['draw_margin'] = st.number_input('Draw margin',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['draw_margin'], format="%0.3f",
+                help='Margin for draw (tie)')
+        with cols[1]:
+            ranking_args['convergence_threshold'] = st.number_input('Convergence threshold',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['convergence_threshold'], format="%0.5f",
+            help='Convergence threshold for iterations in methods like Markov chain')
+        with cols[2]:
+            ranking_args['markov_restart'] = st.number_input('Markov restart',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['markov_restart'], format="%0.3f")
+        with cols[3]:
+            ranking_args['metric_wise_merge'] = st.selectbox('Metric-wise merge',options=['None']+MERGE_METHODS,
+                help='If set, will rank for each metric separately and then aggregate by the "metric-wise merge" method, not available for markov method')
+
+
+        cols=st.columns(3)
+        quadrant_args=U.safe_get_cfg_dict(select_cfg,'quadrant_args',DEFAULT_QUADRANT_ARGS)
+        with cols[0]:
+            st.write("##### Quadrant settings")
+            ranking_args['quadrant_merge']=st.selectbox('Quadrant Merge',options=MERGE_METHODS,index=MERGE_METHODS.index(ranking_args.get('quadrant_merge','average')))
+            quadrant_args['design_quantile']=st.number_input('Design Quantile',min_value=0.0,max_value=1.0,step=0.01,value=quadrant_args['design_quantile'])
+            quadrant_args['confidence_quantile']=st.number_input('Confidence Quantile',min_value=0.0,max_value=1.0,step=0.01,value=quadrant_args['confidence_quantile'])
+
+        design_explore_args=U.safe_get_cfg_dict(select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS)
+        with cols[1]:
+            st.write("##### Design Exploration settings")
+            design_explore_args['explore_prob']=st.number_input('Design Explore Prob',min_value=0.0,max_value=1.0,step=0.01,value=design_explore_args['explore_prob'])
+            design_explore_args['scheduler']=st.selectbox('Design Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(design_explore_args['scheduler']))
+            design_explore_args['background_noise']=st.number_input('Design Background Noise',min_value=0.0,max_value=1.0,step=0.01,value=design_explore_args['background_noise'])
+            
+        verify_explore_args=U.safe_get_cfg_dict(select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS)
+        with cols[2]:
+            st.write("##### Verify Exploration settings")
+            verify_explore_args['explore_prob']=st.number_input('Verify Explore Prob',min_value=0.0,max_value=1.0,step=0.01,value=verify_explore_args['explore_prob'])
+            verify_explore_args['scheduler']=st.selectbox('Verify Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(verify_explore_args['scheduler']))
+            verify_explore_args['background_noise']=st.number_input('Verify Background Noise',min_value=0.0,max_value=1.0,step=0.01,value=verify_explore_args['background_noise'])
+
+        select_cfg['ranking_args']=ranking_args
+        select_cfg['quadrant_args']=quadrant_args
+        select_cfg['design_explore_args']=design_explore_args
+        select_cfg['verify_explore_args']=verify_explore_args
+        st.button("Save and Apply",key='save_selector_config',
+            on_click=apply_select_config,args=(evosys,select_cfg),
+            disabled=st.session_state.evo_running,
+            help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
+        )   
+
+
+
+
 
 
 def config(evosys,project_dir):

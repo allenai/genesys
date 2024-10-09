@@ -1839,7 +1839,8 @@ class EvolutionSystem(exec_utils.System):
                 report=U.load_json(report_dir)
                 self.ptree.verify(node.acronym,scale,report)
 
-        self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,self.params['selection_ratio'],self.stream)
+        self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,
+            self.params['selection_ratio'],self.stream,self.design_budget_limit)
 
         if self.params['no_agent']:
             self.rnd_agent = None
@@ -1862,7 +1863,7 @@ class EvolutionSystem(exec_utils.System):
         evo_state['Verification Strategy']=self.design_cfg.get('verify_strategy','random')
         evo_state['target_scales']=self.target_scales
         evo_state['Remaining Verify Budget']=self.selector.verify_budget
-        evo_state['Remaining Design Budget']=self.design_budget
+        evo_state['Remaining Design Budget']=self.selector.design_budget
         evo_state['Design Cost Spent']=self.ptree.design_cost
         evo_state['Use Remote DB']=self.ptree.use_remote_db
         if not self.remote_db:
@@ -1974,12 +1975,6 @@ class EvolutionSystem(exec_utils.System):
         config['select_cfg'] = self.select_cfg
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
 
-    @property
-    def design_budget(self):
-        if self.design_budget_limit>0:
-            return self.design_budget_limit - self.ptree.design_cost
-        else:
-            return float('inf')
 
     def check_budget(self,action):
         if action=='design': # check the design budget

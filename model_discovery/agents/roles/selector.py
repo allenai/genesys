@@ -79,7 +79,7 @@ DEFAULT_SCALE_WEIGHTS = {
 }
 
 
-DEFAULT_RANDOM_EVAL_THRESHOLD = 0.02
+DEFAULT_RANDOM_EVAL_THRESHOLD = 0.02 # decide if a comparison is significant
 
 DEFAULT_BUDGET_TYPE = 'design_bound'
 
@@ -550,26 +550,39 @@ def get_ranked_quadrant(select_cfg,design_rank,confidence_rank):
 
 
 class Selector:
-    def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,allow_temporal_budget=True):
+    def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,
+            design_budget_limit):
         self.ptree=ptree
         self.select_cfg=select_cfg
         self._verify_budget=_verify_budget
         self.selection_ratio=selection_ratio
-        self.allow_temporal_budget=allow_temporal_budget
         self.stream=stream
+        self.design_budget_limit=design_budget_limit
         
+        
+    @property
+    def design_budget(self):
+        if self.design_budget_limit>0:
+            return self.design_budget_limit - self.ptree.design_cost
+        else:
+            budget_type = self.select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)
+            if budget_type=='design_bound':
+                print('WARNING: The evolution will run forever since design budget is not limited.')
+            return float('inf')
 
-    def _get_ranked_quadrants(self):
+    def _get_ranked_quadrants(self,select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
         self.design_vectors = self.ptree.get_design_vectors() # cache it
         design_rank = self._rank_designs(self.design_vectors)
-        confidence_rank = rank_confidences(self.select_cfg,self.design_vectors,design_rank['name'].tolist())
-        ranked_quadrants = get_ranked_quadrant(self.select_cfg,design_rank,confidence_rank)
+        confidence_rank = rank_confidences(select_cfg,self.design_vectors,design_rank['name'].tolist())
+        ranked_quadrants = get_ranked_quadrant(select_cfg,design_rank,confidence_rank)
         return ranked_quadrants
 
-    def _rank_designs(self,design_vectors):
-        ranking_args = U.safe_get_cfg_dict(self.select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+    def _rank_designs(self,design_vectors,select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
+        ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
         ranking_matrix = get_ranking_matrix(
-            self.select_cfg,design_vectors,ranking_args['normed_only'],
+            select_cfg,design_vectors,ranking_args['normed_only'],
             drop_na=ranking_args['drop_na'],drop_zero=ranking_args['drop_zero']
         )
         if len(ranking_matrix)==0:
@@ -580,19 +593,25 @@ class Selector:
 
     #########################  Select Design  #########################
 
-    def select_design(self,selector_args,mode=None,select_method=None):
+    def select_design(self,selector_args,mode=None,select_method=None,select_cfg=None):
         '''
         Return:
             seeds: List[NodeObject]
             instruct: str, the prompt generated from the selector and seeds
         '''
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
+        budget_type = select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)
+        if budget_type == 'design_bound':
+            if self.design_budget<=0:
+                print('No design budget available, stop evolution')
+                exit(0)
         if mode is None:
             mode=DesignModes.MUTATION
         if select_method is None:
-            select_method = self.select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
+            select_method = select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
         if mode==DesignModes.MUTATION:
             if select_method=='random':
-                instruct,seeds,refs=self._random_select_mutate(**selector_args)
+                instruct,seeds,refs=self._random_select_mutate(select_cfg=select_cfg,**selector_args)
             else:
                 raise ValueError(f"Invalid select method: {select_method}")
         elif mode==DesignModes.SCRATCH:
@@ -607,18 +626,19 @@ class Selector:
     def nodes2data(self,nodes): # convert the nodes to data: NodeObject
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
 
-    def _random_select_mutate(self,n_sources: Dict[str,int]):
+    def _random_select_mutate(self,n_sources: Dict[str,int],select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
         instruct=''
         refs=self._sample_from_sources(n_sources)
 
-        seed_dist = U.safe_get_cfg_dict(self.select_cfg,'seed_dist',DEFAULT_SEED_DIST)
+        seed_dist = U.safe_get_cfg_dict(select_cfg,'seed_dist',DEFAULT_SEED_DIST)
         _seeds=self._sample_from_sources({i:1 for i in SEED_TYPES},with_type=True)
         
         restart_prob = self._get_restart_prob(seed_dist)
         if random.random()<restart_prob or self.ptree.n_verified<=seed_dist['warmup_rounds']: # use ReferenceCoreWithTree as seeds
             seeds=_seeds['ReferenceCoreWithTree']
         else:
-            seeds=self._quadrant_design_seeds()
+            seeds=self._quadrant_design_seeds(select_cfg)
         seed_ids=[i.acronym for i in seeds]
         refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
@@ -648,12 +668,13 @@ class Selector:
         return acronym
 
 
-    def _quadrant_design_seeds(self):
+    def _quadrant_design_seeds(self,select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
         ranked_quadrants = self._get_ranked_quadrants()
         good_design_high_confidence = ranked_quadrants['good_design_high_confidence']
         poor_design_high_confidence = ranked_quadrants['poor_design_high_confidence']
 
-        explore_args = U.safe_get_cfg_dict(self.select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS) 
+        explore_args = U.safe_get_cfg_dict(select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS) 
         acronym = self._quadrant_sample(good_design_high_confidence,poor_design_high_confidence,explore_args)
         seeds = [self.ptree.get_node(acronym)]
         return seeds
@@ -711,12 +732,13 @@ class Selector:
         unverified_design_scales=self.ptree.get_unverified_scales(exclude_inv=exclude_inv)
         return unverified_design_scales
 
-    def select_verify(self,verify_strategy=None,exclude_list=[]):
+    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
-            verify_strategy = self.select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
+            verify_strategy = select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
         exclude=self._get_exclude(exclude_list)
         available_verify_budget=self.available_verify_budget
-        budget_type = self.select_cfg.get('budget_type',DEFAULT_SELECT_METHOD)
+        budget_type = select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)
         if len(available_verify_budget)<=0:
             if budget_type=='verify_bound':
                 self.stream.write(f"No available verify budget found.")
@@ -726,11 +748,12 @@ class Selector:
             else:
                 raise ValueError(f"Invalid budget type: {budget_type}")
         if verify_strategy=='random':
-            return self.random_select_verify(available_verify_budget,exclude)
+            return self.random_select_verify(available_verify_budget,exclude,select_cfg)
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
 
-    def random_select_verify(self,available_verify_budget,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes        
+    def random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
+        
         unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
         unverified_14M=unverified_by_scale.get('14M',[])
         if len(unverified_14M)>0:

@@ -13,7 +13,8 @@ sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
 
-from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS
+from model_discovery.agents.roles.selector import *
+
 
 
 
@@ -197,16 +198,81 @@ def design_selector(evosys,project_dir):
                 else:
                     n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
 
-    with st.expander('Ranking and Design Exploration settings'):
-        st.write("**TODO:** Refer to viewer page for more details")
+
+    selector_args = {
+        'n_sources': n_sources,
+    }
+
+    with st.expander(f"Selector Ranking and Exploration Settings",expanded=True):
+        
+        select_cfg=copy.deepcopy(evosys.selector.select_cfg)
+        ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+        cols = st.columns([5,1,0.8,0.8])
+        with cols[0]:
+            _cols=st.columns([2,1])
+            with _cols[0]:
+                _value = ranking_args['ranking_method']
+                if isinstance(_value,str):
+                    _value = [_value]
+                ranking_args['ranking_method'] = st.multiselect('Ranking method (Required)',options=RANKING_METHODS,default=_value,
+                    help='Ranking method to use, if muliple methods are provided, will be aggregated by the "multi-rank merge" method')
+            with _cols[1]:
+                ranking_args['multi_rank_merge'] = st.selectbox('Multi-rank merge',options=MERGE_METHODS)
+        with cols[1]:
+            st.write('')
+            ranking_args['normed_only'] = st.checkbox('Normed only',value=ranking_args['normed_only'])
+        with cols[2]:
+            st.write('')
+            ranking_args['drop_zero'] = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+        with cols[3]:
+            st.write('')
+            ranking_args['drop_na'] = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
+
+        cols = st.columns(4)
+        with cols[0]:
+            ranking_args['draw_margin'] = st.number_input('Draw margin',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['draw_margin'], format="%0.3f",
+                help='Margin for draw (tie)')
+        with cols[1]:
+            ranking_args['convergence_threshold'] = st.number_input('Convergence threshold',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['convergence_threshold'], format="%0.5f",
+            help='Convergence threshold for iterations in methods like Markov chain')
+        with cols[2]:
+            ranking_args['markov_restart'] = st.number_input('Markov restart',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['markov_restart'], format="%0.3f")
+        with cols[3]:
+            ranking_args['metric_wise_merge'] = st.selectbox('Metric-wise merge',options=['None']+MERGE_METHODS,
+                help='If set, will rank for each metric separately and then aggregate by the "metric-wise merge" method, not available for markov method')
+
+
+        col1,col2=st.columns(2)
+        with col1:
+            st.write("##### Quadrant settings")
+            cols=st.columns(3)
+            quadrant_args=U.safe_get_cfg_dict(select_cfg,'quadrant_args',DEFAULT_QUADRANT_ARGS)
+            with cols[0]:
+                ranking_args['quadrant_merge']=st.selectbox('Quadrant Merge',options=MERGE_METHODS,index=MERGE_METHODS.index(ranking_args.get('quadrant_merge','average')))
+            with cols[1]:
+                quadrant_args['design_quantile']=st.number_input('Design Quantile',min_value=0.0,max_value=1.0,step=0.01,value=quadrant_args['design_quantile'])
+            with cols[2]:
+                quadrant_args['confidence_quantile']=st.number_input('Confidence Quantile',min_value=0.0,max_value=1.0,step=0.01,value=quadrant_args['confidence_quantile'])
+
+        with col2:
+            st.write("##### Design Exploration settings")
+            cols=st.columns(3)
+            design_explore_args=U.safe_get_cfg_dict(select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS)
+            with cols[0]:
+                design_explore_args['explore_prob']=st.number_input('Design Explore Prob',min_value=0.0,max_value=1.0,step=0.01,value=design_explore_args['explore_prob'])
+            with cols[1]:
+                design_explore_args['scheduler']=st.selectbox('Design Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(design_explore_args['scheduler']))
+            with cols[2]:
+                design_explore_args['background_noise']=st.number_input('Design Background Noise',min_value=0.0,max_value=1.0,step=0.01,value=design_explore_args['background_noise'])
+            
+        select_cfg['ranking_args']=ranking_args
+        select_cfg['quadrant_args']=quadrant_args
+        select_cfg['design_explore_args']=design_explore_args
 
     if st.button('Select'):
-        selector_args = {
-            'n_sources': n_sources,
-        }
         
         with st.status('Selecting seeds...'):
-            instruct,seeds,refs=evosys.selector.select_design(selector_args,DesignModes(mode),select_method)
+            instruct,seeds,refs=evosys.selector.select_design(selector_args,DesignModes(mode),select_method,select_cfg)
 
 
         st.subheader(f'**{len(seeds)} seeds selected:**')
@@ -251,14 +317,77 @@ def verify_selector(evosys,project_dir):
     #     st.subheader('Random Strategy')
     #     st.write('*Random strategy will use up smaller scale budgets first.*')
 
-    with st.expander('Ranking and Verify Exploration settings'):
-        st.write("**TODO:** Refer to viewer page for more details")
+    with st.expander(f"Selector Ranking and Exploration Settings",expanded=True):
+        
+        select_cfg=copy.deepcopy(evosys.selector.select_cfg)
+        ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
+        cols = st.columns([5,1,0.8,0.8])
+        with cols[0]:
+            _cols=st.columns([2,1])
+            with _cols[0]:
+                _value = ranking_args['ranking_method']
+                if isinstance(_value,str):
+                    _value = [_value]
+                ranking_args['ranking_method'] = st.multiselect('Ranking method (Required)',options=RANKING_METHODS,default=_value,
+                    help='Ranking method to use, if muliple methods are provided, will be aggregated by the "multi-rank merge" method')
+            with _cols[1]:
+                ranking_args['multi_rank_merge'] = st.selectbox('Multi-rank merge',options=MERGE_METHODS)
+        with cols[1]:
+            st.write('')
+            ranking_args['normed_only'] = st.checkbox('Normed only',value=ranking_args['normed_only'])
+        with cols[2]:
+            st.write('')
+            ranking_args['drop_zero'] = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+        with cols[3]:
+            st.write('')
+            ranking_args['drop_na'] = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
+
+        cols = st.columns(4)
+        with cols[0]:
+            ranking_args['draw_margin'] = st.number_input('Draw margin',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['draw_margin'], format="%0.3f",
+                help='Margin for draw (tie)')
+        with cols[1]:
+            ranking_args['convergence_threshold'] = st.number_input('Convergence threshold',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['convergence_threshold'], format="%0.5f",
+            help='Convergence threshold for iterations in methods like Markov chain')
+        with cols[2]:
+            ranking_args['markov_restart'] = st.number_input('Markov restart',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['markov_restart'], format="%0.3f")
+        with cols[3]:
+            ranking_args['metric_wise_merge'] = st.selectbox('Metric-wise merge',options=['None']+MERGE_METHODS,
+                help='If set, will rank for each metric separately and then aggregate by the "metric-wise merge" method, not available for markov method')
+
+
+        col1,col2=st.columns(2)
+        with col1:
+            st.write("##### Quadrant settings")
+            cols=st.columns(3)
+            quadrant_args=U.safe_get_cfg_dict(select_cfg,'quadrant_args',DEFAULT_QUADRANT_ARGS)
+            with cols[0]:
+                ranking_args['quadrant_merge']=st.selectbox('Quadrant Merge',options=MERGE_METHODS,index=MERGE_METHODS.index(ranking_args.get('quadrant_merge','average')))
+            with cols[1]:
+                quadrant_args['design_quantile']=st.number_input('Design Quantile',min_value=0.0,max_value=1.0,step=0.01,value=quadrant_args['design_quantile'])
+            with cols[2]:
+                quadrant_args['confidence_quantile']=st.number_input('Confidence Quantile',min_value=0.0,max_value=1.0,step=0.01,value=quadrant_args['confidence_quantile'])
+
+        with col2:
+            st.write("##### Verify Exploration settings")
+            cols=st.columns(3)
+            verify_explore_args=U.safe_get_cfg_dict(select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS)
+            with cols[0]:
+                verify_explore_args['explore_prob']=st.number_input('Verify Explore Prob',min_value=0.0,max_value=1.0,step=0.01,value=verify_explore_args['explore_prob'])
+            with cols[1]:
+                verify_explore_args['scheduler']=st.selectbox('Verify Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(verify_explore_args['scheduler']))
+            with cols[2]:
+                verify_explore_args['background_noise']=st.number_input('Verify Background Noise',min_value=0.0,max_value=1.0,step=0.01,value=verify_explore_args['background_noise'])
+
+        select_cfg['ranking_args']=ranking_args
+        select_cfg['quadrant_args']=quadrant_args
+        select_cfg['verify_explore_args']=verify_explore_args
 
     verify_selected = st.button('Select')
 
     if verify_selected:
         with st.status('Selecting design to verify...'):
-            design_id,scale=evosys.selector.select_verify(verify_strategy=verify_strategy)
+            design_id,scale=evosys.selector.select_verify(verify_strategy=verify_strategy,select_cfg=select_cfg)
         if design_id is None:
             st.warning('No design to verify.')
         else:
