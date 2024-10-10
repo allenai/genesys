@@ -26,3 +26,5 @@ def tester(evosys,project_dir):
     tail = sess_id.split('-')[-1]
     timestr=sess_id[:-len(tail)-1]
     st.write(timestr)
+
+    st.write(len(evosys.ptree.GD.terms))

@@ -1110,13 +1110,3 @@ class SuperScholarSearcher:
         return ppr
 
 
-
-
-    #### Design Artifacts (TODO later)
-
-    def search_design(query, result_limit=10) -> Union[None, List[Dict]]:
-        # search for design artifacts
-        pass
-
-
-

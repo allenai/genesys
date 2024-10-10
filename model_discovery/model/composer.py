@@ -57,35 +57,44 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
         data = U.load_json(U.pjoin(dir, f'{name}.json'))
         return cls.from_dict(data)
 
+@dataclass
+class GAUDictTerm:
+    name: str
+    variants: List[str] = field(default_factory=lambda: []) # tree name where the unit is registered
+
+    def append(self,variant):
+        if variant not in self.variants:
+            self.variants.append(variant)
 
 # TODO: WORK IN PROGRESS
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
-    def __init__(self, lib_dir=None):
-        self.units = {}
-        if lib_dir is not None:
-            self.units_dir = U.pjoin(lib_dir, 'units')
-            U.mkdir(self.units_dir)
-            self.load()
-
-    def exist(self, name):
-        return name in self.units   
-
-    def load(self):
-        for dir in os.listdir(self.units_dir):
-            name=dir.split('.')[0]
-            dir=U.pjoin(self.units_dir,f'{name}.py')
-            self.units[name]=GAUNode.load(name,self.units_dir)
-
-    def register(self, unit: GAUNode):
-        name = unit.spec.unitname
-        assert name not in self.units, f"Unit {name} is already registered" # never overwrite for backward compatibility
-        self.units[name] = unit
-        unit.save(self.units_dir)
+    def __init__(self,ptree):
+        self.terms = {}
+        self.ptree=ptree
     
-    def get(self, unit_name):
-        if unit_name not in self.units:
-            return None
-        return self.units[unit_name]
+    def new_term(self,acronym,tree):
+        for unit_name in tree.units:
+            if unit_name not in self.terms:
+                self.terms[unit_name]=GAUDictTerm(name=unit_name)
+            self.terms[unit_name].append(acronym)
+
+    @classmethod
+    def from_ptree(cls,ptree):
+        _cls = cls(ptree)
+        nodes=ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
+        for acronym in nodes:
+            tree = ptree.get_gau_tree(acronym)
+            _cls.new_term(acronym,tree)
+        return _cls
+    
+    def get_tree(self,name):
+        return self.ptree.get_gau_tree(name)
+
+    def sync_to_db(self,doc_ref):
+        raise NotImplementedError("Not implemented yet")
+
+    def sync_from_db(self,doc_ref):
+        raise NotImplementedError("Not implemented yet")
 
 
 class GABComposer:

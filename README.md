@@ -158,45 +158,4 @@ Assumptions:
 3. High-quality samples (designs chosen to verify) can increase the convergence of the evolution process
 4. LLM thinking depth correlated to total output lengths in a dialog for producing one sample
 5. LLM agent can asymptotically produce a high-quality sample after a dialog with probability p
-6. More assumptions for the selector... TODO
-
-ALG 1 Evolve(empty) -> Tt 
-    init(library)->T0
-    while budget>0: # design and verify budgets
-        decide(design,verify)->action
-        action(Tt)->T_t+1
-
-ALG 2 Design(Tt) -> T_t+1 # grow the tree, explore more possible moves (D)
-    if design_budget>0:
-        select(all D and core refs in Tt)->n
-        sample(n)->Ds,cost
-        Tt.append(Ds)->T_t+1
-        design_budget-=cost
-
-ALG 3 Verify(Tt) -> T_t+1 # make a move from explored possible moves (D)
-    choose(all D in Tt)->d,s # s is scale
-    if verify_budget[s]>0:  
-        verify(d,s)->d^s
-        Tt.update(d,d^s)->T_t+1 # update a design with verification under scale s
-        verify_budget[s]-=1
-        optimize(selector,T_t+1)->selector'
-
-ALG 4 Sample(n) -> Ds
-    Ps=[]
-    for i in range(Np): 
-        propose(n)->Pi
-        Tt.add(Pi)
-        Ps.append(Pi)
-    Ps'=Rerank(Ps)
-    Ds=[]
-    for i in range(Ni): 
-        implement(Ps'[i])->Di
-        Ds.append(Di)
-    return Ds
-
-ALG 5 Select(Tt) -> T_t+1
-    TODO...
-
-
-
-
+...

@@ -31,8 +31,6 @@ NONACC_EVAL_TASKS = ["lambada_openai","cola","tinyGSM8k"]
 
 # BUGGY TASKS: "storycloze_2016", "coqa"
 
-# TODO: making a faster version of tasks that are MC only
-
 # Other need generate: squad_completion
 
 SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-math','deepmind-math-small','stackoverflow-clean']

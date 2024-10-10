@@ -75,7 +75,7 @@ from exec_utils.aliases import ConfigType
 
 from model_discovery.agents.roles.selector import Selector
 
-from model_discovery.model.composer import GAUTree
+from model_discovery.model.composer import GAUTree,GAUDict
 from model_discovery import utils as U
 from .configs.gam_config import ( 
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
@@ -459,6 +459,14 @@ class FirestoreManager:
             self.download_design(design_id,overwrite=overwrite)
         print('Local designs synced from remote DB')
 
+    def delete_design(self,design_id):
+        # should be used by human admin to fix error, not the agent
+        # 1. delete the design 
+        # 2. delete the index
+        # 3. delete from GAUDict
+        raise NotImplementedError("Not implemented yet")
+
+
 
 
 ############################################
@@ -772,7 +780,7 @@ class Implementation:
     status: str # implemented, failed, or unfinished
     implementation: GAUTree
     history: List[ImplementationAttempt]
-    # TODO:consider gaudict management
+    # TODO:consider gaudict management, but how to represent a unit snippet?
 
     def save(self, design_dir: str):
         U.save_json(self.to_dict(), U.pjoin(design_dir, f'implementation.json'))
@@ -923,7 +931,7 @@ class DesignArtifact(NodeObject):
         if self.implementation:
             icosts=self.implementation.get_cost()
             costs={k:v+icosts[k] for k,v in costs.items()}
-        # TODO: maybe rerank, selection, etc. cost
+        # TODO: maybe cost of rerank, selection, etc. also considered, now only agents 
         return costs
 
 
@@ -945,7 +953,7 @@ class DesignArtifact(NodeObject):
 #     return
 
 
-class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
+class PhylogeneticTree:
     # Read from a design base and construct a phylogenetic tree
     """
     Physical structure:
@@ -985,6 +993,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.challanging_threshold=challanging_threshold
         self.db_only=db_only
         self.FM = None
+        self.GD = None
         self.use_remote_db=use_remote_db
         self.remote_db = remote_db
         if use_remote_db and self.remote_db is not None:
@@ -996,6 +1005,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.random_baseline = random_baseline.to_dict() if random_baseline.exists else {}
         assert self.random_baseline, 'No random baseline eval results found, please run `bash scripts/run_verify.sh --RANDOM_TESTING` first'
             
+        
     # new design: proposal -> implement -> verify
 
     # def reload(self): # why do we need this at all??
@@ -1404,6 +1414,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
+        self.GD.new_term(acronym,tree)
         # Tune in all target scales
         if status=='implemented':
             codes = {}
@@ -1484,6 +1495,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         self.G=self.load_graph()
         if not self.db_only:
             self.load_design_sessions()
+            self.GD = GAUDict.from_ptree(self)
 
     def load_graph(self,max_nodes=None):
         edges_to_add = []
@@ -1768,7 +1780,6 @@ class EvolutionSystem(exec_utils.System):
         self.load(**kwargs)
 
     def load(self,**kwargs):
-        # # init params, TODO: upgrade to exec_util params, use a simple str params for now
         self.remote_db = None
         self.CM = None
         db_key_path = os.environ.get("DB_KEY_PATH",None)
@@ -2022,10 +2033,9 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid manual input: {manual}")
 
-    # TODO: the interface should be updated when selector agent is ready, and design cfg is ready
     def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True,in_process=False,
         manual_seed=None,manual_refs=None
-    ): # select then sample, TODO: n_sources and design_cfg should be configed
+    ): 
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
         if mode is None:

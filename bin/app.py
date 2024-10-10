@@ -178,10 +178,9 @@ if not DEPLOY_MODE:
 
 
 titles=list(pages.keys())+['GitHub']
-if st.session_state.current_theme:
-    _logo = 'storm.svg' if st.session_state.current_theme['base']=='light' else 'storm_logo.svg'
-else:
-    _logo = 'storm_logo.svg'
+
+_logo=AU.theme_aware_options(st,"storm.svg","storm_logo.svg","storm_logo.svg")
+
 pg = st_navbar(
     titles,
     logo_path=U.pjoin(current_dir,'assets',_logo),

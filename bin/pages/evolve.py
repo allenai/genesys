@@ -244,10 +244,7 @@ def evolve(evosys,project_dir):
     if 'ptree_max_nodes' not in st.session_state:
         st.session_state.ptree_max_nodes=100
 
-    if st.session_state.current_theme:
-        _bg_color="#fafafa" if st.session_state.current_theme['base']=='light' else "#f0f0f0"
-    else:
-        _bg_color="#fafafa"
+    _bg_color=AU.theme_aware_options(st,"#fafafa","#f0f0f0","#fafafa")
     
     evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height='800px',bgcolor=_bg_color)
     ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{st.session_state.ptree_max_nodes}.html')

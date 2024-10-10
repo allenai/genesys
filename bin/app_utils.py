@@ -27,6 +27,12 @@ def save_setting(setting):
     ckpt_dir = os.environ.get('CKPT_DIR')
     setting_dir=U.pjoin(ckpt_dir,'.setting.json')
     U.save_json(setting,setting_dir)
+  
+def theme_aware_options(st,option_light,option_dark,default):
+  if st.session_state.current_theme:
+    return option_light if st.session_state.current_theme['base']=='light' else option_dark
+  else:
+    return default
 
 
 SQUARE_LOGO_SVG = """

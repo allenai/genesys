@@ -692,7 +692,7 @@ def selector_lab(evosys,project_dir):
     #     verify_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS)
     #     seed_dist = U.safe_get_cfg_dict(evosys.selector.select_cfg,'seed_dist',DEFAULT_SEED_DIST)
 
-    # st.subheader('Performance improvement over time')
+    # st.subheader('Uniform Performance improvement over time')
     # TODO
 
 

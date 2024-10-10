@@ -108,10 +108,8 @@ the main interface to the system instead of the common command-line interface
   CLI by `pip install -e .` and run it by `genesys <command> [args]`. See details below.
 ''')
 
-    if st.session_state.current_theme:
-        title_color = 'rainbow' if st.session_state.current_theme['base']=='light' else 'violet'
-    else:
-        title_color = 'violet'
+    title_color=AU.theme_aware_options(st,"rainbow","violet","violet")
+      
     st.markdown(f'''
 ## :{title_color}[How to launch the evolution?] 
 

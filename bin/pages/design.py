@@ -590,7 +590,8 @@ def _design_tuning(evosys,project_dir):
             design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)#,help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
 
         with col3:
-            st.markdown("##### :orange[*View previous runs*]")
+            color=AU.theme_aware_options(st,'orange','violet','violet')
+            st.markdown(f"##### :{color}[*View previous runs*]")
             cols=st.columns([2,2,2,1])
             with cols[0]:
                 ckpts=[i for i in os.listdir(evosys.ckpt_dir) if i!='.node.json']
