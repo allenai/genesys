@@ -254,6 +254,18 @@ def load_stackoverflow_clean(tokenizer_name, context_length,splits=['train','eva
     ds = DatasetDict({split:ds[split] for split in splits})
     return ds
 
+
+def hf_dataset_loader(dataset_name):
+    @pretokenize_dataset(dataset_name)
+    def _load_dataset(tokenizer_name, context_length):
+        if ':' in dataset_name:
+            dataset_name,subset=dataset_name.split(':')
+            return load_dataset(dataset_name, subset, num_proc=DEFAULT_NUM_PROC_LOAD)
+        else:
+            return load_dataset(dataset_name, num_proc=DEFAULT_NUM_PROC_LOAD)
+
+    return _load_dataset
+
 loaders={
     'babylm'      :load_babylm,
     'tinystories' :load_tinystories,
@@ -266,12 +278,19 @@ loaders={
     'stackoverflow-clean':load_stackoverflow_clean
 }
 
+def get_loaders(dataset_names):
+    for dataset in dataset_names:
+        if dataset not in loaders:
+            loaders[dataset] = hf_dataset_loader(dataset)
+    return loaders
+
 def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
     """Loads the datasets 
 
     """
+
     dataset_dicts = {
-        dataset: loaders[dataset](
+        dataset: get_loaders(cfg.training_data)[dataset](
             tokenizer_name=cfg.tokenizer,
             context_length=cfg.context_length
         ) for dataset in cfg.training_data
@@ -284,7 +303,7 @@ def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two da
 
 def load_datasets_args(tokenizer,context_length,training_data,training_weight=None):
     dataset_dicts = {
-        dataset: loaders[dataset](
+        dataset: get_loaders(training_data)[dataset](
             tokenizer_name=tokenizer,
             context_length=context_length
         ) for dataset in training_data
