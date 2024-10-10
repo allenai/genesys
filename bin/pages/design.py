@@ -230,14 +230,15 @@ def _design_engine(evosys,project_dir):
     col1,col2,col3=st.columns([4.2,1,1])
     with col1:
         with st.expander("Check current design settings"):
-            cols=st.columns(3)
-            with cols[0]:
+            _to_check=st.selectbox(label='Select a design config to check',
+                    options=['Selection Config','Design Config','Search Config'])
+            if _to_check=='Selection Config':
                 st.write('**Selection Config**')
                 st.write(evosys.select_cfg)
-            with cols[1]:
+            elif _to_check=='Design Config':
                 st.write('**Design Config**')
                 st.write(evosys.design_cfg)
-            with cols[2]:
+            elif _to_check=='Search Config':
                 st.write('**Search Config**')
                 st.write(evosys.search_cfg)
     with col2:

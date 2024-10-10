@@ -3,10 +3,11 @@ from PIL import Image
 import io
 import numpy as np
 import uuid
-import os
+import os,sys
 from art import tprint
 
-from model_discovery.utils import Utils as U
+sys.path.append('..')
+import model_discovery.utils as U
 
 
 CLI_TITLE = 'GENESYS'
@@ -25,7 +26,7 @@ def get_setting():
 def save_setting(setting):
     ckpt_dir = os.environ.get('CKPT_DIR')
     setting_dir=U.pjoin(ckpt_dir,'.setting.json')
-    U.save_json(setting_dir,setting)
+    U.save_json(setting,setting_dir)
 
 
 SQUARE_LOGO_SVG = """
