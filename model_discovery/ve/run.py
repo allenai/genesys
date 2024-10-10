@@ -32,6 +32,7 @@ from ..configs.gam_config import (
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
+from ..configs.const import *
 from ..model.gam import ModisLMHeadModel
 from .evaluator import cli_evaluate
 from .. import utils as U
@@ -67,16 +68,16 @@ parser.add_argument("--resume", action='store_true', help="Whether to resume fro
 parser.add_argument("--scale", type=str, default='debug') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
-parser.add_argument("--save_steps", type=int, default=50)
-parser.add_argument("--training_token_multiplier", type=int, default=20) # by default equals to 20 suggested by Chinchilla
-parser.add_argument("--optim", type=str, default="adamw_hf") # adamw_apex_fused is faster but BUGGY
-parser.add_argument("--wandb_project", type=str, default='model_discovery')
-parser.add_argument("--wandb_entity", type=str, default='aristo')
-parser.add_argument("--seed", type=int, default=42)
+parser.add_argument("--save_steps", type=int, default=DEFAULT_SAVE_STEPS)
+parser.add_argument("--training_token_multiplier", type=int, default=DEFAULT_TOKEN_MULT) # by default equals to 20 suggested by Chinchilla
+parser.add_argument("--optim", type=str, default=DEFAULT_OPTIM) # adamw_apex_fused is faster but BUGGY
+parser.add_argument("--wandb_project", type=str, default=DEFAULT_WANDB_PROJECT)
+parser.add_argument("--wandb_entity", type=str, default=DEFAULT_WANDB_ENTITY)
+parser.add_argument("--seed", type=int, default=DEFAULT_RANDOM_SEED)
 parser.add_argument("--ckpt_dir", type=str, default=None)
 parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
-parser.add_argument("--logging_steps", type=int, default=5)
+parser.add_argument("--logging_steps", type=int, default=DEFAULT_LOG_STEPS)
 parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
 parser.add_argument("--PERF_PROF_MODE", action='store_true') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
@@ -84,11 +85,17 @@ parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto
 parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
 parser.add_argument("--RANDOM_TESTING", action='store_true') # whether use random testing
 
+parser.add_argument("--eval_tasks", type=str, default='None')
+parser.add_argument("--training_data", type=str, default='None')
+parser.add_argument("--tokenizer", type=str, default='None')
+parser.add_argument("--context_length", type=str, default='None') # need convert to int
+
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--params", type=str, default='') 
 parser.add_argument("--sess_id", type=str, default='') 
 parser.add_argument("--cpu_only", action='store_true') 
+
 
 
 
@@ -234,6 +241,12 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
         model.print_size()
     
     with U.CodeTimer("loading dataset"):
+        if args.training_data != 'None':
+            config.training_data=args.training_data.split(',')
+        if args.context_length != 'None':
+            config.context_length=int(args.context_length)
+        if args.tokenizer != 'None':
+            config.tokenizer=args.tokenizer
         tokenized_datasets, tokenizer = load_datasets(config)
         data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
         if args.download_data_only:
@@ -439,11 +452,16 @@ def run_eval(args):
         wandb_ids['evaluate']['name'] = wandb_name
         U.save_json(wandb_ids,f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
     
+    if args.eval_tasks == 'None':
+        eval_tasks = ",".join(cfg.eval_tasks)
+    else:
+        eval_tasks = args.eval_tasks
+
     sys.argv = [
         "",
         "--model", "modis",
         "--model_args", f"pretrained={args.evoname}/{args.scale}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
-        "--tasks", ",".join(cfg.eval_tasks), 
+        "--tasks", eval_tasks, 
         # "--device", "cuda",
         "--batch_size", f"auto",
         "--max_batch_size", f"{cfg.eval_batch_size}",

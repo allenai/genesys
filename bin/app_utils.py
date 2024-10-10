@@ -17,7 +17,7 @@ def print_cli_title():
     tprint(CLI_TITLE, font='modular')
     print('Welcome to the Model Discovery System!')
 
-def get_setting():
+def get_setting(): 
     ckpt_dir = os.environ.get('CKPT_DIR')
     setting_dir=U.pjoin(ckpt_dir,'.setting.json')
     setting=U.load_json(setting_dir)

@@ -4,6 +4,9 @@ from transformers import PretrainedConfig, AutoTokenizer
 
 from .const import *
 
+
+# NOTE: training_data,eval_tasks,tokenizer,context_length can be overwritten by args                   
+
 @dataclass
 class GAMConfig(PretrainedConfig):
     '''Configurations for Generalized Autoregressive Models.'''

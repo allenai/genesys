@@ -1713,23 +1713,6 @@ class ConnectionManager:
         node_ref = self.collection.document(node_id)
         node_ref.update({'status': 'disconnected'})
 
- 
-
-
-
-
-def _verify(evoname,design_id,scale,resume=True, mult=20, RANDOM_TESTING=False): # do a single verify
-    args = ve_parser.parse_args()
-    args.evoname=evoname
-    args.design_id=design_id+f'_{scale}'
-    args.scale=scale
-    args.ckpt_dir=os.environ.get("CKPT_DIR")
-    args.data_dir=os.environ.get("DATA_DIR")
-    args.resume=resume
-    args.training_token_multiplier=mult
-    args.RANDOM_TESTING=RANDOM_TESTING
-    ve_main(args)
-
 
 
 DEFAULT_PARAMS = {
@@ -1781,6 +1764,7 @@ class EvolutionSystem(exec_utils.System):
         self.design_cfg = {}
         self.search_cfg = {}
         self.select_cfg = {}
+        self.ve_cfg = {}
         self.load(**kwargs)
 
     def load(self,**kwargs):
@@ -1884,14 +1868,16 @@ class EvolutionSystem(exec_utils.System):
         if self.CM is not None:
             self.CM.st = stream
 
-    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None):
+    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None,ve_cfg=None):
         if design_cfg is not None:
             self.design_cfg = design_cfg
         if search_cfg is not None:
             self.search_cfg = search_cfg
         if select_cfg is not None:
             self.select_cfg = select_cfg
-        if design_cfg is not None or search_cfg is not None or select_cfg is not None:
+        if ve_cfg is not None:
+            self.ve_cfg = ve_cfg
+        if design_cfg is not None or search_cfg is not None or select_cfg is not None or ve_cfg is not None:
             self.save_config()
 
     def reload(self,params=None):
@@ -1968,6 +1954,7 @@ class EvolutionSystem(exec_utils.System):
             self.design_cfg['running_mode'] = RunningModes(self.design_cfg['running_mode'])
         self.search_cfg = config.get('search_cfg',{})
         self.select_cfg = config.get('select_cfg',{})
+        self.ve_cfg = config.get('ve_cfg',{})
         params = config.get('params',{})
         params.update(self.params) # to directly use config, provide only evoname in config
         self.params = params # logic is that, if new params provided, use new params, otherwise, use config, otherwise, use default
@@ -1981,6 +1968,7 @@ class EvolutionSystem(exec_utils.System):
                 config['design_cfg']['running_mode'] = config['design_cfg']['running_mode'].value
         config['search_cfg'] = self.search_cfg
         config['select_cfg'] = self.select_cfg
+        config['ve_cfg'] = self.ve_cfg
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
 
 
@@ -2115,20 +2103,50 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid action policy: {self.action_policy}")
 
-    def verify(self,design_id=None,scale=None,resume=True,in_process=False, RANDOM_TESTING=False): # choose then verify
-        if design_id is None:
+    def _prep_ve_args(self,args,design_id,scale):
+        if 'training_token_multiplier' in self.ve_cfg:
+            args.training_token_multiplier=self.ve_cfg['training_token_multiplier']
+        if 'wandb_project' in self.ve_cfg:
+            args.wandb_project=self.ve_cfg['wandb_project']
+        if 'wandb_entity' in self.ve_cfg:
+            args.wandb_entity=self.ve_cfg['wandb_entity']
+        if 'eval_tasks' in self.ve_cfg:
+            args.eval_tasks=self.ve_cfg['eval_tasks']
+        if 'training_data' in self.ve_cfg:
+            args.training_data=self.ve_cfg['training_data']
+        if 'tokenizer' in self.ve_cfg:
+            args.tokenizer=self.ve_cfg['tokenizer']
+        if 'context_length' in self.ve_cfg:
+            args.context_length=self.ve_cfg['context_length']
+        if 'optim' in self.ve_cfg:
+            args.optim=self.ve_cfg['optim']
+        if 'seed' in self.ve_cfg:
+            args.seed=self.ve_cfg['seed']
+        if 'save_steps' in self.ve_cfg:
+            args.save_steps=self.ve_cfg['save_steps']
+        if 'logging_steps' in self.ve_cfg:
+            args.logging_steps=self.ve_cfg['logging_steps']
+            
+        args.evoname=self.evoname
+        args.design_id=design_id+f'_{scale}'
+        args.ckpt_dir=os.environ.get("CKPT_DIR")
+        args.data_dir=os.environ.get("DATA_DIR")
+        return args
+
+    def verify(self,args,design_id=None,scale=None,in_process=False): # choose then verify
+        if design_id is None or scale is None:
             design_id,scale=self.selector.select_verify()
-        if design_id is None:
+        if design_id is None or scale is None: # no available design to verify
             return None
         self.stream.write(f"Verifying design {design_id} at scale {scale}...")
-        mult=self.get_train_budget(self.ptree.get_node(design_id))
-        _verify(self.evoname,design_id,scale,resume=resume, mult=mult, RANDOM_TESTING=RANDOM_TESTING) # verify the design until it's done
-        if RANDOM_TESTING:
+        args = self._prep_ve_args(args,design_id,scale)
+        ve_main(args) # verify the design until it's done
+        if args.RANDOM_TESTING:
             report_dir=U.pjoin(self.ckpt_dir,'random','ve','random','report.json')
         else:
             report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
         report=U.load_json(report_dir)
-        self.ptree.verify(design_id,scale,report,RANDOM_TESTING=RANDOM_TESTING)
+        self.ptree.verify(design_id,scale,report,RANDOM_TESTING=args.RANDOM_TESTING)
         if in_process:
             sys.exit(0)
         if report!={}: 
@@ -2153,13 +2171,6 @@ class EvolutionSystem(exec_utils.System):
         
         with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
             f.write(code)
-        return self.get_train_budget(design)
-
-
-    def get_train_budget(self,artifact): # dynamic budget 
-        # rating=artifact['rating']
-        return 20
-    
 
     @classmethod
     def from_config(cls,config,**kwargs):
@@ -2239,7 +2250,7 @@ if __name__ == '__main__':
         if args.mode=='prep_model':
             evolution_system._prep_model(args.design_id, args.scale)
         elif args.mode=='verify':
-            evolution_system.verify(args.design_id, args.scale, resume=args.resume,in_process=True, RANDOM_TESTING=args.RANDOM_TESTING)
+            evolution_system.verify(args,in_process=True)
         elif args.mode=='design':
             sess_id=None if args.sess_id=='' else args.sess_id
             evolution_system.design(sess_id=sess_id,in_process=True)

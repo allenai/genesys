@@ -72,7 +72,7 @@ Configure the experiment settings. Recommended to set it up before running.
 
     with tabs[7]:
       st.markdown('''
-Listening mode, accepting commands from master node. Can also run it in the CLI using `python -m model_discovery.listen` or `bash script/run_node.sh`.
+Listening mode, accepting commands from master node. Can also run it in the CLI using `genesys listen [args]`.
 ''')  
 
 

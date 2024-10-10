@@ -26,8 +26,10 @@ from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_T
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
 from model_discovery.agents.search_utils import DEFAULT_SEARCH_LIMITS,DEFAULT_RERANK_RATIO,\
     DEFAULT_PERPLEXITY_SETTINGS,DEFAULT_PROPOSAL_SEARCH_CFG
+from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKEN_MULT,\
+    DEFAULT_TRAINING_DATA,DEFAULT_EVAL_TASKS,DEFAULT_TOKENIZER,DEFAULT_OPTIM,DEFAULT_WANDB_PROJECT,\
+        DEFAULT_WANDB_ENTITY,DEFAULT_RANDOM_SEED,DEFAULT_SAVE_STEPS,DEFAULT_LOG_STEPS
 
-TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
 SELECT_METHODS = ['random']
 VERIFY_STRATEGY = ['random']
 
@@ -73,6 +75,11 @@ def apply_search_config(evosys,search_cfg):
     with st.spinner('Applying and saving search config...'):    
         evosys.reconfig(search_cfg=search_cfg)
         st.toast("Applied and saved search config")
+
+def apply_ve_config(evosys,ve_cfg):
+    with st.spinner('Applying and saving ve config...'):    
+        evosys.reconfig(ve_cfg=ve_cfg)
+        st.toast("Applied and saved ve config")
 
 
 AGENT_TYPE_LABELS = {
@@ -429,8 +436,40 @@ def evosys_config(evosys):
                     st.toast(f"Applied and saved params in {evosys.evo_dir}")
 
     with st.expander("Verification Engine Settings",expanded=False,icon='⚙️'):
-        st.write("**TODO**")
+        _ve_cfg=copy.deepcopy(evosys.ve_cfg)
+        
+        cols = st.columns(5)
+        with cols[0]:
+            _ve_cfg['seed'] = st.number_input('Random Seed',min_value=0,value=_ve_cfg.get('seed',DEFAULT_RANDOM_SEED))
+        with cols[1]:
+            _ve_cfg['save_steps'] = st.number_input('Save Steps',min_value=0,value=_ve_cfg.get('save_steps',DEFAULT_SAVE_STEPS))
+        with cols[2]:
+            _ve_cfg['logging_steps'] = st.number_input('Logging Steps',min_value=0,value=_ve_cfg.get('logging_steps',DEFAULT_LOG_STEPS))
+        with cols[3]:
+            _ve_cfg['wandb_project'] = st.text_input('Weights & Biases Project',value=_ve_cfg.get('wandb_project',DEFAULT_WANDB_PROJECT))
+        with cols[4]:
+            _ve_cfg['wandb_entity'] = st.text_input('Weights & Biases Entity',value=_ve_cfg.get('wandb_entity',DEFAULT_WANDB_ENTITY))
+        
+        cols=st.columns(4)
+        with cols[0]:
+            _ve_cfg['training_token_multiplier']=st.number_input('Training Token Multiplier',min_value=0,value=_ve_cfg.get('training_token_multiplier',DEFAULT_TOKEN_MULT))
+        with cols[1]:
+            _ve_cfg['tokenizer'] = st.text_input('Tokenizer',value=_ve_cfg.get('tokenizer',DEFAULT_TOKENIZER))
+        with cols[2]:
+            _ve_cfg['context_length'] = st.number_input('Context Length',min_value=0,value=_ve_cfg.get('context_length',DEFAULT_CONTEXT_LENGTH))
+        with cols[3]:
+            _ve_cfg['optim'] = st.text_input('Optimizer',value=_ve_cfg.get('optim',DEFAULT_OPTIM))
+        
+        _ve_cfg['eval_tasks'] = st.text_input('Evaluation Tasks',value=_ve_cfg.get('eval_tasks',','.join(DEFAULT_EVAL_TASKS)))
+        _ve_cfg['training_data'] = st.text_input('Training Data',value=_ve_cfg.get('training_data',','.join(DEFAULT_TRAINING_DATA)))
+        
+        _ve_cfg['context_length'] = str(_ve_cfg['context_length'])
 
+        st.button("Save and Apply",key='save_ve_config',
+            on_click=apply_ve_config,args=(evosys,_ve_cfg),
+            disabled=st.session_state.evo_running,
+            help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
+        )   
 
 
 def advanced_config(evosys):
@@ -553,13 +592,14 @@ def config(evosys,project_dir):
     st.subheader("Environment Settings")
 
     env_vars={}
-    with st.expander("Environment Variables (Leave blank to use default)",icon='🔑'):
+    with st.expander("Environment Variables",icon='🔑'):
         with st.form("Environment Variables"):
+            st.info("**NOTE:** Leave the fields blank to use the default values. The settings here may not persist, so **better set them by exporting environment variables**.")
             col1,col2,col3,col4=st.columns(4)
             with col1:
-                env_vars['DB_KEY_PATH']=st.text_input('DB_KEY_PATH (No need to change)',value=os.environ.get("DB_KEY_PATH"))
-                env_vars['CKPT_DIR']=st.text_input('CKPT_DIR (No need to change)',value=os.environ.get("CKPT_DIR"))
-                env_vars['DATA_DIR']=st.text_input('DATA_DIR (No need to change)',value=os.environ.get("DATA_DIR"))
+                env_vars['DB_KEY_PATH']=st.text_input('DB_KEY_PATH',value=os.environ.get("DB_KEY_PATH"))
+                env_vars['CKPT_DIR']=st.text_input('CKPT_DIR',value=os.environ.get("CKPT_DIR"))
+                env_vars['DATA_DIR']=st.text_input('DATA_DIR',value=os.environ.get("DATA_DIR"))
             with col2:
                 env_vars['WANDB_API_KEY']=st.text_input('WANDB_API_KEY (Required for Training)',type='password')
                 env_vars['PINECONE_API_KEY']=st.text_input('PINECONE_API_KEY',type='password')
@@ -573,7 +613,7 @@ def config(evosys,project_dir):
                 env_vars['PERPLEXITY_API_KEY']=st.text_input('PERPLEXITY_API_KEY',type='password')
                 env_vars['MATHPIX_API_ID']=st.text_input('MATHPIX_API_ID (Optional)',type='password')
 
-            if st.form_submit_button("Apply (will not save secrets)"):
+            if st.form_submit_button("Apply (will not save any secrets)"):
                 changed=apply_env_vars(evosys,env_vars)
                 if changed:
                     evosys.reload()

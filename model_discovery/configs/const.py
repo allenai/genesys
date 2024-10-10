@@ -1,7 +1,19 @@
-
+TARGET_SCALES = ['14M','31M','70M','125M','350M','760M','1300M']
 
 DEFAULT_TOKENIZER = 'meta-llama/Llama-2-7b-hf'
 DEFAULT_CONTEXT_LENGTH = 2048
+
+
+DEFAULT_TOKEN_MULT = 20
+DEFAULT_OPTIM = "adamw_hf"
+DEFAULT_WANDB_PROJECT = 'model_discovery'
+DEFAULT_WANDB_ENTITY = 'aristo'
+DEFAULT_RANDOM_SEED = 42
+
+DEFAULT_SAVE_STEPS = 50
+DEFAULT_LOG_STEPS = 5
+
+
 
 # GLUE_TASK_LIST = ["cola","mnli","mrpc","qnli","qqp","rte","sst","wnli"]
 
@@ -28,13 +40,16 @@ SMOLLM_125_CORPUS=['cosmopedia-v2','python-edu','fineweb-edu-dedup','open-web-ma
 DEFAULT_TASK_LIST1=[
     "inverse_scaling_mc",
     "glue",
-    "smollm125-tiny",  
+    # "smollm125-tiny",  
     "squad_completion",
     *STANDARD_EVAL_TASKS,
     *ADDITIONAL_EVAL_TASKS,
     *BABYLM_GROUP,
     *TINY_NON_STANDARD,
 ]
+
+DEFAULT_TRAINING_DATA=SMOLLM_125_CORPUS
+DEFAULT_EVAL_TASKS=DEFAULT_TASK_LIST1
 
 
 def MC_only(tasks):
