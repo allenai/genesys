@@ -280,18 +280,6 @@ def design_config(evosys):
         st.button("Save and Apply",key='save_search_config',on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.evo_running)
 
 
-    with st.expander(f"Check Configurations for ```{evosys.evoname}``` (Missing parts will apply default)",expanded=False,icon='🔧'):
-        col1,col2,col3=st.columns(3)
-        with col1:
-            st.write("**Check Select Config:**")
-            st.write(evosys.select_cfg)
-        with col2:
-            st.write("**Check Design Config:**")
-            st.write(evosys.design_cfg)
-        with col3:
-            st.write("**Check Search Config:**")
-            st.write(evosys.search_cfg)
-
 
 def upload_exp_to_db(evosys,exp,config=None):
     collection=evosys.ptree.remote_db.collection('experiments')
@@ -622,9 +610,28 @@ def config(evosys,project_dir):
     design_config(evosys)
     advanced_config(evosys)
     
+    st.write(f'#### 🔧 Check Configurations for ```{evosys.evoname}```')
+    col1,col2=st.columns(2)
+    with col1:
+        with st.expander("Check Select Config",expanded=False):
+            st.write(evosys.select_cfg)
+            st.info('Missing parts will apply default values')
+    with col2:
+        with st.expander("Check Design Config",expanded=False):
+            st.write(evosys.design_cfg)
+            st.info('Missing parts will apply default values')
+    col3,col4=st.columns(2)
+    with col3:
+        with st.expander("Check Search Config",expanded=False):
+            st.write(evosys.search_cfg)
+            st.info('Missing parts will apply default values')
+    with col4:
+        with st.expander("Check VE Config",expanded=False):
+            st.write(evosys.ve_cfg)
+            st.info('Missing parts will apply default values')
 
-    title_col1,col2,col3,_=st.columns([1.5,1,1,2])
-    with title_col1:
+    col1,col2,col3,_=st.columns([1.5,1,1,2])
+    with col1:
         st.subheader(f"Local Experiments")
     with col2:
         if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.evo_running):
