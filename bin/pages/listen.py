@@ -403,8 +403,10 @@ if __name__ == "__main__":
             'If you just stopped it, please wait for 20 seconds to let it cool down.'
         )
     else:
+        setting=AU.get_setting()
+        default_namespace=setting.get('default_namespace','test_evo_000')
         evosys = BuildEvolution(
-            params={'evoname':'test_evo_000'}, # doesnt matter, will switch to the commanded evoname
+            params={'evoname':default_namespace}, # doesnt matter, will switch to the commanded evoname
             do_cache=False,
             # cache_type='diskcache',
         )

@@ -696,8 +696,11 @@ if __name__ == '__main__':
 
     AU.print_cli_title()
 
+    setting=AU.get_setting()
+    default_namespace=setting.get('default_namespace','test_evo_000')
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("--evoname", default='test_evo_000', type=str) # the name of the whole evolution
+    parser.add_argument("--evoname", default=default_namespace, type=str) # the name of the whole evolution
     parser.add_argument("--design_id", default=None, type=str) # the name of the whole evolution
     parser.add_argument("--scale", default=None, type=str) # the name of the whole evolution
     parser.add_argument("--resume", action='store_true') # the name of the whole evolution

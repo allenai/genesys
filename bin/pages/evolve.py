@@ -240,13 +240,20 @@ def evolve(evosys,project_dir):
 
     col1, col2, col3 = st.columns([6,0.1,2])
     
-    max_nodes=100
+
+    if 'ptree_max_nodes' not in st.session_state:
+        st.session_state.ptree_max_nodes=100
+
+    if st.session_state.current_theme:
+        _bg_color="#fafafa" if st.session_state.current_theme['base']=='light' else "#f0f0f0"
+    else:
+        _bg_color="#fafafa"
     
-    evosys.ptree.export(max_nodes=100,height='800px')
-    ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_100.html')
+    evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height='800px',bgcolor=_bg_color)
+    ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{st.session_state.ptree_max_nodes}.html')
 
     with col1:
-        _max_nodes=st.slider('Max Nodes to Display',min_value=0,max_value=len(evosys.ptree.G.nodes),value=100)
+        _max_nodes=st.slider('Max Nodes to Display',min_value=0,max_value=len(evosys.ptree.G.nodes),value=st.session_state.ptree_max_nodes)
 
     # check this: https://github.com/napoles-uach/streamlit_network 
     with col3:
@@ -254,12 +261,11 @@ def evolve(evosys,project_dir):
         st.write('')
         if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
             evosys.ptree.update_design_tree()
-            evosys.ptree.export(max_nodes=_max_nodes,height='800px')
+            evosys.ptree.export(max_nodes=_max_nodes,height='800px',bgcolor=_bg_color)
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
-            max_nodes=_max_nodes
+            st.session_state.ptree_max_nodes=_max_nodes
     
-    
-    st.write(f'**First {max_nodes} nodes under the namespace ```{evosys.evoname}```**. '
+    st.write(f'**First {st.session_state.ptree_max_nodes} nodes under the namespace ```{evosys.evoname}```**. '
             'Legend: :red[Seed Designs (*Displayed Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code] *(Size by # of citations)*')
 
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
@@ -294,8 +300,11 @@ if __name__ == '__main__':
 
     AU.print_cli_title()
 
+    setting=AU.get_setting()
+    default_namespace=setting.get('default_namespace','test_evo_000')   
+
     parser = argparse.ArgumentParser()
-    parser.add_argument('-e','--evoname', default='test_evo_000', type=str) # the name of the whole evolution
+    parser.add_argument('-e','--evoname', default=default_namespace, type=str) # the name of the whole evolution
     parser.add_argument('-r','--design_to_verify_ratio', type=int, default=4) # the max number of threads to use
     parser.add_argument('-g','--group_id', default='default', type=str) # the group id of the evolution
     args = parser.parse_args()

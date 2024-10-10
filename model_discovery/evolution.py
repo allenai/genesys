@@ -1534,10 +1534,11 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
 
         return G
 
-    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None): # larger canvas may be needed for large trees
+    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None,bgcolor="#fafafa"): # larger canvas may be needed for large trees
         nt=Network(
             directed=True,height=height,width=width,
-            layout=layout, bgcolor="#fafafa", #font_color="#ffffff",
+            layout=layout, 
+            bgcolor=bgcolor, #font_color="#ffffff",
             #select_menu=True, # filter_menu=True,
             # heading=f'Phylogenetic Tree for {self.db_dir.split("/")[-2]}'
         )
@@ -1548,7 +1549,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         nt.show(U.pjoin(self.db_dir, '..', fname+'.html'))
 
 
-    def export(self,max_nodes=None,height=5000,layout=False): #,with_ext=False
+    def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee"): #,with_ext=False
         G=nx.DiGraph()
         if not max_nodes or max_nodes==0 or max_nodes>=len(self.G.nodes):
             _G=self.G.copy()
@@ -1595,7 +1596,7 @@ class PhylogeneticTree: ## TODO: remove redundant edges and reference nodes
         fname='phylogenetic_tree'
         if max_nodes: fname+=f'_{max_nodes}'
         # write_dot(G, U.pjoin(self.db_dir, '..', fname+".dot"))
-        self.viz(G,max_nodes=max_nodes,height=height,layout=layout)
+        self.viz(G,max_nodes=max_nodes,height=height,layout=layout,bgcolor=bgcolor)
 
 
 
@@ -1740,6 +1741,7 @@ DEFAULT_PARAMS = {
     'db_only': False,
     'use_remote_db': True,
     'group_id': 'default',
+    'budget_type': 'design_bound',
 }
 
 
@@ -1752,6 +1754,8 @@ DEFAULT_N_SOURCES={
     'ReferenceWithCode':2,
 }
 
+
+BUDGET_TYPES = ['design_bound','verify_bound']
 
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
@@ -1811,11 +1815,12 @@ class EvolutionSystem(exec_utils.System):
         self.action_policy=self.params['action_policy']
         self.design_budget_limit=self.params['design_budget']
 
-        self._verify_budget={}
-        budget=1
-        for scale in self.params['scales'].split(',')[::-1]:
-            self._verify_budget[scale]=int(np.ceil(budget))
-            budget/=self.params['selection_ratio']
+        self._verify_budget=self.params.get('verify_budget',{})
+        if len(self._verify_budget)==0:
+            budget=1
+            for scale in self.params['scales'].split(',')[::-1]:
+                self._verify_budget[scale]=int(np.ceil(budget))
+                budget/=self.params['selection_ratio']
         self.target_scales=list(self._verify_budget.keys())
         self.target_scales.sort(key=lambda x:int(x.replace('M','')))
 
@@ -1840,7 +1845,7 @@ class EvolutionSystem(exec_utils.System):
                 self.ptree.verify(node.acronym,scale,report)
 
         self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,
-            self.params['selection_ratio'],self.stream,self.design_budget_limit)
+            self.stream,self.design_budget_limit,self.params['budget_type'])
 
         if self.params['no_agent']:
             self.rnd_agent = None
@@ -2191,14 +2196,7 @@ def BuildEvolution(
 
 ############################################################################################################
 
-def test_evolve(test_name,step=False):
-    params={
-        'evoname':test_name,
-        'scales':'14M,31M,70M',
-        'selection_ratio':0.25,
-        'select_method':'random',
-        'design_budget':0,
-    }
+def test_evolve(params,step=False):
     evolution_system = BuildEvolution(
         params=params,
         do_cache=True,
@@ -2222,10 +2220,7 @@ if __name__ == '__main__':
             'select_method':'random',
             'design_budget':0,
         }
-        params['evoname']=args.evoname
-        args.evoname=params['evoname']
-
-        test_evolve('test_evo_000',step=True)
+        test_evolve(params,step=True)
     else:
         if args.params=='':
             raise ValueError("Params is required")

@@ -69,12 +69,9 @@ else:
 # Setup the evo system
 
 @st.cache_resource()
-def build_evo_system(name='test_evo_000'):
+def build_evo_system(name):
     params={
         'evoname':name,
-        'scales':'14M,31M,70M',
-        'selection_ratio':0.25,
-        'select_method':'random',
     }
     evo_system = BuildEvolution(
         params=params,
@@ -84,7 +81,12 @@ def build_evo_system(name='test_evo_000'):
     )
     return evo_system
 
-evosys = build_evo_system()
+
+
+setting=AU.get_setting()
+default_namespace=setting.get('default_namespace','test_evo_000')
+
+evosys = build_evo_system(default_namespace)
 
 
 # Setup the streamlit session state

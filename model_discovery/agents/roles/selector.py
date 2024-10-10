@@ -28,8 +28,6 @@ MERGE_METHODS = ['borda','average']
 
 SCHEDULER_OPTIONS = ['constant']
 
-BUDGET_TYPES = ['design_bound','verify_bound']
-
 
 
 DEFAULT_SELECT_METHOD = 'random'
@@ -81,7 +79,6 @@ DEFAULT_SCALE_WEIGHTS = {
 
 DEFAULT_RANDOM_EVAL_THRESHOLD = 0.02 # decide if a comparison is significant
 
-DEFAULT_BUDGET_TYPE = 'design_bound'
 
 DEFAULT_RANKING_ARGS = {
     'ranking_method':'massey', # or a list of ranking methods, and aggregated by borda
@@ -550,12 +547,12 @@ def get_ranked_quadrant(select_cfg,design_rank,confidence_rank):
 
 
 class Selector:
-    def __init__(self,ptree,select_cfg,_verify_budget,selection_ratio,stream,
-            design_budget_limit):
+    def __init__(self,ptree,select_cfg,_verify_budget,stream,
+            design_budget_limit,budget_type):
         self.ptree=ptree
         self.select_cfg=select_cfg
+        self.budget_type=budget_type
         self._verify_budget=_verify_budget
-        self.selection_ratio=selection_ratio
         self.stream=stream
         self.design_budget_limit=design_budget_limit
         
@@ -565,8 +562,7 @@ class Selector:
         if self.design_budget_limit>0:
             return self.design_budget_limit - self.ptree.design_cost
         else:
-            budget_type = self.select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)
-            if budget_type=='design_bound':
+            if self.budget_type=='design_bound':
                 print('WARNING: The evolution will run forever since design budget is not limited.')
             return float('inf')
 
@@ -600,8 +596,7 @@ class Selector:
             instruct: str, the prompt generated from the selector and seeds
         '''
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
-        budget_type = select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)
-        if budget_type == 'design_bound':
+        if self.budget_type == 'design_bound':
             if self.design_budget<=0:
                 print('No design budget available, stop evolution')
                 exit(0)
@@ -738,15 +733,14 @@ class Selector:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
         exclude=self._get_exclude(exclude_list)
         available_verify_budget=self.available_verify_budget
-        budget_type = select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)
         if len(available_verify_budget)<=0:
-            if budget_type=='verify_bound':
+            if self.budget_type=='verify_bound':
                 self.stream.write(f"No available verify budget found.")
                 return None,None
-            elif budget_type=='design_bound':
+            elif self.budget_type=='design_bound':
                 available_verify_budget=self.request_temporal_budget()
             else:
-                raise ValueError(f"Invalid budget type: {budget_type}")
+                raise ValueError(f"Invalid budget type: {self.budget_type}")
         if verify_strategy=='random':
             return self.random_select_verify(available_verify_budget,exclude,select_cfg)
         else:
@@ -805,13 +799,20 @@ class Selector:
         budget=self.verify_budget
         return {k:v for k,v in budget.items() if v>0}
 
-    def request_temporal_budget(self): # keep selection ratio
+    def request_temporal_budget(self): # keep selection ratios
         _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)
         exceeded={}
         for scale in used:
             exceeded[scale]=used[scale]-self._verify_budget[scale]
         scales=list(exceeded.keys())
         scales.sort(key=lambda x:int(x.replace('M','')))
+        selection_ratios = {}
+        # budget current scale / budget previous scale, lowest scale is 1
+        for i in range(len(scales)):
+            if i==0:
+                selection_ratios[scales[i]]=1
+            else:
+                selection_ratios[scales[i]]=self._verify_budget[scales[i]]/self._verify_budget[scales[i-1]]
 
         def dict_geq(d1,d2):
             for k in d1:
@@ -841,7 +842,7 @@ class Selector:
             budget=1
             for s in lower[::-1]:
                 assign[s]=budget
-                budget=int(budget/self.selection_ratio)
+                budget=int(budget/selection_ratios[s])
             return assign
 
         assign={}

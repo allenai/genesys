@@ -145,7 +145,7 @@ The evolution is distributed, asynchronous and parallel (see details below). To 
      ```
      genesys evo [-e <evoname>] [-g <group_id>] [-r <design_to_verify_ratio>] [-h]
      ```
-     - `-e, --evoname`: Name of the evolution (default: 'test_evo_000')
+     - `-e, --evoname`: Name of the evolution (default: 'test_evo_000', you can change it in `Config` tab, or directly edit `CKPT_DIR/.setting.json: default_namespace`)
      - `-g, --group_id`: Default is 'default'. Should match the one used for the nodes.
      - `-r, --design_to_verify_ratio`: Ratio of design threads to verification nodes (default: 4).
 

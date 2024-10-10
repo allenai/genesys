@@ -3,8 +3,10 @@ from PIL import Image
 import io
 import numpy as np
 import uuid
-
+import os
 from art import tprint
+
+from model_discovery.utils import Utils as U
 
 
 CLI_TITLE = 'GENESYS'
@@ -13,6 +15,17 @@ CLI_TITLE = 'GENESYS'
 def print_cli_title():
     tprint(CLI_TITLE, font='modular')
     print('Welcome to the Model Discovery System!')
+
+def get_setting():
+    ckpt_dir = os.environ.get('CKPT_DIR')
+    setting_dir=U.pjoin(ckpt_dir,'.setting.json')
+    setting=U.load_json(setting_dir)
+    return setting
+  
+def save_setting(setting):
+    ckpt_dir = os.environ.get('CKPT_DIR')
+    setting_dir=U.pjoin(ckpt_dir,'.setting.json')
+    U.save_json(setting_dir,setting)
 
 
 SQUARE_LOGO_SVG = """

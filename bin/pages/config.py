@@ -15,11 +15,12 @@ sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
 import numpy as np
+import pandas as pd
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
-from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES
-from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,BUDGET_TYPES,\
-    DEFAULT_BUDGET_TYPE,DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS
+from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES
+from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
+    DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
@@ -148,15 +149,7 @@ def design_config(evosys):
         select_cfg['n_sources']=n_sources
         select_cfg['seed_dist']=seed_dist
 
-
-        cols=st.columns([1,7])
-        with cols[1]:
-            # st.write('')
-            is_design_bound=st.checkbox('Design Budget Bound',value=select_cfg.get('budget_type',DEFAULT_BUDGET_TYPE)=='design_bound',
-                help='If set, the design budget will be used to limit the number of designs sampled, otherwise the verify budget will be used')
-            select_cfg['budget_type']='design_bound' if is_design_bound else 'verify_bound'
-        with cols[0]:
-            st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
+        st.button("Save and Apply",key='save_select_config',on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
 
 
 
@@ -355,31 +348,70 @@ def evosys_config(evosys):
             _params={}
             col1,col2=st.columns(2)
             with col1:
-                _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'])
-                target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
-                scales=[]
-                for s in TARGET_SCALES:
-                    if int(target_scale.replace('M',''))>=int(s.replace('M','')):
-                        scales.append(s)
-                _params['scales']=','.join(scales)
-                _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
-                _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
+                _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'],
+                    help='Changing this will create a new experiment namespace.')
+                
+                subcol1, subcol2 = st.columns([1,1])
+                with subcol1:
+                    target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
+                    scales=[]
+                    for s in TARGET_SCALES:
+                        if int(target_scale.replace('M',''))>=int(s.replace('M','')):
+                            scales.append(s)
+                    _params['scales']=','.join(scales)
+                with subcol2:
+                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
+                
+                _verify_budget={i:0 for i in TARGET_SCALES}
+                budget=1
+                for scale in _params['scales'].split(',')[::-1]:
+                    _verify_budget[scale]=int(np.ceil(budget))
+                    budget/=_params['selection_ratio']
+                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*')
+                _verify_budget_df = pd.DataFrame(_verify_budget,index=['#']).rename(columns={'1300M':'1.3B'})
+                _verify_budget_df = st.data_editor(_verify_budget_df)
+                _verify_budget_df.rename(columns={'1.3B':'1300M'},inplace=True)
+                _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
+                _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
+                if _manual_set_budget:
+                    _params['verify_budget']=_verify_budget
+
+                subcol1, subcol2 = st.columns([1,1])
+                with subcol1:
+                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
+                with subcol2:
+                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
+                        help=(
+                            '**Design bound:** terminate the evolution after the design budget is used up, and will automatically promote verify budget; \n\n'
+                            '**Verify bound:** terminate the evolution after the verify budget is used up, and will automatically promote design budget.\n\n'
+                            'Design bound is recommended if you are using inference APIs (e.g. Anthropic, OpenAI, Together).'
+                        ))
+                    _params['budget_type']=bound_type
+                
                 _col1, _col2 = st.columns([2,1])
                 with _col1:
-                    _params['group_id']=st.text_input('Network Group ID',value=evosys.params['group_id'])
+                    _params['group_id']=st.text_input('Network Group ID',value=evosys.params['group_id'],
+                        help='Used for the master node to find its nodes. Change it only if you wish to run multiple evolutions on multiple networks.')
                 with _col2:
                     st.write('')
                     st.write('')
                     _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
                 
             with col2:
-                st.write("Current Settings:")
+                st.write(f"Current Status for ```{evosys.evoname}```:")
                 settings={}
                 settings['Experiment Directory']=evosys.evo_dir
                 # settings['Seed Selection Method']=evosys.select_method
                 # settings['Verification Strategy']=evosys.verify_strategy
-                settings['Design Budget']=evosys.design_budget_limit if evosys.design_budget_limit>0 else '♾️'
-                settings['Verification Budges']=evosys.selector.verify_budget
+                if evosys.design_budget_limit>0:
+                    settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
+                else:
+                    settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/♾️'
+                settings['Verification Budge Usage']={}
+                for scale,num in evosys.selector._verify_budget.items():
+                    remaining = evosys.selector.verify_budget[scale] 
+                    settings['Verification Budge Usage'][scale]=f'{remaining}/{num}'
+                settings['Budget Type']=evosys.params['budget_type']
                 settings['Use Remote DB']=evosys.params['use_remote_db']
                 if evosys.CM:
                     settings['Network Group ID']=evosys.CM.group_id
@@ -387,6 +419,8 @@ def evosys_config(evosys):
 
             if st.form_submit_button("Apply and Save"):
                 with st.spinner("Applying and saving..."):
+                    if _params['evoname']=='design_bound' and _params['design_budget']==0:
+                        st.warning("You give inifinity budget to a design-bound evolution. The evolution will not terminate automatically.")
                     config['params']=_params
                     if config['params']['evoname']!=evosys.params['evoname']:
                         evosys.switch_ckpt(config['params']['evoname'],load_params=False)
@@ -396,8 +430,6 @@ def evosys_config(evosys):
 
     with st.expander("Verification Engine Settings",expanded=False,icon='⚙️'):
         st.write("**TODO**")
-
-
 
 
 
@@ -551,9 +583,9 @@ def config(evosys,project_dir):
     advanced_config(evosys)
     
 
-    col1,col2,col3,_=st.columns([1.2,1,1,2])
-    with col1:
-        st.subheader("Existing Experiments")
+    title_col1,col2,col3,_=st.columns([1.5,1,1,2])
+    with title_col1:
+        st.subheader(f"Local Experiments")
     with col2:
         if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.evo_running):
             sync_exps_to_db(evosys)
@@ -573,44 +605,78 @@ def config(evosys,project_dir):
         evosys.switch_ckpt(evoname)
         st.toast(f"Switched to {evoname}")
         
+    CKPT_DIR=os.environ.get('CKPT_DIR')
+    setting=AU.get_setting()    
+
+    def set_default(evoname):
+        setting['default_namespace']=evoname
+        AU.save_setting(setting)
+        st.toast(f"Set {evoname} as default (for this machine)")
+    
+    default_namespace=setting.get('default_namespace','test_evo_000')
 
     experiments={}
-    for ckpt in os.listdir(evosys.ckpt_dir):
-        exp_dir=U.pjoin(evosys.ckpt_dir,ckpt)
+    for ckpt in os.listdir(CKPT_DIR):
+        if ckpt.startswith('.'): continue
+        exp_dir=U.pjoin(CKPT_DIR,ckpt)
+        ckpt_config_path=U.pjoin(exp_dir,'config.json')
         experiment={}
         experiment['namespace']=ckpt
-        ckpt_config=U.load_json(U.pjoin(exp_dir,'config.json'))
-        if not ckpt_config: continue
+        if not U.pexists(ckpt_config_path): 
+            print(f"No config.json found in {exp_dir}, can be a temporary directory.")
+            continue
+        ckpt_config=U.load_json(ckpt_config_path)
         if 'params' not in ckpt_config: ckpt_config['params']={}
         ckpt_config['params']=U.init_dict(ckpt_config['params'],DEFAULT_PARAMS)
-        experiment['selection_ratio']=ckpt_config['params']['selection_ratio']
-        verify_budget={}
-        budget=1
-        for scale in ckpt_config['params']['scales'].split(',')[::-1]:
-            verify_budget[scale]=int(np.ceil(budget))
-            budget/=ckpt_config['params']['selection_ratio']
-        experiment['remaining_budget']=verify_budget
+        experiment['design_budget']=ckpt_config['params']['design_budget']
+        if experiment['design_budget']==0:
+            experiment['design_budget']='♾️'
+        if 'verify_budget' in ckpt_config['params']:
+            experiment['verify_budget']=ckpt_config['params']['verify_budget']
+        else:
+            experiment['selection_ratio']=ckpt_config['params']['selection_ratio']
+            verify_budget={}
+            budget=1
+            for scale in ckpt_config['params']['scales'].split(',')[::-1]:
+                verify_budget[scale]=int(np.ceil(budget))
+                budget/=ckpt_config['params']['selection_ratio']
+            experiment['verify_budget']=verify_budget
+        experiment['budget_type']=ckpt_config['params']['budget_type']
         U.mkdir(U.pjoin(exp_dir,'db','sessions'))
         U.mkdir(U.pjoin(exp_dir,'db','designs'))
         experiment['created_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))
         experiment['sampled_designs']=len(os.listdir(U.pjoin(exp_dir,'db','designs')))
         experiment['use_remote_db']=ckpt_config.get('params',{}).get('use_remote_db',False)
         experiment['group_id']=ckpt_config.get('params',{}).get('group_id','default')
+        
+        if ckpt==default_namespace:
+            default_btn=('Default',None,True)
+        else:
+            default_btn=('Set Default',ft.partial(set_default,ckpt), st.session_state.evo_running)
         if exp_dir==evosys.evo_dir:
             experiment['ICON']='🏠'
-            experiment['BUTTON']=[('Current Directory',None,True)]
+            experiment['BUTTON']=[
+                ('Current',None,True),
+                default_btn
+            ]
             experiments[ckpt+' (Current)']=experiment
         else:
             experiment['BUTTON']=[
                 ('Delete',ft.partial(delete_exp,exp_dir,ckpt), st.session_state.evo_running),
-                ('Switch',ft.partial(switch_dir,ckpt), st.session_state.evo_running)
+                ('Switch',ft.partial(switch_dir,ckpt), st.session_state.evo_running),
+                default_btn
             ]
-            experiments[ckpt]=experiment
+            if ckpt==default_namespace:
+                experiments[ckpt+' (Default)']=experiment
+            else:
+                experiments[ckpt]=experiment
+
+
 
     if len(experiments)>0:
         AU.grid_view(st,experiments,per_row=3,spacing=0.05)
     else:
-        st.info("No experiments found in the current directory. You may download from remote DB")
+        st.info("No experiments found in the local directory. You may download from remote DB")
 
 
 
@@ -664,15 +730,18 @@ if __name__ == "__main__":
     parser.add_argument('-d','--download', action='store_true', help='Download all configs from remote DB')
     args = parser.parse_args()
 
+    setting=AU.get_setting()
+    default_namespace=setting.get('default_namespace','test_evo_000')
+
     if args.upload:
         evosys = BuildEvolution(
-            params={'evoname':'test_evo_000','db_only':True,'no_agent':True}, 
+            params={'evoname':default_namespace,'db_only':True,'no_agent':True}, 
             do_cache=False,
         )
         sync_exps_to_db(evosys)
     elif args.download:
         evosys = BuildEvolution(
-            params={'evoname':'test_evo_000','db_only':True,'no_agent':True}, 
+            params={'evoname':default_namespace,'db_only':True,'no_agent':True}, 
             do_cache=False,
         )
         sync_exps_from_db(evosys)
