@@ -3,7 +3,7 @@
 Utils and code for model discovery experiments. 
 
 
-# How to use (CLI/GUI)
+# How to use Genesys CLI/GUI
 
 
 1. Set up  first (see below)
