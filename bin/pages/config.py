@@ -447,19 +447,23 @@ def evosys_config(evosys):
                 _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'],
                     help='Changing this will create a new experiment namespace.')
                 
-                subcol1, subcol2 = st.columns([1,1])
+                subcol1, subcol2, subcol3 = st.columns([1,1,0.25])
                 with subcol1:
-                    target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1])
+                    target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
+                        help='The largest scale to train, will train `N Target` models at this scale.')
                     scales=[]
                     for s in TARGET_SCALES:
                         if int(target_scale.replace('M',''))>=int(s.replace('M','')):
                             scales.append(s)
                     _params['scales']=','.join(scales)
                 with subcol2:
-                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'])
+                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
+                        help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
+                with subcol3:
+                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
                 
                 _verify_budget={i:0 for i in TARGET_SCALES}
-                budget=1
+                budget=_params['n_target']
                 for scale in _params['scales'].split(',')[::-1]:
                     _verify_budget[scale]=int(np.ceil(budget))
                     budget/=_params['selection_ratio']
@@ -473,7 +477,8 @@ def evosys_config(evosys):
 
                 subcol1, subcol2 = st.columns([1,1])
                 with subcol1:
-                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100)
+                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,
+                        help='The total budget for running model design agents, 0 means no budget limit.')
                 with subcol2:
                     bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
                         help=(
@@ -483,7 +488,7 @@ def evosys_config(evosys):
                         ))
                     _params['budget_type']=bound_type
                 
-                _col1, _col2 = st.columns([2,1])
+                _col1, _col2 = st.columns([2.5,1])
                 with _col1:
                     _params['group_id']=st.text_input('Network Group ID',value=evosys.params['group_id'],
                         help='Used for the master node to find its nodes. Change it only if you wish to run multiple evolutions on multiple networks.')
@@ -708,23 +713,24 @@ def config(evosys,project_dir):
             st.info("**NOTE:** Leave the fields blank to use the default values. The settings here may not persist, so **better set them by exporting environment variables**.")
             col1,col2,col3,col4=st.columns(4)
             with col1:
-                env_vars['DB_KEY_PATH']=st.text_input('DB_KEY_PATH',value=os.environ.get("DB_KEY_PATH"))
-                env_vars['CKPT_DIR']=st.text_input('CKPT_DIR',value=os.environ.get("CKPT_DIR"))
-                env_vars['DATA_DIR']=st.text_input('DATA_DIR',value=os.environ.get("DATA_DIR"))
+                env_vars['DB_KEY_PATH']=st.text_input('Database Key Path',value=os.environ.get("DB_KEY_PATH"))
+                env_vars['CKPT_DIR']=st.text_input('Checkpoint Directory',value=os.environ.get("CKPT_DIR"))
+                env_vars['DATA_DIR']=st.text_input('Data Directory',value=os.environ.get("DATA_DIR"))
             with col2:
-                env_vars['WANDB_API_KEY']=st.text_input('WANDB_API_KEY (Required for Training)',type='password')
-                env_vars['PINECONE_API_KEY']=st.text_input('PINECONE_API_KEY',type='password')
-                env_vars['HF_KEY']=st.text_input('HUGGINGFACE_API_KEY',type='password')
+                env_vars['WANDB_API_KEY']=st.text_input('Weights & Biases API Key',type='password')
+                env_vars['HF_KEY']=st.text_input('Huggingface API Key',type='password')
+                env_vars['PINECONE_API_KEY']=st.text_input('Pinecone API Key',type='password')
             with col3:
-                env_vars['MY_OPENAI_KEY']=st.text_input('OPENAI_API_KEY',type='password')
-                env_vars['ANTHROPIC_API_KEY']=st.text_input('ANTHROPIC_API_KEY',type='password')
-                env_vars['COHERE_API_KEY']=st.text_input('COHERE_API_KEY',type='password')
+                env_vars['MY_OPENAI_KEY']=st.text_input('OpenAI API Key',type='password')
+                env_vars['ANTHROPIC_API_KEY']=st.text_input('Anthropic API Key',type='password')
+                env_vars['TOGETHER_API_KEY']=st.text_input('Together API Key',type='password')
             with col4:
-                env_vars['S2_API_KEY']=st.text_input('S2_API_KEY',type='password')
-                env_vars['PERPLEXITY_API_KEY']=st.text_input('PERPLEXITY_API_KEY',type='password')
-                env_vars['MATHPIX_API_ID']=st.text_input('MATHPIX_API_ID (Optional)',type='password')
+                env_vars['S2_API_KEY']=st.text_input('Semantic Scholar API Key',type='password')
+                env_vars['COHERE_API_KEY']=st.text_input('Cohere API Key',type='password')
+                env_vars['PERPLEXITY_API_KEY']=st.text_input('Perplexity API Key',type='password')
+                # optional: mathpix api key, aws keys
 
-            if st.form_submit_button("Apply (will not save any secrets)"):
+            if st.form_submit_button("Apply *(will not save any secrets)*"):
                 changed=apply_env_vars(evosys,env_vars)
                 if changed:
                     evosys.reload()
@@ -808,7 +814,7 @@ def config(evosys,project_dir):
         else:
             experiment['selection_ratio']=ckpt_config['params']['selection_ratio']
             verify_budget={}
-            budget=1
+            budget=ckpt_config['params']['n_target']
             for scale in ckpt_config['params']['scales'].split(',')[::-1]:
                 verify_budget[scale]=int(np.ceil(budget))
                 budget/=ckpt_config['params']['selection_ratio']

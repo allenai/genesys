@@ -1731,12 +1731,13 @@ DEFAULT_PARAMS = {
     'action_policy': 'random',
     'design_budget': 0,
     'scales': '14M,31M,70M,125M,350M',
-    'selection_ratio': 0.2,
+    'selection_ratio': 0.25,
     'no_agent': False,
     'db_only': False,
     'use_remote_db': True,
     'group_id': 'default',
     'budget_type': 'design_bound',
+    'n_target': 1,
 }
 
 
@@ -1812,7 +1813,7 @@ class EvolutionSystem(exec_utils.System):
 
         self._verify_budget=self.params.get('verify_budget',{})
         if len(self._verify_budget)==0:
-            budget=1
+            budget=self.params['n_target']
             for scale in self.params['scales'].split(',')[::-1]:
                 self._verify_budget[scale]=int(np.ceil(budget))
                 budget/=self.params['selection_ratio']
