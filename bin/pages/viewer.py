@@ -27,10 +27,9 @@ from model_discovery.model.library.tester import check_tune
 import bin.app_utils as AU
 
 
-from bin.pages.select import SELECTOR_NOTES
 from model_discovery.agents.roles.selector import *
 from model_discovery.agents.roles.selector import _group_results,_flat_weighted_metrics,\
-    _combine_design_quadrant,_rank_combined_quadrant,_get_ranking_quadrant
+    _combine_design_quadrant,_rank_combined_quadrant,_get_ranking_quadrant,_01_normed_soft_filter
 
 
 
@@ -508,19 +507,19 @@ def selector_lab(evosys,project_dir):
         baseline_vectors = evosys.ptree.get_baseline_vectors()
 
     st.subheader('Real-time Leaderboard')
-    with st.status('Generating leaderboard...'):
+    with st.status('Generating leaderboard...',expanded=True):
         leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l=export_leaderboards(evosys,design_vectors,baseline_vectors)
-    cols = st.columns([1,1,3])
-    with cols[0]:
-        scale = st.selectbox('Select scale',options=list(leaderboards_normed.keys()))
-    with cols[1]:
-        _options = ['random']+list(baseline_vectors.keys())
-        relative = st.selectbox('Relative to',options=_options)
-    with cols[2]:
-        input_task_filter = st.text_input('Task filter list (keywords matching, comma separated)',value=','.join(LEADERBOARD_1))
-        input_task_filter=[i.strip() for i in input_task_filter.split(',')]
-    cols = st.columns(2)
+        cols = st.columns([1,1,3])
+        with cols[0]:
+            scale = st.selectbox('Select scale',options=list(leaderboards_normed.keys()))
+        with cols[1]:
+            _options = ['random']+list(baseline_vectors.keys())
+            relative = st.selectbox('Relative to',options=_options)
+        with cols[2]:
+            input_task_filter = st.text_input('Task filter list (keywords matching, comma separated)',value=','.join(LEADERBOARD_1))
+            input_task_filter=[i.strip() for i in input_task_filter.split(',')]
 
+    cols = st.columns(2)
     with cols[0]:
         with st.expander('Normed metrics (0-1, higher is better)',expanded=True):
             _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale],input_task_filter)
@@ -593,9 +592,6 @@ def selector_lab(evosys,project_dir):
 
     st.subheader('**Selector Ranking**',help='How the selector ranks the designs and make decisions.')
 
-    with st.expander('Notes about Selector design and the Evolution Process (For internal reference)',icon='🎼'):
-        st.markdown(SELECTOR_NOTES)
-
     ranking_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
     cols = st.columns([5,1,0.8,0.8])
     with cols[0]:
@@ -622,7 +618,7 @@ def selector_lab(evosys,project_dir):
     #     rank_design_btn = st.button('Rank',use_container_width=True)
 
     with st.expander('Ranking method arguments',expanded=True):
-        cols = st.columns(4)
+        cols = st.columns([2,2,2,2])
         with cols[0]:
             ranking_args['draw_margin'] = st.number_input('Draw margin',min_value=0.0,max_value=1.0,step=0.001,value=ranking_args['draw_margin'], format="%0.3f",
                 help='Margin for draw (tie)')
@@ -634,21 +630,44 @@ def selector_lab(evosys,project_dir):
         with cols[3]:
             ranking_args['metric_wise_merge'] = st.selectbox('Metric-wise merge',options=['None']+MERGE_METHODS,
                 help='If set, will rank for each metric separately and then aggregate by the "metric-wise merge" method, not available for markov method')
+        
+        cols = st.columns([5,1,1])
+        with cols[0]:
+            ranking_args['soft_filter_threshold'] = st.slider('Filtering Threshold',min_value=-1.0,max_value=1.0,step=0.001,value=float(ranking_args['soft_filter_threshold']), format="%0.3f",
+                help='If set, will filter out metrics with the highest difference in rating compared to a random metric lower than this, -1 (i.e. -100%) means no filtering')
+        with cols[1]:
+            st.write('')
+            ranking_args['absolute_value_threshold'] = st.checkbox('Absolute Diff.',value=ranking_args['absolute_value_threshold'],
+                help='If set, will use absolute difference instead of relative difference `difference/random` for filtering')
+        with cols[2]:
+            st.write('')
+            ranking_args['normed_difference'] = st.checkbox('Norm Diff.',value=ranking_args['normed_difference'],
+                help='If set, will use normed difference `|x-random|` instead of direct difference `x-random` for filtering')
 
     # if rank_design_btn:
     assert ranking_args['ranking_method'], 'Ranking method is required'
-    with st.status('Generating ranking matrix...',expanded=True):
+    with st.status('Generating ranking matrix...',expanded=False):
+        relative_to_01_normed,_ = evosys.selector._get_random_metrics()
         ranking_matrix = get_ranking_matrix(evosys.selector.select_cfg,design_vectors,normed_only,
-            drop_na=drop_na,drop_zero=drop_zero)
+            drop_na=drop_na,drop_zero=drop_zero,soft_filter_threshold=ranking_args['soft_filter_threshold'],
+            relative_to_01_normed=relative_to_01_normed,absolute_value_threshold=ranking_args['absolute_value_threshold'],
+            normed_difference=ranking_args['normed_difference'])
         # compute average at the end of each row
+        ranking_matrix = _01_normed_soft_filter(ranking_matrix,relative_to_01_normed,
+            ranking_args['soft_filter_threshold'],ranking_args['absolute_value_threshold'],
+            ranking_args['normed_difference'],st=st)
         _ranking_matrix = ranking_matrix.copy()
         _ranking_matrix['avg.'] = _ranking_matrix.mean(axis=1)
+        # concat with random row, preserve intersection of columns in random
+        relative_to_01_normed = pd.DataFrame(relative_to_01_normed,index=['random'])
+        relative_to_01_normed = relative_to_01_normed[ranking_matrix.columns.intersection(relative_to_01_normed.columns)]
+        _ranking_matrix = pd.concat([relative_to_01_normed,_ranking_matrix])
+    
+    with st.expander('Final ranking matrix (avg. and random will not used in ranking)',expanded=True):
         st.dataframe(_ranking_matrix)
     
     with st.status('Ranking designs...',expanded=True):
         design_rank,subranks,subsubranks = rank_designs(ranking_matrix,ranking_args)
-    
-    with st.expander('Design Ranking',expanded=True):
         cols=st.columns(3)
         with cols[0]:
             st.subheader('Design Ranking')
@@ -668,7 +687,7 @@ def selector_lab(evosys,project_dir):
     cols = st.columns([1,2])
 
     with cols[0]:
-        with st.status('Ranking confidence filter by design rank...',expanded=True):
+        with st.status('Ranking confidence filtered by design rank...',expanded=True):
             st.subheader('Confidence Ranking')
             confidence_rank = rank_confidences(evosys.selector.select_cfg,design_vectors,design_rank['name'].tolist())
             st.dataframe(confidence_rank)
@@ -705,7 +724,7 @@ def viewer(evosys,project_dir):
     ### Sidebar
     with st.sidebar:
         AU.running_status(st,evosys)
-        view_mode = st.selectbox("View Mode", list([i.value for i in ViewModes]))
+        view_mode = st.selectbox("Choose a view", list([i.value for i in ViewModes]))
         view_mode = ViewModes(view_mode)
         if view_mode == ViewModes.FLOW:
             # Lagacy flows for development

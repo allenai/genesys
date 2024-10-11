@@ -91,6 +91,9 @@ DEFAULT_RANKING_ARGS = {
     'markov_restart': 0.3,
     'convergence_threshold': 1e-4,
     'quadrant_merge': 'average', # 'borda', 'average'
+    'soft_filter_threshold': 0.02, # filter out metrics with the highest relative rating lower than this (-1, i.e. -100% means no filtering)
+    'absolute_value_threshold': True,
+    'normed_difference': False, # if True, it will use |difference| instead of difference
 }
 
 DEFAULT_QUADRANT_ARGS = {
@@ -370,7 +373,6 @@ def get_ranking_metrics(select_cfg,design_vector,normed_only=True):
     proposal_rating,training_metrics,eval_metrics,_ = get_raw_metrics(design_vector)
     scale_weighted_grouped_metrics = scale_weight_results(select_cfg,group_results(eval_metrics))
     _01_normed_metrics,_unnormed_metrics = _flat_weighted_metrics(scale_weighted_grouped_metrics)
-    
     ranking_metrics = _01_normed_metrics
     scale_weighted_training_metrics = scale_weight_results(select_cfg,training_metrics)
     ranking_metrics.update(scale_weighted_training_metrics)
@@ -382,8 +384,64 @@ def get_ranking_metrics(select_cfg,design_vector,normed_only=True):
         ranking_metrics_unnormed[i.replace(' - ','')] = -_unnormed_metrics['lower_is_better'][i]
     return ranking_metrics,ranking_metrics_unnormed
 
-def get_ranking_matrix(select_cfg,design_vectors,normed_only=True,
-                    verified_only=True,drop_na=True,drop_zero=True):
+
+
+def _01_normed_soft_filter(ranking_matrix, relative_to_01_normed, soft_filter_threshold,
+    absolute_value_threshold=False,normed_difference=False,st=None):
+    if st:
+        st.write('###### Original ranking matrix')
+        st.write(ranking_matrix)
+    
+    # Convert relative_to_01_normed to a DataFrame if it's not already
+    pd_random_metrics = pd.DataFrame(relative_to_01_normed, index=['random'])
+
+    if st:
+        st.write('###### Random metrics')
+        st.write(pd_random_metrics)
+
+    # Identify common columns
+    common_columns = ranking_matrix.columns.intersection(pd_random_metrics.columns)
+    non_common_columns = ranking_matrix.columns.difference(common_columns)
+
+    # Calculate relative performance for common columns
+    _ranking_matrix_relative = ranking_matrix[common_columns].sub(pd_random_metrics[common_columns].iloc[0])
+    if not absolute_value_threshold:
+        _ranking_matrix_relative = _ranking_matrix_relative.div(pd_random_metrics[common_columns].iloc[0].replace(0, np.nan))
+    if normed_difference:
+        _ranking_matrix_relative = _ranking_matrix_relative.abs()
+
+    if st:
+        if absolute_value_threshold:
+            st.write('###### Absolute difference to random')
+            st.write(_ranking_matrix_relative) 
+        else:
+            st.write('###### Relative difference to random (%)')
+            st.write(_ranking_matrix_relative*100) 
+
+    # Find columns where the maximum relative improvement is greater than or equal to the threshold
+    columns_to_keep = _ranking_matrix_relative.max() >= soft_filter_threshold
+
+    if st:
+        st.write('###### Columns to keep in relative difference matrix')
+        if absolute_value_threshold:
+            st.write(_ranking_matrix_relative[common_columns.intersection(columns_to_keep[columns_to_keep].index)])
+        else:
+            st.write(_ranking_matrix_relative[common_columns.intersection(columns_to_keep[columns_to_keep].index)]*100)
+
+    # Filter the common columns based on the threshold
+    filtered_common = ranking_matrix[common_columns.intersection(columns_to_keep[columns_to_keep].index)]
+    if st:
+        st.write('###### Filtered common columns')
+        st.write(filtered_common)
+
+    # Combine filtered common columns with non-common columns
+    filtered_matrix = pd.concat([filtered_common, ranking_matrix[non_common_columns]], axis=1)
+    return filtered_matrix
+    
+
+def get_ranking_matrix(select_cfg,design_vectors,normed_only=True,verified_only=True,
+        drop_na=True,drop_zero=True,soft_filter_threshold=-1,relative_to_01_normed=None,
+        absolute_value_threshold=True,normed_difference=False):
     ranking_matrix = pd.DataFrame()
     for acronym in design_vectors:
         design_vector = design_vectors[acronym]
@@ -398,6 +456,9 @@ def get_ranking_matrix(select_cfg,design_vectors,normed_only=True,
         ranking_matrix=ranking_matrix.dropna(axis=1)
     if drop_zero:
         ranking_matrix = ranking_matrix.loc[:, (ranking_matrix != 0).any(axis=0)]
+    if relative_to_01_normed:
+        ranking_matrix = _01_normed_soft_filter(ranking_matrix,relative_to_01_normed,
+            soft_filter_threshold,absolute_value_threshold,normed_difference)
     return ranking_matrix
 
 
@@ -579,12 +640,22 @@ class Selector:
         ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
         ranking_matrix = get_ranking_matrix(
             select_cfg,design_vectors,ranking_args['normed_only'],
-            drop_na=ranking_args['drop_na'],drop_zero=ranking_args['drop_zero']
-        )
+            drop_na=ranking_args['drop_na'],drop_zero=ranking_args['drop_zero'],
+            soft_filter_threshold=ranking_args['soft_filter_threshold'],
+            relative_to_01_normed=self._get_random_metrics(select_cfg)[0],
+            absolute_value_threshold=ranking_args['absolute_value_threshold'],
+            normed_difference=ranking_args['normed_difference'])
         if len(ranking_matrix)==0:
             return None
         design_rank,_,_ = rank_designs(ranking_matrix,ranking_args)
         return design_rank
+
+    def _get_random_metrics(self,select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
+        eval_metrics,_ = eval_results_getter(self.ptree.random_baseline)
+        _grouped_metrics = _group_results(eval_metrics)
+        _01_normed_metrics,_unnormed_metrics = _flat_weighted_metrics(_grouped_metrics)
+        return _01_normed_metrics,_unnormed_metrics
 
 
     #########################  Select Design  #########################

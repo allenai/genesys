@@ -3055,6 +3055,11 @@ The planner has chosen to refine the GAU named **{UNIT_NAME}**. While the coder 
 #### Summary of Changes Made:
 {CHANGES}
 
+### Potential Similar Unit Codes from Previous Designs
+
+Check the novelty of the implemented unit by comparing it to the following unit codes (whether it is similar or copying) if any:
+
+{UNIT_CODES}
 
 ### Instructions for Review:
 
@@ -3145,6 +3150,12 @@ GUMT_IMPLEMENTATION_REOBSERVE_prompt = """The coder has refined the design and i
 - **Summary of Changes**:
   {CHANGES}
 
+### Potential Similar Unit Codes from Previous Designs
+
+Check the novelty of the implemented unit by comparing it to the following unit codes (whether it is similar or copying) if any:
+
+{UNIT_CODES}
+
 Please review and provide feedback on the updated implementation.
 """
 
@@ -3181,6 +3192,13 @@ The coder is implementing the GAU named **{UNIT_NAME}**.
 
 - **Full GAU Implementation**:
   {IMPLEMENTATION}
+
+
+### Potential Similar Unit Codes from Previous Designs
+
+Check the novelty of the implemented unit by comparing it to the following unit codes (whether it is similar or copying) if any:
+
+{UNIT_CODES}
 
 ### Instructions for Review:
 
@@ -3813,10 +3831,8 @@ The goal is to ensure that the GAU design is theoretically sound, innovative, an
 **Proposal for Review**:
 {PROPOSAL}
 
-**Sibling Proposals from Previous Designs with Same Seeds**:
 {SIBLINGS}
 
-**Similar Design Proposals from Previous Designs**:
 {TOP_K_PPS}
 """
 
@@ -4168,6 +4184,13 @@ The coder is refining the GAU **{UNIT_NAME}**.
 - **Full GAU Implementation**:
   {IMPLEMENTATION}
 
+
+### Potential Similar Unit Codes from Previous Designs
+
+Check the novelty of the implemented unit by comparing it to the following unit codes (whether it is similar or copying) if any:
+
+{UNIT_CODES}
+
 ## Format and Functionality Checks
 
 The implementation has undergone checks by the format checker, and functionality checker. 
@@ -4251,6 +4274,11 @@ The implementation has undergone checks by the format checker, and functionality
   **Functionality Checker Report**:
   {FUNCTION_CHECKER_REPORT}
 
+### Potential Similar Unit Codes from Previous Designs
+
+Check the novelty of the implemented unit by comparing it to the following unit codes (whether it is similar or copying) if any:
+
+{UNIT_CODES}
 
 ## Response Requirements
 Prepare a comprehensive feedback report including:

@@ -12,6 +12,7 @@ sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
 
+
 current_dir = pathlib.Path(__file__).parent
 logo_path = U.pjoin(current_dir,'..','assets','storm_logo.svg')
 
@@ -193,22 +194,28 @@ on a given scale and evaluate the performance using the customed LM-Eval.
 
 
     st.markdown('''
-## Evolution
+## Evolution Process
 
-The evolutionary system continuously runs two threads asynchronously in multiple
-nodes until the budget is exhausted: 1. **Design Threads**: Continuously sample
-new designs on selected nodes. It is driven by the *Model Design Engine* in the
-**Design** tab. You can also run it in CLI by `genesys design [args]`. 2.
-**Verify Threads**: Continuously run verifications on the selected design and
-scale. It is driven by the *Verification Engine* in the **Verify** tab. You can
-also run it in CLI by `genesys verify [args]`.
+The evolutionary system continuously runs two threads asynchronously
+orchestrated by the selector in multiple nodes until the budget is exhausted: 
+ 1. **Design Threads**: Sample new designs on selected nodes. It is driven by
+    the *Model Design Engine* in the **Design** tab. You can also run it in CLI
+    by `genesys design [args]`. 
 
-The network of working nodes are orchestrated by a master node through the
+ 2. **Verify Threads**: Run verifications on the selected design and scale. It
+    is driven by the *Verification Engine* in the **Verify** tab. You can also
+    run it in CLI by `genesys verify [args]`.
+
+The network of worker nodes are orchestrated by a master node through the
 **Firebase**. To add a node to the network, check run node above. It is
-recommended to run it in GPU-available sessions. You can also launch a node in
-the master machine.
+recommended to run it in GPU-available sessions. The machine that runs the
+master node can also run a worker node at the same time.
 ''')
 
+
+    with st.expander('Notes about Selector design and the Evolution Process',icon='🎼'):
+      with open('bin/assets/selector_notes.md','r') as f:
+        st.markdown(f.read())
   
 
 

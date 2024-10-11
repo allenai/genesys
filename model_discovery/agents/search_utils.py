@@ -9,6 +9,7 @@ import urllib.parse
 from paperswithcode import PapersWithCodeClient
 from requests.exceptions import RequestException
 from openai import OpenAI
+import random
 import cohere
 import numpy as np
 
@@ -16,6 +17,8 @@ from langchain_community.document_loaders import MathpixPDFLoader,UnstructuredHT
 from pinecone.grpc import PineconeGRPC as Pinecone
 from pinecone import ServerlessSpec
 from langchain_openai import OpenAIEmbeddings
+from langchain_together import TogetherEmbeddings
+from langchain_cohere import CohereEmbeddings
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain.evaluation import load_evaluator,EmbeddingDistance
 
@@ -130,8 +133,61 @@ DEFAULT_PERPLEXITY_SETTINGS={
 DEFAULT_PROPOSAL_SEARCH_CFG={
     'top_k':3,
     'cutoff':0.5,
+    'sibling':2,
+}
+
+DEFAULT_UNIT_SEARCH_CFG={
+    'top_k':4,
+    'cutoff':0.5,
 }
 DEFAULT_RERANK_RATIO=0.2
+
+
+OPENAI_EMBEDDING_MODELS=[
+    'text-embedding-3-large',
+    'text-embedding-3-small',
+    'text-embedding-ada-002',
+]
+
+TOGETHER_EMBEDDING_MODELS=[
+    'togethercomputer/m2-bert-80M-2k-retrieval',
+    'togethercomputer/m2-bert-80M-8k-retrieval',
+    'togethercomputer/m2-bert-80M-32k-retrieval',
+    'WhereIsAI/UAE-Large-V1',
+    'BAAI/bge-large-en-v1.5',
+    'BAAI/bge-base-en-v1.5',
+    'sentence-transformers/msmarco-bert-base-dot-v5',
+    'bert-base-uncased',
+]
+
+COHERE_EMBEDDING_MODELS=[
+    'embed-english-v3.0',
+    'embed-multilingual-v3.0',
+    'embed-english-light-v3.0',
+    'embed-multilingual-light-v3.0',
+    'embed-english-v2.0',
+    'embed-english-light-v2.0',
+    'embed-multilingual-v2.0',
+]
+
+DEFAULT_EMBEDDING_MODELS = {
+    'vectorstore':'text-embedding-3-large',
+    'proposal':'text-embedding-3-large',
+    'unitcode':'text-embedding-3-large',
+}
+
+DEFAULT_EMBEDDING_DISTANCES = {
+    'proposal':EmbeddingDistance.COSINE.value,
+    'unitcode':EmbeddingDistance.COSINE.value,
+}
+
+SUPPORTED_EMBEDDING_MODELS=[
+    *OPENAI_EMBEDDING_MODELS,
+    *TOGETHER_EMBEDDING_MODELS,
+    *COHERE_EMBEDDING_MODELS,
+]
+
+DEFAULT_VS_INDEX_NAME='modis-library-v0'
 
 class SuperScholarSearcher:
     """
@@ -167,29 +223,55 @@ class SuperScholarSearcher:
         self.splits=None
         self.vectors=None
 
-        self.embedding=OpenAIEmbeddings(
-            openai_api_key=os.environ['MY_OPENAI_KEY'],
-            model="text-embedding-3-large"
-        )
-
-        self.emb_evaluator = load_evaluator(
-            "embedding_distance", 
-            embeddings=self.embedding,
-            distance_metric=EmbeddingDistance.COSINE
-        )
-
         self.design_proposals={}
+        self.unit_codes={}
+        self._refresh_db()
+
+    def _refresh_db(self):
         for acronym in self.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
-            design=self.ptree.get_node(acronym)
-            self.design_proposals[acronym]=design.proposal.proposal
+            if acronym not in self.design_proposals:
+                design=self.ptree.get_node(acronym)
+                self.design_proposals[acronym]=design.proposal.proposal
+        
+        for name in self.ptree.GD.terms:
+            if name not in self.unit_codes:
+                self.unit_codes[name]=self.ptree.GD.get_unit(name).code # randomly get one
+
+    def _get_embedding_model(self,model_name):
+        if model_name in OPENAI_EMBEDDING_MODELS:
+            return OpenAIEmbeddings(openai_api_key=os.environ['MY_OPENAI_KEY'],model=model_name)    
+        elif model_name in TOGETHER_EMBEDDING_MODELS:
+            return TogetherEmbeddings(model=model_name,api_key=os.environ['TOGETHER_API_KEY'])
+        elif model_name in COHERE_EMBEDDING_MODELS:
+            return CohereEmbeddings(model=model_name,cohere_api_key=os.environ['COHERE_API_KEY'])
+        else:
+            raise ValueError(f'Unsupported embedding model: {model_name}')
+
+    def _setup_embedding_models(self):
+        self.embedding_vs=self._get_embedding_model(self.embedding_models['vectorstore'])
+        self.embedding_proposal=self._get_embedding_model(self.embedding_models['proposal'])
+        self.embedding_unit=self._get_embedding_model(self.embedding_models['unitcode'])
+        self.emb_evaluator_proposal = load_evaluator(
+            "embedding_distance", 
+            embeddings=self.embedding_proposal,
+            distance_metric=EmbeddingDistance(self.embedding_distances['proposal'])
+        )
+        self.emb_evaluator_unit = load_evaluator(
+            "embedding_distance", 
+            embeddings=self.embedding_unit,
+            distance_metric=EmbeddingDistance(self.embedding_distances['unitcode'])
+        )
 
 
     def reconfig(self,cfg,stream=None):
+        self.embedding_models=U.safe_get_cfg_dict(cfg,'embedding_models',DEFAULT_EMBEDDING_MODELS)
+        self.embedding_distances=U.safe_get_cfg_dict(cfg,'embedding_distances',DEFAULT_EMBEDDING_DISTANCES)
         self.result_limits=U.safe_get_cfg_dict(cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
         self.rerank_ratio=cfg.get('rerank_ratio',DEFAULT_RERANK_RATIO)
         self.perplexity_settings=U.safe_get_cfg_dict(cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
         self.proposal_search_cfg=U.safe_get_cfg_dict(cfg,'proposal_search',DEFAULT_PROPOSAL_SEARCH_CFG)
-        index_name=cfg.get('index_name','modis-library-v0') # change it to your index name
+        self.unit_search_cfg=U.safe_get_cfg_dict(cfg,'unit_search',DEFAULT_UNIT_SEARCH_CFG)
+        index_name=cfg.get('index_name',DEFAULT_VS_INDEX_NAME) # change it to your index name
         assert index_name, 'Index name is required'
         if index_name!=self.index_name and self.pc is not None: # always do it in init
             self.index_name=index_name
@@ -200,7 +282,11 @@ class SuperScholarSearcher:
             'rerank_ratio':self.rerank_ratio,
             'perplexity_settings':self.perplexity_settings,
             'proposal_search':self.proposal_search_cfg,
+            'embedding_models':self.embedding_models,
+            'embedding_distances':self.embedding_distances,
+            'unit_search':self.unit_search_cfg,
         }
+        self._setup_embedding_models()
         if stream:
             self.stream=stream
 
@@ -273,13 +359,17 @@ class SuperScholarSearcher:
         return RET,prt
 
     def query_sibling_designs(self,parents,pp=True):
+        top_k=self.proposal_search_cfg['sibling']
+        if top_k<=0:
+            return [],'Sibling proposal search not available.' if pp else []
         siblings=self.ptree.find_sibling_designs(parents)
         if pp:
-            prt=''
+            prt='**Siblings Design Proposals from Previous Designs**:\n\n'
             abstracts,reviews,ratings=self.ptree.get_abstracts(siblings)
             if not siblings:
                 prt+='### No siblings found from the previous designs with same seeds.\n\n'
             else:
+                siblings = random.sample(siblings,top_k)    
                 prt+=f'### Found {len(siblings)} siblings from the previous designs with same seeds:\n\n'
                 for i,p in enumerate(siblings):
                     prt+=f'#### Sibling {i+1}. {p}\n\n```\n\n{abstracts[i]}\n\n```\n\n'
@@ -288,22 +378,46 @@ class SuperScholarSearcher:
             return siblings,prt
         else:
             return siblings
-    
-    def query_design_proposals(self,query,pp=True):
-        top_k=self.proposal_search_cfg['top_k']
-        cutoff=self.proposal_search_cfg['cutoff']
-        scores={i:1-self.emb_evaluator.evaluate_strings(prediction=query,reference=self.design_proposals[i])['score'] 
-                for i in self.design_proposals}
+
+    def emb_evaluate(self,query,references,evaluator,top_k,cutoff):
+        scores={i:1-evaluator.evaluate_strings(prediction=query,reference=references[i])['score'] 
+                for i in references}
         filtered_scores={i:s for i,s in scores.items() if s>cutoff}
         pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
+        return pps,scores
+
+    def query_design_proposals(self,query,pp=True):
+        top_k=self.proposal_search_cfg['top_k']
+        if top_k<=0:
+            return [],'' if pp else []
+        cutoff=self.proposal_search_cfg['cutoff']
+        pps,scores=self.emb_evaluate(query,self.design_proposals,self.emb_evaluator_proposal,top_k,cutoff)
         if pp:
-            prt=''
+            prt='**Similar Design Proposals from Previous Designs**:\n\n'
             if not pps:
                 prt+='### No similar design proposals found from the previous designs for the given proposal.\n\n'
             else:
                 prt+=f'### Found {len(pps)} similar design proposals from the previous designs for the given proposal:\n\n'
                 for i,p in pps:
                     prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.design_proposals[i]}\n```\n\n</details>\n\n'
+            return pps,prt
+        else:
+            return pps
+
+    def query_unit_codes(self,query,pp=True):
+        top_k=self.unit_search_cfg['top_k']
+        if top_k<=0:
+            return [],'Unit code search not available.' if pp else []
+        cutoff=self.unit_search_cfg['cutoff']
+        pps,scores=self.emb_evaluate(query,self.unit_codes,self.emb_evaluator_unit,top_k,cutoff)
+        if pp:
+            prt='**Similar Unit Codes from Previous Designs**:\n\n'
+            if not pps:
+                prt+='### No similar unit codes found from the previous designs for the given unit.\n\n'
+            else:
+                prt+=f'### Found {len(pps)} similar unit codes from the previous designs for the given unit:\n\n'
+                for i,p in pps:
+                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.unit_codes[i]}\n```\n\n</details>\n\n'
             return pps,prt
         else:
             return pps
@@ -501,6 +615,8 @@ class SuperScholarSearcher:
 
     def safe_search(self,fn,query,result_limit=10):
         # try:
+        if result_limit<=0:
+            return []
         return fn(query,result_limit)
         # except Exception as e:
         #     print(f"Error searching {fn.__name__}: {e}")
@@ -872,11 +988,11 @@ class SuperScholarSearcher:
     def split_text(self,text,id,text_splitter=None):
         if not text_splitter:
             text_splitter = SemanticChunker(
-                self.embedding, breakpoint_threshold_type="gradient"
+                self.embedding_vs, breakpoint_threshold_type="gradient"
             )
         docs = text_splitter.create_documents([text])
         txts=[i.page_content for i in docs]
-        embs=self.embedding.embed_documents(txts)
+        embs=self.embedding_vs.embed_documents(txts)
         vectors=[]
         splits={}
         for idx,i in enumerate(docs):
@@ -984,7 +1100,7 @@ class SuperScholarSearcher:
             raise ValueError(f'Unknown namespace: {namespace}')
 
     def _query_index(self,query,namespace,result_limit=10):
-        embed=self.embedding.embed_query(query)
+        embed=self.embedding_vs.embed_query(query)
         if self.rerank_ratio>0:
             top_k=int(result_limit//self.rerank_ratio)
         else:
@@ -1030,18 +1146,24 @@ class SuperScholarSearcher:
 
     def search_lib_primary(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the selected ~300 model arch papers
+        if result_limit<=0:
+            return {},{}
         self.stream.write('*Searching primary library...*')
         grouped_docs,metainfo=self._query_index(query,'primary',result_limit)
         return grouped_docs,metainfo
 
     def search_lib_secondary(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the papers that are cited by the primary library, where their ideas come from  
+        if result_limit<=0:
+            return {},{}
         self.stream.write('*Searching secondary library...*')
         grouped_docs,metainfo=self._query_index(query,'secondary',result_limit)
         return grouped_docs,metainfo
 
     def search_lib_plus(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the papers recommended by S2 for the primary library  
+        if result_limit<=0:
+            return {},{}
         self.stream.write('*Searching library plus...*')
         grouped_docs,metainfo=self._query_index(query,'plus',result_limit)
         return grouped_docs,metainfo

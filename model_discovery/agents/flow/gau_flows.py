@@ -1454,6 +1454,7 @@ class GUFlowMutation(FlowCreator):
                         PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
                     implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
                                                         alias='implementation_observer',note=f'Observing implementation...')
+                    unit_codes=self.system.sss.query_unit_codes(reformatted_code)[1]
                     if REFINE:
                         if attempt==0:
                             status_info=f'Observing refinement of {selection}...'
@@ -1468,7 +1469,8 @@ class GUFlowMutation(FlowCreator):
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
                                 REVIEW=node.review,RATING=node.rating,SUGGESTIONS=node.suggestions,
-                                SPECIFICATION=node.spec.to_prompt(),**prompt_kwargs
+                                SPECIFICATION=node.spec.to_prompt(),UNIT_CODES=unit_codes,
+                                **prompt_kwargs
                             )
                             GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
@@ -1477,7 +1479,7 @@ class GUFlowMutation(FlowCreator):
                                 GUMT_IMPLEMENTATION_REOBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
                                 gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
                                     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                    VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt(),
+                                    VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
                                     FORMAT_CHECKER_REPORT=_FORMAT_CHECKER_REPORT,
                                     FUNCTION_CHECKER_REPORT=_FUNCTION_CHECKER_REPORT,
                                 )
@@ -1485,7 +1487,7 @@ class GUFlowMutation(FlowCreator):
                                 GUMT_IMPLEMENTATION_REOBSERVE=P.GUMT_IMPLEMENTATION_REOBSERVE
                                 gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
                                     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                    CHANGES=changes,SPECIFICATION=spec.to_prompt()
+                                    CHANGES=changes,SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
                                 )
                             GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
@@ -1499,7 +1501,8 @@ class GUFlowMutation(FlowCreator):
                             GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE
                         gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_OBSERVE(
                             UNIT_NAME=selection,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
-                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,**prompt_kwargs
+                            ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,UNIT_CODES=unit_codes,
+                            **prompt_kwargs
                         )
                         GUMT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 

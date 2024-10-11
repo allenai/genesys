@@ -9,6 +9,7 @@ import traceback
 from contextlib import redirect_stdout, redirect_stderr
 import torch
 import torch.nn as nn
+import random
 
 from dataclasses import dataclass, field
 from .utils.modules import GAUBase, gau_test
@@ -60,13 +61,18 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
 @dataclass
 class GAUDictTerm:
     name: str
-    variants: List[str] = field(default_factory=lambda: []) # tree name where the unit is registered
+    is_root: bool = False
+    variants: Dict[str, GAUNode] = field(default_factory=lambda: {}) # tree name where the unit is registered
 
-    def append(self,variant):
+    def append(self,variant,node):
         if variant not in self.variants:
-            self.variants.append(variant)
+            self.variants[variant] = node
 
 # TODO: WORK IN PROGRESS
+# Reuse: same name; New: different name
+# If there is an existing GAU for children, may reuse
+# If implementing a new GAU, make sure no similar ones exist
+# Same name must be a reuse, different name must be new
 class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     def __init__(self,ptree):
         self.terms = {}
@@ -76,7 +82,9 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         for unit_name in tree.units:
             if unit_name not in self.terms:
                 self.terms[unit_name]=GAUDictTerm(name=unit_name)
-            self.terms[unit_name].append(acronym)
+            self.terms[unit_name].append(acronym,tree.units[unit_name])
+            if tree.root.spec.unitname == unit_name:
+                self.terms[unit_name].is_root = True
 
     @classmethod
     def from_ptree(cls,ptree):
@@ -89,6 +97,25 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     
     def get_tree(self,name):
         return self.ptree.get_gau_tree(name)
+
+    def get_unit(self,name,tree_name=None,K=1):
+        if name not in self.terms:
+            return None
+        if tree_name is None:
+            tree_names=random.sample(list(self.terms[name].variants.keys()),min(K,len(self.terms[name].variants)))
+        else:
+            tree_names=[tree_name]
+        matches = [self.terms[name].variants[tree_name] for tree_name in tree_names]
+        if K==1:
+            return matches[0]
+        return matches
+
+    def search_by_unit(self,unit): # given a GAUNode, find all the GAUs that are similar
+        # compare the spec and code
+        raise NotImplementedError("Not implemented yet")
+
+    def search_by_decl(self,decl): # given a UnitDecl, find all the GAUs that are similar
+        raise NotImplementedError("Not implemented yet")
 
     def sync_to_db(self,doc_ref):
         raise NotImplementedError("Not implemented yet")

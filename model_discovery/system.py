@@ -513,6 +513,7 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
 
         self.sss.reconfig(search_cfg,stream)
+        self.sss._refresh_db()
         
         try:
             cols=stream.columns(2)
