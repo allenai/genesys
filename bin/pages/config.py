@@ -24,8 +24,7 @@ from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OP
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
-from model_discovery.agents.search_utils import DEFAULT_SEARCH_LIMITS,DEFAULT_RERANK_RATIO,\
-    DEFAULT_PERPLEXITY_SETTINGS,DEFAULT_PROPOSAL_SEARCH_CFG,EmbeddingDistance,DEFAULT_VS_INDEX_NAME,\
+from model_discovery.agents.search_utils import EmbeddingDistance,DEFAULT_VS_INDEX_NAME,\
     OPENAI_EMBEDDING_MODELS,TOGETHER_EMBEDDING_MODELS,COHERE_EMBEDDING_MODELS
 from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKEN_MULT,\
     DEFAULT_TRAINING_DATA,DEFAULT_EVAL_TASKS,DEFAULT_TOKENIZER,DEFAULT_OPTIM,DEFAULT_WANDB_PROJECT,\
@@ -35,7 +34,7 @@ SELECT_METHODS = ['random']
 VERIFY_STRATEGY = ['random']
 
 
-    
+
 
 def apply_config(evosys,config):
     if config['params']['evoname']!=evosys.params['evoname']:
@@ -83,6 +82,154 @@ def apply_ve_config(evosys,ve_cfg):
         st.toast("Applied and saved ve config")
 
 
+
+
+
+def evosys_settings(evosys):
+    st.subheader("Evolution System Settings")
+    evosys_config(evosys)
+    ve_config(evosys)
+
+
+def evosys_config(evosys):
+    with st.expander("Evolution Settings",expanded=False,icon='🧬'):
+        config=U.load_json(U.pjoin(evosys.evo_dir,'config.json'))
+        col1,col2=st.columns(2)
+        with col1:
+            with st.form("Evolution System Config"):
+                _params=copy.deepcopy(evosys.params)
+                _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'],
+                    help='Changing this will create a new experiment namespace.')
+                
+                subcol1, subcol2, subcol3 = st.columns([1,1,0.25])
+                with subcol1:
+                    target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
+                        help='The largest scale to train, will train `N Target` models at this scale.')
+                    scales=[]
+                    for s in TARGET_SCALES:
+                        if int(target_scale.replace('M',''))>=int(s.replace('M','')):
+                            scales.append(s)
+                    _params['scales']=','.join(scales)
+                with subcol2:
+                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
+                        help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
+                with subcol3:
+                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
+                
+                _verify_budget={i:0 for i in TARGET_SCALES}
+                budget=_params['n_target']
+                for scale in _params['scales'].split(',')[::-1]:
+                    _verify_budget[scale]=int(np.ceil(budget))
+                    budget/=_params['selection_ratio']
+                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*')
+                _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
+                _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
+                _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
+                _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
+                if _manual_set_budget:
+                    _params['verify_budget']=_verify_budget
+
+                subcol1, subcol2 = st.columns([1,1])
+                with subcol1:
+                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,
+                        help='The total budget for running model design agents, 0 means no budget limit.')
+                with subcol2:
+                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
+                        help=(
+                            '**Design bound:** terminate the evolution after the design budget is used up, and will automatically promote verify budget; \n\n'
+                            '**Verify bound:** terminate the evolution after the verify budget is used up, and will automatically promote design budget.\n\n'
+                            'Design bound is recommended if you are using inference APIs (e.g. Anthropic, OpenAI, Together).'
+                        ))
+                    _params['budget_type']=bound_type
+                
+                _col1, _col2 = st.columns([2.5,1])
+                with _col1:
+                    _params['group_id']=st.text_input('Network Group ID',value=evosys.params['group_id'],
+                        help='Used for the master node to find its nodes. Change it only if you wish to run multiple evolutions on multiple networks.')
+                with _col2:
+                    st.write('')
+                    st.write('')
+                    _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
+                
+                if st.form_submit_button("Apply and Save"):
+                    with st.spinner("Applying and saving..."):
+                        if _params['evoname']=='design_bound' and _params['design_budget']==0:
+                            st.warning("You give inifinity budget to a design-bound evolution. The evolution will not terminate automatically.")
+                        config['params']=_params
+                        if config['params']['evoname']!=evosys.params['evoname']:
+                            evosys.switch_ckpt(config['params']['evoname'],load_params=False)
+                        evosys.reload(config['params'])
+                        U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
+                        st.toast(f"Applied and saved params in {evosys.evo_dir}, please remember to upload to remote DB.")
+
+        with col2:
+            with st.form(f"Experiment Status"):
+                st.write(f"Current Status for ```{evosys.evoname}```:")
+                settings={}
+                settings['Experiment Directory']=evosys.evo_dir
+                if evosys.design_budget_limit>0:
+                    settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
+                else:
+                    settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/♾️'
+                settings['Verification Budge Usage']={}
+                for scale,num in evosys.selector._verify_budget.items():
+                    remaining = evosys.selector.verify_budget[scale] 
+                    settings['Verification Budge Usage'][scale]=f'{remaining}/{num}'
+                settings['Budget Type']=evosys.params['budget_type']
+                settings['Use Remote DB']=evosys.params['use_remote_db']
+                if evosys.CM:
+                    settings['Network Group ID']=evosys.CM.group_id
+                st.write(settings)
+                st.form_submit_button("Refresh")
+
+
+def ve_config(evosys):
+    with st.expander(f"Verification Engine Settings for ```{evosys.evoname}```",expanded=False,icon='⚙️'):
+        with st.form("Verification Engine Config"):
+            _ve_cfg=copy.deepcopy(evosys.ve_cfg)
+            
+            cols = st.columns(5)
+            with cols[0]:
+                _ve_cfg['seed'] = st.number_input('Random Seed',min_value=0,value=_ve_cfg.get('seed',DEFAULT_RANDOM_SEED))
+            with cols[1]:
+                _ve_cfg['save_steps'] = st.number_input('Save Steps',min_value=0,value=_ve_cfg.get('save_steps',DEFAULT_SAVE_STEPS))
+            with cols[2]:
+                _ve_cfg['logging_steps'] = st.number_input('Logging Steps',min_value=0,value=_ve_cfg.get('logging_steps',DEFAULT_LOG_STEPS))
+            with cols[3]:
+                _ve_cfg['wandb_project'] = st.text_input('Weights & Biases Project',value=_ve_cfg.get('wandb_project',DEFAULT_WANDB_PROJECT))
+            with cols[4]:
+                _ve_cfg['wandb_entity'] = st.text_input('Weights & Biases Entity',value=_ve_cfg.get('wandb_entity',DEFAULT_WANDB_ENTITY))
+            
+            cols=st.columns(4)
+            with cols[0]:
+                _ve_cfg['training_token_multiplier']=st.number_input('Training Token Multiplier',min_value=0,value=_ve_cfg.get('training_token_multiplier',DEFAULT_TOKEN_MULT))
+            with cols[1]:
+                _ve_cfg['tokenizer'] = st.text_input('Tokenizer',value=_ve_cfg.get('tokenizer',DEFAULT_TOKENIZER))
+            with cols[2]:
+                _ve_cfg['context_length'] = st.number_input('Context Length',min_value=0,value=_ve_cfg.get('context_length',DEFAULT_CONTEXT_LENGTH))
+            with cols[3]:
+                _ve_cfg['optim'] = st.text_input('Optimizer',value=_ve_cfg.get('optim',DEFAULT_OPTIM))
+            
+            _ve_cfg['eval_tasks'] = st.text_input('Evaluation Tasks (comma seperated, refer to https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks (not full list))',value=_ve_cfg.get('eval_tasks',','.join(DEFAULT_EVAL_TASKS)))
+            _ve_cfg['training_data'] = st.text_input('Training Data (comma seperated, processed ones or datasets from hugginface hub (see help on the right ❓))',value=_ve_cfg.get('training_data',','.join(DEFAULT_TRAINING_DATA)),
+                help=(
+                    'If are inputting a huggingface dataset, it must have `train` split and `text` column, '
+                    'e.g. https://huggingface.co/datasets/allenai/c4, '
+                    'you can input the dataset path and optionally the subset (if there are subsets in the path), '
+                    'use : as separator, e.g. `allenai/c4:en`'
+                )
+            )
+            
+            _ve_cfg['context_length'] = str(_ve_cfg['context_length'])
+
+            st.form_submit_button("Save and Apply",
+                on_click=apply_ve_config,args=(evosys,_ve_cfg),
+                disabled=st.session_state.evo_running,
+                help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
+            )   
+
+
+
 AGENT_TYPE_LABELS = {
     'DESIGN_PROPOSER':'Proposal Agent',
     'PROPOSAL_REVIEWER':'Proposal Reviewer',
@@ -92,36 +239,21 @@ AGENT_TYPE_LABELS = {
     'SEARCH_ASSISTANT': '*Search Assistant*'
 }
 
-def design_config(evosys):
-
+def model_design_engine_settings(evosys):
     st.subheader("Model Design Engine Settings")
+    selector_config(evosys)
+    search_config(evosys)
+    design_config(evosys)
 
-    design_cfg=copy.deepcopy(evosys.design_cfg)
+
+def selector_config(evosys):
     select_cfg=copy.deepcopy(evosys.select_cfg)
-    search_cfg=copy.deepcopy(evosys.search_cfg)
-
+    
     select_method=select_cfg.get('select_method','random')
     verify_strategy=select_cfg.get('verify_strategy','random')
     n_sources=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
     seed_dist=select_cfg.get('seed_dist',DEFAULT_SEED_DIST)
 
-
-    design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
-    design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
-    design_cfg['termination']=U.safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
-    design_cfg['threshold']=U.safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
-    design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
-    design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
-    design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
-    design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
-    
-    search_cfg['result_limits']=U.safe_get_cfg_dict(search_cfg,'result_limits',DEFAULT_SEARCH_LIMITS)
-    search_cfg['rerank_ratio']=search_cfg.get('rerank_ratio',DEFAULT_RERANK_RATIO)
-    search_cfg['perplexity_settings']=U.safe_get_cfg_dict(search_cfg,'perplexity_settings',DEFAULT_PERPLEXITY_SETTINGS)
-    search_cfg['proposal_search_cfg']=U.safe_get_cfg_dict(search_cfg,'proposal_search',DEFAULT_PROPOSAL_SEARCH_CFG)
-    
-    #### Configure design
-    
     with st.expander(f"Node Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
         with st.form("Node Selector Config"):
             _col1,_col2=st.columns([2,3])
@@ -160,6 +292,21 @@ def design_config(evosys):
             st.form_submit_button("Save and Apply",on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
 
 
+def design_config(evosys):
+
+    design_cfg=copy.deepcopy(evosys.design_cfg)
+
+    design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
+    design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
+    design_cfg['termination']=U.safe_get_cfg_dict(design_cfg,'termination',DEFAULT_TERMINATION)
+    design_cfg['threshold']=U.safe_get_cfg_dict(design_cfg,'threshold',DEFAULT_THRESHOLD)
+    design_cfg['search_settings']=U.safe_get_cfg_dict(design_cfg,'search_settings',DEFAULT_SEARCH_SETTINGS)
+    design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
+    design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
+    design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
+    
+    #### Configure design
+    
 
     with st.expander(f"Design Agent Configurations for ```{evosys.evoname}```",expanded=False,icon='🎨'):
         with st.form("Design Agent Config"):
@@ -245,16 +392,18 @@ def design_config(evosys):
             st.form_submit_button("Save and Apply",on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.evo_running)   
 
 
+EMBEDDING_MODELS = {
+    'OpenAI':OPENAI_EMBEDDING_MODELS,
+    'Cohere':COHERE_EMBEDDING_MODELS,
+    'Together':TOGETHER_EMBEDDING_MODELS,
+}
+
+def search_config(evosys):
 
     with st.expander(f"Search Engine Configurations for ```{evosys.evoname}```",expanded=False,icon='🔎'):
+        search_cfg=copy.deepcopy(evosys.rnd_agent.sss.cfg)
+        
         with st.form("Search Engine Config"):
-            search_cfg=evosys.rnd_agent.sss.cfg
-
-            _embeddding_models = {
-                'OpenAI':OPENAI_EMBEDDING_MODELS,
-                'Cohere':COHERE_EMBEDDING_MODELS,
-                'Together':TOGETHER_EMBEDDING_MODELS,
-            }
 
             COL1,COL2 = st.columns([10,6])
             with COL1:
@@ -277,19 +426,19 @@ def design_config(evosys):
                 _vectorstore_embeddings=search_cfg['embedding_models']['vectorstore']
                 cols=st.columns([1,1.3])
                 with cols[0]:
-                    if _vectorstore_embeddings in _embeddding_models['OpenAI']:
+                    if _vectorstore_embeddings in EMBEDDING_MODELS['OpenAI']:
                         embedding_model_type = 'OpenAI'
-                    elif _vectorstore_embeddings in _embeddding_models['Cohere']:
+                    elif _vectorstore_embeddings in EMBEDDING_MODELS['Cohere']:
                         embedding_model_type = 'Cohere'
-                    elif _vectorstore_embeddings in _embeddding_models['Together']:
+                    elif _vectorstore_embeddings in EMBEDDING_MODELS['Together']:
                         embedding_model_type = 'Together'
-                    _model_types = list(_embeddding_models.keys())
+                    _model_types = list(EMBEDDING_MODELS.keys())
                     embedding_model_type = st.selectbox("Embedding Model Type",key='vectorstore_embedding_model_type',
                         options=_model_types,index=_model_types.index(embedding_model_type),disabled=True)
                 with cols[1]:
-                    _index=_embeddding_models[embedding_model_type].index(_vectorstore_embeddings) if _vectorstore_embeddings in _embeddding_models[embedding_model_type] else 0
+                    _index=EMBEDDING_MODELS[embedding_model_type].index(_vectorstore_embeddings) if _vectorstore_embeddings in EMBEDDING_MODELS[embedding_model_type] else 0
                     _vectorstore_embeddings=st.selectbox("Embedding Model",key='vectorstore_embedding_model',
-                        options=_embeddding_models[embedding_model_type],index=_index,disabled=True)
+                        options=EMBEDDING_MODELS[embedding_model_type],index=_index,disabled=True)
             search_cfg['embedding_models']['vectorstore'] = _vectorstore_embeddings
             
 
@@ -326,17 +475,17 @@ def design_config(evosys):
             with cols[2]:
                 _proposal_search_cfg['cutoff']=st.slider("Cutoff",min_value=0.0,max_value=1.0,value=_proposal_search_cfg['cutoff'],step=0.01)
             with cols[3]:
-                if _proposal_embedding_model in _embeddding_models['OpenAI']:
+                if _proposal_embedding_model in EMBEDDING_MODELS['OpenAI']:
                     embedding_model_type = 'OpenAI'
-                elif _proposal_embedding_model in _embeddding_models['Cohere']:
+                elif _proposal_embedding_model in EMBEDDING_MODELS['Cohere']:
                     embedding_model_type = 'Cohere'
-                elif _proposal_embedding_model in _embeddding_models['Together']:
+                elif _proposal_embedding_model in EMBEDDING_MODELS['Together']:
                     embedding_model_type = 'Together'
-                _model_types = list(_embeddding_models.keys())
+                _model_types = list(EMBEDDING_MODELS.keys())
                 embedding_model_type = st.selectbox("Embedding Model Type",options=_model_types,index=_model_types.index(embedding_model_type))
             with cols[4]:
-                _index=_embeddding_models[embedding_model_type].index(_proposal_embedding_model) if _proposal_embedding_model in _embeddding_models[embedding_model_type] else 0
-                _proposal_embedding_model=st.selectbox("Embedding Model",options=_embeddding_models[embedding_model_type],index=_index)
+                _index=EMBEDDING_MODELS[embedding_model_type].index(_proposal_embedding_model) if _proposal_embedding_model in EMBEDDING_MODELS[embedding_model_type] else 0
+                _proposal_embedding_model=st.selectbox("Embedding Model",options=EMBEDDING_MODELS[embedding_model_type],index=_index)
             with cols[5]:
                 embedding_distances = [i.value for i in EmbeddingDistance]
                 _proposal_embedding_distance=st.selectbox("Embedding Distance",options=embedding_distances,index=embedding_distances.index(_proposal_embedding_distance))
@@ -357,19 +506,19 @@ def design_config(evosys):
                 _unit_search_cfg['cutoff']=st.slider("Cutoff",key='unit_cutoff',
                     min_value=0.0,max_value=1.0,value=_unit_search_cfg['cutoff'],step=0.01)
             with cols[2]:
-                if _unit_embedding_model in _embeddding_models['OpenAI']:
+                if _unit_embedding_model in EMBEDDING_MODELS['OpenAI']:
                     embedding_model_type = 'OpenAI'
-                elif _unit_embedding_model in _embeddding_models['Cohere']:
+                elif _unit_embedding_model in EMBEDDING_MODELS['Cohere']:
                     embedding_model_type = 'Cohere'
-                elif _unit_embedding_model in _embeddding_models['Together']:
+                elif _unit_embedding_model in EMBEDDING_MODELS['Together']:
                     embedding_model_type = 'Together'
-                _model_types = list(_embeddding_models.keys())
+                _model_types = list(EMBEDDING_MODELS.keys())
                 embedding_model_type = st.selectbox("Embedding Model Type",key='unit_embedding_model_type',
                     options=_model_types,index=_model_types.index(embedding_model_type))
             with cols[3]:
-                _index=_embeddding_models[embedding_model_type].index(_unit_embedding_model) if _unit_embedding_model in _embeddding_models[embedding_model_type] else 0
+                _index=EMBEDDING_MODELS[embedding_model_type].index(_unit_embedding_model) if _unit_embedding_model in EMBEDDING_MODELS[embedding_model_type] else 0
                 _unit_embedding_model=st.selectbox("Embedding Model",key='unit_embedding_model',
-                    options=_embeddding_models[embedding_model_type],index=_index)
+                    options=EMBEDDING_MODELS[embedding_model_type],index=_index)
             with cols[4]:
                 embedding_distances = [i.value for i in EmbeddingDistance]
                 _unit_embedding_distance=st.selectbox("Embedding Distance",key='unit_embedding_distance',
@@ -379,7 +528,6 @@ def design_config(evosys):
             search_cfg['embedding_distances']['unitcode'] = _unit_embedding_distance
 
             st.form_submit_button("Save and Apply",on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.evo_running)
-
 
 
 def upload_exp_to_db(evosys,exp,config=None):
@@ -433,149 +581,12 @@ def sync_exps_from_db(evosys):
     st.rerun()
 
 
-def evosys_config(evosys):
-
-    st.subheader("Evolution System Settings")
-
-    config=U.load_json(U.pjoin(evosys.evo_dir,'config.json'))
-
-    with st.expander("Evolution Settings",expanded=False,icon='🧬'):
-        with st.form("Evolution System Config"):
-            _params={}
-            col1,col2=st.columns(2)
-            with col1:
-                _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'],
-                    help='Changing this will create a new experiment namespace.')
-                
-                subcol1, subcol2, subcol3 = st.columns([1,1,0.25])
-                with subcol1:
-                    target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
-                        help='The largest scale to train, will train `N Target` models at this scale.')
-                    scales=[]
-                    for s in TARGET_SCALES:
-                        if int(target_scale.replace('M',''))>=int(s.replace('M','')):
-                            scales.append(s)
-                    _params['scales']=','.join(scales)
-                with subcol2:
-                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
-                        help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
-                with subcol3:
-                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
-                
-                _verify_budget={i:0 for i in TARGET_SCALES}
-                budget=_params['n_target']
-                for scale in _params['scales'].split(',')[::-1]:
-                    _verify_budget[scale]=int(np.ceil(budget))
-                    budget/=_params['selection_ratio']
-                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*')
-                _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
-                _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
-                _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
-                _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
-                if _manual_set_budget:
-                    _params['verify_budget']=_verify_budget
-
-                subcol1, subcol2 = st.columns([1,1])
-                with subcol1:
-                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,
-                        help='The total budget for running model design agents, 0 means no budget limit.')
-                with subcol2:
-                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
-                        help=(
-                            '**Design bound:** terminate the evolution after the design budget is used up, and will automatically promote verify budget; \n\n'
-                            '**Verify bound:** terminate the evolution after the verify budget is used up, and will automatically promote design budget.\n\n'
-                            'Design bound is recommended if you are using inference APIs (e.g. Anthropic, OpenAI, Together).'
-                        ))
-                    _params['budget_type']=bound_type
-                
-                _col1, _col2 = st.columns([2.5,1])
-                with _col1:
-                    _params['group_id']=st.text_input('Network Group ID',value=evosys.params['group_id'],
-                        help='Used for the master node to find its nodes. Change it only if you wish to run multiple evolutions on multiple networks.')
-                with _col2:
-                    st.write('')
-                    st.write('')
-                    _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
-                
-            with col2:
-                st.write(f"Current Status for ```{evosys.evoname}```:")
-                settings={}
-                settings['Experiment Directory']=evosys.evo_dir
-                # settings['Seed Selection Method']=evosys.select_method
-                # settings['Verification Strategy']=evosys.verify_strategy
-                if evosys.design_budget_limit>0:
-                    settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
-                else:
-                    settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/♾️'
-                settings['Verification Budge Usage']={}
-                for scale,num in evosys.selector._verify_budget.items():
-                    remaining = evosys.selector.verify_budget[scale] 
-                    settings['Verification Budge Usage'][scale]=f'{remaining}/{num}'
-                settings['Budget Type']=evosys.params['budget_type']
-                settings['Use Remote DB']=evosys.params['use_remote_db']
-                if evosys.CM:
-                    settings['Network Group ID']=evosys.CM.group_id
-                st.write(settings)
-
-            if st.form_submit_button("Apply and Save"):
-                with st.spinner("Applying and saving..."):
-                    if _params['evoname']=='design_bound' and _params['design_budget']==0:
-                        st.warning("You give inifinity budget to a design-bound evolution. The evolution will not terminate automatically.")
-                    config['params']=_params
-                    if config['params']['evoname']!=evosys.params['evoname']:
-                        evosys.switch_ckpt(config['params']['evoname'],load_params=False)
-                    evosys.reload(config['params'])
-                    U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
-                    st.toast(f"Applied and saved params in {evosys.evo_dir}")
-
-    with st.expander(f"Verification Engine Settings for ```{evosys.evoname}```",expanded=False,icon='⚙️'):
-        with st.form("Verification Engine Config"):
-            _ve_cfg=copy.deepcopy(evosys.ve_cfg)
-            
-            cols = st.columns(5)
-            with cols[0]:
-                _ve_cfg['seed'] = st.number_input('Random Seed',min_value=0,value=_ve_cfg.get('seed',DEFAULT_RANDOM_SEED))
-            with cols[1]:
-                _ve_cfg['save_steps'] = st.number_input('Save Steps',min_value=0,value=_ve_cfg.get('save_steps',DEFAULT_SAVE_STEPS))
-            with cols[2]:
-                _ve_cfg['logging_steps'] = st.number_input('Logging Steps',min_value=0,value=_ve_cfg.get('logging_steps',DEFAULT_LOG_STEPS))
-            with cols[3]:
-                _ve_cfg['wandb_project'] = st.text_input('Weights & Biases Project',value=_ve_cfg.get('wandb_project',DEFAULT_WANDB_PROJECT))
-            with cols[4]:
-                _ve_cfg['wandb_entity'] = st.text_input('Weights & Biases Entity',value=_ve_cfg.get('wandb_entity',DEFAULT_WANDB_ENTITY))
-            
-            cols=st.columns(4)
-            with cols[0]:
-                _ve_cfg['training_token_multiplier']=st.number_input('Training Token Multiplier',min_value=0,value=_ve_cfg.get('training_token_multiplier',DEFAULT_TOKEN_MULT))
-            with cols[1]:
-                _ve_cfg['tokenizer'] = st.text_input('Tokenizer',value=_ve_cfg.get('tokenizer',DEFAULT_TOKENIZER))
-            with cols[2]:
-                _ve_cfg['context_length'] = st.number_input('Context Length',min_value=0,value=_ve_cfg.get('context_length',DEFAULT_CONTEXT_LENGTH))
-            with cols[3]:
-                _ve_cfg['optim'] = st.text_input('Optimizer',value=_ve_cfg.get('optim',DEFAULT_OPTIM))
-            
-            _ve_cfg['eval_tasks'] = st.text_input('Evaluation Tasks (comma seperated, refer to https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks (not full list))',value=_ve_cfg.get('eval_tasks',','.join(DEFAULT_EVAL_TASKS)))
-            _ve_cfg['training_data'] = st.text_input('Training Data (comma seperated, processed ones or datasets from hugginface hub (see help on the right ❓))',value=_ve_cfg.get('training_data',','.join(DEFAULT_TRAINING_DATA)),
-                help=(
-                    'If are inputting a huggingface dataset, it must have `train` split and `text` column, '
-                    'e.g. https://huggingface.co/datasets/allenai/c4, '
-                    'you can input the dataset path and optionally the subset (if there are subsets in the path), '
-                    'use : as separator, e.g. `allenai/c4:en`'
-                )
-            )
-            
-            _ve_cfg['context_length'] = str(_ve_cfg['context_length'])
-
-            st.form_submit_button("Save and Apply",
-                on_click=apply_ve_config,args=(evosys,_ve_cfg),
-                disabled=st.session_state.evo_running,
-                help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
-            )   
-
-
-def advanced_config(evosys):
+def advanced_configs(evosys):
     st.write("#### *Advanced Configurations*")
+    hybrid_agent_weights(evosys)
+    selector_ranking_exploration_config(evosys)
 
+def hybrid_agent_weights(evosys):
     design_cfg=copy.deepcopy(evosys.design_cfg)
     design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
     with st.expander(f"Hybrid Agent Weights for ```{evosys.evoname}```",expanded=False,icon='🤖'):
@@ -600,11 +611,11 @@ def advanced_config(evosys):
             help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
         )   
         
+def selector_ranking_exploration_config(evosys):
     with st.expander(f"Selector Ranking and Exploration Settings for ```{evosys.evoname}```",expanded=False,icon='🧰'):
-        
+        select_cfg=copy.deepcopy(evosys.select_cfg)
+
         with st.form("Selector Ranking and Exploration Settings"):
-            select_cfg=copy.deepcopy(evosys.selector.select_cfg)
-            # st.write("##### Selector Ranking settings")
             ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
             cols = st.columns([5,1,0.8,0.8])
             with cols[0]:
@@ -653,8 +664,6 @@ def advanced_config(evosys):
                 ranking_args['normed_difference'] = st.checkbox('Norm Diff.',value=ranking_args['normed_difference'],
                     help='If set, will use normed difference `|x-random|` instead of direct difference `x-random` for filtering')
 
-
-
             cols=st.columns(3)
             quadrant_args=U.safe_get_cfg_dict(select_cfg,'quadrant_args',DEFAULT_QUADRANT_ARGS)
             with cols[0]:
@@ -689,22 +698,7 @@ def advanced_config(evosys):
 
 
 
-
-
-
-def config(evosys,project_dir):
-
-    st.title("Experiment Management")
-
-    st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
-
-    if st.session_state.listening_mode:
-        st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")
-
-    if st.session_state.evo_running:
-        st.warning("**NOTE:** Evolution system is running. You cannot modify the system configuration while the system is running.")
-
-
+def env_vars_settings(evosys):
     st.subheader("Environment Settings")
 
     env_vars={}
@@ -734,11 +728,9 @@ def config(evosys,project_dir):
                 changed=apply_env_vars(evosys,env_vars)
                 if changed:
                     evosys.reload()
-    
-    evosys_config(evosys)
-    design_config(evosys)
-    advanced_config(evosys)
-    
+
+
+def check_configs(evosys):
     st.write(f'### 🔧 Check Configurations for ```{evosys.evoname}```')
     col1,col2=st.columns(2)
     with col1:
@@ -759,6 +751,9 @@ def config(evosys,project_dir):
             st.write(evosys.ve_cfg)
             st.info('Missing parts will apply default values')
 
+
+def local_experiments(evosys):
+    
     col1,col2,col3,_=st.columns([1.5,1,1,2])
     with col1:
         st.header(f"Local Experiments")
@@ -855,6 +850,28 @@ def config(evosys,project_dir):
         AU.grid_view(st,experiments,per_row=3,spacing=0.05)
     else:
         st.info("No experiments found in the local directory. You may download from remote DB")
+
+
+
+def config(evosys,project_dir):
+
+    st.title("Experiment Management")
+
+    st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
+
+    if st.session_state.listening_mode:
+        st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")
+
+    if st.session_state.evo_running:
+        st.warning("**NOTE:** Evolution system is running. You cannot modify the system configuration while the system is running.")
+
+
+    env_vars_settings(evosys)
+    evosys_settings(evosys)
+    model_design_engine_settings(evosys)
+    advanced_configs(evosys)
+    check_configs(evosys)
+    local_experiments(evosys)
 
 
 

@@ -26,7 +26,15 @@ def design_selector(evosys,project_dir):
     seed_dist = copy.deepcopy(DEFAULT_SEED_DIST)
 
     with st.sidebar:
-        st.write(f'Number of designs: ```{len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))}```')
+        designs = evosys.ptree.filter_by_type('DesignArtifactImplemented')
+        st.success(f'Number of designs: ```{len(designs)}```')
+        # select_design = st.selectbox('Select a design',options=['None']+[d.acronym for d in designs])
+        # with st.expander('Selected Design',expanded=True):
+        #     if select_design is not None:
+        #         node=evosys.ptree.get_node(select_design)
+        #         st.write(node.proposal.ratings)
+        #     else:
+        #         st.info('No design selected.')
 
     with st.expander('Design Selector basic settings',expanded=True):
         _col1,_col2=st.columns([2,3])
@@ -179,7 +187,10 @@ def verify_selector(evosys,project_dir):
         unverified = evosys.ptree.get_unverified_scales()
         _select_design = st.selectbox('Select a design',options=list(unverified.keys()))
         with st.expander('Unverified scales',expanded=True):
-            st.write(unverified[_select_design])
+            if _select_design is not None:
+                st.write(unverified[_select_design])
+            else:
+                st.info('No design available.')
 
     col1, col2, col3, col4 = st.columns([1,1,1,1])
     with col1:
@@ -193,8 +204,11 @@ def verify_selector(evosys,project_dir):
     with col4:
         st.write('')
         with st.expander(f'Unverified Designs under ***{scale}***'):
-            unverified = evosys.ptree.get_unverified_designs(scale)
-            st.write(unverified)
+            if scale is not None:
+                unverified = evosys.ptree.get_unverified_designs(scale)
+                st.write(unverified)
+            else:
+                st.info('No scale available.')
 
     # if verify_strategy == 'random':
     #     st.subheader('Random Strategy')
@@ -297,12 +311,12 @@ def select(evosys,project_dir):
     with st.sidebar:
         AU.running_status(st,evosys)
 
-        mode=st.radio('Options',options=['Design','Verify'],horizontal=True)
+        mode=st.selectbox('Choose a Selector',options=['Design Selector','Verify Selector'],index=0)
 
 
-    if mode=='Design':
+    if mode=='Design Selector':
         design_selector(evosys,project_dir)
-    elif mode=='Verify':
+    elif mode=='Verify Selector':
         verify_selector(evosys,project_dir)
 
 

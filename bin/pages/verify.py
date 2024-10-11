@@ -11,6 +11,7 @@ import psutil
 import subprocess
 import pytz
 import shlex
+import numpy as np
 import select
 import pandas as pd
 import multiprocessing
@@ -31,6 +32,7 @@ from model_discovery.configs.gam_config import (
 )
 
 from model_discovery.ve.data_loader import load_datasets
+from model_discovery.configs.const import TARGET_SCALES
 
 
 
@@ -379,8 +381,8 @@ def stream_output(process, key):
             st.code(f"ERROR: {line}")
 
 
-def verify(evosys,project_dir):
-
+def verify_engine(evosys,project_dir):
+    
     st.title("Verification Engine")
 
     DISABLE_VERIFICATION=False
@@ -391,13 +393,14 @@ def verify(evosys,project_dir):
     if st.session_state.evo_running:
         st.warning("**NOTE:** You are running as the master node. Verification engine is taken over by the system.")
 
+
     # evosys.ptree.load()
     
     # if 'output' not in st.session_state:
     #     st.session_state['output'] = {}
 
+
     with st.sidebar:
-        AU.running_status(st,evosys)
         with st.expander("View CPU stats"):
             cpu_percentages = psutil.cpu_percent(interval=1, percpu=True)
             if st.button("Refresh",key='refresh_btn_cpu'):
@@ -687,7 +690,157 @@ def verify(evosys,project_dir):
                         st.error(f"Error terminating process: {str(e)}")
             while process.poll() is None:
                 time.sleep(1)
-            
+
+
+
+
+def linear_budget(L,roll=0):
+    db=np.cumsum(np.ones(L))[::-1]
+    db/=db.sum()
+    if roll>=L: 
+        db=np.zeros(L)
+        db[-1]=1
+    else:
+        db=np.roll(db,roll)
+        residual=db[:roll].sum()
+        db[:roll]=0
+        db[roll-1]+=residual
+    
+    db=np.zeros(L)
+    db[-1]=1
+    return db
+
+def cost_estimate(scales,costs,sr=0.25,L=4,warmup=0,title=None,mode='H100'):
+    b=1
+    budgets={}
+    for s in scales:
+        budgets[s]=int(b)
+        b=np.ceil(b/sr)
+    
+    if title:
+        st.subheader(f'Cost Estimate for the Scale Climbing: {title}')
+
+    def scale_time(s,warmup,db,c500,c2k):
+        b=budgets[s]
+        wb=np.floor(warmup*b)
+        r=b-wb
+        cost_weights=np.cumsum(np.ones(L)/L)
+        avg=np.dot(db,cost_weights)
+        rs=[]
+        for i in range(L-1):
+            rs.append(int(r*db[i]))
+        rs.append(int(r-np.sum(rs)))
+        st.write(f'Scale: {s}, Budget: {b}')
+        st.write(f'Warmup: {int(wb)} runs, Rest: {rs}, avg. {avg:.2f}')
+        cost=[w*c2k for w in cost_weights]
+        stime=wb*c500+np.dot(rs,cost)
+        if mode=='H100':
+            return stime*8/3.6/3600
+        elif mode=='A6000x8':
+            return stime/3600
+
+    at=0
+    for idx,s in enumerate(scales[::-1]):
+        # warmup=0.2 #warmups[s]
+        db=linear_budget(L,roll=idx)
+        st.write(db)
+        stime=scale_time(s,warmup,db,*costs[s])
+        at+=stime
+        st.write(f'Total: {stime:.1f}, accumulated [{at:.1f}] GPUhrs ({mode})\n')
+
+
+COSTS_LOWER={
+    14:[76,174],
+    31:[190,437],
+    70:[11.2*60,22.3*60],
+    125:[80*60,146.3*60],
+    350:[10*3600,17*3600],
+    760:[30*3600,54.3*3600],
+    1300:[0,137.5*3600],
+}
+
+COSTS_UPPER={
+    14:[43,46],
+    31:[112,123],
+    70:[7.5*60,8.3*60],
+    125:[50*60,54.3*60],
+    350:[7.5*3600,7.85*3600],
+    760:[30*3600,32.6*3600],
+    1300:[0,92.5*3600],
+}
+
+def verify_budget_tool(evosys,project_dir):
+    
+    st.subheader("Verify Budget Tool")
+    subcol1, subcol2, subcol3, _ = st.columns([1,1,0.25,0.3])
+    with subcol1:
+        target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
+            help='The largest scale to train, will train `N Target` models at this scale.')
+        scales=[]
+        for s in TARGET_SCALES:
+            if int(target_scale.replace('M',''))>=int(s.replace('M','')):
+                scales.append(s)
+        scales=','.join(scales)
+    with subcol2:
+        selection_ratio=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
+            help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
+    with subcol3:
+        n_target=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
+
+
+    _verify_budget={i:0 for i in TARGET_SCALES}
+    budget=n_target
+    for scale in scales.split(',')[::-1]:
+        _verify_budget[scale]=int(np.ceil(budget))
+        budget/=selection_ratio
+    verify_budget=_verify_budget.copy()
+    col1,col2,_=st.columns([1,0.5,0.75])
+    with col1:
+        _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
+        _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
+        _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
+        _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
+    with col2:
+        if st.checkbox('Use fine-grained verify budget (override above)'):
+            verify_budget=_verify_budget
+
+    scales=[int(s.replace('M','')) for s in verify_budget if verify_budget[s]>0]
+
+    selection_ratio=0.25
+
+    gpu_type=st.selectbox('GPU Type',options=['H100','A6000x8'],index=0)
+    
+    cost_estimate(scales,COSTS_LOWER,sr=selection_ratio,title='Lower bound',mode=gpu_type)
+    cost_estimate(scales,COSTS_UPPER,sr=selection_ratio,title='Upper bound',mode=gpu_type)
+
+
+def design_budget_tool(evosys,project_dir):
+    pass
+
+
+
+def budget_tools(evosys,project_dir):
+    st.header("Budget Tools")
+    with st.sidebar:
+        choose_tool=st.selectbox("Choose Tool",options=['Verify Budget Tool','Design Budget Tool'])
+   
+    if choose_tool=='Verify Budget Tool':
+        verify_budget_tool(evosys,project_dir)
+    elif choose_tool=='Design Budget Tool':
+        design_budget_tool(evosys,project_dir)
+
+
+
+def verify(evosys,project_dir):
+
+    with st.sidebar:
+        AU.running_status(st,evosys)
+        choose_mode=st.selectbox("Choose Mode",options=['Verification Engine','Budget Tools'])
+
+    if choose_mode=='Verification Engine':
+        verify_engine(evosys,project_dir)
+    else:
+        budget_tools(evosys,project_dir)
 
 
 if __name__ == '__main__':

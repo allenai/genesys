@@ -9,6 +9,7 @@ import psutil
 import copy
 
 from model_discovery.agents.search_utils import EmbeddingDistance,OPENAI_EMBEDDING_MODELS,TOGETHER_EMBEDDING_MODELS,COHERE_EMBEDDING_MODELS
+from model_discovery.evolution import LIBRARY_DIR
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -90,22 +91,57 @@ def paper_search(evosys,project_dir):
         st.info(f'**NOTE:** All settings here will only be applied to this playground. The playground will directly work on the selected running namespace ```{evosys.evoname}```.')
     
 
-def explorer(evosys,project_dir):
+def library_explorer(evosys,project_dir):
+    st.subheader("Library Explorer")
+    
+    primary_lib_index = U.read_file(U.pjoin(LIBRARY_DIR,'INDEX.md'))
+    with st.expander("Primary Library Index (may look messy)",expanded=False):
+        st.markdown(primary_lib_index,unsafe_allow_html=True)
+    primary_lib_dir = U.pjoin(LIBRARY_DIR,'tree')
+    code_dir = U.pjoin(LIBRARY_DIR,'base')
+    secondary_lib_dir = U.pjoin(LIBRARY_DIR,'tree_ext','secondary')
+    lib_plus_dir = U.pjoin(LIBRARY_DIR,'tree_ext','plus')
+
+    choose_source = st.selectbox("Choose a Source",options=['Primary Library','Secondary Library','Library Plus'])
+    if choose_source == 'Primary Library':
+        lib_dir = primary_lib_dir
+        files = []
+        for file_name in os.listdir(lib_dir):
+            file_name = file_name.split('.')[0]
+            _code_dir = U.pjoin(code_dir,file_name,f'{file_name}_edu.py')
+            if os.path.exists(_code_dir):
+                files.append(file_name+' (with Code)')
+            else:
+                files.append(file_name)
+
+    elif choose_source == 'Secondary Library':
+        lib_dir = secondary_lib_dir
+        files = os.listdir(lib_dir)
+    else:
+        lib_dir = lib_plus_dir
+        files = os.listdir(lib_dir)
+        
+
+    choose_file = st.selectbox("Choose a File",options=files)
+
+    if choose_source == 'Primary Library':
+        choose_file = choose_file.split(' (')[0]
+        file=U.load_json(U.pjoin(lib_dir,choose_file+'.json'))
+        _code_dir = U.pjoin(code_dir,choose_file,f'{choose_file}_edu.py')
+        if os.path.exists(_code_dir):
+            with st.expander('Reference Code',expanded=False):
+                st.code(file.pop('code'),language='python')
+    else:
+        file=U.load_json(U.pjoin(lib_dir,choose_file))
+        if 'code' in file:
+            file.pop('code')
+    with st.expander('Metadata',expanded=True):
+        st.write(file)
+
+
+def unit_explorer(evosys,project_dir):
+    
     st.subheader("Unit Dictionary Explorer")
-
-#     with st.expander("Notes about Units Search",expanded=False):
-#         st.markdown("""
-# ### Units as library
-
-# There are following functions to search units:
-#  - To reuse the already discovered units to compose new models.
-#  - To check if a new unit is novel.
-
-# To reuse a unit, call a same-name unit. To create a new unit, use a different name.
-#  - A new model must have at least one new unit. (how to guarantee this? The planner?)
-#  - When implementing a new unit, it will be checked if it is novel compared to the library.
-
-#         """)
 
     GD = evosys.ptree.GD
 
@@ -140,26 +176,47 @@ def explorer(evosys,project_dir):
     with cols[0]:
         choose_design=st.selectbox("Choose a Design",options=list(designs))
     with cols[1]:
-        artifact=GD.ptree.get_node(choose_design)
-        impl_history=artifact.implementation.history
+        if choose_design is not None:
+            artifact=GD.ptree.get_node(choose_design)
+            impl_history=artifact.implementation.history
+        else:
+            impl_history=[]
         select_attempt=st.selectbox("Choose an Attempt",options=list(range(len(impl_history))))
     with cols[2]:
-        select_round=st.selectbox("Choose a Round",options=list(range(len(impl_history[select_attempt].rounds))))
+        rounds=impl_history[select_attempt].rounds if len(impl_history)>0 else []
+        select_round=st.selectbox("Choose a Round",options=list(range(len(rounds))))
 
     if select_round is not None:
         with st.expander("Round Details",expanded=False):
             st.write(impl_history[select_attempt].rounds[select_round])
 
 
+
+def proposal_explorer(evosys,project_dir):
+    
     sss=evosys.rnd_agent.sss
     st.subheader("Design Proposal Explorer")
-    select_design=st.selectbox("Choose a Design",options=['None']+list(sss.design_proposals.keys()))
+    select_design=st.selectbox("Choose a Design Proposal available for search",options=['None']+list(sss.design_proposals.keys()))
     select_design = None if select_design == 'None' else select_design
     
     if select_design is not None:
         with st.expander("Proposal Details",expanded=True):
             st.markdown(sss.design_proposals[select_design],unsafe_allow_html=True)
 
+
+
+def explorers(evosys,project_dir):
+
+    with st.sidebar:
+        mode=st.selectbox("Choose an Explorer",options=['Unit Explorer','Proposal Explorer','Library Explorer'],index=0)
+
+    if mode=='Library Explorer':
+        library_explorer(evosys,project_dir)
+    elif mode=='Unit Explorer':
+        unit_explorer(evosys,project_dir)
+    else:
+        proposal_explorer(evosys,project_dir)
+    
 
 _embeddding_models = {
     'OpenAI':OPENAI_EMBEDDING_MODELS,
@@ -171,7 +228,7 @@ def units_search(evosys,project_dir):
     sss=evosys.rnd_agent.sss
 
     with st.sidebar:
-        st.write(f'Number of units: ```{len(sss.unit_codes)}```')
+        st.success(f'Number of units: ```{len(sss.unit_codes)}```')
 
     st.subheader("Units Search Engine")
     cfg_backup = copy.deepcopy(sss.cfg)
@@ -224,7 +281,7 @@ def proposal_search(evosys,project_dir):
     cfg_backup = copy.deepcopy(sss.cfg)
 
     with st.sidebar:
-        st.write(f'Number of proposals: ```{len(sss.design_proposals)}```')
+        st.success(f'Number of proposals: ```{len(sss.design_proposals)}```')
 
     _cfg = sss.cfg
     _proposal_search_cfg = sss.proposal_search_cfg
@@ -279,17 +336,17 @@ def search(evosys,project_dir):
     with st.sidebar:
         AU.running_status(st,evosys)
 
-        mode=st.radio('Playground Options',options=['Paper','Units','Proposal','Explorer'],index=0)
+        # mode=st.radio('Playground Options',options=['Paper','Units','Proposal','Explorer'],index=0)
+        mode=st.selectbox("Playground Options",options=['Paper Search','Units Search','Proposal Search','Explorers'])
 
 
-
-    if mode=='Paper':
+    if mode=='Paper Search':
         paper_search(evosys,project_dir)
-    elif mode=='Units':
+    elif mode=='Units Search':
         units_search(evosys,project_dir)
-    elif mode=='Proposal':
+    elif mode=='Proposal Search':
         proposal_search(evosys,project_dir)
     else:
-        explorer(evosys,project_dir)
+        explorers(evosys,project_dir)
         
 

@@ -473,7 +473,7 @@ def _design_tuning(evosys,project_dir):
     n_sources = {}
 
     with st.sidebar:
-        st.write('Controls')
+        # st.write('Controls')
         if st.button("🔄 *Reset design query*",use_container_width=True):
             st.rerun()
 
@@ -731,18 +731,27 @@ def design(evosys,project_dir):
     ### side bar 
     with st.sidebar:
         AU.running_status(st,evosys)
-        st.write('Select a mode')
-        if st.button("***Design Engine***" if st.session_state['design_tab']=='design_runner' else "Design Engine",use_container_width=True):
-            st.session_state['design_tab'] = 'design_runner'
-            st.rerun()
-        if st.button("***Design Agents***" if st.session_state['design_tab']=='design_tunner' else "Design Agents",use_container_width=True):
-            st.session_state['design_tab'] = 'design_tunner'
-            st.rerun()
+        # st.write('Select a playground')
+        # # btn_text = "***Design Engine***" if st.session_state['design_tab']=='design_runner' else "Design Engine"
+        # btn_text = "Design Engine"
+        # if st.button(btn_text,use_container_width=True):
+        #     st.session_state['design_tab'] = 'design_runner'
+        #     # st.rerun()
+        # # btn_text = "***Design Agents***" if st.session_state['design_tab']=='design_tunner' else "Design Agents"
+        # btn_text = "Design Agents"
+        # if st.button(btn_text,use_container_width=True):
+        #     st.session_state['design_tab'] = 'design_tunner'
+        #     # st.rerun()
+        choose_mode=st.selectbox("Choose a Mode",options=['Design Engine','Design Agents'],index=1)
 
-    if st.session_state['design_tab']=='design_tunner':
-        _design_tuning(evosys,project_dir)
-    if st.session_state['design_tab']=='design_runner':
+    # if st.session_state['design_tab']=='design_tunner':
+    #     _design_tuning(evosys,project_dir)
+    # if st.session_state['design_tab']=='design_runner':
+    #     _design_engine(evosys,project_dir)
+    if choose_mode=='Design Engine':
         _design_engine(evosys,project_dir)
+    elif choose_mode=='Design Agents':
+        _design_tuning(evosys,project_dir)
 
 
 

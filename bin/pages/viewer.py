@@ -94,7 +94,8 @@ def _view_dialogs(evosys):
     st.title('ALang Dialog Viewer (Experimental)')
 
     with st.sidebar:
-        evoname = st.selectbox("Select an evolution", list(os.listdir(U.pjoin(evosys.ckpt_dir))))
+        folders = [i for i in list(os.listdir(U.pjoin(evosys.ckpt_dir))) if not i.endswith('.json')]
+        evoname = st.selectbox("Select a folder", folders)
 
     sess_dir = U.pjoin(evosys.ckpt_dir, evoname, 'db', 'sessions')
 
@@ -130,21 +131,23 @@ def _view_flows(evosys,selected_flow,flow):
     st.subheader(f'Viewing: {selected_flow}')
 
 
-    simple_mode = 'VIEW_FLOWCHART_SIMPLE' 
-    if simple_mode not in st.session_state:
-        st.session_state[simple_mode] = True
+    # simple_mode = 'VIEW_FLOWCHART_SIMPLE' 
+    # if simple_mode not in st.session_state:
+    #     st.session_state[simple_mode] = True
 
     with st.sidebar:
-        st.write('Viewer Setting')
-        if st.button('View Simplified Chart',use_container_width=True):
-            st.session_state[simple_mode] = True
-            st.rerun()
-        if st.button('View Full Chart',use_container_width=True):
-            st.session_state[simple_mode] = False
-            st.rerun()
+        # st.write('Viewer Setting')
+        # if st.button('View Simplified Chart',use_container_width=True):
+        #     st.session_state[simple_mode] = True
+        #     st.rerun()
+        # if st.button('View Full Chart',use_container_width=True):
+        #     st.session_state[simple_mode] = False
+        #     st.rerun()
+        choose_mode=st.selectbox("Choose a Mode",options=['Simplified Chart','Full Chart'],index=0)
+        simple_mode = choose_mode=='Simplified Chart'
 
 
-    simple_mode = st.session_state[simple_mode] # True
+    # simple_mode = st.session_state[simple_mode] # True
 
     flow,script = flow
 
@@ -522,28 +525,40 @@ def selector_lab(evosys,project_dir):
     cols = st.columns(2)
     with cols[0]:
         with st.expander('Normed metrics (0-1, higher is better)',expanded=True):
-            _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale],input_task_filter)
-            st.dataframe(_leaderboards_normed)
+            if scale is not None:
+                _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale],input_task_filter)
+                st.dataframe(_leaderboards_normed)
+            else:
+                st.info('No results available at this moment.')
     with cols[1]:
         with st.expander(f'Relative to ```{relative}``` (Normed metrics, %)',expanded=True):
-            relative = f'{relative} (baseline)' if relative != 'random' else 'random'
-            st.dataframe(leaderboard_relative(_leaderboards_normed,relative=relative))
-    
+            if scale is not None:
+                relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+                st.dataframe(leaderboard_relative(_leaderboards_normed,relative=relative))
+            else:
+                st.info('No results available at this moment.')
+
     cols = st.columns(2)
     with cols[0]:
         with st.expander('Unnormed metrics (Higher is better)'):
-            _leaderboards_unnormed_h = leaderboard_filter(leaderboards_unnormed_h[scale],input_task_filter)
-            if _leaderboards_unnormed_h.empty:
-                st.info('No data to show')
+            if scale is not None:
+                _leaderboards_unnormed_h = leaderboard_filter(leaderboards_unnormed_h[scale],input_task_filter)
+                if _leaderboards_unnormed_h.empty:
+                    st.info('No data to show')
+                else:
+                    st.dataframe(_leaderboards_unnormed_h)
             else:
-                st.dataframe(_leaderboards_unnormed_h)
+                st.info('No results available at this moment.')
     with cols[1]:
         with st.expander('Unnormed metrics (Lower is better)'):
-            _leaderboards_unnormed_l = leaderboard_filter(leaderboards_unnormed_l[scale],input_task_filter)
-            if _leaderboards_unnormed_l.empty:
-                st.info('No data to show')
+            if scale is not None:
+                _leaderboards_unnormed_l = leaderboard_filter(leaderboards_unnormed_l[scale],input_task_filter)
+                if _leaderboards_unnormed_l.empty:
+                    st.info('No data to show')
+                else:
+                    st.dataframe(_leaderboards_unnormed_l)
             else:
-                st.dataframe(_leaderboards_unnormed_l)
+                st.info('No results available at this moment.')
 
 
     st.subheader('Metrics Explorer')
@@ -562,8 +577,7 @@ def selector_lab(evosys,project_dir):
             if len(vectors[design]["verifications"]) > 0:
                 options.append(f'{design} ({len(vectors[design]["verifications"])} verified)')
         selected_design = st.selectbox('Select a verified design',options=options)
-        selected_design = selected_design.split(' ')[0]
-        design_vector=vectors[selected_design]
+        
 
     with cols[2]:
         relative = st.selectbox('Relative to',options=['none','random']+list(baseline_vectors.keys()))
@@ -587,7 +601,12 @@ def selector_lab(evosys,project_dir):
             scale_weights = U.safe_get_cfg_dict(evosys.selector.select_cfg,'scale_weights',DEFAULT_SCALE_WEIGHTS)
             st.json(scale_weights)
 
-    show_design(evosys,design_vector,relative,threshold)
+    if selected_design is not None:
+        selected_design = selected_design.split(' ')[0]
+        design_vector=vectors[selected_design]
+        show_design(evosys,design_vector,relative,threshold)
+    else:
+        st.info('No results available at this moment.')
 
 
     st.subheader('**Selector Ranking**',help='How the selector ranks the designs and make decisions.')
@@ -644,7 +663,10 @@ def selector_lab(evosys,project_dir):
             ranking_args['normed_difference'] = st.checkbox('Norm Diff.',value=ranking_args['normed_difference'],
                 help='If set, will use normed difference `|x-random|` instead of direct difference `x-random` for filtering')
 
-    # if rank_design_btn:
+    if len(design_vectors) == 0:
+        st.info('No verified designs available at this moment.')
+        return
+
     assert ranking_args['ranking_method'], 'Ranking method is required'
     with st.status('Generating ranking matrix...',expanded=False):
         relative_to_01_normed,_ = evosys.selector._get_random_metrics()
@@ -682,7 +704,6 @@ def selector_lab(evosys,project_dir):
             else:
                 st.info('No subsubrank to show')
 
-
     st.subheader('Ranking Quadrant',help='The quadrants how selector make exploit & exploration trade-off decision for design and verify selections.')
     cols = st.columns([1,2])
 
@@ -705,7 +726,7 @@ def selector_lab(evosys,project_dir):
             ranked_quadrants = _rank_combined_quadrant(combined_quadrant,_rerank_method,rename=False)
             _category = st.selectbox('Select a category',options=ranked_quadrants.keys())
             st.dataframe(ranked_quadrants[_category])
-        
+    
     # with st.expander('Exploration settings'):
     #     design_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'explore_args',DEFAULT_DESIGN_EXPLORE_ARGS)
     #     verify_explore_args = U.safe_get_cfg_dict(evosys.selector.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS)
