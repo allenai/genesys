@@ -9,6 +9,7 @@ import urllib.parse
 from paperswithcode import PapersWithCodeClient
 from requests.exceptions import RequestException
 from openai import OpenAI
+import asyncio
 import random
 import cohere
 import numpy as np
@@ -379,12 +380,43 @@ class SuperScholarSearcher:
         else:
             return siblings
 
-    def emb_evaluate(self,query,references,evaluator,top_k,cutoff):
+
+    async def _aemb_evaluate(self, query, references, evaluator, top_k, cutoff):
+        async def evaluate_single(ref_id, reference):
+            score = 1 - (await evaluator.aevaluate_strings(prediction=query, reference=reference))['score']
+            return ref_id, score
+
+        # Create tasks for all references
+        tasks = [evaluate_single(ref_id, ref) for ref_id, ref in references.items()]
+
+        # Run all tasks concurrently
+        scores = await asyncio.gather(*tasks)
+
+        # Convert results to dictionary
+        scores = dict(scores)
+        filtered_scores = {i: s for i, s in scores.items() if s > cutoff}
+        pps = list(sorted(filtered_scores.items(), key=lambda x: x[1]))[:top_k]
+        
+        return pps, scores
+
+    
+    def aemb_evaluate(self, query, references, evaluator, top_k, cutoff):
+        # This wrapper function is necessary because the main event loop
+        # must be running before we can use asyncio.run()
+        return asyncio.run(self._aemb_evaluate(query, references, evaluator, top_k, cutoff))
+
+    def _emb_evaluate(self,query,references,evaluator,top_k,cutoff):
         scores={i:1-evaluator.evaluate_strings(prediction=query,reference=references[i])['score'] 
                 for i in references}
         filtered_scores={i:s for i,s in scores.items() if s>cutoff}
         pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
         return pps,scores
+
+    def emb_evaluate(self,query,references,evaluator,top_k,cutoff,use_async=True):
+        if use_async:
+            return self.aemb_evaluate(query,references,evaluator,top_k,cutoff)
+        else:
+            return self._emb_evaluate(query,references,evaluator,top_k,cutoff)
 
     def query_design_proposals(self,query,pp=True):
         top_k=self.proposal_search_cfg['top_k']

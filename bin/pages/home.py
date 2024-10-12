@@ -163,9 +163,14 @@ The evolution is distributed, asynchronous and parallel (see details below). To 
     estimate of the design and verification costs in order to set the budget
     properly.
 
-  - [ ] Upload the config to the remote DB, so that the nodes will be able to access it.
+  - [ ] Tune your configs in each playgrounds (**Design**, **Verify**,
+    **Search**, **Select**) before running large-scale evolution.
 
-- [ ] Launch the nodes with the same group ID (keep default is fine) by `genesys node`.
+  - [ ] Upload the config to the remote DB, so that the nodes will be able to
+    access it.
+
+- [ ] Launch the nodes with the same group ID (keep default is fine) by `genesys
+  node`. View the node status in the **Listen** tab.
 
 - [ ] Run the evolution by `genesys evo` or use the **Evolve** tab in the GUI.
 
