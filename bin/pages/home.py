@@ -154,6 +154,23 @@ The evolution is distributed, asynchronous and parallel (see details below). To 
     # welcome = U.read_file(U.pjoin(project_dir,'bin','assets','howtouse.md'))
     # st.markdown(welcome)
 
+    st.markdown('''
+### Tips and Checklists for running the evolution
+
+- [ ] Configure the experiment settings in the **Config** tab before running.
+  
+  - [ ] Use the tools in **Verify - Budget Tools** tab to have a very rough
+    estimate of the design and verification costs in order to set the budget
+    properly.
+
+  - [ ] Upload the config to the remote DB, so that the nodes will be able to access it.
+
+- [ ] Launch the nodes with the same group ID (keep default is fine) by `genesys node`.
+
+- [ ] Run the evolution by `genesys evo` or use the **Evolve** tab in the GUI.
+
+''')
+
     col1,col2=st.columns(2)
     with col1:
       st.markdown('''

@@ -9,38 +9,43 @@ from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,Uti
 from exec_utils.models.utils import openai_costs
 
 
+OPENAI_COSTS_DICT={
+    "gpt-4o-2024-08-06":{
+        'input':2.5/1e6,
+        'output':10/1e6,
+    },
+    "gpt-4o-mini":{
+        'input':0.15/1e6,
+        'output':0.6/1e6,
+    },
+    "o1-preview":{
+        'input':15/1e6,
+        'output':60/1e6,
+    },
+    "o1-mini":{
+        'input':3/1e6,
+        'output':12/1e6,
+    },
+}
+
 def openai_costs(usage,model_name):
-    costs={
-        "gpt-4o-2024-08-06":{
-            'input':2.5/1e6,
-            'output':10/1e6,
-        },
-        "gpt-4o-mini":{
-            'input':0.15/1e6,
-            'output':0.6/1e6,
-        },
-        "o1-preview":{
-            'input':15/1e6,
-            'output':60/1e6,
-        },
-        "o1-mini":{
-            'input':3/1e6,
-            'output':12/1e6,
-        },
-    }
+    costs=OPENAI_COSTS_DICT
     usage['cost']=usage['input_tokens']*costs[model_name]['input'] + usage['output_tokens']*costs[model_name]['output']
     usage['model_name']=model_name
     return usage
 
-def anthropic_costs(usage,model_name='claude-3-5-sonnet-20240620'):
-    costs={
-        "claude-3-5-sonnet-20240620":{
-            'input':3/1e6,
-            'output':15/1e6,
-            'cache_creation':3.75/1e6,
-            'cache_read':0.3/1e6,
-        },
+ANTHROPIC_COSTS_DICT={
+    "claude-3-5-sonnet-20240620":{
+        'input':3/1e6,
+        'output':15/1e6,
+        'cache_creation':3.75/1e6,
+        'cache_read':0.3/1e6,
     }
+}
+
+
+def anthropic_costs(usage,model_name='claude-3-5-sonnet-20240620'):
+    costs=ANTHROPIC_COSTS_DICT
     cost=usage['input_tokens']*costs[model_name]['input'] + usage['output_tokens']*costs[model_name]['output']
     if 'cache_creation_input_tokens' in usage:
         cost+=usage['cache_creation_input_tokens']*costs[model_name]['cache_creation']

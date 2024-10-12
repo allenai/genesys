@@ -33,6 +33,7 @@ from model_discovery.configs.gam_config import (
 
 from model_discovery.ve.data_loader import load_datasets
 from model_discovery.configs.const import TARGET_SCALES
+from model_discovery.agents.agent_utils import OPENAI_COSTS_DICT, ANTHROPIC_COSTS_DICT
 
 
 
@@ -710,18 +711,12 @@ def linear_budget(L,roll=0):
     db[-1]=1
     return db
 
-def cost_estimate(scales,costs,sr=0.25,L=4,warmup=0,title=None,mode='H100'):
-    b=1
-    budgets={}
-    for s in scales:
-        budgets[s]=int(b)
-        b=np.ceil(b/sr)
-    
+def cost_estimate(costs,verify_budget,L=4,warmup=0,title=None,mode='H100'):
     if title:
         st.subheader(f'Cost Estimate for the Scale Climbing: {title}')
 
-    def scale_time(s,warmup,db,c500,c2k):
-        b=budgets[s]
+    def scale_time(scale,warmup,db,c500,c2k):
+        b=verify_budget[scale]
         wb=np.floor(warmup*b)
         r=b-wb
         cost_weights=np.cumsum(np.ones(L)/L)
@@ -730,7 +725,7 @@ def cost_estimate(scales,costs,sr=0.25,L=4,warmup=0,title=None,mode='H100'):
         for i in range(L-1):
             rs.append(int(r*db[i]))
         rs.append(int(r-np.sum(rs)))
-        st.write(f'Scale: {s}, Budget: {b}')
+        st.write(f'Scale: {scale}, Budget: {b}')
         st.write(f'Warmup: {int(wb)} runs, Rest: {rs}, avg. {avg:.2f}')
         cost=[w*c2k for w in cost_weights]
         stime=wb*c500+np.dot(rs,cost)
@@ -740,15 +735,16 @@ def cost_estimate(scales,costs,sr=0.25,L=4,warmup=0,title=None,mode='H100'):
             return stime/3600
 
     at=0
-    for idx,s in enumerate(scales[::-1]):
+    for idx,scale in enumerate(verify_budget.keys()):
         # warmup=0.2 #warmups[s]
         db=linear_budget(L,roll=idx)
         st.write(db)
-        stime=scale_time(s,warmup,db,*costs[s])
+        stime=scale_time(scale,warmup,db,*costs[scale])
         at+=stime
         st.write(f'Total: {stime:.1f}, accumulated [{at:.1f}] GPUhrs ({mode})\n')
 
 
+# A6000x8
 COSTS_LOWER={
     14:[76,174],
     31:[190,437],
@@ -769,58 +765,303 @@ COSTS_UPPER={
     1300:[0,92.5*3600],
 }
 
+# A6000
+COSTS_2K_OPT={}
+COSTS_2K_PAS={}
+for scale in COSTS_LOWER:
+    fast_2k=COSTS_UPPER[scale][1]
+    med_2k=COSTS_LOWER[scale][1]
+    slow_2k=med_2k*2-fast_2k
+    COSTS_2K_OPT[scale]=fast_2k*8
+    COSTS_2K_PAS[scale]=slow_2k*8
+
+SPEEDUP = {
+    'A6000': 1.0,
+    'H100': 3.6
+}
+
+
 def verify_budget_tool(evosys,project_dir):
     
-    st.subheader("Verify Budget Tool")
-    subcol1, subcol2, subcol3, _ = st.columns([1,1,0.25,0.3])
-    with subcol1:
-        target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
-            help='The largest scale to train, will train `N Target` models at this scale.')
-        scales=[]
-        for s in TARGET_SCALES:
-            if int(target_scale.replace('M',''))>=int(s.replace('M','')):
-                scales.append(s)
-        scales=','.join(scales)
-    with subcol2:
-        selection_ratio=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
-            help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
-    with subcol3:
-        n_target=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
+    st.header("Verify Budget Tool")
+    st.caption("Help you estimate the run time and decide the budget for verification based on linear scaling assumption, the verification time is not included yet.")
 
+    Col1,Col2 = st.columns(2)
+    with Col1:
+        st.write('#### GPU and Node Setup')
+        cols = st.columns(4)
+        with cols[0]:
+            gpu_type=st.selectbox('GPU Type',options=['H100','A6000','Manual Input'],index=0,
+                help='If you choose "Manual Input", you need to input the speedup manually.')
+        with cols[1]:
+            _speedup=SPEEDUP[gpu_type] if gpu_type!='Manual Input' else 1.0
+            speedup=st.number_input('Speedup over A6000',value=_speedup,step=0.1,format='%.2f',disabled=gpu_type!='Manual Input')
+        with cols[2]:
+            n_gpus=st.number_input('GPUs per Node',value=1,min_value=1,step=1,help='The number of GPUs per node to use.')
+        with cols[3]:
+            n_nodes=st.number_input('Verification Nodes',value=1,min_value=1,step=1,help='The number of nodes to use.')
+        
+        optimistic_level=st.slider('Optimistic Level',min_value=0.0,max_value=1.0,value=0.5,step=0.01,help='The level of optimism for the cost estimate.')
+        _use_manual_cost=st.checkbox('Use manual cost input below *(will overwrite the above)*')
 
-    _verify_budget={i:0 for i in TARGET_SCALES}
-    budget=n_target
-    for scale in scales.split(',')[::-1]:
-        _verify_budget[scale]=int(np.ceil(budget))
-        budget/=selection_ratio
-    verify_budget=_verify_budget.copy()
-    col1,col2,_=st.columns([1,0.5,0.75])
-    with col1:
+        linear_cost = {}
+        for scale in COSTS_2K_OPT:
+            opt_cost = COSTS_2K_OPT[scale]
+            pas_cost = COSTS_2K_PAS[scale]
+            time_2k_a6000_single = optimistic_level*opt_cost + (1-optimistic_level)*pas_cost
+            linear_cost[f'{scale}M'] = time_2k_a6000_single/speedup/n_gpus/n_nodes
+
+        st.caption('Estimated Training Time for models with 2K token context on each scale (in seconds):')
+        linear_cost_df = pd.DataFrame(linear_cost,index=['Train (s)']).round(0)
+        _cost_est_mat = st.data_editor(linear_cost_df,use_container_width=True)
+        if _use_manual_cost:
+            linear_cost = _cost_est_mat.to_dict(orient='records')[0]
+    
+    with Col2:
+        st.write('#### Target Scale and Selection Ratio')
+        subcol1, subcol2, subcol3= st.columns([1,1,0.25])
+        with subcol1:
+            target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
+                help='The largest scale to train, will train `N Target` models at this scale.')
+            scales=[]
+            for s in TARGET_SCALES:
+                if int(target_scale.replace('M',''))>=int(s.replace('M','')):
+                    scales.append(s)
+            scales=','.join(scales)
+        with subcol2:
+            selection_ratio=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
+                help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
+        with subcol3:
+            n_target=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
+
+        _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*')
+        _verify_budget={i:0 for i in TARGET_SCALES}
+        budget=n_target
+        for scale in scales.split(',')[::-1]:
+            _verify_budget[scale]=int(np.ceil(budget))
+            budget/=selection_ratio
+        verify_budget=_verify_budget.copy()
         _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
-        _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
+        _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True,use_container_width=True)
         _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
         _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
-    with col2:
-        if st.checkbox('Use fine-grained verify budget (override above)'):
+        if _manual_set_budget:
             verify_budget=_verify_budget
 
-    scales=[int(s.replace('M','')) for s in verify_budget if verify_budget[s]>0]
+        st.info(f'**Note:** The budget estimated is based on simple linear scaling assumption, based on the data from training on 8 x A6000 GPUs, and the actual cost might be different.')
 
-    selection_ratio=0.25
+    st.write('#### Estimated Training Time')
 
-    gpu_type=st.selectbox('GPU Type',options=['H100','A6000x8'],index=0)
-    
-    cost_estimate(scales,COSTS_LOWER,sr=selection_ratio,title='Lower bound',mode=gpu_type)
-    cost_estimate(scales,COSTS_UPPER,sr=selection_ratio,title='Upper bound',mode=gpu_type)
+    verify_costs = {s:linear_cost[s]*verify_budget[s] for s in verify_budget}
+    verify_time = {s:verify_costs[s]/3600 for s in verify_costs}
+    verify_ghrs = {s:verify_costs[s]*n_gpus*n_nodes/3600 for s in verify_costs}
+
+    def get_ghrs_df(ghrs):
+        ghrs_df = pd.DataFrame(ghrs,index=['GPU Hrs'])
+        ghrs_df['Total'] = ghrs_df.sum(axis=1)
+        ghrs_df['Days'] = ghrs_df['Total']/24
+        ghrs_df = ghrs_df.round(1)
+        return ghrs_df
+
+    st.write('GPU Hours (Total):')
+    total_ghrs_df = get_ghrs_df(verify_ghrs)
+    st.dataframe(total_ghrs_df,use_container_width=True)
+
+    st.write(f'Running Time ({n_nodes} x {n_gpus} {gpu_type} nodes):')
+    total_time_df = get_ghrs_df(verify_time)
+    st.dataframe(total_time_df,use_container_width=True)
+
+
+
+def dialog_cost_estimator(system,avg_input,avg_output,n_rounds,cost_dict,use_cache):
+    input_token_price = cost_dict['input']
+    output_token_price = cost_dict['output']
+    if use_cache and 'cache_creation' in cost_dict and 'cache_read' in cost_dict:
+        cache_write_price = cost_dict['cache_creation']
+        cache_read_price = cost_dict['cache_read']
+    old_tokens = 0
+    new_tokens = system
+    costs = {}
+    tokens = {}
+    aggregated_cost = {}
+    aggregated_tokens = {}
+    total_cost = 0
+    for i in range(n_rounds):
+        cost = {}
+        token={}
+        new_tokens += avg_input
+        input_tokens = new_tokens + old_tokens
+        if use_cache:
+            cost['cache_write'] = cache_write_price*new_tokens
+            cost['cache_read'] = cache_read_price*old_tokens
+            token['cache_write'] = new_tokens
+            token['cache_read'] = old_tokens
+        else:
+            cost['input'] = input_token_price*input_tokens
+            token['input'] = input_tokens
+        cost['output'] = output_token_price*avg_output
+        token['output'] = avg_output
+        old_tokens = input_tokens
+        new_tokens += avg_output
+        for k,v in cost.items():
+            aggregated_cost[k] = aggregated_cost.get(k,0) + v
+            total_cost += v 
+        for k,v in token.items():
+            aggregated_tokens[k] = aggregated_tokens.get(k,0) + v
+        costs[i] = cost
+        tokens[i] = token
+    return costs, aggregated_cost, total_cost, aggregated_tokens, tokens
+
 
 
 def design_budget_tool(evosys,project_dir):
-    pass
+    st.header("Design Budget Tools")
+
+    if 'saved_estimations' not in st.session_state:
+        st.session_state['saved_estimations'] = {}
+
+    with st.sidebar:
+        st.write('#### Saved Estimations')
+        if len(st.session_state['saved_estimations']) > 0:
+            total_costs = {k:v['total_cost'] for k,v in st.session_state['saved_estimations'].items()}
+            ests = list(total_costs.items())
+            # set agent as index
+            est_df = pd.DataFrame(ests,columns=['Agent','Cost ($)']).set_index('Agent')
+            st.dataframe(
+                est_df.round(2), 
+                use_container_width=True, 
+                key="saved_estimations_editor",
+            )
+            total_cost = sum(total_costs.values())
+            st.write(f'Total Cost: `${total_cost:.2f}`')
+        else:
+            st.info('No saved estimations.')
+        
+        cols = st.columns(2)
+        with cols[0]:
+            st.button('Refresh',use_container_width=True)
+        with cols[1]:
+            if st.button('Clear',use_container_width=True):
+                st.session_state['saved_estimations'] = {}
+                st.rerun()
+        st.download_button(
+            label='Export Raw JSON',
+            data=json.dumps(st.session_state['saved_estimations'],indent=4),
+            file_name='saved_estimations.json',
+            mime='application/json',
+            use_container_width=True
+        )
+
+    st.write('#### Dialog Cost Estimator')
+    cols = st.columns(4)
+    with cols[0]:
+        system_prompt_token_length = st.slider('System Prompt Token Length',min_value=100,max_value=10000,value=2000,step=100)
+    with cols[1]:
+        avg_input_token_per_round = st.slider('Avg. Input Token Per Round',min_value=100,max_value=10000,value=1000,step=100)
+    with cols[2]:
+        avg_output_token_per_round = st.slider('Avg. Output Token Per Round',min_value=100,max_value=10000,value=1000,step=100)
+    with cols[3]:
+        n_rounds = st.slider('Number of Rounds',min_value=1,max_value=100,value=10,step=1)
+
+    cols = st.columns([2,2,1,1,1])
+    with cols[0]:   
+        model_type = st.selectbox('Model Type',options=['OpenAI','Anthropic'],index=0)
+    if model_type == 'OpenAI':
+        cost_dicts = OPENAI_COSTS_DICT
+    else:
+        cost_dicts = ANTHROPIC_COSTS_DICT
+    with cols[1]:
+        model_name = st.selectbox('Model',options=cost_dicts.keys(),index=0)
+        cost_dict = cost_dicts[model_name]
+    with cols[2]:
+        st.write('')
+        st.write('')
+        _use_preset = st.checkbox('Use Preset Prices',value=False)
+    with cols[3]:
+        agent_name = st.text_input('Agent Name',value='',
+            help='The name of the agent for this estimation.')
+    with cols[4]:
+        st.write('')
+        st.write('')
+        _save_estimation = st.button('Save Estimation',
+            help='Save the current estimation to the sidebar. Helpful to estimate multiple agents.')
+
+    cols = st.columns([2,2,2,2,1])
+    with cols[0]:
+        _input_token_price = cost_dict['input']*1e6
+        input_token_price = st.number_input('Input Token Price (USD/1M)',value=_input_token_price,step=0.01,disabled=_use_preset)
+    with cols[1]:
+        _output_token_price = cost_dict['output']*1e6
+        output_token_price = st.number_input('Output Token Price (USD/1M)',value=_output_token_price,step=0.01,disabled=_use_preset)
+    with cols[2]:
+        _cache_write_price = cost_dict.get('cache_creation',0)*1e6
+        cache_write_price = st.number_input('Cache Write Price (USD/1M)',value=_cache_write_price,step=0.01,disabled=_use_preset)
+    with cols[3]:
+        _cache_read_price = cost_dict.get('cache_read',0)*1e6
+        cache_read_price = st.number_input('Cache Read Price (USD/1M)',value=_cache_read_price,step=0.01,disabled=_use_preset)
+    with cols[4]:
+        st.write('')
+        st.write('')
+        _disabled = False
+        if _use_preset:
+            _disabled = True
+            if 'cache_creation' in cost_dict and 'cache_read' in cost_dict:
+                _disabled = False
+        use_cache = st.checkbox('Use Cache',value=False,disabled=_disabled)
+
+    if _use_preset: 
+        cost_dict = cost_dicts[model_name]
+    else:
+        cost_dict = {'input':input_token_price/1e6, 'output':output_token_price/1e6}
+        if use_cache:
+            cost_dict['cache_creation'] = cache_write_price/1e6
+            cost_dict['cache_read'] = cache_read_price/1e6
+    costs, aggregated_cost, total_cost, aggregated_tokens, tokens = dialog_cost_estimator(system_prompt_token_length, avg_input_token_per_round, avg_output_token_per_round, n_rounds, cost_dict, use_cache)
+
+    if _save_estimation:
+        agent_name = agent_name if agent_name else f'Est{len(st.session_state["saved_estimations"])+1}'
+        st.session_state['saved_estimations'][agent_name] = {
+            'total_cost':total_cost,
+            'costs':costs,
+            'aggregated_cost':aggregated_cost,
+            'aggregated_tokens':aggregated_tokens,
+            'tokens':tokens,
+            'cost_dict':cost_dict,
+            'use_cache':use_cache,
+            'system_prompt_token_length':system_prompt_token_length,
+            'avg_input_token_per_round':avg_input_token_per_round,
+            'avg_output_token_per_round':avg_output_token_per_round,
+            'n_rounds':n_rounds,
+            'use_preset':_use_preset,
+        }
+        if _use_preset:
+            st.session_state['saved_estimations'][agent_name]['model_name'] = model_name
+            st.session_state['saved_estimations'][agent_name]['model_type'] = model_type
+        st.rerun()
+
+    col1,col2 = st.columns(2)
+    with col1:
+        st.write(f'#### Cost Estimation `${total_cost:.2f}`')
+        st.write('Aggregated Cost:')
+        st.write(aggregated_cost)
+        st.write('Per Round Cost:')
+        st.write(costs)
+    with col2:
+        st.write('#### Token Estimation')
+        st.write('Aggregated Tokens:')
+        st.write(aggregated_tokens)
+        st.write('Per Round Tokens:')
+        st.write(tokens)
+
+
+
+
+    
 
 
 
 def budget_tools(evosys,project_dir):
-    st.header("Budget Tools")
+    # st.header("Budget Tools")
     with st.sidebar:
         choose_tool=st.selectbox("Choose Tool",options=['Verify Budget Tool','Design Budget Tool'])
    
