@@ -18,7 +18,7 @@ import bin.app_utils as AU
 from google.cloud import firestore
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 
-from bin.pages.design import design_command,TERMINAL_STATES,ACTIVE_STATES
+from bin.pages.design import design_command,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 from bin.pages.verify import verify_command
 
 
@@ -43,7 +43,7 @@ class Listener:
         self.evosys = evosys
         remote_db = evosys.ptree.remote_db
         self.evoname = evosys.evoname
-        self.collection = remote_db.collection(evosys.evoname + '_connections')
+        self.collection = remote_db.collection('working_nodes')
         self.running = False
         self.command_queue = queue.Queue()
         self.command_status = {}
@@ -67,9 +67,8 @@ class Listener:
             if cmd['command'].startswith('design'):
                 sess_id = cmd['sess_id']
                 _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
-                ZOMBIE_THRESHOLD = 200
                 if status in ACTIVE_STATES:
-                    if time.time() - float(heartbeat) < ZOMBIE_THRESHOLD:
+                    if time.time() - float(heartbeat) < DESIGN_ZOMBIE_THRESHOLD:
                         self.command_status[str(pid)] = cmd
                         print(f'Restored running design session: {sess_id}')
 

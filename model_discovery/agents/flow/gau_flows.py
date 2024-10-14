@@ -20,6 +20,8 @@ from model_discovery.model.utils.modules import GABBase, UnitDecl
 import model_discovery.utils as U
 
 
+DESIGN_ZOMBIE_THRESHOLD = 200
+
 LOG_STATES={
     'BEGIN':'Begin',
     'RUNNING':'Running',

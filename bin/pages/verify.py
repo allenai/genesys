@@ -21,6 +21,9 @@ import uuid
 import subprocess
 from google.cloud.firestore import DELETE_FIELD
 
+import pynvml
+
+
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -499,7 +502,8 @@ def verify_engine(evosys,project_dir):
 
     with col3:
         if selected_design is not None:
-            selected_scale=st.select_slider(f"Choose a Scale :orange[{vsstr}]",options=evosys.target_scales)
+            color=AU.theme_aware_options(st,'orange','violet','orange')
+            selected_scale=st.select_slider(f"Choose a Scale :{color}[{vsstr}]",options=evosys.target_scales)
         else:
             selected_scale=st.select_slider(f"Choose a Scale",options=evosys.target_scales,disabled=True)
             

@@ -17,16 +17,15 @@ import time
 
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,\
-    END_REASONS_LABELS,DesignModes,TERMINAL_STATES,ACTIVE_STATES
+    END_REASONS_LABELS,DesignModes,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 import bin.app_utils as AU
-
 
 
 
 def do_log(log_ref,log):
     timestamp = time.time()
     log_ref.set({str(timestamp): log}, merge=True)
-    real_time_utc = datetime.datetime.utcfromtimestamp(timestamp)
+    real_time_utc = datetime.datetime.fromtimestamp(timestamp)
     print(f'[{real_time_utc}] {log}')
 
 
@@ -78,7 +77,6 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
         'node_id':node_id,
         'pid':pid,
     }},merge=True)
-    zombie_threshold = 200 # 3.33 minutes
     # Start heartbeat
     while True:
         _,status,heartbeat = evosys.CM.get_session_log(sess_id)
@@ -89,7 +87,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
         if status in TERMINAL_STATES:
             do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} terminated with status {status}')
             break
-        elif time.time()-float(heartbeat)>zombie_threshold:
+        elif time.time()-float(heartbeat)>DESIGN_ZOMBIE_THRESHOLD:
                 log = f'Daemon: Node {node_id} detected zombie process {pid} for {sess_id}'
                 do_log(exp_log_ref,log)
                 index_ref.set({sess_id:{

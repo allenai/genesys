@@ -32,7 +32,7 @@ from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager
 
 from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes,\
-    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,TERMINAL_STATES,ACTIVE_STATES
+    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 from .agents.search_utils import SuperScholarSearcher
 
 import model_discovery.utils as U

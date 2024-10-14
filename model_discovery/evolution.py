@@ -68,10 +68,11 @@ from typing import (
     Optional,
     Union
 )
-from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,TERMINAL_STATES,ACTIVE_STATES
+from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
+from google.cloud.firestore import DELETE_FIELD
 
 from model_discovery.agents.roles.selector import Selector
 
@@ -124,32 +125,39 @@ class FirestoreManager:
 
     def decompress_index(self,data):
         return U.translate_dict_keys(data,self.key_dict_inv,allow_missing=True)
-
+    
     def fix_index(self):
-        need_update=False
         for id in self.index:
             if 'verifications' in self.index[id]:
-                error_scales=[]
-                for scale in self.index[id]['verifications']:
-                    term=self.index[id]['verifications'][scale]
-                    if 'wandb_ids.json' not in term:
+                error_scales = []
+                for scale in list(self.index[id]['verifications'].keys()):
+                    if ('wandb_ids.json' not in self.index[id]['verifications'][scale] or
+                        'trainer_state.json' not in self.index[id]['verifications'][scale] or
+                        'eval_results.json' not in self.index[id]['verifications'][scale]):
                         error_scales.append(scale)
-                    elif 'trainer_state.json' not in term:
-                        error_scales.append(scale)
-                    elif 'eval_results.json' not in term:
-                        error_scales.append(scale)
-                for scale in error_scales:
-                    self.index[id]['verifications'].pop(scale)
-                    print(f'Deleted error verification data for scale {scale} in design {id}')
-                    need_update=True
-                    # delete the verification data from the database
-                    self.collection.document(id).collection('verifications').document(scale).delete()
-                    # delete the verification reports from local
-                    report_path=U.pjoin(self.db_dir,'designs',id,'verifications',f'{scale}.json')
-                    if U.pexists(report_path):
-                        os.remove(report_path)
-        if need_update:
-            self.update_index(merge=False)
+                
+                if error_scales:
+                    # index_updates = {}
+                    for scale in error_scales:
+                        # Remove the scale from the local index
+                        self.index[id]['verifications'].pop(scale)
+                        print(f'Deleted error verification data for scale {scale} in design {id}')
+                        
+                        # # Prepare to delete the scale from the Firestore index
+                        # index_updates[f'verifications.{scale}'] = DELETE_FIELD
+                        
+                        # Delete the verification data from the database
+                        self.collection.document(id).collection('verifications').document(scale).delete()
+                        
+                        # Delete the verification reports from local
+                        report_path = U.pjoin(self.db_dir, 'designs', id, 'verifications', f'{scale}.json')
+                        if U.pexists(report_path):
+                            os.remove(report_path)
+                    
+                    # # Update the index document for this design
+                    # if index_updates: # WILL TRIGGER NESTED DELETE ERROR
+                    #     self.collection.document('index').update({id: index_updates})
+
 
     def get_index(self):
         index=self.collection.document('index').get().to_dict()
@@ -297,6 +305,10 @@ class FirestoreManager:
 
     def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False):
         reports=verification.pop('verification_report')
+        if 'eval_results.json' not in reports:
+            return
+        if 'trainer_state.json' not in reports:
+            return
         if design_id not in self.index:
             self.index[design_id]={}
         if 'verifications' not in self.index[design_id]:
@@ -1531,9 +1543,13 @@ class PhylogeneticTree:
         self.FM.update_index()
 
     def verify(self, acronym: str, scale: str, verification_report, RANDOM_TESTING=False): # attach a verification report under a scale to an implemented node
+        if 'eval_results.json' not in verification_report:
+            return
         if RANDOM_TESTING:
             eval_results = verification_report['eval_results.json']
             self.remote_db.collection('random_baseline').document('eval_results.json').set(eval_results)
+            return
+        if 'trainer_state.json' not in verification_report:
             return
         design_artifact=self.get_node(acronym)
         acronym=design_artifact.acronym
@@ -1722,7 +1738,7 @@ class ConnectionManager:
     def __init__(self, evoname, group_id, remote_db, stream):
         self.evoname = evoname
         self.group_id = group_id
-        self.collection = remote_db.collection(evoname + '_connections')
+        self.collection = remote_db.collection('working_nodes')
         self.log_doc_ref = remote_db.collection('experiment_logs').document(evoname)
         self.zombie_threshold = 20  # seconds
         self.st = stream
@@ -1796,6 +1812,30 @@ class ConnectionManager:
         status = log_df.iloc[0]['status']
         heartbeat = log_df.index[0]
         return log_df,status,heartbeat
+    
+    def get_active_design_sessions(self):
+        active_design_sessions = {}
+        log_collection = self.log_doc_ref.collection('design_sessions')
+        index_term = log_collection.document('index').get()
+        index_ref = self.log_doc_ref.collection('design_sessions').document('index')
+        if not index_term.exists:
+            return {}
+        index_term = index_term.to_dict()
+        for sess_id in index_term:
+            index_item = index_term[sess_id]
+            if index_item['status'] in ACTIVE_STATES:
+                # check if it is zombie, if it is, update the status and skip
+                _,_,heartbeat = self.get_session_log(sess_id)
+                if time.time()-float(heartbeat)>DESIGN_ZOMBIE_THRESHOLD:
+                    print(f'Detected zombie design session: {sess_id}')
+                    index_ref.set({sess_id:{
+                        'status':'ZOMBIE',
+                        'timestamp':str(time.time())
+                    }},merge=True)
+                else:
+                    active_design_sessions[sess_id] = index_item
+        return active_design_sessions
+    
 
     def get_all_workloads(self):
         self.get_active_connections()

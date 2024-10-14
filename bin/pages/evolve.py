@@ -37,21 +37,16 @@ def _is_running(evosys,zombie_threshold=30):
     return None, None
 
 class CommandCenter:
-    def __init__(self,evosys,design_to_verify_ratio,stream):
+    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream):
         self.evosys=evosys
         self.evoname=evosys.evoname
-        self.design_to_verify_ratio=design_to_verify_ratio
+        self.max_designs_per_node=max_designs_per_node
+        self.max_designs_total=max_designs_total
         self.st=stream
         self.doc_ref = evosys.remote_db.collection('experiment_connections').document(self.evosys.evoname)
         self.running = False
         self.poll_freq=20
         self.zombie_threshold = 30  # seconds
-
-    @property
-    def max_design_threads_total(self):
-        self.evosys.CM.get_active_connections()
-        verify_availability = sum(self.evosys.CM.accept_verify_job.values())
-        return self.design_to_verify_ratio * verify_availability
 
     def read_logs(self):
         return self.evosys.CM.get_log_ref().get().to_dict()
@@ -75,13 +70,20 @@ class CommandCenter:
                 },merge=True)
                 self.active_mode = True
 
-    def _assign_design_workload(self,design_availability):
+    def _assign_design_workload(self,design_availability,design_workloads):
         # find the node with largest availability
         node_id = max(design_availability, key=design_availability.get)
-        print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning design workload to node {node_id}')
-        self.evosys.CM.design_command(node_id)
-        design_availability[node_id] -= 1
-        return design_availability
+        if design_availability[node_id]>0:
+            if design_workloads[node_id]<self.max_designs_per_node or self.max_designs_per_node==0:
+                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning design workload to the most available node {node_id}')
+                self.evosys.CM.design_command(node_id)
+                design_availability[node_id] -= 1
+                design_workloads[node_id] += 1
+            else:
+                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workload for the most available node {node_id} is full ({design_workloads[node_id]}/{self.max_designs_per_node})')
+        else:
+            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design availability for the most available node {node_id} is empty ({design_availability[node_id]})')
+        return design_availability, design_workloads
         
     # def cleanup(self):
     #     # st.info("Cleaning up and disconnecting...")
@@ -102,13 +104,18 @@ class CommandCenter:
                 design_workloads, verify_workloads = self.evosys.CM.get_all_workloads() # will refresh the connection status
                 print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}, Verify workloads: {verify_workloads}')
 
-                design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items()}
-                if sum(design_availability.values())>0:
-                    available_design_threads = self.max_design_threads_total-sum(design_workloads.values())
-                    for _ in range(max(0,available_design_threads)):
-                        design_availability = self._assign_design_workload(design_availability)
-                # else:
-                #     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available')
+                # check if the design workloads are full
+                total_design_workloads = sum(design_workloads.values())
+                if total_design_workloads == self.max_designs_total or self.max_designs_total==0:
+                    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads are full ({total_design_workloads}/{self.max_designs_total}), skipping design workload assignment')
+                else:
+                    design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items()}
+                    if sum(design_availability.values())>0:
+                        available_design_threads = self.max_designs_total-sum(design_workloads.values())
+                        for _ in range(max(0,available_design_threads)):
+                            design_availability,design_workloads = self._assign_design_workload(design_availability,design_workloads)
+                    else:
+                        print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available: {design_availability}')
 
                 # assigned_verify_workloads = False
                 for node_id in verify_workloads:
@@ -116,8 +123,6 @@ class CommandCenter:
                         self.evosys.CM.verify_command(node_id)
                         # assigned_verify_workloads = True
                         print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
-                # if not assigned_verify_workloads:
-                #     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No verify workload available')
 
                 self.doc_ref.update({'last_heartbeat': firestore.SERVER_TIMESTAMP})
                 
@@ -141,17 +146,21 @@ def x_evolve_passive(command_center,cli=False): # extereme evolution
     return thread, pid
 
 def x_evolve(command_center):
-    cmd = f'python -m bin.pages.evolve --evoname {command_center.evosys.evoname} --design_to_verify_ratio {command_center.design_to_verify_ratio} --group_id {command_center.evosys.CM.group_id}'
-    
+    cmd = (
+        f'python -m bin.pages.evolve --evoname {command_center.evosys.evoname} '
+        f'--max_designs_per_node {command_center.max_designs_per_node} '
+        f'--max_designs_total {command_center.max_designs_total} '
+        f'--group_id {command_center.evosys.CM.group_id}'
+    )
     process = subprocess.Popen(cmd,shell=True)
     command_center.doc_ref.set({'pid': process.pid},merge=True)
     return process.pid
 
 
-def launch_evo(evosys,design_to_verify_ratio=4,active_mode=True):
+def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True):
     if len(evosys.CM.get_active_connections())==0 and active_mode:
         st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
-    command_center = CommandCenter(evosys,design_to_verify_ratio,st) # launch a passive command center first
+    command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st) # launch a passive command center first
     if active_mode:
         st.session_state.evo_process_pid = x_evolve(command_center)
         time.sleep(5)
@@ -200,18 +209,16 @@ def stop_evo():
 
 def network_status(evosys):
     group_id = evosys.CM.group_id
-    st.subheader(f'*Network Group ```{group_id}``` Status*')
-
-    CC = st.session_state.command_center
-    if CC:
-        st.write(f'Total Design Threads: {CC.max_design_threads_total}')
+    st.subheader(f'Network Group ```{group_id}``` Status')
 
     nodes = evosys.CM.get_active_connections()
     if len(nodes)==0:
-        st.info('No active nodes connected')
+        st.info('No active working nodes connected')
     else:
         st.write(f'##### Connected Nodes ```{len(nodes)}```')
         _nodes = {}
+        running_designs = {}
+        running_verifies = {}
         for node_id in nodes:
             node_data = evosys.CM.collection.document(node_id).get().to_dict()
             command_status = node_data.get('command_status',{})
@@ -223,9 +230,11 @@ def network_status(evosys):
                 if command.startswith('design'):
                     if cmd['status'] in ACTIVE_STATES:
                         design_load.append(pid)
+                        running_designs[pid] = cmd
                 else:
                     if cmd['status'] == 'running':
                         verify_load.append(pid)
+                        running_verifies[pid] = cmd
             accept_verify_job = node_data['accept_verify_job']
             _nodes[node_id] = {
                 'Design Workload': f'{len(design_load)}/{node_data["max_design_threads"]}',
@@ -237,15 +246,40 @@ def network_status(evosys):
                 'MAC Address': node_data['mac_address'],
             }
         nodes_df = pd.DataFrame(_nodes).T
-        # col1,col2=st.columns([9,1])
-        # with col1:
         st.dataframe(nodes_df,use_container_width=True)
-        # with col2:
-        #     for node_id in nodes:
-        #         st.write('')
-        #         # if st.button('Pause')
         
-    
+    CC = st.session_state.command_center
+    if CC:
+        st.write(f'Total Design Threads: {CC.max_designs_total}')
+    active_design_sessions = evosys.CM.get_active_design_sessions()
+    st.write(f'Active Design Sessions: {active_design_sessions}')
+
+
+def system_status(evosys):
+    with st.expander(f"System Status for ```{evosys.evoname}```",expanded=False,icon='💻'):
+        settings={}
+        settings['Experiment Directory']=evosys.evo_dir
+        if evosys.design_budget_limit>0:
+            text=f'Design Budget Usage: {evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
+            st.progress(evosys.ptree.design_cost/evosys.design_budget_limit,text=text)
+        else:
+            text=f'Design Budget Usage: {evosys.ptree.design_cost:.2f}/♾️'
+            st.progress(1.0,text=text)
+        for scale,num in evosys.selector._verify_budget.items():
+            remaining = evosys.selector.verify_budget[scale] 
+            text=f'Verification Budget Usage ({scale}): {remaining}/{num}'
+            st.progress(remaining/num,text=text)
+        st.write(f'Budget Type: ```{evosys.params["budget_type"]}```')
+
+def system_config(evosys):
+    with st.expander(f"System Config for ```{evosys.evoname}```",expanded=False,icon='🔍'):
+        col1,col2=st.columns(2)
+        with col1:
+            st.write('Design Config',evosys.design_cfg)
+            st.write('Search Config',evosys.search_cfg)
+        with col2:
+            st.write('Select Config',evosys.select_cfg)
+            st.write('Verify Engine Config',evosys.ve_cfg)
 
 def evolve(evosys,project_dir):
 
@@ -278,27 +312,34 @@ def evolve(evosys,project_dir):
         # _evoname = st.session_state.command_center.evoname
         # st.info(f'The command center is already running for namespace ```{_evoname}```. You are in passive observation mode.')
 
-    network_status(evosys)
 
-    # st.subheader("System Check")
-    # col1, col2 = st.columns([1,2])
-    # with col1:
-    #     with st.expander("System Status", icon='💻'):
-    #         st.write(evosys.get_evo_state())
-    # with col2:
-    #     with st.expander("Full Raw Configuration", icon='🔍'):
-    #         st.write(evosys._config)
-
-    st.header("Launch Pad")
-    col1, col2, col3, col4 = st.columns([1,1,1,1],gap='small')
+    col1, col2 = st.columns([2,4])
     with col1:
-        input_design_to_verify_ratio=st.number_input("Design to Verify Ratio",min_value=0,value=4,disabled=st.session_state.evo_running)
+        system_status(evosys)
     with col2:
-        # always use extreme mode, use as much gpus as possible
-        verify_schedule=st.selectbox("Node Scheduling",['maximal utilization'],disabled=st.session_state.evo_running)
+        system_config(evosys)
+
+    
+    st.header("Launch Pad")
+    col1, col2, col3, col4,col5 = st.columns([1,1,1,1,1],gap='small')
+    with col1:
+        input_max_designs_per_node=st.number_input("Max Design Threads (Per Node)",min_value=0,value=4,disabled=st.session_state.evo_running,
+            help='Global control of the maximum number of design threads to run on each node in addition to the local settings on each node. 0 is unlimited.'
+        )
+    with col2:
+        input_max_designs_total=st.number_input("Max Design Threads (Total)",min_value=0,value=10,disabled=st.session_state.evo_running,
+            help='The maximum number of total design threads run across all nodes at the same time. 0 is unlimited (which means only bound by the per-node settings).'
+        )
     with col3:
-        node_schedule=st.selectbox("Network Scheduling",['load balancing'],disabled=st.session_state.evo_running)
+        # always use extreme mode, use as much gpus as possible
+        verify_schedule=st.selectbox("Verification Scheduling",['full utilization'],disabled=True, #st.session_state.evo_running,
+            help='The strategy to schedule verification jobs across nodes. Currently, only full utilization is supported, which means scheduling verify jobs immediately when a node is free.'
+        )
     with col4:
+        node_schedule=st.selectbox("Network Scheduling",['load balancing'],disabled=True, #st.session_state.evo_running,
+            help='Overall network task scheduling strategy. Currently, only load balancing is supported, which always assigns the jobs to the highest available nodes.'
+        )
+    with col5:
         st.write('')
         st.write('')
         # distributed='Distributed ' if evosys.remote_db else ''
@@ -318,7 +359,7 @@ def evolve(evosys,project_dir):
     if not st.session_state.evo_running:
         if run_evo_btn:       
             with st.spinner('Launching...'):  
-                launch_evo(evosys,input_design_to_verify_ratio)
+                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total)
     else:
         if stop_evo_btn:
             if st.session_state.command_center:
@@ -327,6 +368,8 @@ def evolve(evosys,project_dir):
 
     if not evosys.remote_db:
         st.warning("Now only support distributed mode, all working nodes should run in listening mode.")
+
+    network_status(evosys)
 
 
     view_latest_K=30
@@ -408,7 +451,8 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-e','--evoname', default=default_namespace, type=str) # the name of the whole evolution
-    parser.add_argument('-r','--design_to_verify_ratio', type=int, default=4) # the max number of threads to use
+    parser.add_argument('-dn','--max_designs_per_node', type=int, default=3) # the max number of threads to use
+    parser.add_argument('-dt','--max_designs_total', type=int, default=10) # the group id of the evolution
     parser.add_argument('-g','--group_id', default='default', type=str) # the group id of the evolution
     args = parser.parse_args()
         
@@ -418,7 +462,7 @@ if __name__ == '__main__':
         do_cache=False,
         # cache_type='diskcache',
     )
-    command_center = CommandCenter(evosys,args.design_to_verify_ratio,st)
+    command_center = CommandCenter(evosys,args.max_designs_per_node,args.max_designs_total,st)
     command_center.build_connection()
     command_center.run_evolution()
 
