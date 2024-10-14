@@ -20,6 +20,8 @@ from typing import (
 )
 from types import ModuleType
 from dataclasses import dataclass
+import uuid
+import time
 
 from exec_utils.aliases import ConfigType
 from exec_utils import (
@@ -28,8 +30,9 @@ from exec_utils import (
 )
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager
+
 from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes,\
-    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS
+    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,TERMINAL_STATES,ACTIVE_STATES
 from .agents.search_utils import SuperScholarSearcher
 
 import model_discovery.utils as U
@@ -224,6 +227,22 @@ class NaiveSpinner:
     def __exit__(self, exc_type, exc_val, exc_tb):
         print(f'\n[FINISH: {self.message}]\n')
 
+class SilentSpinner(NaiveSpinner):
+    def __init__(self,message,*args,**kwargs):
+        super().__init__(message,*args,**kwargs)
+    def __enter__(self):
+        pass
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
+class SilentHandler(NaiveHandler):
+    def __init__(self,message,*args,**kwargs):
+        super().__init__(message,*args,**kwargs)
+    def __enter__(self):
+        pass
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
 class StatusHandlerWrapper:
     def __init__(self, handler_class, log_function):
         self.handler_class = handler_class
@@ -270,26 +289,32 @@ class SpinnerWrapper:
     
 
 class PrintSystem:
-    def __init__(self,config):
+    def __init__(self,config,silent=False):
         self.jupyter = config.jupyter   
         self._isprintsystem = True
-        self.status = NaiveHandler
-        self.spinner = NaiveSpinner
+        self.silent=silent
+        self.status = NaiveHandler if not silent else SilentHandler
+        self.spinner = NaiveSpinner if not silent else SilentSpinner
     
     def write(self,msg,**kwargs):
-        print(msg)
+        if not self.silent:
+            print(msg)
 
     def markdown(self,msg,**kwargs):
-        print(msg)
+        if not self.silent:
+            print(msg)
     
     def spinner(self,msg,**kwargs):
-        print(msg)
+        if not self.silent:
+            print(msg)
 
     def balloons(self,**kwargs):
-        pass
+        if not self.silent:
+            print('🎈🎈🎈🎈🎈')
 
     def snow(self,**kwargs):
-        pass
+        if not self.silent:
+            print('❄️❄️❄️❄️❄️')
 
 def safe_backup(file):
     count=1
@@ -365,6 +390,8 @@ DEFAULT_NUM_SAMPLES={
     'rerank_method':'rating',
 }
 DEFAULT_UNITTEST_PASS_REQUIRED=False
+
+
 
 @exec_utils.Registry(
     resource_type="system_type",
@@ -460,13 +487,34 @@ class ModelDiscoverySystem(exec_utils.System):
             'claude3.5_sonnet':self.claude.config
         }
 
-    def new_session(self,sess_id,stream):
+    def new_session(self,sess_id,stream,log_collection=None):
         self.log_dir = U.pjoin(self.ptree.session_dir(sess_id), 'log')
         log_file = U.pjoin(self.log_dir,f'{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
         self.sess_state = {} 
         self.dialog = AgentDialogManager(self.log_dir,self.get_system_info(),stream)
         design_stream = StreamWrapper(stream,log_file)
-        return design_stream
+        log_fn = None
+        if log_collection:
+            latest_log = str(time.time())
+            log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
+            index_ref = log_collection.document('index')
+            def log_fn(msg,status='RUNNING'):
+                timestamp = str(time.time())
+                log_ref.set({
+                    timestamp:{
+                        'status':status,
+                        'message':msg
+                    }
+                },merge=True)
+                if status in TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
+                    index_ref.set({
+                        sess_id:{
+                            'timestamp':timestamp,
+                            'status':status,
+                            'latest_log':latest_log
+                        }
+                    },merge=True)
+        return design_stream,log_fn
 
     def query_system(
         self,
@@ -480,6 +528,9 @@ class ModelDiscoverySystem(exec_utils.System):
         search_cfg = {},
         mode=DesignModes.MUTATION,
         proposal=None, # implementation only mode, directly implement a proposal, experimental
+        silent=False,
+        cpu_only=False,
+        log_collection=None,
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
@@ -500,7 +551,9 @@ class ModelDiscoverySystem(exec_utils.System):
         user_input = query
 
         if stream is None: # and self._config.debug_steps:
-            stream = PrintSystem(self._config)
+            stream = PrintSystem(self._config,silent=silent)
+        
+        self.checker.silent=silent
         
         design_cfg['max_attemps']=U.safe_get_cfg_dict(design_cfg,'max_attemps',DEFAULT_MAX_ATTEMPTS)
         design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
@@ -544,9 +597,10 @@ class ModelDiscoverySystem(exec_utils.System):
                 stream.write(f"Restoring design session: {sess_id}")
                 mode=self.ptree.session_get(sess_id,'mode')
         
-        design_stream=self.new_session(sess_id,stream)
+        design_stream,log_fn=self.new_session(sess_id,stream,log_collection)
+        
         if mode==DesignModes.MUTATION:
-            self.design_fn_mutation(self,design_stream,sess_id,design_cfg,user_input,proposal)
+            self.design_fn_mutation(self,design_stream,sess_id,design_cfg,user_input,proposal,cpu_only=cpu_only,log_fn=log_fn)
         elif mode==DesignModes.SCRATCH:
             raise NotImplementedError('Scratch mode is unstable, do not use it')
         elif mode==DesignModes.CROSSOVER:

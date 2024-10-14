@@ -95,6 +95,7 @@ parser.add_argument("--mode", type=str, default='test') # Performance profiler m
 parser.add_argument("--params", type=str, default='') 
 parser.add_argument("--sess_id", type=str, default='') 
 parser.add_argument("--cpu_only", action='store_true') 
+parser.add_argument("--silent", action='store_true')
 
 
 

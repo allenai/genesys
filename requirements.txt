@@ -19,7 +19,7 @@ flash-attn
 torchtune==0.2.0 # higher version has problem of initializing CUDA early
 torchao
 boto3
-pydantic>=2.9.2
+pydantic==2.9.2
 markdown
 pyflowchart
 streamlit==1.38.0
@@ -48,6 +48,7 @@ python-weather
 hf-transfer>=0.1.8
 rankit
 matplotlib
+getmac
 git+https://github.com/chengjunyan1/lm-evaluation-harness.git
 git+https://github.com/felipemaiapolo/tinyBenchmarks
 #git+https://YOUR_GITHUB_TOKEN@github.com/allenai/exec_utils.git

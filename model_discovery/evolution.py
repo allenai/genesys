@@ -68,7 +68,7 @@ from typing import (
     Optional,
     Union
 )
-from .system import BuildSystem,PrintSystem,DesignModes,RunningModes
+from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,TERMINAL_STATES,ACTIVE_STATES
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
@@ -107,13 +107,17 @@ class FirestoreManager:
             'verification_report':'vr',
             'eval_results.json':'er',
             'trainer_state.json':'ts',
-            'wandb_ids.json':'wi'
+            'wandb_ids.json':'wi',
+            'rounds':'r'
         }
         for i in range(100): # should definitely be enough
             self.key_dict[f'trace_{i}']=f't{i}'
+            self.key_dict[f'{i}_rounds']=f'{i}r'
         self.key_dict_inv={v: k for k, v in self.key_dict.items()}
         self.cache={}
+        self.index=None
         self.sync_to_db(verbose=False) # see if there is anything to upload
+        self.updated_terms=[]
 
     def compress_index(self,data):
         return U.translate_dict_keys(data,self.key_dict,allow_missing=True)
@@ -121,14 +125,53 @@ class FirestoreManager:
     def decompress_index(self,data):
         return U.translate_dict_keys(data,self.key_dict_inv,allow_missing=True)
 
+    def fix_index(self):
+        need_update=False
+        for id in self.index:
+            if 'verifications' in self.index[id]:
+                error_scales=[]
+                for scale in self.index[id]['verifications']:
+                    term=self.index[id]['verifications'][scale]
+                    if 'wandb_ids.json' not in term:
+                        error_scales.append(scale)
+                    elif 'trainer_state.json' not in term:
+                        error_scales.append(scale)
+                    elif 'eval_results.json' not in term:
+                        error_scales.append(scale)
+                for scale in error_scales:
+                    self.index[id]['verifications'].pop(scale)
+                    print(f'Deleted error verification data for scale {scale} in design {id}')
+                    need_update=True
+                    # delete the verification data from the database
+                    self.collection.document(id).collection('verifications').document(scale).delete()
+                    # delete the verification reports from local
+                    report_path=U.pjoin(self.db_dir,'designs',id,'verifications',f'{scale}.json')
+                    if U.pexists(report_path):
+                        os.remove(report_path)
+        if need_update:
+            self.update_index(merge=False)
+
     def get_index(self):
         index=self.collection.document('index').get().to_dict()
         if index is None:
             index={}
-        self.index=self.decompress_index(index)
+        _index=self.decompress_index(index)
+        if self.index is None:
+            self.index=_index
+        else:
+            for id in _index:
+                if id not in self.updated_terms:
+                    self.updated_terms.append(id)
+                else:
+                    _term=_index[id]
+                    term=self.index[id]
+                    if U.dict_diff(term,_term):
+                        self.updated_terms.append(id)
+            self.index=_index
+        self.fix_index()
 
-    def update_index(self):
-        self.safe_upload(self.collection.document('index'),self.compress_index(self.index))
+    def update_index(self,merge=True):
+        self.safe_upload(self.collection.document('index'),self.compress_index(self.index),merge=merge)
 
     def doc_to_design(self,doc):
         design_data = doc.to_dict()
@@ -203,8 +246,8 @@ class FirestoreManager:
             if verbose:
                 print(f'Key "{key}" already exists in design "{design_id}"')
         if upload:
-            self.index[design_id][key]=1
             if self.safe_upload(design_ref, {key: data}):
+                self.index[design_id][key]=1
                 print(f'Uploaded "{key}" for design "{design_id}" successfully')
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}"')
@@ -223,8 +266,8 @@ class FirestoreManager:
             if verbose:
                 print(f'Key "{key}" already exists in design "{design_id}" collection "{collection_name}"')
         if upload:
-            self.index[design_id][collection_name][key]=1
             if self.safe_upload(data_ref, {key: data}):
+                self.index[design_id][collection_name][key]=1
                 print(f'Uploaded "{key}" for design "{design_id}" collection "{collection_name}" successfully')
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}" collection "{collection_name}"')
@@ -233,7 +276,24 @@ class FirestoreManager:
         history=implementation.pop('history')
         self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose)
         for idx,step in enumerate(history):
+            rounds=step.pop('rounds')
             self.upload_collection_key_data(design_id,f'implementation_history',idx,step,overwrite,verbose=verbose)
+            step_rounds_collection = self.collection.document(design_id).collection('implementation_history').document(str(idx)).collection('rounds')
+            rounds_idx = f'{idx}_rounds'
+            if rounds_idx not in self.index[design_id]['implementation_history']:
+                self.index[design_id]['implementation_history'][rounds_idx]={}
+            for round_idx,round_data in enumerate(rounds):
+                upload=True
+                if str(round_idx) in self.index[design_id]['implementation_history'][rounds_idx] and not overwrite:
+                    upload=False
+                    if verbose:
+                        print(f'Round "{round_idx}" already exists in design "{design_id}" implementation history "{idx}"')
+                if upload:
+                    if self.safe_upload(step_rounds_collection.document(str(round_idx)),round_data):
+                        self.index[design_id]['implementation_history'][rounds_idx][str(round_idx)]=1
+                        print(f'Uploaded round "{round_idx}" for design "{design_id}" implementation history "{idx}"')
+                    else:
+                        print(f'Failed to upload round "{round_idx}" for design "{design_id}" implementation history "{idx}"')
 
     def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False):
         reports=verification.pop('verification_report')
@@ -253,6 +313,8 @@ class FirestoreManager:
             else:
                 print(f'Failed to upload verification metadata for scale "{scale}" in design "{design_id}"')
         for key,report in reports.items():
+            if key in ['training_record.csv','system_metrics.csv']:
+                continue # XXX: skip these files for now
             upload=True        
             if key in self.index[design_id]['verifications'][scale] and not overwrite:
                 if key in ['training_record.csv','system_metrics.csv']: continue
@@ -260,8 +322,8 @@ class FirestoreManager:
                 if verbose:
                     print(f'Verification report for scale "{scale}" and key "{key}" already exists in design "{design_id}"')
             if upload:
-                self.index[design_id]['verifications'][scale][key]=1
                 if self.safe_upload(self.collection.document(design_id).collection('verifications').document(scale).collection('verification_report').document(key),report):
+                    self.index[design_id]['verifications'][scale][key]=1
                     print(f'Uploaded verification report for scale "{scale}" and key "{key}" in design "{design_id}"')
                 else:
                     print(f'Failed to upload verification report for scale "{scale}" and key "{key}" in design "{design_id}"')
@@ -299,6 +361,15 @@ class FirestoreManager:
             for verification in os.listdir(verifications_path):
                 if verification.endswith('.json'):
                     verification_data=U.load_json(U.pjoin(verifications_path,verification))
+                    if 'verification_report' not in verification_data:
+                        continue
+                    verification_report = verification_data['verification_report']
+                    if 'wandb_ids.json' not in verification_report:
+                        continue
+                    if 'trainer_state.json' not in verification_report:
+                        continue
+                    if 'eval_results.json' not in verification_report:
+                        continue
                     scale=verification.split('.')[0]
                     design['verifications'][scale]=verification_data
 
@@ -415,13 +486,20 @@ class FirestoreManager:
             
             elif U.pexists(implementation_path):
                 _implementation=U.load_json(implementation_path)
-                if len(_implementation['history'])<len(index_term['implementation_history']):
+                index_ih = [i for i in index_term['implementation_history'] if 'rounds' not in i]
+                if len(_implementation['history'])<len(index_ih):
                     if Doc is None:
                         Doc=self.collection.document(design_id).get().to_dict()
                     implementation=Doc['implementation']
                     implementation['history']=_implementation['history']
-                    for idx in range(len(_implementation['history']),len(index_term['implementation_history'])):
+                    for idx in range(len(_implementation['history']),len(index_ih)):
                         step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
+                        if 'rounds' not in step:
+                            step['rounds']=[]
+                        index_step_rounds = index_term['implementation_history'][f'{idx}_rounds']
+                        for round_idx in range(len(step['rounds']),len(index_step_rounds)):
+                            rounds_data = self.collection.document(design_id).collection('implementation_history').document(str(idx)).collection('rounds').document(str(round_idx)).get().to_dict()
+                            step['rounds'].append(rounds_data)
                         implementation['history'].append(step)
                     U.save_json(implementation,implementation_path)
                     print(f'Downloaded implementation for design {design_id}')
@@ -584,12 +662,24 @@ class LibraryReference(NodeObject):
             verification_dir=U.pjoin(core_dir,'verifications')
             if U.pexists(verification_dir):
                 for scale in os.listdir(verification_dir):
-                    report=U.load_json(U.pjoin(verification_dir,scale))
+                    report_dir=U.pjoin(verification_dir,scale)
+                    report=U.load_json(report_dir)
                     scale=scale.split('.')[0]
                     if 'verification_report' in report:
-                        self.verifications[scale]=Verification.from_dict(report['verification_report'])
+                        _verification=Verification.from_dict(report['verification_report'])
                     else:
-                        self.verifications[scale]=Verification(scale=scale,verification_report=report)
+                        _verification=Verification(scale=scale,verification_report=report)
+                    reports=_verification.verification_report
+                    error=False
+                    # if 'wandb_ids.json' not in reports:
+                    #     error=True
+                    if 'eval_results.json' not in reports:
+                        error=True
+                    if 'trainer_state.json' not in reports:
+                        error=True
+                    if not error:
+                        self.verifications[scale]=_verification
+                    
         else:
             self.code=None
 
@@ -873,7 +963,16 @@ class DesignArtifact(NodeObject):
                 scale=scale.split('.')[0]
                 dir = U.pjoin(ver_dir,f'{scale}.json')
                 if U.pexists(dir):
-                    verifications[scale] = Verification.load(dir)
+                    _verification = Verification.load(dir)
+                    error=False
+                    if 'wandb_ids.json' not in _verification.verification_report:
+                        error=True
+                    if 'eval_results.json' not in _verification.verification_report:
+                        error=True
+                    if 'trainer_state.json' not in _verification.verification_report:
+                        error=True
+                    if not error:
+                        verifications[scale] = _verification
         codes = U.load_json(U.pjoin(design_dir, 'codes.json'))
         return cls(proposal=proposal, implementation=implementation, verifications=verifications, codes=codes, **metadata)
 
@@ -1277,13 +1376,16 @@ class PhylogeneticTree:
     def update_design_tree(self):
         if self.FM:
             self.FM.sync_from_db()
+            updated_terms=self.FM.updated_terms
         edges_to_add = []
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
-            artifact = DesignArtifact.load(self.design_dir(id))
             if id not in self.G.nodes:
+                artifact = DesignArtifact.load(self.design_dir(id))
                 self.G.add_node(id, data=artifact)
                 for seed_id in artifact.seed_ids:
                     edges_to_add.append((seed_id, id))
+            elif id in updated_terms:
+                self.G.nodes[id]['data']=DesignArtifact.load(self.design_dir(id))
 
         for seed_id, product_id in edges_to_add:
             if seed_id not in self.G.nodes or product_id not in self.G.nodes:
@@ -1291,6 +1393,9 @@ class PhylogeneticTree:
             if seed_id == product_id or nx.has_path(self.G, product_id, seed_id):
                 continue
             self.G.add_edge(seed_id, product_id)
+        
+        if self.FM:
+            self.FM.updated_terms=[]
 
     def get_unfinished_designs(self,return_finished=False):
         self.load_design_sessions()
@@ -1618,10 +1723,22 @@ class ConnectionManager:
         self.evoname = evoname
         self.group_id = group_id
         self.collection = remote_db.collection(evoname + '_connections')
+        self.log_doc_ref = remote_db.collection('experiment_logs').document(evoname)
         self.zombie_threshold = 20  # seconds
         self.st = stream
         self.max_design_threads={}
         self.accept_verify_job={}
+
+    def get_log_ref(self):
+        latest_log = self.log_doc_ref.get().to_dict().get('latest_log',None)
+        if latest_log:
+            return self.log_doc_ref.collection('logs').document(latest_log)
+        return None
+
+    def start_log(self):
+        timestamp = str(time.time())
+        self.log_doc_ref.set({'latest_log':timestamp},merge=True)
+        self.log_ref = self.log_doc_ref.collection('logs').document(timestamp)
     
     def set_group_id(self, group_id):
         self.group_id = group_id
@@ -1643,8 +1760,8 @@ class ConnectionManager:
         connections = self.collection.where(filter=query).get()
         self.connections = {c.id: c.to_dict() for c in connections}
         for node_id in self.connections:
-            self.max_design_threads[node_id] = self.connections[node_id].get('max_design_threads')
-            self.accept_verify_job[node_id] = self.connections[node_id].get('accept_verify_job')
+            self.max_design_threads[node_id] = self.connections[node_id]['max_design_threads']
+            self.accept_verify_job[node_id] = self.connections[node_id]['accept_verify_job']
         return list(self.connections.keys())
 
     def check_workload(self,node_id):
@@ -1654,12 +1771,31 @@ class ConnectionManager:
         if command_status:
             for pid in command_status:
                 command = command_status[pid]
-                if command['command'].startswith('design') and command['status'] == 'running':
+                if command['command'].startswith('design') and command['status'] in ACTIVE_STATES:
                     running_designs.append(pid)
                 elif command['command'].startswith('verify') and command['status'] == 'running':
                     running_verifies.append(pid)
         return running_designs, running_verifies
 
+    def get_session_log(self,sess_id):
+        log_collection = self.log_doc_ref.collection('design_sessions')
+        index_term = log_collection.document('index').get()
+        if not index_term.exists:
+            return None,None,None
+        index_term = index_term.to_dict()
+        if sess_id not in index_term:
+            return None,None,None
+        latest_log = index_term[sess_id]['latest_log']
+        log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
+        log = log_ref.get()
+        if not log.exists:
+            return None,None,None
+        log = log.to_dict()
+        log_df = pd.DataFrame(log).T
+        log_df = log_df.sort_index(ascending=False)
+        status = log_df.iloc[0]['status']
+        heartbeat = log_df.index[0]
+        return log_df,status,heartbeat
 
     def get_all_workloads(self):
         self.get_active_connections()
@@ -1682,7 +1818,7 @@ class ConnectionManager:
         self.get_active_connections() # refresh the connection status
         running_designs, _ = self.check_workload(node_id)
         if len(running_designs) >= self.max_design_threads[node_id]:
-            self.st.toast(f"Max number of design threads reached ({self.max_design_threads[node_id]}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
+            self.toast(f"Max number of design threads reached ({self.max_design_threads[node_id]}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
             return
         command = f'design,{self.evoname}'
         if resume:
@@ -1692,11 +1828,11 @@ class ConnectionManager:
     def verify_command(self,node_id,design_id=None,scale=None,resume=True):
         self.get_active_connections() # refresh the connection status
         if not self.accept_verify_job[node_id]:
-            self.st.toast(f"Node {node_id} is not accepting verify jobs.",icon='🚨')
+            self.toast(f"Node {node_id} is not accepting verify jobs.",icon='🚨')
             return
         _, running_verifies = self.check_workload(node_id)
         if len(running_verifies) > 0:
-            self.st.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
+            self.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
             return
         command = f'verify,{self.evoname}'
         if design_id:
@@ -1705,6 +1841,12 @@ class ConnectionManager:
         if resume:
             command += ',resume'
         self.send_command(node_id,command)
+
+    def toast(self,message,icon=None,verbose=True):
+        if self.st:
+            self.st.toast(message,icon=icon)
+        if verbose:
+            print(message)
     
     def send_command(self, node_id, command):
         self.get_active_connections()
@@ -1714,11 +1856,11 @@ class ConnectionManager:
                 'commands': firestore.ArrayUnion([command]),
                 'last_command_sent': firestore.SERVER_TIMESTAMP
             })
-            self.st.toast(f"Command sent to {node_id}: {command}")
-            self.st.toast(f"Update time: {update_time}")
+            self.toast(f"Command sent to {node_id}: {command}")
+            self.toast(f"Update time: {update_time}",verbose=False)
             return True
         except Exception as e:
-            self.st.toast(f"Error sending command to {node_id}: {str(e)}",icon='🚨')
+            self.toast(f"Error sending command to {node_id}: {str(e)}",icon='🚨')
             return False
 
     def disconnect_node(self, node_id):
@@ -1769,11 +1911,11 @@ BUDGET_TYPES = ['design_bound','verify_bound']
     #cache="query_system",
 )
 class EvolutionSystem(exec_utils.System):
-    def __init__(self,agent_system,config,**kwargs):
+    def __init__(self,agent_system,config,silent=False,**kwargs):
         self.agents = agent_system
         self._config = config
         self.params=config.params
-        self.stream = PrintSystem(config)
+        self.stream = None # PrintSystem(config,silent=silent)
         self.design_cfg = {}
         self.search_cfg = {}
         self.select_cfg = {}
@@ -1822,9 +1964,10 @@ class EvolutionSystem(exec_utils.System):
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.target_scales]
 
-        self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
-        self.stream.write(f"Verify budgets: {self._verify_budget}")
-        self.stream.write(f"Checkpoint directory: {self.evo_dir}")
+        if self.stream:
+            self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
+            self.stream.write(f"Verify budgets: {self._verify_budget}")
+            self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
@@ -1929,15 +2072,16 @@ class EvolutionSystem(exec_utils.System):
         **kwargs
     ) -> list:
         """ Talk to the selector agent """
-        
-        self.stream.write("Hello from the evolution system")
+        if self.stream:
+            self.stream.write("Hello from the evolution system")
 
     def sync_to_db(self):
         collection=self.remote_db.collection('experiments')
         config=U.load_json(U.pjoin(self.evo_dir,'config.json'))
         design_cfg = copy.deepcopy(self.design_cfg)
         if 'running_mode' in design_cfg:
-            design_cfg['running_mode'] = design_cfg['running_mode'].value
+            if not isinstance(design_cfg['running_mode'],str):
+                design_cfg['running_mode'] = design_cfg['running_mode'].value
         config.update({
             'params': self.params,
             'design_cfg': design_cfg,
@@ -2034,8 +2178,8 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid manual input: {manual}")
 
-    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,resume=True,in_process=False,
-        manual_seed=None,manual_refs=None
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,
+        resume=True,in_process=False,manual_seed=None,manual_refs=None,silent=False,cpu_only=False
     ): 
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
@@ -2048,7 +2192,8 @@ class EvolutionSystem(exec_utils.System):
         if search_cfg is None:
             search_cfg = self.search_cfg
         unfinished_designs = self.ptree.get_unfinished_designs()
-        self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
+        if self.stream:
+            self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
 
         selector_args={}
         selector_args['n_sources']=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
@@ -2056,32 +2201,46 @@ class EvolutionSystem(exec_utils.System):
         manual_seed = self._process_manual_input(manual_seed)
         manual_refs = self._process_manual_input(manual_refs)
 
-        def _new_sample(selector_args,mode,in_process=False,sess_id=None):
+        def _new_sample(selector_args,mode,sess_id=None,_silent=False,_cpu_only=False):
             instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
             seed = manual_seed if manual_seed is not None else seed
             refs = manual_refs if manual_refs is not None else refs
-            self.sample(instruct,seed,refs,sess_id=sess_id,mode=mode,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,in_process=in_process)
+            self.sample(instruct,seed,refs,sess_id=sess_id,mode=mode,user_input=user_input,
+                design_cfg=design_cfg,search_cfg=search_cfg,silent=_silent,cpu_only=_cpu_only)
 
         if sess_id is None:
             if len(unfinished_designs)==0 or not resume:
-                _new_sample(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
+                print('No unfinished designs, will start a new design session')
+                _new_sample(selector_args,mode=mode,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
             else:
                 sess_id = random.choice(unfinished_designs)
+                print(f'Found {len(unfinished_designs)} unfinished designs, will restore a random one: {sess_id}')
                 passed,implemented,challenging,unfinished=self.ptree.get_session_state(sess_id)
                 mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
-                self.stream.write(f"Restoring a session {sess_id}, mode: {mode}. {len(passed)} proposals passed, {len(implemented)} implemented, {len(unfinished)} are unfinished where {len(challenging)} are challenging.")
-                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg) # should not change the design_cfg
+                if self.stream:
+                    self.stream.write(f"Restoring a session {sess_id}, mode: {mode}. {len(passed)} proposals passed, {len(implemented)} implemented, {len(unfinished)} are unfinished where {len(challenging)} are challenging.")
+                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only) # should not change the design_cfg
         else:
             if sess_id in self.ptree.design_sessions:
+                print(f'Design id provided and exists, will restore session {sess_id}')
                 mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
-                self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
-                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg)
+                if self.stream:
+                    self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
+                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only)
             else: # create a new design session using an external id
-                _new_sample(selector_args,mode=mode,in_process=in_process,sess_id=sess_id) # use the seed_ids to record the phylogenetic tree
-        if in_process:
+                print(f'Create a new design session using an external id: {sess_id}')
+                _new_sample(selector_args,mode=mode,sess_id=sess_id,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
+        if in_process: # exit the process after sampling
             sys.exit(0)
 
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,user_input='',design_cfg={},search_cfg={},in_process=False):
+    def get_design_session_log(self,sess_id):
+        log_collection = self.CM.log_doc_ref.collection('design_sessions') if self.CM else None
+        log_ref = log_collection.document(sess_id)
+        return log_ref.get().to_dict()
+
+    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,
+        user_input='',design_cfg={},search_cfg={},silent=False,cpu_only=False
+    ):
         """ 
         Sample a design at a given scale and verify it 
         
@@ -2095,6 +2254,8 @@ class EvolutionSystem(exec_utils.System):
         if mode is None:
             mode=DesignModes.MUTATION
 
+        log_collection = self.CM.log_doc_ref.collection('design_sessions') if self.CM else None
+
         self.rnd_agent(
             user_input,
             instruct=instruct,
@@ -2104,7 +2265,10 @@ class EvolutionSystem(exec_utils.System):
             stream=self.stream,
             design_cfg=design_cfg,
             search_cfg=search_cfg,
-            mode=mode
+            mode=mode,
+            silent=silent,
+            cpu_only=cpu_only,
+            log_collection=log_collection
         )
 
     def choose(self): # For sequential evolution, not needed for parallel
@@ -2149,7 +2313,10 @@ class EvolutionSystem(exec_utils.System):
             design_id,scale=self.selector.select_verify()
         if design_id is None or scale is None: # no available design to verify
             return None
-        self.stream.write(f"Verifying design {design_id} at scale {scale}...")
+        if self.stream:
+            self.stream.write(f"Verifying design {design_id} at scale {scale}...")
+        else:
+            print(f"Verifying design {design_id} at scale {scale}...")
         args = self._prep_ve_args(args,design_id,scale)
         ve_main(args) # verify the design until it's done
         if args.RANDOM_TESTING:
@@ -2184,7 +2351,7 @@ class EvolutionSystem(exec_utils.System):
             f.write(code)
 
     @classmethod
-    def from_config(cls,config,**kwargs):
+    def from_config(cls,config,silent=False,**kwargs):
         """Loads all the evolution components from configuration 
 
         :param config:
@@ -2196,11 +2363,12 @@ class EvolutionSystem(exec_utils.System):
             config,
             **kwargs
         )
-        return cls(agent,config) 
+        return cls(agent,config,silent=silent) 
 
 def BuildEvolution(
         config: Optional[ConfigType] = None,
         stream: Optional[ModuleType] = None,
+        silent: Optional[bool] = False,
         **kwargs
     ) -> EvolutionSystem:
     """Factory for loading evolution system 
@@ -2210,7 +2378,7 @@ def BuildEvolution(
 
     """
     kwargs["system_type"] = "evolution"
-    evolution = NativeBuild(config,**kwargs)
+    evolution = NativeBuild(config,silent=silent,**kwargs)
     if stream:
         evolution.link_stream(stream)
     return evolution
@@ -2255,6 +2423,7 @@ if __name__ == '__main__':
         evolution_system = BuildEvolution(
             params=params,
             do_cache=False,
+            silent=args.silent,
             # cache_type='diskcache',
         )
         
@@ -2264,7 +2433,7 @@ if __name__ == '__main__':
             evolution_system.verify(args,in_process=True)
         elif args.mode=='design':
             sess_id=None if args.sess_id=='' else args.sess_id
-            evolution_system.design(sess_id=sess_id,in_process=True)
+            evolution_system.design(sess_id=sess_id,in_process=True,silent=args.silent,cpu_only=args.cpu_only)
         elif args.mode=='evolve_step': # Sequential evolve one step
             evolution_system.evolve_step()
         else:

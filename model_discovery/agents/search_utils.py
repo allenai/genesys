@@ -370,7 +370,8 @@ class SuperScholarSearcher:
             if not siblings:
                 prt+='### No siblings found from the previous designs with same seeds.\n\n'
             else:
-                siblings = random.sample(siblings,top_k)    
+                top_k=min(top_k,len(siblings))
+                siblings = random.sample(siblings,top_k) if top_k>0 else []
                 prt+=f'### Found {len(siblings)} siblings from the previous designs with same seeds:\n\n'
                 for i,p in enumerate(siblings):
                     prt+=f'#### Sibling {i+1}. {p}\n\n```\n\n{abstracts[i]}\n\n```\n\n'
@@ -381,13 +382,17 @@ class SuperScholarSearcher:
             return siblings
 
 
-    async def _aemb_evaluate(self, query, references, evaluator, top_k, cutoff):
-        async def evaluate_single(ref_id, reference):
-            score = 1 - (await evaluator.aevaluate_strings(prediction=query, reference=reference))['score']
-            return ref_id, score
+    async def _aemb_evaluate(self, query, references, evaluator, top_k, cutoff, max_concurrent=10):
+        async def evaluate_single(sem, ref_id, reference):
+            async with sem:
+                score = 1 - (await evaluator.aevaluate_strings(prediction=query, reference=reference))['score']
+                return ref_id, score
+
+        # Create a semaphore to limit concurrent tasks
+        sem = asyncio.Semaphore(max_concurrent)
 
         # Create tasks for all references
-        tasks = [evaluate_single(ref_id, ref) for ref_id, ref in references.items()]
+        tasks = [evaluate_single(sem, ref_id, ref) for ref_id, ref in references.items()]
 
         # Run all tasks concurrently
         scores = await asyncio.gather(*tasks)
@@ -399,11 +404,10 @@ class SuperScholarSearcher:
         
         return pps, scores
 
-    
-    def aemb_evaluate(self, query, references, evaluator, top_k, cutoff):
+    def aemb_evaluate(self, query, references, evaluator, top_k, cutoff, max_concurrent=10):
         # This wrapper function is necessary because the main event loop
         # must be running before we can use asyncio.run()
-        return asyncio.run(self._aemb_evaluate(query, references, evaluator, top_k, cutoff))
+        return asyncio.run(self._aemb_evaluate(query, references, evaluator, top_k, cutoff, max_concurrent))
 
     def _emb_evaluate(self,query,references,evaluator,top_k,cutoff):
         scores={i:1-evaluator.evaluate_strings(prediction=query,reference=references[i])['score'] 
@@ -412,7 +416,8 @@ class SuperScholarSearcher:
         pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
         return pps,scores
 
-    def emb_evaluate(self,query,references,evaluator,top_k,cutoff,use_async=True):
+    # TODO: async version is not working, use cache instead
+    def emb_evaluate(self,query,references,evaluator,top_k,cutoff,use_async=False):
         if use_async:
             return self.aemb_evaluate(query,references,evaluator,top_k,cutoff)
         else:

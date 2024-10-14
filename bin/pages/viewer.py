@@ -85,6 +85,22 @@ def _view_designs(evosys):
                 st.code(gab_code,language='python')
         else:
             st.warning('The design has not been implemented yet.')
+        if design.verifications:
+            st.subheader('Verification Results')
+            for scale in design.verifications:
+                with st.expander(f'{scale} Verification Results',expanded=True):
+                    reports = design.verifications[scale].verification_report
+                    if 'wandb_ids.json' in reports:
+                        wandb_ids = reports['wandb_ids.json']
+                        if 'pretrain' in wandb_ids:
+                            wandb_id=wandb_ids['pretrain']['id']
+                            wandb_name=wandb_ids['pretrain']['name']
+                            project=wandb_ids['project']
+                            entity=wandb_ids['entity']
+                            url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                            st.write(f'WANDB URL: {url}')
+        else:
+            st.warning('No verification results found for this design.')
     else:
         st.warning('No design artifacts found in the experiment directory')
 
@@ -685,6 +701,12 @@ def selector_lab(evosys,project_dir):
         relative_to_01_normed = relative_to_01_normed[ranking_matrix.columns.intersection(relative_to_01_normed.columns)]
         _ranking_matrix = pd.concat([relative_to_01_normed,_ranking_matrix])
     
+    # check if only one row (random)
+    if _ranking_matrix.shape[0] == 1:
+        st.info('No verified designs to rank')
+        return
+
+
     with st.expander('Final ranking matrix (avg. and random will not used in ranking)',expanded=True):
         st.dataframe(_ranking_matrix)
     
@@ -705,6 +727,10 @@ def selector_lab(evosys,project_dir):
                 st.info('No subsubrank to show')
 
     st.subheader('Ranking Quadrant',help='The quadrants how selector make exploit & exploration trade-off decision for design and verify selections.')
+    if design_rank.empty:
+        st.info('No available designs to rank')
+        return
+
     cols = st.columns([1,2])
 
     with cols[0]:

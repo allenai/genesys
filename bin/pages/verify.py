@@ -31,34 +31,35 @@ from model_discovery.configs.gam_config import (
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 
+
 from model_discovery.ve.data_loader import load_datasets
-from model_discovery.configs.const import TARGET_SCALES
+from model_discovery.configs.const import TARGET_SCALES, SMOLLM_125_CORPUS
 from model_discovery.agents.agent_utils import OPENAI_COSTS_DICT, ANTHROPIC_COSTS_DICT
 
 
 
-SMOLLM_125_CORPUS=['fineweb-edu-dedup']#,'cosmopedia-v2','python-edu','open-web-math','deepmind-math-small','stackoverflow-clean']
 
+def do_log(log_ref,log):
+    timestamp = time.time()
+    log_ref.set({str(timestamp): log}, merge=True)
+    real_time_utc = datetime.utcfromtimestamp(timestamp)
+    print(f'[{real_time_utc}] {log}')
 
-def verify_command(node_id, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False):
-    evosys = BuildEvolution(params={'evoname': evoname}, do_cache=False)
+def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False):
     check_stale_verifications(evosys, evoname)
     sess_id, pid, _design_id, _scale = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli, ret_id=True, RANDOM_TESTING=RANDOM_TESTING)
-    
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
-    
-    timestamp = datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4())
+    log_ref = evosys.CM.get_log_ref()
     
     if sess_id:
         log = f'Node {node_id} running verification on {_design_id}_{_scale}'
-        do_log(log_ref,timestamp,log)
+        do_log(log_ref,log)
         # Start the daemon in a separate process
         print('Starting Verify Daemon Process...')
         daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {_design_id} --scale {_scale} --node_id {node_id} --pid {pid}"
         subprocess.Popen(daemon_cmd, shell=True)
     else:
         log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
-        do_log(log_ref,timestamp,log)
+        do_log(log_ref,log)
 
     return sess_id, pid
 
@@ -97,6 +98,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                 
             time.sleep(1)  # Wait before trying again
 
+        doc = verify_ref.get().to_dict()
         timestamp = datetime.now()
         try:
             verifying_dict = doc.get('verifying', {})
@@ -165,20 +167,10 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
         return sess_id, pid, design_id, scale
     else:
         return sess_id, pid
-    
 
-def do_log(log_ref,timestamp,log):
-    log_ref.set({timestamp: log}, merge=True)
-    print(f'{timestamp.split("_")[0]}: {log}')
-
-def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
-    evosys = BuildEvolution(
-        params={'evoname': evoname,'tree_only':True,'no_agent':True}, 
-        do_cache=False,
-    )
+def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
     verify_ref = evosys.remote_db.collection('verifications').document(evoname)
-    log_ref = evosys.remote_db.collection('experiment_logs').document(evoname)
-    
+    log_ref = evosys.CM.get_log_ref()
 
     # Start heartbeat
     verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
@@ -191,8 +183,8 @@ def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
                 verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
                 
                 if process.status() == psutil.STATUS_ZOMBIE:
-                    log = f'Node {node_id} detected zombie process {pid} for {design_id}_{scale}'
-                    do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+                    log = f'Daemon: Node {node_id} detected zombie process {pid} for {design_id}_{scale}'
+                    do_log(log_ref,log)
                     break
                 elif process.status() in [psutil.STATUS_DEAD, psutil.STATUS_STOPPED]:
                     break
@@ -201,25 +193,25 @@ def verify_daemon(evoname, sess_id, design_id, scale, node_id, pid):
                 else:
                     time.sleep(60)  # Check every minute for active processes
             except psutil.NoSuchProcess:
-                log = f'Node {node_id} lost track of verification process {pid} for {design_id}_{scale}'
-                do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+                log = f'Daemon: Node {node_id} lost track of verification process {pid} for {design_id}_{scale}'
+                do_log(log_ref,log)
                 raise psutil.NoSuchProcess(pid)
 
         # Check if the process completed successfully
         try:
             exit_code = process.wait(timeout=1)
             if exit_code == 0:
-                log = f'Node {node_id} completed verification process {pid} on {design_id}_{scale}'
+                log = f'Daemon: Node {node_id} completed verification process {pid} on {design_id}_{scale}'
             else:
-                log = f'Node {node_id} failed verification process {pid} on {design_id}_{scale} with exit code {exit_code}'
+                log = f'Daemon: Node {node_id} failed verification process {pid} on {design_id}_{scale} with exit code {exit_code}'
         except psutil.TimeoutExpired:
-            log = f'Node {node_id} failed to get exit code for verification process {pid} on {design_id}_{scale}'
+            log = f'Daemon: Node {node_id} failed to get exit code for verification process {pid} on {design_id}_{scale}'
         
-        do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        do_log(log_ref,log)
 
     except Exception as e:
-        log = f'Node {node_id} encountered an error during verification process {pid} on {design_id}_{scale}: {str(e)}'
-        do_log(log_ref,datetime.now().strftime('%B %d, %Y at %I:%M:%S %p %Z')+'_'+str(uuid.uuid4()),log)
+        log = f'Daemon: Node {node_id} encountered an error during verification process {pid} on {design_id}_{scale}: {str(e)}'
+        do_log(log_ref,log)
     
     finally:
         # Ensure verification is marked as complete even if an exception occurred
@@ -1113,18 +1105,23 @@ if __name__ == '__main__':
     args.node_id = None if args.node_id == 'None' else args.node_id
     args.pid = None if args.pid == 'None' else args.pid
 
+    evokwargs = {}
+    if args.daemon or args.prep_only:
+        evokwargs={'db_only':True,'no_agent':True}
+    evosys = BuildEvolution(
+        params={'evoname':args.evoname,**evokwargs}, 
+        do_cache=False,
+    )
+
     if args.daemon:
         assert args.node_id is not None
-        verify_daemon(args.evoname, args.sess_id, args.design_id, args.scale, args.node_id, args.pid, args.RANDOM_TESTING)
+        verify_daemon(args.evoname, evosys, args.sess_id, args.design_id, args.scale, args.node_id, args.pid, args.RANDOM_TESTING)
     elif args.prep_only:
         # bash scripts/run_verify.sh --prep_only --design_id ghanet --scale 31M
         assert args.design_id is not None and args.scale is not None
-        from model_discovery.evolution import BuildEvolution
-        evosys = BuildEvolution(
-            params={'evoname':args.evoname,'db_only':True,'no_agent':True},do_cache=False)
         evosys._prep_model(args.design_id, args.scale)
     else:
         node_id= args.node_id if args.node_id else str(uuid.uuid4())[:8]
-        verify_command(node_id,args.evoname,design_id=args.design_id,scale=args.scale,resume=args.resume,cli=True, RANDOM_TESTING=args.RANDOM_TESTING)
+        verify_command(node_id,evosys,args.evoname,design_id=args.design_id,scale=args.scale,resume=args.resume,cli=True, RANDOM_TESTING=args.RANDOM_TESTING)
 
 

@@ -12,6 +12,9 @@ import bin.app_utils as AU
 from model_discovery.evolution import ConnectionManager
 
 from model_discovery.agents.roles.selector import *
+import datetime
+
+
 
 
 def tester(evosys,project_dir):
@@ -27,4 +30,4 @@ def tester(evosys,project_dir):
     timestr=sess_id[:-len(tail)-1]
     st.write(timestr)
 
-    st.write(len(evosys.ptree.GD.terms))
+    sess_id = '2024-10-11-20-49-17-555a28'

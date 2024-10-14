@@ -27,18 +27,17 @@ class GPT2(GAUBase):
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = AdaptiveMHA(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
+        self.mha = MHA(embed_dim=self.embed_dim, block_loc=self.block_loc,
+            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
         self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
+        self.norm1 = HypersphereRMSNorm(embed_dim=self.embed_dim, block_loc
+            =self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.norm2 = HypersphereRMSNorm(embed_dim=self.embed_dim, block_loc
+            =self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
 
     def _forward(self, X, **Z):
         X1, Z = self.norm1(X, **Z)
@@ -80,236 +79,265 @@ class GatedMLP(GAUBase):
 
 
 import torch.nn.functional as F
+import math
+from einops import rearrange, repeat
+
+
+class MHA(GAUBase):
+    """Multi-head self-attention and cross-attention"""
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:
+        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:
+        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,
+        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:
+        """
+        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.
+        return_residual: whether to return the input x along with the output. This is for
+            performance reason: for post-norm architecture, returning the input allows us
+            to fuse the backward of nn.Linear with the residual connection.
+        """
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.embed_dim = embed_dim
+        self.d_conv = d_conv
+        self.softmax_scale = softmax_scale
+        self.causal = causal
+        self.num_heads = n_heads
+        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else
+            n_heads)
+        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'
+        if head_dim is None:
+            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'
+        self.head_dim = (head_dim if head_dim is not None else self.
+            embed_dim // n_heads)
+        self.mlp_dim = math.ceil(mlp_dim / 256) * 256
+        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)
+        out_dim = self.head_dim * self.num_heads
+        kwarg_all['rotary_emb_dim'] = self.head_dim
+        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
+            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
+            **self.factory_kwargs, **self.kwarg_all)
+        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=
+            qkv_proj_bias, **self.factory_kwargs)
+        if self.d_conv > 0:
+            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.
+                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.
+                factory_kwargs)
+        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,
+            bias=out_proj_bias, **self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        """
+        Arguments:
+            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if
+                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total
+                is the is the sum of the sequence lengths in the batch.
+            inference_params: for generation. Adapted from Megatron-LM (and Apex)
+            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470
+        """
+        qkv = self.in_proj(X)
+        if self.mlp_dim > 0:
+            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.
+                mlp_dim], dim=-1)
+            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)
+            x_mlp = x_mlp_up * F.silu(x_mlp_gate)
+        if self.d_conv > 0:
+            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[
+                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()
+        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)
+        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)
+        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)
+        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)
+        Z['input_emb'] = q
+        _, Z = self.rotary_emb(X, **Z)
+        q = Z['output_emb']
+        Z['input_emb'] = k
+        _, Z = self.rotary_emb(X, **Z)
+        k = Z['output_emb']
+        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //
+            self.num_heads_kv)
+        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //
+            self.num_heads_kv)
+        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.
+            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,
+            scale=self.softmax_scale).transpose(1, 2)
+        context = rearrange(context, '... h d -> ... (h d)')
+        if self.mlp_dim > 0:
+            context = torch.cat([context, x_mlp], dim=-1)
+        out = self.out_proj(context)
+        return out
+
+
+import torch.nn.functional as F
 from torch import Tensor
+from typing import Optional
 
 
-class RMSNorm(GAUBase):
+class RotaryPositionalEmbeddings(GAUBase):
+    """
+    This class implements Rotary Positional Embeddings (RoPE)
+    proposed in https://arxiv.org/abs/2104.09864.
+
+    Reference implementation (used for correctness verfication)
+    can be found here:
+    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80
+
+    In this implementation we cache the embeddings for each position upto
+    ``max_seq_len`` by computing this during init.
+
+    Args:
+        dim (int): Embedding dimension. This is usually set to the dim of each
+            head in the attention module computed as ````embed_dim`` // ``num_heads````
+        max_seq_len (int): Maximum expected sequence length for the
+            model, if exceeded the cached freqs will be recomputed
+        base (int): The base for the geometric progression used to compute
+            the rotation angles
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:
+        int=None, max_seq_len: int=4096, **kwargs) ->None:
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.dim = rotary_emb_dim
+        self.base = rotary_emb_base
+        self.max_seq_len = max_seq_len
+        self._rope_init()
+
+    def reset_parameters(self):
+        self._rope_init()
+
+    def _rope_init(self):
+        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.
+            factory_kwargs)[:self.dim // 2].float() / self.dim)
+        self.register_buffer('theta', theta, persistent=False)
+        self.build_rope_cache(self.max_seq_len)
+
+    def build_rope_cache(self, max_seq_len: int=4096) ->None:
+        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=
+            self.theta.device)
+        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()
+        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],
+            dim=-1)
+        self.register_buffer('cache', cache, persistent=False)
+
+    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[
+        Tensor]=None) ->Tensor:
+        """
+        Args:
+            x (Tensor): input tensor with shape
+                [b, s, n_h, h_d]
+            input_pos (Optional[Tensor]): Optional tensor which contains the position ids
+                of each token. During training, this is used to indicate the positions
+                of each token relative to its sample when packed, shape [b, s].
+                During inference, this indicates the position of the current token.
+                If none, assume the index of the token is its position id. Default is None.
+
+        Returns:
+            Tensor: output tensor with RoPE applied
+
+        Notation used for tensor shapes:
+            - b: batch size
+            - s: sequence length
+            - n_h: num heads
+            - h_d: head dim
+
+        TODO: The implementation below can be made more efficient
+        for inference.
+        """
+        seq_len = input_emb.size(1)
+        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[
+            input_pos]
+        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)
+        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2
+            )
+        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped
+            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,
+            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)
+        x_out = x_out.flatten(3)
+        output_emb = x_out.type_as(input_emb)
+        return X, {'output_emb': output_emb}
+
+
+import torch.nn.functional as F
+
+
+class HypersphereRMSNorm(GAUBase):
+    """
+    Hypersphere Root Mean Square Layer Normalization (HypersphereRMSNorm).
+
+    This layer extends RMSNorm by normalizing input tensors onto a unit norm hypersphere
+    and applying trainable per-dimension scaling factors. This enhances training stability,
+    computational efficiency, and model scalability.
+
+    Args:
+        embed_dim (int): The size of the input feature dimension.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the parent class.
+        device (torch.device, optional): The device on which to allocate the module's parameters.
+        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        eps (float, optional): A small constant added to the denominator for numerical stability.
+            Default: 1e-5.
+
+    Attributes:
+        alpha (nn.Parameter): Learnable scaling parameter of shape (embed_dim,).
+
+    Shape:
+        - Input: (*, embed_dim)
+        - Output: (*, embed_dim) (same shape as input)
+
+    Examples:
+        >>> hypersphere_rmsnorm = HypersphereRMSNorm(128, (0, 6), {})
+        >>> x = torch.randn(1, 100, 128)
+        >>> output, _ = hypersphere_rmsnorm(x)
+        >>> print(output.shape)
+        torch.Size([1, 100, 128])
+
+    References:
+        - HypersphereGPT Proposal
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
-
-
-import torch.nn.functional as F
-
-
-class AdaptiveMHA(GAUBase):
-    """
-    Adaptive Multi-Head Attention (AdaptiveMHA)
-
-    This GAU implements the Adaptive Hybrid Attention Network (AHAN) design by incorporating multiple attention mechanisms:
-
-    - Global Attention: Captures long-range dependencies using standard full-range self-attention.
-
-    The Adaptive Attention Router dynamically computes routing weights for the attention type based on input characteristics,
-    allowing the model to adaptively combine attention outputs.
-
-    **Note:** Due to causality issues with `LinearAttention`, it has been temporarily excluded.
-
-    Inputs:
-        - X: Input sequence embeddings of shape (B, L, D), where B is batch size, L is sequence length, D is embedding dimension.
-
-    Outputs:
-        - Y: Output sequence embeddings of the same shape as X.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.n_heads = n_heads
-        self.head_dim = embed_dim // n_heads
-        self.global_attention = GlobalAttention(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
-
-    def _forward(self, X, **Z):
         """
-        Forward pass of AdaptiveMHA.
+        Initialize the HypersphereRMSNorm module.
 
         Args:
-            X (Tensor): Input sequence of shape (B, L, D).
-
-        Returns:
-            Y (Tensor): Output sequence of shape (B, L, D).
-            Z (dict): Updated intermediate variables.
+            embed_dim (int): The size of the input feature dimension.
+            block_loc (tuple): The location of this block in the model architecture.
+            kwarg_all (dict): Additional keyword arguments passed to the parent class.
+            device (torch.device, optional): The device on which to allocate the module's parameters.
+            dtype (torch.dtype, optional): The dtype of the module's parameters.
+            eps (float, optional): A small constant added to the denominator for numerical stability.
+                Default: 1e-5.
         """
-        routing_weights = {'global': torch.ones(X.shape[:-1] + (1,), device
-            =X.device, dtype=X.dtype)}
-        global_context, Z = self.global_attention(X, **Z)
-        Y = routing_weights['global'] * global_context
-        Y = self.out_proj(Y)
-        return Y, Z
-
-
-import math
-
-
-class AdaptiveAttentionRouter(GAUBase):
-    """
-    AdaptiveAttentionRouter computes routing weights for different attention types for each token.
-
-    **Inputs**:
-    - **X** (*Tensor*): Input embeddings of shape `(batch_size, seq_length, embed_dim)`.
-    - **Z** (*dict*, optional): Contains optional intermediate variables:
-        - **'positional_ids'** (*Tensor*, optional): Positional indices of shape `(batch_size, seq_length)`.
-          If not provided, defaults to `[0, 1, ..., seq_length - 1]` for each sequence in the batch.
-        - **'sequence_lengths'** (*Tensor*, optional): Actual lengths of sequences in the batch of shape `(batch_size,)`.
-          If not provided, defaults to `seq_length` for all sequences.
-
-    **Outputs**:
-    - **Y** (*Tensor*): Output embeddings (same as input `X`), shape `(batch_size, seq_length, embed_dim)`.
-    - **Z\\_** (*dict*): Updated intermediate variables containing:
-        - **'routing_weights'** (*Tensor*): Routing weights for attention types,
-          shape `(batch_size, seq_length, num_attention_types)`.
-
-    **Purpose**:
-    The AdaptiveAttentionRouter dynamically computes routing weights for multiple attention mechanisms
-    (e.g., global, local, linear) for each token in the input sequence. It considers the token embeddings,
-    positional information, and sequence lengths to produce a softmax distribution over attention types,
-    enabling the model to adaptively select the most appropriate attention mechanism for each token.
-
-    **Details**:
-    - Uses a small neural network (MLP) to compute routing weights.
-    - Concatenates input features: token embeddings, positional embeddings, and sequence length encoding.
-    - Normalizes routing weights using softmax to ensure they sum to 1 across attention types.
-    - Handles missing positional encodings and sequence lengths by providing default values.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_attention_types=3, router_hidden_dim=
-        None, positional_dim=None, length_dim=1, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        if router_hidden_dim is None:
-            router_hidden_dim = embed_dim
-        if positional_dim is None:
-            positional_dim = embed_dim
-        self.num_attention_types = num_attention_types
-        self.positional_dim = positional_dim
-        self.length_dim = length_dim
-        hidden_dim = router_hidden_dim
-        input_dim = embed_dim + positional_dim + length_dim
-        self.routing_network = nn.Sequential(nn.Linear(input_dim,
-            hidden_dim, **self.factory_kwargs), nn.ReLU(), nn.Linear(
-            hidden_dim, num_attention_types, **self.factory_kwargs))
-
-    def _forward(self, X, **Z):
-        batch_size, seq_length, _ = X.shape
-        positional_ids = Z.get('positional_ids', None)
-        if positional_ids is None:
-            positional_ids = torch.arange(seq_length, device=X.device
-                ).unsqueeze(0).expand(batch_size, seq_length)
-        positional_embeddings = self.get_positional_embeddings(positional_ids)
-        sequence_lengths = Z.get('sequence_lengths', None)
-        if sequence_lengths is None:
-            sequence_lengths = torch.full((batch_size,), seq_length, device
-                =X.device)
-        sequence_length_encoding = sequence_lengths.unsqueeze(1).repeat(1,
-            seq_length).unsqueeze(-1).float()
-        input_features = torch.cat([X, positional_embeddings,
-            sequence_length_encoding], dim=-1)
-        routing_logits = self.routing_network(input_features)
-        routing_weights = torch.softmax(routing_logits, dim=-1)
-        Y = X
-        Z_ = {'routing_weights': routing_weights}
-        return Y, Z_
-
-    def get_positional_embeddings(self, positional_ids):
-        positions = positional_ids
-        position_encodings = self.sinusoidal_embedding(positions)
-        return position_encodings
-
-    def sinusoidal_embedding(self, positions):
-        batch_size, seq_length = positions.shape
-        dim = self.positional_dim
-        positions = positions.float().unsqueeze(-1)
-        div_term = torch.exp(torch.arange(0, dim, 2, device=positions.
-            device, dtype=positions.dtype) * -(math.log(10000.0) / dim))
-        pe = torch.zeros(batch_size, seq_length, dim, device=positions.
-            device, dtype=positions.dtype)
-        pe[..., 0::2] = torch.sin(positions * div_term)
-        pe[..., 1::2] = torch.cos(positions * div_term)
-        return pe
-
-
-import torch.nn.functional as F
-from einops import rearrange
-
-
-class GlobalAttention(GAUBase):
-    """
-    Global Attention
-
-    This GAU implements standard multi-head self-attention to capture long-range dependencies.
-
-    Inputs:
-        - X: Input sequence embeddings of shape (B, L, D).
-
-    Outputs:
-        - Y: Output sequence embeddings of the same shape as X.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, causal: bool=True, device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.n_heads = n_heads
-        self.head_dim = embed_dim // n_heads
-        self.causal = causal
-        self.qkv_proj = nn.Linear(embed_dim, 3 * embed_dim, **self.
-            factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
+        self.eps = eps
+        self.alpha = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs))
 
     def _forward(self, X, **Z):
         """
-        Forward pass of GlobalAttention.
+        Forward pass for HypersphereRMSNorm.
 
-        Args:
-            X (Tensor): Input sequence of shape (B, L, D).
+        Arguments:
+            X (Tensor): Input tensor of shape (*, embed_dim).
 
         Returns:
-            Y (Tensor): Output sequence of shape (B, L, D).
+            Tuple[Tensor, dict]: The normalized and scaled output tensor, and any updated intermediate variables.
         """
-        B, L, D = X.shape
-        qkv = self.qkv_proj(X)
-        q, k, v = qkv.chunk(3, dim=-1)
-        q = rearrange(q, 'b l (h d) -> b h l d', h=self.n_heads)
-        k = rearrange(k, 'b l (h d) -> b h l d', h=self.n_heads)
-        v = rearrange(v, 'b l (h d) -> b h l d', h=self.n_heads)
-        attn_scores = torch.einsum('b h i d, b h j d -> b h i j', q, k
-            ) / self.head_dim ** 0.5
-        if self.causal:
-            mask = torch.triu(torch.ones(L, L, device=X.device), diagonal=1
-                ).bool()
-            attn_scores = attn_scores.masked_fill(mask[None, None, :, :],
-                float('-inf'))
-        attn_probs = F.softmax(attn_scores, dim=-1)
-        attn_output = torch.matmul(attn_probs, v)
-        attn_output = rearrange(attn_output, 'b h l d -> b l (h d)')
-        Y = self.out_proj(attn_output)
-        return Y, Z
+        norm = X.norm(p=2, dim=-1, keepdim=True).clamp_min(self.eps)
+        Y = X / norm
+        Y = Y * self.alpha
+        return Y, {}
 
 
-gab_config = {'hidden_features': None, 'out_features': None, 'activation':
-    None, 'bias': False, 'multiple_of': 128, 'eps': 1e-05, 'n_heads': 8,
-    'causal': True, 'num_attention_types': 3, 'router_hidden_dim': None,
-    'positional_dim': None, 'length_dim': 1}
+gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,
+    'head_dim': None, 'mlp_dim': 0, 'qkv_proj_bias': True, 'out_proj_bias':
+    True, 'softmax_scale': None, 'rotary_emb_base': 10000, 'd_conv': 0,
+    'max_seq_len': 4096, 'hidden_features': None, 'out_features': None,
+    'activation': None, 'bias': False, 'multiple_of': 128, 'eps': 1e-05}
 
 
 

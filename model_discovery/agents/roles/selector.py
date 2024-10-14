@@ -246,10 +246,13 @@ def around_ranking_matrix(ranking_matrix,draw_margin=0.01):
 def trainer_state_getter(trainer_state):
     if 'log_history' not in trainer_state:
         return {}
-    return {
-        'flops': trainer_state['log_history'][-1]['total_flops'], # not sure if resuming influence this
-        'loss': trainer_state['log_history'][-1]['train_loss'],
-    }
+    _trainer_state = {}
+    if 'total_flops' in trainer_state['log_history'][-1]:
+        _trainer_state['flops'] = {'total_flops':trainer_state['log_history'][-1]['total_flops']}
+    if 'train_loss' in trainer_state['log_history'][-1]:
+        _trainer_state['loss'] = {'train_loss':trainer_state['log_history'][-1]['train_loss']}
+    return _trainer_state
+
 
 def eval_results_getter(eval_results):
     metrics = {}
@@ -617,14 +620,13 @@ class Selector:
         self.stream=stream
         self.design_budget_limit=design_budget_limit
         
-        
     @property
     def design_budget(self):
         if self.design_budget_limit>0:
             return self.design_budget_limit - self.ptree.design_cost
         else:
             if self.budget_type=='design_bound':
-                print('WARNING: The evolution will run forever since design budget is not limited.')
+                print('WARNING: The evolution will run forever since design budget is not limited while in design bound mode.')
             return float('inf')
 
     def _get_ranked_quadrants(self,select_cfg=None):
@@ -632,6 +634,8 @@ class Selector:
         self.design_vectors = self.ptree.get_design_vectors() # cache it
         design_rank = self._rank_designs(self.design_vectors)
         confidence_rank = rank_confidences(select_cfg,self.design_vectors,design_rank['name'].tolist())
+        if design_rank.empty:
+            return None
         ranked_quadrants = get_ranked_quadrant(select_cfg,design_rank,confidence_rank)
         return ranked_quadrants
 
@@ -705,6 +709,9 @@ class Selector:
             seeds=_seeds['ReferenceCoreWithTree']
         else:
             seeds=self._quadrant_design_seeds(select_cfg)
+            if seeds is None: # randomly select a design from everything
+                _seeds = self.ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
+                seeds = [self.ptree.get_node(random.choice(_seeds))]
         seed_ids=[i.acronym for i in seeds]
         refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
@@ -737,6 +744,8 @@ class Selector:
     def _quadrant_design_seeds(self,select_cfg=None):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         ranked_quadrants = self._get_ranked_quadrants()
+        if ranked_quadrants is None:
+            return None
         good_design_high_confidence = ranked_quadrants['good_design_high_confidence']
         poor_design_high_confidence = ranked_quadrants['poor_design_high_confidence']
 
@@ -818,8 +827,11 @@ class Selector:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
 
     def random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
-        
         unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+        unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
+        n_unverified=sum([len(v) for v in unverified_by_scale.values()])
+        if n_unverified==0:
+            return None,None
         unverified_14M=unverified_by_scale.get('14M',[])
         if len(unverified_14M)>0:
             design_id=random.choice(unverified_14M)
@@ -827,12 +839,18 @@ class Selector:
         # Now all the designs are at least verified at 14M
         unverified_by_design=self._get_unverified_design_scales(exclude_list) # indexed by design_id
         ranked_quadrants = self._get_ranked_quadrants()
-        good_design_low_confidence = ranked_quadrants['good_design_low_confidence']
-        poor_design_low_confidence = ranked_quadrants['poor_design_low_confidence']
 
         unverified_scales=[i for i in unverified_by_scale.keys() if i in available_verify_budget]
         unverified_scales.sort(key=lambda x:int(x.replace('M','')))
         lowest_scale=unverified_scales[0]
+        lowest_pool = unverified_by_scale[lowest_scale]
+
+        if ranked_quadrants is None:
+            acronym = random.choice(lowest_pool)
+            return acronym,lowest_scale
+
+        good_design_low_confidence = ranked_quadrants['good_design_low_confidence']
+        poor_design_low_confidence = ranked_quadrants['poor_design_low_confidence']
 
         explore_args = U.safe_get_cfg_dict(self.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS) 
         exclude_design=[]
@@ -847,11 +865,10 @@ class Selector:
             else:
                 exclude_design.append(acronym)
         # rank unverified lowest scale designs
-        pool = unverified_by_scale[lowest_scale]
-        vectors = {i:self.design_vectors[i] for i in pool}
+        vectors = {i:self.design_vectors[i] for i in lowest_pool}
         design_rank = self._rank_designs(vectors)
         if design_rank is None: # unlikely happen, but for safety, randomly select a design from the lowest scale
-            acronym = random.choice(unverified_by_design[lowest_scale])
+            acronym = random.choice(lowest_pool)
             self.stream.write(f"No available verify design found, randomly select a design from the lowest scale: {lowest_scale}")
             return acronym,lowest_scale
         acronym = design_rank.iloc[0]['name']

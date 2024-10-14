@@ -3,11 +3,14 @@ from PIL import Image
 import io
 import numpy as np
 import uuid
+import pandas as pd
 import os,sys
 from art import tprint
 
 sys.path.append('..')
 import model_discovery.utils as U
+import pytz
+from datetime import datetime, timedelta
 
 
 CLI_TITLE = 'GENESYS'
@@ -94,6 +97,29 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
               else:
                 st.write(value)
 
+
+def _listener_running(ckpt_dir,zombie_threshold=20):
+    local_dir = U.pjoin(ckpt_dir,'.node.json')
+    local_doc = U.load_json(local_dir)
+    if local_doc:
+        last_heartbeat = datetime.fromisoformat(local_doc['last_heartbeat'])
+        threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=zombie_threshold)
+        if last_heartbeat > threshold_time:
+            return local_doc['node_id']
+        else:
+            local_doc['status'] = 'stopped'
+            U.save_json(local_doc,local_dir)
+    return None
+
+def _refresh_local_listener_status(st,ckpt_dir):
+  _node_id = _listener_running(ckpt_dir)
+  if st.session_state.listener:
+    if _node_id:
+      st.session_state.listener.wake_up(_node_id)
+    else:
+      st.toast(f'Local running listener not running anymore. Stopping the listener...')
+      st.session_state.listener.hanging()
+
 def running_status(st,evosys):
   db_status = '📶' if evosys.ptree.remote_db else '📴'
   st.write(f'🏠 **Namespace\n```{evosys.evoname}``` {db_status}**')
@@ -103,38 +129,46 @@ def running_status(st,evosys):
 
   if st.session_state.evo_running:
     st.status('🚀 ***Running Evolution***')
-  else:
-    if evosys.CM is not None:
-      active_connections=evosys.CM.get_active_connections()
+ 
+  if evosys.CM is not None:
+    active_connections=evosys.CM.get_active_connections()
+    with st.expander(f"🌐 Connections: ```{len(active_connections)}```",expanded=False):
       if len(active_connections)!=0:
-        with st.expander(f"🌐 Connections: ```{len(active_connections)}```",expanded=False):
-          st.write(f'***Group ID:***\n```{evosys.CM.group_id}```')
-          for node_id in active_connections:
-            _running_designs, _running_verifies = evosys.CM.check_workload(node_id)
-            _max_designs = evosys.CM.max_design_threads[node_id]
-            _max_verifies = 1 if evosys.CM.accept_verify_job[node_id] else 0
-            st.write(f'```{node_id}``` {len(_running_designs)}/{_max_designs} 🐎 {len(_running_verifies)}/{_max_verifies} 🥏')
-          
+        st.write(f'***Group ID:***\n```{evosys.CM.group_id}```')
+        for node_id in active_connections:
+          _running_designs, _running_verifies = evosys.CM.check_workload(node_id)
+          _max_designs = evosys.CM.max_design_threads[node_id]
+          _max_verifies = 1 if evosys.CM.accept_verify_job[node_id] else 0
+          st.write(f'```{node_id}``` {len(_running_designs)}/{_max_designs} 🐎 {len(_running_verifies)}/{_max_verifies} 🥏')
+      else:
+        st.info('No active connections')
+
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
-  running_designs=[key for key,process in st.session_state.get('design_threads',{}).items() if process.poll() is None]
   
-  if st.session_state.listening_mode:
+  if st.session_state.listening_mode and st.session_state.listener.node_id:
     st.divider()
 
-  if st.session_state.listening_mode:# and not st.session_state.evo_running:
+    _refresh_local_listener_status(st,evosys.ckpt_dir)
+
+  if st.session_state.listening_mode and st.session_state.listener.node_id:
     st.status(f'👂```{st.session_state.listener.node_id}```*listening*\n')
   
-  if st.session_state.listening_mode:
+  if st.session_state.listening_mode and st.session_state.listener.node_id:
     with st.expander("🥏 Running Verifies",expanded=False):
       if len(running_verifications)!=0:
         for idx,key in enumerate(running_verifications):
-          st.write(f'```{key}```')
+          st.write(f'{idx+1}. ```{key}```')
       else:
         st.info('No running verifications')
     with st.expander("🐎 Running Designs",expanded=False):
+      running_designs,raw_sess_data=st.session_state.listener.get_running_design_sessions(ret_raw=True)
       if len(running_designs)!=0:
-        for idx,key in enumerate(running_designs):
-          st.write(f'```{key}```')
+        data={}
+        for sess_id in running_designs:
+            _,status,_ = raw_sess_data[sess_id]
+            data[sess_id] = {'status':status}
+        df = pd.DataFrame(data,columns=['Status'])
+        st.dataframe(df,use_container_width=True,hide_index=True)
       else:
         st.info('No running designs')
   

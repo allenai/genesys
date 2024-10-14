@@ -250,6 +250,9 @@ class AgentDialogManager: # all dialogs should be go through the dialog manager
         else: alias = f'{tid}_{alias}'
         self.threads[tid] = parent_thread._fork(alias,tid,caller,callee,context=context,note=note)
         return tid
+
+    def get_alias(self,tid):
+        return self.threads[tid].alias
     
     def carry(self,pipe_tid,lthread_tid,rthread_tid):
         LROLE = ROLE(self.threads[lthread_tid].alias,self.threads[lthread_tid])

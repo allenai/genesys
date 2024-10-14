@@ -26,6 +26,19 @@ def strscale(size):
     elif size>1e3: return f"{size/1e3:.2f}K"
     else: return f"{int(size)}"
 
+
+def dict_diff(dict1,dict2):
+    same=True
+    for k,v in dict1.items():
+        if k not in dict2:
+            same=False
+        else:
+            if isinstance(v,dict) and isinstance(dict2[k],dict):
+                same=dict_diff(v,dict2[k])
+            elif v!=dict2[k]:
+                same=False
+    return same
+
 def letternum2num(s):
     """
     Convert a letter-number string to a numeric value for sorting.

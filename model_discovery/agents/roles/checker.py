@@ -656,7 +656,8 @@ class Checker(exec_utils.BaseTool):
         parameters are within a certain range)
 
     """
-    def __init__(self):
+    def __init__(self,silent=False):
+        self.silent=silent
         self.report = ''
         self.hints = []
         self.format_checker = GABFormatChecker()
@@ -670,7 +671,8 @@ class Checker(exec_utils.BaseTool):
  
         """
         # self.logging.info(msg)
-        print(msg)
+        if not self.silent:
+            print(msg)
         self.report += msg+'\n'
 
     def reset(self) -> None:

@@ -57,7 +57,6 @@ if not DEPLOY_MODE:
     select = import_and_reload('select').select
     listen = import_and_reload('listen').listen
     tester = import_and_reload('tester').tester
-    _listener_running = import_and_reload('listen')._listener_running
     launch_listener = import_and_reload('listen').launch_listener
 else:
     from bin.pages import home,viewer,design,evolve,verify,config,search,select,listen
@@ -122,19 +121,20 @@ if 'listener_thread' not in st.session_state:
 if 'exec_commands' not in st.session_state:
     st.session_state.exec_commands = {}
 
+def _check_local_listener(st):
+    ckpt_dir = os.environ.get('CKPT_DIR')
+    _node_id = AU._listener_running(ckpt_dir)
+    _local_doc = U.load_json(U.pjoin(ckpt_dir,'.node.json'))
+    if _node_id:
+        _group_id = _local_doc['group_id']
+        _max_design_threads = _local_doc['max_design_threads']
+        _accept_verify_job = _local_doc['accept_verify_job']
+        if not st.session_state.listening_mode:
+            st.toast(f'Local running listener detected. Node ID: {_node_id}. Group ID: {_group_id}. Launching a listener in passive mode.')
+            with st.spinner('Launching listener...'):
+                launch_listener(evosys, _node_id, _group_id, _max_design_threads, _accept_verify_job)
 
-ckpt_dir = os.environ.get('CKPT_DIR')
-_node_id = _listener_running(ckpt_dir)
-_local_doc = U.load_json(U.pjoin(ckpt_dir,'.node.json'))
-if _node_id:
-    _group_id = _local_doc['group_id']
-    _max_design_threads = _local_doc['max_design_threads']
-    _accept_verify_job = _local_doc['accept_verify_job']
-    if not st.session_state.listening_mode:
-        st.toast(f'Local running listener detected. Node ID: {_node_id}. Group ID: {_group_id}. Launching a listener in passive mode.')
-        with st.spinner('Launching listener...'):
-            launch_listener(evosys, _node_id, _group_id, _max_design_threads, _accept_verify_job)
-
+_check_local_listener(st)
 
 # Setup the streamlit pages
 

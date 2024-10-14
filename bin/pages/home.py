@@ -134,7 +134,9 @@ The evolution is distributed, asynchronous and parallel (see details below). To 
    - `-i, --node_id`: Optional. If not specified, a random node id will be assigned.
    - `-g, --group_id`: Default is 'default'. Set it if you need to run multiple experiments simultaneously.
    - `-m, --max_design_threads`: Default is 5. Maximum number of design threads on this node.
-   - `-n, --no_gpus`: If specified, the node will not accept verification jobs.
+   - `-n, --no_verify`: If specified, the node will not accept verification jobs.
+   - `-c, --cpu_only`: If specified, the node will run design threads in CPU only mode.
+   - `-s, --silent`: If specified, the node will run in silent mode. The design threads will not print in screen, please check logs.
 
    You can also use the **Listen** tab in the UI to manage nodes.
 
