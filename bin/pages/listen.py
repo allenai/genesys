@@ -212,6 +212,8 @@ class Listener:
                                     'status':status,
                                     'command':command
                                 }
+                            else:
+                                del self.command_status[str(pid)]
                             local_doc['running_designs'] = running_designs
                         else:
                             _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
@@ -224,6 +226,8 @@ class Listener:
                                     'status':status,
                                     'command':command
                                 }
+                            else:
+                                del self.command_status[str(pid)]
                             local_doc['running_verifies'] = running_verifies
 
                     self.doc_ref.set({
