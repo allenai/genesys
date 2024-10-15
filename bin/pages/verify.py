@@ -82,7 +82,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
             doc = verify_ref.get().to_dict()
             current_time = datetime.now()
             
-            if doc is None or not doc.get('lock', {}).get('locked'):
+            if doc is None or not (doc.get('lock', {}).get('locked',False) and doc.get('lock', {}).get('node_id',None) != node_id):
                 # No lock, we can acquire it
                 verify_ref.set({
                     'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
@@ -153,6 +153,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
 
         finally:
             # Release lock
+            time.sleep(3) 
             verify_ref.update({'lock': {'locked': False, 'node_id': None}})
 
     params = {'evoname': evoname}
