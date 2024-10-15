@@ -1793,21 +1793,6 @@ class ConnectionManager:
             self.max_design_threads[node_id] = self.connections[node_id]['max_design_threads']
             self.accept_verify_job[node_id] = self.connections[node_id]['accept_verify_job']
         return list(self.connections.keys())
-
-    def check_workload(self,node_id):
-        command_status = self.check_command_status(node_id)
-        if command_status is None:
-            return None,None
-        running_designs=[]
-        running_verifies=[]
-        if command_status:
-            for pid in command_status:
-                command = command_status[pid]
-                if command['command'].startswith('design') and command['status'] in DESIGN_ACTIVE_STATES:
-                    running_designs.append(pid)
-                elif command['command'].startswith('verify') and command['status'] in VERIFY_ACTIVE_STATES:
-                    running_verifies.append(pid)
-        return running_designs, running_verifies
     
     def _get_log(self,sess_id,log_collection_name,zombie_threshold=None):
         log_collection = self.log_doc_ref.collection(log_collection_name)
@@ -1880,33 +1865,48 @@ class ConnectionManager:
                     running_verifications[sess_id] = index_item
         return running_verifications
     
+    def _get_workloads(self,sess_data):
+        workloads = {}
+        for sess_id in sess_data:
+            index_item = sess_data[sess_id]
+            node_id = index_item['node_id']
+            index_item['sess_id'] = sess_id
+            if node_id not in workloads:
+                workloads[node_id] = []
+            workloads[node_id].append(index_item)
+        return workloads
+    
+
+    def get_design_workloads(self):
+        active_design_sessions = self.get_active_design_sessions()
+        return self._get_workloads(active_design_sessions)
+    
+    def get_verification_workloads(self):
+        running_verifications = self.get_running_verifications()
+        return self._get_workloads(running_verifications)
 
     def get_all_workloads(self):
         self.get_active_connections()
-        design_workload = {}
-        verify_workload = {}
-        for node_id in self.connections:
-            running_designs, running_verifies = self.check_workload(node_id)
-            if running_designs is None:
-                continue
-            design_workload[node_id] = len(running_designs)
-            verify_workload[node_id] = len(running_verifies)
+        design_workload = self.get_design_workloads()
+        verify_workload = self.get_verification_workloads()
         return design_workload, verify_workload
-
-    def check_command_status(self,node_id):
-        if node_id not in self.connections:
-            return None
-        node_data = self.connections[node_id]
-        if node_data and 'command_status' in node_data:
-            return node_data['command_status']
-        else:
-            return None
+    
+    def check_design_workload(self,node_id):
+        design_workload = self.get_design_workloads()
+        return design_workload.get(node_id,[])
+    
+    def check_verification_workload(self,node_id):
+        verify_workload = self.get_verification_workloads()
+        return verify_workload.get(node_id,[])
+    
+    def check_workload(self,node_id):
+        design_workload = self.check_design_workload(node_id)
+        verify_workload = self.check_verification_workload(node_id)
+        return design_workload, verify_workload
 
     def design_command(self,node_id,resume=True):
         self.get_active_connections() # refresh the connection status
-        running_designs, _ = self.check_workload(node_id)
-        if running_designs is None:
-            return False
+        running_designs = self.check_design_workload(node_id)
         if len(running_designs) >= self.max_design_threads[node_id]:
             self.toast(f"Max number of design threads reached ({self.max_design_threads[node_id]}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
             return False
@@ -1921,9 +1921,7 @@ class ConnectionManager:
         if not self.accept_verify_job[node_id]:
             self.toast(f"Node {node_id} is not accepting verify jobs.",icon='🚨')
             return False
-        _, running_verifies = self.check_workload(node_id)
-        if running_verifies is None:
-            return False
+        running_verifies = self.check_verification_workload(node_id)
         if len(running_verifies) > 0:
             self.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
             return False
@@ -2423,14 +2421,14 @@ class EvolutionSystem(exec_utils.System):
                         'message':msg
                     }
                 },merge=True)
-                if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
-                    index_ref.set({
-                        sess_id:{
-                            'timestamp':timestamp,
-                            'status':status,
-                            'latest_log':latest_log
-                        }
-                    },merge=True)
+                # if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
+                index_ref.set({
+                    sess_id:{
+                        'timestamp':timestamp,
+                        'status':status,
+                        'latest_log':latest_log
+                    }
+                },merge=True)
                     
         ve_main(args,log_fn) # verify the design until it's done
         if args.RANDOM_TESTING:

@@ -228,25 +228,12 @@ def network_status(evosys):
         else:
             st.write(f'##### Connected Nodes ```{len(nodes)}```')
             _nodes = {}
-            running_designs = {}
-            running_verifies = {}
+            design_workloads, verify_workloads = evosys.CM.get_workloads()
             for node_id in nodes:
                 node_data = evosys.CM.collection.document(node_id).get().to_dict()
-                command_status = node_data.get('command_status',{})
-                verify_load = []
-                design_load = []
-                for pid in command_status:
-                    cmd=command_status[pid]
-                    command = cmd['command']
-                    if command.startswith('design'):
-                        if cmd['status'] in DESIGN_ACTIVE_STATES:
-                            design_load.append(pid)
-                            running_designs[pid] = cmd
-                    else:
-                        if cmd['status'] in VERIFY_ACTIVE_STATES:
-                            verify_load.append(pid)
-                            running_verifies[pid] = cmd
                 accept_verify_job = node_data['accept_verify_job']
+                design_load = design_workloads.get(node_id,[])
+                verify_load = verify_workloads.get(node_id,[])
                 _nodes[node_id] = {
                     'Design Workload': f'{len(design_load)}/{node_data["max_design_threads"]}',
                     'Verify Workload': f'{len(verify_load)}/1' if accept_verify_job else 'N/A',

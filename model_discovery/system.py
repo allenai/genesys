@@ -506,14 +506,14 @@ class ModelDiscoverySystem(exec_utils.System):
                         'message':msg
                     }
                 },merge=True)
-                if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
-                    index_ref.set({
-                        sess_id:{
-                            'timestamp':timestamp,
-                            'status':status,
-                            'latest_log':latest_log
-                        }
-                    },merge=True)
+                # if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
+                index_ref.set({
+                    sess_id:{
+                        'timestamp':timestamp,
+                        'status':status,
+                        'latest_log':latest_log
+                    }
+                },merge=True)
         return design_stream,log_fn
 
     def query_system(

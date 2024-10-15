@@ -49,7 +49,6 @@ class Listener:
         self.collection = remote_db.collection('working_nodes')
         self.running = False
         self.command_queue = queue.Queue()
-        self.command_status = {}
         self.poll_freq = NODE_POLL_FREQ
         self.cli = cli
         self.active_mode = True
@@ -63,32 +62,6 @@ class Listener:
         self.group_id = group_id
 
         self.initialize(node_id)
-
-    def _restore_local_sessions(self,local_doc): # see if there is any sessions still running
-        running_designs = local_doc.get('running_designs',{})
-        running_verifies = local_doc.get('running_verifies',{})
-        for pid in running_designs:
-            cmd = running_designs[pid]
-            if cmd['command'].startswith('design'):
-                sess_id = cmd['sess_id']
-                evoname = cmd['command'].split(',')[1]
-                self.evosys.CM.switch_ckpt(evoname)
-                _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
-                if status in DESIGN_ACTIVE_STATES:
-                    if time.time() - float(heartbeat) < DESIGN_ZOMBIE_THRESHOLD:
-                        self.command_status[str(pid)] = cmd
-                        print(f'Restored running design session: {sess_id}')
-        for pid in running_verifies:
-            cmd = running_verifies[pid]
-            if cmd['command'].startswith('verify'):
-                sess_id = cmd['sess_id']
-                evoname = cmd['command'].split(',')[1]
-                self.evosys.CM.switch_ckpt(evoname)
-                _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
-                if status in VERIFY_ACTIVE_STATES:
-                    if time.time() - float(heartbeat) < VERIFY_ZOMBIE_THRESHOLD:
-                        self.command_status[str(pid)] = cmd
-                        print(f'Restored running verify session: {sess_id}')
 
     def hanging(self):
         assert not self.active_mode
@@ -119,7 +92,6 @@ class Listener:
             if 'running_designs' not in local_doc:
                 local_doc['running_designs'] = {}
             U.save_json(local_doc,self.local_dir)
-        self._restore_local_sessions(local_doc)
         self.doc_ref = self.collection.document(self.node_id)
     
     def _assign_node_id(self,node_id=None):
@@ -184,59 +156,10 @@ class Listener:
                             time.sleep(self.execution_delay)
                             to_sleep -= self.execution_delay
                             self.command_queue.put((command,sess_id,pid))
-                            if sess_id:
-                                if command.startswith('design'):
-                                    _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
-                                else:
-                                    _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
-                                self.command_status[str(pid)] = {
-                                    'command': str(command),
-                                    'sess_id': str(sess_id),
-                                    'status': status,
-                                    'heartbeat': heartbeat
-                                }
                     
-                    to_delete = []
-                    for pid in self.command_status: 
-                        command = self.command_status[str(pid)]['command']
-                        sess_id = self.command_status[str(pid)]['sess_id']
-                        evoname = command.split(',')[1]
-                        self.evosys.CM.switch_ckpt(evoname)
-                        if command.startswith('design'):
-                            _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
-                            self.command_status[str(pid)]['status'] = status
-                            self.command_status[str(pid)]['heartbeat'] = heartbeat
-                            running_designs = {}
-                            if status in DESIGN_ACTIVE_STATES:
-                                running_designs[str(pid)] = {
-                                    'sess_id':sess_id,
-                                    'status':status,
-                                    'command':command
-                                }
-                            else:
-                                to_delete.append(str(pid))
-                            local_doc['running_designs'] = running_designs
-                        else:
-                            _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
-                            self.command_status[str(pid)]['status'] = status
-                            self.command_status[str(pid)]['heartbeat'] = heartbeat
-                            running_verifies = {}
-                            if status in VERIFY_ACTIVE_STATES:
-                                running_verifies[str(pid)] = {
-                                    'sess_id':sess_id,
-                                    'status':status,
-                                    'command':command
-                                }
-                            else:
-                                to_delete.append(str(pid))
-                            local_doc['running_verifies'] = running_verifies
-
-                    for pid in to_delete:
-                        del self.command_status[pid]
 
                     self.doc_ref.set({
                         'last_heartbeat': firestore.SERVER_TIMESTAMP,
-                        'command_status': self.command_status
                     },merge=True)
                     local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
                     U.save_json(local_doc,self.local_dir)
@@ -246,20 +169,11 @@ class Listener:
         self.cleanup()
 
     def get_running_design_sessions(self,ret_raw=False):
-        doc = self.doc_ref.get()
         running_sessions = []
         raw={}
-        if doc.exists:
-            # check command_status, and if it is running, then add to the list
-            for pid,cmd in doc.to_dict().get('command_status',{}).items():   
-                if cmd['command'].startswith('design'):
-                    evoname = cmd['command'].split(',')[1]
-                    self.evosys.CM.switch_ckpt(evoname)
-                    RET = self.evosys.CM.get_session_log(cmd['sess_id'])
-                    _,status,_ = RET
-                    raw[cmd['sess_id']] = RET
-                    if status in DESIGN_ACTIVE_STATES:
-                        running_sessions.append(cmd['sess_id'])
+        design_workloads = self.evosys.CM.check_design_workload(self.node_id)
+        for item in design_workloads:
+            running_sessions.append(item['sess_id'])
         if ret_raw:
             return running_sessions,raw
         else:
@@ -399,10 +313,10 @@ def listen(evosys, project_dir):
                     pass
             else:
                 doc = st.session_state.listener.doc_ref.get()
-                command_status = doc.to_dict()['command_status'] if doc.exists else {}
-                for pid,status in command_status.items():
-                    pid=int(pid)
-                    st.session_state.exec_commands[st.session_state.listener.node_id][pid] = status['command'], status['sess_id']
+                # command_status = doc.to_dict()['command_status'] if doc.exists else {}
+                # for pid,status in command_status.items():
+                #     pid=int(pid)
+                #     st.session_state.exec_commands[st.session_state.listener.node_id][pid] = status['command'], status['sess_id']
             for pid in st.session_state.exec_commands[st.session_state.listener.node_id]:
                 command,sess_id = st.session_state.exec_commands[st.session_state.listener.node_id][pid]
                 ctype = command.split()[0]
