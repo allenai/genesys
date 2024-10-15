@@ -154,7 +154,8 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
             index_ref.set({sess_id:{
                 'timestamp':str(time.time()),
                 'status':'RUNNING',
-                'latest_log':None
+                'latest_log':None,
+                'node_id':node_id,
             }},merge=True)
             # Release lock
             time.sleep(random.randint(1,10)) 
