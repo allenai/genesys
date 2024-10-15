@@ -492,8 +492,10 @@ class FirestoreManager:
                 implementation=Doc['implementation']
                 implementation['history']=[]
                 for idx in index_term['implementation_history']:
-                    step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
-                    implementation['history'].append(step)
+                    step_ref = self.collection.document(design_id).collection('implementation_history').document(str(idx))
+                    if step_ref.get().exists:
+                        step = step_ref.get().to_dict()[str(idx)]
+                        implementation['history'].append(step)
                 U.save_json(implementation,implementation_path)
                 print(f'Downloaded implementation for design {design_id}')
             
