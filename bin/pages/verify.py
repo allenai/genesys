@@ -155,7 +155,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
 
         finally:
             # Release lock
-            time.sleep(3) 
+            time.sleep(random.randint(1,10)) 
             verify_ref.update({'lock': {'locked': False, 'node_id': None}})
 
         verify_ref = evosys.remote_db.collection('verifications').document(evoname)
