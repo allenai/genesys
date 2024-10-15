@@ -138,6 +138,7 @@ class Listener:
             to_sleep = self.poll_freq
             if self.active_mode:
                 print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
+                self.reset_doc()
                 if not self.node_id:
                     time.sleep(self.poll_freq)
                     continue
@@ -161,9 +162,7 @@ class Listener:
                                 time.sleep(self.execution_delay)
                                 to_sleep -= self.execution_delay
                                 self.command_queue.put((command,sess_id,pid))
-                        
 
-                        self.reset_doc()
                         local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
                         U.save_json(local_doc,self.local_dir)
                 except Exception as e:
