@@ -55,6 +55,11 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
     exp_log_ref = evosys.CM.get_log_ref()
     
     if sess_id:
+        verify_ref = evosys.remote_db.collection('verifications').document(evoname)
+        verifying_dict = verify_ref.get().to_dict().get('verifying', {})
+        if f'{_design_id}_{_scale}' in verifying_dict: # confirm once again to avoid rare conflict
+            print(f'Node {node_id} is already verifying {_design_id}_{_scale}')
+            return None,None
         log = f'Node {node_id} running verification on {_design_id}_{_scale}'
         do_log(exp_log_ref,log)
         # Start the daemon in a separate process
