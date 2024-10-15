@@ -193,7 +193,7 @@ class Listener:
             sess_id,pid = design_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli, 
                                          cpu_only=self.cpu_only, silent=self.silent, running_sessions=running_sessions)
         elif comps[0] == 'verify':
-            verify_workloads = self.evosys.CM.check_verify_workload(self.node_id)
+            verify_workloads = self.evosys.CM.check_verification_workload(self.node_id)
             if len(verify_workloads) > 0:
                 print(f"There is already a verification job running. Please wait for it to finish.")
                 return None,None
