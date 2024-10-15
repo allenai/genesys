@@ -12,10 +12,10 @@ import model_discovery.utils as U
 import pytz
 from datetime import datetime, timedelta
 
+from model_discovery.configs.const import NODE_ZOMBIE_THRESHOLD
 
 CLI_TITLE = 'GENESYS'
 
-NODE_ZOMBIE_THRESHOLD = 30 # seconds
 
 
 def print_cli_title():

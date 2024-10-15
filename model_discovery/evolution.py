@@ -82,7 +82,7 @@ from .configs.gam_config import (
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
-from .configs.const import VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZOMBIE_THRESHOLD
+from .configs.const import VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZOMBIE_THRESHOLD,NODE_ZOMBIE_THRESHOLD
 from .ve.run import main as ve_main
 from .ve.run import parser as ve_parser
 from .ve.run import get_history_report
@@ -1750,7 +1750,7 @@ class ConnectionManager:
         self.remote_db = remote_db
         self.collection = remote_db.collection('working_nodes')
         self.log_doc_ref = remote_db.collection('experiment_logs').document(evoname)
-        self.zombie_threshold = 20  # seconds
+        self.zombie_threshold = NODE_ZOMBIE_THRESHOLD  # seconds
         self.st = stream
         self.max_design_threads={}
         self.accept_verify_job={}

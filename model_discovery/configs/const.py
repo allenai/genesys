@@ -17,6 +17,8 @@ VERIFY_TERMINAL_STATES=['EXIT','TERMINATED','ERROR','ZOMBIE']
 VERIFY_ACTIVE_STATES=['BEGIN','RUNNING','TRAINING','EVALUATING']
 VERIFY_ZOMBIE_THRESHOLD = 200
 
+NODE_ZOMBIE_THRESHOLD = 30
+
 # GLUE_TASK_LIST = ["cola","mnli","mrpc","qnli","qqp","rte","sst","wnli"]
 
 STANDARD_EVAL_TASKS = ["lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande", "openbookqa"] 
