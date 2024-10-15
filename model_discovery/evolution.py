@@ -31,7 +31,7 @@ import sys
 import re
 import exec_utils
 import pathlib
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import json
 import copy
 import time
@@ -1774,7 +1774,7 @@ class ConnectionManager:
         self.group_id = group_id
 
     def clear_zombie_connections(self):
-        threshold_time = datetime.utcnow() - timedelta(seconds=self.zombie_threshold)
+        threshold_time = datetime.now(timezone.utc) - timedelta(seconds=self.zombie_threshold)
         zombie_connections = self.collection.where('last_heartbeat', '<', threshold_time).get()
         
         for doc in zombie_connections:
