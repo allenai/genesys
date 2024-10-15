@@ -75,21 +75,6 @@ class CommandCenter:
                 },merge=True)
                 self.active_mode = True
 
-    def _assign_design_workload(self,design_availability,design_workloads):
-        # find the node with largest availability
-        node_id = max(design_availability, key=design_availability.get)
-        if design_availability[node_id]>0:
-            if design_workloads[node_id]<self.max_designs_per_node or self.max_designs_per_node==0:
-                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning design workload to the most available node {node_id}')
-                self.evosys.CM.design_command(node_id)
-                design_availability[node_id] -= 1
-                design_workloads[node_id] += 1
-            else:
-                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workload for the most available node {node_id} is full ({design_workloads[node_id]}/{self.max_designs_per_node})')
-        else:
-            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design availability for the most available node {node_id} is empty ({design_availability[node_id]})')
-        return design_availability, design_workloads
-        
     # def cleanup(self):
     #     # st.info("Cleaning up and disconnecting...")
     #     self.doc_ref.delete()  # Delete the connection document
@@ -119,11 +104,21 @@ class CommandCenter:
                     if sum(design_availability.values())>0:
                         available_design_threads = self.max_designs_total-sum(design_workloads.values())
                         for _ in range(max(0,available_design_threads)):
-                            design_availability,design_workloads = self._assign_design_workload(design_availability,design_workloads)
-                            time.sleep(CC_COMMAND_DELAY)
-                            to_sleep = self.poll_freq
-                            if to_sleep<=0:
-                                break
+                            node_id = max(design_availability, key=design_availability.get)
+                            if design_availability[node_id]>0:
+                                if design_workloads[node_id]<self.max_designs_per_node or self.max_designs_per_node==0:
+                                    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning design workload to the most available node {node_id}')
+                                    self.evosys.CM.design_command(node_id)
+                                    design_availability[node_id] -= 1
+                                    design_workloads[node_id] += 1
+                                    time.sleep(CC_COMMAND_DELAY)
+                                    to_sleep = self.poll_freq
+                                    if to_sleep<=0:
+                                        break
+                            #     else:
+                            #         print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workload for the most available node {node_id} is full ({design_workloads[node_id]}/{self.max_designs_per_node})')
+                            # else:
+                            #     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design availability for the most available node {node_id} is empty ({design_availability[node_id]})')
                     else:
                         print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available: {design_availability}')
 
