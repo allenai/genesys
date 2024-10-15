@@ -177,6 +177,8 @@ class Listener:
                         self.doc_ref.update({'commands': []})
                         for command in commands:
                             print(f'[{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Executing command: {command}')
+                            evoname = command.split(',')[1]
+                            self.evosys.CM.switch_ckpt(evoname)
                             sess_id,pid = self.execute_command(command)
                             time.sleep(self.execution_delay)
                             to_sleep -= self.execution_delay
