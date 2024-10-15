@@ -167,7 +167,7 @@ def running_status(st,evosys):
       if len(running_designs)!=0:
         data={}
         for sess_id in running_designs:
-            _,status,_ = raw_sess_data[sess_id]
+            status = raw_sess_data[sess_id].get('status','N/A')
             data[sess_id] = {'status':status}
         df = pd.DataFrame(data,columns=['Status'])
         st.dataframe(df,use_container_width=True,hide_index=True)

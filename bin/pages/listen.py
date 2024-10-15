@@ -174,6 +174,7 @@ class Listener:
         design_workloads = self.evosys.CM.check_design_workload(self.node_id)
         for item in design_workloads:
             running_sessions.append(item['sess_id'])
+            raw[item['sess_id']] = item
         if ret_raw:
             return running_sessions,raw
         else:

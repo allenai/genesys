@@ -867,7 +867,7 @@ class Selector:
         # rank unverified lowest scale designs
         vectors = {i:self.design_vectors[i] for i in lowest_pool}
         design_rank = self._rank_designs(vectors)
-        if design_rank is None: # unlikely happen, but for safety, randomly select a design from the lowest scale
+        if design_rank is None or design_rank.empty or len(design_rank)==0: # unlikely happen, but for safety, randomly select a design from the lowest scale
             acronym = random.choice(lowest_pool)
             self.stream.write(f"No available verify design found, randomly select a design from the lowest scale: {lowest_scale}")
             return acronym,lowest_scale
