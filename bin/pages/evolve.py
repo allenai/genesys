@@ -228,7 +228,7 @@ def network_status(evosys):
         else:
             st.write(f'##### Connected Nodes ```{len(nodes)}```')
             _nodes = {}
-            design_workloads, verify_workloads = evosys.CM.get_workloads()
+            design_workloads, verify_workloads = evosys.CM.get_all_workloads()
             for node_id in nodes:
                 node_data = evosys.CM.collection.document(node_id).get().to_dict()
                 accept_verify_job = node_data['accept_verify_job']

@@ -1874,6 +1874,9 @@ class ConnectionManager:
             if node_id not in workloads:
                 workloads[node_id] = []
             workloads[node_id].append(index_item)
+        for node_id in self.connections:
+            if node_id not in workloads:
+                workloads[node_id] = []
         return workloads
     
 
