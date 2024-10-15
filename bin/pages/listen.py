@@ -233,7 +233,8 @@ class Listener:
                     local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
                     U.save_json(local_doc,self.local_dir)
 
-            time.sleep(to_sleep)  
+            if to_sleep>0:  
+                time.sleep(to_sleep)  
         self.cleanup()
 
     def get_running_design_sessions(self,ret_raw=False):

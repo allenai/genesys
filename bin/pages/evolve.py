@@ -23,6 +23,7 @@ from bin.pages.listen import DESIGN_ACTIVE_STATES,VERIFY_ACTIVE_STATES
 
 CC_POLL_FREQ = 30 # seconds
 CC_ZOMBIE_THRESHOLD = 60 # seconds
+CC_COMMAND_DELAY = 2 # seconds
 
 
 def _is_running(evosys):
@@ -101,6 +102,7 @@ class CommandCenter:
         print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Evolution launched for {self.evosys.evoname} in {mode}')
         while self.running:
             if self.active_mode:
+                to_sleep = self.poll_freq
                 # check if the status is still stopped
                 if self.doc_ref.get().to_dict().get('status','n/a') == 'stopped':
                     break
@@ -118,6 +120,10 @@ class CommandCenter:
                         available_design_threads = self.max_designs_total-sum(design_workloads.values())
                         for _ in range(max(0,available_design_threads)):
                             design_availability,design_workloads = self._assign_design_workload(design_availability,design_workloads)
+                            time.sleep(CC_COMMAND_DELAY)
+                            to_sleep = self.poll_freq
+                            if to_sleep<=0:
+                                break
                     else:
                         print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available: {design_availability}')
 
@@ -127,10 +133,15 @@ class CommandCenter:
                         if self.evosys.CM.verify_command(node_id):
                             # assigned_verify_workloads = True
                             print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
+                            time.sleep(CC_COMMAND_DELAY)
+                            to_sleep = self.poll_freq
+                            if to_sleep<=0:
+                                break
 
                 self.doc_ref.update({'last_heartbeat': firestore.SERVER_TIMESTAMP})
             
-            time.sleep(self.poll_freq)  
+            if to_sleep>0:
+                time.sleep(to_sleep)  
         # self.cleanup()
 
     def stop_evolution(self):
@@ -255,12 +266,15 @@ def network_status(evosys):
             
         CC = st.session_state.command_center
         active_design_sessions = evosys.CM.get_active_design_sessions()
-        if CC is None:
-            st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}```')
-        elif CC.max_designs_total>0:
-            st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/{CC.max_designs_total}```')
-        else:
-            st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/♾️```')
+        # if CC is None:
+        st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}```')
+        # else:
+        #     max_design_threads = '♾️'
+        #     if CC.max_designs_total>0:
+        #         if CC.max_designs_per_node>0:
+
+        #             max_design_threads = CC.max_designs_total
+        #     st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/{max_design_threads}```')
         if len(active_design_sessions)>0:
             active_design_sessions_df = pd.DataFrame(active_design_sessions).T
             active_design_sessions_df.rename(columns={'latest_log':'started_at'},inplace=True)
