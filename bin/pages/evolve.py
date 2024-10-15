@@ -102,7 +102,7 @@ class CommandCenter:
                 if total_design_workloads == self.max_designs_total or self.max_designs_total==0:
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads are full ({total_design_workloads}/{self.max_designs_total}), skipping design workload assignment')
                 else:
-                    design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items()}
+                    design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items() if v<self.max_designs_per_node}
                     if sum(design_availability.values())>0:
                         available_design_threads = self.max_designs_total-sum(design_workloads.values())
                         for _ in range(max(0,available_design_threads)):
