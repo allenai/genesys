@@ -50,6 +50,79 @@ class GPT2(GAUBase):
 
 
 import torch.nn.functional as F
+
+
+class HypersphereRMSNorm(GAUBase):
+    """
+    Hypersphere Root Mean Square Layer Normalization (HypersphereRMSNorm).
+
+    This layer extends RMSNorm by normalizing input tensors onto a unit norm hypersphere
+    and applying trainable per-dimension scaling factors. This enhances training stability,
+    computational efficiency, and model scalability.
+
+    Args:
+        embed_dim (int): The size of the input feature dimension.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the parent class.
+        device (torch.device, optional): The device on which to allocate the module's parameters.
+        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        eps (float, optional): A small constant added to the denominator for numerical stability.
+            Default: 1e-5.
+
+    Attributes:
+        alpha (nn.Parameter): Learnable scaling parameter of shape (embed_dim,).
+
+    Shape:
+        - Input: (*, embed_dim)
+        - Output: (*, embed_dim) (same shape as input)
+
+    Examples:
+        >>> hypersphere_rmsnorm = HypersphereRMSNorm(128, (0, 6), {})
+        >>> x = torch.randn(1, 100, 128)
+        >>> output, _ = hypersphere_rmsnorm(x)
+        >>> print(output.shape)
+        torch.Size([1, 100, 128])
+
+    References:
+        - HypersphereGPT Proposal
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        """
+        Initialize the HypersphereRMSNorm module.
+
+        Args:
+            embed_dim (int): The size of the input feature dimension.
+            block_loc (tuple): The location of this block in the model architecture.
+            kwarg_all (dict): Additional keyword arguments passed to the parent class.
+            device (torch.device, optional): The device on which to allocate the module's parameters.
+            dtype (torch.dtype, optional): The dtype of the module's parameters.
+            eps (float, optional): A small constant added to the denominator for numerical stability.
+                Default: 1e-5.
+        """
+        self.eps = eps
+        self.alpha = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs))
+
+    def _forward(self, X, **Z):
+        """
+        Forward pass for HypersphereRMSNorm.
+
+        Arguments:
+            X (Tensor): Input tensor of shape (*, embed_dim).
+
+        Returns:
+            Tuple[Tensor, dict]: The normalized and scaled output tensor, and any updated intermediate variables.
+        """
+        norm = X.norm(p=2, dim=-1, keepdim=True).clamp_min(self.eps)
+        Y = X / norm
+        Y = Y * self.alpha
+        return Y, {}
+
+
+import torch.nn.functional as F
 import math
 from einops import rearrange, repeat
 
@@ -229,79 +302,6 @@ class RotaryPositionalEmbeddings(GAUBase):
         x_out = x_out.flatten(3)
         output_emb = x_out.type_as(input_emb)
         return X, {'output_emb': output_emb}
-
-
-import torch.nn.functional as F
-
-
-class HypersphereRMSNorm(GAUBase):
-    """
-    Hypersphere Root Mean Square Layer Normalization (HypersphereRMSNorm).
-
-    This layer extends RMSNorm by normalizing input tensors onto a unit norm hypersphere
-    and applying trainable per-dimension scaling factors. This enhances training stability,
-    computational efficiency, and model scalability.
-
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
-
-    Attributes:
-        alpha (nn.Parameter): Learnable scaling parameter of shape (embed_dim,).
-
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
-    Examples:
-        >>> hypersphere_rmsnorm = HypersphereRMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output, _ = hypersphere_rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - HypersphereGPT Proposal
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        """
-        Initialize the HypersphereRMSNorm module.
-
-        Args:
-            embed_dim (int): The size of the input feature dimension.
-            block_loc (tuple): The location of this block in the model architecture.
-            kwarg_all (dict): Additional keyword arguments passed to the parent class.
-            device (torch.device, optional): The device on which to allocate the module's parameters.
-            dtype (torch.dtype, optional): The dtype of the module's parameters.
-            eps (float, optional): A small constant added to the denominator for numerical stability.
-                Default: 1e-5.
-        """
-        self.eps = eps
-        self.alpha = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs))
-
-    def _forward(self, X, **Z):
-        """
-        Forward pass for HypersphereRMSNorm.
-
-        Arguments:
-            X (Tensor): Input tensor of shape (*, embed_dim).
-
-        Returns:
-            Tuple[Tensor, dict]: The normalized and scaled output tensor, and any updated intermediate variables.
-        """
-        norm = X.norm(p=2, dim=-1, keepdim=True).clamp_min(self.eps)
-        Y = X / norm
-        Y = Y * self.alpha
-        return Y, {}
 
 
 import torch.nn.functional as F
