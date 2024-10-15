@@ -813,7 +813,6 @@ class Selector:
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
-        exclude=self._get_exclude(exclude_list)
         available_verify_budget=self.available_verify_budget
         if len(available_verify_budget)<=0:
             if self.budget_type=='verify_bound':
@@ -824,7 +823,7 @@ class Selector:
             else:
                 raise ValueError(f"Invalid budget type: {self.budget_type}")
         if verify_strategy=='random':
-            return self.random_select_verify(available_verify_budget,exclude,select_cfg)
+            return self.random_select_verify(available_verify_budget,exclude_list,select_cfg)
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
 
