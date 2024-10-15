@@ -277,11 +277,22 @@ def network_status(evosys):
         if len(running_verifications)>0:
             # for sess_id in running_verifications:
             running_verifications_df = pd.DataFrame(running_verifications).T
-            running_verifications_df.rename(columns={'latest_log':'started_at'},inplace=True)
+            del running_verifications_df['latest_log']
+            wandb_urls = []
+            for sess_id in running_verifications_df.index:
+                ve_dir = U.pjoin(evosys.evo_dir, 've', sess_id)
+                if os.path.exists(ve_dir):
+                    wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
+                    wandb_id=wandb_ids['pretrain']['id']
+                    project=wandb_ids['project']
+                    entity=wandb_ids['entity']
+                    url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                    wandb_urls.append(url)
+                else:
+                    wandb_urls.append(None)
+            running_verifications_df['W&B Training Run'] = wandb_urls
             if 'pid' in running_verifications_df.columns:
                 running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
-            if 'started_at' in running_verifications_df.columns:
-                running_verifications_df['started_at'] = pd.to_datetime(running_verifications_df['started_at'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
             if 'heartbeat' in running_verifications_df.columns:
                 running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
             st.dataframe(running_verifications_df,use_container_width=True)

@@ -111,21 +111,19 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
         doc = verify_ref.get().to_dict()
         timestamp = datetime.now()
         try:
-            verifying_dict = evosys.CM.get_running_verifications()
-            unfinished_verifies = evosys.get_unfinished_verifies(evoname)
-            available_verifies = [v for v in unfinished_verifies if v not in verifying_dict]
+            verifying_dict = evosys.CM.get_running_verifications() # sess_ids: design_id_scale
+            unfinished_verifies = evosys.get_unfinished_verifies() # local folders
+            available_resumes = [v for v in unfinished_verifies if v not in verifying_dict]
             if design_id is None or scale is None:
                 doc = verify_ref.get().to_dict()
 
-                if resume and available_verifies:
-                    exp = random.choice(available_verifies)
-                    scale = exp.split('_')[-1]
-                    design_id = exp[:-len(scale)-1]
+                if resume and available_resumes:
+                    exp = random.choice(available_resumes)
+                    design_id, scale = U.parse_verify_id(exp)
                 else:
                     exclude_list = []
                     for key in verifying_dict:
-                        scale = key.split('_')[-1]
-                        design_id = key[:-len(scale)-1]
+                        design_id, scale = U.parse_verify_id(key)
                         exclude_list.append((design_id,scale))  
                     print(f'Selecting with exclude_list: {exclude_list}')
                     design_id, scale = evosys.selector.select_verify(exclude_list=exclude_list)
@@ -137,15 +135,6 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                             return None, msg, None, None
                         else:
                             return None, msg
-            else:
-                if f'{design_id}_{scale}' not in available_verifies:
-                    msg = f"Verification on {design_id}_{scale} is already running or completed."
-                    if not cli:
-                        st.error(msg)
-                    if ret_id:
-                        return None, msg, None, None
-                    else:
-                        return None, msg
 
         finally:
             # create index term
@@ -170,13 +159,12 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
         return sess_id, pid
 
 def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
-    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
     exp_log_ref = evosys.CM.get_log_ref()
     index_ref = evosys.CM.log_doc_ref.collection('verifications').document('index')
     index_ref.set({sess_id:{'node_id':node_id,'pid':pid}},merge=True)
 
     # Start heartbeat
-    verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
+    # verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
     
     try:
         while True:
@@ -258,10 +246,15 @@ def get_system_info():
     return cpu_info, gpu_info, mem_info
 
 
-
+# Only one verification can be running at a time
 def _run_verification(params, design_id, scale, resume, cli=False, prep_only=False, RANDOM_TESTING=False):
     params_str = shlex.quote(json.dumps(params))
     if not RANDOM_TESTING:
+        CKPT_DIR = os.environ.get('CKPT_DIR')
+        local_doc_dir = U.pjoin(CKPT_DIR, '.node.json')
+        local_doc = U.load_json(local_doc_dir)
+        local_doc['model_ready'] = False
+        U.save_json(local_doc, local_doc_dir)
         cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
         if cli:
             print('Preparing Model...')
@@ -272,7 +265,11 @@ def _run_verification(params, design_id, scale, resume, cli=False, prep_only=Fal
 
         if prep_only:
             return process
+        
+        while not U.load_json(local_doc_dir)['model_ready']:
+            time.sleep(1)
 
+    # FIXME: should wait until the model is ready
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
@@ -281,6 +278,7 @@ def _run_verification(params, design_id, scale, resume, cli=False, prep_only=Fal
     if cli:
         print(f'Launching Verification with command:\n```{cmd}```')
         process = subprocess.Popen(cmd, shell=True)
+        # process = subprocess.Popen('echo "Hello World"', shell=True)
     else:
         st.write(f'Launching Verification with command:\n```{cmd}```')
         with st.spinner('Running... Please check the console for verification progress.'):

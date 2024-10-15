@@ -1809,25 +1809,26 @@ class ConnectionManager:
         log_df = None
         status = index_term[sess_id]['status']
         heartbeat = index_term[sess_id]['timestamp']
-        if 'latest_log' in index_term[sess_id]:
-            latest_log = index_term[sess_id]['latest_log'] 
-            log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
-            log = log_ref.get()
-            if not log.exists:
-                return None,None,None
-            log = log.to_dict()
-            log_df = pd.DataFrame(log).T
-            log_df = log_df.sort_index(ascending=False)
-            status = log_df.iloc[0]['status']
-            heartbeat = log_df.index[0]
-            if zombie_threshold and time.time()-float(heartbeat)>zombie_threshold:
-                print(f'Detected zombie session: {sess_id}')
-                index_ref = self.log_doc_ref.collection(log_collection_name).document('index')
-                index_ref.set({sess_id:{
-                    'status':'ZOMBIE',
-                    'timestamp':str(time.time())
-                }},merge=True)
-                status = 'ZOMBIE'
+        latest_log = index_term[sess_id]['latest_log'] 
+        if not latest_log:
+            return None,None,None
+        log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
+        log = log_ref.get()
+        if not log.exists:
+            return None,None,None
+        log = log.to_dict()
+        log_df = pd.DataFrame(log).T
+        log_df = log_df.sort_index(ascending=False)
+        status = log_df.iloc[0]['status']
+        heartbeat = log_df.index[0]
+        if zombie_threshold and time.time()-float(heartbeat)>zombie_threshold:
+            print(f'Detected zombie session: {sess_id}')
+            index_ref = self.log_doc_ref.collection(log_collection_name).document('index')
+            index_ref.set({sess_id:{
+                'status':'ZOMBIE',
+                'timestamp':str(time.time())
+            }},merge=True)
+            status = 'ZOMBIE'
         return log_df,status,heartbeat
 
     def get_session_log(self,sess_id):
@@ -2474,6 +2475,12 @@ class EvolutionSystem(exec_utils.System):
         with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
             f.write(code)
 
+        CKPT_DIR = os.environ.get('CKPT_DIR')
+        local_doc_dir = U.pjoin(CKPT_DIR, '.node.json')
+        local_doc = U.load_json(local_doc_dir)
+        local_doc['model_ready'] = True
+        U.save_json(local_doc, local_doc_dir)
+
     @classmethod
     def from_config(cls,config,silent=False,**kwargs):
         """Loads all the evolution components from configuration 
@@ -2554,7 +2561,9 @@ if __name__ == '__main__':
         if args.mode=='prep_model':
             evolution_system._prep_model(args.design_id, args.scale)
         elif args.mode=='verify':
-            evolution_system.verify(args,in_process=True)
+            design_id = None if args.design_id=='None' else args.design_id
+            scale = None if args.scale=='None' else args.scale
+            evolution_system.verify(args,design_id=design_id,scale=scale,in_process=True)
         elif args.mode=='design':
             sess_id=None if args.sess_id=='' else args.sess_id
             evolution_system.design(sess_id=sess_id,in_process=True,silent=args.silent,cpu_only=args.cpu_only)

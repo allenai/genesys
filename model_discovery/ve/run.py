@@ -63,9 +63,9 @@ def find_free_port(start_port=25986, max_port=65535):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
-parser.add_argument("--design_id", type=str, default="test") # should be named after the agent, it should be the same as gab name
+parser.add_argument("--design_id", type=str, default="None") # should be named after the agent, it should be the same as gab name
 parser.add_argument("--resume", action='store_true', help="Whether to resume from the latest checkpoint if there is one, or fully retrain")
-parser.add_argument("--scale", type=str, default='debug') 
+parser.add_argument("--scale", type=str, default='None') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
 parser.add_argument("--save_steps", type=int, default=DEFAULT_SAVE_STEPS)
@@ -650,6 +650,7 @@ if __name__ == "__main__":
     if args.mode=='test':
         args.evoname = "ve_test"
         args.design_id = "test"
+        args.scale = "debug"
         args.resume = True
         # args.n_gpus = 1
         # args.PERF_PROF_MODE = True

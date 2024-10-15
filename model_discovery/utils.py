@@ -218,3 +218,9 @@ def translate_dict_keys(data,key_dict,allow_missing=True):
         k=key_dict.get(k,k) if allow_missing else key_dict[k]
         new_data[k]=v
     return new_data
+
+
+def parse_verify_id(verify_id):
+    scale = verify_id.split('_')[-1]
+    design_id = verify_id[:-len(scale)-1]
+    return design_id, scale
