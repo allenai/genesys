@@ -148,6 +148,14 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                         return None, msg
 
         finally:
+            # create index term
+            sess_id = f'{design_id}_{scale}'
+            index_ref = evosys.CM.log_doc_ref.collection('verifications').document('index')
+            index_ref.set({sess_id:{
+                'timestamp':str(time.time()),
+                'status':'RUNNING',
+                'latest_log':None
+            }},merge=True)
             # Release lock
             time.sleep(random.randint(1,10)) 
             verify_ref.update({'lock': {'locked': False, 'node_id': None}})
