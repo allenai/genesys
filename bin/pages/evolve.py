@@ -93,6 +93,8 @@ class CommandCenter:
                     break
                 # self.evosys.CM.get_active_connections() # refresh the connection status
                 design_workloads, verify_workloads = self.evosys.CM.get_all_workloads() # will refresh the connection status
+                design_workloads = {k:len(v) for k,v in design_workloads.items()}
+                verify_workloads = {k:len(v) for k,v in verify_workloads.items()}
                 print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}, Verify workloads: {verify_workloads}')
 
                 # check if the design workloads are full
