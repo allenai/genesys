@@ -178,7 +178,7 @@ class Listener:
                                 if command.startswith('design'):
                                     _,status,_ = self.evosys.CM.get_session_log(sess_id)
                                 else:
-                                    status = 'RUNNING'
+                                    _,status,_ = self.evosys.CM.get_verification_log(sess_id)
                                 self.command_status[str(pid)] = {
                                     'command': str(command),
                                     'sess_id': str(sess_id),

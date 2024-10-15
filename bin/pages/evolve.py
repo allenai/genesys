@@ -255,7 +255,9 @@ def network_status(evosys):
             
         CC = st.session_state.command_center
         active_design_sessions = evosys.CM.get_active_design_sessions()
-        if CC.max_designs_total>0:
+        if CC is None:
+            st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}```')
+        elif CC.max_designs_total>0:
             st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/{CC.max_designs_total}```')
         else:
             st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/♾️```')
