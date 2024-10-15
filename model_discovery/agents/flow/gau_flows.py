@@ -1225,7 +1225,7 @@ class GUFlowMutation(FlowCreator):
                         else:
                             declaration = UnitDecl(
                                 unitname=selection,
-                                document='N/A',
+                                requirements='N/A',
                                 inputs=['N/A'],
                                 outputs=['N/A']
                             )
@@ -1284,7 +1284,7 @@ class GUFlowMutation(FlowCreator):
                             if isinstance(declaration,str):
                                 declaration = UnitDecl(
                                     unitname=selection,
-                                    document='N/A',
+                                    requirements='N/A',
                                     inputs=['N/A'],
                                     outputs=['N/A']
                                 )
@@ -1307,7 +1307,7 @@ class GUFlowMutation(FlowCreator):
                         if isinstance(declaration,str):
                             declaration = UnitDecl(
                                 unitname=selection,
-                                document='N/A',
+                                requirements='',
                                 inputs=['N/A'],
                                 outputs=['N/A']
                             )
@@ -1406,9 +1406,9 @@ class GUFlowMutation(FlowCreator):
                                 format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
                                 declaration=UnitDecl(
                                     unitname=unit_name,
-                                    requirements='',
-                                    inputs=[],
-                                    outputs=[]
+                                    requirements='N/A',
+                                    inputs=['N/A'],
+                                    outputs=['N/A']
                                 )
                             else:
                                 declaration=self.tree.declares[unit_name]
@@ -1435,9 +1435,9 @@ class GUFlowMutation(FlowCreator):
                             format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
                             declaration=UnitDecl(
                                 unitname=unit_name,
-                                requirements='',
-                                inputs=[],
-                                outputs=[]
+                                requirements='N/A',
+                                inputs=['N/A'],
+                                outputs=['N/A']
                             )
                         else:
                             declaration=self.tree.declares[unit_name]
