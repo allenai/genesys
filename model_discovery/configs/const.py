@@ -19,6 +19,8 @@ VERIFY_ZOMBIE_THRESHOLD = 200
 
 NODE_ZOMBIE_THRESHOLD = 45
 
+LOCK_ZOMBIE_THRESHOLD = 90 # seconds, should be longer than selection timeout
+
 # GLUE_TASK_LIST = ["cola","mnli","mrpc","qnli","qqp","rte","sst","wnli"]
 
 STANDARD_EVAL_TASKS = ["lambada_openai","hellaswag","piqa","arc_easy","arc_challenge","winogrande", "openbookqa"] 

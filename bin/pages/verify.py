@@ -37,7 +37,7 @@ from model_discovery.configs.gam_config import (
 
 from model_discovery.ve.data_loader import load_datasets
 from model_discovery.configs.const import TARGET_SCALES, SMOLLM_125_CORPUS,\
-    VERIFY_TERMINAL_STATES,VERIFY_ACTIVE_STATES,VERIFY_ZOMBIE_THRESHOLD
+    VERIFY_TERMINAL_STATES,VERIFY_ACTIVE_STATES,VERIFY_ZOMBIE_THRESHOLD,LOCK_ZOMBIE_THRESHOLD
 from model_discovery.agents.agent_utils import OPENAI_COSTS_DICT, ANTHROPIC_COSTS_DICT
 
 
@@ -69,6 +69,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
 
 # python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {design_id} --scale {scale} --node_id {node_id} --pid {pid}
 
+
 def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False,ret_id=False, RANDOM_TESTING=False):
     
     if not RANDOM_TESTING:
@@ -92,7 +93,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                 lock_info = doc['lock']
                 lock_time = lock_info['timestamp'].replace(tzinfo=None)  # Remove timezone info for comparison
                 
-                if (current_time - lock_time).total_seconds() > evosys.CM.zombie_threshold:
+                if (current_time - lock_time).total_seconds() > LOCK_ZOMBIE_THRESHOLD:
                     # The lock is held by a zombie node, we can take it
                     verify_ref.set({
                         'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
