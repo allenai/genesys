@@ -783,7 +783,8 @@ class Selector:
 
     def _get_exclude(self,exclude_list):
         exclude={}
-        for design_id,scale in exclude_list: # list of (design_id,scale) being verified by other nodes
+        for design_scale in exclude_list: # list of (design_id,scale) being verified by other nodes
+            design_id,scale = design_scale
             if scale not in exclude:
                 exclude[scale]=[]
             exclude[scale].append(design_id)
@@ -791,7 +792,8 @@ class Selector:
 
     def _get_exclude_inv(self,exclude_list):
         exclude_inv={}
-        for design_id,scale in exclude_list: # list of (design_id,scale) being verified by other nodes
+        for design_scale in exclude_list: # list of (design_id,scale) being verified by other nodes
+            design_id,scale = design_scale
             if design_id not in exclude_inv:
                 exclude_inv[design_id]=[]
             exclude_inv[design_id].append(scale)
