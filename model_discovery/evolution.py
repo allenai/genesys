@@ -1746,6 +1746,10 @@ class ConnectionManager:
         self.max_design_threads={}
         self.accept_verify_job={}
 
+    def switch_ckpt(self,evoname):
+        self.evoname = evoname
+        self.log_doc_ref = self.log_doc_ref.collection('experiment_logs').document(evoname)
+
     def get_log_ref(self):
         latest_log = self.log_doc_ref.get().to_dict().get('latest_log',None)
         if latest_log:

@@ -71,6 +71,8 @@ class Listener:
             cmd = running_designs[pid]
             if cmd['command'].startswith('design'):
                 sess_id = cmd['sess_id']
+                evoname = cmd['command'].split(',')[1]
+                self.evosys.CM.switch_ckpt(evoname)
                 _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
                 if status in DESIGN_ACTIVE_STATES:
                     if time.time() - float(heartbeat) < DESIGN_ZOMBIE_THRESHOLD:
@@ -80,6 +82,8 @@ class Listener:
             cmd = running_verifies[pid]
             if cmd['command'].startswith('verify'):
                 sess_id = cmd['sess_id']
+                evoname = cmd['command'].split(',')[1]
+                self.evosys.CM.switch_ckpt(evoname)
                 _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
                 if status in VERIFY_ACTIVE_STATES:
                     if time.time() - float(heartbeat) < VERIFY_ZOMBIE_THRESHOLD:
@@ -178,6 +182,8 @@ class Listener:
                             to_sleep -= self.execution_delay
                             self.command_queue.put((command,sess_id,pid))
                             if sess_id:
+                                evoname = command.split(',')[1]
+                                self.evosys.CM.switch_ckpt(evoname)
                                 if command.startswith('design'):
                                     _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
                                 else:
@@ -191,8 +197,10 @@ class Listener:
                         
                     for pid in self.command_status: 
                         command = self.command_status[str(pid)]['command']
+                        sess_id = self.command_status[str(pid)]['sess_id']
+                        evoname = command.split(',')[1]
+                        self.evosys.CM.switch_ckpt(evoname)
                         if command.startswith('design'):
-                            sess_id = self.command_status[str(pid)]['sess_id']
                             _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
                             self.command_status[str(pid)]['status'] = status
                             self.command_status[str(pid)]['heartbeat'] = heartbeat
@@ -205,7 +213,6 @@ class Listener:
                                 }
                             local_doc['running_designs'] = running_designs
                         else:
-                            sess_id = self.command_status[str(pid)]['sess_id']
                             _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
                             self.command_status[str(pid)]['status'] = status
                             self.command_status[str(pid)]['heartbeat'] = heartbeat
@@ -236,6 +243,8 @@ class Listener:
             # check command_status, and if it is running, then add to the list
             for pid,cmd in doc.to_dict().get('command_status',{}).items():   
                 if cmd['command'].startswith('design'):
+                    evoname = cmd['command'].split(',')[1]
+                    self.evosys.CM.switch_ckpt(evoname)
                     RET = self.evosys.CM.get_session_log(cmd['sess_id'])
                     _,status,_ = RET
                     raw[cmd['sess_id']] = RET
