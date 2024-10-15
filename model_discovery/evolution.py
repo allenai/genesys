@@ -1868,7 +1868,8 @@ class ConnectionManager:
             if index_item['status'] in VERIFY_ACTIVE_STATES:
                 _,status,heartbeat = self.get_verification_log(sess_id)
                 if status != 'ZOMBIE':
-                    index_item['status'] = status
+                    if status:
+                        index_item['status'] = status 
                     index_item['heartbeat'] = heartbeat
                     running_verifications[sess_id] = index_item
         return running_verifications
