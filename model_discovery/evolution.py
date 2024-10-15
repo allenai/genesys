@@ -1050,7 +1050,7 @@ class DesignArtifact(NodeObject):
         costs=self.proposal.costs
         if self.implementation:
             icosts=self.implementation.get_cost()
-            costs={k:v+icosts[k] for k,v in costs.items()}
+            costs={k:v+icosts[k] for k,v in costs.items() if k in icosts}
         # TODO: maybe cost of rerank, selection, etc. also considered, now only agents 
         return costs
 
