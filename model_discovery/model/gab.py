@@ -50,6 +50,141 @@ class GPT2(GAUBase):
 
 
 import torch.nn.functional as F
+
+
+class GatedMLP(GAUBase):
+    """
+    Gated Multi-Layer Perceptron (GatedMLP)
+
+    This GAU introduces a gating mechanism within an MLP to control the flow of information,
+    enhancing the model's ability to focus on relevant features and suppress irrelevant ones.
+
+    **Mathematical Formulation:**
+
+    Given an input tensor \\( X \\in \\mathbb{R}^{B 	imes L 	imes D} \\):
+
+    \\[
+    Y = 	ext{GatedMLP}(X) = 	ext{FC}_2(	ext{Activation}(	ext{FC}_1(X)) \\odot 	ext{Gate}(X))
+    \\]
+
+    Where:
+    - \\( 	ext{FC}_1 \\) is a linear transformation expanding the dimensionality.
+    - \\( 	ext{Activation} \\) applies a non-linear function (e.g., SiLU).
+    - \\( 	ext{Gate} \\) is a linear transformation followed by a sigmoid to gate the activations.
+    - \\( \\odot \\) denotes element-wise multiplication.
+    - \\( 	ext{FC}_2 \\) projects back to the original embedding dimension.
+
+    **Attributes:**
+        - `fc1`: Linear layer projecting input to twice the hidden features for gating.
+        - `activation`: Activation function applied to the gated output.
+        - `fc2`: Linear layer projecting back to the output features.
+
+    **Args:**
+        embed_dim (int): Embedding dimension of the input and output.
+        block_loc (tuple): Location of the block within the network, e.g., (layer_idx, n_block).
+        kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
+        device (torch.device, optional): Device to allocate layers.
+        dtype (torch.dtype, optional): Data type of the layers.
+        hidden_features (int, optional): Number of hidden units in the first linear layer. Defaults to `int(8 * embed_dim / 3)`.
+        out_features (int, optional): Number of output units in the second linear layer. Defaults to `embed_dim`.
+        activation (callable, optional): Activation function to use (e.g., `F.silu`).
+        bias (bool, optional): Whether to include bias terms in linear layers. Defaults to `False`.
+        multiple_of (int, optional): Ensures hidden features are a multiple of this value. Defaults to `128`.
+        **kwargs: Additional keyword arguments.
+
+    **Shape:**
+        - Input: (B, L, D)
+        - Output: (B, L, D)
+
+    **Example:**
+        gated_mlp = GatedMLP(
+            embed_dim=64,
+            block_loc=(0, 0),
+            kwarg_all={},
+            hidden_features=128,
+            out_features=64,
+            activation=F.silu,
+            bias=True,
+            multiple_of=128,
+            device='cuda',
+            dtype=torch.float32
+        )
+        X = torch.randn(2, 10, 64)
+        Y, Z = gated_mlp(X)
+
+    **References:**
+        - Liu, H., Dai, Z., So, D. R., & Le, Q. V. (2021). Pay Attention to MLPs. Neural Information Processing Systems, 34, 9204-9215.
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, hidden_features: int=None, out_features:
+        int=None, activation: callable=None, bias: bool=False, multiple_of:
+        int=128, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        """
+        Initializes the GatedMLP GAU.
+
+        Args:
+            embed_dim (int): Embedding dimension of the input and output.
+            block_loc (tuple): Location of the block within the network, e.g., (layer_idx, n_block).
+            kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
+            device (torch.device, optional): Device to allocate layers.
+            dtype (torch.dtype, optional): Data type of the layers.
+            hidden_features (int, optional): Number of hidden units in the first linear layer.
+                Defaults to `int(8 * embed_dim / 3)`.
+            out_features (int, optional): Number of output units in the second linear layer.
+                Defaults to `embed_dim`.
+            activation (callable, optional): Activation function to use. Defaults to `F.silu`.
+            bias (bool, optional): Whether to include bias terms in linear layers. Defaults to `False`.
+            multiple_of (int, optional): Ensures hidden features are a multiple of this value. Defaults to `128`.
+            **kwargs: Additional keyword arguments.
+        """
+        self.out_features = (out_features if out_features is not None else
+            embed_dim)
+        self.hidden_features = (hidden_features if hidden_features is not
+            None else int(8 * embed_dim / 3))
+        self.hidden_features = (self.hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.fc1 = nn.Linear(embed_dim, 2 * self.hidden_features, bias=bias,
+            **self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.fc2 = nn.Linear(self.hidden_features, self.out_features, bias=
+            bias, **self.factory_kwargs)
+        self.reset_parameters()
+
+    def reset_parameters(self):
+        """
+        Initializes the linear layers with Xavier uniform initialization.
+        """
+        nn.init.xavier_uniform_(self.fc1.weight)
+        if self.fc1.bias is not None:
+            nn.init.zeros_(self.fc1.bias)
+        nn.init.xavier_uniform_(self.fc2.weight)
+        if self.fc2.bias is not None:
+            nn.init.zeros_(self.fc2.bias)
+
+    def _forward(self, X, **Z):
+        """
+        Forward pass of the GatedMLP.
+
+        Args:
+            X (Tensor): Input tensor of shape (B, L, D).
+            **Z: Intermediate variables.
+
+        Returns:
+            Tuple[Tensor, dict]: Output tensor and updated intermediate variables.
+        """
+        assert X.dim() == 3 and X.size(-1
+            ) == self.embed_dim, f'Expected input shape (*, embed_dim), got {X.shape}'
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        y = self.fc2(y)
+        return y, {}
+
+
+import torch.nn.functional as F
 import math
 from einops import rearrange, repeat
 
@@ -289,141 +424,6 @@ class RMSNorm(GAUBase):
         variance = X.pow(2).mean(-1, keepdim=True)
         X = X * torch.rsqrt(variance + self.variance_epsilon)
         return self.weight * X.to(input_dtype)
-
-
-import torch.nn.functional as F
-
-
-class GatedMLP(GAUBase):
-    """
-    Gated Multi-Layer Perceptron (GatedMLP)
-
-    This GAU introduces a gating mechanism within an MLP to control the flow of information,
-    enhancing the model's ability to focus on relevant features and suppress irrelevant ones.
-
-    **Mathematical Formulation:**
-
-    Given an input tensor \\( X \\in \\mathbb{R}^{B 	imes L 	imes D} \\):
-
-    \\[
-    Y = 	ext{GatedMLP}(X) = 	ext{FC}_2(	ext{Activation}(	ext{FC}_1(X)) \\odot 	ext{Gate}(X))
-    \\]
-
-    Where:
-    - \\( 	ext{FC}_1 \\) is a linear transformation expanding the dimensionality.
-    - \\( 	ext{Activation} \\) applies a non-linear function (e.g., SiLU).
-    - \\( 	ext{Gate} \\) is a linear transformation followed by a sigmoid to gate the activations.
-    - \\( \\odot \\) denotes element-wise multiplication.
-    - \\( 	ext{FC}_2 \\) projects back to the original embedding dimension.
-
-    **Attributes:**
-        - `fc1`: Linear layer projecting input to twice the hidden features for gating.
-        - `activation`: Activation function applied to the gated output.
-        - `fc2`: Linear layer projecting back to the output features.
-
-    **Args:**
-        embed_dim (int): Embedding dimension of the input and output.
-        block_loc (tuple): Location of the block within the network, e.g., (layer_idx, n_block).
-        kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
-        device (torch.device, optional): Device to allocate layers.
-        dtype (torch.dtype, optional): Data type of the layers.
-        hidden_features (int, optional): Number of hidden units in the first linear layer. Defaults to `int(8 * embed_dim / 3)`.
-        out_features (int, optional): Number of output units in the second linear layer. Defaults to `embed_dim`.
-        activation (callable, optional): Activation function to use (e.g., `F.silu`).
-        bias (bool, optional): Whether to include bias terms in linear layers. Defaults to `False`.
-        multiple_of (int, optional): Ensures hidden features are a multiple of this value. Defaults to `128`.
-        **kwargs: Additional keyword arguments.
-
-    **Shape:**
-        - Input: (B, L, D)
-        - Output: (B, L, D)
-
-    **Example:**
-        gated_mlp = GatedMLP(
-            embed_dim=64,
-            block_loc=(0, 0),
-            kwarg_all={},
-            hidden_features=128,
-            out_features=64,
-            activation=F.silu,
-            bias=True,
-            multiple_of=128,
-            device='cuda',
-            dtype=torch.float32
-        )
-        X = torch.randn(2, 10, 64)
-        Y, Z = gated_mlp(X)
-
-    **References:**
-        - Liu, H., Dai, Z., So, D. R., & Le, Q. V. (2021). Pay Attention to MLPs. Neural Information Processing Systems, 34, 9204-9215.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features: int=None, out_features:
-        int=None, activation: callable=None, bias: bool=False, multiple_of:
-        int=128, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        """
-        Initializes the GatedMLP GAU.
-
-        Args:
-            embed_dim (int): Embedding dimension of the input and output.
-            block_loc (tuple): Location of the block within the network, e.g., (layer_idx, n_block).
-            kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
-            device (torch.device, optional): Device to allocate layers.
-            dtype (torch.dtype, optional): Data type of the layers.
-            hidden_features (int, optional): Number of hidden units in the first linear layer.
-                Defaults to `int(8 * embed_dim / 3)`.
-            out_features (int, optional): Number of output units in the second linear layer.
-                Defaults to `embed_dim`.
-            activation (callable, optional): Activation function to use. Defaults to `F.silu`.
-            bias (bool, optional): Whether to include bias terms in linear layers. Defaults to `False`.
-            multiple_of (int, optional): Ensures hidden features are a multiple of this value. Defaults to `128`.
-            **kwargs: Additional keyword arguments.
-        """
-        self.out_features = (out_features if out_features is not None else
-            embed_dim)
-        self.hidden_features = (hidden_features if hidden_features is not
-            None else int(8 * embed_dim / 3))
-        self.hidden_features = (self.hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * self.hidden_features, bias=bias,
-            **self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(self.hidden_features, self.out_features, bias=
-            bias, **self.factory_kwargs)
-        self.reset_parameters()
-
-    def reset_parameters(self):
-        """
-        Initializes the linear layers with Xavier uniform initialization.
-        """
-        nn.init.xavier_uniform_(self.fc1.weight)
-        if self.fc1.bias is not None:
-            nn.init.zeros_(self.fc1.bias)
-        nn.init.xavier_uniform_(self.fc2.weight)
-        if self.fc2.bias is not None:
-            nn.init.zeros_(self.fc2.bias)
-
-    def _forward(self, X, **Z):
-        """
-        Forward pass of the GatedMLP.
-
-        Args:
-            X (Tensor): Input tensor of shape (B, L, D).
-            **Z: Intermediate variables.
-
-        Returns:
-            Tuple[Tensor, dict]: Output tensor and updated intermediate variables.
-        """
-        assert X.dim() == 3 and X.size(-1
-            ) == self.embed_dim, f'Expected input shape (*, embed_dim), got {X.shape}'
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y, {}
 
 
 gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,

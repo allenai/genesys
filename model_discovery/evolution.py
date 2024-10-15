@@ -1809,7 +1809,7 @@ class ConnectionManager:
                     running_verifies.append(pid)
         return running_designs, running_verifies
     
-    def _get_log(self,sess_id,log_collection_name):
+    def _get_log(self,sess_id,log_collection_name,zombie_threshold=None):
         log_collection = self.log_doc_ref.collection(log_collection_name)
         index_term = log_collection.document('index').get()
         if not index_term.exists:
@@ -1827,13 +1827,21 @@ class ConnectionManager:
         log_df = log_df.sort_index(ascending=False)
         status = log_df.iloc[0]['status']
         heartbeat = log_df.index[0]
+        if zombie_threshold and time.time()-float(heartbeat)>zombie_threshold:
+            print(f'Detected zombie session: {sess_id}')
+            index_ref = self.log_doc_ref.collection(log_collection_name).document('index')
+            index_ref.set({sess_id:{
+                'status':'ZOMBIE',
+                'timestamp':str(time.time())
+            }},merge=True)
+            status = 'ZOMBIE'
         return log_df,status,heartbeat
 
     def get_session_log(self,sess_id):
-        return self._get_log(sess_id,'design_sessions')
+        return self._get_log(sess_id,'design_sessions',DESIGN_ZOMBIE_THRESHOLD)
     
     def get_verification_log(self,sess_id):
-        return self._get_log(sess_id,'verifications')
+        return self._get_log(sess_id,'verifications',VERIFY_ZOMBIE_THRESHOLD)
     
     def get_active_design_sessions(self):
         active_design_sessions = {}
@@ -1848,13 +1856,7 @@ class ConnectionManager:
             if index_item['status'] in DESIGN_ACTIVE_STATES:
                 # check if it is zombie, if it is, update the status and skip
                 _,status,heartbeat = self.get_session_log(sess_id)
-                if time.time()-float(heartbeat)>DESIGN_ZOMBIE_THRESHOLD:
-                    print(f'Detected zombie design session: {sess_id}')
-                    index_ref.set({sess_id:{
-                        'status':'ZOMBIE',
-                        'timestamp':str(time.time())
-                    }},merge=True)
-                else:
+                if status != 'ZOMBIE':
                     index_item['status'] = status
                     index_item['heartbeat'] = heartbeat
                     active_design_sessions[sess_id] = index_item
@@ -1872,13 +1874,7 @@ class ConnectionManager:
             index_item = index_term[sess_id]
             if index_item['status'] in VERIFY_ACTIVE_STATES:
                 _,status,heartbeat = self.get_verification_log(sess_id)
-                if time.time()-float(heartbeat)>VERIFY_ZOMBIE_THRESHOLD:
-                    print(f'Detected zombie verification session: {sess_id}')
-                    index_ref.set({sess_id:{
-                        'status':'ZOMBIE',
-                        'timestamp':str(time.time())
-                    }},merge=True)
-                else:
+                if status != 'ZOMBIE':
                     index_item['status'] = status
                     index_item['heartbeat'] = heartbeat
                     running_verifications[sess_id] = index_item

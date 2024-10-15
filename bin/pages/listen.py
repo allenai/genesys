@@ -38,7 +38,7 @@ def is_running(pid):
 
 NODE_POLL_FREQ = 15 # seconds
 NODE_ZOMBIE_THRESHOLD = AU.NODE_ZOMBIE_THRESHOLD
-NODE_EXECUTION_DELAY = 1
+NODE_EXECUTION_DELAY = 2
 
 class Listener:
     def __init__(self, evosys, node_id=None, group_id='default', max_design_threads=5, accept_verify_job=True, 
@@ -162,7 +162,7 @@ class Listener:
         while self.running:
             to_sleep = self.poll_freq
             if self.active_mode:
-                print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
+                # print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
                 if not self.node_id:
                     time.sleep(self.poll_freq)
                     continue

@@ -598,7 +598,8 @@ def report(args,log_fn=None) -> dict:
 
     # trainer_state.pop("log_history")
     # only keep the last log_history, detail can be found in wandb
-    trainer_state['log_history'] = [trainer_state['log_history'][-1]]
+    if 'log_history' in trainer_state:
+        trainer_state['log_history'] = [trainer_state['log_history'][-1]]
     trainer_state.pop("stateful_callbacks")
     for i in ['upper_git_hash','transformers_version','pretty_env_info','git_hash']:
         eval_results.pop(i)
