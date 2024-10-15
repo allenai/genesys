@@ -50,7 +50,6 @@ def do_log(log_ref,log):
     print(f'[{real_time_utc}] {log}')
 
 def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False):
-    check_stale_verifications(evosys, evoname)
     sess_id, pid, _design_id, _scale = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli, ret_id=True, RANDOM_TESTING=RANDOM_TESTING)
     exp_log_ref = evosys.CM.get_log_ref()
     
@@ -112,7 +111,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
         doc = verify_ref.get().to_dict()
         timestamp = datetime.now()
         try:
-            verifying_dict = doc.get('verifying', {})
+            verifying_dict = evosys.CM.get_running_verifications()
             unfinished_verifies = evosys.get_unfinished_verifies(evoname)
             available_verifies = [v for v in unfinished_verifies if v not in verifying_dict]
             if design_id is None or scale is None:
@@ -148,43 +147,14 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                     else:
                         return None, msg
 
-                # Add to verifying list with timestamp
-                verify_key = f"{design_id}_{scale}"
-                verify_ref.update({
-                    f'verifying.{verify_key}': {
-                        'node_id': node_id,
-                        'timestamp': timestamp,
-                        'pid': None,  # Will be updated later
-                        'sess_id': None
-                    }
-                })
-
         finally:
             # Release lock
             time.sleep(random.randint(1,10)) 
             verify_ref.update({'lock': {'locked': False, 'node_id': None}})
 
-        verify_ref = evosys.remote_db.collection('verifications').document(evoname)
-        verifying_dict = verify_ref.get().to_dict().get('verifying', {})
-        if f'{design_id}_{scale}' in verifying_dict: # confirm once again to avoid rare conflict
-            print(f'Node {node_id} is already verifying {design_id}_{scale}')
-            if ret_id:
-                return None,None,None,None
-            else:
-                return None,None
 
     params = {'evoname': evoname}
     sess_id, pid = run_verification(params, design_id, scale, resume, cli=cli, RANDOM_TESTING=RANDOM_TESTING)
-    if sess_id is not None and not RANDOM_TESTING:
-        verify_key = f"{design_id}_{scale}"
-        verify_ref.update({
-            f'verifying.{verify_key}': {
-                'node_id': node_id,
-                'timestamp': timestamp,
-                'pid': pid,
-                'sess_id': sess_id
-            }
-        })
     if ret_id:
         return sess_id, pid, design_id, scale
     else:
@@ -236,7 +206,6 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
     
     finally:
         # Ensure verification is marked as complete even if an exception occurred
-        complete_verification(evosys, evoname, design_id, scale, node_id)
         index_ref.set({sess_id:{
             'status':'TERMINATED',
             'timestamp':str(time.time())
@@ -244,57 +213,6 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
 
     return sess_id, pid
 
-
-def complete_verification(evosys, evoname, design_id, scale, node_id):
-    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
-    
-    verify_key = f"{design_id}_{scale}"
-    # move verifying to completed
-    verify_ref.update({
-        f'verifying.{verify_key}': DELETE_FIELD,
-        f'heartbeats.{node_id}': DELETE_FIELD
-    })
-
-def check_stale_verifications(evosys, evoname, max_age=210):
-    verify_ref = evosys.remote_db.collection('verifications').document(evoname)
-    
-    doc = verify_ref.get().to_dict()
-    if doc is None:
-        return
-    verifying_dict = doc.get('verifying', {})
-    heartbeats = doc.get('heartbeats', {})
-    
-    now = datetime.now(pytz.UTC)
-    stale_verifications = []
-    
-    for verify_key, item in verifying_dict.items():
-        node_id = item['node_id']
-        last_heartbeat = heartbeats.get(node_id)
-        
-        if last_heartbeat is None:
-            stale_verifications.append(verify_key)
-        else:
-            # Ensure last_heartbeat is timezone-aware
-            if last_heartbeat.tzinfo is None:
-                last_heartbeat = pytz.UTC.localize(last_heartbeat)
-            
-            if (now - last_heartbeat).total_seconds() > max_age:
-                stale_verifications.append(verify_key)
-        
-        if U.pexists(U.pjoin(evosys.evo_dir,'ve',verify_key,'report.json')):
-            stale_verifications.append(verify_key)
-        else:
-            scale=verify_key.split('_')[-1]
-            design_id=verify_key[:-len(scale)-1]
-            if evosys.ptree.FM.is_verified(design_id,scale):
-                stale_verifications.append(verify_key)
-    
-    if stale_verifications:
-        update_dict = {f'verifying.{key}': DELETE_FIELD for key in stale_verifications}
-        update_dict.update({f'heartbeats.{verifying_dict[key]["node_id"]}': DELETE_FIELD for key in stale_verifications})
-        verify_ref.update(update_dict)
-        for key in stale_verifications:
-            print(f"Removed stale verification: {key} from node {verifying_dict[key]['node_id']}")
 
 
 
