@@ -195,7 +195,8 @@ class Listener:
                                     'status': status,
                                     'heartbeat': heartbeat
                                 }
-                        
+                    
+                    to_delete = []
                     for pid in self.command_status: 
                         command = self.command_status[str(pid)]['command']
                         sess_id = self.command_status[str(pid)]['sess_id']
@@ -213,7 +214,7 @@ class Listener:
                                     'command':command
                                 }
                             else:
-                                del self.command_status[str(pid)]
+                                to_delete.append(str(pid))
                             local_doc['running_designs'] = running_designs
                         else:
                             _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
@@ -227,8 +228,11 @@ class Listener:
                                     'command':command
                                 }
                             else:
-                                del self.command_status[str(pid)]
+                                to_delete.append(str(pid))
                             local_doc['running_verifies'] = running_verifies
+
+                    for pid in to_delete:
+                        del self.command_status[pid]
 
                     self.doc_ref.set({
                         'last_heartbeat': firestore.SERVER_TIMESTAMP,
