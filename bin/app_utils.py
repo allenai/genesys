@@ -133,7 +133,8 @@ def running_status(st,evosys):
     st.status('🚀 ***Running Evolution***')
  
   if evosys.CM is not None:
-    active_connections=evosys.CM.get_active_connections()
+    evosys.CM.get_active_connections()
+    active_connections = evosys.CM.connections
     with st.expander(f"🌐 Connections: ```{len(active_connections)}```",expanded=False):
       if len(active_connections)!=0:
         st.write(f'***Group ID:***\n```{evosys.CM.group_id}```')

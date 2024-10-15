@@ -134,7 +134,7 @@ class Listener:
         while self.running:
             to_sleep = self.poll_freq
             if self.active_mode:
-                # print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
+                print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
                 if not self.node_id:
                     time.sleep(self.poll_freq)
                     continue
