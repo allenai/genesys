@@ -1759,6 +1759,7 @@ class ConnectionManager:
         self.log_doc_ref = self.log_doc_ref.collection('experiment_logs').document(evoname)
 
     def get_log_ref(self):
+        print(f'{self.evoname} {self.log_doc_ref.get()}')
         latest_log = self.log_doc_ref.get().to_dict().get('latest_log',None)
         if latest_log:
             return self.log_doc_ref.collection('logs').document(latest_log)

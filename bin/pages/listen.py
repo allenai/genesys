@@ -169,7 +169,7 @@ class Listener:
                 doc = self.doc_ref.get()
                 if doc.exists:
                     data = doc.to_dict()
-                    if data['status'] in ['disconnected','stopped']:
+                    if 'status' in data and data['status'] in ['disconnected','stopped']:
                         break
                     
                     commands = data.get('commands', [])
@@ -184,8 +184,6 @@ class Listener:
                             to_sleep -= self.execution_delay
                             self.command_queue.put((command,sess_id,pid))
                             if sess_id:
-                                evoname = command.split(',')[1]
-                                self.evosys.CM.switch_ckpt(evoname)
                                 if command.startswith('design'):
                                     _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
                                 else:
