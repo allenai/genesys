@@ -83,26 +83,31 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
             doc = verify_ref.get().to_dict()
             current_time = datetime.now()
 
+            acquireable = False
+            if doc is None:
+                acquireable = True
+            elif 'lock' not in doc:
+                acquireable = True
+            else:
+                lock_info = doc['lock']
+                if lock_info['locked']==False:
+                    acquireable = True
+                else:
+                    if lock_info['node_id'] == node_id:
+                        acquireable = True
+                    else:
+                        lock_time = lock_info['timestamp'].replace(tzinfo=None)  # Remove timezone info for comparison
+                        if (current_time - lock_time).total_seconds() > LOCK_ZOMBIE_THRESHOLD:
+                            acquireable = True
             
-            if doc is None or not doc.get('lock', {}).get('locked',False) or (doc.get('lock', {}).get('locked',False) and doc.get('lock', {}).get('node_id',None) == node_id):
-                # No lock, we can acquire it
+            if acquireable:
                 verify_ref.set({
                     'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
                 }, merge=True)
                 break
-            elif doc is not None and doc.get('lock', {}).get('locked',False):
-                lock_info = doc['lock']
-                lock_time = lock_info['timestamp'].replace(tzinfo=None)  # Remove timezone info for comparison
-                
-                if (current_time - lock_time).total_seconds() > LOCK_ZOMBIE_THRESHOLD:
-                    # The lock is held by a zombie node, we can take it
-                    verify_ref.set({
-                        'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
-                    }, merge=True)
-                    print(f"Took over zombie lock from node {lock_info['node_id']}")
-                    break
-                
-            time.sleep(1)  # Wait before trying again
+            else:
+                time.sleep(1)  # Wait before trying again
+                    
 
         doc = verify_ref.get().to_dict()
         timestamp = datetime.now()
@@ -123,6 +128,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                         scale = key.split('_')[-1]
                         design_id = key[:-len(scale)-1]
                         exclude_list.append((design_id,scale))  
+                    print(f'Selecting with exclude_list: {exclude_list}')
                     design_id, scale = evosys.selector.select_verify(exclude_list=exclude_list)
                     if design_id is None:
                         msg = "No unverified design found at any scale."
