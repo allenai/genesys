@@ -112,21 +112,24 @@ class Listener:
         if doc.exists and doc.to_dict().get('status','n/a') == 'connected':
             self.active_mode = False
         else:
-            self.doc_ref.set({
-                'status': 'connected',
-                'group_id': self.group_id,
-                'mac_address': getmac.get_mac_address(),
-                'last_heartbeat': firestore.SERVER_TIMESTAMP,
-                'max_design_threads': self.max_design_threads,
-                'accept_verify_job': self.accept_verify_job,
-                'commands': [],
-                'cpu_only_checker': self.cpu_only
-
-            })
+            self.reset_doc()
             self.active_mode = True
             local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
             local_doc['status'] = 'running'
             U.save_json(local_doc,self.local_dir)
+
+    
+    def reset_doc(self):
+        self.doc_ref.set({
+            'status': 'connected',
+            'group_id': self.group_id,
+            'mac_address': getmac.get_mac_address(),
+            'last_heartbeat': firestore.SERVER_TIMESTAMP,
+            'max_design_threads': self.max_design_threads,
+            'accept_verify_job': self.accept_verify_job,
+            'commands': [],
+            'cpu_only_checker': self.cpu_only
+        },merge=True)
 
     def listen_for_commands(self):
         self.running = True
@@ -148,7 +151,6 @@ class Listener:
                         
                         commands = data.get('commands', [])
                         if commands:
-                            self.doc_ref.update({'commands': []})
                             for command in commands:
                                 print(f'[{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Executing command: {command}')
                                 evoname = command.split(',')[1]
@@ -161,9 +163,7 @@ class Listener:
                                 self.command_queue.put((command,sess_id,pid))
                         
 
-                        self.doc_ref.set({
-                            'last_heartbeat': firestore.SERVER_TIMESTAMP,
-                        },merge=True)
+                        self.reset_doc()
                         local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
                         U.save_json(local_doc,self.local_dir)
                 except Exception as e:
