@@ -82,14 +82,15 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
         while True:
             doc = verify_ref.get().to_dict()
             current_time = datetime.now()
+
             
-            if doc is None or not (doc.get('lock', {}).get('locked',False) and doc.get('lock', {}).get('node_id',None) != node_id):
+            if doc is None or not doc.get('lock', {}).get('locked',False) or (doc.get('lock', {}).get('locked',False) and doc.get('lock', {}).get('node_id',None) == node_id):
                 # No lock, we can acquire it
                 verify_ref.set({
                     'lock': {'locked': True, 'node_id': node_id, 'timestamp': current_time}
                 }, merge=True)
                 break
-            else:
+            elif doc is not None and doc.get('lock', {}).get('locked',False):
                 lock_info = doc['lock']
                 lock_time = lock_info['timestamp'].replace(tzinfo=None)  # Remove timezone info for comparison
                 
