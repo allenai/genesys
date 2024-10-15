@@ -285,6 +285,8 @@ class FirestoreManager:
         history=implementation.pop('history')
         self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose)
         for idx,step in enumerate(history):
+            if 'rounds' not in step:
+                step['rounds']=[]
             rounds=step.pop('rounds')
             self.upload_collection_key_data(design_id,f'implementation_history',idx,step,overwrite,verbose=verbose)
             step_rounds_collection = self.collection.document(design_id).collection('implementation_history').document(str(idx)).collection('rounds')
@@ -902,7 +904,11 @@ class Implementation:
         for i in range(len(_dict['history'])):
             if 'design_cfg' in _dict['history'][i]:
                 _dict['history'][i]['design_cfg']['running_mode']=RunningModes(_dict['history'][i]['design_cfg']['running_mode'])
-        _dict['history']=[ImplementationAttempt.from_dict(attempt) for attempt in _dict['history']]
+        _dict['history'] = []
+        for attempt in _dict['history']:
+            if 'rounds' not in attempt:
+                attempt['rounds']=[]
+            _dict['history'].append(ImplementationAttempt.from_dict(attempt))
         _dict['implementation']=GAUTree.from_dict(_dict['implementation'])
         return cls(**_dict)
 
