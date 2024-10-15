@@ -1754,6 +1754,7 @@ class ConnectionManager:
         self.st = stream
         self.max_design_threads={}
         self.accept_verify_job={}
+        self.last_refresh = 0
 
     def switch_ckpt(self,evoname):
         self.evoname = evoname
@@ -1782,7 +1783,10 @@ class ConnectionManager:
             doc.reference.delete()
     
     def get_active_connections(self):
+        if time.time()-self.last_refresh < 1:
+            return
         self.clear_zombie_connections()
+        self.last_refresh = time.time()
         query = firestore.And([
             firestore.FieldFilter("status", "==", "connected"),
             firestore.FieldFilter("group_id", "==", self.group_id)
@@ -1874,6 +1878,7 @@ class ConnectionManager:
             if node_id not in workloads:
                 workloads[node_id] = []
             workloads[node_id].append(index_item)
+        self.get_active_connections()
         for node_id in self.connections:
             if node_id not in workloads:
                 workloads[node_id] = []
@@ -1889,7 +1894,6 @@ class ConnectionManager:
         return self._get_workloads(running_verifications)
 
     def get_all_workloads(self):
-        self.get_active_connections()
         design_workload = self.get_design_workloads()
         verify_workload = self.get_verification_workloads()
         return design_workload, verify_workload
