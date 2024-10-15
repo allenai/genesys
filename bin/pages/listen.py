@@ -119,17 +119,19 @@ class Listener:
             U.save_json(local_doc,self.local_dir)
 
     
-    def reset_doc(self):
-        self.doc_ref.set({
+    def reset_doc(self, reset_commands=True):
+        to_set = {
             'status': 'connected',
             'group_id': self.group_id,
             'mac_address': getmac.get_mac_address(),
             'last_heartbeat': firestore.SERVER_TIMESTAMP,
             'max_design_threads': self.max_design_threads,
             'accept_verify_job': self.accept_verify_job,
-            'commands': [],
             'cpu_only_checker': self.cpu_only
-        },merge=True)
+        }
+        if reset_commands:
+            to_set['commands'] = []
+        self.doc_ref.set(to_set,merge=True)
 
     def listen_for_commands(self):
         self.running = True
@@ -138,10 +140,10 @@ class Listener:
             to_sleep = self.poll_freq
             if self.active_mode:
                 print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
+                self.reset_doc(reset_commands=False)
                 if not self.node_id:
                     print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Hanging...')
                     time.sleep(self.poll_freq)
-                    self.reset_doc()
                     continue
                 
                 doc = self.doc_ref.get()
