@@ -13,34 +13,47 @@ Utils and code for model discovery experiments.
 
 # Setting up 
 
-
-We recommend setting up a conda environment as below, remember to edit the `setup.sh` file to include the necessary environment variables before running the setup script.
-
-Environment variables needed: 
-```shell
-export MY_OPENAI_KEY=YOURKEY
-export ANTHROPIC_API_KEY=YOURKEY
-export HF_KEY=YOURKEY
-export HF_HUB_KEY=YOURKEY
-export GITHUB_TOKEN=YOURKEY
-export WANDB_API_KEY=YOURKEY
-export AWS_SECRET_ACCESS_KEY=YOURKEY # Get it and ID from AWS, Security Credentials of your account
-export AWS_ACCESS_KEY_ID=YOURKEY 
-export S2_API_KEY=YOURKEY # Optional, it allows higher rate limit for the S2 API
-export DATA_DIR=~/model_discovery/data # Change it to your data dir
-export CKPT_DIR=~/model_discovery/ckpt # Change it to your checkpoint dir
-export HF_DATASETS_TRUST_REMOTE_CODE=1
-```
-You can also set them in setup.sh then follow the instructions below to set up the environment.
+1. Clone the repo (clone with token for internal) and cd into it
+2. Make the virtual env and install the requirements 
 
 ```shell
 conda create -n modis python=3.12
 conda activate modis
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 # for cuda 11.8
-bash scripts/setup.sh # remember to set up the environment variables in setup.sh
+pip install -e .
+genesys setup
+```
+Hint: use ```bash scripts/setup.sh -d``` to prepare datasets only
+
+Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, the requirements.txt is self-conflict a little bit. 
+
+3. Export the environment variables and API keys
+
+```shell
+export MY_OPENAI_KEY=YOURKEY
+export TOGETHER_API_KEY=YOURKEY
+export ANTHROPIC_API_KEY=YOURKEY
+export HF_KEY=YOURKEY
+export HF_HUB_KEY=YOURKEY
+export GITHUB_TOKEN=YOURKEY
+export WANDB_API_KEY=YOURKEY
+export AWS_SECRET_ACCESS_KEY=YOURKEY
+export AWS_ACCESS_KEY_ID=YOURKEY
+export S2_API_KEY=YOURKEY
+export DATA_DIR=~/model_discovery/data # assume you are using the home dir 
+export CKPT_DIR=~/model_discovery/ckpt # assume you are using the home dir 
+export DB_KEY_PATH=~/model_discovery/secrets/db_key.json # provide yours
+export HF_DATASETS_TRUST_REMOTE_CODE=1
+export PINECONE_API_KEY=YOURKEY
+export COHERE_API_KEY=YOURKEY
+export PERPLEXITY_API_KEY=YOURKEY
+export MATHPIX_API_ID=YOURKEY # optional
 ```
 
-Hint: use ```bash scripts/setup.sh -d``` to prepare datasets only
+4. Test with the gui
+```
+genesys gui
+```
 
 ### python dependencies 
 Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
