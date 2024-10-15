@@ -36,7 +36,8 @@ from model_discovery.configs.gam_config import (
 
 
 from model_discovery.ve.data_loader import load_datasets
-from model_discovery.configs.const import TARGET_SCALES, SMOLLM_125_CORPUS
+from model_discovery.configs.const import TARGET_SCALES, SMOLLM_125_CORPUS,\
+    VERIFY_TERMINAL_STATES,VERIFY_ACTIVE_STATES,VERIFY_ZOMBIE_THRESHOLD
 from model_discovery.agents.agent_utils import OPENAI_COSTS_DICT, ANTHROPIC_COSTS_DICT
 
 
@@ -51,18 +52,18 @@ def do_log(log_ref,log):
 def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False):
     check_stale_verifications(evosys, evoname)
     sess_id, pid, _design_id, _scale = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli, ret_id=True, RANDOM_TESTING=RANDOM_TESTING)
-    log_ref = evosys.CM.get_log_ref()
+    exp_log_ref = evosys.CM.get_log_ref()
     
     if sess_id:
         log = f'Node {node_id} running verification on {_design_id}_{_scale}'
-        do_log(log_ref,log)
+        do_log(exp_log_ref,log)
         # Start the daemon in a separate process
         print('Starting Verify Daemon Process...')
         daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {_design_id} --scale {_scale} --node_id {node_id} --pid {pid}"
         subprocess.Popen(daemon_cmd, shell=True)
     else:
         log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
-        do_log(log_ref,log)
+        do_log(exp_log_ref,log)
 
     return sess_id, pid
 
@@ -173,53 +174,55 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
 
 def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
     verify_ref = evosys.remote_db.collection('verifications').document(evoname)
-    log_ref = evosys.CM.get_log_ref()
+    exp_log_ref = evosys.CM.get_log_ref()
+    index_ref = evosys.CM.log_doc_ref.collection('verifications').document('index')
+    index_ref.set({sess_id:{'node_id':node_id,'pid':pid}},merge=True)
 
     # Start heartbeat
     verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
     
     try:
-        process = psutil.Process(pid)
         while True:
-            try:
-                # Update heartbeat
-                verify_ref.set({'heartbeats': {node_id: datetime.now()}}, merge=True)
-                
-                if process.status() == psutil.STATUS_ZOMBIE:
-                    log = f'Daemon: Node {node_id} detected zombie process {pid} for {design_id}_{scale}'
-                    do_log(log_ref,log)
+            _,status,heartbeat = evosys.CM.get_verification_log(sess_id)
+            if status is None:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} not found, wait for it to be created...')
+                time.sleep(60)
+                continue
+            if status in VERIFY_TERMINAL_STATES:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} terminated with status {status}')
+                break
+            elif time.time()-float(heartbeat)>VERIFY_ZOMBIE_THRESHOLD:
+                    log = f'Daemon: Node {node_id} detected zombie process {pid} for {sess_id}'
+                    do_log(exp_log_ref,log)
+                    index_ref.set({sess_id:{
+                        'status':'ZOMBIE',
+                        'timestamp':str(time.time())
+                    }},merge=True)
                     break
-                elif process.status() in [psutil.STATUS_DEAD, psutil.STATUS_STOPPED]:
-                    break
-                elif process.status() == psutil.STATUS_SLEEPING:
-                    time.sleep(60)  # Wait for 1 minute before checking again
-                else:
-                    time.sleep(60)  # Check every minute for active processes
-            except psutil.NoSuchProcess:
-                log = f'Daemon: Node {node_id} lost track of verification process {pid} for {design_id}_{scale}'
-                do_log(log_ref,log)
-                raise psutil.NoSuchProcess(pid)
+            else:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} is running with status {status}')
+            time.sleep(60)  # Check every minute for active processes
 
         # Check if the process completed successfully
-        try:
-            exit_code = process.wait(timeout=1)
-            if exit_code == 0:
-                log = f'Daemon: Node {node_id} completed verification process {pid} on {design_id}_{scale}'
-            else:
-                log = f'Daemon: Node {node_id} failed verification process {pid} on {design_id}_{scale} with exit code {exit_code}'
-        except psutil.TimeoutExpired:
-            log = f'Daemon: Node {node_id} failed to get exit code for verification process {pid} on {design_id}_{scale}'
-        
-        do_log(log_ref,log)
+        try: 
+            process=psutil.Process(pid)
+            process.kill()
+            do_log(exp_log_ref,f'Daemon: Node {node_id} forcefully killed design process {pid} for {sess_id}')
+        except Exception as e:
+            do_log(exp_log_ref,f'Daemon: Node {node_id} failed to forcefully kill design process {pid} for {sess_id}')
+            print(f'Error killing process {pid}: {e}')
 
     except Exception as e:
         log = f'Daemon: Node {node_id} encountered an error during verification process {pid} on {design_id}_{scale}: {str(e)}'
-        do_log(log_ref,log)
+        do_log(exp_log_ref,log)
     
     finally:
         # Ensure verification is marked as complete even if an exception occurred
         complete_verification(evosys, evoname, design_id, scale, node_id)
-        
+        index_ref.set({sess_id:{
+            'status':'TERMINATED',
+            'timestamp':str(time.time())
+        }},merge=True)
 
     return sess_id, pid
 
@@ -228,6 +231,7 @@ def complete_verification(evosys, evoname, design_id, scale, node_id):
     verify_ref = evosys.remote_db.collection('verifications').document(evoname)
     
     verify_key = f"{design_id}_{scale}"
+    # move verifying to completed
     verify_ref.update({
         f'verifying.{verify_key}': DELETE_FIELD,
         f'heartbeats.{node_id}': DELETE_FIELD
@@ -1119,7 +1123,7 @@ if __name__ == '__main__':
 
     if args.daemon:
         assert args.node_id is not None
-        verify_daemon(args.evoname, evosys, args.sess_id, args.design_id, args.scale, args.node_id, args.pid, args.RANDOM_TESTING)
+        verify_daemon(args.evoname, evosys, args.sess_id, args.design_id, args.scale, args.node_id, args.pid)
     elif args.prep_only:
         # bash scripts/run_verify.sh --prep_only --design_id ghanet --scale 31M
         assert args.design_id is not None and args.scale is not None

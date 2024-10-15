@@ -32,7 +32,7 @@ from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager
 
 from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes,\
-    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
+    AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 from .agents.search_utils import SuperScholarSearcher
 
 import model_discovery.utils as U
@@ -506,7 +506,7 @@ class ModelDiscoverySystem(exec_utils.System):
                         'message':msg
                     }
                 },merge=True)
-                if status in TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
+                if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
                     index_ref.set({
                         sess_id:{
                             'timestamp':timestamp,

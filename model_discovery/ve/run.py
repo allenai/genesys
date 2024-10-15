@@ -121,7 +121,8 @@ def _explore_setup(args):
     )
 
 # stable but slow
-def _auto_tune_setup(args): # Need to be called before training after models are prepared
+def _auto_tune_setup(args,log_fn=None): # Need to be called before training after models are prepared
+    log_fn = log_fn if log_fn else lambda x,y=None: None
     config = eval(f"GAMConfig_{args.scale}()")
     config.training_data = ['cosmopedia-v2']
     args.mode='_explore_setup'
@@ -129,6 +130,7 @@ def _auto_tune_setup(args): # Need to be called before training after models are
     gradient_accumulation_steps=config.gradient_accumulation_steps
     
     while True:
+        log_fn(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
         util_logger.info(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
         args.gradient_accumulation_steps=gradient_accumulation_steps
         cmd_args = [f"--{key}={value}" if value is not True else f"--{key}" for key, value in args_dict.items() if value is not False and value is not None]
@@ -137,10 +139,12 @@ def _auto_tune_setup(args): # Need to be called before training after models are
         process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         
         if "CUDA out of memory" in process.stderr:
+            log_fn(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
             util_logger.error(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
             gradient_accumulation_steps *= 2
         else:
-            util_logger.info(f"Training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
+            log_fn(f"Test training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
+            util_logger.info(f"Test training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
             break
     return gradient_accumulation_steps
 
@@ -150,13 +154,17 @@ def _auto_tune_setup(args): # Need to be called before training after models are
 
 
 
-def setup(args) -> None:
+def setup(args,log_fn=None) -> None:
     """Sets up the run environment 
 
     :param args: 
         The global run configuration
     :raises: ValueError 
     """
+    log_fn = log_fn if log_fn else lambda x,y=None: None
+
+    log_fn('Setting up the run environment...')
+
     if not args.data_dir: # use the data dir from the environment by default
         args.data_dir=os.environ.get("DATA_DIR")
     if not args.ckpt_dir:
@@ -190,8 +198,9 @@ def setup(args) -> None:
     # login(os.environ.get("HF_KEY",None))
 
 
-def before_train(args):
+def before_train(args,log_fn):
     start = time.perf_counter()
+    log_fn('Preparing the model...')
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     if args.PERF_PROF_MODE or args.RANDOM_TESTING: # skip the following if in performance profiling mode
         return args,gab,gab_config
@@ -219,17 +228,32 @@ def before_train(args):
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     
     # if not args.auto_find_batch_size_hf:    
-    args.gradient_accumulation_steps = _auto_tune_setup(args) # always use it for safety
+    log_fn('Auto tuning the gradient accumulation steps...')
+    args.gradient_accumulation_steps = _auto_tune_setup(args,log_fn) # always use it for safety
+    log_fn('Auto tuning the gradient accumulation steps done.')
     return args,gab,gab_config
 
 
-def run_train(args,gab,gab_config,num_steps=None) -> None: 
+class LogFnCallback(TrainerCallback):
+    def __init__(self, log_fn):
+        self.log_fn = log_fn
+
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        loss = logs.get('loss','N/A')
+        step = logs.get('step','N/A')
+        epoch = logs.get('epoch','N/A')
+        lr = logs.get('lr','N/A')
+        self.log_fn(f"Training in progress: loss={loss}, step={step}, epoch={epoch}, lr={lr}",'TRAINING')
+
+def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None: 
     """Runs the full training pipeline 
 
     :param args: 
         The global configuration for training.
     """
+    log_fn = log_fn if log_fn else lambda x,y=None: None
     with U.CodeTimer("setup model"):
+        log_fn('Setting up the model...')
         start=time.perf_counter()
         if isinstance(args, dict):
             args = Namespace(**args)
@@ -240,20 +264,24 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
             RANDOM_TESTING=args.RANDOM_TESTING
         ) # seems should not be bf16 for tf32 mode
         model.print_size()
-    
+        log_fn('Setting up the model done.')
+
     with U.CodeTimer("loading dataset"):
+        log_fn('Loading the dataset...')
         if args.training_data != 'None':
             config.training_data=args.training_data.split(',')
         if args.context_length != 'None':
             config.context_length=int(args.context_length)
         if args.tokenizer != 'None':
             config.tokenizer=args.tokenizer
-        tokenized_datasets, tokenizer = load_datasets(config)
+        tokenized_datasets, tokenizer = load_datasets(config,log_fn)
         data_collator = DataCollatorForLanguageModeling(tokenizer, mlm=False)
         if args.download_data_only:
             util_logger.info('Donwloaded data, now stopping...')
             exit('exiting after data download')
-        
+        log_fn('Loading the dataset done.')
+
+    log_fn('Setting up the training arguments...')
     num_params = sum(p.numel() for p in model.parameters())
     training_tokens=num_params*args.training_token_multiplier 
     
@@ -302,6 +330,7 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
             tokenizer=tokenizer,
             args=training_args,
             data_collator=data_collator,
+            callbacks=[LogFnCallback(log_fn)],
             # tune_lr_in_auto_bs=args.tune_lr_in_auto_bs, # tune lr or tune grad accumulation steps
         )
     print(f'Time elapsed for setting up trainer: {(time.perf_counter() - start):.1f} s')
@@ -320,10 +349,10 @@ def run_train(args,gab,gab_config,num_steps=None) -> None:
     if args.PERF_PROF_MODE:
         exec_profiler(trainer)
     else:
-        exec_train(args,training_args, trainer)
+        exec_train(args,training_args, trainer,log_fn)
 
 
-def exec_train(args,training_args, trainer):
+def exec_train(args,training_args, trainer,log_fn):
     # if wandb is defined
     
     if 'wandb_ids' in globals():
@@ -337,6 +366,7 @@ def exec_train(args,training_args, trainer):
     else:
         print('No wandb id found, skip recording wandb metrics.')
     
+    log_fn('Starting training...')
     # Automatically resume from the latest checkpoint if it exists
     if args.training_token_multiplier > 0:
         last_checkpoint = U.get_last_checkpoint(training_args.output_dir)
@@ -354,12 +384,13 @@ def exec_train(args,training_args, trainer):
         util_logger.info(
             "Training token multiplier is set to 0, skipping training."
         )
-
+    log_fn('Training done.')
     trainer.save_model(training_args.output_dir+'/pretrained')
     util_logger.info(
         f"Model saved at {training_args.output_dir}/pretrained"
     )
     trainer.state.save_to_json(f"{training_args.output_dir}/trainer_state.json")
+    log_fn('Saving the model and trainer state done.')
 
 class ProfCallback(TrainerCallback):
     def __init__(self, prof):
@@ -399,34 +430,38 @@ def exec_profiler(trainer):
         print(f'Profiling time: {(time.perf_counter() - start):.1f} s')
         # trace_handler(prof,False) # uncomment if not using on_trace_ready
 
-def after_train(args):
+def after_train(args,log_fn):
     if args.PERF_PROF_MODE or args.RANDOM_TESTING: return
+    log_fn('Finishing training and saving results...')
     start=time.perf_counter()
     output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     history,system_metrics=get_history(wandb.run.id)
     history.to_csv(f"{output_dir}/train_logs.csv")
     system_metrics.to_csv(f"{output_dir}/system_metrics.csv")
     util_logger.info(f"Training logs saved at {output_dir}")
+    log_fn('Saving results done.')
     wandb.finish()
     util_logger.info(f"Time elapsed for finishing training: {(time.perf_counter() - start):.1f} s")
 
-def train(args):
+def train(args,log_fn=None):
+    log_fn = log_fn if log_fn else lambda x,y=None: None
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
     start = time.perf_counter()
-    args,gab,gab_config=before_train(args)
+    args,gab,gab_config=before_train(args,log_fn)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
     notebook_launcher(
         run_train, 
-        args=(vars(args),gab,gab_config), 
+        args=(vars(args),gab,gab_config,None,log_fn), 
         num_processes=args.n_gpus, 
         use_port=free_port,
     )
-    after_train(args)
+    after_train(args,log_fn)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
+    log_fn(f'Training done. Total time: {(time.perf_counter() - start):.1f} s')
 
 
 def get_eval_results(output_dir):
@@ -439,12 +474,13 @@ def get_eval_results(output_dir):
     except:
         return None
 
-def run_eval(args):
+def run_eval(args,log_fn):
     ### NOTE: Remember to uncomment the following 3 lines
     # if args.resume and get_eval_results(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"):
     #     print(f"Model {args.design_id} is already evaluated")
     #     return
     print("Evaluation Start")
+    log_fn('Setting up the evaluation arguments...')
     cfg=eval(f"GAMConfig_{args.scale}()")
     if not args.RANDOM_TESTING:
         wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
@@ -473,16 +509,21 @@ def run_eval(args):
         sys.argv += [
             "--wandb_args", f"project={args.wandb_project},entity={args.wandb_entity},name={wandb_name}"
         ]
+    log_fn('Setting up the evaluation arguments done. Preparing the model...')
     gab,gab_config=BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
     util_logger.info(f"Using port for evaluation: {free_port}")
-    notebook_launcher(cli_evaluate, args=(None,gab,gab_config), num_processes=args.n_gpus, use_port=free_port)
+    log_fn('Preparation done. launching evaluation...')
+    notebook_launcher(cli_evaluate, args=(None,gab,gab_config,log_fn), num_processes=args.n_gpus, use_port=free_port)
     
-def evalu(args):
+def evalu(args,log_fn=None):
+    log_fn = log_fn if log_fn else lambda x,y=None: None
     if args.PERF_PROF_MODE: return
     start = time.perf_counter()
-    run_eval(args)
+    log_fn('Evaluating the model...')
+    run_eval(args,log_fn)
     util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
+    log_fn(f'Evaluation done. Total time: {(time.perf_counter() - start):.1f} s')
 
 def get_history(run_id, project_path = "aristo/model_discovery"):
     api = wandb.Api()
@@ -529,17 +570,20 @@ def get_history_report(wandb_ids):
     return report
 
 
-def report(args) -> dict:
+def report(args,log_fn=None) -> dict:
     """Returns the training report 
 
     :param args: 
         The global training configuration. 
     """
+    log_fn = log_fn if log_fn else lambda x,y=None: None
     if args.PERF_PROF_MODE: return
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
+        log_fn(f'Report already exists at {outdir}/report.json')
         return
+    log_fn('Generating reports...')
     report={}
     wandb_ids=U.load_json(f"{outdir}/wandb_ids.json")
     report["wandb_ids.json"]=wandb_ids
@@ -563,17 +607,19 @@ def report(args) -> dict:
         
     #json.dump(report, open(f"{outdir}/report.json", 'w'), indent=4)
     util_logger.info(f"Report saved at {outdir}/report.json")
-    
+    log_fn(f'Report generated.')
     return report
 
-def main(args):
+def main(args,log_fn=None):
     """Main run entry point 
 
     :param args: 
         The CLI arguments. 
     """
+    log_fn = log_fn if log_fn else lambda x,y=None: None
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
+    log_fn('Starting verification...','BEGIN')
     if args.RANDOM_TESTING:
         args.evoname = "random"
         args.design_id = "random"
@@ -582,10 +628,11 @@ def main(args):
         args.training_token_multiplier = 0
         args.resume = False
         print("Running random testing...")
-    setup(args)
-    train(args)
-    evalu(args)
-    report(args)
+    setup(args,log_fn)
+    train(args,log_fn)
+    evalu(args,log_fn)
+    report(args,log_fn)
+    log_fn(f'Done. Total time: {(time.perf_counter() - start):.1f} s','EXIT')
     # util_logger.info(f"Total time: {(time.perf_counter() - start):.1f} s")
     print(f"Total time: {(time.perf_counter() - start):.1f} s")
     

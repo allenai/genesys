@@ -18,8 +18,8 @@ import bin.app_utils as AU
 from google.cloud import firestore
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 
-from bin.pages.design import design_command,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
-from bin.pages.verify import verify_command
+from bin.pages.design import design_command,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
+from bin.pages.verify import verify_command,VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZOMBIE_THRESHOLD
 
 
 def get_process(pid):
@@ -62,15 +62,25 @@ class Listener:
 
     def _restore_local_sessions(self,local_doc): # see if there is any sessions still running
         running_designs = local_doc.get('running_designs',{})
+        running_verifies = local_doc.get('running_verifies',{})
         for pid in running_designs:
             cmd = running_designs[pid]
             if cmd['command'].startswith('design'):
                 sess_id = cmd['sess_id']
                 _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
-                if status in ACTIVE_STATES:
+                if status in DESIGN_ACTIVE_STATES:
                     if time.time() - float(heartbeat) < DESIGN_ZOMBIE_THRESHOLD:
                         self.command_status[str(pid)] = cmd
                         print(f'Restored running design session: {sess_id}')
+        for pid in running_verifies:
+            cmd = running_verifies[pid]
+            if cmd['command'].startswith('verify'):
+                sess_id = cmd['sess_id']
+                _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
+                if status in VERIFY_ACTIVE_STATES:
+                    if time.time() - float(heartbeat) < VERIFY_ZOMBIE_THRESHOLD:
+                        self.command_status[str(pid)] = cmd
+                        print(f'Restored running verify session: {sess_id}')
 
     def hanging(self):
         assert not self.active_mode
@@ -182,7 +192,7 @@ class Listener:
                             _,status,_ = self.evosys.CM.get_session_log(sess_id)
                             self.command_status[str(pid)]['status'] = status
                             running_designs = {}
-                            if status in ACTIVE_STATES:
+                            if status in DESIGN_ACTIVE_STATES:
                                 running_designs[str(pid)] = {
                                     'sess_id':sess_id,
                                     'status':status,
@@ -190,16 +200,18 @@ class Listener:
                                 }
                             local_doc['running_designs'] = running_designs
                         else:
-                            if is_running(int(pid)):
-                                self.command_status[str(pid)]['status'] = 'running'
-                            else:
-                                process = get_process(int(pid))
-                                status=process.status() if process else 'N/A'
-                                self.command_status[str(pid)]['status'] = status
-                                # if not no such process, kill it
-                                if status != 'N/A':
-                                    psutil.Process(int(pid)).kill() # NOTE: maybe unsafe
- 
+                            sess_id = self.command_status[str(pid)]['sess_id']
+                            _,status,_ = self.evosys.CM.get_verification_log(sess_id)
+                            self.command_status[str(pid)]['status'] = status
+                            running_verifies = {}
+                            if status in VERIFY_ACTIVE_STATES:
+                                running_verifies[str(pid)] = {
+                                    'sess_id':sess_id,
+                                    'status':status,
+                                    'command':command
+                                }
+                            local_doc['running_verifies'] = running_verifies
+
                     self.doc_ref.update(
                         {
                             'last_heartbeat': firestore.SERVER_TIMESTAMP,
@@ -222,7 +234,7 @@ class Listener:
                     RET = self.evosys.CM.get_session_log(cmd['sess_id'])
                     _,status,_ = RET
                     raw[cmd['sess_id']] = RET
-                    if status in ACTIVE_STATES:
+                    if status in DESIGN_ACTIVE_STATES:
                         running_sessions.append(cmd['sess_id'])
         if ret_raw:
             return running_sessions,raw

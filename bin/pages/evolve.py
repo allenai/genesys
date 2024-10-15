@@ -18,10 +18,14 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
-from bin.pages.listen import ACTIVE_STATES
+from bin.pages.listen import DESIGN_ACTIVE_STATES,VERIFY_ACTIVE_STATES
 
 
-def _is_running(evosys,zombie_threshold=30):
+CC_POLL_FREQ = 30 # seconds
+CC_ZOMBIE_THRESHOLD = 60 # seconds
+
+
+def _is_running(evosys,zombie_threshold=CC_ZOMBIE_THRESHOLD):
     docs = evosys.remote_db.collection('experiment_connections').get()
     for doc in docs:
         if doc.to_dict().get('status','n/a') == 'connected':
@@ -45,8 +49,8 @@ class CommandCenter:
         self.st=stream
         self.doc_ref = evosys.remote_db.collection('experiment_connections').document(self.evosys.evoname)
         self.running = False
-        self.poll_freq=20
-        self.zombie_threshold = 30  # seconds
+        self.poll_freq=CC_POLL_FREQ
+        self.zombie_threshold = CC_ZOMBIE_THRESHOLD  # seconds
 
     def read_logs(self):
         return self.evosys.CM.get_log_ref().get().to_dict()
@@ -120,12 +124,12 @@ class CommandCenter:
                 # assigned_verify_workloads = False
                 for node_id in verify_workloads:
                     if verify_workloads[node_id] == 0 and self.evosys.CM.accept_verify_job[node_id]:
-                        self.evosys.CM.verify_command(node_id)
-                        # assigned_verify_workloads = True
-                        print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
+                        if self.evosys.CM.verify_command(node_id):
+                            # assigned_verify_workloads = True
+                            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
 
                 self.doc_ref.update({'last_heartbeat': firestore.SERVER_TIMESTAMP})
-                
+            
             time.sleep(self.poll_freq)  
         # self.cleanup()
 
@@ -209,50 +213,82 @@ def stop_evo():
 
 def network_status(evosys):
     group_id = evosys.CM.group_id
-    st.subheader(f'Network Group ```{group_id}``` Status')
+    st.write(f'#### *Network Group ```{group_id}``` Status*')
 
-    nodes = evosys.CM.get_active_connections()
-    if len(nodes)==0:
-        st.info('No active working nodes connected')
-    else:
-        st.write(f'##### Connected Nodes ```{len(nodes)}```')
-        _nodes = {}
-        running_designs = {}
-        running_verifies = {}
-        for node_id in nodes:
-            node_data = evosys.CM.collection.document(node_id).get().to_dict()
-            command_status = node_data.get('command_status',{})
-            verify_load = []
-            design_load = []
-            for pid in command_status:
-                cmd=command_status[pid]
-                command = cmd['command']
-                if command.startswith('design'):
-                    if cmd['status'] in ACTIVE_STATES:
-                        design_load.append(pid)
-                        running_designs[pid] = cmd
-                else:
-                    if cmd['status'] == 'running':
-                        verify_load.append(pid)
-                        running_verifies[pid] = cmd
-            accept_verify_job = node_data['accept_verify_job']
-            _nodes[node_id] = {
-                'Design Workload': f'{len(design_load)}/{node_data["max_design_threads"]}',
-                'Verify Workload': f'{len(verify_load)}/1' if accept_verify_job else 'N/A',
-                'Accept Verify Job': accept_verify_job,
-                'Use GPU Checker': not node_data['cpu_only_checker'],
-                'Last Heartbeat': node_data['last_heartbeat'].strftime('%Y-%m-%d %H:%M:%S %Z'),
-                'Status': node_data['status'],
-                'MAC Address': node_data['mac_address'],
-            }
-        nodes_df = pd.DataFrame(_nodes).T
-        st.dataframe(nodes_df,use_container_width=True)
-        
-    CC = st.session_state.command_center
-    if CC:
-        st.write(f'Total Design Threads: {CC.max_designs_total}')
-    active_design_sessions = evosys.CM.get_active_design_sessions()
-    st.write(f'Active Design Sessions: {active_design_sessions}')
+    with st.expander('Nodes Running Status',expanded=True):
+        nodes = evosys.CM.get_active_connections()
+        if len(nodes)==0:
+            st.info('No active working nodes connected')
+        else:
+            st.write(f'##### Connected Nodes ```{len(nodes)}```')
+            _nodes = {}
+            running_designs = {}
+            running_verifies = {}
+            for node_id in nodes:
+                node_data = evosys.CM.collection.document(node_id).get().to_dict()
+                command_status = node_data.get('command_status',{})
+                verify_load = []
+                design_load = []
+                for pid in command_status:
+                    cmd=command_status[pid]
+                    command = cmd['command']
+                    if command.startswith('design'):
+                        if cmd['status'] in DESIGN_ACTIVE_STATES:
+                            design_load.append(pid)
+                            running_designs[pid] = cmd
+                    else:
+                        if cmd['status'] in VERIFY_ACTIVE_STATES:
+                            verify_load.append(pid)
+                            running_verifies[pid] = cmd
+                accept_verify_job = node_data['accept_verify_job']
+                _nodes[node_id] = {
+                    'Design Workload': f'{len(design_load)}/{node_data["max_design_threads"]}',
+                    'Verify Workload': f'{len(verify_load)}/1' if accept_verify_job else 'N/A',
+                    'Accept Verify Job': accept_verify_job,
+                    'Use GPU Checker': not node_data['cpu_only_checker'],
+                    'Last Heartbeat': node_data['last_heartbeat'].strftime('%Y-%m-%d %H:%M:%S %Z'),
+                    'Status': node_data['status'],
+                    'MAC Address': node_data['mac_address'],
+                }
+            nodes_df = pd.DataFrame(_nodes).T
+            st.dataframe(nodes_df,use_container_width=True)
+            
+        CC = st.session_state.command_center
+        active_design_sessions = evosys.CM.get_active_design_sessions()
+        if CC.max_designs_total>0:
+            st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/{CC.max_designs_total}```')
+        else:
+            st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}/♾️```')
+        if len(active_design_sessions)>0:
+            active_design_sessions_df = pd.DataFrame(active_design_sessions).T
+            active_design_sessions_df.rename(columns={'latest_log':'started_at'},inplace=True)
+            if 'pid' in active_design_sessions_df.columns:
+                active_design_sessions_df['pid'] = active_design_sessions_df['pid'].astype(str)
+            if 'started_at' in active_design_sessions_df.columns:
+                active_design_sessions_df['started_at'] = pd.to_datetime(active_design_sessions_df['started_at'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            if 'timestamp' in active_design_sessions_df.columns:
+                active_design_sessions_df['timestamp'] = pd.to_datetime(active_design_sessions_df['timestamp'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            st.dataframe(active_design_sessions_df,use_container_width=True)
+        else:
+            st.info('No active design sessions')
+
+        running_verifications = evosys.CM.get_running_verifications()
+        st.write(f'##### Running Verifications ```{len(running_verifications)}```')
+        if len(running_verifications)>0:
+            # for sess_id in running_verifications:
+            running_verifications_df = pd.DataFrame(running_verifications).T
+            running_verifications_df.rename(columns={'latest_log':'started_at'},inplace=True)
+            if 'pid' in running_verifications_df.columns:
+                running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
+            if 'started_at' in running_verifications_df.columns:
+                running_verifications_df['started_at'] = pd.to_datetime(running_verifications_df['started_at'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            if 'timestamp' in running_verifications_df.columns:
+                running_verifications_df['timestamp'] = pd.to_datetime(running_verifications_df['timestamp'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            st.dataframe(running_verifications_df,use_container_width=True)
+        else:
+            st.info('No running verifications')
+
+
 
 
 def system_status(evosys):
@@ -299,7 +335,7 @@ def evolve(evosys,project_dir):
                 st.toast(f'Network group ```{running_group_id}``` is already running for evolution ```{running_evoname}```. Launching a command center in passive mode.')
             else:
                 st.toast(f'Evolution ```{running_evoname}``` is already running in network group ```{running_group_id}```. Launching a command center in passive mode.')
-            launch_evo(evosys,active_mode=False)
+            launch_evo(evosys,0,0,active_mode=False)
     # else:
     #     if st.session_state.evo_running:
     #         st.toast(f'The command center is not active anymore. You may stop listing to command center.')

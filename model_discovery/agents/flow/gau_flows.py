@@ -32,8 +32,8 @@ LOG_STATES={
     'EXIT': 'Design Finished',
 }
 
-TERMINAL_STATES=['EXIT','TERMINATED','ERROR','ZOMBIE']
-ACTIVE_STATES=['BEGIN','RUNNING','PROPOSAL','IMPLEMENTATION']
+DESIGN_TERMINAL_STATES=['EXIT','TERMINATED','ERROR','ZOMBIE']
+DESIGN_ACTIVE_STATES=['BEGIN','RUNNING','PROPOSAL','IMPLEMENTATION']
 
 
 current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -178,8 +178,7 @@ class GUFlowMutation(FlowCreator):
         self.args=['main_tid']
         self.outs=['design_stack']
         self.cpu_only=cpu_only
-        def default_log_fn(msg,status=''): pass
-        self.log_fn=log_fn if log_fn else default_log_fn # report log and status to server
+        self.log_fn=log_fn if log_fn else lambda x,y=None: None
         
         # prepare roles
 

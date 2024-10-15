@@ -25,6 +25,8 @@ from .utils.modules import GatedMLP, MLP
 
 from model_discovery.model.block_registry import BlockRegister
 
+import time
+
 # try: 
 #     from model_discovery.model.ops.triton.layer_norm import (
 #         RMSNorm,
@@ -356,6 +358,7 @@ class ModisLMHeadModel(PreTrainedModel):
         vocab_size = config.vocab_size
         pad_vocab_size_multiple = config.pad_vocab_size_multiple
         factory_kwargs = {"device": device, "dtype": dtype}
+        self.log_fn = None
 
         super().__init__(config)
         if vocab_size % pad_vocab_size_multiple != 0:
@@ -386,6 +389,25 @@ class ModisLMHeadModel(PreTrainedModel):
         self.tie_weights()
         self.RANDOM_TESTING=RANDOM_TESTING
 
+    def _set_log_fn(self, log_fn=None, status=None):
+        if log_fn is None:
+            log_fn = lambda x,y=None: None
+        self.log_fn = log_fn
+        self.status = status
+        self.last_log_time = time.time()
+
+    def _reset_log_fn(self):
+        self.log_fn = None
+        self.status = None
+        self.last_log_time = None
+    
+    def _log(self, msg, status=None):
+        if status is None:
+            status = self.status if self.status is not None else 'RUNNING'
+        if time.time() - self.last_log_time > 15:
+            self.last_log_time = time.time()
+            self.log_fn(msg, status)
+
     def tie_weights(self):
         if self.config.tie_embeddings:
             self.lm_head.weight = self.backbone.embedding.weight
@@ -398,6 +420,8 @@ class ModisLMHeadModel(PreTrainedModel):
         "position_ids" is just to be compatible with Transformer generation. We don't use it.
         num_last_tokens: if > 0, only return the logits for the last n tokens
         """
+        if self.log_fn:
+            self._log('Forwarding...', 'EVALUATING')
         hidden_states = self.backbone(input_ids, **gab_kwargs)
         if num_last_tokens > 0:
             hidden_states = hidden_states[:, -num_last_tokens:]
@@ -462,6 +486,8 @@ class ModisLMHeadModel(PreTrainedModel):
         output_scores=False,
         **kwargs,
     ):
+        if self.log_fn:
+            self._log('Generating...')
         output = decode(
             input_ids,
             self,

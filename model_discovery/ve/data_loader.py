@@ -284,18 +284,21 @@ def get_loaders(dataset_names):
             loaders[dataset] = hf_dataset_loader(dataset)
     return loaders
 
-def load_datasets(cfg: GAMConfig): # weights e.g. {'train':[1.5,1.0]} for two datasets
+def load_datasets(cfg: GAMConfig,log_fn=None): # weights e.g. {'train':[1.5,1.0]} for two datasets
     """Loads the datasets 
 
     """
-
-    dataset_dicts = {
-        dataset: get_loaders(cfg.training_data)[dataset](
+    log_fn = log_fn if log_fn else lambda x,y=None: None
+    dataset_dicts = {}
+    log_fn('Loading the dataset...')
+    for dataset in cfg.training_data:
+        log_fn(f'Loading {dataset}...')
+        dataset_dicts[dataset] = get_loaders(cfg.training_data)[dataset](
             tokenizer_name=cfg.tokenizer,
             context_length=cfg.context_length
-        ) for dataset in cfg.training_data
-    } 
+        ) 
     tokenizer=get_tokenizer(cfg.tokenizer)
+    log_fn('Combining the dataset...')
     dataset=combine_datasets(dataset_dicts, cfg.training_weight)
     # assert 'train' in dataset and 'valid' in dataset, "Dataset must have 'train' and 'valid' keys, and optionally a 'test' key"
     assert 'train' in dataset, "Dataset must have 'train' key"

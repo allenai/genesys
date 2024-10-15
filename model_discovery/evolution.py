@@ -68,7 +68,7 @@ from typing import (
     Optional,
     Union
 )
-from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
+from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
@@ -82,6 +82,7 @@ from .configs.gam_config import (
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
+from .configs.const import VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZOMBIE_THRESHOLD
 from .ve.run import main as ve_main
 from .ve.run import parser as ve_parser
 from .ve.run import get_history_report
@@ -1782,19 +1783,21 @@ class ConnectionManager:
 
     def check_workload(self,node_id):
         command_status = self.check_command_status(node_id)
+        if command_status is None:
+            return None,None
         running_designs=[]
         running_verifies=[]
         if command_status:
             for pid in command_status:
                 command = command_status[pid]
-                if command['command'].startswith('design') and command['status'] in ACTIVE_STATES:
+                if command['command'].startswith('design') and command['status'] in DESIGN_ACTIVE_STATES:
                     running_designs.append(pid)
-                elif command['command'].startswith('verify') and command['status'] == 'running':
+                elif command['command'].startswith('verify') and command['status'] in VERIFY_ACTIVE_STATES:
                     running_verifies.append(pid)
         return running_designs, running_verifies
-
-    def get_session_log(self,sess_id):
-        log_collection = self.log_doc_ref.collection('design_sessions')
+    
+    def _get_log(self,sess_id,log_collection_name):
+        log_collection = self.log_doc_ref.collection(log_collection_name)
         index_term = log_collection.document('index').get()
         if not index_term.exists:
             return None,None,None
@@ -1812,6 +1815,12 @@ class ConnectionManager:
         status = log_df.iloc[0]['status']
         heartbeat = log_df.index[0]
         return log_df,status,heartbeat
+
+    def get_session_log(self,sess_id):
+        return self._get_log(sess_id,'design_sessions')
+    
+    def get_verification_log(self,sess_id):
+        return self._get_log(sess_id,'verifications')
     
     def get_active_design_sessions(self):
         active_design_sessions = {}
@@ -1823,9 +1832,9 @@ class ConnectionManager:
         index_term = index_term.to_dict()
         for sess_id in index_term:
             index_item = index_term[sess_id]
-            if index_item['status'] in ACTIVE_STATES:
+            if index_item['status'] in DESIGN_ACTIVE_STATES:
                 # check if it is zombie, if it is, update the status and skip
-                _,_,heartbeat = self.get_session_log(sess_id)
+                _,status,heartbeat = self.get_session_log(sess_id)
                 if time.time()-float(heartbeat)>DESIGN_ZOMBIE_THRESHOLD:
                     print(f'Detected zombie design session: {sess_id}')
                     index_ref.set({sess_id:{
@@ -1833,8 +1842,32 @@ class ConnectionManager:
                         'timestamp':str(time.time())
                     }},merge=True)
                 else:
+                    index_item['status'] = status
                     active_design_sessions[sess_id] = index_item
         return active_design_sessions
+    
+    def get_running_verifications(self):
+        running_verifications = {}
+        log_collection = self.log_doc_ref.collection('verifications')
+        index_term = log_collection.document('index').get()
+        index_ref = self.log_doc_ref.collection('verifications').document('index')
+        if not index_term.exists:
+            return {}
+        index_term = index_term.to_dict()
+        for sess_id in index_term:
+            index_item = index_term[sess_id]
+            if index_item['status'] in VERIFY_ACTIVE_STATES:
+                _,status,heartbeat = self.get_verification_log(sess_id)
+                if time.time()-float(heartbeat)>VERIFY_ZOMBIE_THRESHOLD:
+                    print(f'Detected zombie verification session: {sess_id}')
+                    index_ref.set({sess_id:{
+                        'status':'ZOMBIE',
+                        'timestamp':str(time.time())
+                    }},merge=True)
+                else:
+                    index_item['status'] = status
+                    running_verifications[sess_id] = index_item
+        return running_verifications
     
 
     def get_all_workloads(self):
@@ -1843,11 +1876,15 @@ class ConnectionManager:
         verify_workload = {}
         for node_id in self.connections:
             running_designs, running_verifies = self.check_workload(node_id)
+            if running_designs is None:
+                continue
             design_workload[node_id] = len(running_designs)
             verify_workload[node_id] = len(running_verifies)
         return design_workload, verify_workload
 
     def check_command_status(self,node_id):
+        if node_id not in self.connections:
+            return None
         node_data = self.connections[node_id]
         if node_data and 'command_status' in node_data:
             return node_data['command_status']
@@ -1857,23 +1894,28 @@ class ConnectionManager:
     def design_command(self,node_id,resume=True):
         self.get_active_connections() # refresh the connection status
         running_designs, _ = self.check_workload(node_id)
+        if running_designs is None:
+            return False
         if len(running_designs) >= self.max_design_threads[node_id]:
             self.toast(f"Max number of design threads reached ({self.max_design_threads[node_id]}) for node {node_id}. Please wait for some threads to finish.",icon='🚨')
-            return
+            return False
         command = f'design,{self.evoname}'
         if resume:
             command += ',resume'
         self.send_command(node_id,command)
+        return True
     
     def verify_command(self,node_id,design_id=None,scale=None,resume=True):
         self.get_active_connections() # refresh the connection status
         if not self.accept_verify_job[node_id]:
             self.toast(f"Node {node_id} is not accepting verify jobs.",icon='🚨')
-            return
+            return False
         _, running_verifies = self.check_workload(node_id)
+        if running_verifies is None:
+            return False
         if len(running_verifies) > 0:
             self.toast(f"There is already a verification running for node {node_id}. Please wait for it to finish.",icon='🚨')
-            return
+            return False
         command = f'verify,{self.evoname}'
         if design_id:
             assert scale is not None, "Scale is required for verify command if design_id is specified"
@@ -1881,6 +1923,7 @@ class ConnectionManager:
         if resume:
             command += ',resume'
         self.send_command(node_id,command)
+        return True
 
     def toast(self,message,icon=None,verbose=True):
         if self.st:
@@ -2273,11 +2316,6 @@ class EvolutionSystem(exec_utils.System):
         if in_process: # exit the process after sampling
             sys.exit(0)
 
-    def get_design_session_log(self,sess_id):
-        log_collection = self.CM.log_doc_ref.collection('design_sessions') if self.CM else None
-        log_ref = log_collection.document(sess_id)
-        return log_ref.get().to_dict()
-
     def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,
         user_input='',design_cfg={},search_cfg={},silent=False,cpu_only=False
     ):
@@ -2358,7 +2396,32 @@ class EvolutionSystem(exec_utils.System):
         else:
             print(f"Verifying design {design_id} at scale {scale}...")
         args = self._prep_ve_args(args,design_id,scale)
-        ve_main(args) # verify the design until it's done
+
+        log_fn = None
+        if self.CM:
+            log_collection = self.CM.log_doc_ref.collection('verifications')
+            latest_log = str(time.time())
+            sess_id = f'{design_id}_{scale}'
+            log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
+            index_ref = log_collection.document('index')
+            def log_fn(msg,status='RUNNING'):
+                timestamp = str(time.time())
+                log_ref.set({
+                    timestamp:{
+                        'status':status,
+                        'message':msg
+                    }
+                },merge=True)
+                if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
+                    index_ref.set({
+                        sess_id:{
+                            'timestamp':timestamp,
+                            'status':status,
+                            'latest_log':latest_log
+                        }
+                    },merge=True)
+                    
+        ve_main(args,log_fn) # verify the design until it's done
         if args.RANDOM_TESTING:
             report_dir=U.pjoin(self.ckpt_dir,'random','ve','random','report.json')
         else:

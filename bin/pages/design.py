@@ -17,7 +17,7 @@ import time
 
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,\
-    END_REASONS_LABELS,DesignModes,TERMINAL_STATES,ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
+    END_REASONS_LABELS,DesignModes,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 import bin.app_utils as AU
 
 
@@ -73,38 +73,45 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
         evosys.switch_ckpt(evoname)
     exp_log_ref = evosys.CM.get_log_ref()
     index_ref = evosys.CM.log_doc_ref.collection('design_sessions').document('index')
-    index_ref.set({sess_id:{
-        'node_id':node_id,
-        'pid':pid,
-    }},merge=True)
+    index_ref.set({sess_id:{'node_id':node_id,'pid':pid}},merge=True)
     # Start heartbeat
-    while True:
-        _,status,heartbeat = evosys.CM.get_session_log(sess_id)
-        if status is None:
-            do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} not found, wait for it to be created...')
-            time.sleep(60)
-            continue
-        if status in TERMINAL_STATES:
-            do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} terminated with status {status}')
-            break
-        elif time.time()-float(heartbeat)>DESIGN_ZOMBIE_THRESHOLD:
-                log = f'Daemon: Node {node_id} detected zombie process {pid} for {sess_id}'
-                do_log(exp_log_ref,log)
-                index_ref.set({sess_id:{
-                    'status':'ZOMBIE',
-                    'timestamp':str(time.time())
-                }},merge=True)
-                break
-        else:
-            do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} is running with status {status}')
-        time.sleep(60)  # Check every minute for active processes
     try:
-        process=psutil.Process(pid)
-        process.kill()
-        do_log(exp_log_ref,f'Daemon: Node {node_id} forcefully killed design process {pid} for {sess_id}')
+        while True:
+            _,status,heartbeat = evosys.CM.get_session_log(sess_id)
+            if status is None:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} not found, wait for it to be created...')
+                time.sleep(60)
+                continue
+            if status in DESIGN_TERMINAL_STATES:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} terminated with status {status}')
+                break
+            elif time.time()-float(heartbeat)>DESIGN_ZOMBIE_THRESHOLD:
+                    log = f'Daemon: Node {node_id} detected zombie process {pid} for {sess_id}'
+                    do_log(exp_log_ref,log)
+                    index_ref.set({sess_id:{
+                        'status':'ZOMBIE',
+                        'timestamp':str(time.time())
+                    }},merge=True)
+                    break
+            else:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} is running with status {status}')
+            time.sleep(60)  # Check every minute for active processes
+        try:
+            process=psutil.Process(pid)
+            process.kill()
+            do_log(exp_log_ref,f'Daemon: Node {node_id} forcefully killed design process {pid} for {sess_id}')
+        except Exception as e:
+            do_log(exp_log_ref,f'Daemon: Node {node_id} failed to forcefully kill design process {pid} for {sess_id}')
+            print(f'Error killing process {pid}: {e}')
+        
     except Exception as e:
-        do_log(exp_log_ref,f'Daemon: Node {node_id} failed to forcefully kill design process {pid} for {sess_id}')
-        print(f'Error killing process {pid}: {e}')
+        log = f'Daemon: Node {node_id} encountered an error during design process {pid} on {sess_id}: {str(e)}'
+        do_log(exp_log_ref,log)
+    finally:
+        index_ref.set({sess_id:{
+            'status':'TERMINATED',
+            'timestamp':str(time.time())
+        }},merge=True)
     
     return sess_id, pid
 
