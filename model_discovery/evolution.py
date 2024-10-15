@@ -1747,6 +1747,7 @@ class ConnectionManager:
     def __init__(self, evoname, group_id, remote_db, stream):
         self.evoname = evoname
         self.group_id = group_id
+        self.remote_db = remote_db
         self.collection = remote_db.collection('working_nodes')
         self.log_doc_ref = remote_db.collection('experiment_logs').document(evoname)
         self.zombie_threshold = 20  # seconds
@@ -1756,10 +1757,9 @@ class ConnectionManager:
 
     def switch_ckpt(self,evoname):
         self.evoname = evoname
-        self.log_doc_ref = self.log_doc_ref.collection('experiment_logs').document(evoname)
+        self.log_doc_ref = self.remote_db.collection('experiment_logs').document(evoname)
 
     def get_log_ref(self):
-        print(f'{self.evoname} {self.log_doc_ref.get()}')
         latest_log = self.log_doc_ref.get().to_dict().get('latest_log',None)
         if latest_log:
             return self.log_doc_ref.collection('logs').document(latest_log)
