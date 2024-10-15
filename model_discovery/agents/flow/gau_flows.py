@@ -1223,7 +1223,12 @@ class GUFlowMutation(FlowCreator):
                         if selection in self.tree.declares:
                             declaration=self.tree.declares[selection].to_prompt()
                         else:
-                            declaration='declaration not found'
+                            declaration = UnitDecl(
+                                unitname=selection,
+                                document='N/A',
+                                inputs=['N/A'],
+                                outputs=['N/A']
+                            )
                         gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(DECLARATION=declaration)
                     GUM_IMPLEMENTATION_UNIT.apply(IMPLEMENTATION_CODER.obj)
                 else: # Debugging or refining the implementation
