@@ -1806,24 +1806,28 @@ class ConnectionManager:
         index_term = index_term.to_dict()
         if sess_id not in index_term:
             return None,None,None
-        latest_log = index_term[sess_id]['latest_log']
-        log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
-        log = log_ref.get()
-        if not log.exists:
-            return None,None,None
-        log = log.to_dict()
-        log_df = pd.DataFrame(log).T
-        log_df = log_df.sort_index(ascending=False)
-        status = log_df.iloc[0]['status']
-        heartbeat = log_df.index[0]
-        if zombie_threshold and time.time()-float(heartbeat)>zombie_threshold:
-            print(f'Detected zombie session: {sess_id}')
-            index_ref = self.log_doc_ref.collection(log_collection_name).document('index')
-            index_ref.set({sess_id:{
-                'status':'ZOMBIE',
-                'timestamp':str(time.time())
-            }},merge=True)
-            status = 'ZOMBIE'
+        log_df = None
+        status = index_term[sess_id]['status']
+        heartbeat = index_term[sess_id]['timestamp']
+        if 'latest_log' in index_term[sess_id]:
+            latest_log = index_term[sess_id]['latest_log'] 
+            log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
+            log = log_ref.get()
+            if not log.exists:
+                return None,None,None
+            log = log.to_dict()
+            log_df = pd.DataFrame(log).T
+            log_df = log_df.sort_index(ascending=False)
+            status = log_df.iloc[0]['status']
+            heartbeat = log_df.index[0]
+            if zombie_threshold and time.time()-float(heartbeat)>zombie_threshold:
+                print(f'Detected zombie session: {sess_id}')
+                index_ref = self.log_doc_ref.collection(log_collection_name).document('index')
+                index_ref.set({sess_id:{
+                    'status':'ZOMBIE',
+                    'timestamp':str(time.time())
+                }},merge=True)
+                status = 'ZOMBIE'
         return log_df,status,heartbeat
 
     def get_session_log(self,sess_id):
