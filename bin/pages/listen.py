@@ -138,35 +138,34 @@ class Listener:
             to_sleep = self.poll_freq
             if self.active_mode:
                 print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] is listening for commands')
-                self.reset_doc()
                 if not self.node_id:
+                    print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Hanging...')
                     time.sleep(self.poll_freq)
+                    self.reset_doc()
                     continue
                 
-                try:
-                    doc = self.doc_ref.get()
-                    if doc.exists:
-                        data = doc.to_dict()
-                        if 'status' in data and data['status'] in ['disconnected','stopped']:
-                            break
-                        
-                        commands = data.get('commands', [])
-                        if commands:
-                            for command in commands:
-                                print(f'[{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Executing command: {command}')
-                                evoname = command.split(',')[1]
-                                self.evosys.CM.switch_ckpt(evoname)
-                                sess_id,pid = self.execute_command(command)
-                                if sess_id is None:
-                                    continue
+                doc = self.doc_ref.get()
+                if doc.exists:
+                    data = doc.to_dict()
+                    if 'status' in data and data['status'] in ['disconnected','stopped']:
+                        break
+                    
+                    commands = data.get('commands', [])
+                    if commands:
+                        for command in commands:
+                            print(f'[{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Executing command: {command}')
+                            evoname = command.split(',')[1]
+                            self.evosys.CM.switch_ckpt(evoname)
+                            sess_id,pid = self.execute_command(command)
+                            if sess_id is not None:
                                 time.sleep(self.execution_delay)
                                 to_sleep -= self.execution_delay
                                 self.command_queue.put((command,sess_id,pid))
 
-                        local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
-                        U.save_json(local_doc,self.local_dir)
-                except Exception as e:
-                    print(f' [{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Error: {e}')
+                    local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
+                    U.save_json(local_doc,self.local_dir)
+
+                self.reset_doc()
 
             if to_sleep>0:  
                 time.sleep(to_sleep)  
