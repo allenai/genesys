@@ -224,3 +224,15 @@ def parse_verify_id(verify_id):
     scale = verify_id.split('_')[-1]
     design_id = verify_id[:-len(scale)-1]
     return design_id, scale
+
+def get_local_doc():
+    CKPT_DIR=os.environ.get('CKPT_DIR',None)
+    if CKPT_DIR is None:
+        return None
+    return load_json(pjoin(CKPT_DIR,'.node.json'))
+
+def save_local_doc(data):
+    CKPT_DIR=os.environ.get('CKPT_DIR',None)
+    if CKPT_DIR is None:
+        return
+    save_json(data,pjoin(CKPT_DIR,'.node.json'))

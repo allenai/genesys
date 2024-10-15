@@ -9,7 +9,7 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = GPT2(embed_dim=embed_dim, block_loc=block_loc,
+        self.root = Mamba2(embed_dim=embed_dim, block_loc=block_loc,
             kwarg_all=kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
@@ -21,30 +21,64 @@ import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
 
 
-class GPT2(GAUBase):
+class Mamba2(GAUBase):
+    """
+    Mamba2: A Generalized Autoregressive Unit (GAU) implementing a double-layer Mamba architecture.
+
+    This class represents a Mamba2 block, which consists of two Mamba layers with normalization.
+    It's designed to process sequential data in a causal, differentiable, and parallelizable manner.
+
+    Architecture:
+        1. Input Normalization (RMSNorm)
+        2. First Mamba Layer
+        3. Residual Connection
+        4. Second Normalization (RMSNorm)
+        5. Second Mamba Layer
+        6. Final Residual Connection
+
+    Args:
+        embed_dim (int): The dimensionality of the input and output embeddings.
+        block_loc (tuple): The location of this block within the larger model architecture.
+        kwarg_all (dict): Additional keyword arguments to be passed to child components.
+        device (torch.device, optional): The device on which to allocate tensors.
+        dtype (torch.dtype, optional): The default dtype for tensors in this module.
+
+    Inputs:
+        X (torch.Tensor): Input tensor of shape (batch_size, sequence_length, embed_dim).
+        **Z: Additional keyword arguments for potential future extensions.
+
+    Outputs:
+        X (torch.Tensor): Output tensor of shape (batch_size, sequence_length, embed_dim).
+        Z (dict): Updated keyword arguments.
+
+    Note:
+        This implementation adheres to the GAU (Generalized Autoregressive Unit) interface
+        and maintains causal properties for autoregressive processing.
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = MHA(embed_dim=self.embed_dim, block_loc=self.block_loc,
-            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
-        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
+        self.mamba1 = Mamba2Layer(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm1 = HypersphereRMSNorm(embed_dim=self.embed_dim, block_loc
-            =self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.norm2 = HypersphereRMSNorm(embed_dim=self.embed_dim, block_loc
-            =self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
+        self.mamba2 = Mamba2Layer(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.norm1 = OptiRMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.norm2 = OptiRMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
 
     def _forward(self, X, **Z):
         X1, Z = self.norm1(X, **Z)
-        X2, Z = self.mha(X1, **Z)
+        X2, Z = self.mamba1(X1, **Z)
         X = X + X2
         X3, Z = self.norm2(X, **Z)
-        X4, Z = self.mlp(X3, **Z)
+        X4, Z = self.mamba2(X3, **Z)
         X = X + X4
         return X, Z
 
@@ -52,103 +86,74 @@ class GPT2(GAUBase):
 import torch.nn.functional as F
 
 
-class HypersphereRMSNorm(GAUBase):
+class OptiRMSNorm(GAUBase):
     """
-    Hypersphere Root Mean Square Layer Normalization (HypersphereRMSNorm).
+    OptiRMSNorm integrates LayerScale and Adaptive Geometric Normalization
+    into the RMSNorm to enhance training stability and model performance.
 
-    This layer extends RMSNorm by normalizing input tensors onto a unit norm hypersphere
-    and applying trainable per-dimension scaling factors. This enhances training stability,
-    computational efficiency, and model scalability.
+    This GAU extends RMSNorm by introducing learnable scaling and shifting parameters
+    (LayerScale) and a geometric normalization mechanism that preserves the norm and
+    orientation of the normalized vectors.
+
+    **Code Example:**
+
+    .. code-block:: python
+
+        opti_rmsnorm = OptiRMSNorm(embed_dim=128, block_loc=(0, 0), kwarg_all={})
+        x = torch.randn(1, 100, 128)
+        output, Z = opti_rmsnorm(x)
 
     Args:
         embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
+        block_loc (tuple): The location of this block within the model architecture.
         kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        device (torch.device, optional): The device to allocate tensors.
+        dtype (torch.dtype, optional): The data type of the module's parameters.
         eps (float, optional): A small constant added to the denominator for numerical stability.
             Default: 1e-5.
 
     Attributes:
-        alpha (nn.Parameter): Learnable scaling parameter of shape (embed_dim,).
-
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
-    Examples:
-        >>> hypersphere_rmsnorm = HypersphereRMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output, _ = hypersphere_rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - HypersphereGPT Proposal
+        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
+        gamma (nn.Parameter): Learnable scaling factor for LayerScale of shape (embed_dim,).
+        beta (nn.Parameter): Learnable shifting factor for LayerScale of shape (embed_dim,).
+        s (nn.Parameter): Learnable scaling factor for Geometric Normalization, scalar.
+        variance_epsilon (float): The epsilon value used in the normalization formula.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, eps=1e-05, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
+        """Initialize OptiRMSNorm with LayerScale and Adaptive Geometric Normalization."""
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.gamma = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs))
+        self.beta = nn.Parameter(torch.zeros(embed_dim, **self.factory_kwargs))
+        self.s = nn.Parameter(torch.ones(1, **self.factory_kwargs))
+        self.variance_epsilon = eps
+
+    def _forward(self, X, **Z):
         """
-        Initialize the HypersphereRMSNorm module.
+        Forward pass for OptiRMSNorm.
 
         Args:
-            embed_dim (int): The size of the input feature dimension.
-            block_loc (tuple): The location of this block in the model architecture.
-            kwarg_all (dict): Additional keyword arguments passed to the parent class.
-            device (torch.device, optional): The device on which to allocate the module's parameters.
-            dtype (torch.dtype, optional): The dtype of the module's parameters.
-            eps (float, optional): A small constant added to the denominator for numerical stability.
-                Default: 1e-5.
-        """
-        self.eps = eps
-        self.alpha = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs))
-
-    def _forward(self, X, **Z):
-        """
-        Forward pass for HypersphereRMSNorm.
-
-        Arguments:
-            X (Tensor): Input tensor of shape (*, embed_dim).
+            X (torch.Tensor): Input tensor of shape (batch, seqlen, embed_dim).
+            **Z: Additional keyword arguments (not used).
 
         Returns:
-            Tuple[Tensor, dict]: The normalized and scaled output tensor, and any updated intermediate variables.
+            torch.Tensor: Normalized and scaled tensor of same shape as X.
+            dict: Updated intermediate variables (including 'y' if any).
         """
-        norm = X.norm(p=2, dim=-1, keepdim=True).clamp_min(self.eps)
-        Y = X / norm
-        Y = Y * self.alpha
-        return Y, {}
-
-
-import torch.nn.functional as F
-
-
-class GatedMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
-
-    def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        rms = torch.sqrt(torch.mean(X ** 2, dim=-1, keepdim=True) + self.
+            variance_epsilon)
+        normalized = X / rms
+        scaled = self.gamma * normalized + self.beta
+        norm_scaled = scaled / torch.norm(scaled, dim=-1, keepdim=True).clamp(
+            min=1e-12)
+        output = norm_scaled * self.s
+        return self.weight * output.to(input_dtype), {}
 
 
 import torch.nn.functional as F
@@ -156,188 +161,228 @@ import math
 from einops import rearrange, repeat
 
 
-class MHA(GAUBase):
-    """Multi-head self-attention and cross-attention"""
+class Mamba2Layer(GAUBase):
+    """
+    Mamba2Layer: An implementation of the Mamba architecture layer.
+
+    This layer is based on the Mamba architecture, which combines elements of
+    State Space Models (SSMs) and attention mechanisms. It's designed for
+    efficient processing of long sequences.
+
+    Args:
+        embed_dim (int): Dimension of the input embeddings.
+        block_loc (tuple): Location of the block within the model.
+        kwarg_all (dict): Additional keyword arguments.
+        d_state (int, optional): Dimension of the state. Defaults to 64.
+        d_conv (int, optional): Kernel size for the 1D convolution. Defaults to 4.
+        expand (int, optional): Expansion factor for the inner dimension. Defaults to 2.
+        headdim (int, optional): Dimension of each head. Defaults to 128.
+        ngroups (int, optional): Number of groups for group linear operators. Defaults to 1.
+        A_init_range (tuple, optional): Range for initializing the A parameter. Defaults to (1, 16).
+        dt_min (float, optional): Minimum value for dt initialization. Defaults to 0.001.
+        dt_max (float, optional): Maximum value for dt initialization. Defaults to 0.1.
+        dt_init_floor (float, optional): Floor value for dt initialization. Defaults to 1e-4.
+        chunk_size (int, optional): Size of chunks for processing. Defaults to 256.
+        device (torch.device, optional): Device to use for computations.
+        dtype (torch.dtype, optional): Data type to use for computations.
+
+    The Mamba2Layer processes input sequences using a combination of linear projections,
+    1D convolutions, and a selective scan operation (implemented in SSDMinimalDiscrete).
+    It's designed to capture long-range dependencies efficiently.
+
+    The layer includes several components:
+    1. Input projection
+    2. 1D Convolution
+    3. Selective Scan Discrete operation
+    4. Output projection
+
+    The layer also implements a chunking mechanism to process long sequences efficiently.
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:
-        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:
-        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,
-        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:
-        """
-        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.
-        return_residual: whether to return the input x along with the output. This is for
-            performance reason: for post-norm architecture, returning the input allows us
-            to fuse the backward of nn.Linear with the residual connection.
-        """
+        d_state=64, d_conv=4, expand=2, headdim=128, ngroups=1,
+        A_init_range=(1, 16), dt_min=0.001, dt_max=0.1, dt_init_floor=
+        0.0001, chunk_size=256, device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.embed_dim = embed_dim
+        self.d_model = embed_dim
+        self.d_state = d_state
         self.d_conv = d_conv
-        self.softmax_scale = softmax_scale
-        self.causal = causal
-        self.num_heads = n_heads
-        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else
-            n_heads)
-        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'
-        if head_dim is None:
-            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'
-        self.head_dim = (head_dim if head_dim is not None else self.
-            embed_dim // n_heads)
-        self.mlp_dim = math.ceil(mlp_dim / 256) * 256
-        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)
-        out_dim = self.head_dim * self.num_heads
-        kwarg_all['rotary_emb_dim'] = self.head_dim
-        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
+        self.expand = expand
+        self.d_inner = self.expand * self.d_model
+        self.headdim = headdim
+        self.ngroups = ngroups
+        assert self.d_inner % self.headdim == 0
+        self.nheads = self.d_inner // self.headdim
+        self.chunk_size = chunk_size
+        d_in_proj = (2 * self.d_inner + 2 * self.ngroups * self.d_state +
+            self.nheads)
+        self.in_proj = nn.Linear(self.d_model, d_in_proj, bias=True, **self
+            .factory_kwargs)
+        conv_dim = self.d_inner + 2 * self.ngroups * self.d_state
+        self.conv1d = nn.Conv1d(in_channels=conv_dim, out_channels=conv_dim,
+            bias=True, kernel_size=d_conv, groups=conv_dim, padding=d_conv -
+            1, **self.factory_kwargs)
+        self.act = nn.SiLU()
+        dt = torch.exp(torch.rand(self.nheads, **self.factory_kwargs) * (
+            math.log(dt_max) - math.log(dt_min)) + math.log(dt_min))
+        dt = torch.clamp(dt, min=dt_init_floor)
+        inv_dt = dt + torch.log(-torch.expm1(-dt))
+        self.dt_bias = nn.Parameter(inv_dt)
+        self.dt_bias._no_weight_decay = True
+        assert A_init_range[0] > 0 and A_init_range[1] >= A_init_range[0]
+        A = torch.empty(self.nheads, dtype=torch.float32, device=device
+            ).uniform_(*A_init_range)
+        A_log = torch.log(A).to(dtype=dtype)
+        self.A_log = nn.Parameter(A_log)
+        self.A_log._no_weight_decay = True
+        self.norm = nn.LayerNorm(self.d_inner, eps=1e-05, **self.factory_kwargs
+            )
+        self.silu = nn.SiLU()
+        self.out_proj = nn.Linear(self.d_inner, self.d_model, bias=True, **
+            self.factory_kwargs)
+        self.ssd_minimal_discrete = SSDMinimalDiscrete(embed_dim=self.
             embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
             **self.factory_kwargs, **self.kwarg_all)
-        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=
-            qkv_proj_bias, **self.factory_kwargs)
-        if self.d_conv > 0:
-            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.
-                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.
-                factory_kwargs)
-        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,
-            bias=out_proj_bias, **self.factory_kwargs)
 
-    def _forward(self, X, **Z):
+    def pad_to_block_length(self, X, block_len):
+        pad_len = (block_len - X.shape[1] % block_len) % block_len
+        if pad_len > 0:
+            padding = torch.zeros(X.shape[0], pad_len, *X.shape[2:], dtype=
+                X.dtype, device=X.device)
+            X = torch.cat([X, padding], dim=1)
+        return X
+
+    def _forward(self, u, **kwargs):
         """
-        Arguments:
-            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if
-                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total
-                is the is the sum of the sequence lengths in the batch.
-            inference_params: for generation. Adapted from Megatron-LM (and Apex)
-            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470
+        u: (B, L, D)
+        Returns: same shape as u
         """
-        qkv = self.in_proj(X)
-        if self.mlp_dim > 0:
-            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.
-                mlp_dim], dim=-1)
-            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)
-            x_mlp = x_mlp_up * F.silu(x_mlp_gate)
-        if self.d_conv > 0:
-            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[
-                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()
-        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)
-        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)
-        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)
-        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)
-        Z['input_emb'] = q
-        _, Z = self.rotary_emb(X, **Z)
-        q = Z['output_emb']
-        Z['input_emb'] = k
-        _, Z = self.rotary_emb(X, **Z)
-        k = Z['output_emb']
-        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //
-            self.num_heads_kv)
-        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //
-            self.num_heads_kv)
-        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.
-            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,
-            scale=self.softmax_scale).transpose(1, 2)
-        context = rearrange(context, '... h d -> ... (h d)')
-        if self.mlp_dim > 0:
-            context = torch.cat([context, x_mlp], dim=-1)
-        out = self.out_proj(context)
+        batch, _seqlen, dim = u.shape
+        u = self.pad_to_block_length(u, self.chunk_size)
+        seqlen = u.shape[1]
+        zxbcdt = self.in_proj(u)
+        A = -torch.exp(self.A_log)
+        z, xBC, dt = torch.split(zxbcdt, [self.d_inner, self.d_inner + 2 *
+            self.ngroups * self.d_state, self.nheads], dim=-1)
+        dt = F.softplus(dt + self.dt_bias)
+        xBC = self.act(self.conv1d(xBC.transpose(1, 2)).transpose(1, 2))
+        xBC = xBC[:, :seqlen, :]
+        x, B, C = torch.split(xBC, [self.d_inner, self.ngroups * self.
+            d_state, self.ngroups * self.d_state], dim=-1)
+        x = rearrange(x, 'b l (h p) -> b l h p', p=self.headdim)
+        B = rearrange(B, 'b l (g n) -> b l g n', g=self.ngroups)
+        C = rearrange(C, 'b l (g n) -> b l g n', g=self.ngroups)
+        Z = {'x': x, 'A': A, 'B': B, 'C': C, 'dt': dt, 'chunk_size': self.
+            chunk_size}
+        _, Z_ = self.ssd_minimal_discrete(u, **Z)
+        y = Z_.get('y')
+        y = rearrange(y, 'b l h p -> b l (h p)')
+        y = self.norm(y * self.silu(z))
+        out = self.out_proj(y)
+        out = out[:, :_seqlen, :]
         return out
 
 
 import torch.nn.functional as F
-from torch import Tensor
-from typing import Optional
+from einops import rearrange, repeat
 
 
-class RotaryPositionalEmbeddings(GAUBase):
+class SSDMinimalDiscrete(GAUBase):
     """
-    This class implements Rotary Positional Embeddings (RoPE)
-    proposed in https://arxiv.org/abs/2104.09864.
+    SSDMinimalDiscrete (State Space Discrete Minimal) implements a discrete-time state space model.
 
-    Reference implementation (used for correctness verfication)
-    can be found here:
-    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80
-
-    In this implementation we cache the embeddings for each position upto
-    ``max_seq_len`` by computing this during init.
+    This class provides an efficient implementation of the SSM algorithm, particularly
+    suited for processing sequential data in chunks. It uses a minimal discrete-time
+    formulation that is both memory-efficient and computationally effective.
 
     Args:
-        dim (int): Embedding dimension. This is usually set to the dim of each
-            head in the attention module computed as ````embed_dim`` // ``num_heads````
-        max_seq_len (int): Maximum expected sequence length for the
-            model, if exceeded the cached freqs will be recomputed
-        base (int): The base for the geometric progression used to compute
-            the rotation angles
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of the block within the larger model structure.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): The device to run the module on.
+        dtype (torch.dtype, optional): The data type of the module's parameters.
+
+    Inputs:
+        X (torch.Tensor): The input tensor of shape (batch, length, n_heads, d_head).
+        A (torch.Tensor): The state transition tensor of shape (batch, length, n_heads).
+        B (torch.Tensor): The input-to-state tensor of shape (batch, length, n_heads, d_state).
+        C (torch.Tensor): The state-to-output tensor of shape (batch, length, n_heads, d_state).
+        dt (torch.Tensor): The time step tensor of shape (batch, length, n_heads).
+        chunk_size (int): The size of chunks for processing the sequence.
+
+    Outputs:
+        Y (torch.Tensor): The output tensor of shape (batch, length, n_heads, d_head).
+
+    The class implements the forward pass of the SSM algorithm, including:
+    1. Intra-chunk computations (diagonal blocks)
+    2. Inter-chunk state propagation
+    3. State-to-output conversion
+
+    This implementation is designed to be efficient for long sequences by processing
+    the input in chunks, which allows for better parallelization and memory usage.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:
-        int=None, max_seq_len: int=4096, **kwargs) ->None:
+        device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.dim = rotary_emb_dim
-        self.base = rotary_emb_base
-        self.max_seq_len = max_seq_len
-        self._rope_init()
 
-    def reset_parameters(self):
-        self._rope_init()
+    def _forward(self, X, x, A, B, C, dt, chunk_size):
+        y, _ = self.ssd_minimal_discrete(x * dt.unsqueeze(-1), A * dt, B, C,
+            chunk_size)
+        Z_ = {'y': y}
+        return X, Z_
 
-    def _rope_init(self):
-        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.
-            factory_kwargs)[:self.dim // 2].float() / self.dim)
-        self.register_buffer('theta', theta, persistent=False)
-        self.build_rope_cache(self.max_seq_len)
+    def segsum(self, x):
+        """More stable segment sum calculation."""
+        T = x.size(-1)
+        x = repeat(x, '... d -> ... d e', e=T)
+        mask = torch.tril(torch.ones(T, T, device=x.device, dtype=bool),
+            diagonal=-1)
+        x = x.masked_fill(~mask, 0)
+        x_segsum = torch.cumsum(x, dim=-2)
+        mask = torch.tril(torch.ones(T, T, device=x.device, dtype=bool),
+            diagonal=0)
+        x_segsum = x_segsum.masked_fill(~mask, -torch.inf)
+        return x_segsum
 
-    def build_rope_cache(self, max_seq_len: int=4096) ->None:
-        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=
-            self.theta.device)
-        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()
-        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],
-            dim=-1)
-        self.register_buffer('cache', cache, persistent=False)
-
-    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[
-        Tensor]=None) ->Tensor:
+    def ssd_minimal_discrete(self, X, A, B, C, block_len, initial_states=None):
         """
-        Args:
-            x (Tensor): input tensor with shape
-                [b, s, n_h, h_d]
-            input_pos (Optional[Tensor]): Optional tensor which contains the position ids
-                of each token. During training, this is used to indicate the positions
-                of each token relative to its sample when packed, shape [b, s].
-                During inference, this indicates the position of the current token.
-                If none, assume the index of the token is its position id. Default is None.
-
-        Returns:
-            Tensor: output tensor with RoPE applied
-
-        Notation used for tensor shapes:
-            - b: batch size
-            - s: sequence length
-            - n_h: num heads
-            - h_d: head dim
-
-        TODO: The implementation below can be made more efficient
-        for inference.
+        Arguments:
+            X: (batch, length, n_heads, d_head)
+            A: (batch, length, n_heads)
+            B: (batch, length, n_heads, d_state)
+            C: (batch, length, n_heads, d_state)
+        Return:
+            Y: (batch, length, n_heads, d_head)
         """
-        seq_len = input_emb.size(1)
-        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[
-            input_pos]
-        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)
-        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2
-            )
-        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped
-            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,
-            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)
-        x_out = x_out.flatten(3)
-        output_emb = x_out.type_as(input_emb)
-        return X, {'output_emb': output_emb}
+        assert X.dtype == A.dtype == B.dtype == C.dtype
+        X, A, B, C = [rearrange(x, 'b (c l) ... -> b c l ...', l=block_len) for
+            x in (X, A, B, C)]
+        A = rearrange(A, 'b c l h -> b h c l')
+        A_cumsum = torch.cumsum(A, dim=-1)
+        L = torch.exp(self.segsum(A))
+        Y_diag = torch.einsum('bclhn,bcshn,bhcls,bcshp->bclhp', C, B, L, X)
+        decay_states = torch.exp(A_cumsum[:, :, :, -1:] - A_cumsum)
+        states = torch.einsum('bclhn,bhcl,bclhp->bchpn', B, decay_states, X)
+        if initial_states is None:
+            initial_states = torch.zeros_like(states[:, :1])
+        states = torch.cat([initial_states, states], dim=1)
+        decay_chunk = torch.exp(self.segsum(F.pad(A_cumsum[:, :, :, -1], (1,
+            0))))
+        new_states = torch.einsum('bhzc,bchpn->bzhpn', decay_chunk, states)
+        states, final_state = new_states[:, :-1], new_states[:, -1]
+        state_decay_out = torch.exp(A_cumsum)
+        Y_off = torch.einsum('bclhn,bchpn,bhcl->bclhp', C, states,
+            state_decay_out)
+        Y = rearrange(Y_diag + Y_off, 'b c l h p -> b (c l) h p')
+        return Y, final_state
 
 
-gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,
-    'head_dim': None, 'mlp_dim': 0, 'qkv_proj_bias': True, 'out_proj_bias':
-    True, 'softmax_scale': None, 'rotary_emb_base': 10000, 'd_conv': 0,
-    'max_seq_len': 4096, 'hidden_features': None, 'out_features': None,
-    'activation': None, 'bias': False, 'multiple_of': 128, 'eps': 1e-05}
+gab_config = {'d_state': 64, 'd_conv': 4, 'expand': 2, 'headdim': 128,
+    'ngroups': 1, 'A_init_range': [1, 16], 'dt_min': 0.001, 'dt_max': 0.1,
+    'dt_init_floor': 0.0001, 'chunk_size': 256, 'eps': 1e-05}
 
 
 

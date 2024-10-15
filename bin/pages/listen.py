@@ -89,8 +89,6 @@ class Listener:
             local_doc['group_id'] = self.group_id
             local_doc['max_design_threads'] = self.max_design_threads
             local_doc['accept_verify_job'] = self.accept_verify_job
-            if 'running_designs' not in local_doc:
-                local_doc['running_designs'] = {}
             U.save_json(local_doc,self.local_dir)
         self.doc_ref = self.collection.document(self.node_id)
     

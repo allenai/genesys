@@ -52,5 +52,12 @@ def gui(ctx):
     cmd = ['streamlit', 'run', 'bin/app.py'] + ctx.args
     subprocess.run(cmd)
 
+@cli.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True), add_help_option=False)
+@click.pass_context
+def setup(ctx):
+    """Setup the environment""" # bash scripts/setup_env.sh
+    cmd = ['bash', 'scripts/setup_env.sh']
+    subprocess.run(cmd)
+
 if __name__ == '__main__':
     cli()
