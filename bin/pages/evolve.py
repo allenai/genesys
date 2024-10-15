@@ -25,12 +25,12 @@ CC_POLL_FREQ = 30 # seconds
 CC_ZOMBIE_THRESHOLD = 60 # seconds
 
 
-def _is_running(evosys,zombie_threshold=CC_ZOMBIE_THRESHOLD):
+def _is_running(evosys):
     docs = evosys.remote_db.collection('experiment_connections').get()
     for doc in docs:
         if doc.to_dict().get('status','n/a') == 'connected':
             last_heartbeat = doc.to_dict().get('last_heartbeat')
-            threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=zombie_threshold)
+            threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=CC_ZOMBIE_THRESHOLD)
             is_zombie = last_heartbeat < threshold_time
             evoname = doc.to_dict().get('evoname')
             group_id = doc.to_dict().get('group_id')
@@ -57,7 +57,7 @@ class CommandCenter:
 
     def build_connection(self,active_mode=True):
         # check if the node_id is already in the collection
-        evoname, _ = _is_running(self.evosys,self.zombie_threshold)
+        evoname, _ = _is_running(self.evosys)
         self.active_mode = active_mode
         if evoname:
             print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Namespace {evoname} is already running. Connecting to the existing command center.')
@@ -268,8 +268,8 @@ def network_status(evosys):
                 active_design_sessions_df['pid'] = active_design_sessions_df['pid'].astype(str)
             if 'started_at' in active_design_sessions_df.columns:
                 active_design_sessions_df['started_at'] = pd.to_datetime(active_design_sessions_df['started_at'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
-            if 'timestamp' in active_design_sessions_df.columns:
-                active_design_sessions_df['timestamp'] = pd.to_datetime(active_design_sessions_df['timestamp'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            if 'heartbeat' in active_design_sessions_df.columns:
+                active_design_sessions_df['heartbeat'] = pd.to_datetime(active_design_sessions_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
             st.dataframe(active_design_sessions_df,use_container_width=True)
         else:
             st.info('No active design sessions')
@@ -284,8 +284,8 @@ def network_status(evosys):
                 running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
             if 'started_at' in running_verifications_df.columns:
                 running_verifications_df['started_at'] = pd.to_datetime(running_verifications_df['started_at'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
-            if 'timestamp' in running_verifications_df.columns:
-                running_verifications_df['timestamp'] = pd.to_datetime(running_verifications_df['timestamp'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            if 'heartbeat' in running_verifications_df.columns:
+                running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
             st.dataframe(running_verifications_df,use_container_width=True)
         else:
             st.info('No running verifications')
@@ -330,7 +330,7 @@ def evolve(evosys,project_dir):
     if 'evo_passive_thread' not in st.session_state:
         st.session_state.evo_passive_thread = None
      
-    running_evoname,running_group_id = _is_running(evosys,zombie_threshold=30)
+    running_evoname,running_group_id = _is_running(evosys)
     if running_evoname:
         if not st.session_state.evo_running:
             if evosys.CM.group_id == running_group_id or evosys.evoname == running_evoname:

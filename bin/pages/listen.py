@@ -19,7 +19,7 @@ from google.cloud import firestore
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 
 from bin.pages.design import design_command,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
-from bin.pages.verify import verify_command,VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZOMBIE_THRESHOLD
+from bin.pages.verify import verify_command,VERIFY_TERMINAL_STATES,VERIFY_ACTIVE_STATES,VERIFY_ZOMBIE_THRESHOLD
 
 
 def get_process(pid):
@@ -36,6 +36,9 @@ def is_running(pid):
     return False
 
 
+NODE_POLL_FREQ = 15 # seconds
+NODE_ZOMBIE_THRESHOLD = AU.NODE_ZOMBIE_THRESHOLD
+NODE_EXECUTION_DELAY = 1
 
 class Listener:
     def __init__(self, evosys, node_id=None, group_id='default', max_design_threads=5, accept_verify_job=True, 
@@ -47,10 +50,11 @@ class Listener:
         self.running = False
         self.command_queue = queue.Queue()
         self.command_status = {}
-        self.poll_freq = 10
+        self.poll_freq = NODE_POLL_FREQ
         self.cli = cli
         self.active_mode = True
-        self.zombie_threshold = 20  # seconds
+        self.zombie_threshold = NODE_ZOMBIE_THRESHOLD  # seconds
+        self.execution_delay = NODE_EXECUTION_DELAY # seconds
         self.local_dir = U.pjoin(evosys.ckpt_dir,'.node.json')
         self.max_design_threads = max_design_threads
         self.accept_verify_job = accept_verify_job # XXX: if accepting verify jobs, may not allow design jobs to use GPUs?
@@ -170,27 +174,28 @@ class Listener:
                         for command in commands:
                             print(f'[{self.node_id}: {time.strftime("%Y-%m-%d %H:%M:%S")}] Executing command: {command}')
                             sess_id,pid = self.execute_command(command)
-                            slept = 0.3
-                            time.sleep(slept)
-                            to_sleep -= slept
+                            time.sleep(self.execution_delay)
+                            to_sleep -= self.execution_delay
                             self.command_queue.put((command,sess_id,pid))
                             if sess_id:
                                 if command.startswith('design'):
-                                    _,status,_ = self.evosys.CM.get_session_log(sess_id)
+                                    _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
                                 else:
-                                    _,status,_ = self.evosys.CM.get_verification_log(sess_id)
+                                    _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
                                 self.command_status[str(pid)] = {
                                     'command': str(command),
                                     'sess_id': str(sess_id),
-                                    'status': status
+                                    'status': status,
+                                    'heartbeat': heartbeat
                                 }
                         
                     for pid in self.command_status: 
                         command = self.command_status[str(pid)]['command']
                         if command.startswith('design'):
                             sess_id = self.command_status[str(pid)]['sess_id']
-                            _,status,_ = self.evosys.CM.get_session_log(sess_id)
+                            _,status,heartbeat = self.evosys.CM.get_session_log(sess_id)
                             self.command_status[str(pid)]['status'] = status
+                            self.command_status[str(pid)]['heartbeat'] = heartbeat
                             running_designs = {}
                             if status in DESIGN_ACTIVE_STATES:
                                 running_designs[str(pid)] = {
@@ -201,8 +206,9 @@ class Listener:
                             local_doc['running_designs'] = running_designs
                         else:
                             sess_id = self.command_status[str(pid)]['sess_id']
-                            _,status,_ = self.evosys.CM.get_verification_log(sess_id)
+                            _,status,heartbeat = self.evosys.CM.get_verification_log(sess_id)
                             self.command_status[str(pid)]['status'] = status
+                            self.command_status[str(pid)]['heartbeat'] = heartbeat
                             running_verifies = {}
                             if status in VERIFY_ACTIVE_STATES:
                                 running_verifies[str(pid)] = {
@@ -212,11 +218,10 @@ class Listener:
                                 }
                             local_doc['running_verifies'] = running_verifies
 
-                    self.doc_ref.update(
-                        {
-                            'last_heartbeat': firestore.SERVER_TIMESTAMP,
-                            'command_status': self.command_status
-                        })
+                    self.doc_ref.set({
+                        'last_heartbeat': firestore.SERVER_TIMESTAMP,
+                        'command_status': self.command_status
+                    },merge=True)
                     local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
                     U.save_json(local_doc,self.local_dir)
 
@@ -488,7 +493,7 @@ if __name__ == "__main__":
             f'Max design threads: {_max_design_threads}.\n'
             f'Accept verify job: {_accept_verify_job}.\n'
             f'Please view it in the GUI Listen tab.\n'
-            '❕ If you just stopped a listener, please wait for 20 seconds for it to cool down and cleanup.'
+            f'❕ If you just stopped a listener, please wait for {NODE_ZOMBIE_THRESHOLD} seconds for it to cool down and cleanup.'
         )
     else:
         setting=AU.get_setting()

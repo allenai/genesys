@@ -385,6 +385,10 @@ def exec_train(args,training_args, trainer,log_fn):
             "Training token multiplier is set to 0, skipping training."
         )
     log_fn('Training done.')
+
+    if args.mode=='_explore_setup':
+        return
+    
     trainer.save_model(training_args.output_dir+'/pretrained')
     util_logger.info(
         f"Model saved at {training_args.output_dir}/pretrained"

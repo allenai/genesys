@@ -1843,6 +1843,7 @@ class ConnectionManager:
                     }},merge=True)
                 else:
                     index_item['status'] = status
+                    index_item['heartbeat'] = heartbeat
                     active_design_sessions[sess_id] = index_item
         return active_design_sessions
     
@@ -1866,6 +1867,7 @@ class ConnectionManager:
                     }},merge=True)
                 else:
                     index_item['status'] = status
+                    index_item['heartbeat'] = heartbeat
                     running_verifications[sess_id] = index_item
         return running_verifications
     

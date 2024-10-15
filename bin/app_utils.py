@@ -15,6 +15,8 @@ from datetime import datetime, timedelta
 
 CLI_TITLE = 'GENESYS'
 
+NODE_ZOMBIE_THRESHOLD = 30 # seconds
+
 
 def print_cli_title():
     tprint(CLI_TITLE, font='modular')
@@ -98,7 +100,7 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
                 st.write(value)
 
 
-def _listener_running(ckpt_dir,zombie_threshold=20):
+def _listener_running(ckpt_dir,zombie_threshold=NODE_ZOMBIE_THRESHOLD):
     local_dir = U.pjoin(ckpt_dir,'.node.json')
     local_doc = U.load_json(local_dir)
     if local_doc:

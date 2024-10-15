@@ -185,11 +185,11 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
         while True:
             _,status,heartbeat = evosys.CM.get_verification_log(sess_id)
             if status is None:
-                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} not found, wait for it to be created...')
+                do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} not found, wait for it to be created...')
                 time.sleep(60)
                 continue
             if status in VERIFY_TERMINAL_STATES:
-                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} terminated with status {status}')
+                do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} terminated with status {status}')
                 break
             elif time.time()-float(heartbeat)>VERIFY_ZOMBIE_THRESHOLD:
                     log = f'Daemon: Node {node_id} detected zombie process {pid} for {sess_id}'
@@ -200,16 +200,16 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
                     }},merge=True)
                     break
             else:
-                do_log(exp_log_ref,f'Daemon: Node {node_id} design session {sess_id} is running with status {status}')
+                do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is running with status {status}')
             time.sleep(60)  # Check every minute for active processes
 
         # Check if the process completed successfully
         try: 
             process=psutil.Process(pid)
             process.kill()
-            do_log(exp_log_ref,f'Daemon: Node {node_id} forcefully killed design process {pid} for {sess_id}')
+            do_log(exp_log_ref,f'Daemon: Node {node_id} forcefully killed verification process {pid} for {sess_id}')
         except Exception as e:
-            do_log(exp_log_ref,f'Daemon: Node {node_id} failed to forcefully kill design process {pid} for {sess_id}')
+            do_log(exp_log_ref,f'Daemon: Node {node_id} failed to forcefully kill verification process {pid} for {sess_id}')
             print(f'Error killing process {pid}: {e}')
 
     except Exception as e:
