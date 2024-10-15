@@ -153,6 +153,8 @@ class Listener:
                             evoname = command.split(',')[1]
                             self.evosys.CM.switch_ckpt(evoname)
                             sess_id,pid = self.execute_command(command)
+                            if sess_id is None:
+                                continue
                             time.sleep(self.execution_delay)
                             to_sleep -= self.execution_delay
                             self.command_queue.put((command,sess_id,pid))
@@ -185,9 +187,16 @@ class Listener:
         comps=command.split(',')
         if comps[0] == 'design':
             running_sessions = self.get_running_design_sessions()
+            if len(running_sessions) > self.max_design_threads:
+                print(f"There are already {len(running_sessions)} design jobs running. Please wait for them to finish.")
+                return None,None
             sess_id,pid = design_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli, 
                                          cpu_only=self.cpu_only, silent=self.silent, running_sessions=running_sessions)
         elif comps[0] == 'verify':
+            verify_workloads = self.evosys.CM.check_verify_workload(self.node_id)
+            if len(verify_workloads) > 0:
+                print(f"There is already a verification job running. Please wait for it to finish.")
+                return None,None
             if len(comps) == 2 or (len(comps) == 3 and 'resume' in comps):
                 sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
             else:
