@@ -1281,6 +1281,13 @@ class GUFlowMutation(FlowCreator):
                         if selection in IMPLEMENTED: # update the unit spec for now, unit name update at the end
                             spec=self.tree.units[selection].spec
                         else: # possible when debugging the implementation of a new unit
+                            if isinstance(declaration,str):
+                                declaration = UnitDecl(
+                                    unitname=selection,
+                                    document='N/A',
+                                    inputs=['N/A'],
+                                    outputs=['N/A']
+                                )
                             spec = P.UnitSpec(
                                 unitname=selection,
                                 document='',
@@ -1297,6 +1304,13 @@ class GUFlowMutation(FlowCreator):
                         else:
                             implementation,analysis=out['implementation'],out['analysis']
                         self.stream.write(f'## Implementation of {selection}')
+                        if isinstance(declaration,str):
+                            declaration = UnitDecl(
+                                unitname=selection,
+                                document='N/A',
+                                inputs=['N/A'],
+                                outputs=['N/A']
+                            )
                         spec = P.UnitSpec(
                             unitname=selection,
                             document='',
