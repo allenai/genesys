@@ -210,8 +210,8 @@ def ve_config(evosys):
             with cols[3]:
                 _ve_cfg['optim'] = st.text_input('Optimizer',value=_ve_cfg.get('optim',DEFAULT_OPTIM))
             
-            _ve_cfg['eval_tasks'] = st.text_input('Evaluation Tasks (comma seperated, refer to https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks (not full list))',value=_ve_cfg.get('eval_tasks',','.join(DEFAULT_EVAL_TASKS)))
-            _ve_cfg['training_data'] = st.text_input('Training Data (comma seperated, processed ones or datasets from hugginface hub (see help on the right ❓))',value=_ve_cfg.get('training_data',','.join(DEFAULT_TRAINING_DATA)),
+            _ve_cfg['eval_tasks'] = st.text_input('Evaluation Tasks (comma seperated, refer to https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks for most available tasks)',value=_ve_cfg.get('eval_tasks',','.join(DEFAULT_EVAL_TASKS)))
+            _ve_cfg['training_data'] = st.text_input('Training Data (comma seperated, processed ones or datasets from hugginface hub, see help ❓ on the right)',value=_ve_cfg.get('training_data',','.join(DEFAULT_TRAINING_DATA)),
                 help=(
                     'If are inputting a huggingface dataset, it must have `train` split and `text` column, '
                     'e.g. https://huggingface.co/datasets/allenai/c4, '
