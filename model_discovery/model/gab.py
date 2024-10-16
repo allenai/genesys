@@ -29,7 +29,7 @@ class GPT2(GAUBase):
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.mha = MHA(embed_dim=self.embed_dim, block_loc=self.block_loc,
             kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
-        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
+        self.mlp = GeminiGatedMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
         self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
@@ -47,6 +47,167 @@ class GPT2(GAUBase):
         X4, Z = self.mlp(X3, **Z)
         X = X + X4
         return X, Z
+
+
+import torch.nn.functional as F
+from typing import Optional, Callable, Tuple
+
+
+class GeminiGatedMLP(GAUBase):
+    """
+    GeminiGatedMLP integrates a block-sparse Mixture of Experts (MoE) within the GatedMLP unit.
+    This integration enables dynamic routing of inputs to a subset of experts, enhancing computational
+    efficiency, scalability, and model expressivity.
+
+    **Code Example:**
+
+        gemini_gated_mlp = GeminiGatedMLP(embed_dim=512, block_loc=(0, 0), kwarg_all={},
+                                          num_experts=16, top_k=2)
+        x = torch.randn(32, 128, 512)
+        y, z = gemini_gated_mlp(x)
+        print(y.shape)  # Expected: torch.Size([32, 128, 512])
+
+    And here is a verbatim-text diagram example:
+
+        [ Input X ]
+            |
+        [ FC1 Linear ]
+            |
+        [ Split into y and gate ]
+            |
+        [ Apply activation to gate ]
+            |
+        [ y * activation(gate) ]
+            |
+        [ Gating for MoE (Top-K selection) ]
+            |
+        [ Dispatch to top-K Experts ]
+            |
+        [ Aggregate Expert Outputs ]
+            |
+        [ FC2 Linear ]
+            |
+        [ Output Y ]
+
+    Todo:
+        * Implement block-sparse MoE routing.
+        * Ensure efficient parameter sharing among experts.
+
+    Args:
+        embed_dim (int): The size of each input sample.
+        block_loc (tuple): The location of this GAU within the network.
+        kwarg_all (dict): Dictionary of all keyword arguments.
+        device (torch.device, optional): The device to run the module on.
+        dtype (torch.dtype, optional): The data type for the module.
+        hidden_features (int, optional): The size of the hidden layer. Defaults to None.
+        out_features (int, optional): The size of the output layer. Defaults to None.
+        activation (Callable, optional): Activation function. Defaults to F.silu.
+        bias (bool, optional): Whether to include bias in linear layers. Defaults to False.
+        multiple_of (int, optional): Round hidden_features to be a multiple of this value. Defaults to 128.
+        num_experts (int, optional): Number of experts in the MoE. Defaults to 4.
+        top_k (int, optional): Number of top experts to select per input. Defaults to 2.
+
+    Returns:
+        Tuple[Tensor, dict]: Output tensor Y of shape (B, L, D) and updated Z.
+
+    Raises:
+        AttributeError: If dimensionalities do not align.
+
+    Example:
+        >>> gemini_gated_mlp = GeminiGatedMLP(embed_dim=512, block_loc=(0, 0), kwarg_all={},
+        ...                                   num_experts=16, top_k=2)
+        >>> x = torch.randn(32, 128, 512)
+        >>> y, z = gemini_gated_mlp(x)
+        >>> print(y.shape)
+        torch.Size([32, 128, 512])
+
+    Note:
+        For more info on reStructuredText docstrings, see
+        `here <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__
+        and
+        `here <https://peps.python.org/pep-0287/>`__.
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, hidden_features: Optional[int]=None,
+        out_features: Optional[int]=None, activation: Optional[Callable]=
+        None, bias: bool=False, multiple_of: int=128, num_experts: int=4,
+        top_k: int=2, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        """
+        Initializes the GeminiGatedMLP module with block-sparse MoE.
+
+        Arguments:
+            embed_dim (int): The size of each input sample.
+            block_loc (tuple): The location of this GAU within the network.
+            kwarg_all (dict): Dictionary of all keyword arguments.
+            device (torch.device, optional): The device to run the module on.
+            dtype (torch.dtype, optional): The data type for the module.
+            hidden_features (int, optional): The size of the hidden layer.
+            out_features (int, optional): The size of the output layer.
+            activation (Callable, optional): Activation function.
+            bias (bool, optional): Whether to include bias in linear layers.
+            multiple_of (int, optional): Round hidden_features to be a multiple of this value.
+            num_experts (int, optional): Number of experts in the MoE.
+            top_k (int, optional): Number of top experts to select per input.
+        """
+        out_features = out_features if out_features is not None else embed_dim
+        hidden_features = (hidden_features if hidden_features is not None else
+            int(8 * embed_dim / 3))
+        hidden_features = (hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.num_experts = num_experts
+        self.top_k = top_k
+        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
+            self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.moe_gate = nn.Linear(hidden_features, self.num_experts, bias=
+            True, **self.factory_kwargs)
+        self.experts = nn.ModuleList([nn.Linear(hidden_features,
+            hidden_features, bias=bias, **self.factory_kwargs) for _ in
+            range(self.num_experts)])
+        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
+            self.factory_kwargs)
+
+    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, dict]:
+        """
+        Forward pass for GeminiGatedMLP with block-sparse MoE.
+
+        Args:
+            X (Tensor): Input tensor of shape (B, L, D)
+            Z (dict): Dictionary of intermediate variables.
+
+        Returns:
+            Tuple[Tensor, dict]: Output tensor Y of shape (B, L, D) and updated Z.
+        """
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        gate_scores = self.moe_gate(y)
+        gate_scores = F.softmax(gate_scores, dim=-1)
+        topk_gates, topk_indices = torch.topk(gate_scores, self.top_k, dim=-1)
+        B, L, H = y.shape
+        K = self.top_k
+        E = self.num_experts
+        T = B * L
+        y_flat = y.view(T, H)
+        topk_indices_flat = topk_indices.view(T, K)
+        topk_gates_flat = topk_gates.view(T, K)
+        out = torch.zeros(T, H, device=y.device, dtype=y.dtype)
+        for k in range(K):
+            expert_idx = topk_indices_flat[:, k]
+            gate_score = topk_gates_flat[:, k].unsqueeze(-1)
+            for e in range(E):
+                mask = expert_idx == e
+                if torch.any(mask):
+                    selected_input = y_flat[mask]
+                    selected_output = self.experts[e](selected_input)
+                    out[mask] += gate_score[mask] * selected_output
+        out = out.view(B, L, H)
+        y_out = self.fc2(out)
+        y_out = y_out + X
+        return y_out, Z
 
 
 import torch.nn.functional as F
@@ -107,141 +268,6 @@ class RMSNorm(GAUBase):
         variance = X.pow(2).mean(-1, keepdim=True)
         X = X * torch.rsqrt(variance + self.variance_epsilon)
         return self.weight * X.to(input_dtype)
-
-
-import torch.nn.functional as F
-
-
-class GatedMLP(GAUBase):
-    """
-    Gated Multi-Layer Perceptron (GatedMLP)
-
-    This GAU introduces a gating mechanism within an MLP to control the flow of information,
-    enhancing the model's ability to focus on relevant features and suppress irrelevant ones.
-
-    **Mathematical Formulation:**
-
-    Given an input tensor \\( X \\in \\mathbb{R}^{B 	imes L 	imes D} \\):
-
-    \\[
-    Y = 	ext{GatedMLP}(X) = 	ext{FC}_2(	ext{Activation}(	ext{FC}_1(X)) \\odot 	ext{Gate}(X))
-    \\]
-
-    Where:
-    - \\( 	ext{FC}_1 \\) is a linear transformation expanding the dimensionality.
-    - \\( 	ext{Activation} \\) applies a non-linear function (e.g., SiLU).
-    - \\( 	ext{Gate} \\) is a linear transformation followed by a sigmoid to gate the activations.
-    - \\( \\odot \\) denotes element-wise multiplication.
-    - \\( 	ext{FC}_2 \\) projects back to the original embedding dimension.
-
-    **Attributes:**
-        - `fc1`: Linear layer projecting input to twice the hidden features for gating.
-        - `activation`: Activation function applied to the gated output.
-        - `fc2`: Linear layer projecting back to the output features.
-
-    **Args:**
-        embed_dim (int): Embedding dimension of the input and output.
-        block_loc (tuple): Location of the block within the network, e.g., (layer_idx, n_block).
-        kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
-        device (torch.device, optional): Device to allocate layers.
-        dtype (torch.dtype, optional): Data type of the layers.
-        hidden_features (int, optional): Number of hidden units in the first linear layer. Defaults to `int(8 * embed_dim / 3)`.
-        out_features (int, optional): Number of output units in the second linear layer. Defaults to `embed_dim`.
-        activation (callable, optional): Activation function to use (e.g., `F.silu`).
-        bias (bool, optional): Whether to include bias terms in linear layers. Defaults to `False`.
-        multiple_of (int, optional): Ensures hidden features are a multiple of this value. Defaults to `128`.
-        **kwargs: Additional keyword arguments.
-
-    **Shape:**
-        - Input: (B, L, D)
-        - Output: (B, L, D)
-
-    **Example:**
-        gated_mlp = GatedMLP(
-            embed_dim=64,
-            block_loc=(0, 0),
-            kwarg_all={},
-            hidden_features=128,
-            out_features=64,
-            activation=F.silu,
-            bias=True,
-            multiple_of=128,
-            device='cuda',
-            dtype=torch.float32
-        )
-        X = torch.randn(2, 10, 64)
-        Y, Z = gated_mlp(X)
-
-    **References:**
-        - Liu, H., Dai, Z., So, D. R., & Le, Q. V. (2021). Pay Attention to MLPs. Neural Information Processing Systems, 34, 9204-9215.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features: int=None, out_features:
-        int=None, activation: callable=None, bias: bool=False, multiple_of:
-        int=128, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        """
-        Initializes the GatedMLP GAU.
-
-        Args:
-            embed_dim (int): Embedding dimension of the input and output.
-            block_loc (tuple): Location of the block within the network, e.g., (layer_idx, n_block).
-            kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
-            device (torch.device, optional): Device to allocate layers.
-            dtype (torch.dtype, optional): Data type of the layers.
-            hidden_features (int, optional): Number of hidden units in the first linear layer.
-                Defaults to `int(8 * embed_dim / 3)`.
-            out_features (int, optional): Number of output units in the second linear layer.
-                Defaults to `embed_dim`.
-            activation (callable, optional): Activation function to use. Defaults to `F.silu`.
-            bias (bool, optional): Whether to include bias terms in linear layers. Defaults to `False`.
-            multiple_of (int, optional): Ensures hidden features are a multiple of this value. Defaults to `128`.
-            **kwargs: Additional keyword arguments.
-        """
-        self.out_features = (out_features if out_features is not None else
-            embed_dim)
-        self.hidden_features = (hidden_features if hidden_features is not
-            None else int(8 * embed_dim / 3))
-        self.hidden_features = (self.hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * self.hidden_features, bias=bias,
-            **self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(self.hidden_features, self.out_features, bias=
-            bias, **self.factory_kwargs)
-        self.reset_parameters()
-
-    def reset_parameters(self):
-        """
-        Initializes the linear layers with Xavier uniform initialization.
-        """
-        nn.init.xavier_uniform_(self.fc1.weight)
-        if self.fc1.bias is not None:
-            nn.init.zeros_(self.fc1.bias)
-        nn.init.xavier_uniform_(self.fc2.weight)
-        if self.fc2.bias is not None:
-            nn.init.zeros_(self.fc2.bias)
-
-    def _forward(self, X, **Z):
-        """
-        Forward pass of the GatedMLP.
-
-        Args:
-            X (Tensor): Input tensor of shape (B, L, D).
-            **Z: Intermediate variables.
-
-        Returns:
-            Tuple[Tensor, dict]: Output tensor and updated intermediate variables.
-        """
-        assert X.dim() == 3 and X.size(-1
-            ) == self.embed_dim, f'Expected input shape (*, embed_dim), got {X.shape}'
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y, {}
 
 
 import torch.nn.functional as F
@@ -426,16 +452,19 @@ class RotaryPositionalEmbeddings(GAUBase):
         return X, {'output_emb': output_emb}
 
 
-gab_config = {'n_heads': 8, 'causal': True, 'num_heads_kv': None,
-    'head_dim': None, 'mlp_dim': 0, 'qkv_proj_bias': True, 'out_proj_bias':
-    True, 'softmax_scale': None, 'rotary_emb_base': 10000, 'd_conv': 0,
-    'max_seq_len': 4096, 'eps': 1e-05, 'hidden_features': None,
-    'out_features': None, 'activation': None, 'bias': False, 'multiple_of': 128
-    }
+gab_config = {'hidden_dim': 2048, 'num_experts': 4, 'dropout': 0.1, 'top_k':
+    2, 'softmax_scale': None, 'out_proj_bias': True, 'n_heads': 8,
+    'num_heads_kv': None, 'd_conv': 0, 'mlp_dim': 0, 'head_dim': None,
+    'causal': True, 'qkv_proj_bias': True, 'rotary_emb_base': 10000,
+    'max_seq_len': 4096, 'out_features': None, 'bias': False, 'multiple_of':
+    128, 'hidden_features': None, 'activation': None, 'eps': 1e-05}
 
 
 
-autoconfig={}
+autoconfig = {
+    'd_model': 128,
+    'n_block': 2
+}
 block_config=gab_config
 block_config.update(autoconfig)
 

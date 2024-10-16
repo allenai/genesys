@@ -68,6 +68,12 @@ def _view_designs(evosys):
 
     if design_artifacts:
         design=design_artifacts[selected_design]
+        with st.expander(f'Meta Data for {selected_design}',expanded=False):
+            metadata = {
+                'Design Session ID': design.sess_id,
+                'Seed IDs': design.seed_ids,
+            }
+            st.json(metadata)
         st.subheader(f'Proposal for {selected_design}')
         with st.expander('View Proposal'):
             st.markdown(design.proposal.proposal)

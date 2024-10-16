@@ -59,5 +59,8 @@ def setup(ctx):
     cmd = ['bash', 'scripts/setup_env.sh']
     subprocess.run(cmd)
 
+
+# TODO: set default
+
 if __name__ == '__main__':
     cli()

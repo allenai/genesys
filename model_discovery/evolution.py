@@ -1879,6 +1879,8 @@ class ConnectionManager:
         workloads = {}
         for sess_id in sess_data:
             index_item = sess_data[sess_id]
+            if 'node_id' not in index_item:
+                continue
             node_id = index_item['node_id']
             index_item['sess_id'] = sess_id
             if node_id not in workloads:

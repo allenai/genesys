@@ -237,8 +237,9 @@ def network_status(evosys):
                 accept_verify_job = node_data['accept_verify_job']
                 design_load = design_workloads.get(node_id,[])
                 verify_load = verify_workloads.get(node_id,[])
+                node_max_design_threads = node_data['max_design_threads']
                 _nodes[node_id] = {
-                    'Design Workload': f'{len(design_load)}/{node_data["max_design_threads"]}',
+                    'Design Workload': f'{len(design_load)}/{node_max_design_threads}' if node_max_design_threads>0 else 'N/A',
                     'Verify Workload': f'{len(verify_load)}/1' if accept_verify_job else 'N/A',
                     'Accept Verify Job': accept_verify_job,
                     'Use GPU Checker': not node_data['cpu_only_checker'],
