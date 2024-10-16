@@ -279,6 +279,7 @@ def network_status(evosys):
             # for sess_id in running_verifications:
             running_verifications_df = pd.DataFrame(running_verifications).T
             del running_verifications_df['latest_log']
+            del running_verifications_df['timestamp']
             if 'W&B Training Run' not in running_verifications_df.columns:
                 wandb_urls = []
                 for sess_id in running_verifications_df.index:
@@ -297,7 +298,7 @@ def network_status(evosys):
                 running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
             if 'heartbeat' in running_verifications_df.columns:
                 running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
-            running_verifications_df.rename(columns={'status':'Status','pid':'PID','heartbeat':'Last Heartbeat','timestamp':'Timestamp','node_id':'Node ID'},inplace=True)
+            running_verifications_df.rename(columns={'status':'Status','pid':'PID','heartbeat':'Last Heartbeat','node_id':'Node ID'},inplace=True)
             st.dataframe(running_verifications_df,use_container_width=True)
         else:
             st.info('No running verifications')
