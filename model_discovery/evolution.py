@@ -2204,6 +2204,7 @@ class EvolutionSystem(exec_utils.System):
             doc=doc.to_dict()
             config=doc.get('config',{})
             evo_dir=U.pjoin(self.ckpt_dir,evoname)
+            U.mkdir(evo_dir)
             U.save_json(config,U.pjoin(evo_dir,'config.json'))
 
     def load_config(self):
