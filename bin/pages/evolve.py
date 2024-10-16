@@ -42,7 +42,7 @@ def _is_running(evosys):
     return None, None
 
 class CommandCenter:
-    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream):
+    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream,allow_resume=True):
         self.evosys=evosys
         self.evoname=evosys.evoname
         self.max_designs_per_node=max_designs_per_node
@@ -52,6 +52,7 @@ class CommandCenter:
         self.running = False
         self.poll_freq=CC_POLL_FREQ
         self.zombie_threshold = CC_ZOMBIE_THRESHOLD  # seconds
+        self.allow_resume = allow_resume
 
     def read_logs(self):
         return self.evosys.CM.get_log_ref().get().to_dict()
@@ -127,7 +128,7 @@ class CommandCenter:
                 # assigned_verify_workloads = False
                 for node_id in verify_workloads:
                     if verify_workloads[node_id] == 0 and self.evosys.CM.accept_verify_job[node_id]:
-                        if self.evosys.CM.verify_command(node_id):
+                        if self.evosys.CM.verify_command(node_id,resume=self.allow_resume):
                             # assigned_verify_workloads = True
                             print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
                             time.sleep(CC_COMMAND_DELAY)
@@ -169,10 +170,10 @@ def x_evolve(command_center):
     return process.pid
 
 
-def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True):
+def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,allow_resume=True):
     if len(evosys.CM.get_active_connections())==0 and active_mode:
         st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
-    command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st) # launch a passive command center first
+    command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st,allow_resume=allow_resume) # launch a passive command center first
     if active_mode:
         st.session_state.evo_process_pid = x_evolve(command_center)
         time.sleep(5)
@@ -278,23 +279,25 @@ def network_status(evosys):
             # for sess_id in running_verifications:
             running_verifications_df = pd.DataFrame(running_verifications).T
             del running_verifications_df['latest_log']
-            wandb_urls = []
-            for sess_id in running_verifications_df.index:
-                ve_dir = U.pjoin(evosys.evo_dir, 've', sess_id)
-                if os.path.exists(ve_dir):
-                    wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
-                    wandb_id=wandb_ids['pretrain']['id']
-                    project=wandb_ids['project']
-                    entity=wandb_ids['entity']
-                    url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                    wandb_urls.append(url)
-                else:
-                    wandb_urls.append(None)
-            running_verifications_df['W&B Training Run'] = wandb_urls
+            if 'W&B Training Run' not in running_verifications_df.columns:
+                wandb_urls = []
+                for sess_id in running_verifications_df.index:
+                    ve_dir = U.pjoin(evosys.evo_dir, 've', sess_id)
+                    if os.path.exists(ve_dir):
+                        wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
+                        wandb_id=wandb_ids['pretrain']['id']
+                        project=wandb_ids['project']
+                        entity=wandb_ids['entity']
+                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                        wandb_urls.append(url)
+                    else:
+                        wandb_urls.append(None)
+                running_verifications_df['W&B Training Run'] = wandb_urls
             if 'pid' in running_verifications_df.columns:
                 running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
             if 'heartbeat' in running_verifications_df.columns:
                 running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            running_verifications_df.rename(columns={'status':'Status','pid':'PID','heartbeat':'Last Heartbeat','timestamp':'Timestamp','node_id':'Node ID'},inplace=True)
             st.dataframe(running_verifications_df,use_container_width=True)
         else:
             st.info('No running verifications')
@@ -368,13 +371,13 @@ def evolve(evosys,project_dir):
 
     
     st.header("Launch Pad")
-    col1, col2, col3, col4,col5 = st.columns([1,1,1,1,1],gap='small')
+    col1, col2, col3, col4,col5,col6 = st.columns([1,1,1,1,1,0.9],gap='small')
     with col1:
-        input_max_designs_per_node=st.number_input("Max Design Threads (Per Node)",min_value=0,value=4,disabled=st.session_state.evo_running,
+        input_max_designs_per_node=st.number_input("Max Designs (Per Node)",min_value=0,value=4,disabled=st.session_state.evo_running,
             help='Global control of the maximum number of design threads to run on each node in addition to the local settings on each node. 0 is unlimited.'
         )
     with col2:
-        input_max_designs_total=st.number_input("Max Design Threads (Total)",min_value=0,value=10,disabled=st.session_state.evo_running,
+        input_max_designs_total=st.number_input("Max Designs (Total)",min_value=0,value=10,disabled=st.session_state.evo_running,
             help='The maximum number of total design threads run across all nodes at the same time. 0 is unlimited (which means only bound by the per-node settings).'
         )
     with col3:
@@ -386,6 +389,12 @@ def evolve(evosys,project_dir):
         node_schedule=st.selectbox("Network Scheduling",['load balancing'],disabled=True, #st.session_state.evo_running,
             help='Overall network task scheduling strategy. Currently, only load balancing is supported, which always assigns the jobs to the highest available nodes.'
         )
+    with col6:
+        st.write('')
+        st.write('')
+        input_allow_resume=st.checkbox("Allow Resume",value=True,disabled=st.session_state.evo_running,
+            help='Whether allow resume training, hugging face trainer sometimes cannot resume well.'
+        )
     with col5:
         st.write('')
         st.write('')
@@ -394,19 +403,20 @@ def evolve(evosys,project_dir):
             run_evo_btn = st.button(
                 f":rainbow[***Launch Evolution***] :rainbow[🚀]",
                 disabled=not evosys.remote_db or passive_mode,
-                # use_container_width=True
+                use_container_width=True
             ) 
         else:
             stop_evo_btn = st.button(
                 f"***Stop Evolution*** 🛑",
                 disabled=not evosys.remote_db,
-                # use_container_width=True
+                use_container_width=True
             )
+        
     
     if not st.session_state.evo_running:
         if run_evo_btn:       
             with st.spinner('Launching...'):  
-                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total)
+                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total,input_allow_resume)
     else:
         if stop_evo_btn:
             if st.session_state.command_center:
@@ -501,6 +511,7 @@ if __name__ == '__main__':
     parser.add_argument('-dn','--max_designs_per_node', type=int, default=3) # the max number of threads to use
     parser.add_argument('-dt','--max_designs_total', type=int, default=10) # the group id of the evolution
     parser.add_argument('-g','--group_id', default='default', type=str) # the group id of the evolution
+    parser.add_argument('-nr','--no_resume', action='store_true')
     args = parser.parse_args()
         
     print(f'Launching evolution for namespace {args.evoname} with group id {args.group_id}')
@@ -509,7 +520,7 @@ if __name__ == '__main__':
         do_cache=False,
         # cache_type='diskcache',
     )
-    command_center = CommandCenter(evosys,args.max_designs_per_node,args.max_designs_total,st)
+    command_center = CommandCenter(evosys,args.max_designs_per_node,args.max_designs_total,st,allow_resume=not args.no_resume)
     command_center.build_connection()
     command_center.run_evolution()
 

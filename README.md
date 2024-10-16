@@ -25,7 +25,7 @@ genesys setup
 ```
 Hint: use ```bash scripts/setup.sh -d``` to prepare datasets only
 
-Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, the requirements.txt is self-conflict a little bit. 
+Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
 
 3. Export the environment variables and API keys
 
@@ -55,24 +55,13 @@ export MATHPIX_API_ID=YOURKEY # optional
 genesys gui
 ```
 
-### python dependencies 
-Currently, the agent portion relies on a private agent repo [**here**](https://github.com/allenai/exec_utils) (*soon to be made public and renamed*). This can be installed as below (requires github token):
-```shell
-pip install git+https://{TOKEN}@github.com/allenai/exec_utils
-pip install -r requirements.txt # use `requirements_linux.txt` for linux
-pip install -e .
-```
 
-This will install all agent associated requirements. You will also need to incorporate one or more of the following API
-keys to access the underlying models: 
-```shell
+# Hints
 
-export MY_OPENAI_KEY=XXXXXXXXXXXXX
-export TOGETHER_API_KEY=XXXXXXXXXXXXX
-export HF_KEY=XXXXXXXXXXXXX
-export GITHUB_TOKEN=XXXXXXXXXXXXX
-```
+1. Better separate the design nodes and verification nodes, design checkers need to use GPUs, so may cause conflicts. It is recommended to deploy few design nodes and many verification nodes as design nodes are mostly bounded by CPU and API rate limits. 
 
+
+<!-- 
 ### Build search library
 
 Download `library_files.zip`[] , unzip it and put it under `model/library`. It should be like this: 
@@ -87,14 +76,7 @@ model/
             pdfs2/
             pdfsp/
 ```
-
-
-### training data variables 
-Other library specific environment variables 
-```
-export DATA_DIR=/path/to/data/dir
-```
-to specify where to dump data when running training. 
+ -->
 
 ### eval 
 
@@ -136,31 +118,7 @@ system("discovery me a new model")
 ```
 The implementation is in `model_discovery/system.py`, which loads a `designer` and `reviewer` agent (by default) from the agent specification files in `etc/agent_spec` (this can be modified as needed and additional agents can be added). 
 
-# Agent front-end 
 
-You can run: 
-```bash
-
-sh run_demo.sh
-```
-
-
-
-
-
-#### Note 
-
-
-1. The reviewer sometimes stuck there, giving the same reviews
-2. Fix Format Checker
-3. Seeds are important, make some manual seeds
-4. Introduce AIS prompts maybe if it helps
-5. *Interactive debugging*
-   1. Capture the prints during the execution of GAB code
-   2. Also maybe prompt the code gen process
-6. Experiment of kwargs passing:
-   1. e.g _forward define actual kwargs, but forward pass **Z
-   2. Will Z still preserve all args?
 
 
 # Model Discovery Algorithm

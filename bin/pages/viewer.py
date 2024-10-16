@@ -484,7 +484,7 @@ def export_leaderboards(evosys,design_vectors, baseline_vectors):
         leaderboards_unnormed_h[scale] = pd.DataFrame(list(random_unnormed_metrics['higher_is_better'].items()), columns=['metrics', 'random']).set_index('metrics')
         leaderboards_unnormed_l[scale] = pd.DataFrame(list(random_unnormed_metrics['lower_is_better'].items()), columns=['metrics', 'random']).set_index('metrics')
         _design_eval_metrics = design_eval_metrics[scale]
-        _baseline_eval_metrics = baseline_eval_metrics[scale]
+        _baseline_eval_metrics = baseline_eval_metrics.get(scale,{})
         for mode in ['baseline','design']:
             _eval_metrics = _design_eval_metrics if mode == 'design' else _baseline_eval_metrics
             for acronym in _eval_metrics:
