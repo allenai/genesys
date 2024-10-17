@@ -1179,7 +1179,6 @@ class PhylogeneticTree:
             if not metadata:
                 to_delete.append(sess_id) # delete empty sessions
                 continue
-            metadata['mode']=DesignModes(metadata['mode'])
             self.design_sessions[sess_id] = metadata
         for sess_id in to_delete:
             shutil.rmtree(self.session_dir(sess_id))
@@ -1246,10 +1245,15 @@ class PhylogeneticTree:
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
 
-    def new_design(self, seed_ids, ref_ids, instruct, num_samples, mode=None, sess_id=None): # new design session, a session explore the steps from a selected node
-        if mode is None:
+    def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None): # new design session, a session explore the steps from a selected node
+        if len(seed_ids)==0:
+            mode=DesignModes.SCRATCH
+        elif len(seed_ids)==1:
             mode=DesignModes.MUTATION
-        hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode}".encode()).hexdigest()
+        else:
+            mode=DesignModes.CROSSOVER
+            
+        hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode.value}".encode()).hexdigest()
         if sess_id is None:
             sess_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
         sessdata = {
@@ -1322,7 +1326,8 @@ class PhylogeneticTree:
         sessdata=self.design_sessions[sess_id]
         seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids']]
         refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids']]
-        return seeds,refs,sessdata['instruct']
+        mode=sessdata['mode']
+        return seeds,refs,sessdata['instruct'],mode
     
     def session_dir(self, sess_id: str):
         sess_dir=U.pjoin(self.db_dir, 'sessions', sess_id)
@@ -2300,12 +2305,7 @@ class EvolutionSystem(exec_utils.System):
     ): 
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
-        if n_seeds==0:
-            mode=DesignModes.SCRATCH
-        elif n_seeds==1:
-            mode=DesignModes.MUTATION
-        else:
-            mode=DesignModes.CROSSOVER
+        
         if select_cfg is None:
             select_cfg = self.select_cfg
         if design_cfg is None:
@@ -2322,17 +2322,17 @@ class EvolutionSystem(exec_utils.System):
         manual_seed = self._process_manual_input(manual_seed)
         manual_refs = self._process_manual_input(manual_refs)
 
-        def _new_sample(selector_args,mode,sess_id=None,_silent=False,_cpu_only=False):
-            instruct,seed,refs=self.selector.select_design(selector_args,n_seeds=n_seeds) # use the seed_ids to record the phylogenetic tree
-            seed = manual_seed if manual_seed is not None else seed
+        def _new_sample(selector_args,sess_id=None,_silent=False,_cpu_only=False):
+            instruct,seeds,refs=self.selector.select_design(selector_args,n_seeds=n_seeds) # use the seed_ids to record the phylogenetic tree
+            seeds = manual_seed if manual_seed is not None else seeds
             refs = manual_refs if manual_refs is not None else refs
-            self.sample(instruct,seed,refs,sess_id=sess_id,mode=mode,user_input=user_input,
+            self.sample(instruct,seeds,refs,sess_id=sess_id,user_input=user_input,
                 design_cfg=design_cfg,search_cfg=search_cfg,silent=_silent,cpu_only=_cpu_only)
 
         if sess_id is None:
             if len(unfinished_designs)==0 or not resume:
                 print('No unfinished designs, will start a new design session')
-                _new_sample(selector_args,mode=mode,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
+                _new_sample(selector_args,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
             else:
                 sess_id = random.choice(unfinished_designs)
                 print(f'Found {len(unfinished_designs)} unfinished designs, will restore a random one: {sess_id}')
@@ -2340,21 +2340,21 @@ class EvolutionSystem(exec_utils.System):
                 mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
                 if self.stream:
                     self.stream.write(f"Restoring a session {sess_id}, mode: {mode}. {len(passed)} proposals passed, {len(implemented)} implemented, {len(unfinished)} are unfinished where {len(challenging)} are challenging.")
-                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only) # should not change the design_cfg
+                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only) # should not change the design_cfg
         else:
             if sess_id in self.ptree.design_sessions:
                 print(f'Design id provided and exists, will restore session {sess_id}')
                 mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
                 if self.stream:
                     self.stream.write(f"Design id provided, will restore session {sess_id}, mode: {mode}")
-                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,mode=mode,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only)
+                self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only)
             else: # create a new design session using an external id
                 print(f'Create a new design session using an external id: {sess_id}')
-                _new_sample(selector_args,mode=mode,sess_id=sess_id,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
+                _new_sample(selector_args,sess_id=sess_id,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
         if in_process: # exit the process after sampling
             sys.exit(0)
 
-    def sample(self,instruct=None,seed:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,mode=None,
+    def sample(self,instruct=None,seeds:List[NodeObject]=None,refs:List[NodeObject]=None,sess_id=None,
         user_input='',design_cfg={},search_cfg={},silent=False,cpu_only=False
     ):
         """ 
@@ -2367,21 +2367,18 @@ class EvolutionSystem(exec_utils.System):
         Selector choose which seeds to use, and budget for verification
         Given the seeds which direct the global direction, the agent system should be fully responsible for the best local move
         """
-        if mode is None:
-            mode=DesignModes.MUTATION
 
         log_collection = self.CM.log_doc_ref.collection('design_sessions') if self.CM else None
 
         self.rnd_agent(
             user_input,
             instruct=instruct,
-            seed=seed,
+            seeds=seeds,
             refs=refs,
             sess_id=sess_id,
             stream=self.stream,
             design_cfg=design_cfg,
             search_cfg=search_cfg,
-            mode=mode,
             silent=silent,
             cpu_only=cpu_only,
             log_collection=log_collection

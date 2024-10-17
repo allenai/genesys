@@ -214,13 +214,12 @@ class GUFlow(FlowCreator):
         self.num_samples=design_cfg['num_samples']
         self.design_cfg=design_cfg
         self.user_input=user_input
-        self.design_mode=design_mode
 
         # assert any(self.termination.values())>0, 'At least one of the termination conditions should be set'
 
         self.sess_id = sess_id
         self.ptree=system.ptree
-        seeds,refs,instruct=self.ptree.get_session_input(sess_id)
+        seeds,refs,instruct,self.design_mode=self.ptree.get_session_input(sess_id)
         self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode)
         if self.design_mode==DesignModes.MUTATION:
             self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
@@ -1883,10 +1882,10 @@ class GUFlow(FlowCreator):
 
         return query,state,{}
 
-def gu_design(system,stream,sess_id,design_cfg,user_input='',proposal=None,cpu_only=False,log_fn=None,mode=DesignModes.MUTATION):
+def gu_design(system,stream,sess_id,design_cfg,user_input='',proposal=None,cpu_only=False,log_fn=None):
     main_tid = system.dialog.fork(0,note='Starting a new session...',alias='main')
     status_handler = stream.status
-    gu_flow = GUFlow(system, status_handler,stream,sess_id,design_cfg,user_input,cpu_only=cpu_only,log_fn=log_fn,mode=mode)
+    gu_flow = GUFlow(system, status_handler,stream,sess_id,design_cfg,user_input,cpu_only=cpu_only,log_fn=log_fn)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
     gum_tid = system.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_flow')
     system.dialog.call(gum_tid,'',main_tid=main_tid,proposal=proposal) 

@@ -520,13 +520,12 @@ class ModelDiscoverySystem(exec_utils.System):
         self,
         query='', # user query
         instruct=None,
-        seed=None,
+        seeds=None,
         refs=None,
         sess_id=None,
         stream: Optional[ModuleType] = None,
         design_cfg = {},
         search_cfg = {},
-        mode=DesignModes.MUTATION,
         proposal=None, # implementation only mode, directly implement a proposal, experimental
         silent=False,
         cpu_only=False,
@@ -582,24 +581,23 @@ class ModelDiscoverySystem(exec_utils.System):
 
         # 1. create or retrieve a new session
         if sess_id is None: # if provided, then its resuming a session
-            assert seed, "Must provide seed to create a new design"
-            seed_ids = [seed.acronym for seed in seed]
+            assert seeds is not None, "Must provide seed to create a new design, empty for scratch mode"
+            seed_ids = [seed.acronym for seed in seeds]
             ref_ids = [ref.acronym for ref in refs] if refs else []
-            sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], mode)
+            sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'])
             stream.write(f"Starting new design session: {sess_id}")
         else: # resuming a session or creating a new session with a given id
             if sess_id not in self.ptree.design_sessions:
-                seed_ids = [seed.acronym for seed in seed]
+                seed_ids = [seed.acronym for seed in seeds]
                 ref_ids = [ref.acronym for ref in refs] if refs else []
-                self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], mode, sess_id)
+                self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], sess_id)
                 stream.write(f"Starting new design session: {sess_id}")
             else:
                 stream.write(f"Restoring design session: {sess_id}")
-                mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
         
         design_stream,log_fn=self.new_session(sess_id,stream,log_collection)
         
-        self.design_fn(self,design_stream,sess_id,design_cfg,user_input,proposal,cpu_only=cpu_only,log_fn=log_fn,mode=mode)
+        self.design_fn(self,design_stream,sess_id,design_cfg,user_input,proposal,cpu_only=cpu_only,log_fn=log_fn)
 
 
     @classmethod
