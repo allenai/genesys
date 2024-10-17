@@ -28,10 +28,13 @@ MERGE_METHODS = ['borda','average']
 
 SCHEDULER_OPTIONS = ['constant']
 
+SELECT_METHODS = ['quadrant']
+VERIFY_STRATEGIES = ['quadrant']
 
 
-DEFAULT_SELECT_METHOD = 'random'
-DEFAULT_VERIFY_STRATEGY = 'random'
+
+DEFAULT_SELECT_METHOD = 'quadrant'
+DEFAULT_VERIFY_STRATEGY = 'quadrant'
 
 
 # https://huggingface.co/docs/timm/en/reference/schedulers Similar to lr schedulers
@@ -664,7 +667,7 @@ class Selector:
 
     #########################  Select Design  #########################
 
-    def select_design(self,selector_args,mode=None,select_method=None,select_cfg=None):
+    def select_design(self,selector_args,n_seeds=1,select_method=None,select_cfg=None):
         '''
         Return:
             seeds: List[NodeObject]
@@ -675,49 +678,45 @@ class Selector:
             if self.design_budget<=0:
                 print('No design budget available, stop evolution')
                 exit(0)
-        if mode is None:
-            mode=DesignModes.MUTATION
         if select_method is None:
             select_method = select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
-        if mode==DesignModes.MUTATION:
-            if select_method=='random':
-                instruct,seeds,refs=self._random_select_mutate(select_cfg=select_cfg,**selector_args)
-            else:
-                raise ValueError(f"Invalid select method: {select_method}")
-        elif mode==DesignModes.SCRATCH:
-            raise NotImplementedError('Scratch mode is unstable, do not use it')
-        elif mode==DesignModes.CROSSOVER:
-            raise NotImplementedError('Crossover mode is not implemented')
+        if select_method=='quadrant':
+            instruct,seeds,refs=self._quadrant_select_design(n_seeds,select_cfg=select_cfg,**selector_args)
         else:
-            raise ValueError(f'Invalid design mode: {mode}')
+            raise ValueError(f"Invalid select method: {select_method}")
 
         return instruct,seeds,refs
         
     def nodes2data(self,nodes): # convert the nodes to data: NodeObject
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
 
-    def _random_select_mutate(self,n_sources: Dict[str,int],select_cfg=None):
+    def _quadrant_select_design(self,n_seeds, n_sources: Dict[str,int],select_cfg=None):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         instruct=''
         refs=self._sample_from_sources(n_sources)
 
         seed_dist = U.safe_get_cfg_dict(select_cfg,'seed_dist',DEFAULT_SEED_DIST)
-        _seeds=self._sample_from_sources({i:1 for i in SEED_TYPES},with_type=True)
-        
         restart_prob = self._get_restart_prob(seed_dist)
         if random.random()<restart_prob or self.ptree.n_verified<=seed_dist['warmup_rounds']: # use ReferenceCoreWithTree as seeds
-            seeds=_seeds['ReferenceCoreWithTree']
+            init_seeds = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
+            seed_ids = self._sample_k_pool(init_seeds,min(n_seeds,len(init_seeds)),1,topk=False)
         else:
-            seeds=self._quadrant_design_seeds(select_cfg)
-            if seeds is None: # randomly select a design from everything
-                _seeds = self.ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
-                seeds = [self.ptree.get_node(random.choice(_seeds))]
-        seed_ids=[i.acronym for i in seeds]
+            seed_ids=self._quadrant_design_seeds(select_cfg)
+        seeds = [self.ptree.get_node(i) for i in seed_ids]
         refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
 
-
-    def _quadrant_sample(self,exploit_pool,explore_pool,explore_args,exclude=[]):
+    def _sample_k_pool(self,pool,k,background_noise,topk=True):
+        candidates = pool.tolist()
+        probs = np.zeros(len(candidates))
+        if topk:
+            for i in range(k):
+                probs[i] = k-i
+        probs = probs + background_noise/len(candidates)
+        probs = probs / probs.sum()
+        return np.random.choice(candidates, size=k, replace=False, p=probs)
+    
+    def _random_explore_exploit(self,n_seeds,exploit_pool,explore_pool,explore_args,exclude=[]):
         explore_prob = explore_args['explore_prob']
         background_noise = explore_args['background_noise']
 
@@ -726,19 +725,31 @@ class Selector:
             exploit_pool = exploit_pool[~exploit_pool['name'].isin(exclude)]
             explore_pool = explore_pool.copy()
             explore_pool = explore_pool[~explore_pool['name'].isin(exclude)]
-        if random.random()<explore_prob or len(exploit_pool)==0:
-            if len(explore_pool)==0:
-                return None
-            pool = explore_pool
+        if len(exploit_pool)==0 and len(explore_pool)==0:
+            return None,n_seeds
+        if len(exploit_pool)==0:
+            mode = 'explore'
+        elif len(explore_pool)==0:
+            mode = 'exploit'
         else:
-            pool = exploit_pool
-        candidates = pool['name'].tolist()
-        probs = np.zeros(len(candidates))
-        probs[0] = 1
-        probs = probs + background_noise
-        probs = probs / probs.sum()
-        acronym = random.choices(candidates,weights=probs,k=1)[0]
-        return acronym
+            if random.random()<explore_prob:
+                mode = 'explore'
+            else:
+                mode = 'exploit'
+
+        if mode=='explore':
+            pool = explore_pool['name'].tolist()
+            another_pool = exploit_pool['name'].tolist()
+        else:
+            pool = exploit_pool['name'].tolist()    
+            another_pool = explore_pool['name'].tolist()
+        pool_samples = min(n_seeds,len(pool))
+        another_pool_samples = min(n_seeds - pool_samples, len(another_pool))
+        remaining = n_seeds - pool_samples - another_pool_samples
+        
+        acronyms = self._sample_k_pool(pool,pool_samples,background_noise) 
+        acronyms += self._sample_k_pool(another_pool,another_pool_samples,background_noise)
+        return acronyms, remaining
 
 
     def _quadrant_design_seeds(self,select_cfg=None):
@@ -750,9 +761,16 @@ class Selector:
         poor_design_high_confidence = ranked_quadrants['poor_design_high_confidence']
 
         explore_args = U.safe_get_cfg_dict(select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS) 
-        acronym = self._quadrant_sample(good_design_high_confidence,poor_design_high_confidence,explore_args)
-        seeds = [self.ptree.get_node(acronym)]
-        return seeds
+        acronyms,remaining = self._random_explore_exploit(good_design_high_confidence,poor_design_high_confidence,explore_args)
+        if acronyms is None:
+            pool = self.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented'])
+            n_seeds = min(n_seeds,len(pool))
+            return self._sample_k_pool(pool,n_seeds,1,topk=False)
+        if remaining>0:
+            init_seeds = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
+            remaining = min(remaining,len(init_seeds))
+            acronyms += self._sample_k_pool(init_seeds,remaining,1,topk=False)
+        return acronyms
 
     def _get_restart_prob(self,seed_dist):
         scheduler = seed_dist['scheduler']
@@ -769,9 +787,10 @@ class Selector:
     def _sample_from_sources(self,n_sources: Dict[str,int],with_type=False):
         nodes={} if with_type else []
         for source_type,num in n_sources.items():
-            num=min(num,len(self.ptree.filter_by_type(source_type)))
+            pool = self.ptree.filter_by_type(source_type)
+            num=min(num,len(pool))
             if num<=0: continue
-            topk=random.sample(self.ptree.filter_by_type(source_type),num)
+            topk=self._sample_k_pool(pool,num,1,topk=False)
             if with_type:
                 nodes[source_type]=self.nodes2data(topk)
             else:
@@ -812,7 +831,7 @@ class Selector:
     def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
-            verify_strategy = select_cfg.get('verify_strategy',DEFAULT_SELECT_METHOD)
+            verify_strategy = select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
         available_verify_budget=self.available_verify_budget
         if len(available_verify_budget)<=0:
             if self.budget_type=='verify_bound':
@@ -822,12 +841,12 @@ class Selector:
                 available_verify_budget=self.request_temporal_budget()
             else:
                 raise ValueError(f"Invalid budget type: {self.budget_type}")
-        if verify_strategy=='random':
-            return self.random_select_verify(available_verify_budget,exclude_list,select_cfg)
+        if verify_strategy=='quadrant':
+            return self._quadrant_select_verify(available_verify_budget,exclude_list,select_cfg)
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
 
-    def random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
+    def _quadrant_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
         unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
         unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
         n_unverified=sum([len(v) for v in unverified_by_scale.values()])
@@ -856,9 +875,10 @@ class Selector:
         explore_args = U.safe_get_cfg_dict(self.select_cfg,'verify_explore_args',DEFAULT_VERIFY_EXPLORE_ARGS) 
         exclude_design=[]
         while True:
-            acronym = self._quadrant_sample(good_design_low_confidence,poor_design_low_confidence,explore_args,exclude_design)
-            if acronym is None: # randomly select a design from the lowest scale
+            acronyms,_ = self._random_explore_exploit(1,good_design_low_confidence,poor_design_low_confidence,explore_args,exclude_design)
+            if acronyms is None: # randomly select a design from the lowest scale
                 break
+            acronym = acronyms[0]
             scales = unverified_by_design[acronym]
             scale = sorted(scales,key=lambda x:int(x.replace('M','')))[0]
             if scale in available_verify_budget:

@@ -484,7 +484,14 @@ def _design_tuning(evosys,project_dir):
 
         col1, col2 = st.columns([1, 5])
         with col1:
-            mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes],disabled=True)
+            n_seeds = st.number_input(label="Number of seeds",min_value=0,value=1,
+                                   help='Number of seed designs, it decides the mode of design, design from scratch: 0 seed, mutation: 1 seed, crossover: >=2 seeds')
+            if n_seeds==0:
+                mode = DesignModes.SCRATCH
+            elif n_seeds==1:
+                mode = DesignModes.MUTATION
+            else:
+                mode = DesignModes.CROSSOVER
         with col2:
             # st.markdown("#### Configure the base models for each agent")
             AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
@@ -494,7 +501,7 @@ def _design_tuning(evosys,project_dir):
                 'IMPLEMENTATION_PLANNER':'Implementation Planner',
                 'IMPLEMENTATION_CODER':'Implementation Coder',
                 'IMPLEMENTATION_OBSERVER':'Impl. Observer',
-                'SEARCH_ASSISTANT': '*Search Assistant*'
+                'SEARCH_ASSISTANT': '*Sep. Search Assistant*' # no need at all, can be integrated into search engine
             }
             agent_types = {}
             cols = st.columns(len(agent_type_labels))
@@ -502,10 +509,7 @@ def _design_tuning(evosys,project_dir):
                 with cols[i]:
                     index=0 
                     options=AGENT_TYPES
-                    if agent in ['SEARCH_ASSISTANT']:
-                        options=AGENT_TYPES+['None']
-                        index=len(options)-1
-                    elif agent in ['IMPLEMENTATION_OBSERVER']:
+                    if agent in ['IMPLEMENTATION_OBSERVER']:
                         options=AGENT_TYPES+['o1_preview','o1_mini','None']
                         index=len(options)-2
                     elif agent in ['IMPLEMENTATION_CODER']:
@@ -517,6 +521,9 @@ def _design_tuning(evosys,project_dir):
                             index=len(options)-1
                         else:
                             index=len(options)-1
+                    elif agent in ['SEARCH_ASSISTANT']:
+                        options=AGENT_TYPES+['None']
+                        index=len(options)-1
                     options+=['hybrid']
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
@@ -526,23 +533,11 @@ def _design_tuning(evosys,project_dir):
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
-        st.markdown("##### Configure the number of seeds to sample from each source")
+        st.markdown("##### Configure the number of *References* to sample from each source")
         cols = st.columns(len(sources))
         for i,source in enumerate(sources):
             with cols[i]:
-                if mode==DesignModes.MUTATION.value and source=='ReferenceCoreWithTree':
-                    n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=1)#,max_value=1,disabled=True)
-                else:
-                    init_value=0 if source in ['DesignArtifact','ReferenceCore'] else min(2,sources[source])
-                    if source == 'DesignArtifactImplemented':
-                        init_value = min(1,sources[source])
-                        label = f'ImplementedDesign ({sources[source]})'
-                    else:
-                        label = f'{source} ({sources[source]})'
-                    # disabled=True if source == 'DesignArtifact' else False
-                    n_sources[source] = st.number_input(label=label,min_value=0,value=init_value,max_value=sources[source])#,disabled=disabled)
-        # if mode==DesignModes.MUTATION.value:
-        #     st.write('**ReferenceCoreWithTree and DesignArtifactImplemented are seed types. Will randomly sample one from samples from them as seed.*')
+                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=1)#,max_value=1,disabled=True)
 
         col1,col2=st.columns([3,2])
         termination={}
@@ -617,7 +612,7 @@ def _design_tuning(evosys,project_dir):
                 st.write('')
                 view_log_btn = st.button("*View*",disabled=selected_design_log=='')
 
-    with st.expander("Search Settings",expanded=False):
+    with st.expander("Simple Search Settings",expanded=False):
         search_cfg={}
         search_cfg['result_limits']={}
         search_cfg['perplexity_settings']={}
@@ -659,8 +654,6 @@ def _design_tuning(evosys,project_dir):
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)", help='Will be combined with selector\'s instructions (if any)')
     with cols[1]:
-        # running_mode = st.selectbox(label="Running Mode",options=[i.value for i in RunningModes],index=2,disabled=True)
-        # design_cfg['running_mode'] = RunningModes(running_mode)
         manual_seed = st.selectbox(label="Manual seed",options=['None']+evosys.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented']),
             help='Will override selector\'s selection')
     with cols[2]:
@@ -669,15 +662,13 @@ def _design_tuning(evosys,project_dir):
     with cols[3]:
         st.write('')
         st.write('')
-        submit = st.button(label="***Run***",disabled=mode!=DesignModes.MUTATION.value or st.session_state.evo_running,use_container_width=True)
+        submit = st.button(label="***Run***",disabled=st.session_state.evo_running,use_container_width=True)
     with cols[4]:
         st.write('')
         st.write('')
         resume = st.checkbox(label="Resume",value=True)
 
     if submit:
-        if mode==DesignModes.MUTATION.value:
-            assert n_sources['ReferenceCoreWithTree']+n_sources['DesignArtifactImplemented']>0, "You must select at least one ReferenceCoreWithTree orDesignArtifactImplemented as seeds."
         for i in range(EXPERIMENT_RUNS):
             with st.empty():
                 if EXPERIMENT_RUNS>1:
@@ -692,11 +683,12 @@ def _design_tuning(evosys,project_dir):
                 spinner_text = f"running model design loop ({i+1}/{EXPERIMENT_RUNS})"
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
+                st.write(f"Design Mode: {_mode}")
                 sess_id=None
                 select_cfg={'n_sources':n_sources}
                 manual_seed = None if manual_seed == 'None' else manual_seed
                 manual_refs = None if manual_refs == 'None' else manual_refs.split(',')
-                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,mode=_mode,sess_id=sess_id,resume=resume)
+                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume)
     
     elif view_log_btn:
         show_log(load_log(selected_design_log_path))

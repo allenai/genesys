@@ -20,7 +20,8 @@ import pandas as pd
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
 from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
-    DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS
+    DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
+        SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
@@ -30,8 +31,6 @@ from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,
     DEFAULT_TRAINING_DATA,DEFAULT_EVAL_TASKS,DEFAULT_TOKENIZER,DEFAULT_OPTIM,DEFAULT_WANDB_PROJECT,\
         DEFAULT_WANDB_ENTITY,DEFAULT_RANDOM_SEED,DEFAULT_SAVE_STEPS,DEFAULT_LOG_STEPS
 
-SELECT_METHODS = ['random']
-VERIFY_STRATEGY = ['random']
 
 
 
@@ -236,7 +235,7 @@ AGENT_TYPE_LABELS = {
     'IMPLEMENTATION_PLANNER':'Impl. Planner',
     'IMPLEMENTATION_CODER':'Implementation Coder',
     'IMPLEMENTATION_OBSERVER':'Impl. Observer',
-    'SEARCH_ASSISTANT': '*Search Assistant*'
+    'SEARCH_ASSISTANT': '*Sep. Search Assistant*'
 }
 
 def model_design_engine_settings(evosys):
@@ -249,13 +248,13 @@ def model_design_engine_settings(evosys):
 def selector_config(evosys):
     select_cfg=copy.deepcopy(evosys.select_cfg)
     
-    select_method=select_cfg.get('select_method','random')
-    verify_strategy=select_cfg.get('verify_strategy','random')
+    select_method=select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
+    verify_strategy=select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
     n_sources=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
     seed_dist=select_cfg.get('seed_dist',DEFAULT_SEED_DIST)
 
-    with st.expander(f"Node Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
-        with st.form("Node Selector Config"):
+    with st.expander(f"Seed Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
+        with st.form("Seed Selector Config"):
             _col1,_col2=st.columns([2,3])
             with _col1:
                 st.write('###### Configure Selector')
@@ -263,7 +262,7 @@ def selector_config(evosys):
                 with cols[0]:
                     select_cfg['select_method']=st.selectbox('Select Method',options=SELECT_METHODS,index=SELECT_METHODS.index(select_method))
                 with cols[1]:
-                    select_cfg['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGY,index=VERIFY_STRATEGY.index(verify_strategy))
+                    select_cfg['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGIES,index=VERIFY_STRATEGIES.index(verify_strategy))
             with _col2:
                 st.write('###### Configure *Seed* Selection Distribution')
                 cols = st.columns(3)

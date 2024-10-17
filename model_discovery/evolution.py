@@ -74,7 +74,7 @@ from exec_utils import BuildSystem as NativeBuild
 from exec_utils.aliases import ConfigType
 from google.cloud.firestore import DELETE_FIELD
 
-from model_discovery.agents.roles.selector import Selector
+from model_discovery.agents.roles.selector import Selector,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY
 
 from model_discovery.model.composer import GAUTree,GAUDict,UnitSpec
 from model_discovery import utils as U
@@ -2119,8 +2119,8 @@ class EvolutionSystem(exec_utils.System):
 
     def get_evo_state(self):
         evo_state={}
-        evo_state['Seed Selection Method']=self.design_cfg.get('select_method','random')
-        evo_state['Verification Strategy']=self.design_cfg.get('verify_strategy','random')
+        evo_state['Seed Selection Method']=self.design_cfg.get('select_method',DEFAULT_SELECT_METHOD)
+        evo_state['Verification Strategy']=self.design_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
         evo_state['target_scales']=self.target_scales
         evo_state['Remaining Verify Budget']=self.selector.verify_budget
         evo_state['Remaining Design Budget']=self.selector.design_budget
@@ -2295,13 +2295,17 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid manual input: {manual}")
 
-    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,mode=None,
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,n_seeds=1,
         resume=True,in_process=False,manual_seed=None,manual_refs=None,silent=False,cpu_only=False
     ): 
         # user_input and design_cfg maybe changed by the user, so we need to pass them in
         # self.ptree.reload() # WHY WE NEED THIS???
-        if mode is None:
-            mode=DesignModes.MUTATION        
+        if n_seeds==0:
+            mode=DesignModes.SCRATCH
+        elif n_seeds==1:
+            mode=DesignModes.MUTATION
+        else:
+            mode=DesignModes.CROSSOVER
         if select_cfg is None:
             select_cfg = self.select_cfg
         if design_cfg is None:
@@ -2319,7 +2323,7 @@ class EvolutionSystem(exec_utils.System):
         manual_refs = self._process_manual_input(manual_refs)
 
         def _new_sample(selector_args,mode,sess_id=None,_silent=False,_cpu_only=False):
-            instruct,seed,refs=self.selector.select_design(selector_args,mode=mode) # use the seed_ids to record the phylogenetic tree
+            instruct,seed,refs=self.selector.select_design(selector_args,n_seeds=n_seeds) # use the seed_ids to record the phylogenetic tree
             seed = manual_seed if manual_seed is not None else seed
             refs = manual_refs if manual_refs is not None else refs
             self.sample(instruct,seed,refs,sess_id=sess_id,mode=mode,user_input=user_input,
@@ -2550,7 +2554,6 @@ if __name__ == '__main__':
             'evoname':'evolution_test1',
             'scales':'14M,31M,70M',
             'selection_ratio':0.25,
-            'select_method':'random',
             'design_budget':0,
         }
         test_evolve(params,step=True)

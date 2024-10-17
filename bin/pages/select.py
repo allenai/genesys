@@ -45,7 +45,7 @@ def design_selector(evosys,project_dir):
                 # st.markdown("#### Configure design mode")
                 mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
             with col2:
-                select_method = st.selectbox(label="Selection Method",options=['random'])
+                select_method = st.selectbox(label="Selection Method",options=SELECT_METHODS)
         with _col2:
             st.write('###### Configure *Seed* Selection Distribution')
             cols = st.columns(3)
@@ -194,7 +194,7 @@ def verify_selector(evosys,project_dir):
 
     col1, col2, col3, col4 = st.columns([1,1,1,1])
     with col1:
-        verify_strategy = st.selectbox(label="Verify Strategy",options=['random'])
+        verify_strategy = st.selectbox(label="Verify Strategy",options=VERIFY_STRATEGIES)
     with col2:
         st.write('')
         with st.expander('Remaining Budget'):
@@ -209,10 +209,6 @@ def verify_selector(evosys,project_dir):
                 st.write(unverified)
             else:
                 st.info('No scale available.')
-
-    # if verify_strategy == 'random':
-    #     st.subheader('Random Strategy')
-    #     st.write('*Random strategy will use up smaller scale budgets first.*')
 
     with st.expander(f"Selector Ranking and Exploration Settings",expanded=True):
         
