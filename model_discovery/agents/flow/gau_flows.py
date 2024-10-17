@@ -16,7 +16,7 @@ from .gau_utils import check_and_reformat_gau_code
 import model_discovery.agents.prompts.prompts as P
 from model_discovery.model.composer import GAUBase, GAUTree, GABComposer
 from model_discovery.configs.gam_config import GAMConfig_14M
-from model_discovery.model.utils.modules import GABBase, UnitDecl
+from model_discovery.model.utils.modules import GABBase, UnitDecl,DesignModes
 import model_discovery.utils as U
 
 
@@ -69,11 +69,6 @@ class AgentModelDef:
     agent: SimpleLMAgent
     model_name: Optional[str] = None
 
-class DesignModes(Enum):
-    MUTATION = 'Mutate existing design'
-    SCRATCH = 'Design from scratch (unstable)'
-    CROSSOVER = 'Crossover designs (unsupported)'
-
 
 def reload_role(name,agentdef:AgentModelDef,prompt):# reload the role of an agent, it will change the role
     model_name=agentdef.model_name
@@ -86,7 +81,6 @@ def reload_role(name,agentdef:AgentModelDef,prompt):# reload the role of an agen
 
 def collapse_write(stream,summary,content):
     stream.write(f'<details><summary>{summary}</summary>\n{content}</details>',unsafe_allow_html=True)
-
 
 def print_details(stream,agent,context,prompt):
     if not hasattr(stream,'_isprintsystem'):
@@ -154,13 +148,13 @@ END_REASONS_LABELS = {
     EndReasons.MAX_FAILED_ROUNDS_REACHED:'Failed',
 }
 
-class GUFlowMutation(FlowCreator): 
+class GUFlow(FlowCreator): 
     """
     The flow for designing a GAB Flow nested of GAB Units from scratch.
     the input query should be the seeds from the root tree for the design
     Do not allow root for now
     """
-    def __init__(self,system,status_handler,stream,sess_id,design_cfg,user_input='',cpu_only=False,log_fn=None):
+    def __init__(self,system,status_handler,stream,sess_id,design_cfg,user_input='',cpu_only=False,log_fn=None,design_mode=DesignModes.MUTATION):
         self.costs={
             'DESIGN_PROPOSER':0,
             'PROPOSAL_REVIEWER':0,
@@ -216,19 +210,30 @@ class GUFlowMutation(FlowCreator):
         self.termination=design_cfg['termination']
         self.threshold=design_cfg['threshold']
         self.search_settings=design_cfg['search_settings']
-        self.mode=design_cfg['running_mode']
+        self.running_mode=design_cfg['running_mode']
         self.num_samples=design_cfg['num_samples']
         self.design_cfg=design_cfg
         self.user_input=user_input
+        self.design_mode=design_mode
 
         # assert any(self.termination.values())>0, 'At least one of the termination conditions should be set'
 
         self.sess_id = sess_id
         self.ptree=system.ptree
         seeds,refs,instruct=self.ptree.get_session_input(sess_id)
-        self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
-        self.seed_id=seeds[0].acronym
-        self.seed_input=P.build_GUM_QUERY(seeds[0],refs,instruct,user_input)
+        self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode)
+        if self.design_mode==DesignModes.MUTATION:
+            self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
+            self.seed = seeds[0].to_prompt()
+            self.seed_id=seeds[0].acronym
+        elif self.design_mode==DesignModes.CROSSOVER:
+            self.seed_tree = self.ptree.new_gau_tree()
+            self.seed = '\n\n---\n\n'.join([seed.to_prompt() for seed in seeds])
+        elif self.design_mode==DesignModes.SCRATCH:
+            self.seed_tree = self.ptree.new_gau_tree()
+            self.seed = None
+        else:
+            raise ValueError(f'Invalid design mode: {self.design_mode}')
 
 
     def _links(self):
@@ -282,14 +287,14 @@ class GUFlowMutation(FlowCreator):
     )
     def design_initializer(self,query,state,proposal=None):
         if proposal:
-            if self.mode!=RunningModes.IMPLEMENTATION_ONLY:
-                self.stream.write(f'Proposal is provided, running mode will be forced switched to implementation only from {self.mode}')
-                self.mode=RunningModes.IMPLEMENTATION_ONLY
+            if self.running_mode!=RunningModes.IMPLEMENTATION_ONLY:
+                self.stream.write(f'Proposal is provided, running mode will be forced switched to implementation only from {self.running_mode}')
+                self.running_mode=RunningModes.IMPLEMENTATION_ONLY
         else:
-            if self.mode==RunningModes.IMPLEMENTATION_ONLY:
+            if self.running_mode==RunningModes.IMPLEMENTATION_ONLY:
                 self.log_fn('No proposal is provided, running mode is set to proposal only','ERROR')
                 raise Exception('Proposal is required for implementation only mode')
-        self.log_fn(f'Starting design flow with running mode: {self.mode}','BEGIN')
+        self.log_fn(f'Starting design flow with running mode: {self.running_mode}','BEGIN')
         return query,state,{}
     
     def call_search_assistant(self,main_tid,ideation,instructions):
@@ -342,7 +347,7 @@ class GUFlowMutation(FlowCreator):
         '''
         Overally evaluate the current ptree, and generate a proposal for the next step, and pick one unit to work on
         '''
-        if self.mode==RunningModes.IMPLEMENTATION_ONLY:
+        if self.running_mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, skipping proposal generation...')
             return query,state,{}
         passed_proposals,_=self.ptree.session_proposals(self.sess_id,passed_only=True)
@@ -378,7 +383,11 @@ class GUFlowMutation(FlowCreator):
         USE_2STAGE=self.search_settings['proposal_search']
         # Iterative Search is default now, designed for claude, utilizing cache mechanism
         USE_ISEARCH=self.agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
-        USE_2STAGE=USE_2STAGE and not USE_ISEARCH
+        if self.design_mode!=DesignModes.MUTATION:
+            # only isearch is supported for crossover and scratch
+            USE_ISEARCH=True
+        if USE_ISEARCH:
+            USE_2STAGE=False
         USE_O1_PROPOSER='o1' in self.agent_types['DESIGN_PROPOSER']
         USE_O1_REVIEWER='o1' in self.agent_types['PROPOSAL_REVIEWER']
 
@@ -387,53 +396,105 @@ class GUFlowMutation(FlowCreator):
         context_proposal_reviewer=AgentContext()
         o1_attempt_context=AgentContext()
         # o1_review_context=AgentContext()
-        units=set(self.seed_tree.units.keys())
-        SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root.spec.unitname} 
-        SELECTIONS=list(SELECTIONS)
-        self.log_fn(f'Searching sibling designs...','PROPOSAL')
-        _,SIBLINGS=self.sss.query_sibling_designs(self.seed_id)
-        self.log_fn(f'Search finished.','PROPOSAL')
+
+        if self.design_mode==DesignModes.MUTATION:
+            units=set(self.seed_tree.units.keys())
+            SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root.spec.unitname} 
+            SELECTIONS=list(SELECTIONS)
+            self.log_fn(f'Searching sibling designs...','PROPOSAL')
+            _,SIBLINGS=self.sss.query_sibling_designs(self.seed_id)
+            self.log_fn(f'Search finished.','PROPOSAL')
+
         for attempt in range(self.max_attemps['design_proposal']):
             if USE_O1_PROPOSER:
                 context_design_proposer=copy.deepcopy(o1_attempt_context)
                 o1_attempt_context=AgentContext()
-                DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1M_PROPOSER_BACKGROUND(
-                    GAU_BASE=GAU_BASE,SEED=query,SELECTIONS=SELECTIONS,SIBLINGS=SIBLINGS))
+                if self.design_mode==DesignModes.MUTATION:
+                    DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1M_PROPOSER_BACKGROUND(
+                        GAU_BASE=GAU_BASE,SEED=query,SELECTIONS=SELECTIONS,SIBLINGS=SIBLINGS))
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1C_PROPOSER_BACKGROUND(
+                        GAU_BASE=GAU_BASE,PARENTS=query))
+                else:
+                    DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1S_PROPOSER_BACKGROUND(
+                        GAU_BASE=GAU_BASE,REFS=query))
             else:
-                DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
-                if USE_ISEARCH:
-                    DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH
-                elif USE_2STAGE:
-                    DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE
+                if self.design_mode==DesignModes.MUTATION:
+                    DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
+                    if USE_ISEARCH:
+                        DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH
+                    elif USE_2STAGE:
+                        DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    DESIGN_PROPOSER_SYSTEM=P.GUC_DESIGN_PROPOSER_SYSTEM_ISEARCH
+                else:
+                    DESIGN_PROPOSER_SYSTEM=P.GUS_DESIGN_PROPOSER_SYSTEM_ISEARCH
                 DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposer',note=f'Starting design proposal...')
             if attempt==0:
                 status_info=f'Initial design proposal...'
-                if USE_O1_PROPOSER:
-                    GUM_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL
-                    proposal_prompt=GUM_DESIGN_PROPOSAL()
+                if self.design_mode==DesignModes.MUTATION:
+                    if USE_O1_PROPOSER:
+                        GUM_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL
+                        proposal_prompt=GUM_DESIGN_PROPOSAL()
+                    else:
+                        GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
+                        if USE_ISEARCH:
+                            GUM_DESIGN_PROPOSAL,GU_DESIGN_PROPOSAL_FINISH=GUM_DESIGN_PROPOSAL
+                        elif USE_2STAGE:
+                            GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_STAGE2=GUM_DESIGN_PROPOSAL
+                        proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query,SIBLINGS=SIBLINGS)
+                    GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    if USE_O1_PROPOSER:
+                        GUC_DESIGN_PROPOSAL=P.O1C_DESIGN_PROPOSAL
+                        proposal_prompt=GUC_DESIGN_PROPOSAL()
+                    else:
+                        GUC_DESIGN_PROPOSAL=P.GUC_DESIGN_PROPOSAL_ISEARCH
+                        GU_DESIGN_PROPOSAL_FINISH=P.GUC_DESIGN_PROPOSAL_ISEARCH_FINISH
+                        proposal_prompt=GUC_DESIGN_PROPOSAL(PARENTS=query)
+                    GUC_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
                 else:
-                    GUM_DESIGN_PROPOSAL=P.gen_GUM_DESIGN_PROPOSAL(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
-                    if USE_ISEARCH:
-                        GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_FINISH=GUM_DESIGN_PROPOSAL
-                    elif USE_2STAGE:
-                        GUM_DESIGN_PROPOSAL,GUM_DESIGN_PROPOSAL_STAGE2=GUM_DESIGN_PROPOSAL
-                    proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query,SIBLINGS=SIBLINGS)
-                GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
+                    if USE_O1_PROPOSER:
+                        GUS_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL # reuse it
+                        proposal_prompt=GUS_DESIGN_PROPOSAL()
+                    else:
+                        GUS_DESIGN_PROPOSAL=P.GUS_DESIGN_PROPOSAL_ISEARCH
+                        GU_DESIGN_PROPOSAL_FINISH=P.GUS_DESIGN_PROPOSAL_ISEARCH_FINISH
+                        proposal_prompt=GUS_DESIGN_PROPOSAL(REFS=query)
+                    GUC_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
                 status_info=f'Refining design proposal (attempt {attempt})...'
-                if USE_O1_PROPOSER:
-                    GUM_PROPOSAL_REFINEMENT=P.O1M_DESIGN_PROPOSAL_REFINEMENT
+                if self.design_mode==DesignModes.MUTATION:
+                    if USE_O1_PROPOSER:
+                        GUM_PROPOSAL_REFINEMENT=P.O1M_DESIGN_PROPOSAL_REFINEMENT
+                    else:
+                        GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
+                        if USE_ISEARCH:
+                            GUM_PROPOSAL_REFINEMENT,GU_DESIGN_PROPOSAL_FINISH=GUM_PROPOSAL_REFINEMENT
+                        elif USE_2STAGE:
+                            GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_STAGE2=GUM_PROPOSAL_REFINEMENT
+                    proposal_prompt=GUM_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
+                                                            PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
+                    GUM_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    if USE_O1_PROPOSER:
+                        GUC_PROPOSAL_REFINEMENT=P.O1C_DESIGN_PROPOSAL_REFINEMENT
+                    else:
+                        GUC_PROPOSAL_REFINEMENT = P.GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
+                        GUC_DESIGN_PROPOSAL_FINISH = P.GUC_PROPOSAL_REFINEMENT_FINISH
+                    proposal_prompt=GUC_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
+                                                            PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
+                    GUC_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
                 else:
-                    GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
-                    if USE_ISEARCH:
-                        GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_FINISH=GUM_PROPOSAL_REFINEMENT
-                    elif USE_2STAGE:
-                        GUM_PROPOSAL_REFINEMENT,GUM_DESIGN_PROPOSAL_STAGE2=GUM_PROPOSAL_REFINEMENT
-                proposal_prompt=GUM_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
-                                                         PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
-                GUM_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
+                    if USE_O1_PROPOSER:
+                        GUS_PROPOSAL_REFINEMENT=P.GUS_PROPOSAL_REFINEMENT_FINISH # reuse it
+                    else:
+                        GUS_PROPOSAL_REFINEMENT=P.GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
+                    proposal_prompt=GUS_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
+                                                            PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
+                    GUS_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
             
             ideation,instructions,search_report,search_references=None,None,None,None
             thoughts,keywords,description=None,None,None
@@ -508,7 +569,7 @@ class GUFlowMutation(FlowCreator):
                 # final search 
 
                 
-                variantname,changes,reflection,abstract=None,None,None,None
+                variantname,changes,reflection,abstract,selection=None,None,None,None,None
                 with self.status_handler('Finishing design proposal...'):
                     # final search, so at least two searches, first, and second in first ready
                     if USE_O1_PROPOSER:
@@ -533,32 +594,43 @@ class GUFlowMutation(FlowCreator):
                         'search_ret':search_ret,
                     })
                     if USE_O1_PROPOSER:
-                        o1m_finish_prompt=P.O1M_PROPOSAL_FINISH(SELECTIONS=SELECTIONS,SEARCH_RESULTS=search_ret)
-                        self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,o1m_finish_prompt)
-                        P.O1M_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
-                        o1_attempt_context.append(o1m_finish_prompt,'user',{})
-                        _,out=self.call_dialog(design_proposer_tid,o1m_finish_prompt)
-                        proposal,selection,title,modelname,abstract=out['text'],out['selection'],out['title'],out['model_name'],out['abstract']
-                        self.stream.write(f'### Selection: {selection}')
+                        if self.design_mode==DesignModes.MUTATION:
+                            o1_finish_prompt=P.O1M_PROPOSAL_FINISH(SELECTIONS=SELECTIONS,SEARCH_RESULTS=search_ret)
+                            PROPOSAL_FINISH=P.O1M_PROPOSAL_FINISH
+                        elif self.design_mode==DesignModes.CROSSOVER:
+                            o1_finish_prompt=P.O1C_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
+                            PROPOSAL_FINISH=P.O1C_PROPOSAL_FINISH
+                        else:
+                            o1_finish_prompt=P.O1S_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
+                            PROPOSAL_FINISH=P.O1S_PROPOSAL_FINISH
+                        self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,o1_finish_prompt)
+                        PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
+                        o1_attempt_context.append(o1_finish_prompt,'user',{})
+                        _,out=self.call_dialog(design_proposer_tid,o1_finish_prompt)
+                        proposal,title,modelname,abstract=out['text'],out['title'],out['model_name'],out['abstract']
+                        if self.design_mode==DesignModes.MUTATION:
+                            selection=out['selection']
+                            self.stream.write(f'### Selection: {selection}')
                         self.stream.write(f'### Abstract\n{abstract}')
                         self.stream.write(f'### Proposal\n{proposal}')
                         self.print_raw_output(out,'DESIGN_PROPOSER')
-                        for _ in range(5):
-                            succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
-                            if succeed:
-                                break
-                            self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,RETRY_PROMPT())
-                            RETRY_PROMPT.apply(DESIGN_PROPOSER.obj)
-                            self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
-                            _,out=self.call_dialog(design_proposer_tid,RETRY_PROMPT())
-                            selection=out['selection']
-                            self.stream.write(f'##### Correcting selection: {selection}')
-                            self.print_raw_output(out,'DESIGN_PROPOSER')
-                        if not succeed:
-                            info = 'Failed to generate design proposal with right format with O1, stopping design process'
-                            self.log_fn(info,'ERROR')
-                            raise Exception(info)
-                        o1_attempt_context.append(f'{proposal}\n\n### Selection\n\n{selection}','assistant',out)
+                        if self.design_mode==DesignModes.MUTATION:
+                            for _ in range(5):
+                                succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                if succeed:
+                                    break
+                                self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,RETRY_PROMPT())
+                                RETRY_PROMPT.apply(DESIGN_PROPOSER.obj)
+                                self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
+                                _,out=self.call_dialog(design_proposer_tid,RETRY_PROMPT())
+                                selection=out['selection']
+                                self.stream.write(f'##### Correcting selection: {selection}')
+                                self.print_raw_output(out,'DESIGN_PROPOSER')
+                            if not succeed:
+                                info = 'Failed to generate design proposal with right format with O1, stopping design process'
+                                self.log_fn(info,'ERROR')
+                                raise Exception(info)
+                            o1_attempt_context.append(f'{proposal}\n\n### Selection\n\n{selection}','assistant',out)
                         if len(modelname)>0:
                             modelname=modelname[0]
                         elif len(title)>0:
@@ -567,13 +639,16 @@ class GUFlowMutation(FlowCreator):
                             modelname=f'An Improved {selection}'
                         self.stream.write(f'### Design Name: {modelname}')
                     else:
-                        proposal_finish_prompt=GUM_DESIGN_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
+                        proposal_finish_prompt=GU_DESIGN_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_finish_prompt)
-                        GUM_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
+                        GU_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
                         _,out=self.call_dialog(design_proposer_tid,proposal_finish_prompt)
-                        selection,proposal,modelname,variantname,changes,abstract=out['selection'],out['proposal'],out['modelname'],out['variantname'],out.get('changes',None),out.get('abstract',None)
+                        proposal,modelname,changes,abstract=out['proposal'],out['modelname'],out.get('changes',None),out.get('abstract',None)
                         self.stream.write(f'### Design Name: {modelname}')
-                        self.stream.write(f'### Selection: {selection}')
+                        if self.design_mode==DesignModes.MUTATION:
+                            selection,variantname=out['selection'],out['variantname']
+                            self.stream.write(f'### Selection: {selection}')
+                            self.stream.write(f'### Variant Name: {variantname}')
                         self.stream.write(f'### Abstract\n{abstract}')
                         self.stream.write(f'# Proposal\n{proposal}')
                         if changes:
@@ -639,10 +714,20 @@ class GUFlowMutation(FlowCreator):
             if USE_O1_REVIEWER:
                 context_proposal_reviewer=AgentContext() #copy.deepcopy(o1_review_context)
                 # o1_review_context=AgentContext()
-                SYSTEM_PROMPT=P.O1M_PROPOSAL_REVIEWER_BACKGROUND(
-                    SEED=query,SELECTION=selection,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                if self.design_mode==DesignModes.MUTATION:
+                    SYSTEM_PROMPT=P.O1M_PROPOSAL_REVIEWER_BACKGROUND(
+                        SEED=query,SELECTION=selection,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    SYSTEM_PROMPT=P.O1C_PROPOSAL_REVIEWER_BACKGROUND(SEED=query,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps)
+                else:
+                    SYSTEM_PROMPT=P.O1S_PROPOSAL_REVIEWER_BACKGROUND(PROPOSAL=_proposal,TOP_K_PPS=top_k_pps)
             else:
-                SYSTEM_PROMPT=P.GUM_PROPOSAL_REVIEWER_SYSTEM() if not USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEWER_SEARCH_SYSTEM()
+                if self.design_mode==DesignModes.MUTATION:
+                    SYSTEM_PROMPT=P.GUM_PROPOSAL_REVIEWER_SYSTEM() if not USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEWER_SEARCH_SYSTEM()
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    SYSTEM_PROMPT=P.GUC_PROPOSAL_REVIEWER_SYSTEM(SEED=query)
+                else:
+                    SYSTEM_PROMPT=P.GUS_PROPOSAL_REVIEWER_SYSTEM()
             PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],SYSTEM_PROMPT)
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_reviewer',note=f'Reviewing proposal...')
@@ -652,9 +737,13 @@ class GUFlowMutation(FlowCreator):
                     REVIEW_PROMPT=P.O1M_PROPOSAL_REVIEW
                     proposal_review_prompt=REVIEW_PROMPT()
                 else:
-                    REVIEW_PROMPT=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEW
-                    proposal_review_prompt=REVIEW_PROMPT(
-                        SEED=query,SELECTION=selection,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                    if self.design_mode==DesignModes.MUTATION:
+                        REVIEW_PROMPT=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEW
+                        proposal_review_prompt=REVIEW_PROMPT(
+                            SEED=query,SELECTION=selection,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                    else:
+                        REVIEW_PROMPT=P.GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN
+                        proposal_review_prompt=REVIEW_PROMPT(PROPOSAL=_proposal,TOP_K_PPS=top_k_pps)
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
             else:
                 status_info=f'Reviewing refined proposal (version {attempt})...'
@@ -662,11 +751,18 @@ class GUFlowMutation(FlowCreator):
                     REREVIEW_PROMPT=P.O1M_PROPOSAL_REVIEW # context free
                     proposal_review_prompt=REREVIEW_PROMPT()
                 else:
-                    REREVIEW_PROMPT=P.GUM_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REREVIEW
+                    if self.design_mode==DesignModes.MUTATION:
+                        REREVIEW_PROMPT=P.GUM_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REREVIEW
+                    else:
+                        REREVIEW_PROMPT=P.GUC_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUC_PROPOSAL_REREVIEW
                     if not changes:
                         changes='Please refer to the proposal for changes.'
-                    proposal_review_prompt=REREVIEW_PROMPT(
-                        SELECTION=selection,PROPOSAL=_proposal,CHANGES=changes,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                    if self.design_mode==DesignModes.MUTATION:
+                        proposal_review_prompt=REREVIEW_PROMPT(
+                            SELECTION=selection,PROPOSAL=_proposal,CHANGES=changes,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                    else:
+                        proposal_review_prompt=REREVIEW_PROMPT(
+                            PROPOSAL=_proposal,CHANGES=changes,TOP_K_PPS=top_k_pps)
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
 
             review_search_stack=[]
@@ -882,10 +978,10 @@ class GUFlowMutation(FlowCreator):
         links='end_of_design',
     )
     def implement_proposal_recursive(self,query,state,main_tid,proposal=None): # if provide a proposal, then design session should be taken care of manually
-        if self.mode==RunningModes.PROPOSAL_ONLY:
+        if self.running_mode==RunningModes.PROPOSAL_ONLY:
             self.stream.write('Proposal only mode, skipping implementation...')
             return query,state,{}
-        elif self.mode==RunningModes.IMPLEMENTATION_ONLY:
+        elif self.running_mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, will select from unimplemented passed proposals or using provided proposal if any')
         if proposal is None:
             self.log_fn('Reranking proposals to implement...','IMPLEMENTATION')
@@ -1013,7 +1109,10 @@ class GUFlowMutation(FlowCreator):
         INITIAL_PASS=initial_pass
         round=0
         # XXX: Protected units should be self.seed_tree.units.keys() - self.tree.units.keys(), but this make things simpler
-        PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
+        if self.design_mode==DesignModes.MUTATION:
+            PROTECTED_UNITS=list(set(self.tree.units.keys())-set([proposal.selection])) # the units besides the current one, they should not be *modified*, can be removed as descendants
+        else:
+            PROTECTED_UNITS=[]
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
         USE_PAIRING=self.agent_types['IMPLEMENTATION_OBSERVER']!='None'
         # o1 beta does not support structured outputs, so let it output the code directly
@@ -1036,11 +1135,16 @@ class GUFlowMutation(FlowCreator):
             context_implementation_observer=AgentContext()
 
             succeed=False
-            IMPLEMENTED,UNIMPLEMENTED=self.tree.check_implemented()
-            # GAB_CODE=self.tree.compose()
+            if self.design_mode==DesignModes.MUTATION:
+                IMPLEMENTED,UNIMPLEMENTED=self.tree.check_implemented()
+                # GAB_CODE=self.tree.compose()
+                UNIMPLEMENTED=list(set(UNIMPLEMENTED)-set(PROTECTED_UNITS)) # although its impossible to have unavailable units
+                IMPLEMENTED=list(set(IMPLEMENTED)-set(PROTECTED_UNITS))
+            else:
+                UNIMPLEMENTED=['root']
+                IMPLEMENTED=[]
+
             VIEW_DETAILED=self.tree.to_prompt(unit_code=True)
-            UNIMPLEMENTED=list(set(UNIMPLEMENTED)-set(PROTECTED_UNITS)) # although its impossible to have unavailable units
-            IMPLEMENTED=list(set(IMPLEMENTED)-set(PROTECTED_UNITS))
 
             self.stream.write(f'Round {round-1 if resume else round}. Unprotected Implemented: {IMPLEMENTED}, Unimplemented: {UNIMPLEMENTED}')
 
@@ -1058,17 +1162,27 @@ class GUFlowMutation(FlowCreator):
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
             # if USE_O1_PLANNER:
-            #     GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
+            #     GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
             #     context_implementation_planner=copy.deepcopy(o1_planner_context)
             # else:
-            #     GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
-            
-            GUMT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
+            #     GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
+        
             if USE_O1_PLANNER:
                 context_implementation_planner=copy.deepcopy(o1_planner_context)
-            IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUMT_IMPLEMENTATION_PLANNER_SYSTEM(
-                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,SELECTION=proposal.selection,
-                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+            if self.design_mode==DesignModes.MUTATION: 
+                GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1M_IMPLEMENTATION_PLANNER_BACKGROUND
+                _background_prompt={'SEED':self.seed,'SELECTION':proposal.selection}
+            elif self.design_mode==DesignModes.CROSSOVER:
+                GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1C_IMPLEMENTATION_PLANNER_BACKGROUND
+                _background_prompt={'PARENTS':self.seed}
+            else:
+                GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1S_IMPLEMENTATION_PLANNER_BACKGROUND
+                _background_prompt={}
+
+            IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
+                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
+                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+            
             implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
                                                 alias='implementation_planner',note=f'Starting implementation planning...')
             
@@ -1157,7 +1271,10 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'### Rough Plan\n{rough_plan}')
                         self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
             else: # round 1, work on the selected unit
-                selection=proposal.selection
+                if self.design_mode==DesignModes.MUTATION:
+                    selection=proposal.selection
+                else:
+                    selection='root'
                 termination=False
                 plan='Not available for the first round.'
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
@@ -1196,17 +1313,23 @@ class GUFlowMutation(FlowCreator):
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
-                GUMT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER)
-                IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUMT_IMPLEMENTATION_CODER_SYSTEM(
+                GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER,mode=self.design_mode)
+                if self.design_mode==DesignModes.MUTATION:
+                    _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed}
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    _background_prompt={'PARENTS':self.seed}
+                else:
+                    _background_prompt={}
+                IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUT_IMPLEMENTATION_CODER_SYSTEM(
                     GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PLAN=plan,
-                    PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+                    PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
                 implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder.truncate(2), # keep last 2 messages and system message
                                                     alias='implementation_coder',note=f'Starting design implementation...')
                 if attempt==0: # first attempt, implement the unit
                     status_info=f'Starting design implementation of {selection}...'
                     if selection in IMPLEMENTED:
                         REFINE=True 
-                        GUM_IMPLEMENTATION_UNIT=P.gen_GUMT_IMPLEMENTATION_UNIT(refine=True,use_o1=USE_O1_CODER) # first round can only be an implemented unit
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=True,use_o1=USE_O1_CODER) # first round can only be an implemented unit
                         node=self.tree.units[selection]
                         gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
                             SPECIFICATION=node.spec.to_prompt(),
@@ -1219,7 +1342,7 @@ class GUFlowMutation(FlowCreator):
                         )
                     else:
                         REFINE=False # implement a new unit
-                        GUM_IMPLEMENTATION_UNIT=P.gen_GUMT_IMPLEMENTATION_UNIT(refine=False,use_o1=USE_O1_CODER)
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=USE_O1_CODER)
                         if selection in self.tree.declares:
                             declaration=self.tree.declares[selection].to_prompt()
                         else:
@@ -1454,6 +1577,10 @@ class GUFlowMutation(FlowCreator):
                             )
                         )
 
+                    if self.design_mode==DesignModes.CROSSOVER:
+                        if not INITIAL_PASS and len(children_decls)==0:
+                            format_errors.append(f'FETAL ERROR: No child units declared or detected under this root node, which is not allowed.')
+
                     _func_checkpass = False
                     if fetal_errors==[]:
                         # run unit tests
@@ -1498,7 +1625,7 @@ class GUFlowMutation(FlowCreator):
                         self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
                         
                         checkpass = checkpass and _unit_test_passed if self.unittest_pass_required else checkpass
-                        checker_report = check_report # Too long in the prompt
+                        checker_report = check_report # XXX: Too long in the prompt
                         check_report = f'{_unit_test_results}### Checkers report\n```bash\n{check_report}\n```\n\n'
                     else:
                         check_report = 'Format check failed with fetal errors, please fix the format errors and try again.'
@@ -1546,12 +1673,23 @@ class GUFlowMutation(FlowCreator):
                         _FUNCTION_CHECKER_REPORT='Functionality check passed.'
                     
                     if USE_O1_OBSERVER:
-                        GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1_IMPLEMENTATION_OBSERVER_BACKGROUND
+                        if self.design_mode==DesignModes.MUTATION:
+                            GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1M_IMPLEMENTATION_OBSERVER_BACKGROUND
+                        elif self.design_mode==DesignModes.CROSSOVER:
+                            GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1C_IMPLEMENTATION_OBSERVER_BACKGROUND
+                        else:
+                            GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1S_IMPLEMENTATION_OBSERVER_BACKGROUND
                     else:
-                        GUMT_IMPLEMENTATION_OBSERVER_SYSTEM=P.gen_GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=USE_O1_CODER)
-                    IMPLEMENTATION_OBSERVER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_OBSERVER'], GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(
+                        GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.gen_GUT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=USE_O1_CODER,mode=self.design_mode)
+                    if self.design_mode==DesignModes.MUTATION:
+                        _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed}
+                    elif self.design_mode==DesignModes.CROSSOVER:
+                        _background_prompt={'PARENTS':self.seed}
+                    else:
+                        _background_prompt={}
+                    IMPLEMENTATION_OBSERVER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_OBSERVER'], GUT_IMPLEMENTATION_OBSERVER_SYSTEM(
                         GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
-                        PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating))
+                        PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
                     implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
                                                         alias='implementation_observer',note=f'Observing implementation...')
                     self.log_fn(f'Searching similar units for {selection}...','IMPLEMENTATION')
@@ -1562,51 +1700,51 @@ class GUFlowMutation(FlowCreator):
                             status_info=f'Observing refinement of {selection}...'
                             prompt_kwargs={}
                             if USE_O1_OBSERVER:
-                                GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE
+                                GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE
                                 prompt_kwargs['FORMAT_CHECKER_REPORT']=_FORMAT_CHECKER_REPORT
                                 prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
                             else:
-                                GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE
-                            gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
+                                GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE
+                            gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
                                 REVIEW=node.review,RATING=node.rating,SUGGESTIONS=node.suggestions,
                                 SPECIFICATION=node.spec.to_prompt(),UNIT_CODES=unit_codes,
                                 **prompt_kwargs
                             )
-                            GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+                            GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
                             status_info=f'Observing refined implementation of {selection} (version {attempt})...'
                             if USE_O1_OBSERVER:
-                                GUMT_IMPLEMENTATION_REOBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
-                                gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
+                                GUT_IMPLEMENTATION_REOBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
+                                gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_REOBSERVE(
                                     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                     VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
                                     FORMAT_CHECKER_REPORT=_FORMAT_CHECKER_REPORT,
                                     FUNCTION_CHECKER_REPORT=_FUNCTION_CHECKER_REPORT,
                                 )
                             else:
-                                GUMT_IMPLEMENTATION_REOBSERVE=P.GUMT_IMPLEMENTATION_REOBSERVE
-                                gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_REOBSERVE(
+                                GUT_IMPLEMENTATION_REOBSERVE=P.GUT_IMPLEMENTATION_REOBSERVE
+                                gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_REOBSERVE(
                                     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                     CHANGES=changes,SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
                                 )
-                            GUMT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+                            GUT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
                         status_info=f'Observing implementation of {selection}...'
                         prompt_kwargs={}
                         if USE_O1_OBSERVER:
-                            GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
+                            GUT_IMPLEMENTATION_UNIT_OBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
                             prompt_kwargs['FORMAT_CHECKER_REPORT']=_FORMAT_CHECKER_REPORT
                             prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
                         else:
-                            GUMT_IMPLEMENTATION_UNIT_OBSERVE=P.GUMT_IMPLEMENTATION_UNIT_OBSERVE
-                        gum_implementation_unit_review_prompt=GUMT_IMPLEMENTATION_UNIT_OBSERVE(
+                            GUT_IMPLEMENTATION_UNIT_OBSERVE=P.GUT_IMPLEMENTATION_UNIT_OBSERVE
+                        gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_UNIT_OBSERVE(
                             UNIT_NAME=selection,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
                             ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,UNIT_CODES=unit_codes,
                             **prompt_kwargs
                         )
-                        GUMT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+                        GUT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 
                     with self.status_handler(status_info):
                         if USE_O1_OBSERVER:
@@ -1745,18 +1883,12 @@ class GUFlowMutation(FlowCreator):
 
         return query,state,{}
 
-def gu_design_mutation(system,stream,sess_id,design_cfg,user_input='',proposal=None,cpu_only=False,log_fn=None):
+def gu_design(system,stream,sess_id,design_cfg,user_input='',proposal=None,cpu_only=False,log_fn=None,mode=DesignModes.MUTATION):
     main_tid = system.dialog.fork(0,note='Starting a new session...',alias='main')
     status_handler = stream.status
-    gu_flow = GUFlowMutation(system, status_handler,stream,sess_id,design_cfg,user_input,cpu_only=cpu_only,log_fn=log_fn)
+    gu_flow = GUFlow(system, status_handler,stream,sess_id,design_cfg,user_input,cpu_only=cpu_only,log_fn=log_fn,mode=mode)
     GU_CALLEE = ROLE('GAB Unit Designer',gu_flow.flow)
-    gum_tid = system.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_mutate')
+    gum_tid = system.dialog.fork(main_tid,SYSTEM_CALLER,GU_CALLEE,note=f'launch design flow',alias=f'gu_flow')
     system.dialog.call(gum_tid,'',main_tid=main_tid,proposal=proposal) 
 
-    # costs=ret['costs']
-    # succeed=ret['succeed']
-    # design_stack=ret['design_stack']
-    # new_tree=gu_flow.tree
-    # new_name=design_stack['new_name']
-    # return new_tree,new_name,design_stack,costs,succeed
 

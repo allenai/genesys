@@ -13,6 +13,12 @@ from abc import ABC, abstractmethod
 
 
 
+class DesignModes(Enum):
+    MUTATION = 'Mutate existing design'
+    CROSSOVER = 'Crossover designs' # 1 to N, 2 is standard
+    SCRATCH = 'Design from scratch' # essentially mutate a new root
+
+
 class UnitDecl(BaseModel):
    unitname: str = Field(..., description="The name of the child GAU you are declaring.")
    requirements: str = Field(..., description="The requirements of the child GAU you expect to implement.")

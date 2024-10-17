@@ -31,7 +31,7 @@ from exec_utils import (
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager
 
-from .agents.flow.gau_flows import gu_design_mutation,DesignModes,RunningModes,\
+from .agents.flow.gau_flows import gu_design,DesignModes,RunningModes,\
     AGENT_TYPES,AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 from .agents.search_utils import SuperScholarSearcher
 
@@ -473,7 +473,7 @@ class ModelDiscoverySystem(exec_utils.System):
         self.sss = None
 
         # Load flows
-        self.design_fn_mutation=gu_design_mutation
+        self.design_fn=gu_design
 
     def bind_ptree(self,ptree,stream): # need to bind a tree before start working, should be done immediately
         self.ptree = ptree
@@ -595,18 +595,11 @@ class ModelDiscoverySystem(exec_utils.System):
                 stream.write(f"Starting new design session: {sess_id}")
             else:
                 stream.write(f"Restoring design session: {sess_id}")
-                mode=self.ptree.session_get(sess_id,'mode')
+                mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
         
         design_stream,log_fn=self.new_session(sess_id,stream,log_collection)
         
-        if mode==DesignModes.MUTATION:
-            self.design_fn_mutation(self,design_stream,sess_id,design_cfg,user_input,proposal,cpu_only=cpu_only,log_fn=log_fn)
-        elif mode==DesignModes.SCRATCH:
-            raise NotImplementedError('Scratch mode is unstable, do not use it')
-        elif mode==DesignModes.CROSSOVER:
-            raise NotImplementedError('Crossover mode is not implemented')
-        else:
-            raise ValueError(f'Invalid design mode: {mode}')
+        self.design_fn(self,design_stream,sess_id,design_cfg,user_input,proposal,cpu_only=cpu_only,log_fn=log_fn,mode=mode)
 
 
     @classmethod

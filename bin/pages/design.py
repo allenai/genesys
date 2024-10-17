@@ -523,9 +523,6 @@ def _design_tuning(evosys,project_dir):
         if any(['hybrid' in design_cfg['agent_types'][i] for i in design_cfg['agent_types']]):
             st.caption('***NOTE:** Hybrid agent is a weighted random selection of the options at the beginning of design. It will apply the default weights which will be presented later when it runs.*')
 
-        if mode!=DesignModes.MUTATION.value:
-            st.toast("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
-
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         

@@ -146,6 +146,8 @@ def remove_leading_indent(source_code):
     return '\n'.join(normalized_lines)
 
 def replace_from_second(text, old, new):
+    if len(text.split(old)) == 1:
+        return text
     first_part, remaining = text.split(old, 1)
     remaining = remaining.replace(old, new)
     return first_part + old + remaining

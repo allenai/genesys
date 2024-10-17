@@ -76,7 +76,7 @@ from google.cloud.firestore import DELETE_FIELD
 
 from model_discovery.agents.roles.selector import Selector
 
-from model_discovery.model.composer import GAUTree,GAUDict
+from model_discovery.model.composer import GAUTree,GAUDict,UnitSpec
 from model_discovery import utils as U
 from .configs.gam_config import ( 
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
@@ -86,6 +86,8 @@ from .configs.const import VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZO
 from .ve.run import main as ve_main
 from .ve.run import parser as ve_parser
 from .ve.run import get_history_report
+
+from model_discovery.agents.flow.gau_flows import GAU_TEMPLATE
 
 __all__ = [
     "EvolutionSystem",
@@ -1309,6 +1311,12 @@ class PhylogeneticTree:
             return tree
         else:
             return None 
+        
+    def new_gau_tree(self): # get an empty unimplemented tree
+        new_tree = GAUTree('NEW_TREE',proposal='',review='',rating=0,suggestions='')
+        root_decl = UnitSpec(unitname='root',document='',inputs=['X'],outputs=['Y'])
+        new_tree.add_unit(spec=root_decl,code=GAU_TEMPLATE,args='',desc='',review='',rating=None,children=[],gautests={},suggestions='')
+        return new_tree
     
     def get_session_input(self,sess_id:str):
         sessdata=self.design_sessions[sess_id]
@@ -1479,20 +1487,21 @@ class PhylogeneticTree:
         return implementations
 
     def propose(self, sess_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
-        sessdata=self.design_sessions[sess_id]
+        sessdata=copy.deepcopy(self.design_sessions[sess_id])
         seeds=sessdata['seed_ids']
         proposal['costs']=costs
         proposal['design_cfg']=design_cfg
         proposal['user_input']=user_input
         proposal = Proposal(**proposal)
-        title = f'{proposal.modelname}: Refinement of {seeds} by improving {proposal.selection}'
+        title = proposal.modelname
         for line in proposal.proposal.split("\n"):
             if line.startswith("# "):
                 title = line[2:]
                 break
         acronym = self.unique_acronym(proposal.modelname)
         proposal.modelname = acronym
-        metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title}
+        sessdata['mode']=sessdata['mode'].value
+        metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title, 'sess_snapshot': sessdata} # sess_snapshot is the status of the session when this sampling happens
         U.save_json(metadata, U.pjoin(self.design_dir(acronym), 'metadata.json'))
         proposal.save(self.design_dir(acronym))
         traces_dir=U.pjoin(self.design_dir(acronym),'proposal_traces')

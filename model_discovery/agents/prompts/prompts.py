@@ -1,6 +1,6 @@
 
 from ..flow.alang import AgentPrompt
-from model_discovery.model.utils.modules import UnitSpec
+from model_discovery.model.utils.modules import UnitSpec,DesignModes
 
 import re
 import json
@@ -30,7 +30,6 @@ class DebuggingStep(BaseModel):
 
 class GU_IMPLEMENTATION_RETRY_DEBUG_format(BaseModel): # for retry
    reflection: str = Field(..., description="The reflection of the feedback from the reviewer.")
-   # debugging_steps: list[DebuggingStep] = Field(..., description="The debugging steps to fix the error.")
    debugging_steps: str = Field(..., description="The debugging steps to fix the error.")
    analysis: str = Field(..., description="The analysis of how to best design and implement the GAU.")
    implementation: str = Field(..., description="The full python implementation of the GAU following the GAU format instructions.")
@@ -190,7 +189,7 @@ Do not worry about the number of tokens in your reasoning, you can use as many a
 '''
 ###################################################################################################
 ##                                                                                               ##
-## GU Mutate from existing design prompts                                                        ##
+## GU Mutation & Crossover
 ##                                                                                               ##
 ###################################################################################################
 '''
@@ -200,23 +199,41 @@ Do not worry about the number of tokens in your reasoning, you can use as many a
 
 
 
-def build_GUM_QUERY(seed,refs=None,instruct=None,user_input=None):
-   query = f"""
+def build_GU_QUERY(seeds,refs=None,instruct=None,user_input=None,mode=DesignModes.MUTATION):
+   if mode==DesignModes.MUTATION:
+      query = f"""
 # Seed Design
 
 You are tasked with improving the following seed design:
 
 ---
 
-{seed.to_prompt()}
+{seeds[0].to_prompt()}
 
 ---
+"""
+   elif mode==DesignModes.CROSSOVER:
+      seeds_prompt='\n\n---\n\n'.join([seed.to_prompt() for seed in seeds])
+      query = f"""
+# Seed Design
+
+You are tasked to produce a new design by combining the following parent designs:
+
+---
+
+{seeds_prompt}
+
+---
+"""
+   elif mode==DesignModes.SCRATCH:
+      query = f"""
+You are tasked to produce a new design from scratch.
 """
    if refs is not None:
       query += '''
 # References
 
-Below are some references that may inspire your design improvements. These references come from various libraries, each offering different types of resources:
+Below are some references that may inspire your design. These references come from various libraries, each offering different types of resources:
 
 - **DesignArtifact**: Contains previous designs that have been fully implemented and successfully passed tests.
 - **ReferenceCore**: Contains typical and representative autoregressive language model designs with LM block implementations.
@@ -236,6 +253,7 @@ Here are the relevant references:
    if user_input:
       query += f"\nHere are the instructions from the user, please follow them:\n{user_input}\n\n---\n"
    return query
+
 
 
 '''
@@ -566,6 +584,340 @@ GUM_DESIGN_PROPOSER_SYSTEM = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_prompt)
 GUM_DESIGN_PROPOSER_SYSTEM_2STAGE = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_2STAGE_prompt)
 GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH = AgentPrompt(GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt)
 
+
+
+GUC_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt = """
+You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. This process incorporates an iterative search and refinement workflow to enhance the quality and depth of your proposals.
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. **Input**: A sequence of embeddings X of shape (B, L, D), where:
+   - B is the batch size.
+   - L is the sequence length.
+   - D is the embedding dimension.
+2. **Intermediate Variables**: Z (e.g., memory, states, caches) passed as keyword arguments.
+
+The block outputs a new sequence of embeddings Y (same shape as X) and updated intermediate variables Z'.
+
+The overall architecture can be represented as follows:
+
+```python
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}}  # Initialized as an empty dictionary, updated by each block.
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+Your goal is to design a proposal for a novel LM block that outperforms current state-of-the-art models, aiming for:
+- Low perplexity on corpora,
+- High accuracy on downstream tasks,
+- Robustness to varied inputs,
+- Efficiency in both training and inference,
+- Excellent scalability with more data and larger models.
+
+### Generalized Autoregressive Units (GAUs)
+
+Each LM block is decomposed into smaller components known as **Generalized Autoregressive Units (GAUs)**, which inherit from the following base class:
+
+```python
+{GAU_BASE}
+```
+
+A GAU has the following structure:
+- **Input**: A sequence of embeddings X and intermediate variables Z.
+- **Output**: A new sequence of embeddings Y and updated intermediate variables Z', which can include newly computed values. 
+
+GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
+
+## Search Capability
+
+You have access to a powerful search assistant that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This search assistant will collect information from the internet based on your queries and provide a detailed analysis of the results. This tool allows you to gather relevant information to support and enhance your proposal development process.
+
+## Progressive Proposal Process
+
+Your task is to propose a new GAU design by combining multiple parent GAU designs, you will need to reuse the good GAUs from the parents to produce a better design than both. Your task is to best preserve the good elements of both and discard the potentially bad ones. You are not encouraged to introduce brand-new units but to reuse them from the parents.
+
+Your will follow an iterative process of research, ideation, and refinement. This process consists of two main phases:
+
+### Phase 1: Multiple Search and Refinement Rounds
+
+In this phase, you will conduct multiple rounds of search and refinement without external review.
+You need to think of analyze the advantage and disadvantage of each parent, and the best way to combine the parents to get a better design. Each round consists of:
+
+1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects that can help you recombine and improve the parents. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
+
+2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
+
+3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
+
+4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
+
+5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
+
+Repeat this cycle as many times as needed until you feel your proposal is ready for review.
+
+Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+
+### Phase 2: Review and Major Refinement
+
+Once you believe your proposal is sufficiently developed:
+
+1. **Submission for Review**: Present your proposal for external review.
+
+2. **Feedback Analysis**: Carefully consider the feedback received.
+
+3. **Major Refinement**: If the proposal doesn't pass the review, use the feedback to guide a major refinement of your design. This may involve returning to Phase 1 for additional rounds of search and refinement.
+
+4. **Resubmission**: After major refinement, resubmit your proposal for another review.
+
+Repeat Phase 2 until your proposal passes the review.
+
+## Guidelines for Using the Search Assistant
+
+When using the search assistant, follow these guidelines:
+
+1. **Query Formulation**: 
+   - Construct clear, specific queries related to your current design challenges or areas of uncertainty.
+   - Use a combination of technical terms and concepts to narrow down results.
+   - Consider searching for both recent innovations and foundational papers in relevant areas.
+
+2. **Search Categories**:
+   - Use broad searches for external sources to explore cutting-edge research and diverse approaches.
+   - Utilize detailed searches of the internal library for in-depth technical information and established methodologies.
+
+3. **Result Integration**:
+   - Critically evaluate the search results and analysis provided by the search assistant for relevance and potential impact on your design.
+   - Clearly cite and reference any papers or sources that significantly influence your proposal.
+
+4. **Iterative Refinement**:
+   - Use the insights from each search to inform subsequent queries, allowing for a more focused and in-depth exploration of relevant topics.
+
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive name for your proposed design.
+2. **Motivation**: Explain the idea of how to recombine the parents to get a better design.
+3. **Problem Analysis**: Provide a detailed analysis of the recombination plan, how can they complement each other, preserve the good parts, and discard the bad ones from the parents.
+4. **Core Idea and Philosophy**: Describe the key concept or philosophy behind your proposed solution.
+5. **Design Plan**: 
+   - Outline your approach for the recombination of the parents.
+   - Provide detailed descriptions of modifications and new structures.
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the recombination of the parents.
+   - Include mathematical formulas necessary for implementation.
+   - Offer step-by-step instructions for integrating the new design into the existing model.
+7. **Research Summary**: 
+   - List key search queries used across all rounds.
+   - Summarize the most relevant findings from your searches, including insights from the search assistant's analysis.
+   - Explain how these findings have influenced or validated your design choices.
+8. **Evolution of Design**:
+   - Track major changes and improvements made across refinement rounds.
+   - Discuss how these changes address challenges or leverage new insights.
+9. **Theoretical Analysis**:
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+10. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+11. **References**: List all sources used in the proposal, properly formatted.
+
+## Best Practices for Progressive Refinement
+
+1. **Depth Over Speed**: Prioritize thorough research and thoughtful refinement over rushing to submission.
+2. **Diverse Querying**: Vary your search queries to explore different aspects of the problem and potential solutions.
+3. **Critical Thinking**: Don't just incorporate every new idea you find. Critically evaluate how each insight fits into your overall design philosophy.
+4. **Documenting Rationale**: Clearly explain the reasoning behind each major design decision, especially when pivoting based on research findings.
+5. **Balancing Innovation and Feasibility**: Strive for novel ideas, but ensure your design remains implementable within the constraints of current technology.
+6. **Cross-Disciplinary Inspiration**: Look for relevant concepts from adjacent fields that could be adapted to LM block design.
+7. **Anticipating Challenges**: Use your research to identify potential weaknesses in your design and proactively address them.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Top-down approach**: Design the recombination from the top down, breaking complex recombination plans into smaller, manageable units that can be nested together.
+- **Reusing from parents**: Avoid introducing brand-new units but to reuse them from the parents.
+
+Remember, the goal of this process is to develop a well-researched, innovative, yet implementable proposal for the recombination of parents. Take full advantage of the multiple refinement rounds to create a robust, thoroughly considered design before submitting it for review.
+
+You are now ready to begin the progressive proposal process. Start with your initial proposal and prepare for the first round of research and refinement.
+"""
+
+GUC_DESIGN_PROPOSER_SYSTEM_ISEARCH = AgentPrompt(GUC_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt)
+
+
+
+GUS_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt = """
+You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. This process incorporates an iterative search and refinement workflow to enhance the quality and depth of your proposals.
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. **Input**: A sequence of embeddings X of shape (B, L, D), where:
+   - B is the batch size.
+   - L is the sequence length.
+   - D is the embedding dimension.
+2. **Intermediate Variables**: Z (e.g., memory, states, caches) passed as keyword arguments.
+
+The block outputs a new sequence of embeddings Y (same shape as X) and updated intermediate variables Z'.
+
+The overall architecture can be represented as follows:
+
+```python
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}}  # Initialized as an empty dictionary, updated by each block.
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+Your goal is to design a proposal for a novel LM block that outperforms current state-of-the-art models, aiming for:
+- Low perplexity on corpora,
+- High accuracy on downstream tasks,
+- Robustness to varied inputs,
+- Efficiency in both training and inference,
+- Excellent scalability with more data and larger models.
+
+### Generalized Autoregressive Units (GAUs)
+
+Each LM block is decomposed into smaller components known as **Generalized Autoregressive Units (GAUs)**, which inherit from the following base class:
+
+```python
+{GAU_BASE}
+```
+
+A GAU has the following structure:
+- **Input**: A sequence of embeddings X and intermediate variables Z.
+- **Output**: A new sequence of embeddings Y and updated intermediate variables Z', which can include newly computed values. 
+
+GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
+
+## Search Capability
+
+You have access to a powerful search assistant that can query both external academic sources (such as arXiv, Papers with Code, and Semantic Scholar) and an internal library of research papers and technical documents. This search assistant will collect information from the internet based on your queries and provide a detailed analysis of the results. This tool allows you to gather relevant information to support and enhance your proposal development process.
+
+## Progressive Proposal Process
+
+Your task is to propose a new GAU design from scratch using the information provided.
+
+Your will follow an iterative process of research, ideation, and refinement. This process consists of two main phases:
+
+### Phase 1: Multiple Search and Refinement Rounds
+
+In this phase, you will conduct multiple rounds of search and refinement without external review.
+You need to think of how to innovate the LM block design that beyond the existing state-of-the-art. Each round consists of:
+
+1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects that can help you innovate the LM block design. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
+
+2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
+
+3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
+
+4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
+
+5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
+
+Repeat this cycle as many times as needed until you feel your proposal is ready for review.
+
+Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+
+### Phase 2: Review and Major Refinement
+
+Once you believe your proposal is sufficiently developed:
+
+1. **Submission for Review**: Present your proposal for external review.
+
+2. **Feedback Analysis**: Carefully consider the feedback received.
+
+3. **Major Refinement**: If the proposal doesn't pass the review, use the feedback to guide a major refinement of your design. This may involve returning to Phase 1 for additional rounds of search and refinement.
+
+4. **Resubmission**: After major refinement, resubmit your proposal for another review.
+
+Repeat Phase 2 until your proposal passes the review.
+
+## Guidelines for Using the Search Assistant
+
+When using the search assistant, follow these guidelines:
+
+1. **Query Formulation**: 
+   - Construct clear, specific queries related to your current design challenges or areas of uncertainty.
+   - Use a combination of technical terms and concepts to narrow down results.
+   - Consider searching for both recent innovations and foundational papers in relevant areas.
+
+2. **Search Categories**:
+   - Use broad searches for external sources to explore cutting-edge research and diverse approaches.
+   - Utilize detailed searches of the internal library for in-depth technical information and established methodologies.
+
+3. **Result Integration**:
+   - Critically evaluate the search results and analysis provided by the search assistant for relevance and potential impact on your design.
+   - Clearly cite and reference any papers or sources that significantly influence your proposal.
+
+4. **Iterative Refinement**:
+   - Use the insights from each search to inform subsequent queries, allowing for a more focused and in-depth exploration of relevant topics.
+
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive name for your proposed design.
+2. **Motivation**: Explain the idea of how to innovate the LM block design.
+3. **Problem Analysis**: Provide a detailed analysis of the innovation plan, how can it outperform the existing state-of-the-art.
+4. **Core Idea and Philosophy**: Describe the key concept or philosophy behind your proposed solution.
+5. **Design Plan**: 
+   - Outline your approach for the recombination of the parents.
+   - Provide detailed descriptions of modifications and new structures.
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the innovation of the LM block design.
+   - Include mathematical formulas necessary for implementation.
+   - Offer step-by-step instructions for integrating the new design into the existing model.
+7. **Research Summary**: 
+   - List key search queries used across all rounds.
+   - Summarize the most relevant findings from your searches, including insights from the search assistant's analysis.
+   - Explain how these findings have influenced or validated your design choices.
+8. **Evolution of Design**:
+   - Track major changes and improvements made across refinement rounds.
+   - Discuss how these changes address challenges or leverage new insights.
+9. **Theoretical Analysis**:
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+10. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+11. **References**: List all sources used in the proposal, properly formatted.
+
+## Best Practices for Progressive Refinement
+
+1. **Depth Over Speed**: Prioritize thorough research and thoughtful refinement over rushing to submission.
+2. **Diverse Querying**: Vary your search queries to explore different aspects of the problem and potential solutions.
+3. **Critical Thinking**: Don't just incorporate every new idea you find. Critically evaluate how each insight fits into your overall design philosophy.
+4. **Documenting Rationale**: Clearly explain the reasoning behind each major design decision, especially when pivoting based on research findings.
+5. **Balancing Innovation and Feasibility**: Strive for novel ideas, but ensure your design remains implementable within the constraints of current technology.
+6. **Cross-Disciplinary Inspiration**: Look for relevant concepts from adjacent fields that could be adapted to LM block design.
+7. **Anticipating Challenges**: Use your research to identify potential weaknesses in your design and proactively address them.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Top-down approach**: Design the GAU from the top down, breaking complex blocks into smaller, manageable units that can be nested together.
+- **Creativity matters**: Strive for a design that is innovative over the existing models. 
+- **Local modifications**: Focus on making changes to a single GAU (excluding the root unit) and its potential child GAUs. Ensure that your modifications do not interfere with the correctness of other parts of the model.
+- **Simplicity and implementability**: Prioritize designs that are relatively simple and feasible to implement. Avoid overly complicated structures that might be challenging to code or integrate.
+- **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
+- **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
+
+Remember, the goal of this process is to develop a well-researched, innovative, yet implementable proposal for an LM block design. Take full advantage of the multiple refinement rounds to create a robust, thoroughly considered design before submitting for review. 
+
+You are now ready to begin the progressive proposal process. Start with your initial proposal and prepare for the first round of research and refinement.
+"""
+
+GUS_DESIGN_PROPOSER_SYSTEM_ISEARCH = AgentPrompt(GUS_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt)
+
+
+
 # endregion
 
 
@@ -686,6 +1038,105 @@ Check the seed design, then give your proposal and the selection of the GAU to m
       return AgentPrompt(GUM_DESIGN_PROPOSAL_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_STAGE2_format)
 
 
+
+
+   
+class GUC_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
+   ideation: str = Field(..., description="The initial ideation about the direction of how to recombine the parents.")
+   instructions: str = Field(..., description="The instructions for the information gathering assistant.")
+
+class GUC_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
+   abstract: str = Field(..., description="The abstract of the proposal, a concise summary of the core idea of the proposal.")
+   proposal: str = Field(..., description="The full proposal, keep the format instructions.")
+   modelname: str = Field(..., description="The name of the resulting model by recombining the parents.")
+   
+GUC_DESIGN_PROPOSAL_ISEARCH_prompt = """
+{PARENTS}
+
+1. Analyze the parents:
+   - Identify key features, advantages and limitations of existing architectures.
+   - Determine best ways to combine the parents to get a better design.
+
+2. Formulate search queries:
+   - Create a high-level query for external sources to explore recent advancements in LM architectures.
+   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
+
+3. Outline the key areas of investigation for recombining the parents, such as:
+   - Efficiency improvements
+   - Scalability enhancements
+   - New attention mechanisms
+   - Innovative ways to handle context or memory
+
+4. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
+
+Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
+"""
+
+
+GUC_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
+Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
+
+{SEARCH_RESULTS}
+
+Based on the seed design, search results, and your analysis, develop a comprehensive proposal for recombining the parents. Remember to follow the output format strictly.
+
+Ensure your proposal is best recombining the parents that aim to advance state-of-the-art LM performance and clearly articulate how your design improves upon existing architectures.
+"""
+
+GUC_DESIGN_PROPOSAL_ISEARCH=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUC_DESIGN_PROPOSAL_STAGE1_format)
+GUC_DESIGN_PROPOSAL_ISEARCH_FINISH=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt,GENERAL_JSON_parser,GUC_DESIGN_PROPOSAL_STAGE2_format)
+
+
+
+
+
+class GUS_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
+   ideation: str = Field(..., description="The initial ideation about the direction of how to propose a novel design.")
+   instructions: str = Field(..., description="The instructions for the information gathering assistant.")
+
+class GUS_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
+   abstract: str = Field(..., description="The abstract of the proposal, a concise summary of the core idea of the proposal.")
+   proposal: str = Field(..., description="The full proposal, keep the format instructions.")
+   modelname: str = Field(..., description="The name of the resulting model in your proposal.")
+   
+GUS_DESIGN_PROPOSAL_ISEARCH_prompt = """
+{REFS}
+
+Based on the provided information:
+
+1. Analyze the current state of the arts of LM block designs:
+   - Identify key features and limitations of existing architectures.
+   - Determine potential areas for innovation or improvement.
+
+2. Formulate search queries:
+   - Create a high-level query for external sources to explore recent advancements in LM architectures.
+   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
+
+3. Outline the key areas of investigation for developing a novel LM block design, such as:
+   - Efficiency improvements
+   - Scalability enhancements
+   - New attention mechanisms
+   - Innovative ways to handle context or memory
+
+4. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
+
+Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
+"""
+
+GUS_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
+Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
+
+{SEARCH_RESULTS}
+
+Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
+
+Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
+"""
+GUS_DESIGN_PROPOSAL_ISEARCH=AgentPrompt(GUS_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUS_DESIGN_PROPOSAL_STAGE1_format)
+GUS_DESIGN_PROPOSAL_ISEARCH_FINISH=AgentPrompt(GUS_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt,GENERAL_JSON_parser,GUS_DESIGN_PROPOSAL_STAGE2_format)
+
+
+
 # endregion
 
 
@@ -733,10 +1184,67 @@ GUM_DESIGN_PROPOSAL_ISEARCH_CONT=AgentPrompt(GUM_DESIGN_PROPOSAL_ISEARCH_CONT_pr
 
 
 
-""" ============================= GUM Proposal Reviewer System ===================================== """
+""" ============================= GU Proposal Reviewer System ===================================== """
 
 
-# region GUM Proposal Reviewer System
+# region GU Proposal Reviewer System
+
+
+
+GENERAL_REVIEWER_INSTRUCTIONS = """
+## Instructions for Reviewing the Proposal
+
+1. **Conduct Investigations before Reviewing**:
+   - Use the provided search functionality to gather information about existing research and implementations related to the proposal.
+   - You will be asked to conduct multiple rounds of search if necessary to gather comprehensive information.
+
+2. **Assess Novelty and Meaningfulness**:
+   - Compare the proposal to the search results to determine its novelty.
+   - Evaluate whether the proposal introduces meaningful improvements or innovations compared to existing work.
+
+3. **Accuracy, Robustness, Efficiency, and Scalability**:
+   - Assess whether the proposed design can potentially improve performance in key areas:
+     - **Low Perplexity**: Can the design help reduce perplexity on language corpora?
+     - **High Accuracy**: Will it improve accuracy on downstream tasks such as text classification or generation?
+     - **Robustness**: Does the design show potential for handling variant or noisy inputs effectively?
+     - **Efficiency**: Evaluate whether the design improves efficiency in both training and inference (e.g., faster computation or lower memory usage).
+     - **Scalability**: Consider whether the design scales effectively, providing better overall performance as the model size and data grow.
+
+4. **Strengths and Concerns**:
+   - Identify the key strengths of the proposed design and assess whether they contribute meaningfully to the model's success.
+   - Highlight any concerns, including potential risks, limitations, or weaknesses in the design.
+
+5. **Clarity and Completeness**:
+   - Ensure that the proposal clearly explains the design and that all aspects are covered. Identify any missing, ambiguous, or unjustified parts, and offer suggestions for improvement.
+
+6. **Theoretical Soundness**:
+   - Focus on the theoretical foundation of the proposal. Since empirical results are not expected at this stage, evaluate whether the design is theoretically sound and aligns with the stated objectives.
+
+7.  **No Expectation of Empirical Evaluation**: 
+   - The current review is based on design and theory. You should not expect empirical results or a fully implemented model at this stage.
+"""
+
+
+
+GU_REVIEW_PROCESS_INSTRUCTIONS = """
+
+### Review Process:
+Your review should include:
+- A summary of the **highlights** and **concerns** regarding the design.
+- An assessment of the design's **accuracy**, **robustness**, **efficiency**, and **novelty**.
+- **Suggestions for improvement**, where necessary.
+
+### Rating System:
+
+Your rating will determine whether the proposal passes. Assign a **float value between 0 and 5**:
+- **1**: Poor design with major issues.
+- **2**: Not good enough; significant improvement needed.
+- **3**: Good design but with room for refinement.
+- **4**: Excellent design, well thought out and near approval.
+- **5**: Outstanding design, highly innovative and strongly recommended.
+
+Provide a **rating** based on how well the design meets the criteria above. The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
+"""
 
 
 GUM_PROPOSAL_REVIEWER_SYSTEM_prompt = """
@@ -751,54 +1259,54 @@ Each **GAU** has the following characteristics:
 
 The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
 
-### Instructions for Reviewing the GAU Proposal:
+The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
 
-1. **Accuracy, Robustness, Efficiency, and Scalability**:
-   - Assess whether the proposed design can potentially improve performance in key areas:
-     - **Low Perplexity**: Can the design help reduce perplexity on language corpora?
-     - **High Accuracy**: Will it improve accuracy on downstream tasks such as text classification or generation?
-     - **Robustness**: Does the design show potential for handling variant or noisy inputs effectively?
-     - **Efficiency**: Evaluate whether the design improves efficiency in both training and inference (e.g., faster computation or lower memory usage).
-     - **Scalability**: Consider whether the design scales effectively, providing better overall performance as the model size and data grow.
-
-2. **Novelty**:
-   - Ensure the proposal introduces new ideas and avoids simply replicating existing architectures, such as standard Transformer blocks.
-
-3. **Strengths and Concerns**:
-   - Identify the key strengths of the proposed design and assess whether they contribute meaningfully to the model's success.
-   - Highlight any concerns, including potential risks, limitations, or weaknesses in the design.
-
-4. **Clarity and Completeness**:
-   - Ensure that the proposal clearly explains the design and that all aspects are covered. Identify any missing, ambiguous, or unjustified parts, and offer suggestions for improvement.
-
-5. **Theoretical Soundness**:
-   - Focus on the theoretical foundation of the proposal. Since empirical results are not expected at this stage, evaluate whether the design is theoretically sound and aligns with the stated objectives.
-
-7.  **No Empirical Evaluation**: 
-   - The current review is based on design and theory. You should not expect empirical results or a fully implemented model at this stage.
-
-### Review Process:
-Your review should include:
-- A summary of the **highlights** and **concerns** regarding the design.
-- An assessment of the design's **accuracy**, **robustness**, **efficiency**, and **novelty**.
-- **Suggestions for improvement**, where necessary.
-
-
-### Rating System:
-
-Your rating will determine whether the proposal passes. Assign a **float value between 0 and 5**:
-- **1**: Poor design with major issues.
-- **2**: Not good enough; significant improvement needed.
-- **3**: Good design but with room for refinement.
-- **4**: Excellent design, well thought out and near approval.
-- **5**: Outstanding design, highly innovative and strongly recommended.
-
-Provide a **rating** based on how well the design meets the criteria above. The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
-"""
+""" + GENERAL_REVIEWER_INSTRUCTIONS + GU_REVIEW_PROCESS_INSTRUCTIONS
 
 # a rating of 4 or above is required to pass. # do not let agent know
 
+
+GUC_PROPOSAL_REVIEWER_SYSTEM_prompt = """
+You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
+
+In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
+
+## GAU Characteristics
+
+Each **GAU** has the following characteristics:
+- **Input**: A sequence of embeddings X and a dictionary of intermediate variables Z, such as memory, states, or caches.
+- **Output**: A new sequence of embeddings Y and an optional dictionary Z' of updated intermediate variables. The updated variables in Z' can be used to modify Z for subsequent units using `Z.update(Z')`.
+
+The system builds complex autoregressive model blocks by nesting multiple GAUs. 
+
+The proposal you are reviewing will try to produce a new design by recombination of given parent designs:
+
+{SEED}
+
+The goal is to reuse the units from the parents to form a new design, and the new design is expected to best preserve the strengths of the parents and also to fix the issues of the parents.
+
+""" + GENERAL_REVIEWER_INSTRUCTIONS + GU_REVIEW_PROCESS_INSTRUCTIONS
+
+
+GUS_PROPOSAL_REVIEWER_SYSTEM_prompt = """
+You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
+
+In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
+
+Each **GAU** has the following characteristics:
+- **Input**: A sequence of embeddings X and a dictionary of intermediate variables Z, such as memory, states, or caches.
+- **Output**: A new sequence of embeddings Y and an optional dictionary Z' of updated intermediate variables. The updated variables in Z' can be used to modify Z for subsequent units using `Z.update(Z')`.
+
+The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
+
+The goal is to ensure that the design is theoretically sound, innovative, and has the potential to improve the performance over the state-of-the-art models.
+
+""" + GENERAL_REVIEWER_INSTRUCTIONS + GU_REVIEW_PROCESS_INSTRUCTIONS
+
+
 GUM_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUM_PROPOSAL_REVIEWER_SYSTEM_prompt)
+GUC_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUC_PROPOSAL_REVIEWER_SYSTEM_prompt)
+GUS_PROPOSAL_REVIEWER_SYSTEM = AgentPrompt(GUS_PROPOSAL_REVIEWER_SYSTEM_prompt)
 
 
 
@@ -968,6 +1476,26 @@ Your task is to conduct an initial analysis and formulate search queries to gath
 Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
 """
 
+
+GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt = """
+You are an expert reviewer evaluating a proposal for modifying a Generalized Autoregressive Unit (GAU) in an autoregressive language model block. You have been provided with the following information:
+
+**Proposal for Review**:
+{PROPOSAL}
+
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
+
+Your task is to conduct an initial analysis and formulate search queries to gather more information. Please provide:
+
+1. A brief initial analysis of the proposal, highlighting key aspects that require further investigation.
+2. A high-level query for broad external searches (arXiv, Papers with Code, Semantic Scholar).
+3. A detailed query for searching the internal vector store of research papers.
+4. Check if the proposal is novel or not compared to the previous design proposals and existing researches. 
+
+Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
+"""
+
 GUM_PROPOSAL_REVIEW_ISEARCH_CONT_prompt = """
 {SEARCH_RESULTS}
 
@@ -1014,6 +1542,8 @@ class GUM_PROPOSAL_REVIEW_ISEARCH_format(BaseModel):
 GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 GUM_PROPOSAL_REVIEW_ISEARCH_CONT=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_CONT_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 GUM_PROPOSAL_REVIEW_ISEARCH_FINAL=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_FINAL_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
+
+GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN=AgentPrompt(GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 
 # endregion
 
@@ -1069,6 +1599,10 @@ Based on this feedback, please refine your proposal by following these steps:
 2. Search and refine your proposal iteratively.
 """
       GUM_PROPOSAL_REFINEMENT_FINISH_prompt = """
+Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
+
+{SEARCH_RESULTS}
+
 Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
@@ -1194,6 +1728,98 @@ Ensure your refined proposal is comprehensive, well-justified, and directly addr
 
 
 
+
+
+
+class GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
+   reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+   analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+   keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at best recombining the parents. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
+   detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+   ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
+
+class GUC_PROPOSAL_REFINEMENT_FINISH_format(BaseModel):
+   abstract: str = Field(..., description="The abstract of the proposal, a concise summary of the core idea of the proposal.")
+   proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+   modelname: str = Field(..., description="The name of the resulting model by recombining the parents.")
+   changes: str = Field(..., description="The summary of the changes you made.") 
+
+
+GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_prompt = """
+Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
+
+---
+Review: {REVIEW}
+
+Rating: {RATING} out of 5 ({PASS_OR_NOT})
+
+Suggestions: {SUGGESTIONS}
+---
+
+Based on this feedback, please refine your proposal by following these steps:
+
+1. Reflection:
+   - Analyze the feedback critically.
+   - Identify key areas for improvement.
+   - Consider how to address each point raised by the expert.
+
+2. Search and refine your proposal iteratively.
+"""
+
+GUC_PROPOSAL_REFINEMENT_FINISH_prompt = """
+Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
+
+{SEARCH_RESULTS}
+
+Based on your reflection, search results, and your analysis, develop a comprehensive proposal for recombining the parents. Remember to follow the output format strictly.
+
+Ensure your proposal is best recombining the parents that aim to advance state-of-the-art LM performance and clearly articulate how your design improves upon existing architectures.
+"""
+
+GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_prompt,GENERAL_JSON_parser,GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format)
+GUC_PROPOSAL_REFINEMENT_FINISH=AgentPrompt(GUC_PROPOSAL_REFINEMENT_FINISH_prompt,GENERAL_JSON_parser,GUC_PROPOSAL_REFINEMENT_FINISH_format)
+
+
+
+
+
+
+
+class GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
+   reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
+   analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+   keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
+   detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+   ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
+
+class GUS_PROPOSAL_REFINEMENT_FINISH_format(BaseModel):
+   abstract: str = Field(..., description="The abstract of the proposal, a concise summary of the core idea of the proposal.")
+   proposal: str = Field(..., description="The fall proposal, keep the format instructions.")
+   modelname: str = Field(..., description="The name of the resulting model by applying the variant of GAU.")
+   changes: str = Field(..., description="The summary of the changes you made.") 
+
+
+GUS_PROPOSAL_REFINEMENT_FINISH_prompt = """
+Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
+
+{SEARCH_RESULTS}
+
+Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
+
+Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
+"""
+
+GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_prompt,GENERAL_JSON_parser,GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format)
+GUS_PROPOSAL_REFINEMENT_FINISH=AgentPrompt(GUS_PROPOSAL_REFINEMENT_FINISH_prompt,GENERAL_JSON_parser,GUS_PROPOSAL_REFINEMENT_FINISH_format)
+
+
+
+
+
+
+
+
+
 """ ============================= GUM Proposal Rereview ===================================== """
 
 
@@ -1212,7 +1838,34 @@ The designer has modified the proposal based on your previous review. Below is t
 **Change Log** (summary of modifications made):
 {CHANGES}
 
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
 
+### Review Instructions
+
+1. **Carefully review** the refined proposal and compare it against your original feedback.
+2. **Examine the change log** to determine whether the designer has successfully addressed the concerns you raised in your previous review.
+3. **Consider any new or remaining concerns** that may have surfaced in the refined proposal.
+4. Provide your **review, rating, and suggestions**. Keep in mind:
+   - Your evaluation should be based on the **design quality**, not the writing style.
+   - Any feedback on writing should be included under **suggestions**, not reflected in the rating.
+   - Do not inflate the rating simply because previous concerns were addressed. The rating should reflect the overall merit of the design at this stage.
+5. Check if the updated proposal is novel or not compared to the previous design proposals and existing researches.
+   
+### Final Note:
+Be strict and objective. Approve the proposal only if it meets the necessary standards of quality and innovation. Do not pass a proposal unless it is sufficiently strong.
+"""
+
+
+
+GUC_PROPOSAL_REREVIEW_prompt = """
+The designer has modified the proposal based on your previous review. Below is the refined version for your reconsideration:
+
+**Proposal**:
+{PROPOSAL}
+
+**Change Log** (summary of modifications made):
+{CHANGES}
 
 **Similar Design Proposals from Previous Designs**:
 {TOP_K_PPS}
@@ -1234,12 +1887,18 @@ Be strict and objective. Approve the proposal only if it meets the necessary sta
 
 
 GUM_PROPOSAL_REREVIEW = AgentPrompt(GUM_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
+GUC_PROPOSAL_REREVIEW = AgentPrompt(GUC_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 
 GUM_PROPOSAL_REREVIEW_ISEARCH_prompt = GUM_PROPOSAL_REREVIEW_prompt+ """
 Please review with the help of the search engine.
 """
 
+GUC_PROPOSAL_REREVIEW_ISEARCH_prompt = GUC_PROPOSAL_REREVIEW_prompt+ """
+Please review with the help of the search engine.
+"""
+
 GUM_PROPOSAL_REREVIEW_ISEARCH = AgentPrompt(GUM_PROPOSAL_REREVIEW_ISEARCH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
+GUC_PROPOSAL_REREVIEW_ISEARCH = AgentPrompt(GUC_PROPOSAL_REREVIEW_ISEARCH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 
 # endregion
 
@@ -2493,7 +3152,7 @@ GUM_IMPLEMENTATION_UNIT_REVIEW = AgentPrompt(GUM_IMPLEMENTATION_UNIT_REVIEW_prom
 # region Trio architecture for GU Mutate from existing design prompts
 
 
-GUMT_GUILDLINES=f"""
+GUT_GUILDLINES=f"""
 - Guildline Part 1: Overview of autoregressive language models and block structure:
 
 ---
@@ -2530,7 +3189,7 @@ GUMT_GUILDLINES=f"""
 
 
 
-GUMT_GUILDLINES_O1=f"""
+GUT_GUILDLINES_O1=f"""
 - Guildline Part 1: Overview of autoregressive language models and block structure:
 
 ---
@@ -2566,82 +3225,82 @@ GUMT_GUILDLINES_O1=f"""
 
 
 
-def gen_GUMT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=True):
-    if use_o1:
-        guildlines=GUMT_GUILDLINES_O1
-    else:
-        guildlines=GUMT_GUILDLINES
-    GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt="""
-# Implementation Planner System Prompt
+# def gen_GUT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=True):
+#     if use_o1:
+#         guildlines=GUT_GUILDLINES_O1
+#     else:
+#         guildlines=GUT_GUILDLINES
+#     GUT_IMPLEMENTATION_PLANNER_SYSTEM_prompt="""
+# # Implementation Planner System Prompt
 
-You are the Implementation Planner for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to guide the implementation process by making strategic decisions about which units to implement or refine, and providing high-level instructions to the Implementation Coder.
+# You are the Implementation Planner for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to guide the implementation process by making strategic decisions about which units to implement or refine, and providing high-level instructions to the Implementation Coder.
 
-## Background and Context
+# ## Background and Context
 
-Please refer to the following sections from the original system prompt for essential background information:
+# Please refer to the following sections from the original system prompt for essential background information:
 
-""" + guildlines + """
+# """ + guildlines + """
 
-Ensure that you are familiar with these sections as they provide crucial context for your role.
+# Ensure that you are familiar with these sections as they provide crucial context for your role.
 
-## The proposal and corresponding review for the design to implement
+# ## The proposal and corresponding review for the design to implement
 
-###  Overall Proposal for Refining the Design
+# ###  Overall Proposal for Refining the Design
 
-{PROPOSAL}
+# {PROPOSAL}
 
-### Review of the Proposal
+# ### Review of the Proposal
 
-{REVIEW}
+# {REVIEW}
 
-#### Rating
+# #### Rating
 
-{RATING} out of 5 (Passing score: >3)
+# {RATING} out of 5 (Passing score: >3)
 
-#### Proposal Selection of GAU to improve: {SELECTION}
+# #### Proposal Selection of GAU to improve: {SELECTION}
 
-## Your Responsibilities:
+# ## Your Responsibilities:
 
-1. **Analyze the Proposal**: Thoroughly understand the proposed LM design, including all GAUs and their relationships.
+# 1. **Analyze the Proposal**: Thoroughly understand the proposed LM design, including all GAUs and their relationships.
 
-2. **Prioritize Implementation**: Decide the order in which GAUs should be implemented or refined. Consider dependencies between units and the overall structure of the model.
+# 2. **Prioritize Implementation**: Decide the order in which GAUs should be implemented or refined. Consider dependencies between units and the overall structure of the model.
 
-3. **Select Next Unit**: Each round, choose either:
-   - An unimplemented GAU
-   - A previously implemented GAU that needs refinement
-   - You will not be asked in the first round, in which the coder will always start by the selected unit in the proposal
+# 3. **Select Next Unit**: Each round, choose either:
+#    - An unimplemented GAU
+#    - A previously implemented GAU that needs refinement
+#    - You will not be asked in the first round, in which the coder will always start by the selected unit in the proposal
 
-4. **Provide High-Level Instructions**: For the selected GAU, give clear, concise instructions to the Implementation Coder. These should include:
-   - The purpose and function of the GAU
-   - Key features or operations to implement
-   - Any specific requirements or constraints
-   - Potential challenges or areas that need careful consideration
+# 4. **Provide High-Level Instructions**: For the selected GAU, give clear, concise instructions to the Implementation Coder. These should include:
+#    - The purpose and function of the GAU
+#    - Key features or operations to implement
+#    - Any specific requirements or constraints
+#    - Potential challenges or areas that need careful consideration
 
-5. **Consider Dependencies**: Ensure that your instructions account for the GAU's place in the overall architecture and its interactions with other units.
+# 5. **Consider Dependencies**: Ensure that your instructions account for the GAU's place in the overall architecture and its interactions with other units.
 
-6. **Promote Innovation**: Encourage the Coder to explore novel approaches that could improve performance or efficiency, while staying true to the overall design philosophy.
+# 6. **Promote Innovation**: Encourage the Coder to explore novel approaches that could improve performance or efficiency, while staying true to the overall design philosophy.
 
-7. **Iterative Refinement**: Based on feedback from the Implementation Observer, decide when a GAU needs further refinement and what aspects to focus on.
+# 7. **Iterative Refinement**: Based on feedback from the Implementation Observer, decide when a GAU needs further refinement and what aspects to focus on.
 
-## Guidelines:
+# ## Guidelines:
 
-- Follow the design principles outlined in Guideline Part 3, particularly regarding the decomposition of complex GAUs and the declaration of child GAUs.
-- Adhere to the guidelines for designing GAUs as specified in Guideline Part 4, including class naming, initialization, and call behavior.
-- Maintain a holistic view of the model architecture as described in Guideline Part 1 and Guideline Part 2.
-- Balance between faithfulness to the proposal and openness to improvements that could enhance model performance.
-- Ensure your instructions promote code that is modular, efficient, and scalable.
-- Consider the principles of good software design, such as DRY (Don't Repeat Yourself) and SOLID principles.
-- Be prepared to adjust the implementation plan based on insights gained during the process.
+# - Follow the design principles outlined in Guideline Part 3, particularly regarding the decomposition of complex GAUs and the declaration of child GAUs.
+# - Adhere to the guidelines for designing GAUs as specified in Guideline Part 4, including class naming, initialization, and call behavior.
+# - Maintain a holistic view of the model architecture as described in Guideline Part 1 and Guideline Part 2.
+# - Balance between faithfulness to the proposal and openness to improvements that could enhance model performance.
+# - Ensure your instructions promote code that is modular, efficient, and scalable.
+# - Consider the principles of good software design, such as DRY (Don't Repeat Yourself) and SOLID principles.
+# - Be prepared to adjust the implementation plan based on insights gained during the process.
 
-Remember, your role is to guide the overall implementation strategy. You don't need to provide detailed code instructions, but rather high-level direction that will enable the Implementation Coder to write effective, innovative code that aligns with the original design principles and goals of the project.
-"""
+# Remember, your role is to guide the overall implementation strategy. You don't need to provide detailed code instructions, but rather high-level direction that will enable the Implementation Coder to write effective, innovative code that aligns with the original design principles and goals of the project.
+# """
 
-    return AgentPrompt(GUMT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
+#     return AgentPrompt(GUT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
 
 
-def gen_GUMT_IMPLEMENTATION_CODER_SYSTEM(use_o1=True):
-    if use_o1:
-      GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt="""
+def gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=True,mode=DesignModes.MUTATION):
+   if use_o1:
+      GUT_IMPLEMENTATION_CODER_SYSTEM_prompt="""
 You are the Implementation Coder for a team designing a new autoregressive language model (LM). 
 
 The goal of the team is to discover the best novel autoregressive LM block that can defeat
@@ -2711,8 +3370,8 @@ Key points:
 
 ### Instructions for the Implementation Process
 
-1. You'll receive a proposal to improve an existing LM block design.
-2. Implement the refined GAU based on the proposal.
+1. You'll receive a proposal of a novel block design.
+2. Implement the GAUs based on the proposal.
 3. Follow the GAU template:
 
 ```python
@@ -2842,7 +3501,7 @@ You can modify based on the implementations from the provided seed, but you shou
 
 9. **Be Consistent**: 
    - Ensure your implementation(s) remains consistent and fits seamlessly into the overall system architecture.
-   - Avoid introducing errors, inconsistencies, or redundant code. Your GAU should operate smoothly alongside existing GAUs and should not introduce any deviations from the overall design philosophy.
+   - Avoid introducing errors, inconsistencies, or redundant code. Your GAU should operate smoothly alongside other GAUs and should not introduce any deviations from the overall design philosophy.
 
 
 ## Proposal
@@ -2862,8 +3521,8 @@ This is the current plan and instructions from the an Implementation Planner in 
 {PLAN}
 
 """
-    else:
-      GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt="""
+   else:
+      GUT_IMPLEMENTATION_CODER_SYSTEM_prompt="""
 You are the Implementation Coder for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to write the actual code for each GAU as directed by the Implementation Planner.
 
 
@@ -2877,13 +3536,13 @@ Implementation of a GAU should follow this template:
 
 Please refer to the following sections from the original system prompt for essential background information:
 
-""" + GUMT_GUILDLINES + """
+""" + GUT_GUILDLINES + """
 
 Ensure that you are familiar with these sections as they provide crucial context for your implementation work.
 
 ## The proposal and corresponding review for the design to implement
 
-###  Overall Proposal for Refining the Design
+###  Overall Proposal
 
 {PROPOSAL}
 
@@ -2936,16 +3595,30 @@ This is the current plan and instructions from the an Implementation Planner in 
 
 Remember, you're implementing one GAU at a time. Your code should be self-contained and interact with other units only through the defined interfaces. Always consider how your implementation fits into the broader architecture of the language model as described in Guideline Part 1 and Guideline Part 2.
 """
-    return AgentPrompt(GUMT_IMPLEMENTATION_CODER_SYSTEM_prompt)
+
+   if mode==DesignModes.MUTATION:
+      GUT_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
+As a background, the proposal is going to improve the following seed design by improving the unit: {SELECTION}.
+
+{SEED}
+"""
+   elif mode==DesignModes.CROSSOVER:
+      GUT_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
+As a background, the proposal is going to produce a new design by recombination of the parent designs:
+
+{PARENTS}
+"""
+
+   return AgentPrompt(GUT_IMPLEMENTATION_CODER_SYSTEM_prompt)
    
 
 
-def gen_GUMT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=True):
-    if use_o1:
-        guildlines=GUMT_GUILDLINES_O1
-    else:
-        guildlines=GUMT_GUILDLINES
-    GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt=f"""
+def gen_GUT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=True,mode=DesignModes.MUTATION):
+   if use_o1:
+      guildlines=GUT_GUILDLINES_O1
+   else:
+      guildlines=GUT_GUILDLINES
+   GUT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt=f"""
 You are the Implementation Observer for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
 
 ## Background and Context
@@ -2979,7 +3652,6 @@ Ensure that you are familiar with these sections as they provide crucial context
    - Efficiency and performance considerations
    - Potential bugs or edge cases
    - Adherence to Python best practices and PEP 8 style guidelines
-   - Check if the implementation is simply copied from the seed. If so, you should give a score of 0 no matter what. But it is allowed to modify based on the seed. 
 
 2. **Proposal Alignment**: Ensure the implementation aligns with the overall proposal and fits seamlessly into the broader model architecture as described in Guideline Part 1 and Guideline Part 2.
 
@@ -3006,7 +3678,20 @@ Ensure that you are familiar with these sections as they provide crucial context
 
 Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
 """
-    return AgentPrompt(GUMT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt)
+
+   if mode==DesignModes.MUTATION:
+      GUT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt+="""
+As a background, the proposal is going to improve the following seed design by improving the unit: {SELECTION}.
+
+{SEED}
+"""
+   elif mode==DesignModes.CROSSOVER:
+      GUT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt+="""
+As a background, the proposal is going to produce a new design by crossover the parent designs:
+
+{PARENTS}
+"""
+   return AgentPrompt(GUT_IMPLEMENTATION_OBSERVER_SYSTEM_prompt)
 
 
 
@@ -3020,7 +3705,7 @@ Remember, your role is crucial in maintaining the quality and coherence of the o
 
 # region GUMT Implementation Refine Observe 
 
-GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt = """
+GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt = """
 #### Current Design Overview:
 Below is a tree of the GAUs that compose the language model (LM) block and the details of the GAUs:
 
@@ -3120,7 +3805,7 @@ Remember, your insights are crucial for guiding both the Planner in making strat
 Please provide your detailed review based on this structure, ensuring you address all the key points outlined above.
 """
 
-GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE = AgentPrompt(GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
@@ -3132,7 +3817,7 @@ GUMT_IMPLEMENTATION_UNIT_REFINE_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_R
 
 # region GUM Implementation Rereview 
 
-GUMT_IMPLEMENTATION_REOBSERVE_prompt = """The coder has refined the design and implementation of the GAU **{UNIT_NAME}** based on your previous feedback and the results from the checkers. The refinement follows the same proposal, but incorporates changes to address the concerns raised.
+GUT_IMPLEMENTATION_REOBSERVE_prompt = """The coder has refined the design and implementation of the GAU **{UNIT_NAME}** based on your previous feedback and the results from the checkers. The refinement follows the same proposal, but incorporates changes to address the concerns raised.
 
 ---
 
@@ -3161,7 +3846,7 @@ Please review and provide feedback on the updated implementation.
 
 
 
-GUMT_IMPLEMENTATION_REOBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_REOBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+GUT_IMPLEMENTATION_REOBSERVE = AgentPrompt(GUT_IMPLEMENTATION_REOBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
@@ -3172,7 +3857,7 @@ GUMT_IMPLEMENTATION_REOBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_REOBSERVE_prompt
 
 # region GUMT Implementation Unit Observe
 
-GUMT_IMPLEMENTATION_UNIT_OBSERVE_prompt = """
+GUT_IMPLEMENTATION_UNIT_OBSERVE_prompt = """
 #### Current Design Overview:
 Below is a tree of the GAUs that compose the language model (LM) block, along with details about each GAU:
 
@@ -3263,7 +3948,7 @@ Remember, your insights are crucial for guiding both the Planner in making strat
 Please provide your detailed review based on this structure, ensuring you address all the key points outlined above. Your thorough evaluation will play a vital role in the successful integration of this new GAU into the language model architecture.
 """
 
-GUMT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_OBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
+GUT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUT_IMPLEMENTATION_UNIT_OBSERVE_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_REVIEW_format)
 
 
 # endregion
@@ -3278,10 +3963,10 @@ GUMT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUMT_IMPLEMENTATION_UNIT_OBSERVE_
 
 # O1 Prompt guides https://platform.openai.com/docs/guides/reasoning/advice-on-prompting
 
-def gen_GUMT_IMPLEMENTATION_UNIT(refine=False,use_o1=False):
+def gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=False):
 
    if refine:
-      GUMT_IMPLEMENTATION_UNIT_prompt = """
+      GUT_IMPLEMENTATION_UNIT_prompt = """
 #### Current Design Overview: Below is a tree of the GAUs that compose the
 language model (LM) block and the details of the GAUs:
 
@@ -3303,7 +3988,7 @@ implemented:
 **Observer Suggestions**: {SUGGESTIONS}
 """
       if not use_o1:
-         GUMT_IMPLEMENTATION_UNIT_prompt+="""
+         GUT_IMPLEMENTATION_UNIT_prompt+="""
 ### Refinement Process
 
 If there is a review provided, you may start by reflecting on the feedback.
@@ -3342,20 +4027,20 @@ design, ensuring both correctness and innovation. Please also give a new name of
 this variant of the GAU.
    """
       else:
-         GUMT_IMPLEMENTATION_UNIT_prompt+="""
+         GUT_IMPLEMENTATION_UNIT_prompt+="""
 Please refine based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
 Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
-      GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
+      GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
-      GUMT_IMPLEMENTATION_UNIT_prompt = """
+      GUT_IMPLEMENTATION_UNIT_prompt = """
 #### GAU Declaration:
 Below is the declaration of the GAU you are tasked with implementing. Please ensure that your design and implementation align with the details provided:
 
 {DECLARATION}
 """
       if not use_o1:
-         GUMT_IMPLEMENTATION_UNIT_prompt+="""
+         GUT_IMPLEMENTATION_UNIT_prompt+="""
 ---
 
 ### Instructions for Implementation:
@@ -3382,16 +4067,16 @@ Below is the declaration of the GAU you are tasked with implementing. Please ens
 After completing this GAU, you will be asked to implement any remaining parts of the GAB block. Make sure your GAU is well-structured and self-contained to support the overall model design.
    """
       else:
-         GUMT_IMPLEMENTATION_UNIT_prompt+="""
+         GUT_IMPLEMENTATION_UNIT_prompt+="""
 Please implement based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
 Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
-      GUMT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
+      GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
    
    if use_o1:
-      return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
+      return AgentPrompt(GUT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
    else: 
-      return AgentPrompt(GUMT_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUMT_IMPLEMENTATION_UNIT_format)
+      return AgentPrompt(GUT_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUT_IMPLEMENTATION_UNIT_format)
 
 # endregion
 
@@ -3411,13 +4096,14 @@ Do not worry about the number of tokens in your reasoning, you can use as many a
 
 
 
-""" ============================= O1 Mutation Proposer Background Prompt ===================================== """
+""" ============================= O1 Proposer Background Prompt ===================================== """
 
 
-# region O1M Proposer Background Prompt
+# region O1 Proposer Background Prompt
 
 
-O1M_PROPOSER_BACKGROUND_prompt = """
+
+O1_PROPOSER_BACKGROUND_prompt = """
 You are a language modeling researcher, your role is to propose a novel autoregressive language model (LM) block design. 
 
 ## Background
@@ -3464,7 +4150,10 @@ A GAU has the following structure:
 
 GAUs can be arranged hierarchically, with the output of one GAU feeding into another. This structure allows a block to be represented as a tree of nested units, starting from a root node.
 
+"""
 
+
+PROPOSER_MUTATION_INSTRUCTIONS_prompt = """
 ## Instructions
 
 Your task is to improve a seed design by modifying one GAU which may have multiple children GAUs, you will need to select one specific GAU in the seed to work on. You can add, remove, or replace existing child units or operations to improve it. 
@@ -3497,9 +4186,33 @@ You need to think about which GAU to modify and how to improve it based on the i
 
 
 
-O1M_PROPOSER_BACKGROUND = AgentPrompt(O1M_PROPOSER_BACKGROUND_prompt)
+PROPOSER_CROSSOVER_INSTRUCTIONS_prompt = """
+## Instructions
+
+Your task is to propose a new GAU design by combining multiple parent GAU designs, you will need to reuse the good GAUs from the parents to produce a better design than both. Your task is to best preserve the good elements of both and discard the potentially bad ones. You are not encouraged to introduce brand-new units but to reuse them from the parents.
+
+## Task
+
+Here are the parent designs includes the units that you can reuse:
+
+{PARENTS}
+
+You need to think about how to best recombine the parents based on the instructions above.   
+"""
+
+PROPOSER_SCRATCH_INSTRUCTIONS_prompt = """
+## Instructions
+
+Your task is to propose a new GAU design from scratch using the information provided.
+
+{REFS}
+
+"""
 
 
+O1M_PROPOSER_BACKGROUND = AgentPrompt(O1_PROPOSER_BACKGROUND_prompt+PROPOSER_MUTATION_INSTRUCTIONS_prompt)
+O1C_PROPOSER_BACKGROUND = AgentPrompt(O1_PROPOSER_BACKGROUND_prompt+PROPOSER_CROSSOVER_INSTRUCTIONS_prompt)
+O1S_PROPOSER_BACKGROUND = AgentPrompt(O1_PROPOSER_BACKGROUND_prompt+PROPOSER_SCRATCH_INSTRUCTIONS_prompt)
 
 # endregion
 
@@ -3510,7 +4223,66 @@ O1M_PROPOSER_BACKGROUND = AgentPrompt(O1M_PROPOSER_BACKGROUND_prompt)
 
 # region O1M Proposer Search Prompt
 
-O1M_DESIGN_PROPOSAL_prompt = """
+
+
+O1M_BEST_PRACTICES = """
+## Best Practices for Progressive Refinement
+
+1. Prioritize Depth: Conduct thorough research before finalizing your proposal.
+
+2. Diverse Exploration: Use varied search queries to examine different aspects of the problem and potential solutions.
+
+3. Critical Evaluation: Carefully assess how new insights fit into your overall design philosophy.
+
+4. Rationale Documentation: Clearly explain the reasoning behind major design decisions, especially when pivoting based on research findings.
+
+5. Innovation vs. Feasibility: Strive for novel ideas while ensuring implementability within current technological constraints.
+
+6. Interdisciplinary Approach: Seek adaptable concepts from related fields that could enhance LM block design.
+
+7. Proactive Problem-Solving: Use research to identify and address potential weaknesses in your design.
+
+8. Iterative Refinement: Continuously improve your proposal based on new information and insights.
+
+9. Coherence and Consistency: Ensure all elements of your proposal align with your core design principles.
+
+10. Quantitative Backing: Where possible, support your design choices with relevant data or performance metrics.
+
+Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
+"""
+
+
+
+
+
+O1C_BEST_PRACTICES = """
+## Best Practices for Progressive Refinement
+
+1. Prioritize Depth: Conduct thorough research before finalizing your proposal.
+
+2. Diverse Exploration: Use varied search queries to examine different aspects of the problem and potential solutions.
+
+3. Critical Evaluation: Carefully assess how new insights fit into your overall design philosophy.
+
+4. Rationale Documentation: Clearly explain the reasoning behind major design decisions, especially when pivoting based on research findings.
+
+5. Interdisciplinary Approach: Seek adaptable concepts from related fields that could better decide how to recombine the parents.
+
+6. Proactive Problem-Solving: Use research to identify and address potential weaknesses in parents and preserve the good elements.
+
+7. Iterative Refinement: Continuously improve your proposal based on new information and insights. Also improve your skill of formulating search queries based on the feedback from the search engine to better locate the information you need.
+
+8. Coherence and Consistency: Ensure all elements of your proposal align with your core design principles.
+
+9. Quantitative Backing: Where possible, support your design choices with relevant data or performance metrics.
+
+10. Reuse Existing Units: You are encouraged to reuse the existing units from the parents. Edit it only when it is necessary for combining certain units from parents. 
+"""
+
+
+
+
+PROPOSAL_SEARCH_INSTRUCTIONS = """
 You will start your research proposal process by investigation, ideation, and literature reviews. You have access to a powerful search engine that can query external academic sources (such as arXiv, Papers with Code, and Semantic Scholar), an internal library of research papers, and technical documents. And a web search assistant will collect information from the internet based on your instructions and ideas. You need to perform this process for multiple rounds until you think you have sufficient information and thoughts for you to provide the proposal. 
 Follow these guidelines in your response:
 
@@ -3535,35 +4307,10 @@ Follow these guidelines in your response:
    - Do not give your proposal now, the proposal you give will not be considered, you will be able to give your proposal later with further instructions after you say "I'm ready". 
    - Note: The search queries (if any) in your responses will be still processed, and passed to you, but you will not be able to access the search engine afterward.
 
-## Best Practices for Progressive Refinement
-
-1. Prioritize Depth: Conduct thorough research before finalizing your proposal.
-
-2. Diverse Exploration: Use varied search queries to examine different aspects of the problem and potential solutions.
-
-3. Critical Evaluation: Carefully assess how new insights fit into your overall design philosophy.
-
-4. Rationale Documentation: Clearly explain the reasoning behind major design decisions, especially when pivoting based on research findings.
-
-5. Innovation vs. Feasibility: Strive for novel ideas while ensuring implementability within current technological constraints.
-
-6. Interdisciplinary Approach: Seek adaptable concepts from related fields that could enhance LM block design.
-
-7. Proactive Problem-Solving: Use research to identify and address potential weaknesses in your design.
-
-8. Iterative Refinement: Continuously improve your proposal based on new information and insights. Also improve your skill of formulating search queries based on the feedback from the search engine to better locate the information you need.
-
-9. Coherence and Consistency: Ensure all elements of your proposal align with your core design principles.
-
-10. Quantitative Backing: Where possible, support your design choices with relevant data or performance metrics.
-
-Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
-Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 
-O1M_DESIGN_PROPOSAL_REFINEMENT_prompt = """
+PROPOSAL_REFINEMENT_SEARCH_INSTRUCTIONS = """
 Your proposal has been reviewed by an expert. Please carefully consider the following feedback:
 
 ---
@@ -3596,34 +4343,10 @@ Follow these guidelines in your response:
    - You are not allowed to propose without adaquate information, your first few readiness may not be accepted.
    - Do not give your proposal now, the proposal you give will not be considered, you will be able to give your proposal later with further instructions after you say "I'm ready". 
    - Note: The search queries (if any) in your responses will be still processed, and passed to you, but you will not be able to access the search engine afterward.
-   
-## Best Practices for Progressive Refinement
 
-1. Prioritize Depth: Conduct thorough research before finalizing your proposal.
-
-2. Diverse Exploration: Use varied search queries to examine different aspects of the problem and potential solutions.
-
-3. Critical Evaluation: Carefully assess how new insights fit into your overall design philosophy.
-
-4. Rationale Documentation: Clearly explain the reasoning behind major design decisions, especially when pivoting based on research findings.
-
-5. Innovation vs. Feasibility: Strive for novel ideas while ensuring implementability within current technological constraints.
-
-6. Interdisciplinary Approach: Seek adaptable concepts from related fields that could enhance LM block design.
-
-7. Proactive Problem-Solving: Use research to identify and address potential weaknesses in your design.
-
-8. Iterative Refinement: Continuously improve your proposal based on new information and insights.
-
-9. Coherence and Consistency: Ensure all elements of your proposal align with your core design principles.
-
-10. Quantitative Backing: Where possible, support your design choices with relevant data or performance metrics.
-
-Remember, the goal is to develop a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
-
-Now start your analysis. Make sure the keywords and description are formulated properly.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
+
+
 
 def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
@@ -3647,8 +4370,25 @@ def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       return output
 
 
+SEARCH_INSTRUCTIONS_ENDING = """
+Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
+Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
+"""
+
+O1M_DESIGN_PROPOSAL_prompt = PROPOSAL_SEARCH_INSTRUCTIONS + O1M_BEST_PRACTICES + SEARCH_INSTRUCTIONS_ENDING
+O1C_DESIGN_PROPOSAL_prompt = PROPOSAL_SEARCH_INSTRUCTIONS + O1C_BEST_PRACTICES + SEARCH_INSTRUCTIONS_ENDING
+
+
+O1M_DESIGN_PROPOSAL_REFINEMENT_prompt = PROPOSAL_REFINEMENT_SEARCH_INSTRUCTIONS + O1M_BEST_PRACTICES + SEARCH_INSTRUCTIONS_ENDING
+O1C_DESIGN_PROPOSAL_REFINEMENT_prompt = PROPOSAL_REFINEMENT_SEARCH_INSTRUCTIONS + O1C_BEST_PRACTICES + SEARCH_INSTRUCTIONS_ENDING
+
+
+
 O1M_DESIGN_PROPOSAL = AgentPrompt(O1M_DESIGN_PROPOSAL_prompt,O1_SEARCH_parser)
+O1C_DESIGN_PROPOSAL = AgentPrompt(O1C_DESIGN_PROPOSAL_prompt,O1_SEARCH_parser)
+
 O1M_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1M_DESIGN_PROPOSAL_REFINEMENT_prompt,O1_SEARCH_parser)
+O1C_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1C_DESIGN_PROPOSAL_REFINEMENT_prompt,O1_SEARCH_parser)
 
 # endregion
 
@@ -3678,7 +4418,8 @@ O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt,O1_SEAR
 # region O1M Proposer Proposal Finish Prompt
 # https://www.reddit.com/r/OpenAI/comments/1fsdc5z/o1mini_tends_to_get_better_results_on_the_2024/
 
-O1M_PROPOSAL_FINISH_prompt = """
+
+PROPOSAL_FINISH_HEADER = """
 Here is more search results based on your last response, you will not be able to access the search assistant again after this, so do not include any more search queries in your response:
 
 {SEARCH_RESULTS}
@@ -3686,6 +4427,10 @@ Here is more search results based on your last response, you will not be able to
 Firtly, provide a short model name for your design, like "Mamba", "Llama3", "GPT-4o" and so on. Wrap it in a quoted block like this: ```model_name YOUR_MODEL_NAME```.
 Then, give an abstract of your proposal that describes the core idea of your design in one sentence. Wrap it in a quoted block like this: ```abstract YOUR_ABSTRACT```.
 Next, give your proposal in the following structure:
+"""
+
+
+O1M_PROPOSAL_FINISH_prompt = PROPOSAL_FINISH_HEADER+ """
 
 ## Proposal Structure
 
@@ -3725,6 +4470,76 @@ Do not worry about the number of tokens in your reasoning and your response, you
 """
 
 
+O1C_PROPOSAL_FINISH_prompt = PROPOSAL_FINISH_HEADER + """
+
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive model name for your proposed design. It should be a single line level 1 heading. It should also be the only level 1 heading in your response.
+2. **Motivation**: Explain your idea about how to best recombine the parents, incorporating insights from your research.
+3. **Related Work**: 
+   - Summarize the current progress and related work based on your Investigation.
+   - Explain how these findings have influenced or validated your recombination choices.
+4. **Analysis**: 
+  - Provide a detailed analysis of the advantages and disadvantages of parent units. Describe the key concept or philosophy behind your proposed recombination.
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+5. **Design Plan**: 
+   - Outline your approach for the LM block recombination.
+   - Provide detailed descriptions of modifications and new structures.
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the recombined parents.
+   - Include mathematical formulas necessary for implementation.
+7. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+8. **References**: List all sources used in the proposal, properly formatted.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps understand the expected improvements.
+- **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
+
+Now please give your final proposal. Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
+"""
+
+
+
+O1S_PROPOSAL_FINISH_prompt = PROPOSAL_FINISH_HEADER+ """
+## Proposal Structure
+
+Maintain and update the following structure in your proposal throughout the process:
+
+1. **Title**: A concise, descriptive model name for your proposed design. It should be a single line level 1 heading. It should also be the only level 1 heading in your response.
+2. **Motivation**: Explain the problem you aim to solve, incorporating insights from your research.
+3. **Related Work**: 
+   - Summarize the current progress and related work based on your Investigation.
+   - Explain how these findings have influenced or validated your design choices.
+4. **Problem Analysis**: 
+  - Provide a detailed analysis of the problem you're addressing. Describe the key concept or philosophy behind your proposed solution.
+   - Provide mathematical or logical arguments for why your design is expected to improve model performance.
+   - Discuss potential trade-offs and how they are addressed.
+5. **Design Plan**: 
+   - Outline your approach for the LM block design.
+   - Provide detailed descriptions of modifications and new structures.
+   - Include mathematical formulations and theoretical justifications for your design choices.
+6. **Implementation Guidelines**:
+   - Provide pseudo-code for the proposed design.
+   - Include mathematical formulas necessary for implementation.
+7. **Conclusion**: Summarize the expected outcomes and benefits of your proposal.
+8. **References**: List all sources used in the proposal, properly formatted.
+
+## Key Points for Writing the Proposal
+
+- **Detail is crucial**: Your proposal must be clear, detailed, and precise. Do not worry about length; focus on the clarity of your ideas.
+- **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
+- **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
+
+Now please give your final proposal. Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
+"""
+
+
 def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
@@ -3744,6 +4559,8 @@ def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       return output
 
 O1M_PROPOSAL_FINISH = AgentPrompt(O1M_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
+O1C_PROPOSAL_FINISH = AgentPrompt(O1C_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
+O1S_PROPOSAL_FINISH = AgentPrompt(O1S_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
 
 def gen_O1_SELECTION_DEBUG_prompt(selections,SELECTIONS):
    succeed=False
@@ -3774,6 +4591,7 @@ def gen_O1_SELECTION_DEBUG_prompt(selections,SELECTIONS):
 # region O1M Reviewer Prompt
 
 
+
 O1M_PROPOSAL_REVIEWER_BACKGROUND_prompt = """
 You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
 
@@ -3787,36 +4605,7 @@ Each **GAU** has the following characteristics:
 
 The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce modifications to one GAU in this structure.
 
-## Instructions for Reviewing the GAU Proposal
-
-1. **Conduct Investigations before Reviewing**:
-   - Use the provided search functionality to gather information about existing research and implementations related to the proposal.
-   - You will be asked to conduct multiple rounds of search if necessary to gather comprehensive information.
-
-2. **Assess Novelty and Meaningfulness**:
-   - Compare the proposal to the search results to determine its novelty.
-   - Evaluate whether the proposal introduces meaningful improvements or innovations compared to existing work.
-
-3. **Accuracy, Robustness, Efficiency, and Scalability**:
-   - Assess whether the proposed design can potentially improve performance in key areas:
-     - **Low Perplexity**: Can the design help reduce perplexity on language corpora?
-     - **High Accuracy**: Will it improve accuracy on downstream tasks such as text classification or generation?
-     - **Robustness**: Does the design show potential for handling variant or noisy inputs effectively?
-     - **Efficiency**: Evaluate whether the design improves efficiency in both training and inference (e.g., faster computation or lower memory usage).
-     - **Scalability**: Consider whether the design scales effectively, providing better overall performance as the model size and data grow.
-
-4. **Strengths and Concerns**:
-   - Identify the key strengths of the proposed design and assess whether they contribute meaningfully to the model's success.
-   - Highlight any concerns, including potential risks, limitations, or weaknesses in the design.
-
-5. **Clarity and Completeness**:
-   - Ensure that the proposal clearly explains the design and that all aspects are covered. Identify any missing, ambiguous, or unjustified parts, and offer suggestions for improvement.
-
-6. **Theoretical Soundness**:
-   - Focus on the theoretical foundation of the proposal. Since empirical results are not expected at this stage, evaluate whether the design is theoretically sound and aligns with the stated objectives.
-
-7.  **No Expectation of Empirical Evaluation**: 
-   - The current review is based on design and theory. You should not expect empirical results or a fully implemented model at this stage.
+""" + GENERAL_REVIEWER_INSTRUCTIONS + """
 
 The goal is to ensure that the GAU design is theoretically sound, innovative, and ready for further development and integration into the model.
 
@@ -3836,9 +4625,68 @@ The goal is to ensure that the GAU design is theoretically sound, innovative, an
 {TOP_K_PPS}
 """
 
+O1C_PROPOSAL_REVIEWER_BACKGROUND_prompt = """
+You are an expert in autoregressive language model research, and you have been asked to review a proposal for improving the design of an autoregressive language model (LM) block.
+
+In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
+
+## GAU Characteristics
+
+Each **GAU** has the following characteristics:
+- **Input**: A sequence of embeddings X and a dictionary of intermediate variables Z, such as memory, states, or caches.
+- **Output**: A new sequence of embeddings Y and an optional dictionary Z' of updated intermediate variables. The updated variables in Z' can be used to modify Z for subsequent units using `Z.update(Z')`.
+
+The system builds complex autoregressive model blocks by nesting multiple GAUs. 
+
+The proposal you are reviewing will try to produce a new design by recombination of given parent designs:
+
+{SEED}
+
+The goal is to reuse the units from the parents to form a new design, and the new design is expected to best preserve the strengths of the parents and also to fix the issues of the parents.
+
+""" + GENERAL_REVIEWER_INSTRUCTIONS + """
+
+The goal is to ensure that the design is theoretically sound, innovative, and best reuse and recombination of the parents.
+
+## Proposal Information
+
+**Proposal for Review**:
+{PROPOSAL}
+
+{TOP_K_PPS}
+"""
+
+
+
+O1S_PROPOSAL_REVIEWER_BACKGROUND_prompt = """
+You are an expert in autoregressive language model research, and you have been asked to review a proposal for a novel design of an autoregressive language model (LM) block.
+
+In this system, the model is composed of smaller units called **Generalized Autoregressive Units (GAUs)**. These GAUs form the building blocks of the LM. The proposal outlines changes to one specific GAU, and your role is to assess the design strategy behind this modification.
+
+## GAU Characteristics
+
+Each **GAU** has the following characteristics:
+- **Input**: A sequence of embeddings X and a dictionary of intermediate variables Z, such as memory, states, or caches.
+- **Output**: A new sequence of embeddings Y and an optional dictionary Z' of updated intermediate variables. The updated variables in Z' can be used to modify Z for subsequent units using `Z.update(Z')`.
+
+The system builds complex autoregressive model blocks by nesting multiple GAUs. The proposal you are reviewing will introduce a novel design of a LM block implemented as GAUs.
+
+""" +GENERAL_REVIEWER_INSTRUCTIONS+ """
+
+The goal is to ensure that the design is theoretically sound, innovative, and has the potential to improve the performance over the state-of-the-art models.
+
+## Proposal Information
+
+**Proposal for Review**:
+{PROPOSAL}
+
+{TOP_K_PPS}
+"""
+
+
 O1M_PROPOSAL_REVIEWER_BACKGROUND=AgentPrompt(O1M_PROPOSAL_REVIEWER_BACKGROUND_prompt)
-
-
+O1C_PROPOSAL_REVIEWER_BACKGROUND=AgentPrompt(O1C_PROPOSAL_REVIEWER_BACKGROUND_prompt)
+O1S_PROPOSAL_REVIEWER_BACKGROUND=AgentPrompt(O1S_PROPOSAL_REVIEWER_BACKGROUND_prompt)
 # endregion
 
 
@@ -4010,7 +4858,7 @@ O1M_PROPOSAL_REVIEW_FINISH = AgentPrompt(O1M_PROPOSAL_REVIEW_FINISH_prompt,O1_RE
 # region O1M Observer Prompt  
 
 
-O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt = """
+O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1 = """
 You are the Implementation Observer for a team designing a new autoregressive language model (LM) based on Generalized Autoregressive Units (GAUs). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
 
 
@@ -4111,13 +4959,28 @@ The coder needs to implement a proposal that try to improve an existing LM block
 
 {RATING} out of 5 (Passing score: >3)
 
+""" 
+
+MUTATION_MODE_BACKGROUND="""
+As a background, the proposal is going to improve the following seed design by improving the unit: {SELECTION}.
+
+{SEED}
+"""
+
+CROSSOVER_MODE_BACKGROUND="""
+As a background, the proposal is going to produce a new design by crossover the parent designs:
+
+{SEED}
+"""
+
+O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2="""
+
 ## Your Responsibilities:
 
 1. **Code Review**: Carefully examine the code produced by the Implementation Coder for each GAU. Look for:
    - Proper declaration and use of child GAUs
    - Efficiency and performance considerations
    - Potential bugs or edge cases
-   - Check if the implementation is simply copied from the seed. If so, you should give a score of 0 no matter what. But it is allowed to be modified based on the seed. 
 
 2. **Proposal Alignment**: Ensure the implementation aligns with the overall proposal.
 
@@ -4154,14 +5017,15 @@ The coder needs to implement a proposal that try to improve an existing LM block
 - Be specific in your feedback, providing clear examples or suggestions where possible
 - Consider the balance between faithfulness to the proposal and potential improvements
 - Flag any potential issues that might affect the integration of the GAU into the larger model
-- Ensure that the implementation follows the key design principles and guidelines outlined in Guideline Part 3 and Guideline Part 4
 
 Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
 """
 
-O1_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt)
 
 
+O1M_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1+MUTATION_MODE_BACKGROUND+O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2)
+O1C_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1+CROSSOVER_MODE_BACKGROUND+O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2)
+O1S_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1+O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2)
 
 O1_IMPLEMENTATION_UNIT_OBSERVE_prompt = """
 #### Current Design Overview:
@@ -4523,7 +5387,14 @@ Your careful planning ensures that the implementation proceeds smoothly and effi
 - **Your decisions directly impact the team's productivity**. Thoughtful planning and clear communication are key.
 - **Stay adaptable**. Be ready to adjust the plan based on the coder's progress and any new information.
 - **Facilitate collaboration**. Your guidance helps coordinate efforts and keeps the project on track.
+"""
 
+O1M_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt + """
+The following is the proposal to improve the seed design by improving a selected GAU: {SELECTION}.
+
+## Seed Design Overview
+
+{SEED}
 
 ## Proposal to Implement
 
@@ -4534,12 +5405,43 @@ Your careful planning ensures that the implementation proceeds smoothly and effi
 {REVIEW}
 
 ### Rating: {RATING} out of 5
-
-### Proposal Selection of GAU to improve: {SELECTION}
 """
 
-O1_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+O1C_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt + """
+The following is the proposal to produce a new design by recombining the parents:
 
+{PARENTS}
+
+## Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+"""
+
+
+O1S_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = O1_IMPLEMENTATION_PLANNER_BACKGROUND_prompt + """
+The following is the proposal of a novel LM block design:
+
+## Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+"""
+
+
+O1M_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(O1M_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+O1C_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(O1C_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+O1S_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(O1S_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
 
 def O1_SELECTION_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text

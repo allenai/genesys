@@ -14,6 +14,10 @@ from model_discovery.evolution import ConnectionManager
 from model_discovery.agents.roles.selector import *
 import datetime
 
+from model_discovery.model.composer import GAUTree,GAUNode,UnitSpec
+from model_discovery.agents.flow.gau_flows import GAU_TEMPLATE
+
+
 
 
 
@@ -31,3 +35,5 @@ def tester(evosys,project_dir):
     st.write(timestr)
 
     sess_id = '2024-10-11-20-49-17-555a28'
+
+    tree = evosys.ptree.get_gau_tree('gpt2')

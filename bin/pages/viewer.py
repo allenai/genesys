@@ -21,7 +21,7 @@ import model_discovery.utils as U
 
 from model_discovery.agents.flow._legacy_gau_flows import GUFlowScratch
 from model_discovery.agents.flow._legacy_naive_flows import design_flow_definition,review_naive,design_naive
-from model_discovery.agents.flow.gau_flows import GUFlowMutation
+from model_discovery.agents.flow.gau_flows import GUFlow
 from model_discovery.agents.flow.alang import AgentDialogFlowNaive,ALangCompiler
 from model_discovery.model.library.tester import check_tune
 import bin.app_utils as AU
