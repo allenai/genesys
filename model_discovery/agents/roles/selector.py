@@ -40,7 +40,7 @@ DEFAULT_VERIFY_STRATEGY = 'quadrant'
 # https://huggingface.co/docs/timm/en/reference/schedulers Similar to lr schedulers
 DEFAULT_SEED_DIST = {
     'scheduler':'constant', # linear or cosine
-    'restart_prob':0.2, # the chance of sampling from the seeds again
+    'restart_prob':0.05, # the chance of sampling from the seeds again
     'warmup_rounds':10, # the number of verified designs to warmup the scheduler
 }
 
@@ -180,10 +180,11 @@ def scale_weight_results(select_cfg,eval_results): # WILL REMOVE SCALES
 
 def _divide_rank(df,quantile):
     # divide into upper quantile and lower quantile
-    upper_quantile = df['rank'].quantile(quantile)
-    lower_quantile = df['rank'].quantile(1-quantile)
-    upper_df = df[df['rank'] > upper_quantile]
-    lower_df = df[df['rank'] < lower_quantile]
+    df = df.groupby('rank').apply(lambda x: x.sample(frac=1)).reset_index(drop=True)
+    df = df.sort_values(by='rank',ascending=True)
+    upper_quantile = round(len(df)*quantile)
+    upper_df = df.iloc[:upper_quantile]
+    lower_df = df.iloc[upper_quantile:]
     return upper_df,lower_df
 
 def design_confidence_simple(select_cfg,design_vector):
@@ -697,24 +698,49 @@ class Selector:
 
         seed_dist = U.safe_get_cfg_dict(select_cfg,'seed_dist',DEFAULT_SEED_DIST)
         restart_prob = self._get_restart_prob(seed_dist)
-        if random.random()<restart_prob or self.ptree.n_verified<=seed_dist['warmup_rounds']: # use ReferenceCoreWithTree as seeds
+        seeds = []
+        if n_seeds>0:
             init_seeds = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
-            seed_ids = self._sample_k_pool(init_seeds,min(n_seeds,len(init_seeds)),1,topk=False)
-        else:
-            seed_ids=self._quadrant_design_seeds(select_cfg)
-        seeds = [self.ptree.get_node(i) for i in seed_ids]
-        refs=[ref for ref in refs if ref.acronym not in seed_ids]
+            seed_ids = []
+            if self.ptree.n_verified<=seed_dist['warmup_rounds']:
+                seed_ids += random.choices(init_seeds,k=1)
+            while n_seeds-len(seed_ids)>0:
+                _init_seeds = list(set(init_seeds)-set(seed_ids))
+                if len(_init_seeds)>0 and random.random()<restart_prob:
+                    seed_ids.append(random.choice(_init_seeds))
+                else:
+                    _seed_ids=self._quadrant_design_seeds(n_seeds,select_cfg)
+                    if _seed_ids is None:
+                        _all_designs = set(self.ptree.filter_by_type(['DesignArtifactImplemented']))-set(seed_ids)
+                        if len(_all_designs)>0:
+                            _seed_ids = self._sample_k_pool(_all_designs,n_seeds,1,topk=False)
+                        else:
+                            _seed_ids = self._sample_k_pool(_init_seeds,n_seeds,1,topk=False)
+                    seed_ids+=_seed_ids
+                    break
+            
+            seed_ids = list(set(seed_ids))
+            left = n_seeds - len(seed_ids)
+            if left>0: # not likely to happen, but for safety
+                _all_designs = set(init_seeds+self.ptree.filter_by_type(['DesignArtifactImplemented']))-set(seed_ids)
+                _seed_ids = self._sample_k_pool(_all_designs,left,1,topk=False)
+                seed_ids+=_seed_ids
+            seeds = [self.ptree.get_node(i) for i in seed_ids]
+            refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
 
     def _sample_k_pool(self,pool,k,background_noise,topk=True):
-        candidates = pool.tolist()
+        candidates = list(pool)
+        k=min(k,len(candidates))
+        if k==0:
+            return []
         probs = np.zeros(len(candidates))
         if topk:
             for i in range(k):
                 probs[i] = k-i
         probs = probs + background_noise/len(candidates)
         probs = probs / probs.sum()
-        return np.random.choice(candidates, size=k, replace=False, p=probs)
+        return list(np.random.choice(candidates, size=k, replace=False, p=probs))
     
     def _random_explore_exploit(self,n_seeds,exploit_pool,explore_pool,explore_args,exclude=[]):
         explore_prob = explore_args['explore_prob']
@@ -752,7 +778,7 @@ class Selector:
         return acronyms, remaining
 
 
-    def _quadrant_design_seeds(self,select_cfg=None):
+    def _quadrant_design_seeds(self,n_seeds,select_cfg=None):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         ranked_quadrants = self._get_ranked_quadrants()
         if ranked_quadrants is None:
@@ -761,25 +787,19 @@ class Selector:
         poor_design_high_confidence = ranked_quadrants['poor_design_high_confidence']
 
         explore_args = U.safe_get_cfg_dict(select_cfg,'design_explore_args',DEFAULT_DESIGN_EXPLORE_ARGS) 
-        acronyms,remaining = self._random_explore_exploit(good_design_high_confidence,poor_design_high_confidence,explore_args)
+        acronyms,remaining = self._random_explore_exploit(n_seeds,good_design_high_confidence,poor_design_high_confidence,explore_args)
         if acronyms is None:
             pool = self.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented'])
-            n_seeds = min(n_seeds,len(pool))
             return self._sample_k_pool(pool,n_seeds,1,topk=False)
         if remaining>0:
             init_seeds = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
-            remaining = min(remaining,len(init_seeds))
             acronyms += self._sample_k_pool(init_seeds,remaining,1,topk=False)
         return acronyms
 
     def _get_restart_prob(self,seed_dist):
         scheduler = seed_dist['scheduler']
         if scheduler=='constant':
-            designs=self.ptree.filter_by_type('DesignArtifactImplemented')
-            if len(designs)<seed_dist['warmup_rounds']:
-                return 1.0
-            else:
-                return seed_dist['restart_prob']    
+            return seed_dist['restart_prob']    
         else:
             raise ValueError(f"Invalid scheduler: {scheduler}")
 
@@ -852,10 +872,12 @@ class Selector:
         n_unverified=sum([len(v) for v in unverified_by_scale.values()])
         if n_unverified==0:
             return None,None
-        unverified_14M=unverified_by_scale.get('14M',[])
-        if len(unverified_14M)>0:
-            design_id=random.choice(unverified_14M)
-            return design_id,'14M'
+        verify_all = select_cfg.get('verify_all',True)
+        if verify_all:
+            unverified_14M=unverified_by_scale.get('14M',[])
+            if len(unverified_14M)>0:
+                design_id=random.choice(unverified_14M)
+                return design_id,'14M'
         # Now all the designs are at least verified at 14M
         unverified_by_design=self._get_unverified_design_scales(exclude_list) # indexed by design_id
         ranked_quadrants = self._get_ranked_quadrants()
@@ -888,9 +910,9 @@ class Selector:
         # rank unverified lowest scale designs
         vectors = {i:self.design_vectors[i] for i in lowest_pool}
         design_rank = self._rank_designs(vectors)
-        if design_rank is None or design_rank.empty or len(design_rank)==0: # unlikely happen, but for safety, randomly select a design from the lowest scale
+        if design_rank is None or design_rank.eZmpty or len(design_rank)==0: # unlikely happen, but for safety, randomly select a design from the lowest scale
             acronym = random.choice(lowest_pool)
-            self.stream.write(f"No available verify design found, randomly select a design from the lowest scale: {lowest_scale}")
+            self.stream.write(f"No design ranks available now, randomly select a design from the lowest scale: {lowest_scale}")
             return acronym,lowest_scale
         acronym = design_rank.iloc[0]['name']
         return acronym,lowest_scale

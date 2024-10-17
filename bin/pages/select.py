@@ -1,11 +1,7 @@
 import copy
-import json
-import time
-import pathlib
 import streamlit as st
 import sys,os
 import numpy as np
-from model_discovery.agents.flow.gau_flows import DesignModes
 
 from model_discovery.evolution import DEFAULT_N_SOURCES
 
@@ -42,8 +38,8 @@ def design_selector(evosys,project_dir):
             st.write('###### Configure Selector')
             col1, col2 = st.columns(2)
             with col1:
-                # st.markdown("#### Configure design mode")
-                mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes])
+                n_seeds = st.number_input(label="Number of seeds",min_value=0,value=1,
+                                   help='Number of seed designs, it decides the mode of design, design from scratch: 0 seed, mutation: 1 seed, crossover: >=2 seeds')
             with col2:
                 select_method = st.selectbox(label="Selection Method",options=SELECT_METHODS)
         with _col2:
@@ -54,7 +50,7 @@ def design_selector(evosys,project_dir):
             with cols[1]:
                 seed_dist['restart_prob'] = st.slider('Restart Probability',min_value=0.0,max_value=1.0,step=0.01,value=seed_dist['restart_prob'])
             with cols[2]:
-                seed_dist['warmup_rounds'] = st.number_input('Warmup Rounds',min_value=0,value=seed_dist['warmup_rounds'])
+                seed_dist['warmup_rounds'] = st.number_input('Warmup Rounds',min_value=0,value=0)
 
         n_sources = DEFAULT_N_SOURCES
 
@@ -77,6 +73,7 @@ def design_selector(evosys,project_dir):
     with st.expander(f"Selector Ranking and Exploration Settings",expanded=True):
         
         select_cfg=copy.deepcopy(evosys.selector.select_cfg)
+        select_cfg['seed_dist']=seed_dist
         ranking_args = U.safe_get_cfg_dict(select_cfg,'ranking_args',DEFAULT_RANKING_ARGS)
         cols = st.columns([5,1,0.8,0.8])
         with cols[0]:
@@ -157,8 +154,7 @@ def design_selector(evosys,project_dir):
     if st.button('Select'):
         
         with st.status('Selecting seeds...'):
-            instruct,seeds,refs=evosys.selector.select_design(selector_args,DesignModes(mode),select_method,select_cfg)
-
+            instruct,seeds,refs=evosys.selector.select_design(selector_args,n_seeds,select_method,select_cfg)
 
         st.subheader(f'**{len(seeds)} seeds selected:**')
         for seed in seeds:
@@ -177,7 +173,6 @@ def design_selector(evosys,project_dir):
             st.info('No instructions from the selector.')
     else:
         st.info(f'**NOTE:** All settings here will only be applied to this playground. The playground will directly work on the selected running namespace ```{evosys.evoname}```.')
-
 
 
 def verify_selector(evosys,project_dir):
@@ -291,6 +286,8 @@ def verify_selector(evosys,project_dir):
         select_cfg['verify_explore_args']=verify_explore_args
 
     verify_selected = st.button('Select')
+
+    select_cfg['verify_all']=False
 
     if verify_selected:
         with st.status('Selecting design to verify...'):

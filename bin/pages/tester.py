@@ -17,7 +17,9 @@ import datetime
 from model_discovery.model.composer import GAUTree,GAUNode,UnitSpec
 from model_discovery.agents.flow.gau_flows import GAU_TEMPLATE
 
+import pandas as pd
 
+from model_discovery.agents.roles.selector import scale_weight_results
 
 
 
@@ -36,4 +38,18 @@ def tester(evosys,project_dir):
 
     sess_id = '2024-10-11-20-49-17-555a28'
 
-    tree = evosys.ptree.get_gau_tree('gpt2')
+
+    verify_results = [
+        {'rank':1,'score':2},
+        {'rank':1,'score':2},
+        {'rank':1,'score':2},
+        {'rank':1,'score':2},
+        {'rank':1,'score':2},
+        {'rank':2,'score':1},
+    ]
+
+    df = pd.DataFrame(verify_results)
+    st.dataframe(df)
+
+    quantile = 0.3
+
