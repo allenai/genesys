@@ -226,6 +226,10 @@ class SuperScholarSearcher:
 
         self.design_proposals={}
         self.unit_codes={}
+        self.embedding_cache={
+            'design_proposals':{},
+            'unit_codes':{},
+        }
         self._refresh_db()
 
     def _refresh_db(self):
@@ -380,55 +384,33 @@ class SuperScholarSearcher:
             return siblings,prt
         else:
             return siblings
+    
+    def _get_score(self,emb_pred,emb_ref,evaluator):
+        vectors = np.array([emb_pred,emb_ref])
+        return evaluator._compute_score(vectors)
+    
+    def _get_embeddings(self,key,text,embeddings,cache_key):
+        assert cache_key in self.embedding_cache, f'Cache key {cache_key} not found in the embedding cache.'
+        if key not in self.embedding_cache[cache_key]:
+            self.embedding_cache[cache_key][key]=embeddings.embed_documents([text])[0]
+        return self.embedding_cache[cache_key][key]
 
-
-    async def _aemb_evaluate(self, query, references, evaluator, top_k, cutoff, max_concurrent=10):
-        async def evaluate_single(sem, ref_id, reference):
-            async with sem:
-                score = 1 - (await evaluator.aevaluate_strings(prediction=query, reference=reference))['score']
-                return ref_id, score
-
-        # Create a semaphore to limit concurrent tasks
-        sem = asyncio.Semaphore(max_concurrent)
-
-        # Create tasks for all references
-        tasks = [evaluate_single(sem, ref_id, ref) for ref_id, ref in references.items()]
-
-        # Run all tasks concurrently
-        scores = await asyncio.gather(*tasks)
-
-        # Convert results to dictionary
-        scores = dict(scores)
-        filtered_scores = {i: s for i, s in scores.items() if s > cutoff}
-        pps = list(sorted(filtered_scores.items(), key=lambda x: x[1]))[:top_k]
-        
-        return pps, scores
-
-    def aemb_evaluate(self, query, references, evaluator, top_k, cutoff, max_concurrent=10):
-        # This wrapper function is necessary because the main event loop
-        # must be running before we can use asyncio.run()
-        return asyncio.run(self._aemb_evaluate(query, references, evaluator, top_k, cutoff, max_concurrent))
-
-    def _emb_evaluate(self,query,references,evaluator,top_k,cutoff):
-        scores={i:1-evaluator.evaluate_strings(prediction=query,reference=references[i])['score'] 
-                for i in references}
+    def emb_evaluate(self,query,references,evaluator,embeddings,top_k,cutoff,cache_key):
+        scores={}
+        emb_pred=embeddings.embed_documents([query])[0]
+        for i in references: # TODO: parallelize this, but may be errornous API side
+            emb_ref=self._get_embeddings(i,references[i],embeddings,cache_key)
+            scores[i]=self._get_score(emb_pred,emb_ref,evaluator)
         filtered_scores={i:s for i,s in scores.items() if s>cutoff}
         pps=list(sorted(filtered_scores.items(),key=lambda x:x[1]))[:top_k]
         return pps,scores
-
-    # TODO: async version is not working, use cache instead
-    def emb_evaluate(self,query,references,evaluator,top_k,cutoff,use_async=False):
-        if use_async:
-            return self.aemb_evaluate(query,references,evaluator,top_k,cutoff)
-        else:
-            return self._emb_evaluate(query,references,evaluator,top_k,cutoff)
 
     def query_design_proposals(self,query,pp=True):
         top_k=self.proposal_search_cfg['top_k']
         if top_k<=0:
             return [],'' if pp else []
         cutoff=self.proposal_search_cfg['cutoff']
-        pps,scores=self.emb_evaluate(query,self.design_proposals,self.emb_evaluator_proposal,top_k,cutoff)
+        pps,scores=self.emb_evaluate(query,self.design_proposals,self.emb_evaluator_proposal,self.embedding_proposal,top_k,cutoff,cache_key='design_proposals')
         if pp:
             prt='**Similar Design Proposals from Previous Designs**:\n\n'
             if not pps:
@@ -446,7 +428,7 @@ class SuperScholarSearcher:
         if top_k<=0:
             return [],'Unit code search not available.' if pp else []
         cutoff=self.unit_search_cfg['cutoff']
-        pps,scores=self.emb_evaluate(query,self.unit_codes,self.emb_evaluator_unit,top_k,cutoff)
+        pps,scores=self.emb_evaluate(query,self.unit_codes,self.emb_evaluator_unit,self.embedding_unit,top_k,cutoff,cache_key='unit_codes')
         if pp:
             prt='**Similar Unit Codes from Previous Designs**:\n\n'
             if not pps:

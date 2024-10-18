@@ -446,7 +446,7 @@ EMBEDDING_MODELS = {
 def search_config(evosys):
 
     with st.expander(f"Search Engine Configurations for ```{evosys.evoname}```",expanded=False,icon='🔎'):
-        search_cfg=copy.deepcopy(evosys.rnd_agent.sss.cfg)
+        search_cfg=copy.deepcopy(evosys.agents.sss.cfg)
         
         with st.form("Search Engine Config"):
 

@@ -61,7 +61,7 @@ def paper_search(evosys,project_dir):
 
         analysis=st.text_area("Instructs to the Search Agent",placeholder='Please finds me information about ...',height=100)
 
-    sss=evosys.rnd_agent.sss
+    sss=evosys.agents.sss
     sss.reconfig(search_cfg,st)
 
     with st.sidebar:
@@ -194,7 +194,7 @@ def unit_explorer(evosys,project_dir):
 
 def proposal_explorer(evosys,project_dir):
     
-    sss=evosys.rnd_agent.sss
+    sss=evosys.agents.sss
     st.subheader("Design Proposal Explorer")
     select_design=st.selectbox("Choose a Design Proposal available for search",options=['None']+list(sss.design_proposals.keys()))
     select_design = None if select_design == 'None' else select_design
@@ -225,7 +225,7 @@ _embeddding_models = {
 }
 
 def units_search(evosys,project_dir):
-    sss=evosys.rnd_agent.sss
+    sss=evosys.agents.sss
 
     with st.sidebar:
         st.success(f'Number of units: ```{len(sss.unit_codes)}```')
@@ -277,7 +277,7 @@ def units_search(evosys,project_dir):
 
 
 def proposal_search(evosys,project_dir):
-    sss=evosys.rnd_agent.sss
+    sss=evosys.agents.sss
     cfg_backup = copy.deepcopy(sss.cfg)
 
     with st.sidebar:

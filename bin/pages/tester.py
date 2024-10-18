@@ -74,3 +74,8 @@ Sequences of characters commonly found next to each other may be grouped togethe
         history = context_safe_guard(history,model_name)
         st.write(count_tokens(str(history),model_name))
 
+
+    sss = evosys.agents.sss
+    embeddings = sss.embedding_proposal
+    evaluator = sss.emb_evaluator_proposal
+

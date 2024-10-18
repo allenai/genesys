@@ -2118,9 +2118,9 @@ class EvolutionSystem(exec_utils.System):
             self.stream,self.design_budget_limit,self.params['budget_type'])
 
         if self.params['no_agent']:
-            self.rnd_agent = None
+            self.agents = None
         else:
-            self.rnd_agent = BuildSystem(
+            self.agents = BuildSystem(
                 debug_steps=False, # True for debugging, but very long
                 # cache_type="diskcache", #<-- agent caching method 
                 temperature=0.1,
@@ -2129,7 +2129,7 @@ class EvolutionSystem(exec_utils.System):
                 #from_json='/path/to/config'
                 **kwargs
             )
-            self.rnd_agent.bind_ptree(self.ptree,self.stream)
+            self.agents.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
 
     def get_evo_state(self):
@@ -2149,7 +2149,7 @@ class EvolutionSystem(exec_utils.System):
 
     def link_stream(self,stream):
         self.stream=stream
-        self.rnd_agent.sss.stream=stream
+        self.agents.sss.stream=stream
         self.selector.stream=stream
         if self.CM is not None:
             self.CM.st = stream
@@ -2380,7 +2380,7 @@ class EvolutionSystem(exec_utils.System):
 
         log_collection = self.CM.log_doc_ref.collection('design_sessions') if self.CM else None
 
-        self.rnd_agent(
+        self.agents(
             user_input,
             instruct=instruct,
             seeds=seeds,
