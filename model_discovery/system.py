@@ -582,20 +582,22 @@ class ModelDiscoverySystem(exec_utils.System):
         except:
             pass
 
-        if design_cfg['crossover_no_ref'] and len(refs)>1:
-            stream.write('Crossover no ref is set to True, ignore all references')
-            refs=None
-
         # 1. create or retrieve a new session
         if sess_id is None: # if provided, then its resuming a session
             assert seeds is not None, "Must provide seed to create a new design, empty for scratch mode"
             seed_ids = [seed.acronym for seed in seeds]
+            if design_cfg['crossover_no_ref'] and len(seeds)>1 and refs:
+                stream.write('Crossover no ref is set to True, ignore all references')
+                refs=None
             ref_ids = [ref.acronym for ref in refs] if refs else []
             sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'])
             stream.write(f"Starting new design session: {sess_id}")
         else: # resuming a session or creating a new session with a given id
             if sess_id not in self.ptree.design_sessions:
                 seed_ids = [seed.acronym for seed in seeds]
+                if design_cfg['crossover_no_ref'] and len(seeds)>1 and refs:
+                    stream.write('Crossover no ref is set to True, ignore all references')
+                    refs=None
                 ref_ids = [ref.acronym for ref in refs] if refs else []
                 self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], sess_id)
                 stream.write(f"Starting new design session: {sess_id}")

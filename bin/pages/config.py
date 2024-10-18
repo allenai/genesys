@@ -21,10 +21,10 @@ from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
 from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
     DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
-        SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY
+        SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
-    AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS
+    AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS,DEFAULT_CROSSOVER_NO_REF,DEFAULT_MUTATION_NO_TREE
 from model_discovery.agents.search_utils import EmbeddingDistance,DEFAULT_VS_INDEX_NAME,\
     OPENAI_EMBEDDING_MODELS,TOGETHER_EMBEDDING_MODELS,COHERE_EMBEDDING_MODELS
 from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKEN_MULT,\
@@ -61,9 +61,18 @@ def apply_env_vars(evosys,env_vars):
     return changed
 
 def apply_select_config(evosys,select_cfg):
-    with st.spinner('Applying and saving select config...'):
-        evosys.reconfig(select_cfg=select_cfg)
-        st.toast("Applied and saved select config")
+    total_n_seeds_dist = sum(select_cfg['n_seeds_dist'].values())
+    if total_n_seeds_dist > 0:
+        for k in select_cfg['n_seeds_dist']:
+            if select_cfg['n_seeds_dist'][k] < 0:
+                st.toast(f"The weight of the seed {k} is negative, failed to apply select config.")
+                return
+        select_cfg['n_seeds_dist'] = {k:v/total_n_seeds_dist for k,v in select_cfg['n_seeds_dist'].items()}
+        with st.spinner('Applying and saving select config...'):
+            evosys.reconfig(select_cfg=select_cfg)
+            st.toast("Applied and saved select config")
+    else:
+        st.toast("The sum of the weights of the seeds distribution is 0, failed to apply select config.")
 
 def apply_design_config(evosys,design_cfg):
     with st.spinner('Applying and saving design config...'):
@@ -240,30 +249,25 @@ AGENT_TYPE_LABELS = {
 
 def model_design_engine_settings(evosys):
     st.subheader("Model Design Engine Settings")
-    selector_config(evosys)
+    select_config(evosys)
     search_config(evosys)
     design_config(evosys)
 
 
-def selector_config(evosys):
+def select_config(evosys):
     select_cfg=copy.deepcopy(evosys.select_cfg)
     
     select_method=select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
     verify_strategy=select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
     n_sources=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
     seed_dist=select_cfg.get('seed_dist',DEFAULT_SEED_DIST)
+    n_seeds_settings=select_cfg.get('n_seeds',DEFAULT_N_SEEDS_SETTINGS)
+    n_seeds_dist=select_cfg.get('n_seeds_dist',DEFAULT_N_SEEDS_DIST)
 
     with st.expander(f"Seed Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
         with st.form("Seed Selector Config"):
-            _col1,_col2=st.columns([2,3])
+            _col1,_col2=st.columns([3,2])
             with _col1:
-                st.write('###### Configure Selector')
-                cols=st.columns(2)
-                with cols[0]:
-                    select_cfg['select_method']=st.selectbox('Select Method',options=SELECT_METHODS,index=SELECT_METHODS.index(select_method))
-                with cols[1]:
-                    select_cfg['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGIES,index=VERIFY_STRATEGIES.index(verify_strategy))
-            with _col2:
                 st.write('###### Configure *Seed* Selection Distribution')
                 cols = st.columns(3)
                 with cols[0]:
@@ -271,23 +275,56 @@ def selector_config(evosys):
                 with cols[1]:
                     seed_dist['restart_prob'] = st.slider('Restart Probability',min_value=0.0,max_value=1.0,step=0.01,value=DEFAULT_SEED_DIST['restart_prob'])
                 with cols[2]:
-                    seed_dist['warmup_rounds'] = st.number_input('Warmup Rounds',min_value=0,value=seed_dist['warmup_rounds'])
-
-            sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
+                    seed_dist['warmup_rounds'] = st.number_input('Warmup (Restart)',min_value=0,value=seed_dist['warmup_rounds'],
+                        help="Number of verified designs are produced. In warmup rounds, at least one seed will be selected from the initial seeds. After warmup, the probability of selecting from initial seeds is determined by restart scheduler.")
+            with _col2:
+                st.write('###### Configure Selector')
+                cols=st.columns(2)
+                with cols[0]:
+                    select_method=DEFAULT_SELECT_METHOD if select_method not in SELECT_METHODS else select_method
+                    select_cfg['select_method']=st.selectbox('Select Method',options=SELECT_METHODS,index=SELECT_METHODS.index(select_method))
+                with cols[1]:
+                    verify_strategy=DEFAULT_VERIFY_STRATEGY if verify_strategy not in VERIFY_STRATEGIES else verify_strategy
+                    select_cfg['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGIES,index=VERIFY_STRATEGIES.index(verify_strategy))
             
+            
+            sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
+        
             st.markdown("###### Configure the number of *references* from each source")
             cols = st.columns(len(sources))
-            mode=evosys.design_cfg.get('mode',DesignModes.MUTATION.value)
             for i,source in enumerate(sources):
                 with cols[i]:
                     if source in ['DesignArtifact','DesignArtifactImplemented']:
-                        n_sources[source] = st.number_input(label=f'{source}',min_value=0,value=n_sources[source])#,disabled=True)
+                        if source == 'DesignArtifactImplemented':
+                            label = 'DesignArtImpl.'
+                        else:
+                            label = 'DesignArtifact'
+                        n_sources[source] = st.number_input(label=label,min_value=0,value=n_sources[source])#,disabled=True)
                     else:
-                        n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
-            st.write('***Note:** 1. :red[ReferenceCoreWithTree] and :blue[DesignArtifactImplemented] are seed types. 2. Only considering **Mutation Mode** for now.*') # as mutation mode has the highest marginal effect and the basis of all modes 
+                        if source == 'ReferenceCoreWithTree':
+                            label = 'RefCoreWithTree'
+                        elif source == 'ReferenceWithCode':
+                            label = 'RefWithCode'
+                        else:
+                            label = source
+                        n_sources[source] = st.number_input(label=f'{label} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
             select_cfg['n_sources']=n_sources
             select_cfg['seed_dist']=seed_dist
 
+
+            st.markdown('###### Configure the Number of Seeds Distribution')
+            cols=st.columns([1,1,2.5])
+            with cols[0]:
+                n_seeds_settings['warmup_rounds_crossover']=st.number_input('Warmup (Crossover)',min_value=0,value=n_seeds_settings['warmup_rounds_crossover'])
+            with cols[1]:
+                n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
+            with cols[2]:
+                n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['Weights'])
+                n_seeds_dist_df = st.data_editor(n_seeds_dist_df,use_container_width=True)
+                n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]
+                n_seeds_dist = {k:v for k,v in n_seeds_dist.items()}
+            select_cfg['n_seeds_dist']=n_seeds_dist
+            select_cfg['n_seeds_settings']=n_seeds_settings
             st.form_submit_button("Save and Apply",on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
 
 
@@ -303,36 +340,33 @@ def design_config(evosys):
     design_cfg['running_mode']=RunningModes(design_cfg.get('running_mode',DEFAULT_MODE))
     design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
     design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
-    
+    design_cfg['crossover_no_ref']=design_cfg.get('crossover_no_ref',DEFAULT_CROSSOVER_NO_REF)
+    design_cfg['mutation_no_tree']=design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
+
     #### Configure design
     
 
     with st.expander(f"Design Agent Configurations for ```{evosys.evoname}```",expanded=False,icon='🎨'):
         with st.form("Design Agent Config"):
-            col1, col2 = st.columns([1, 5])
-            with col1:
-                mode = st.selectbox(label="Design Mode",options=[i.value for i in DesignModes],disabled=True)
-            with col2:
                 # st.markdown("#### Configure the base models for each agent")
-                agent_types = {}
-                cols = st.columns(len(AGENT_TYPE_LABELS))
-                for i,agent in enumerate(AGENT_TYPE_LABELS):
-                    with cols[i]:
-                        index=0 
-                        options=copy.deepcopy(AGENT_OPTIONS[agent])
-                        if agent in ['SEARCH_ASSISTANT']:
-                            index=len(options)-1
-                        elif agent in ['IMPLEMENTATION_OBSERVER']:
-                            index=len(options)-2
-                        elif agent in ['IMPLEMENTATION_CODER']:
-                            index=len(options)-1
-                        options += ['hybrid']
-                        agent_types[agent] = st.selectbox(label=AGENT_TYPE_LABELS[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
-                design_cfg['agent_types'] = agent_types
+            agent_types = {}
+            cols = st.columns(len(AGENT_TYPE_LABELS))
+            for i,agent in enumerate(AGENT_TYPE_LABELS):
+                with cols[i]:
+                    index=0 
+                    options=copy.deepcopy(AGENT_OPTIONS[agent])
+                    help=None
+                    if agent in ['SEARCH_ASSISTANT']:
+                        index=len(options)-1
+                        help='Whether use a separate search assistant agent to perform search tasks. (deprecated for now)'
+                    elif agent in ['IMPLEMENTATION_OBSERVER']:
+                        index=len(options)-2
+                    elif agent in ['IMPLEMENTATION_CODER']:
+                        index=len(options)-1
+                    options += ['hybrid']
+                    agent_types[agent] = st.selectbox(label=AGENT_TYPE_LABELS[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT',help=help)
+            design_cfg['agent_types'] = agent_types
             st.caption('***Note:** If you choose "hybrid", you will need to configure the weights for each agent below in advanced configs later.*')
-
-            if mode!=DesignModes.MUTATION.value:
-                st.toast("WARNING!!!: Only mutation mode is supported now. Other modes are not stable or unimplemented.")
 
             col1,col2=st.columns([3,2])
             termination={}
@@ -360,7 +394,7 @@ def design_config(evosys):
             design_cfg['threshold'] = threshold 
 
 
-            col1,col2,col3=st.columns([4,5,2])
+            col1,col2=st.columns([4,5])
             with col1:
                 st.markdown("##### Configure max number of attempts")
                 cols=st.columns(3)
@@ -383,10 +417,19 @@ def design_config(evosys):
                     rerank_methods=['random','rating']
                     num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
             design_cfg['num_samples']=num_samples
-            with col3:
-                st.markdown("##### Configure unittests")
-                st.write('')
-                design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg['unittest_pass_required'])
+
+
+            st.markdown("###### Other Configurations")
+            cols=st.columns([1,1,1,2])
+            with cols[0]:
+                design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg['unittest_pass_required'],
+                    help='If true, will require unittests to pass besides checkers and observers.')
+            with cols[1]:
+                design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg['crossover_no_ref'],
+                    help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
+            with cols[2]:
+                design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=design_cfg['mutation_no_tree'],
+                    help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
 
             st.form_submit_button("Save and Apply",on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.evo_running)   
 

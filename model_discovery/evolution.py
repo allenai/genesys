@@ -76,7 +76,7 @@ from google.cloud.firestore import DELETE_FIELD
 
 from model_discovery.agents.roles.selector import Selector,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY
 
-from model_discovery.model.composer import GAUTree,GAUDict,UnitSpec
+from model_discovery.model.composer import GAUTree,GAUDict,UnitSpec,UnitDecl
 from model_discovery import utils as U
 from .configs.gam_config import ( 
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
@@ -762,7 +762,7 @@ class LibraryReference(NodeObject):
             if full_tree:
                 prompt += f'\n\n{self.tree.to_prompt()}\n\n'
             else:
-                prompt += f'\n\n## Reference Document\n\n{self.tree.root.spec.document}\n\n'
+                prompt += f'\n\n## Reference Document\n\n{self.tree.root_node.spec.document}\n\n'
         elif self.code:
             if self.type == 'ReferenceCore':
                 prompt += (
@@ -1030,7 +1030,7 @@ class DesignArtifact(NodeObject):
                 prompt+=f"""
 # Reference Document
 
-{self.implementation.implementation.root.spec.document}
+{self.implementation.implementation.root_node.spec.document}
             """
         for scale in self.verifications:
             pass # TODO
@@ -1046,7 +1046,7 @@ class DesignArtifact(NodeObject):
         mdtext += f'\n**Rating:** {self.proposal.rating}/5'
         mdtext += f'\n**Passed:** {self.proposal.passed}'
         if self.is_implemented():
-            mdtext += f'\n**Implementation:**\n\n{self.implementation.implementation.root.spec.document}'
+            mdtext += f'\n**Implementation:**\n\n{self.implementation.implementation.root_node.spec.document}'
         return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
 
     def is_implemented(self):
@@ -1180,6 +1180,8 @@ class PhylogeneticTree:
         to_delete=[]
         for sess_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
             metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
+            if 'mode' in metadata:
+                metadata['mode']=DesignModes(metadata['mode'])
             if not metadata:
                 to_delete.append(sess_id) # delete empty sessions
                 continue
@@ -1322,8 +1324,10 @@ class PhylogeneticTree:
         
     def new_gau_tree(self): # get an empty unimplemented tree
         new_tree = GAUTree('NEW_TREE',proposal='',review='',rating=0,suggestions='')
-        root_decl = UnitSpec(unitname='root',document='',inputs=['X'],outputs=['Y'])
-        new_tree.add_unit(spec=root_decl,code=GAU_TEMPLATE,args='',desc='',review='',rating=None,children=[],gautests={},suggestions='')
+        root_spec = UnitSpec(unitname='root',document='',inputs=['X'],outputs=['Y'])
+        root_decl = UnitDecl(unitname='root',requirements='',inputs=['X'],outputs=['Y'])
+        new_tree.add_unit(spec=root_spec,code=GAU_TEMPLATE,args='',desc='',review='',rating=None,children=[],gautests={},suggestions='')
+        new_tree.declares['root']=root_decl
         return new_tree
     
     def get_session_input(self,sess_id:str):
@@ -1331,6 +1335,8 @@ class PhylogeneticTree:
         seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids']]
         refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids']]
         mode=sessdata['mode']
+        if isinstance(mode,str): # just in case
+            mode=DesignModes(mode)
         return seeds,refs,sessdata['instruct'],mode
     
     def session_dir(self, sess_id: str):
@@ -2304,7 +2310,7 @@ class EvolutionSystem(exec_utils.System):
         else:
             raise ValueError(f"Invalid manual input: {manual}")
 
-    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,n_seeds=1,
+    def design(self,select_cfg=None,design_cfg=None,search_cfg=None,user_input='',sess_id=None,n_seeds=None,
         resume=True,in_process=False,manual_seed=None,manual_refs=None,silent=False,cpu_only=False
     ): 
         # user_input and design_cfg maybe changed by the user, so we need to pass them in

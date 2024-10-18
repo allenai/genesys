@@ -83,7 +83,7 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
             if unit_name not in self.terms:
                 self.terms[unit_name]=GAUDictTerm(name=unit_name)
             self.terms[unit_name].append(acronym,tree.units[unit_name])
-            if tree.root.spec.unitname == unit_name:
+            if tree.root == unit_name:
                 self.terms[unit_name].is_root = True
 
     @classmethod
@@ -126,7 +126,7 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
 
 class GABComposer:
     def compose(self,tree):
-        root_node = tree.root
+        root_node = tree.root_node
         declares=tree.declares
         generated_code = []
         processed_units = set()
@@ -263,7 +263,7 @@ class GAUTree:
     def __init__(self, name, proposal, review, rating, suggestions, lib_dir=None, proposal_traces=[]):
         self.units:Dict[str,GAUNode] = {} 
         self.declares:Dict[str,UnitDecl] = {} # the declarations of the units in the tree, not including the root as it has spec directly
-        self.root = None # the root node of the tree
+        self.root = None # the root node name of the tree
         self.name = name # name of a design 
         self.proposal = proposal # proposal of the design
         self.proposal_traces = proposal_traces # traces of the proposal
@@ -285,7 +285,7 @@ class GAUTree:
         # assert not self.dict.exist(name), f"Unit {name} is already registered"
         node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, requirements)
         if len(self.units)==0:
-            self.root = node
+            self.root = name
         self.units[name] = node
 
     def _replace_unit(self, old: str, new: str): # also need to rename the references in the code, seems hard, so we do not do it for now
@@ -297,8 +297,10 @@ class GAUTree:
             self.del_unit(old)
 
         # rename the root 
-        if self.root.spec.unitname == old:
-            self.root.spec.unitname = new
+        # if self.root.spec.unitname == old:
+        #     self.root.spec.unitname = new
+        if old == self.root:
+            self.root = new
 
         # rename the declares
         if old in self.declares:
@@ -314,7 +316,6 @@ class GAUTree:
                     unit.code=unit.code.replace(f'{old}(',f'{new}(') 
                     unit.code=unit.code.replace(f'{old},',f'{new},') # both new and old names are instance names
 
-        # May also neeed to update the traces
         # update the dict should be handled separately, should simply add a new entry for back compatibility, should be handled already
 
 
@@ -346,8 +347,8 @@ class GAUTree:
         return descendants
 
     def get_disconnected(self):
-        connected=self.descendants(self.root.spec.unitname)
-        connected.add(self.root.spec.unitname)
+        connected=self.descendants(self.root)
+        connected.add(self.root)
         disconnected=set(self.units.keys())-connected
         return disconnected
     
@@ -360,7 +361,7 @@ class GAUTree:
     def to_dict(self):
         data = {
             'name':self.name,
-            'root':self.root.spec.unitname,
+            'root':self.root,
             'units':{name:self.units[name].to_dict() for name in self.units},  
             'declares': {name:declare.model_dump_json() for name,declare in self.declares.items()},
             'proposal':self.proposal,
@@ -376,7 +377,7 @@ class GAUTree:
         tree = cls(dict['name'], dict['proposal'], dict['review'], dict['rating'], dict['suggestions'], lib_dir)
         for unit_name in dict['units']:
             tree.units[unit_name] = GAUNode.from_dict(dict['units'][unit_name])
-        tree.root = tree.units[dict['root']]
+        tree.root = dict['root']
         for unit_name in dict['declares']:
             tree.declares[unit_name] = UnitDecl.model_validate_json(dict['declares'][unit_name])
         return tree
@@ -391,8 +392,12 @@ class GAUTree:
     def compose(self): # compose the GAB from the GAUTree and test it
         return GABComposer().compose(self)
     
+    @property
+    def root_node(self):
+        return self.units[self.root]
+    
     def compose_root(self): # compose the root of the GAUTree
-        return GABComposer().compose_root(self.root)
+        return GABComposer().compose_root(self.root_node)
 
     def compose_unit(self, unit_name): # compose a single unit for running unit tests
         return GABComposer().compose_unit(self, unit_name,self.declares)
@@ -489,8 +494,8 @@ class GAUTree:
         return pstr, unimplemented
 
     def check_implemented(self):
-        all_children=self.descendants(self.root.spec.unitname)
-        all_children.add(self.root.spec.unitname)
+        all_children=self.descendants(self.root)
+        all_children.add(self.root)
         implemented=set(self.units.keys())
         unimplemented=all_children-implemented
         return implemented,unimplemented
@@ -500,7 +505,7 @@ class GAUTree:
         Returns a detailed view of the GAU tree, showing implemented and unimplemented units,
         along with their specifications and code if applicable.
         """
-        pstr, _ = self._view(self.root.spec.unitname, node=self.root)
+        pstr, _ = self._view(self.root, node=self.root_node)
         pstr=f'#### {self.name} Tree Map\n\n```bash\n{pstr}'
         # Collect implemented and unimplemented units
         implemented,unimplemented = self.check_implemented()
@@ -602,7 +607,7 @@ class GAUTree:
                 if warnings:
                     print(f'Warning {spec.unitname}: {warnings}')
                 tree.add_unit(spec,code,args,desc,review,rating,children,gautests,suggestions,requirements)
-        tree.root=tree.units[metadata['root']]
+        tree.root=metadata['root']
         return tree
 
 

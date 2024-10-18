@@ -39,7 +39,7 @@ def design_selector(evosys,project_dir):
             col1, col2 = st.columns(2)
             with col1:
                 n_seeds = st.number_input(label="Number of seeds",min_value=0,value=1,
-                                   help='Number of seed designs, it decides the mode of design, design from scratch: 0 seed, mutation: 1 seed, crossover: >=2 seeds')
+                    help='Number of seed designs, it decides the mode of design, design from scratch: 0 seed, mutation: 1 seed, crossover: >=2 seeds')
             with col2:
                 select_method = st.selectbox(label="Selection Method",options=SELECT_METHODS)
         with _col2:

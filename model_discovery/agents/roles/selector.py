@@ -45,6 +45,22 @@ DEFAULT_SEED_DIST = {
 }
 
 
+DEFAULT_N_SEEDS_SETTINGS = {
+    'warmup_rounds_crossover':10, # the number of implemented designs to warmup the scheduler, before that, only do mutation
+    'warmup_rounds_scratch':20, # the number of implemented designs to warmup the scheduler, before that, only do mutation
+}
+
+DEFAULT_N_SEEDS_DIST = {
+    '0': 0.01,
+    '1': 0.9,
+    '2': 0.09,
+    '3': 0,
+    '4': 0,
+    '5': 0,
+}
+
+
+
 DEFAULT_CONFIDENCE_POINTS = {
     'proposed': 1,
     'implemented': 1,
@@ -637,6 +653,8 @@ class Selector:
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         self.design_vectors = self.ptree.get_design_vectors() # cache it
         design_rank = self._rank_designs(self.design_vectors)
+        if design_rank is None:
+            return None
         confidence_rank = rank_confidences(select_cfg,self.design_vectors,design_rank['name'].tolist())
         if design_rank.empty:
             return None
@@ -668,7 +686,27 @@ class Selector:
 
     #########################  Select Design  #########################
 
-    def select_design(self,selector_args,n_seeds=1,select_method=None,select_cfg=None):
+    def _get_n_seeds(self,select_cfg=None):
+        select_cfg = self.select_cfg if select_cfg is None else select_cfg
+        n_seeds_settings = U.safe_get_cfg_dict(select_cfg,'n_seeds_settings',DEFAULT_N_SEEDS_SETTINGS)
+        n_seeds_dist = U.safe_get_cfg_dict(select_cfg,'n_seeds_dist',DEFAULT_N_SEEDS_DIST)
+        n_implemented = len(self.ptree.filter_by_type(['DesignArtifactImplemented']))
+        if n_implemented < n_seeds_settings['warmup_rounds_scratch']:
+            n_seeds_dist['0'] = 0
+        if n_implemented < n_seeds_settings['warmup_rounds_crossover']:
+            for k in n_seeds_dist:
+                if k not in ['0','1']:
+                    n_seeds_dist[k] = 0
+        n_seeds_dist_sum = sum(n_seeds_dist.values())
+        if n_seeds_dist_sum == 0:
+            n_seeds_dist['1'] = 1
+        n_seeds = {k:v/n_seeds_dist_sum for k,v in n_seeds_dist.items()}
+        n_seeds = np.random.choice(list(n_seeds.keys()),size=1,p=list(n_seeds.values()))[0]
+        n_seeds = int(n_seeds)
+        return n_seeds
+    
+
+    def select_design(self,selector_args,n_seeds=None,select_method=None,select_cfg=None):
         '''
         Return:
             seeds: List[NodeObject]
@@ -682,6 +720,8 @@ class Selector:
         if select_method is None:
             select_method = select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
             select_method = 'quadrant' if select_method not in SELECT_METHODS else select_method
+        if n_seeds is None:
+            n_seeds = self._get_n_seeds(select_cfg)
         if select_method=='quadrant':
             instruct,seeds,refs=self._quadrant_select_design(n_seeds,select_cfg=select_cfg,**selector_args)
         else:

@@ -232,7 +232,8 @@ You are tasked to produce a new design by combining the following parent designs
       query = f"""
 You are tasked to produce a new design from scratch.
 """
-   if refs is not None:
+      
+   if refs:
       query += '''
 # References
 
@@ -1058,10 +1059,13 @@ Check the seed design, then give your proposal and the selection of the GAU to m
 
 
 
-   
-class GUC_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
-   ideation: str = Field(..., description="The initial ideation about the direction of how to recombine the parents.")
-   instructions: str = Field(..., description="The instructions for the information gathering assistant.")
+
+
+class GUC_DESIGN_PROPOSAL_ISEARCH_format(BaseModel):
+   analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final proposal. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
+   keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design by recombining the parents. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
+   detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+   ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
 
 class GUC_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
    abstract: str = Field(..., description="The abstract of the proposal, a concise summary of the core idea of the proposal.")
@@ -1094,16 +1098,19 @@ Based on the seed design, search results, and your analysis notes, develop a com
 Ensure your proposal is best recombining the parents that aim to advance state-of-the-art LM performance and clearly articulate how your design improves upon existing architectures.
 """
 
-GUC_DESIGN_PROPOSAL_ISEARCH=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUC_DESIGN_PROPOSAL_STAGE1_format)
+GUC_DESIGN_PROPOSAL_ISEARCH=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUC_DESIGN_PROPOSAL_ISEARCH_format)
 GUC_DESIGN_PROPOSAL_ISEARCH_FINISH=AgentPrompt(GUC_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt,GENERAL_JSON_parser,GUC_DESIGN_PROPOSAL_STAGE2_format)
 
 
 
 
 
-class GUS_DESIGN_PROPOSAL_STAGE1_format(BaseModel):
-   ideation: str = Field(..., description="The initial ideation about the direction of how to propose a novel design.")
-   instructions: str = Field(..., description="The instructions for the information gathering assistant.")
+
+class GUS_DESIGN_PROPOSAL_ISEARCH_format(BaseModel):
+   analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final proposal. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
+   keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
+   detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
+   ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
 
 class GUS_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
    abstract: str = Field(..., description="The abstract of the proposal, a concise summary of the core idea of the proposal.")
@@ -1130,7 +1137,7 @@ Based on the seed design, search results, and your analysis notes, develop a com
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """
-GUS_DESIGN_PROPOSAL_ISEARCH=AgentPrompt(GUS_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUS_DESIGN_PROPOSAL_STAGE1_format)
+GUS_DESIGN_PROPOSAL_ISEARCH=AgentPrompt(GUS_DESIGN_PROPOSAL_ISEARCH_prompt,GENERAL_JSON_parser,GUS_DESIGN_PROPOSAL_ISEARCH_format)
 GUS_DESIGN_PROPOSAL_ISEARCH_FINISH=AgentPrompt(GUS_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt,GENERAL_JSON_parser,GUS_DESIGN_PROPOSAL_STAGE2_format)
 
 
@@ -2328,7 +2335,7 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
 
@@ -2596,7 +2603,7 @@ GUM_DESIGNER_SYSTEM_O1_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
 
@@ -3463,7 +3470,7 @@ You must wrape each implementation in a block quote as follows:
 . All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
 Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
 In order to allow the parser successfully detect the code blocks, DO NOT nest any ```python ``` blocks within the code block of a unit implementation, e.g., in examples of the doc string, dont wrap the examples with ```python ```.  
-The class name of the GAU will be detected as the unit name of an implementation. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. 
+The class name of the GAU will be detected as the unit name of an implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
 In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
 And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
 You can modify based on the implementations from the provided seed, but you should never simply copy them as your response. If you want to reuse a unit, you can simply declare it in the children list without providing the implementation. 
@@ -3495,7 +3502,7 @@ You can modify based on the implementations from the provided seed, but you shou
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in each implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in each implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
    - If you are modifying based on an existing GAU, DO NOT use the original name, give a new name to the new GAU you are implementing.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
@@ -3723,6 +3730,7 @@ Ensure that you are familiar with these sections as they provide crucial context
 - Consider the balance between faithfulness to the proposal and potential improvements
 - Flag any potential issues that might affect the integration of the GAU into the larger model
 - Ensure that the implementation follows the key design principles and guidelines outlined in Guideline Part 3 and Guideline Part 4
+- Notice that the implementation of a unit may be incomplete due to placeholder, as it is declared, the it is encouraged to implement more details later.
 
 Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
 """
@@ -4011,7 +4019,7 @@ GUT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUT_IMPLEMENTATION_UNIT_OBSERVE_pr
 
 # O1 Prompt guides https://platform.openai.com/docs/guides/reasoning/advice-on-prompting
 
-def gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=False):
+def gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=False,root_first=False):
 
    if refine:
       GUT_IMPLEMENTATION_UNIT_prompt = """

@@ -20,7 +20,7 @@ from model_discovery.model.utils.modules import GABBase, UnitDecl,DesignModes
 import model_discovery.utils as U
 
 
-DESIGN_ZOMBIE_THRESHOLD = 200
+DESIGN_ZOMBIE_THRESHOLD = 360 # O1 is really really slow
 
 LOG_STATES={
     'BEGIN':'Begin',
@@ -185,7 +185,7 @@ class GUFlow(FlowCreator):
             'None':None, # None for search assistiant 
         }
         AGENT_TYPES_MODEL_NAMES = {
-            'claude3.5_sonnet':'claude-3.5-sonnet-20240620', # maybe incompatible with exec_utils
+            'claude3.5_sonnet':'claude-3-5-sonnet-20240620', # maybe incompatible with exec_utils
             'gpt4o_0806':'gpt-4o-2024-08-06',
             'gpt4o_mini':'gpt-4o-mini',
             'o1_preview':'o1-preview',
@@ -221,7 +221,7 @@ class GUFlow(FlowCreator):
         self.ptree=system.ptree
         seeds,refs,instruct,self.design_mode=self.ptree.get_session_input(sess_id)
         self.stream.write(f'Number of seeds sampled: {len(seeds)}. Number of references: {len(refs)}. Working in design mode: {self.design_mode}')
-        self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode)
+        self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode,mutation_no_tree=design_cfg['mutation_no_tree'])
         if self.design_mode==DesignModes.MUTATION:
             self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
             self.seed = seeds[0].to_prompt()
@@ -406,7 +406,7 @@ class GUFlow(FlowCreator):
 
         if self.design_mode!=DesignModes.SCRATCH:
             units=set(self.seed_tree.units.keys())
-            SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root.spec.unitname} 
+            SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root} 
             SELECTIONS=list(SELECTIONS)
             self.log_fn(f'Searching sibling designs...','PROPOSAL')
             _,SIBLINGS=self.sss.query_sibling_designs(self.seed_ids)
@@ -470,7 +470,7 @@ class GUFlow(FlowCreator):
                         GUS_DESIGN_PROPOSAL=P.GUS_DESIGN_PROPOSAL_ISEARCH
                         GU_DESIGN_PROPOSAL_FINISH=P.GUS_DESIGN_PROPOSAL_ISEARCH_FINISH
                         proposal_prompt=GUS_DESIGN_PROPOSAL(REFS=query)
-                    GUC_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
+                    GUS_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
             else:
                 status_info=f'Refining design proposal (attempt {attempt})...'
                 if self.design_mode==DesignModes.MUTATION:
@@ -1162,6 +1162,8 @@ class GUFlow(FlowCreator):
         USE_O1_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
         USE_O1_PLANNER='o1' in self.agents['IMPLEMENTATION_PLANNER'].model_name
 
+        # NOTE: Better use all o1 here, others are not stable
+
         assert USE_O1_CODER, 'Non-o1 coders are buggy now, please use o1 coders'
 
         context_implementation_planner=AgentContext() 
@@ -1230,7 +1232,7 @@ class GUFlow(FlowCreator):
             
             if round>1 or USE_O1_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Planning for the next round...'):
-                    SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root.spec.unitname}
+                    SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root}
                     SKIP_PLANNING=False
                     if USE_O1_PLANNER:
                         if round==1:
@@ -1271,8 +1273,11 @@ class GUFlow(FlowCreator):
                         if not SKIP_PLANNING: # reuse the results last round, only happen when failed in the begining
                             if round==1:
                                 plan=out['text']
-                                selection=proposal.selection
-                            else:   
+                                if self.design_mode==DesignModes.MUTATION:
+                                    selection=proposal.selection
+                                else:
+                                    selection='root'
+                            else:
                                 plan,selection=out['text'],out['selection']
                             planner_context.append(plan,'assistant',{})
                             if round>1 and len(UNIMPLEMENTED)==0:
@@ -1304,7 +1309,10 @@ class GUFlow(FlowCreator):
                                     raise Exception(info)
                                 context_implementation_planner=copy.deepcopy(context_implementation_planner_bkup)
                         else:
-                            selection=proposal.selection
+                            if self.design_mode==DesignModes.MUTATION:
+                                selection=proposal.selection
+                            else:
+                                selection='root'
                             termination=False
                             plan='Not available yet.'
                     else:
@@ -1323,6 +1331,7 @@ class GUFlow(FlowCreator):
                 termination=False
                 plan='Not available for the first round.'
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
+
 
             if selection in IMPLEMENTED:
                 self.stream.write(f'##### Start implementing refined unit {selection}')
@@ -1388,15 +1397,7 @@ class GUFlow(FlowCreator):
                     else:
                         REFINE=False # implement a new unit
                         GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=USE_O1_CODER)
-                        if selection in self.tree.declares:
-                            declaration=self.tree.declares[selection].to_prompt()
-                        else:
-                            declaration = UnitDecl(
-                                unitname=str(selection),
-                                requirements='N/A',
-                                inputs=['N/A'],
-                                outputs=['N/A']
-                            )
+                        declaration=self.tree.declares[selection].to_prompt()
                         gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(DECLARATION=declaration)
                     GUM_IMPLEMENTATION_UNIT.apply(IMPLEMENTATION_CODER.obj)
                 else: # Debugging or refining the implementation
@@ -1556,6 +1557,9 @@ class GUFlow(FlowCreator):
                                 fetal_errors.append(f'There are multiple root units found: {", ".join(root_name)}, please check if you miss declare some child units.')
                             else:
                                 unit_name=root_name[0]
+                                if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
+                                    self.tree.root = unit_name
+                                
                                 reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
                                 # replace selection with unit_name
                                 self.tree._replace_unit(selection,unit_name) # do replace first
@@ -1611,6 +1615,17 @@ class GUFlow(FlowCreator):
                             declaration=self.tree.declares[unit_name]
                         format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, docstring,new_args,gau_tests,children_decl,NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis,declaration)
                         reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
+                        if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
+                            self.tree.root = unit_name
+                        #     if unit_name != proposal.modelname:
+                        #         modelname=proposal.modelname
+                        #         docstring=docstring.replace(unit_name, proposal.modelname)
+                        #         reformatted_code=reformatted_code.replace(unit_name, proposal.modelname)
+                        #         format_warnings.append(f'The root unit name {unit_name} is different from the proposal model name {proposal.modelname}, it will be renamed to {proposal.modelname}.')
+                        #         for test_name, test_code in gau_tests.items():
+                        #             gau_tests[test_name] = test_code.replace(unit_name, proposal.modelname)
+                        #         unit_name=modelname
+                        
                         collapse_write(
                             self.stream,
                             'Code format check for '+unit_name,
@@ -1622,9 +1637,12 @@ class GUFlow(FlowCreator):
                             )
                         )
 
-                    if self.design_mode==DesignModes.CROSSOVER:
-                        if not INITIAL_PASS and len(children_decls)==0:
-                            format_errors.append(f'FETAL ERROR: No child units declared or detected under this root node, which is not allowed.')
+        
+                    if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
+                        if len(self.tree.root_node.children)==0:
+                            no_children_error=f'FETAL ERROR: No child units declared or detected under this root node, which is not allowed. You cannot have only one unit in your implementation, root node must have children.'  
+                            format_errors.append(no_children_error)
+                            self.stream.write(f':red[{no_children_error}]')
 
                     _func_checkpass = False
                     if fetal_errors==[]:
@@ -1712,6 +1730,8 @@ class GUFlow(FlowCreator):
                         _FORMAT_CHECKER_REPORT=FORMAT_CHECKER_REPORT
                     else:
                         _FORMAT_CHECKER_REPORT='Format check passed.'
+                        if len(format_warnings)>0:
+                            _FORMAT_CHECKER_REPORT+=f'\n\n#### Format Warnings\n{format_warnings}'
                     if not _func_checkpass:
                         _FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT
                     else:
