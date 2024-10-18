@@ -1,12 +1,17 @@
 import time
 import os
 import json
+import copy
 from typing import List,Any,Optional,Dict,Union
 from pydantic import BaseModel
 import inspect
+import tiktoken 
 
 from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,UtilityModel
 from exec_utils.models.utils import openai_costs
+
+
+## YOU SHOULD ALWAYS THE CALLS HERE INSTEAD OF THE ORIGINAL CALLS IN EXEC_UTILS
 
 
 OPENAI_COSTS_DICT={
@@ -54,7 +59,96 @@ def anthropic_costs(usage,model_name='claude-3-5-sonnet-20240620'):
     usage['cost']=cost
     usage['model_name']=model_name
     return usage
+
+OPENAI_TOKEN_LIMITS={
+    "gpt-4o-2024-08-06":128000,
+    "gpt-4o-mini":128000,
+    "o1-preview":128000,
+    "o1-mini":128000,
+}
+
+OPENAI_OUTPUT_BUFFER={
+    "gpt-4o-2024-08-06":16384,
+    "gpt-4o-mini":16384,
+    "o1-preview":32768,
+    "o1-mini":32768,
+}
+
+ANTHROPIC_TOKEN_LIMITS={
+    "claude-3-5-sonnet-20240620":200000,
+}
+
+ANTHROPIC_OUTPUT_BUFFER={
+    "claude-3-5-sonnet-20240620":8192,
+}
+
+
+def get_token_limit(model_name):
+    if 'gpt' in model_name or 'o1' in model_name:
+        return OPENAI_TOKEN_LIMITS[model_name] - OPENAI_OUTPUT_BUFFER[model_name]
+    elif 'claude' in model_name:
+        return ANTHROPIC_TOKEN_LIMITS[model_name] - ANTHROPIC_OUTPUT_BUFFER[model_name]
+    else:
+        raise ValueError(f'Unsupported model: {model_name}')
+
+def _encode_text(text,model_name,truncate=None):
+    if 'gpt' in model_name or 'o1' in model_name:
+        enc=tiktoken.encoding_for_model(model_name)
+        tokens = enc.encode(text)
+    elif 'claude' in model_name:
+        client = anthropic.Client()
+        tokenizer =  client.get_tokenizer()
+        tokens = tokenizer.encode(text).ids
+    else:
+        raise ValueError(f'Unsupported model: {model_name}')
+    if truncate is not None:
+        tokens = tokens[:truncate]
+    return tokens
+
+def decode_text(tokens,model_name):
+    if 'gpt' in model_name or 'o1' in model_name:
+        enc=tiktoken.encoding_for_model(model_name)
+        return enc.decode(tokens)
+    elif 'claude' in model_name:
+        client = anthropic.Client()
+        tokenizer =  client.get_tokenizer()
+        return tokenizer.decode(tokens)
+    else:
+        raise ValueError(f'Unsupported model: {model_name}')
     
+def count_tokens(text,model_name):
+    return len(_encode_text(text,model_name))
+
+def truncate_text(text,token_limit,model_name,buffer=128):
+    tokens=_encode_text(text,model_name,truncate=token_limit-buffer)
+    text=decode_text(tokens,model_name)+'\n\n... (truncated)'
+    return text
+
+def truncate_history(history,token_limit,model_name,buffer=128):
+    truncated_history=[]
+    for content,role in history[::-1]: # add latest messages first
+        num_tokens=count_tokens(content,model_name)
+        if num_tokens > token_limit:
+            content = truncate_text(content,token_limit,model_name,buffer)
+            truncated_history.append((content,role))
+            break
+        truncated_history.append((content,role))
+        token_limit-=num_tokens
+    truncated_history=truncated_history[::-1] # revert to original order
+    return truncated_history
+
+def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
+    history = copy.deepcopy(history)
+    token_limit=get_token_limit(model_name)
+    if prompt is not None:
+        token_limit-=count_tokens(prompt,model_name)
+    if system is not None:
+        token_limit-=count_tokens(system,model_name)
+    if token_limit<0:
+        raise ValueError(f'Token limit exceeded by input and output: {token_limit}')
+    history=truncate_history(history,token_limit,model_name,buffer)
+    return history
+
 
 
 class ModelOutputPlus(UtilityModel):
@@ -96,6 +190,7 @@ def structured__call__(
         history: Optional[List[Any]] = [],
         model_state: Optional[ModelState] = None,
         logprobs=False,
+        system: Optional[str] = None,
         **kwargs
     ):
     """Makes a call the underlying model 
@@ -112,6 +207,7 @@ def structured__call__(
         The optional model state at the point of querying 
     
     """
+    history=context_safe_guard(history,model._config.model_name,prompt,system)
     if model_state is None:
         return _prompt_model_structured(
             model,
@@ -309,7 +405,6 @@ class ConversationHistory:
         # Return the turns in the original order
         return list(reversed(result))
 
-
 def claude__call__(
         model: OpenAIModel, # model in config is ignored
         prompt: str,
@@ -319,7 +414,7 @@ def claude__call__(
         history: Optional[List[Any]] = [],
         model_state: Optional[ModelState] = None,
         logprobs=False, # not supported for claude
-        use_cache: bool = True, # XXX: not working with structured outputs now!
+        use_cache: bool = False, # XXX: not working with self-managed contexts as its changing, hard to track
         system: Optional[str] = None,
         model_name: Optional[str] = 'claude-3-5-sonnet-20240620',
         **kwargs
@@ -338,6 +433,7 @@ def claude__call__(
         The optional model state at the point of querying 
     
     """
+    history=context_safe_guard(history,model._config.model_name,prompt,system)
     messages=ConversationHistory(history,prompt).get_turns(use_cache)
     model._config.model_name=model_name
     if use_cache:

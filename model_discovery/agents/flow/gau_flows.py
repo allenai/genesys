@@ -91,12 +91,12 @@ def print_details(stream,agent,context,prompt):
         )
         try:
             stream.write(
-                f"""<details><summary>Agent input context</summary>{context.get()}</details>""",
+                f"""<details><summary>Agent input context (Length: {len(context.get())})</summary>{context.get()}</details>""",
                 unsafe_allow_html=True
             )
         except:
             stream.write(
-                f"""<details><summary>Agent input context</summary>{context.get()}</details>""",
+                f"""<details><summary>Agent input context (Length: {len(context.get())})</summary>{context.get()}</details>""",
             )
         stream.write(
             f"""<details><summary>Agent input prompt</summary>{prompt}</details>""",
@@ -220,14 +220,19 @@ class GUFlow(FlowCreator):
         self.sess_id = sess_id
         self.ptree=system.ptree
         seeds,refs,instruct,self.design_mode=self.ptree.get_session_input(sess_id)
+        self.stream.write(f'Number of seeds sampled: {len(seeds)}. Number of references: {len(refs)}. Working in design mode: {self.design_mode}')
         self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode)
         if self.design_mode==DesignModes.MUTATION:
             self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
             self.seed = seeds[0].to_prompt()
-            self.seed_id=seeds[0].acronym
+            self.seed_ids=[seeds[0].acronym]
         elif self.design_mode==DesignModes.CROSSOVER:
             self.seed_tree = self.ptree.new_gau_tree()
-            self.seed = '\n\n---\n\n'.join([seed.to_prompt() for seed in seeds])
+            seeds_prompt='\n\n'
+            for idx,seed in enumerate(seeds):
+                seeds_prompt+=f'---\n\n<details><summary>Parent {idx+1}</summary>{seed.to_prompt()}</details>\n\n'
+            self.seed = seeds_prompt
+            self.seed_ids=[seed.acronym for seed in seeds]
         elif self.design_mode==DesignModes.SCRATCH:
             self.seed_tree = self.ptree.new_gau_tree()
             self.seed = None
@@ -271,10 +276,13 @@ class GUFlow(FlowCreator):
             self.stream.write(f' - *{agent} Cost*: {cost}')
         self.stream.write(f'###### **Session Total Cost**: {self.total_cost}')
 
-    def call_dialog(self,tid,prompt):
+    def call_dialog(self,tid,prompt,context=None):
         callee=self.dialog.get_alias(tid)
         status='IMPLEMENTATION' if 'implementation' in callee else 'PROPOSAL'
         self.log_fn(f'Calling {tid} ({callee})...',status) 
+        if context:
+            print(f'[DEBUG] Switching context of {tid} ({callee}) to new context with length {len(context.get())}')
+            self.dialog.switch_context(tid,copy.deepcopy(context))
         msg,out=self.dialog.call(tid,prompt)
         self.log_fn(f'{tid} ({callee}) returned.',status)
         return msg,out
@@ -391,29 +399,25 @@ class GUFlow(FlowCreator):
         USE_O1_REVIEWER='o1' in self.agent_types['PROPOSAL_REVIEWER']
 
         traces=[]
-        context_design_proposer=AgentContext()
-        context_proposal_reviewer=AgentContext()
-        o1_attempt_context=AgentContext()
-        # o1_review_context=AgentContext()
 
-        if self.design_mode==DesignModes.MUTATION:
+        if self.design_mode!=DesignModes.SCRATCH:
             units=set(self.seed_tree.units.keys())
             SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root.spec.unitname} 
             SELECTIONS=list(SELECTIONS)
             self.log_fn(f'Searching sibling designs...','PROPOSAL')
-            _,SIBLINGS=self.sss.query_sibling_designs(self.seed_id)
+            _,SIBLINGS=self.sss.query_sibling_designs(self.seed_ids)
             self.log_fn(f'Search finished.','PROPOSAL')
 
+        cross_attempt_context=AgentContext()
         for attempt in range(self.max_attemps['design_proposal']):
+            context_design_proposer=copy.deepcopy(cross_attempt_context.truncate(1))
             if USE_O1_PROPOSER:
-                context_design_proposer=copy.deepcopy(o1_attempt_context)
-                o1_attempt_context=AgentContext()
                 if self.design_mode==DesignModes.MUTATION:
                     DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1M_PROPOSER_BACKGROUND(
                         GAU_BASE=GAU_BASE,SEED=query,SELECTIONS=SELECTIONS,SIBLINGS=SIBLINGS))
                 elif self.design_mode==DesignModes.CROSSOVER:
                     DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1C_PROPOSER_BACKGROUND(
-                        GAU_BASE=GAU_BASE,PARENTS=query))
+                        GAU_BASE=GAU_BASE,PARENTS=query,SIBLINGS=SIBLINGS))
                 else:
                     DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1S_PROPOSER_BACKGROUND(
                         GAU_BASE=GAU_BASE,REFS=query))
@@ -452,7 +456,7 @@ class GUFlow(FlowCreator):
                     else:
                         GUC_DESIGN_PROPOSAL=P.GUC_DESIGN_PROPOSAL_ISEARCH
                         GU_DESIGN_PROPOSAL_FINISH=P.GUC_DESIGN_PROPOSAL_ISEARCH_FINISH
-                        proposal_prompt=GUC_DESIGN_PROPOSAL(PARENTS=query)
+                        proposal_prompt=GUC_DESIGN_PROPOSAL(PARENTS=query,SIBLINGS=SIBLINGS)
                     GUC_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
                 else:
                     if USE_O1_PROPOSER:
@@ -482,7 +486,7 @@ class GUFlow(FlowCreator):
                         GUC_PROPOSAL_REFINEMENT=P.O1C_DESIGN_PROPOSAL_REFINEMENT
                     else:
                         GUC_PROPOSAL_REFINEMENT = P.GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
-                        GUC_DESIGN_PROPOSAL_FINISH = P.GUC_PROPOSAL_REFINEMENT_FINISH
+                        GU_DESIGN_PROPOSAL_FINISH = P.GUC_PROPOSAL_REFINEMENT_FINISH
                     proposal_prompt=GUC_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                             PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                     GUC_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
@@ -491,6 +495,7 @@ class GUFlow(FlowCreator):
                         GUS_PROPOSAL_REFINEMENT=P.GUS_PROPOSAL_REFINEMENT_FINISH # reuse it
                     else:
                         GUS_PROPOSAL_REFINEMENT=P.GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
+                        GU_DESIGN_PROPOSAL_FINISH=P.GUS_PROPOSAL_REFINEMENT_FINISH
                     proposal_prompt=GUS_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                             PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                     GUS_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
@@ -502,6 +507,7 @@ class GUFlow(FlowCreator):
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                     _,out=self.call_dialog(design_proposer_tid,proposal_prompt)
+                    context_design_proposer=self.dialog.context(design_proposer_tid) # past + begin_prompt + first query
                     if USE_O1_PROPOSER:
                         thoughts,keywords,description=out['text'],out['keywords'],out['description']
                         ready="I'm ready" in thoughts
@@ -546,9 +552,12 @@ class GUFlow(FlowCreator):
                         search_cont_prompt=PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
                         if i<=_MIN_ROUNDS:
                             search_cont_prompt+=f'\n\nNote: This is your {i+1}th set of search results, you are not allowed to propose without adaquate information, you need to propose with at least {_MIN_ROUNDS+1} sets of search results. And your first {_MIN_ROUNDS} readiness will not be accepted.'
+                        
                         PROPOSAL_ISEARCH_CONT.apply(DESIGN_PROPOSER.obj)
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,search_cont_prompt)
-                        _,out=self.call_dialog(design_proposer_tid,search_cont_prompt)
+                        _,out=self.call_dialog(design_proposer_tid,search_cont_prompt,context_design_proposer)
+                        context_design_proposer.append(out['text'],'assistant',{}) # append new note,ignore search results
+                        
                         if USE_O1_PROPOSER:
                             thoughts,keywords,description=out['text'],out['keywords'],out['description']
                             ready="I'm ready" in thoughts
@@ -566,7 +575,6 @@ class GUFlow(FlowCreator):
                     if ready and i>=_MIN_ROUNDS: break # at least request 3 times
                 
                 # final search 
-
                 
                 variantname,changes,reflection,abstract,selection=None,None,None,None,None
                 with self.status_handler('Finishing design proposal...'):
@@ -604,8 +612,7 @@ class GUFlow(FlowCreator):
                             PROPOSAL_FINISH=P.O1S_PROPOSAL_FINISH
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,o1_finish_prompt)
                         PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
-                        o1_attempt_context.append(o1_finish_prompt,'user',{})
-                        _,out=self.call_dialog(design_proposer_tid,o1_finish_prompt)
+                        _,out=self.call_dialog(design_proposer_tid,o1_finish_prompt,context_design_proposer) # all notes + final query
                         proposal,title,modelname,abstract=out['text'],out['title'],out['model_name'],out['abstract']
                         if self.design_mode==DesignModes.MUTATION:
                             selection=out['selection']
@@ -629,7 +636,6 @@ class GUFlow(FlowCreator):
                                 info = 'Failed to generate design proposal with right format with O1, stopping design process'
                                 self.log_fn(info,'ERROR')
                                 raise Exception(info)
-                            o1_attempt_context.append(f'{proposal}\n\n### Selection\n\n{selection}','assistant',out)
                         if len(modelname)>0:
                             modelname=modelname[0]
                         elif len(title)>0:
@@ -641,7 +647,7 @@ class GUFlow(FlowCreator):
                         proposal_finish_prompt=GU_DESIGN_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_finish_prompt)
                         GU_DESIGN_PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
-                        _,out=self.call_dialog(design_proposer_tid,proposal_finish_prompt)
+                        _,out=self.call_dialog(design_proposer_tid,proposal_finish_prompt,context_design_proposer)
                         proposal,modelname,changes,abstract=out['proposal'],out['modelname'],out.get('changes',None),out.get('abstract',None)
                         self.stream.write(f'### Design Name: {modelname}')
                         if self.design_mode==DesignModes.MUTATION:
@@ -652,7 +658,6 @@ class GUFlow(FlowCreator):
                         self.stream.write(f'# Proposal\n{proposal}')
                         if changes:
                             self.stream.write(f'# Changes\n{changes}')
-                        context_design_proposer=self.dialog.context(design_proposer_tid)
                         self.print_raw_output(out,'DESIGN_PROPOSER')
 
             elif USE_2STAGE: # use search or not
@@ -711,13 +716,12 @@ class GUFlow(FlowCreator):
             # self.stream.markdown(top_k_pps)
 
             if USE_O1_REVIEWER:
-                context_proposal_reviewer=AgentContext() #copy.deepcopy(o1_review_context)
                 # o1_review_context=AgentContext()
                 if self.design_mode==DesignModes.MUTATION:
                     SYSTEM_PROMPT=P.O1M_PROPOSAL_REVIEWER_BACKGROUND(
                         SEED=query,SELECTION=selection,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
                 elif self.design_mode==DesignModes.CROSSOVER:
-                    SYSTEM_PROMPT=P.O1C_PROPOSAL_REVIEWER_BACKGROUND(SEED=query,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps)
+                    SYSTEM_PROMPT=P.O1C_PROPOSAL_REVIEWER_BACKGROUND(SEED=query,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
                 else:
                     SYSTEM_PROMPT=P.O1S_PROPOSAL_REVIEWER_BACKGROUND(PROPOSAL=_proposal,TOP_K_PPS=top_k_pps)
             else:
@@ -728,6 +732,7 @@ class GUFlow(FlowCreator):
                 else:
                     SYSTEM_PROMPT=P.GUS_PROPOSAL_REVIEWER_SYSTEM()
             PROPOSAL_REVIEWER=reload_role('proposal_reviewer',self.agents['PROPOSAL_REVIEWER'],SYSTEM_PROMPT)
+            context_proposal_reviewer=copy.deepcopy(cross_attempt_context.truncate(1))
             proposal_reviewer_tid=self.dialog.fork(main_tid,USER_CALLER,PROPOSAL_REVIEWER,context=context_proposal_reviewer,
                                                 alias='proposal_reviewer',note=f'Reviewing proposal...')
             if attempt==0:
@@ -740,8 +745,12 @@ class GUFlow(FlowCreator):
                         REVIEW_PROMPT=P.GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REVIEW
                         proposal_review_prompt=REVIEW_PROMPT(
                             SEED=query,SELECTION=selection,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
-                    else:
+                    elif self.design_mode==DesignModes.CROSSOVER:
                         REVIEW_PROMPT=P.GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN
+                        proposal_review_prompt=REVIEW_PROMPT(
+                            SEED=query,PROPOSAL=_proposal,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                    else:
+                        REVIEW_PROMPT=P.GUS_PROPOSAL_REVIEW_ISEARCH_BEGIN
                         proposal_review_prompt=REVIEW_PROMPT(PROPOSAL=_proposal,TOP_K_PPS=top_k_pps)
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
             else:
@@ -752,13 +761,18 @@ class GUFlow(FlowCreator):
                 else:
                     if self.design_mode==DesignModes.MUTATION:
                         REREVIEW_PROMPT=P.GUM_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUM_PROPOSAL_REREVIEW
-                    else:
+                    elif self.design_mode==DesignModes.CROSSOVER:
                         REREVIEW_PROMPT=P.GUC_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUC_PROPOSAL_REREVIEW
+                    else:
+                        REREVIEW_PROMPT=P.GUS_PROPOSAL_REREVIEW_ISEARCH if USE_ISEARCH_REVIEW else P.GUS_PROPOSAL_REREVIEW
                     if not changes:
                         changes='Please refer to the proposal for changes.'
                     if self.design_mode==DesignModes.MUTATION:
                         proposal_review_prompt=REREVIEW_PROMPT(
                             SELECTION=selection,PROPOSAL=_proposal,CHANGES=changes,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
+                    elif self.design_mode==DesignModes.CROSSOVER:
+                        proposal_review_prompt=REREVIEW_PROMPT(
+                            PROPOSAL=_proposal,CHANGES=changes,TOP_K_PPS=top_k_pps,SIBLINGS=SIBLINGS)
                     else:
                         proposal_review_prompt=REREVIEW_PROMPT(
                             PROPOSAL=_proposal,CHANGES=changes,TOP_K_PPS=top_k_pps)
@@ -769,6 +783,7 @@ class GUFlow(FlowCreator):
                 with self.status_handler(status_info):
                     self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
                     _,out=self.call_dialog(proposal_reviewer_tid,proposal_review_prompt)
+                    context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                     if USE_O1_REVIEWER:
                         thoughts,keywords,description=out['text'],out['keywords'],out['description']
                         ready="I'm ready" in thoughts
@@ -812,7 +827,8 @@ class GUFlow(FlowCreator):
                             search_cont_prompt+=f'\n\nNote: This is your {i+1}th set of search results, you are not allowed to propose without adaquate information, you need to propose with at least {_MIN_ROUNDS+1} sets of search results. And your first {_MIN_ROUNDS} readiness will not be accepted.'
                         PROPOSAL_REVIEW_ISEARCH_CONT.apply(PROPOSAL_REVIEWER.obj)
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_cont_prompt)
-                        _,out=self.call_dialog(proposal_reviewer_tid,search_cont_prompt)
+                        _,out=self.call_dialog(proposal_reviewer_tid,search_cont_prompt,context_proposal_reviewer)
+                        context_proposal_reviewer.append(out['text'],'assistant',{})
                         if USE_O1_REVIEWER:
                             thoughts,keywords,description=out['text'],out['keywords'],out['description']
                             ready="I'm ready" in thoughts
@@ -855,9 +871,8 @@ class GUFlow(FlowCreator):
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,o1m_finish_prompt)
                         P.O1M_PROPOSAL_REVIEW_FINISH.apply(PROPOSAL_REVIEWER.obj)
                         # o1_review_context.append(o1m_finish_prompt,'user',{})
-                        _,out=self.call_dialog(proposal_reviewer_tid,o1m_finish_prompt)
+                        _,out=self.call_dialog(proposal_reviewer_tid,o1m_finish_prompt,context_proposal_reviewer)
                         review,rating=out['text'],out['rating']
-                        context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                         self.stream.write(review)
                         self.print_raw_output(out,'PROPOSAL_REVIEWER')
                         for _ in range(5):
@@ -881,9 +896,8 @@ class GUFlow(FlowCreator):
                         search_finish_prompt=P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL()
                         P.GUM_PROPOSAL_REVIEW_ISEARCH_FINAL.apply(PROPOSAL_REVIEWER.obj)
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_finish_prompt)
-                        _,out=self.call_dialog(proposal_reviewer_tid,search_finish_prompt)
+                        _,out=self.call_dialog(proposal_reviewer_tid,search_finish_prompt,context_proposal_reviewer)
                         review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                        context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                         passornot='Pass' if rating>=REVIEW_THRESHOLD else 'Fail'
                         self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         self.stream.write(review)
@@ -894,12 +908,13 @@ class GUFlow(FlowCreator):
                     self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
                     _,out=self.call_dialog(proposal_reviewer_tid,proposal_review_prompt)
                     review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                    context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
                     passornot='Pass' if rating>=REVIEW_THRESHOLD else 'Fail'
                     self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                     self.stream.write(review)
                     self.stream.write(suggestions)
                     self.print_raw_output(out,'PROPOSAL_REVIEWER')
+
+                
 
             trace={
                 # proposal content
@@ -925,10 +940,31 @@ class GUFlow(FlowCreator):
             }
             traces.append(trace)
 
+
+
             if rating>=REVIEW_THRESHOLD:
                 self.stream.write(f'#### Proposal passed with rating {rating} out of 5')
                 self.log_fn(f'Proposal passed with rating {rating} out of 5','PROPOSAL')
                 break
+            else:
+                _cross_attempt_context=f"This is a past proposal attempt that failed the review with rating {rating} out of 5."
+                if abstract:
+                    _cross_attempt_context+=f"\n\n## Abstract\n{abstract}\n"
+                _cross_attempt_context+=f"\n\n### Model Name\n{modelname}\n"    
+                if selection:
+                    _cross_attempt_context+=f"\n\n### Selection\n{selection}\n"
+                if variantname:
+                    _cross_attempt_context+=f"\n\n### Variant Name\n{variantname}\n"
+                _cross_attempt_context+=f"\n\n## Proposal\n{proposal}\n"
+                if reflection or changes:
+                    _cross_attempt_context+='\n\n#### The proposal is a refinement of its previous proposal which failed the review.\n'
+                if reflection:
+                    _cross_attempt_context+=f"\n\n### The proposer's Reflection on its previous proposal\n{reflection}\n"
+                if changes:
+                    _cross_attempt_context+=f"\n\n### Changes made compared to its previous proposal \n{changes}\n"
+                _cross_attempt_context+=f"\n\n## Review\n{review}\n"
+                _cross_attempt_context+=f"\n\n## Suggestions\n{suggestions}\n"
+                cross_attempt_context.append(_cross_attempt_context,'user',{})
         
         if rating<REVIEW_THRESHOLD:
             self.stream.write(f'#### Proposal failed with rating {rating} out of 5')
@@ -1122,7 +1158,7 @@ class GUFlow(FlowCreator):
         assert USE_O1_CODER, 'Non-o1 coders are buggy now, please use o1 coders'
 
         context_implementation_planner=AgentContext() 
-        o1_planner_context=AgentContext()
+        planner_context=AgentContext()
 
         post_refinement=0 # TODO: introduce self-evaluate to post-refinement
         while True:
@@ -1162,12 +1198,12 @@ class GUFlow(FlowCreator):
             
             # if USE_O1_PLANNER:
             #     GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
-            #     context_implementation_planner=copy.deepcopy(o1_planner_context)
+            #     context_implementation_planner=copy.deepcopy(planner_context)
             # else:
             #     GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
         
-            if USE_O1_PLANNER:
-                context_implementation_planner=copy.deepcopy(o1_planner_context)
+            # if USE_O1_PLANNER:
+            context_implementation_planner=copy.deepcopy(planner_context)
             if self.design_mode==DesignModes.MUTATION: 
                 GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1M_IMPLEMENTATION_PLANNER_BACKGROUND
                 _background_prompt={'SEED':self.seed,'SELECTION':proposal.selection}
@@ -1220,7 +1256,7 @@ class GUFlow(FlowCreator):
                         GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
                         self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
                         # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
-                        o1_planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
+                        planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
                         _,out=self.call_dialog(implementation_planner_tid,gu_implementation_unit_selection_prompt)
                     motivation,rough_plan=None,None
                     termination=False
@@ -1231,7 +1267,7 @@ class GUFlow(FlowCreator):
                                 selection=proposal.selection
                             else:   
                                 plan,selection=out['text'],out['selection']
-                            o1_planner_context.append(plan,'assistant',{})
+                            planner_context.append(plan,'assistant',{})
                             if round>1 and len(UNIMPLEMENTED)==0:
                                 termination="```terminate```" in plan
                             self.stream.write(f'### Selection: {selection}')
@@ -1264,11 +1300,11 @@ class GUFlow(FlowCreator):
                     else:
                         selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
                         plan=out['text']
-                        context_implementation_planner=self.dialog.context(implementation_planner_tid) # update context with tree view background
                         self.stream.write(f'### Selection: {selection}')
                         self.stream.write(f'### Motivation\n{motivation}')    
                         self.stream.write(f'### Rough Plan\n{rough_plan}')
                         self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                        planner_context.append(plan,'assistant',{})
             else: # round 1, work on the selected unit
                 if self.design_mode==DesignModes.MUTATION:
                     selection=proposal.selection
@@ -1346,7 +1382,7 @@ class GUFlow(FlowCreator):
                             declaration=self.tree.declares[selection].to_prompt()
                         else:
                             declaration = UnitDecl(
-                                unitname=selection,
+                                unitname=str(selection),
                                 requirements='N/A',
                                 inputs=['N/A'],
                                 outputs=['N/A']
@@ -1405,13 +1441,13 @@ class GUFlow(FlowCreator):
                         else: # possible when debugging the implementation of a new unit
                             if isinstance(declaration,str):
                                 declaration = UnitDecl(
-                                    unitname=selection,
+                                    unitname=str(selection),
                                     requirements='N/A',
                                     inputs=['N/A'],
                                     outputs=['N/A']
                                 )
                             spec = P.UnitSpec(
-                                unitname=selection,
+                                unitname=str(selection),
                                 document='',
                                 inputs=declaration.inputs,
                                 outputs=declaration.outputs
@@ -1428,13 +1464,13 @@ class GUFlow(FlowCreator):
                         self.stream.write(f'## Implementation of {selection}')
                         if isinstance(declaration,str):
                             declaration = UnitDecl(
-                                unitname=selection,
-                                requirements='',
+                                unitname=str(selection),
+                                requirements='N/A',
                                 inputs=['N/A'],
                                 outputs=['N/A']
                             )
                         spec = P.UnitSpec(
-                            unitname=selection,
+                            unitname=str(selection),
                             document='',
                             inputs=declaration.inputs,
                             outputs=declaration.outputs
@@ -1516,8 +1552,8 @@ class GUFlow(FlowCreator):
                                 LOG.append(f'Replace unit {selection} with {unit_name}')
                                 self.stream.write(f'Replace local root unit {selection} with {unit_name}')
                                 self.tree.declares[unit_name]=UnitDecl(
-                                    unitname=unit_name,
-                                    requirements='',
+                                    unitname=str(unit_name),
+                                    requirements='N/A',
                                     inputs=spec.inputs,
                                     outputs=spec.outputs
                                 )
@@ -1527,7 +1563,7 @@ class GUFlow(FlowCreator):
                             if unit_name not in self.tree.declares:# and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
                                 format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
                                 declaration=UnitDecl(
-                                    unitname=unit_name,
+                                    unitname=str(unit_name),
                                     requirements='N/A',
                                     inputs=['N/A'],
                                     outputs=['N/A']
@@ -1556,7 +1592,7 @@ class GUFlow(FlowCreator):
                         if unit_name not in self.tree.declares and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
                             format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
                             declaration=UnitDecl(
-                                unitname=unit_name,
+                                unitname=str(unit_name),
                                 requirements='N/A',
                                 inputs=['N/A'],
                                 outputs=['N/A']
@@ -1746,10 +1782,11 @@ class GUFlow(FlowCreator):
                         GUT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 
                     with self.status_handler(status_info):
-                        if USE_O1_OBSERVER:
-                            context_implementation_observer=AgentContext()
+                        # if USE_O1_OBSERVER: # no history  
+                        context_implementation_observer=AgentContext() # no history for all
                         self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,gum_implementation_unit_review_prompt)
                         _,out=self.call_dialog(implementation_observer_tid,gum_implementation_unit_review_prompt)
+                        context_implementation_observer=self.dialog.context(implementation_observer_tid)
                         if USE_O1_OBSERVER:
                             suggestions=None
                             review,rating=out['text'],out['rating']
@@ -1774,7 +1811,6 @@ class GUFlow(FlowCreator):
                             self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         else:
                             review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                            context_implementation_observer=self.dialog.context(implementation_observer_tid)
                             passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
                             self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                             self.stream.write(review)

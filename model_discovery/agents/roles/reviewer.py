@@ -107,7 +107,8 @@ class ReviewerAgent(exec_utils.SimpleLMAgent):
             response_format=response_format,
             prompt=query,
             model_state=self.model_state,
-            history=tuple(manual_history)
+            history=tuple(manual_history),
+            system=self.model_state.static_message[0]['content'], # for the guard as reference
         )
         # try:
         response = self.parse_output(raw_response)

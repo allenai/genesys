@@ -83,6 +83,7 @@ class DesignerAgent(exec_utils.SimpleLMAgent):
             model_state=self.model_state, 
             history=tuple(manual_history),
             logprobs=self.logprobs,
+            system=self.model_state.static_message[0]['content'], # for the guard as reference
         )
         response = self.parse_output(raw_response)
 

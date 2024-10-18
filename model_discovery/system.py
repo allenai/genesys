@@ -390,7 +390,8 @@ DEFAULT_NUM_SAMPLES={
     'rerank_method':'rating',
 }
 DEFAULT_UNITTEST_PASS_REQUIRED=False
-
+DEFAULT_CROSSOVER_NO_REF=True
+DEFAULT_MUTATION_NO_TREE=True
 
 
 @exec_utils.Registry(
@@ -563,6 +564,8 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['num_samples']=U.safe_get_cfg_dict(design_cfg,'num_samples',DEFAULT_NUM_SAMPLES)
         design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
         design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
+        design_cfg['crossover_no_ref'] = design_cfg.get('crossover_no_ref',DEFAULT_CROSSOVER_NO_REF)
+        design_cfg['mutation_no_tree'] = design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
 
         self.sss.reconfig(search_cfg,stream)
         self.sss._refresh_db()
@@ -578,6 +581,10 @@ class ModelDiscoverySystem(exec_utils.System):
                     stream.write(search_cfg)
         except:
             pass
+
+        if design_cfg['crossover_no_ref'] and len(refs)>1:
+            stream.write('Crossover no ref is set to True, ignore all references')
+            refs=None
 
         # 1. create or retrieve a new session
         if sess_id is None: # if provided, then its resuming a session

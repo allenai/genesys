@@ -199,7 +199,8 @@ Do not worry about the number of tokens in your reasoning, you can use as many a
 
 
 
-def build_GU_QUERY(seeds,refs=None,instruct=None,user_input=None,mode=DesignModes.MUTATION):
+def build_GU_QUERY(seeds,refs=None,instruct=None,user_input=None,
+                     mode=DesignModes.MUTATION,mutation_no_tree=True):
    if mode==DesignModes.MUTATION:
       query = f"""
 # Seed Design
@@ -213,7 +214,9 @@ You are tasked with improving the following seed design:
 ---
 """
    elif mode==DesignModes.CROSSOVER:
-      seeds_prompt='\n\n---\n\n'.join([seed.to_prompt() for seed in seeds])
+      seeds_prompt='\n\n'
+      for idx,seed in enumerate(seeds):
+         seeds_prompt+=f'---\n\n<details><summary>Parent {idx+1}</summary>{seed.to_prompt()}</details>\n\n'
       query = f"""
 # Seed Design
 
@@ -247,7 +250,14 @@ Here are the relevant references:
 ---
 '''
       for idx,reference in enumerate(refs):
-         query += f"\nReference {idx} from library {reference.type}:\n{reference.to_prompt()}\n\n---\n"
+         if mode==DesignModes.MUTATION and mutation_no_tree:
+            if reference.type in ['DesignArtifactImplemented','ReferenceCoreWithTree']:
+               ref_prompt = reference.to_prompt(full_tree=False)
+            else:
+               ref_prompt = reference.to_prompt()
+         else:
+            ref_prompt = reference.to_prompt()
+         query += f"\nReference {idx} from library {reference.type}:\n{ref_prompt}\n\n---\n"
    if instruct:
       query += f"\nHere are some additional instructions that may help you:\n{instruct}\n\n---\n"
    if user_input:
@@ -416,6 +426,41 @@ Using the insights gained from Stage 1, develop a comprehensive and detailed pro
 Remember, the goal is to produce a novel, well-researched, and practically feasible improvement to the existing LM block design. Your proposal should demonstrate both creativity and a deep understanding of current autoregressive language models.
 """
 
+ANALYSIS_NOTE_FORMAT = """
+You need to include those parts in the analysis note: 
+1. Summary of your analysis.
+2. All useful references with excerpts.
+3. Key insights and detailed analysis that may help you.
+4. Future search plan if needed or plan of next steps.
+5. The list of references, use precise citation style.
+"""
+
+
+_ISEARCH_PROCESS_INSTRUCTION = """
+1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore any information you need. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
+
+2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that may help you to form your proposal. 
+Then record all useful references and your analysis of them in an `Analysis Note`, notice that all search results will be cleared and not visible after this round of dialog, so you need to record everything accurately and comprehensively in this note.
+You will be referring to this note in future search rounds as well as your final proposal.
+
+""" + ANALYSIS_NOTE_FORMAT + """
+
+3. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
+
+Repeat this cycle as many times as needed until you feel your proposal is ready for review.
+"""
+
+ISEARCH_PROCESS_INSTRUCTION_PROPOSAL = """
+In this phase, you will conduct multiple rounds of search and refinement without external review. Each round consists of:
+
+""" + _ISEARCH_PROCESS_INSTRUCTION + """
+
+Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+"""
+
+ISEARCH_PROCESS_INSTRUCTION_REVIEW = _ISEARCH_PROCESS_INSTRUCTION.replace('proposal','review')
+
+
 GUM_DESIGN_PROPOSER_SYSTEM_ISEARCH_prompt = """
 You are a researcher tasked with proposing a novel autoregressive language model (LM) block design. This process incorporates an iterative search and refinement workflow to enhance the quality and depth of your proposals.
 
@@ -473,21 +518,9 @@ Your task of creating a novel LM block design will follow an iterative process o
 
 ### Phase 1: Multiple Search and Refinement Rounds
 
-In this phase, you will conduct multiple rounds of search and refinement without external review. Each round consists of:
+You need to search and think of advantages and disadvantages of the seed design, and how to imporve it to be a better design.
 
-1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects of your proposal or explore new ideas in the field of language model architecture. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
-
-2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
-
-3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
-
-4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
-
-5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
-
-Repeat this cycle as many times as needed until you feel your proposal is ready for review.
-
-Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+""" + ISEARCH_PROCESS_INSTRUCTION_PROPOSAL + """
 
 ### Phase 2: Review and Major Refinement
 
@@ -645,22 +678,9 @@ Your will follow an iterative process of research, ideation, and refinement. Thi
 
 ### Phase 1: Multiple Search and Refinement Rounds
 
-In this phase, you will conduct multiple rounds of search and refinement without external review.
-You need to think of analyze the advantage and disadvantage of each parent, and the best way to combine the parents to get a better design. Each round consists of:
+You need to search and think of the advantage and disadvantage of each parent, and the best way to combine the parents to get a better design.
 
-1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects that can help you recombine and improve the parents. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
-
-2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
-
-3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
-
-4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
-
-5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
-
-Repeat this cycle as many times as needed until you feel your proposal is ready for review.
-
-Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+""" + ISEARCH_PROCESS_INSTRUCTION_PROPOSAL + """
 
 ### Phase 2: Review and Major Refinement
 
@@ -809,22 +829,9 @@ Your will follow an iterative process of research, ideation, and refinement. Thi
 
 ### Phase 1: Multiple Search and Refinement Rounds
 
-In this phase, you will conduct multiple rounds of search and refinement without external review.
-You need to think of how to innovate the LM block design that beyond the existing state-of-the-art. Each round consists of:
+You need to search and think of how to innovate the LM block design that beyond the existing state-of-the-art. 
 
-1. **Search**: Utilize the search assistant to gather relevant information. Formulate specific queries to investigate aspects that can help you innovate the LM block design. For searching external sources, use keywords, but limit to no more than 3 keywords at a time to avoid potential failure. If you want to search more topics, do so in multiple rounds.
-
-2. **Analysis**: Carefully analyze the search results and detailed analysis provided by the search assistant. Extract key insights that can inform your proposal.
-
-3. **Refinement**: Based on your analysis, refine and improve your proposal. This may involve modifying existing elements, adding new components, or adjusting your approach if the research suggests a more promising direction.
-
-4. **Self-Assessment**: Evaluate your refined proposal against the original objectives and requirements. Identify areas that still need improvement or further research.
-
-5. **Iteration Decision**: Determine if another round of search and refinement is necessary. If so, return to step 1 with new, focused queries based on your self-assessment.
-
-Repeat this cycle as many times as needed until you feel your proposal is ready for review.
-
-Note: Throughout this process, ensure that your proposals are supported by mathematical, theoretical, or logical justifications. Each design decision should be backed by sound reasoning and, where applicable, mathematical formulations.
+""" + ISEARCH_PROCESS_INSTRUCTION_PROPOSAL + """
 
 ### Phase 2: Review and Major Refinement
 
@@ -928,10 +935,34 @@ GUS_DESIGN_PROPOSER_SYSTEM_ISEARCH = AgentPrompt(GUS_DESIGN_PROPOSER_SYSTEM_ISEA
 
 
 class GUM_DESIGN_PROPOSAL_ISEARCH_format(BaseModel):
-   analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+   analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final proposal. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
    keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
    ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
+
+
+_ISEARCH_BEGIN_INSTRUCTION = """
+
+2. Formulate search queries:
+   - Create a high-level query for external sources to explore recent advancements in LM architectures.
+   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
+
+3. Outline the key areas of investigation for developing a novel LM block design, such as:
+   - Efficiency improvements
+   - Scalability enhancements
+   - New attention mechanisms
+   - Innovative ways to handle context or memory
+
+4. Record all important information from the search results and your analysis and thoughts in your analysis note.
+
+""" + ANALYSIS_NOTE_FORMAT + """
+
+5. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
+
+Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
+"""
+
+PROPOSAL_ISEARCH_BEGIN_INSTRUCTION = _ISEARCH_BEGIN_INSTRUCTION 
 
 
 def gen_GUM_DESIGN_PROPOSAL(SELECTIONS:list[str],two_stage:bool=False,use_isearch:bool=False):
@@ -963,26 +994,13 @@ Based on the provided seed design and references:
    - Identify key features and limitations of existing architectures.
    - Determine potential areas for innovation or improvement.
 
-2. Formulate search queries:
-   - Create a high-level query for external sources to explore recent advancements in LM architectures.
-   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
-
-3. Outline the key areas of investigation for developing a novel LM block design, such as:
-   - Efficiency improvements
-   - Scalability enhancements
-   - New attention mechanisms
-   - Innovative ways to handle context or memory
-
-4. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
-
-Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
-"""
+""" + PROPOSAL_ISEARCH_BEGIN_INSTRUCTION 
       GUM_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
 Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
 
 {SEARCH_RESULTS}
 
-Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
+Based on the seed design, search results, and your analysis notes, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """
@@ -1053,24 +1071,17 @@ class GUC_DESIGN_PROPOSAL_STAGE2_format(BaseModel):
 GUC_DESIGN_PROPOSAL_ISEARCH_prompt = """
 {PARENTS}
 
+Here are the sibling designs with the same parents, avoid proposing the same design as your siblings, think of how to make your design unique and better.
+
+{SIBLINGS}
+
+Based on the provided parents and references:
+
 1. Analyze the parents:
    - Identify key features, advantages and limitations of existing architectures.
    - Determine best ways to combine the parents to get a better design.
 
-2. Formulate search queries:
-   - Create a high-level query for external sources to explore recent advancements in LM architectures.
-   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
-
-3. Outline the key areas of investigation for recombining the parents, such as:
-   - Efficiency improvements
-   - Scalability enhancements
-   - New attention mechanisms
-   - Innovative ways to handle context or memory
-
-4. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
-
-Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
-"""
+""" + PROPOSAL_ISEARCH_BEGIN_INSTRUCTION 
 
 
 GUC_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
@@ -1078,7 +1089,7 @@ Here is the search results from your last query, you will not be able to access 
 
 {SEARCH_RESULTS}
 
-Based on the seed design, search results, and your analysis, develop a comprehensive proposal for recombining the parents. Remember to follow the output format strictly.
+Based on the seed design, search results, and your analysis notes, develop a comprehensive proposal for recombining the parents. Remember to follow the output format strictly.
 
 Ensure your proposal is best recombining the parents that aim to advance state-of-the-art LM performance and clearly articulate how your design improves upon existing architectures.
 """
@@ -1108,27 +1119,14 @@ Based on the provided information:
    - Identify key features and limitations of existing architectures.
    - Determine potential areas for innovation or improvement.
 
-2. Formulate search queries:
-   - Create a high-level query for external sources to explore recent advancements in LM architectures.
-   - Develop a detailed query for the internal vector store to extract specific technical information on LM block components.
-
-3. Outline the key areas of investigation for developing a novel LM block design, such as:
-   - Efficiency improvements
-   - Scalability enhancements
-   - New attention mechanisms
-   - Innovative ways to handle context or memory
-
-4. Based on your analysis, determine if you need to conduct more searches or if you have gathered sufficient information to begin formulating a proposal.
-
-Focus on thorough information gathering and insightful analysis to lay a strong foundation for the subsequent proposal development process.
-"""
+""" + PROPOSAL_ISEARCH_BEGIN_INSTRUCTION 
 
 GUS_DESIGN_PROPOSAL_ISEARCH_FINISH_prompt = """
 Here is the search results from your last query, you will not be able to access the search assistant again after this, so do not include any more search queries:
 
 {SEARCH_RESULTS}
 
-Based on the seed design, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
+Based on the seed design, search results, and your analysis notes, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """
@@ -1146,11 +1144,9 @@ GUS_DESIGN_PROPOSAL_ISEARCH_FINISH=AgentPrompt(GUS_DESIGN_PROPOSAL_ISEARCH_FINIS
 
 # region GUM Proposal Search Prompt
 
-GUM_DESIGN_PROPOSAL_ISEARCH_CONT_prompt = """
-{SEARCH_RESULTS}
 
-Based on the seed design and the search results obtained so far:
 
+_ISEARCH_CONT_INSTRUCTION = """
 1. Analyze the gathered information:
    - Summarize key insights relevant to LM block design.
    - Identify any conflicting information or approaches.
@@ -1171,9 +1167,15 @@ Based on the seed design and the search results obtained so far:
 5. Decide whether to continue searching or begin proposal formulation:
    - If significant gaps remain, indicate the need for further search iterations.
    - If sufficient information has been gathered, suggest moving to the proposal development phase.
-
-Aim for a comprehensive understanding of the LM block design landscape, balancing breadth of exploration with depth of analysis.
 """
+
+GUM_DESIGN_PROPOSAL_ISEARCH_CONT_prompt = """
+{SEARCH_RESULTS}
+
+Based on the search results, please provide your analysis note and decide whether further search is needed.
+
+!!!IMPORTANT NOTICE: DO NOT GIVE YOUR FINAL PROPOSAL IN THIS STEP, JUST DOING RESEARCH AND FORMING IDEAS. PROVIDING ONLY THE ANALYSIS NOTE AND MAKE SEARCH QUERIES.
+""" + ANALYSIS_NOTE_FORMAT
 
 GUM_DESIGN_PROPOSAL_ISEARCH_CONT=AgentPrompt(GUM_DESIGN_PROPOSAL_ISEARCH_CONT_prompt,GENERAL_JSON_parser,GUM_DESIGN_PROPOSAL_ISEARCH_format)
 
@@ -1197,6 +1199,9 @@ GENERAL_REVIEWER_INSTRUCTIONS = """
 1. **Conduct Investigations before Reviewing**:
    - Use the provided search functionality to gather information about existing research and implementations related to the proposal.
    - You will be asked to conduct multiple rounds of search if necessary to gather comprehensive information.
+   - In every round of search, you have to record all useful information and your analysis and thoughts in a detailed and comprehensive analysis note for future reference. As all the search results will be cleared after each round and you wont be able to access them again, you must record everything carefully.
+
+""" + ANALYSIS_NOTE_FORMAT + """
 
 2. **Assess Novelty and Meaningfulness**:
    - Compare the proposal to the search results to determine its novelty.
@@ -1448,6 +1453,19 @@ GUM_PROPOSAL_REVIEW = AgentPrompt(GUM_PROPOSAL_REVIEW_prompt,GENERAL_JSON_parser
 
 ##### Search & Review
 
+
+_REVIEW_ISEARCH_BEGIN_TASK = """
+Your task is to conduct an initial analysis and formulate search queries to gather more information. Please provide:
+
+1. A initial analysis of the proposal, highlighting key aspects that require further investigation, and make the plan for the investigations.
+2. A high-level query for broad external searches (arXiv, Papers with Code, Semantic Scholar).
+3. A detailed query for searching the internal vector store of research papers.
+4. Check if the proposal is novel or not compared to the previous design proposals and existing researches. 
+
+Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
+"""
+
+
 GUM_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt = """
 You are an expert reviewer evaluating a proposal for modifying a Generalized Autoregressive Unit (GAU) in an autoregressive language model block. You have been provided with the following information:
 
@@ -1460,21 +1478,13 @@ You are an expert reviewer evaluating a proposal for modifying a Generalized Aut
 **Proposal for Review**:
 {PROPOSAL}
 
-**Siblings from Previous Designs with Same Seeds**:
+**Siblings from Previous Designs with Same Seeds, avoid proposing the same design as your siblings, think of how to make your design unique and better**:
 {SIBLINGS}
 
 **Similar Design Proposals from Previous Designs**:
 {TOP_K_PPS}
 
-Your task is to conduct an initial analysis and formulate search queries to gather more information. Please provide:
-
-1. A brief initial analysis of the proposal, highlighting key aspects that require further investigation.
-2. A high-level query for broad external searches (arXiv, Papers with Code, Semantic Scholar).
-3. A detailed query for searching the internal vector store of research papers.
-4. Check if the proposal is novel or not compared to the previous design proposals and existing researches. 
-
-Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
-"""
+""" + _REVIEW_ISEARCH_BEGIN_TASK
 
 
 GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt = """
@@ -1483,36 +1493,33 @@ You are an expert reviewer evaluating a proposal for modifying a Generalized Aut
 **Proposal for Review**:
 {PROPOSAL}
 
+**Siblings from Previous Designs with Same Seeds, avoid proposing the same design as your siblings, think of how to make your design unique and better**:
+{SIBLINGS}
+
 **Similar Design Proposals from Previous Designs**:
 {TOP_K_PPS}
 
-Your task is to conduct an initial analysis and formulate search queries to gather more information. Please provide:
+""" + _REVIEW_ISEARCH_BEGIN_TASK
 
-1. A brief initial analysis of the proposal, highlighting key aspects that require further investigation.
-2. A high-level query for broad external searches (arXiv, Papers with Code, Semantic Scholar).
-3. A detailed query for searching the internal vector store of research papers.
-4. Check if the proposal is novel or not compared to the previous design proposals and existing researches. 
 
-Focus on the proposal's potential impact on accuracy, robustness, efficiency, and scalability. Consider its novelty and alignment with current research trends.
-"""
+GUS_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt = """
+You are an expert reviewer evaluating a proposal for modifying a Generalized Autoregressive Unit (GAU) in an autoregressive language model block. You have been provided with the following information:
+
+**Proposal for Review**:
+{PROPOSAL}
+
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
+
+""" + _REVIEW_ISEARCH_BEGIN_TASK
 
 GUM_PROPOSAL_REVIEW_ISEARCH_CONT_prompt = """
 {SEARCH_RESULTS}
 
-Based on the search results, you need to refine your analysis and decide whether further information is needed. You have access to:
+Based on the search results, please provide your analysis note and decide whether further search is needed.
 
-1. Your initial analysis
-2. The results from the high-level external search
-3. The results from the detailed internal search
-
-Please provide:
-
-1. An updated analysis incorporating insights from the search results.
-2. If needed, new search queries (both high-level and detailed) to address any remaining questions or explore new avenues identified in the search results.
-3. An assessment of whether you have sufficient information to proceed with the final review (indicated by the 'ready' flag).
-
-Consider how the search results inform the proposal's novelty, feasibility, and potential impact. Identify any gaps in your understanding that require further investigation.
-"""
+!!!IMPORTANT NOTICE: DO NOT GIVE YOUR FINAL REVIEW IN THIS STEP, JUST DOING RESEARCH AND FORMING IDEAS. PROVIDING ONLY THE ANALYSIS NOTE AND MAKE SEARCH QUERIES.
+""" + ANALYSIS_NOTE_FORMAT
 
 GUM_PROPOSAL_REVIEW_ISEARCH_FINAL_prompt = """
 You now have comprehensive information about the proposed GAU modification and relevant research in the field. Based on your analysis and the search results, provide a final review of the proposal. Your review should address:
@@ -1533,7 +1540,7 @@ Remember to be objective, strict, and fair. Approve the proposal only if it meet
 """
 
 class GUM_PROPOSAL_REVIEW_ISEARCH_format(BaseModel):
-   analysis: str = Field(..., description="A comprehensive analysis of the proposed GAU design, including its potential impact on accuracy, robustness, efficiency, and scalability. This should highlight the strengths and concerns of the design, assess its theoretical soundness, and identify any areas that require further investigation or clarification.")
+   analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final review. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
    keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
    ready: bool = Field(..., description="A boolean flag indicating whether the review is ready for the next stage. Set to True if the analysis is complete and no further searches are needed, or False if additional information or investigation is required before proceeding with the final review and rating.")
@@ -1564,7 +1571,7 @@ def gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS:list[str],two_stage:bool=False,use_is
    if use_isearch:
       class GUM_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
          reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
-         analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+         analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final proposal. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
          keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
          detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
          ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
@@ -1603,7 +1610,7 @@ Here is the search results from your last query, you will not be able to access 
 
 {SEARCH_RESULTS}
 
-Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
+Based on your reflection, search results, and your analysis notes, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """
@@ -1733,7 +1740,7 @@ Ensure your refined proposal is comprehensive, well-justified, and directly addr
 
 class GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
    reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
-   analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+   analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final proposal. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
    keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at best recombining the parents. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
    ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
@@ -1771,7 +1778,7 @@ Here is the search results from your last query, you will not be able to access 
 
 {SEARCH_RESULTS}
 
-Based on your reflection, search results, and your analysis, develop a comprehensive proposal for recombining the parents. Remember to follow the output format strictly.
+Based on your reflection, search results, and your analysis notes, develop a comprehensive proposal for recombining the parents. Remember to follow the output format strictly.
 
 Ensure your proposal is best recombining the parents that aim to advance state-of-the-art LM performance and clearly articulate how your design improves upon existing architectures.
 """
@@ -1787,7 +1794,7 @@ GUC_PROPOSAL_REFINEMENT_FINISH=AgentPrompt(GUC_PROPOSAL_REFINEMENT_FINISH_prompt
 
 class GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT_format(BaseModel):
    reflection: str = Field(..., description="The reflection based on the review, rating, and suggestions.")
-   analysis: str = Field(..., description="A detailed analysis of the current progress of the proposal, including identified gaps, areas for improvement, and specific information needed to enhance the design. This should guide the formulation of search queries.")
+   analysis: str = Field(..., description="The analysis note that recorded all useful references from the search results and the detailed analysis and thoughts that can help future search and final proposal. Notice that the search results will be cleared after this round, so all details must be recorded accurately and comprehensively." + ANALYSIS_NOTE_FORMAT)
    keywords: str = Field(..., description="Keywords for searching external sources like arXiv, Papers with Code, and Semantic Scholar. This should be clear, concise keywords derived from the analysis to help the search engine locate the papers that may help you in based on title, abstract, and other metadata, aimed at addressing identified gaps or exploring potential improvements in the LM block design. Do not give more than 3 keywords a time which may cause failure, if you want to search more topic, do it in next round.")
    detail: str = Field(..., description="A detailed query used for searching the internal vector store of research papers and technical documents. This should be a specific, targeted query that aims to extract relevant information from the contents of papers in the vector store, focusing on particular aspects of LM architecture, techniques, or performance metrics identified in the analysis.")
    ready: bool = Field(..., description="Whether you should continue the search and refinement process or ready to give the proposal.")
@@ -1804,7 +1811,7 @@ Here is the search results from your last query, you will not be able to access 
 
 {SEARCH_RESULTS}
 
-Based on your reflection, search results, and your analysis, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
+Based on your reflection, search results, and your analysis notes, develop a comprehensive proposal for a novel LM block design. Remember to follow the output format strictly.
 
 Ensure your proposal is innovative yet feasible, aiming to advance state-of-the-art LM performance. Balance creativity with practical considerations, and clearly articulate how your design improves upon existing architectures.
 """
@@ -1838,6 +1845,9 @@ The designer has modified the proposal based on your previous review. Below is t
 **Change Log** (summary of modifications made):
 {CHANGES}
 
+**Siblings from Previous Designs with Same Seeds, avoid proposing the same design as siblings**:
+{SIBLINGS}
+
 **Similar Design Proposals from Previous Designs**:
 {TOP_K_PPS}
 
@@ -1867,6 +1877,9 @@ The designer has modified the proposal based on your previous review. Below is t
 **Change Log** (summary of modifications made):
 {CHANGES}
 
+**Siblings from Previous Designs with Same Seeds, avoid proposing the same design as siblings**:
+{SIBLINGS}
+
 **Similar Design Proposals from Previous Designs**:
 {TOP_K_PPS}
 
@@ -1886,6 +1899,37 @@ Be strict and objective. Approve the proposal only if it meets the necessary sta
 """
 
 
+
+
+GUS_PROPOSAL_REREVIEW_prompt = """
+The designer has modified the proposal based on your previous review. Below is the refined version for your reconsideration:
+
+**Proposal**:
+{PROPOSAL}
+
+**Change Log** (summary of modifications made):
+{CHANGES}
+
+**Similar Design Proposals from Previous Designs**:
+{TOP_K_PPS}
+
+### Review Instructions
+
+1. **Carefully review** the refined proposal and compare it against your original feedback.
+2. **Examine the change log** to determine whether the designer has successfully addressed the concerns you raised in your previous review.
+3. **Consider any new or remaining concerns** that may have surfaced in the refined proposal.
+4. Provide your **review, rating, and suggestions**. Keep in mind:
+   - Your evaluation should be based on the **design quality**, not the writing style.
+   - Any feedback on writing should be included under **suggestions**, not reflected in the rating.
+   - Do not inflate the rating simply because previous concerns were addressed. The rating should reflect the overall merit of the design at this stage.
+5. Check if the updated proposal is novel or not compared to the previous design proposals and existing researches.
+   
+### Final Note:
+Be strict and objective. Approve the proposal only if it meets the necessary standards of quality and innovation. Do not pass a proposal unless it is sufficiently strong.
+"""
+
+
+
 GUM_PROPOSAL_REREVIEW = AgentPrompt(GUM_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 GUC_PROPOSAL_REREVIEW = AgentPrompt(GUC_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 
@@ -1894,6 +1938,10 @@ Please review with the help of the search engine.
 """
 
 GUC_PROPOSAL_REREVIEW_ISEARCH_prompt = GUC_PROPOSAL_REREVIEW_prompt+ """
+Please review with the help of the search engine.
+"""
+
+GUS_PROPOSAL_REREVIEW_ISEARCH_prompt = GUS_PROPOSAL_REREVIEW_prompt+ """
 Please review with the help of the search engine.
 """
 
@@ -4197,6 +4245,11 @@ Here are the parent designs includes the units that you can reuse:
 
 {PARENTS}
 
+
+Here are the sibling designs with the same seed, avoid proposing the same design as your siblings, and think of how to make your design unique and better.
+
+{SIBLINGS}
+
 You need to think about how to best recombine the parents based on the instructions above.   
 """
 
@@ -4296,11 +4349,14 @@ Follow these guidelines in your response:
    - The library uses vector search to find relevant excerpts. So the description formulation should consider the features of the cosine similarity vector search algorithm.
    - Format: ```description YOUR_DESCRIPTION```
 
-3. Explain Your Analysis:
+3. Record Your Analysis:
    - Clearly articulate your motivation and thought process.
    - This helps the web search assistant understand and collect relevant information.
    - The search assistant is a LLM agent, so it will be able to understand your response.
+   - You will need to record all useful information and your analysis and thoughts in a detailed and comprehensive analysis note in your final response for future reference. As all the search results will be cleared after each round and you wont be able to access them again, you must record everything carefully.
 
+""" + ANALYSIS_NOTE_FORMAT + """
+   
 4. Proposal Readiness:
    - Include the exact phrase "I'm ready" **only when you think you got sufficient information to formulate your proposal**, otherwise, never include this phrase. And you will receive further instructions about the next step.
    - You are not allowed to propose without adaquate information, your first few readiness may not be accepted.
@@ -4334,10 +4390,13 @@ Follow these guidelines in your response:
    - Format: ```description YOUR_DESCRIPTION```
    - The library uses vector search to find relevant excerpts.
 
-3. Explain Your Analysis:
+3. Record Your Analysis:
    - Clearly articulate your motivation and thought process.
    - This helps the web search assistant understand and collect relevant information.
+   - You will need to record all useful information and your analysis and thoughts in a detailed and comprehensive analysis note in your final response for future reference. As all the search results will be cleared after each round and you wont be able to access them again, you must record everything carefully.
 
+""" + ANALYSIS_NOTE_FORMAT + """
+   
 4. Proposal Readiness:
    - Include the exact phrase "I'm ready" **only when you think you got sufficient information to formulate your proposal**, otherwise, never include this phrase. And you will receive further instructions about the next step.
    - You are not allowed to propose without adaquate information, your first few readiness may not be accepted.
@@ -4402,9 +4461,11 @@ O1C_DESIGN_PROPOSAL_REFINEMENT = AgentPrompt(O1C_DESIGN_PROPOSAL_REFINEMENT_prom
 O1M_PROPOSAL_ISEARCH_CONT_prompt = """
 {SEARCH_RESULTS}
 
-Based on the search results provided, continue your analysis.
-Remember to follow the response format guidelines and best practices for progressive refinement.
-"""
+Based on the search results, please provide your analysis note and decide whether further search is needed.
+Remember to follow the response format guidelines and best practices for progressive refinement. And write down all useful information and your analysis and thoughts in a detailed and comprehensive analysis note in your final response for future reference. As all the search results will be cleared after each round and you wont be able to access them again, you must record everything carefully.
+
+!!!IMPORTANT NOTICE: DO NOT GIVE YOUR FINAL PROPOSAL IN THIS STEP, JUST DOING RESEARCH AND FORMING IDEAS. PROVIDING ONLY THE ANALYSIS NOTE AND MAKE SEARCH QUERIES.
+""" + ANALYSIS_NOTE_FORMAT
 
 O1M_PROPOSAL_ISEARCH_CONT = AgentPrompt(O1M_PROPOSAL_ISEARCH_CONT_prompt,O1_SEARCH_parser)
 
@@ -4620,6 +4681,8 @@ The goal is to ensure that the GAU design is theoretically sound, innovative, an
 **Proposal for Review**:
 {PROPOSAL}
 
+Here are the sibling designs with the same parents, check if the proposal proposed the same design as these siblings, if so, give a low rating.
+
 {SIBLINGS}
 
 {TOP_K_PPS}
@@ -4641,6 +4704,10 @@ The system builds complex autoregressive model blocks by nesting multiple GAUs.
 The proposal you are reviewing will try to produce a new design by recombination of given parent designs:
 
 {SEED}
+
+Here are the sibling designs with the same parents, check if the proposal proposed the same design as these siblings, if so, give a low rating.
+
+{SIBLINGS}
 
 The goal is to reuse the units from the parents to form a new design, and the new design is expected to best preserve the strengths of the parents and also to fix the issues of the parents.
 
@@ -4719,11 +4786,14 @@ Follow these guidelines in your response:
    - The library uses vector search to find relevant excerpts. So the description formulation should consider the features of the cosine similarity vector search algorithm.
    - Format: ```description YOUR_DESCRIPTION```
 
-3. Explain Your Analysis:
+3. Record Your Analysis:
    - Clearly articulate your motivation and thought process.
    - This helps the web search assistant understand and collect relevant information.
    - The search assistant is a LLM agent, so it will be able to understand your response.
-
+   - You will need to record all useful information and your analysis and thoughts in a detailed and comprehensive analysis note in your final response for future reference. As all the search results will be cleared after each round and you wont be able to access them again, you must record everything carefully.
+ 
+""" + ANALYSIS_NOTE_FORMAT + """
+   
 4. Review Readiness:
    - Include the exact phrase "I'm ready" **only when you think you got sufficient information to formulate your review**, otherwise, never include this phrase. And you will receive further instructions about the next step.
    - You are not allowed to review without adaquate information, your first few readiness may not be accepted.
@@ -4762,6 +4832,8 @@ O1M_PROPOSAL_REVIEW_CONT_prompt = """
 
 Based on the search results provided, continue your analysis.
 Remember to follow the response format guidelines and best practices for progressive refinement.
+
+!!!IMPORTANT NOTICE: DO NOT GIVE YOUR FINAL REVIEW IN THIS STEP, JUST DOING RESEARCH AND FORMING IDEAS. PROVIDING ONLY THE ANALYSIS NOTE AND MAKE SEARCH QUERIES.
 """
 
 O1M_PROPOSAL_REVIEW_CONT = AgentPrompt(O1M_PROPOSAL_REVIEW_CONT_prompt,O1_SEARCH_parser)
@@ -4792,8 +4864,6 @@ Assign a **float value between 0 and 5** based on how well the design meets the 
 - **3**: Good design but with room for refinement.
 - **4**: Excellent design, well thought out and near approval.
 - **5**: Outstanding design, highly innovative and strongly recommended.
-
-
 
 You now have comprehensive information about the proposed GAU modification and relevant research in the field. Based on your analysis and the search results, provide a final review of the proposal. Your review should address:
 

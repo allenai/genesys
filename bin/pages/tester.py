@@ -21,6 +21,12 @@ import pandas as pd
 
 from model_discovery.agents.roles.selector import scale_weight_results
 
+import tiktoken
+import anthropic
+
+from model_discovery.agents.agent_utils import *
+
+
 
 
 def tester(evosys,project_dir):
@@ -39,17 +45,32 @@ def tester(evosys,project_dir):
     sess_id = '2024-10-11-20-49-17-555a28'
 
 
-    verify_results = [
-        {'rank':1,'score':2},
-        {'rank':1,'score':2},
-        {'rank':1,'score':2},
-        {'rank':1,'score':2},
-        {'rank':1,'score':2},
-        {'rank':2,'score':1},
+    example = """
+Many words map to one token, but some don't: indivisible.
+
+Unicode characters like emojis may be split into many tokens containing the underlying bytes: 🤚🏾
+
+Sequences of characters commonly found next to each other may be grouped together: 1234567890
+"""
+
+        
+    OPENAI_MODELS=list(OPENAI_TOKEN_LIMITS.keys())
+    ANTHROPIC_MODELS=list(ANTHROPIC_TOKEN_LIMITS.keys())
+
+    example=example*200
+    history = [
+        (example*20, 'user'),
+        ('hi'+example*20, 'assistant'),
+        ('how are you?'+example*20, 'user'),
+        ('I am fine, thank you!'+example*20, 'assistant'),
     ]
 
-    df = pd.DataFrame(verify_results)
-    st.dataframe(df)
+    for model_name in ANTHROPIC_MODELS:
+        # truncated_text = truncate_text(example,40,model_name,buffer=10)
+        st.write(model_name)
+        # st.write(count_tokens(truncated_text,model_name))
+        # st.write(truncated_text)
 
-    quantile = 0.3
+        history = context_safe_guard(history,model_name)
+        st.write(count_tokens(str(history),model_name))
 

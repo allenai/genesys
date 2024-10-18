@@ -533,11 +533,27 @@ def _design_tuning(evosys,project_dir):
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
-        st.markdown("##### Configure the number of *References* to sample from each source")
-        cols = st.columns(len(sources))
-        for i,source in enumerate(sources):
-            with cols[i]:
-                n_sources[source] = st.number_input(label=f'{source} ({sources[source]})',min_value=0,value=1)#,max_value=1,disabled=True)
+        _scol1,_scol2 = st.columns([5.5,1])
+        with _scol1:
+            st.markdown("##### Configure the number of *References* to sample from each source")
+            cols = st.columns(len(sources))
+            for i,source in enumerate(sources):
+                with cols[i]:
+                    display_name = f'{source} ({sources[source]})'
+                    if source=='ReferenceCoreWithTree':
+                        display_name = f'RefCoreWithTree ({sources[source]})'
+                    elif source=='DesignArtifactImplemented':
+                        display_name = f'DesignArtImp ({sources[source]})'
+                    elif source=='ReferenceWithCode':
+                        display_name = f'RefWithCode ({sources[source]})'
+                    n_sources[source] = st.number_input(label=display_name,min_value=0,value=1)#,max_value=1,disabled=True)
+        with _scol2:
+            st.write('')
+            st.write('')
+            design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=True,
+                help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
+            design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=True,
+                help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
 
         col1,col2=st.columns([3,2])
         termination={}
@@ -650,7 +666,7 @@ def _design_tuning(evosys,project_dir):
     EXPERIMENT_RUNS=1
     
     # cols = st.columns([7,2.5,1.8,1.2])
-    cols = st.columns([5.7,1.5,2.8,0.8,1.2])
+    cols = st.columns([6,1.5,2.5,0.8,1.2])
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)", help='Will be combined with selector\'s instructions (if any)')
     with cols[1]:
@@ -658,9 +674,9 @@ def _design_tuning(evosys,project_dir):
             help='Will override selector\'s selection')
     with cols[2]:
         # EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1,disabled=True)
-        manual_refs = st.text_input(label="Manual References (comma separated ids)",value='None',help='Will override selector\'s recommendations')
+        manual_refs = st.text_input(label="Manual References",value='None',help='Comma separated ids, will override selector\'s recommendations')
     with cols[3]:
-        st.write('')
+        st.write('')  
         st.write('')
         submit = st.button(label="***Run***",disabled=st.session_state.evo_running,use_container_width=True)
     with cols[4]:

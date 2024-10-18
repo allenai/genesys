@@ -243,6 +243,9 @@ class AgentDialogManager: # all dialogs should be go through the dialog manager
     def _assign_tid(self):
         return len(self.threads)
     
+    def switch_context(self,tid,context):
+        self.threads[tid].history = context
+    
     def fork(self,parent_tid,caller=None,callee=None,context=AgentContext(),alias=None,note=None):
         parent_thread = self.threads[parent_tid]
         tid = self._assign_tid()

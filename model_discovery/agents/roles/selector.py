@@ -681,6 +681,7 @@ class Selector:
                 exit(0)
         if select_method is None:
             select_method = select_cfg.get('select_method',DEFAULT_SELECT_METHOD)
+            select_method = 'quadrant' if select_method not in SELECT_METHODS else select_method
         if select_method=='quadrant':
             instruct,seeds,refs=self._quadrant_select_design(n_seeds,select_cfg=select_cfg,**selector_args)
         else:
@@ -852,6 +853,7 @@ class Selector:
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
+            verify_strategy = 'quadrant' if verify_strategy not in VERIFY_STRATEGIES else verify_strategy
         available_verify_budget=self.available_verify_budget
         if len(available_verify_budget)<=0:
             if self.budget_type=='verify_bound':

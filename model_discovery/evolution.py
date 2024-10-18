@@ -755,11 +755,14 @@ class LibraryReference(NodeObject):
         
         return mdtext
 
-    def to_prompt(self) -> str:
+    def to_prompt(self, full_tree=True) -> str:
         prompt = self.to_desc(reformat=False)
         
         if self.tree:
-            prompt += f'\n\n{self.tree.to_prompt()}\n\n'
+            if full_tree:
+                prompt += f'\n\n{self.tree.to_prompt()}\n\n'
+            else:
+                prompt += f'\n\n## Reference Document\n\n{self.tree.root.spec.document}\n\n'
         elif self.code:
             if self.type == 'ReferenceCore':
                 prompt += (
@@ -957,6 +960,7 @@ class DesignArtifact(NodeObject):
     implementation: Implementation = None # find by modelname/id
     verifications: Dict[str, Verification] = field(default_factory=dict) # find by modelname/id
     codes: Dict[str, str] = field(default_factory=dict) # find by modelname/id
+    sess_snapshot: Dict[str, str] = field(default_factory=dict) 
 
     @property
     def type(self) -> str:
@@ -999,7 +1003,7 @@ class DesignArtifact(NodeObject):
         codes = U.load_json(U.pjoin(design_dir, 'codes.json'))
         return cls(proposal=proposal, implementation=implementation, verifications=verifications, codes=codes, **metadata)
 
-    def to_prompt(self, full_code=True):
+    def to_prompt(self, full_tree=True):
         prompt=f"""
 # Proposal: {self.proposal.modelname}
 
@@ -1016,15 +1020,15 @@ class DesignArtifact(NodeObject):
 {self.proposal.suggestions}
 """
         if self.is_implemented():
-            if full_code:
+            if full_tree:
                 prompt+=f"""
 # Implementation
 
-{self.implementation.implementation.view()}
+{self.implementation.implementation.to_prompt()}
             """
             else:
                 prompt+=f"""
-# Implementation
+# Reference Document
 
 {self.implementation.implementation.root.spec.document}
             """
@@ -1167,7 +1171,7 @@ class PhylogeneticTree:
         siblings=[]
         for acronym in self.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
             design=self.get_node(acronym)
-            if any([p in design.seed_ids for p in parents]):
+            if design.seed_ids == parents:
                 siblings.append(acronym)
         return siblings
 
