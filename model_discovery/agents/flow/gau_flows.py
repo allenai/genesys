@@ -374,6 +374,10 @@ class GUFlow(FlowCreator):
         return query,state,{}
 
 
+    def _o1_selection_debug(self,context,prompt):
+        pass
+
+
     def _generate_proposal(self,query,state,main_tid):
         '''
         Sample one proposal based on the current tree and add it to the tree
@@ -621,14 +625,16 @@ class GUFlow(FlowCreator):
                         self.stream.write(f'### Proposal\n{proposal}')
                         self.print_raw_output(out,'DESIGN_PROPOSER')
                         if self.design_mode==DesignModes.MUTATION:
+                            context_design_proposer_bkup=copy.deepcopy(context_design_proposer)
                             for _ in range(5):
+                                context_design_proposer=copy.deepcopy(context_design_proposer_bkup)
                                 succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
                                 if succeed:
                                     break
                                 self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,RETRY_PROMPT())
                                 RETRY_PROMPT.apply(DESIGN_PROPOSER.obj)
                                 self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
-                                _,out=self.call_dialog(design_proposer_tid,RETRY_PROMPT())
+                                _,out=self.call_dialog(design_proposer_tid,RETRY_PROMPT(),context_design_proposer)
                                 selection=out['selection']
                                 self.stream.write(f'##### Correcting selection: {selection}')
                                 self.print_raw_output(out,'DESIGN_PROPOSER')
@@ -636,6 +642,7 @@ class GUFlow(FlowCreator):
                                 info = 'Failed to generate design proposal with right format with O1, stopping design process'
                                 self.log_fn(info,'ERROR')
                                 raise Exception(info)
+                            context_design_proposer=context_design_proposer_bkup
                         if len(modelname)>0:
                             modelname=modelname[0]
                         elif len(title)>0:
@@ -1274,7 +1281,9 @@ class GUFlow(FlowCreator):
                             self.stream.write(f'### Plan\n{plan}')
                             self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
                             if not termination and round>1:
+                                context_implementation_planner_bkup=copy.deepcopy(context_implementation_planner)
                                 for _ in range(5):
+                                    context_implementation_planner=copy.deepcopy(context_implementation_planner_bkup)
                                     succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
                                     if succeed:
                                         break
@@ -1285,7 +1294,7 @@ class GUFlow(FlowCreator):
                                     self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,RETRY_PROMPT())
                                     RETRY_PROMPT.apply(IMPLEMENTATION_PLANNER.obj)
                                     self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
-                                    _,out=self.call_dialog(implementation_planner_tid,RETRY_PROMPT())
+                                    _,out=self.call_dialog(implementation_planner_tid,RETRY_PROMPT(),context=context_implementation_planner)
                                     selection=out['selection']
                                     self.stream.write(f'##### Correcting selection: {selection}')
                                     self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
@@ -1293,6 +1302,7 @@ class GUFlow(FlowCreator):
                                     info = 'Failed to generate a valid design proposal, stopping design process'
                                     self.log_fn(info,'ERROR')
                                     raise Exception(info)
+                                context_implementation_planner=copy.deepcopy(context_implementation_planner_bkup)
                         else:
                             selection=proposal.selection
                             termination=False
