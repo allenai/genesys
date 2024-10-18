@@ -843,7 +843,11 @@ class SuperScholarSearcher:
         }
 
         response = requests.request("POST", url, json=payload, headers=headers)
-        RET = response.json()
+        try:
+            RET = response.json()
+        except Exception as e:
+            self.stream.write(f'Error searching web with Perplexity: {e}')
+            return None, None
         if 'error' in RET:
             self.stream.write(f'Error searching web with Perplexity: {RET["error"]}')
             return None, None

@@ -1,131 +1,281 @@
 import torch
 import torch.nn as nn
+from model_discovery.model.utils.modules import GABBase
+
+
+class GAB(GABBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
+        =None, **kwargs):
+        factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc)
+        self.root = HybridMamba(embed_dim=embed_dim, block_loc=block_loc,
+            kwarg_all=kwargs, **factory_kwargs, **kwargs)
+
+    def _forward(self, X, **Z):
+        X, Z = self.root(X, **Z)
+        return X, Z
+
+
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
 import torch.nn.functional as F
-import math
-from typing import Optional
+import inspect
 
 
-class DynamicHybridLayer(GAUBase):
+class HybridMamba(GAUBase):
     """
-    Dynamic Hybrid Layer (DHL)
+    HybridMamba Block
 
-    This GAU integrates a Selective State Space Model (SSM) block and an Attention block,
-    combining their outputs using a dynamic gating mechanism informed by a context vector
-    extracted from the input. The DHL adaptively balances the contributions of SSM and
-    attention to efficiently handle long sequences while maintaining the ability to capture
-    complex dependencies.
+    This GAU implements the HybridMamba block, which combines Selective State Space Models (S3M) with Adaptive Sliding Window Attention (ASWA), Dynamic Gating Mechanism (DGM), Compressed Global KV-Cache (CGKV), and Adaptive Computation Controller (ACC).
 
-    **Enhancements Implemented:**
-    - **Hierarchical Chunking:** Processes very long sequences efficiently by splitting them into manageable chunks.
-    - **Adaptive Gating Mechanism:** Adjusts the balance between SSM and Attention outputs based on sequence length.
-    - **Optimized Computations:** Reduces computational overhead by projecting gating inputs to a lower dimension.
-    - **Error Handling and Input Validation:** Ensures robustness by checking input types and dimensions.
+    **Code Example:**
 
-    **Inputs:**
-        - **X:** Input sequence tensor of shape (B, L, D), where B is batch size, L is sequence length, and D is embedding dimension.
+        hybrid_mamba_block = HybridMamba(embed_dim=768, block_loc=(0, 0), kwarg_all={...})
+        Y, Z = hybrid_mamba_block(X, **Z)
 
-    **Outputs:**
-        - **Y:** Output sequence tensor of the same shape as X.
+    **Mathematical Formulation:**
 
-    **Intermediate Variables in Z:**
-        - **'X_norm':** Normalized input tensor.
-        - **'S':** Output from the SelectiveSSMUnit.
-        - **'A':** Output from the AttentionUnit.
-        - **'C':** Context vector extracted from the input.
+    - **Input Complexity Estimation:**
+        \\[
+        complexity = ACC.estimate\\_complexity(X)
+        \\]
 
-    **Child GAUs:**
-        - **SelectiveSSMUnit:** Processes the normalized input through a selective SSM.
-        - **AttentionUnit:** Applies an efficient attention mechanism to the normalized input.
-        - **ContextVectorExtractor:** Extracts a context vector from the normalized input.
+    - **Selective State Space Model Processing:**
+        \\[
+        S3M\\_output = S3M(X)
+        \\]
 
-    **Usage Example:**
+    - **Adaptive Window Size Determination:**
+        \\[
+        window\\_size = ACC.determine\\_window\\_size(complexity)
+        \\]
 
-        layer = DynamicHybridLayer(embed_dim=64, block_loc=(0,1), kwarg_all={})
-        Y, Z = layer(X)
+    - **Adaptive Sliding Window Attention Processing:**
+        \\[
+        ASWA\\_output = ASWA(X, window\\_size, CGKV)
+        \\]
+
+    - **Dynamic Gating Mechanism:**
+        \\[
+        output = DGM(S3M\\_output, ASWA\\_output)
+        \\]
+
+    - **Compressed Global KV-Cache Update:**
+        \\[
+        CGKV.update(X, output)
+        \\]
+
+    Args:
+        embed_dim (int): Dimension of the embeddings.
+        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).
+        kwarg_all (dict): Dictionary of all keyword arguments for initializing child units.
+
+    Returns:
+        torch.Tensor: Output embeddings of shape (B, L, D).
+        dict: Updated intermediate variables.
+
+    Note:
+        For more details on the components, refer to the HybridMamba proposal.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, ssm_dim: int=None, num_heads: int=8,
-        max_chunk_length: int=1024, **kwargs):
+        device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        ssm_dim = ssm_dim if ssm_dim is not None else embed_dim
-        self.max_chunk_length = max_chunk_length
-        self.norm = nn.LayerNorm(embed_dim, **self.factory_kwargs)
-        kwarg_all['ssm_dim'] = ssm_dim
-        kwarg_all['num_heads'] = num_heads
-        self.ssm_unit = SelectiveSSMUnit(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **
-            self.factory_kwargs, **self.kwarg_all)
-        self.attention_unit = AttentionUnit(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **
-            self.factory_kwargs, **self.kwarg_all)
-        self.context_unit = ContextVectorExtractor(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **
-            self.factory_kwargs, **self.kwarg_all)
-        gating_input_dim = self.embed_dim // 4
-        self.gate_proj = nn.Linear(self.embed_dim, gating_input_dim, **self
-            .factory_kwargs)
-        self.gate = nn.Linear(gating_input_dim, 1, **self.factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)
+        self.acc = AdaptiveComputationController(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.s3m = SelectiveStateSpaceModel(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.aswa = AdaptiveSlidingWindowAttention(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.dgm = DynamicGatingMechanism(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.cgkv = CompressedGlobalKVCache(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
 
     def _forward(self, X, **Z):
-        if not isinstance(X, torch.Tensor):
-            raise TypeError('Input X must be a torch.Tensor')
-        if X.dim() != 3:
-            raise ValueError(
-                f'Input X must be a 3D tensor, got {X.dim()}D tensor instead')
-        if X.shape[-1] != self.embed_dim:
-            raise ValueError(
-                f'Expected last dimension of X to be {self.embed_dim}, got {X.shape[-1]}'
-                )
+        Y_acc, Z_acc = self.acc(X, **Z)
+        complexity_score = Z_acc.get('complexity_score', None)
+        window_size = Z_acc.get('window_size', None)
+        if window_size is None:
+            window_size = 512
+        Z.update(Z_acc)
+        Z['window_size'] = window_size
+        Y_s3m, Z_s3m = self.s3m(X, **Z)
+        Z.update(Z_s3m)
+        Y_aswa, Z_aswa = self.aswa(X, **Z)
+        Z.update(Z_aswa)
+        Z['Y_aswa'] = Y_aswa
+        Y, Z_dgm = self.dgm(Y_s3m, **Z)
+        Z.update(Z_dgm)
+        Y_cgkv, Z_cgkv = self.cgkv(Y, **Z)
+        Z.update(Z_cgkv)
+        return Y, Z
+
+
+class CompressedGlobalKVCache(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+
+    def _forward(self, X, **Z):
+        Z_ = {}
+        return X, Z_
+
+
+import torch.nn.functional as F
+import inspect
+
+
+class AdaptiveComputationController(GAUBase):
+    """
+    AdaptiveComputationController
+
+    This GAU estimates the complexity of the input sequence and determines adaptive parameters
+    such as the attention window size based on the input complexity.
+
+    **Description:**
+
+    The AdaptiveComputationController (ACC) is designed to dynamically adjust computational
+    resources based on the input complexity. It analyzes the input embeddings and computes
+    a complexity score, which is then used to determine adaptive parameters like the attention
+    window size for other components in the model.
+
+    **Mathematical Formulation:**
+
+    - **Input Complexity Estimation:**
+
+        The complexity score is computed as:
+
+        \\[
+        	ext{complexity\\_score} = \\sigma(W_2 \\cdot 	ext{ReLU}(W_1 \\cdot \\overline{X} + b_1) + b_2)
+        \\]
+
+        where:
+        - \\( \\overline{X} = rac{1}{L} \\sum_{i=1}^{L} X_i \\) is the average pooling of the input embeddings.
+        - \\( W_1, W_2 \\) are learnable weights.
+        - \\( b_1, b_2 \\) are learnable biases.
+        - \\( \\sigma \\) is the sigmoid activation function.
+
+    - **Adaptive Parameter Determination:**
+
+        The window size is determined based on the complexity score:
+
+        \\[
+        	ext{window\\_size} = 	ext{min\\_window\\_size} + 	ext{complexity\\_score} 	imes (	ext{max\\_window\\_size} - 	ext{min\\_window\\_size})
+        \\]
+
+    **Code Example:**
+
+        acc = AdaptiveComputationController(embed_dim=768, block_loc=(0, 0), kwarg_all={
+            'min_window_size': 128,
+            'max_window_size': 512,
+            'scale_factor': 1.0
+        })
+        Y_acc, Z = acc(X, **Z)
+
+    **Args:**
+
+        embed_dim (int): Dimension of the embeddings.
+        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).
+        kwarg_all (dict): Dictionary of all keyword arguments for initializing child units.
+
+    **Returns:**
+
+        tuple:
+            - torch.Tensor: Output embeddings (same as input X).
+            - dict: Contains `complexity_score` (torch.Tensor of shape (B,)) and `window_size` (int).
+
+    **Example:**
+
+        >>> acc = AdaptiveComputationController(embed_dim=768, block_loc=(0, 0), kwarg_all={})
+        >>> X = torch.randn(2, 1024, 768)
+        >>> Y_acc, Z = acc(X)
+        >>> print(Z['complexity_score'].shape)
+        torch.Size([2])
+        >>> print(Z['window_size'])
+        256
+
+    **Note:**
+
+        For more info on reStructuredText docstrings, see
+        `here <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__
+        and
+        `here <https://peps.python.org/pep-0287/>`__.
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, min_window_size=128, max_window_size=512,
+        scale_factor=1.0, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.complexity_layer = nn.Sequential(nn.Linear(embed_dim,
+            embed_dim, **self.factory_kwargs), nn.ReLU(), nn.Linear(
+            embed_dim, 1, **self.factory_kwargs))
+        assert self.min_window_size > 0, 'min_window_size must be positive'
+        assert self.max_window_size >= self.min_window_size, 'max_window_size must be greater or equal to min_window_size'
+        self.min_window_size = min_window_size
+        self.max_window_size = max_window_size
+        self.scale_factor = scale_factor
+
+    def _forward(self, X, **Z):
         B, L, D = X.shape
-        if L > self.max_chunk_length:
-            chunks = X.split(self.max_chunk_length, dim=1)
-            outputs = []
-            for chunk in chunks:
-                Y_chunk, Z = self._process_chunk(chunk, **Z)
-                outputs.append(Y_chunk)
-            Y = torch.cat(outputs, dim=1)
-        else:
-            Y, Z = self._process_chunk(X, **Z)
-        return Y, Z
+        pooled = torch.mean(X, dim=1)
+        complexity_score = torch.sigmoid(self.complexity_layer(pooled)
+            ).squeeze(-1)
+        window_size = self.min_window_size + complexity_score * (self.
+            max_window_size - self.min_window_size)
+        window_size = window_size * self.scale_factor
+        window_size = window_size.clamp(min=self.min_window_size, max=self.
+            max_window_size).int()
+        window_size = window_size.max().item()
+        Z_update = {'complexity_score': complexity_score, 'window_size':
+            window_size}
+        return X, Z_update
 
-    def _process_chunk(self, X_chunk, **Z):
-        X_norm = self.norm(X_chunk)
-        Z['X_norm'] = X_norm
-        S, Z = self.ssm_unit(X_norm, **Z)
-        A, Z = self.attention_unit(X_norm, **Z)
-        C, Z = self.context_unit(X_norm, **Z)
-        if S is None:
-            S = X_norm
-        if A is None:
-            A = X_norm
-        if C is None:
-            C = torch.mean(X_norm, dim=1, keepdim=True)
-        seq_len_factor = min(1.0, X_chunk.shape[1] / self.max_chunk_length)
-        gating_input = (S + A + seq_len_factor * C.expand_as(S)) / 3
-        gating_hidden = self.gate_proj(gating_input)
-        G = torch.sigmoid(self.gate(gating_hidden))
-        Y = G * S + (1 - G) * A
-        Y = self.out_proj(Y)
-        Y = Y + X_chunk
-        return Y, Z
-    
 
-'''
-GPT2
-       |- MHA
-           |- RotaryPositionalEmbeddings
-       |- DynamicHybridLayer (Rating: 4.6/5)
-           |- SelectiveSSMUnit (Rating: 4.5/5)
-               |- SSMUnit (Rating: 4.5/5)
-           |- AttentionUnit
-           |- ContextVectorExtractor (Rating: 4.0/5)
-       |- RMSNorm
+class DynamicGatingMechanism(GAUBase):
 
-Implemented Units: SelectiveSSMUnit, RotaryPositionalEmbeddings, RMSNorm, SSMUnit, AttentionUnit, MHA, ContextVectorExtractor, GPT2, DynamicHybridLayer
-All units are implemented.
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
 
-'''
+    def _forward(self, X, **Z):
+        Z_ = {'Y': None}
+        return X, Z_
+
+
+class AdaptiveSlidingWindowAttention(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+
+    def _forward(self, X, **Z):
+        Z_ = {'Y_aswa': None}
+        return X, Z_
+
+
+class SelectiveStateSpaceModel(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+
+    def _forward(self, X, **Z):
+        Z_ = {'Y_s3m': None}
+        return X, Z_
+
+
+gab_config = {'min_window_size': 128, 'max_window_size': 512,
+    'scale_factor': 1.0}

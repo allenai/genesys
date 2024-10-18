@@ -142,16 +142,22 @@ def truncate_history(history,token_limit,model_name,buffer=128):
 
 def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
     history = copy.deepcopy(history)
-    token_limit=get_token_limit(model_name)
-    if prompt is not None:
-        token_limit-=count_tokens(prompt,model_name)
+    _token_limit=get_token_limit(model_name)
+    token_limit=_token_limit
     if system is not None:
         token_limit-=count_tokens(system,model_name)
     if token_limit<0:
-        raise ValueError(f'Token limit exceeded by input and output: {token_limit}')
-    history=truncate_history(history,token_limit,model_name,buffer)
-    return history
-
+        try_truncate = _token_limit-count_tokens(system,model_name)
+        raise ValueError(f'Token limit exceeded by system prompt: {token_limit}')
+    if prompt is not None:
+        token_limit-=count_tokens(prompt,model_name)
+    if token_limit<0:
+        try_truncate = _token_limit-count_tokens(system,model_name)
+        prompt = truncate_text(prompt,try_truncate,model_name,buffer)
+        history = []
+    else:
+        history=truncate_history(history,token_limit,model_name,buffer)
+    return history,prompt
 
 
 class ModelOutputPlus(UtilityModel):
@@ -210,7 +216,7 @@ def structured__call__(
         The optional model state at the point of querying 
     
     """
-    history=context_safe_guard(history,model._config.model_name,prompt,system)
+    history,prompt=context_safe_guard(history,model._config.model_name,prompt,system)
     if model_state is None:
         return _prompt_model_structured(
             model,

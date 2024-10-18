@@ -108,6 +108,10 @@ Here is the composed LM block code `gab.py` based on the GAUs for you to refer:
 """
 
 
+REASONING_TOKEN_UNLIMITED = """
+Do not worry about the number of tokens in your reasoning and your response; you can use as many tokens as you need to give the best response.
+"""
+
 
 def gen_GU_IMPLEMENTATION_UNIT_RETRY(use_o1=False):
    GU_IMPLEMENTATION_RETRY_prompt = """
@@ -173,7 +177,6 @@ Please refine your design and implementation based on the feedback provided. You
    if use_o1:
       GU_IMPLEMENTATION_RETRY_prompt += """
 Please try to fix the code based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
-Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
    else:
@@ -2335,7 +2338,7 @@ GUM_DESIGNER_SYSTEM_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model block name from the proposal. Notice that it is a block as you are implementing a LM block not the whole model.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
 
@@ -2603,7 +2606,7 @@ GUM_DESIGNER_SYSTEM_O1_prompt_part4 = """
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in your implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model block name based on the proposal. Notice that it is a block as you are implementing a LM block not the whole model.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
 
@@ -3353,7 +3356,7 @@ GUT_GUILDLINES_O1=f"""
 #     return AgentPrompt(GUT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
 
 
-def gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=True,mode=DesignModes.MUTATION):
+def gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=True,mode=DesignModes.MUTATION,INITAL_PASS=False):
    if use_o1:
       GUT_IMPLEMENTATION_CODER_SYSTEM_prompt="""
 You are the Implementation Coder for a team designing a new autoregressive language model (LM). 
@@ -3470,7 +3473,9 @@ You must wrape each implementation in a block quote as follows:
 . All implementations must follow the format of the GAU template, and remember to keep the first line as the marker `# GAU_IMPLEMENTATION_FILE` to allow the parser detect a GAU implementation file. 
 Only the code block wrapped by ```python ``` and kept first line as `# GAU_IMPLEMENTATION_FILE` will be considered as a GAU implementation.
 In order to allow the parser successfully detect the code blocks, DO NOT nest any ```python ``` blocks within the code block of a unit implementation, e.g., in examples of the doc string, dont wrap the examples with ```python ```.  
-The class name of the GAU will be detected as the unit name of an implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal. Remember to keep the unittests and children declarations of each unit in the same file of the implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
+The class name of the GAU will be detected as the unit name of an implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. 
+If you are working on the root unit, the class name should be the model block name based on the proposal. Notice that it is a block as you are implementing a LM block not the whole model.
+Remember to keep the unittests and children declarations of each unit in the same file of the implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. 
 In another word, each file must contain three sections: 1) the unit implementation, 2) the unittests (all unittests must be decorated with @gau_test, otherwise it will be ignored), 3) the children declarations. 
 And always remember to declare children GAUs if there is any in your unit, either new, placeholder or reuse existing ones. Otherwise the linker will not be able to find them.  
 You can modify based on the implementations from the provided seed, but you should never simply copy them as your response. If you want to reuse a unit, you can simply declare it in the children list without providing the implementation. 
@@ -3502,7 +3507,7 @@ You can modify based on the implementations from the provided seed, but you shou
 ## Guidelines for Designing the GAU:
 
 1. **Class Naming & Structure**:
-   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in each implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model name from the proposal.
+   - Ensure that your GAU class inherits from `GAUBase` and is named as specified in the proposal. You should only define **one** GAU class in each implementation. Do not define any other GAU classes in this block. And the name of the class should be the unit name you are implementing. If you are working on the root unit, the class name should be the model block name based on the proposal. Notice that it is a block as you are implementing a LM block not the whole model.
    - If you are modifying based on an existing GAU, DO NOT use the original name, give a new name to the new GAU you are implementing.
    - Ensure all the arguments introduced in the `__init__` function of the GAU class have either a default value or a way to handle missing values. If an argument is optional, handle it gracefully. Missing argument handling is necessary to prevent checker failures unless `None` is a valid value.
    - Ensure you are referring to the right class names in unit tests. 
@@ -3533,7 +3538,8 @@ You can modify based on the implementations from the provided seed, but you shou
      ... = {{UnitName}}(..., kwarg_all=kwarg_all, ..., **kwarg_all)
      ```
 
-4. **Embedding & Block Location**: - `embed_dim` specifies the input dimension.
+4. **Embedding & Block Location**:
+   - `embed_dim` specifies the input dimension.
    - `block_loc` is a tuple (block_idx, n_block) that locates the GAU
    within
      the network where block_idx starts from 0, allowing you to implement
@@ -3653,15 +3659,26 @@ Remember, you're implementing one GAU at a time. Your code should be self-contai
 
    if mode==DesignModes.MUTATION:
       GUT_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
-As a background, the proposal is going to improve the following seed design by improving the unit: {SELECTION}.
+As a background, the proposal is going to improve the following seed design by improving the unit: {SELECTION}. And all your implemented unit will be put into this seed design. Please thinking how your code to be work with the existing code. 
 
 {SEED}
 """
+      if not INITAL_PASS:
+         GUT_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
+
+Remember that you are going to implement the units of a LM block, not the whole model. Do not make the root unit to be a whole Language Model. 
+"""
+
    elif mode==DesignModes.CROSSOVER:
       GUT_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
-As a background, the proposal is going to produce a new design by recombination of the parent designs:
+As a background, the proposal is going to produce a new design by recombination of the parent designs, please considering reusing, refactoring or referring to the exising units from the parents:
 
 {PARENTS}
+"""
+      if not INITAL_PASS:
+         GUT_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
+
+Remember that you are going to implement the units of a LM block, not the whole model. Do not make the root unit to be a whole Language Model. 
 """
 
    return AgentPrompt(GUT_IMPLEMENTATION_CODER_SYSTEM_prompt)
@@ -4023,8 +4040,9 @@ def gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=False,root_first=False):
 
    if refine:
       GUT_IMPLEMENTATION_UNIT_prompt = """
-#### Current Design Overview: Below is a tree of the GAUs that compose the
-language model (LM) block and the details of the GAUs:
+#### Current Implementation Progress Overview: Below is a tree of the GAUs that
+compose the language model (LM) block you are implementing, and you will
+continue to implement, and the details of the GAUs:
 
 {VIEW}
 
@@ -4085,13 +4103,12 @@ this variant of the GAU.
       else:
          GUT_IMPLEMENTATION_UNIT_prompt+="""
 Please refine based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
-Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
 """
       GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
       GUT_IMPLEMENTATION_UNIT_prompt = """
 #### GAU Declaration:
-Below is the declaration of the GAU you are tasked with implementing. Please ensure that your design and implementation align with the details provided:
+You will start your implementation by implenting the GAU decalred below. Please ensure that your design and implementation align with the details provided:
 
 {DECLARATION}
 """
@@ -4124,8 +4141,7 @@ After completing this GAU, you will be asked to implement any remaining parts of
    """
       else:
          GUT_IMPLEMENTATION_UNIT_prompt+="""
-Please implement based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
-Do not worry about the number of tokens in your reasoning, you can use as many as you need to give the best response.
+Please start your implementation. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
 """
       GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
    
@@ -4439,7 +4455,6 @@ def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
 
 SEARCH_INSTRUCTIONS_ENDING = """
 Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1M_DESIGN_PROPOSAL_prompt = PROPOSAL_SEARCH_INSTRUCTIONS + O1M_BEST_PRACTICES + SEARCH_INSTRUCTIONS_ENDING
@@ -4535,7 +4550,6 @@ Maintain and update the following structure in your proposal throughout the proc
 Now please give your final proposal and the selection of the GAU you will modify. 
 Be sure to wrap the selection in a quoted block like this: ```selection YOUR_SELECTION```. 
 And your selection must come from one of {SELECTIONS}. Ensure there is one and only one ```selection YOUR_SELECTION``` quoted block in your response.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 
@@ -4570,7 +4584,7 @@ Maintain and update the following structure in your proposal throughout the proc
 - **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps understand the expected improvements.
 - **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
 
-Now please give your final proposal. Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
+Now please give your final proposal. 
 """
 
 
@@ -4605,7 +4619,7 @@ Maintain and update the following structure in your proposal throughout the proc
 - **Mathematical rigor**: Provide mathematical formulations, theoretical justifications, and logical arguments for your design choices. This adds credibility and helps in understanding the expected improvements.
 - **Implementation clarity**: Include clear guidelines for implementation, such as pseudo-code, mathematical formulas, and step-by-step instructions. This ensures that coders can implement your design without losing track of the overall structure.
 
-Now please give your final proposal. Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
+Now please give your final proposal. 
 """
 
 
@@ -4633,16 +4647,15 @@ O1S_PROPOSAL_FINISH = AgentPrompt(O1S_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser
 
 def gen_O1_SELECTION_DEBUG_prompt(selections,SELECTIONS):
    succeed=False
-   selection=selections
+   selections=list(set([i.strip() for i in selections]))
    if len(selections)==0:
       prompt=f"No selection is detected, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. Do not include any other text in your response."
-   # elif len(selections)>1:
-   #    prompt=f"Multiple selections are detected, please provide a single selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. If your edits involve multiple GAUs, provide the shared root of these units. Do not include any other text in your response."
    else:
       for selection in selections:
          for s in ['selections','selection']:
             selection=selection.replace(s,'').strip()
          if selection not in SELECTIONS:
+            selection=selection.replace('{','{{').replace('}','}}')
             prompt=f"The selection {selection} is not from the allowed selections {SELECTIONS}, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. Do not include any other text in your response."
          else:
             prompt=''
@@ -4828,7 +4841,6 @@ Follow these guidelines in your response:
 
 Remember, the goal is to ensure a well-researched, innovative, and feasible proposal for LM block design. Be patient and search for more rounds to perfect your ideas.
 Now start your analysis and investigation. Make sure the keywords and description are formulated properly.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1M_PROPOSAL_REVIEW = AgentPrompt(O1M_PROPOSAL_REVIEW_prompt,O1_SEARCH_parser)
@@ -4888,7 +4900,6 @@ Provide:
 3. A final rating (float number between 0 and 5) based on the proposal's overall quality and potential impact. Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
 
 Remember to be objective, strict, and fair. Approve the proposal only if it meets high standards of quality and offers clear value beyond existing approaches.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 
@@ -5048,7 +5059,7 @@ As a background, the proposal is going to improve the following seed design by i
 CROSSOVER_MODE_BACKGROUND="""
 As a background, the proposal is going to produce a new design by crossover the parent designs:
 
-{SEED}
+{PARENTS}
 """
 
 O1_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2="""
@@ -5160,7 +5171,6 @@ Prepare a comprehensive feedback report including:
 
 Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
 Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_UNIT_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_OBSERVE_prompt,O1_REVIEW_parser)
@@ -5233,7 +5243,6 @@ Prepare a comprehensive feedback report including:
 
 Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
 Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE=AgentPrompt(O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE_prompt,O1_REVIEW_parser)
@@ -5390,9 +5399,10 @@ Key points:
 
    - **Specify the Next Unit**:
      - Clearly state which unit the coder should implement next.
-   - **Include Implementation Details**:
+   - **Include Implementation Key Points**:
      - Provide any specific instructions or considerations for the unit.
      - Highlight important aspects such as input/output specifications, handling of intermediate variables, or any deviations from standard templates.
+     - ! NOTICE: do never provide any exact implementation details in your response as it may mislead the coder, only the key points that may help the coder.
    - **Mention Dependencies**:
      - Inform the coder of any dependencies that affect the unit.
      - Specify if the unit relies on outputs from other units or if it provides essential functionality for upcoming units.
@@ -5555,7 +5565,6 @@ It is round {ROUND} for the design implementation. Please make your plan.
 
 Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
 You must include one and only one selection quoted block in your response.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_PLANNER_SELECTION=AgentPrompt(O1_IMPLEMENTATION_PLANNER_SELECTION_prompt,O1_SELECTION_parser)
@@ -5583,14 +5592,13 @@ Now you have implemented all the GAUs, you can choose to refine them or terminat
 Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
 You must include one and only one selection quoted block in your response. 
 Or if you want to terminate the implementation process, you can include a ```terminate``` quoted block in your response.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
 O1_IMPLEMENTATION_PLANNER_POST_REFINE=AgentPrompt(O1_IMPLEMENTATION_PLANNER_POST_REFINE_prompt,O1_SELECTION_parser)
 
 
 
-O1_IMPLEMENTATION_PLANNER_BEGIN_prompt = """
+O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION_prompt = """
 It is the beginning of the design implementation. Please make your plan.
 
 #### Current Design Overview
@@ -5601,21 +5609,21 @@ You do not need to select any GAUs at the beginning as you will work on the sele
 Please analyze the design proposal and give your plan, and providing guidance for the coder.
 """
 
-O1_IMPLEMENTATION_PLANNER_BEGIN=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_prompt)
+O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION_prompt)
 
-O1_IMPLEMENTATION_PLANNER_BEGIN_RETRY_prompt = """
-The agent failed in It is the beginning of the design implementation. Please make your plan.
+O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER_prompt = """
+It is the beginning of the design implementation. Please make your plan.
 
 #### Current Design Overview
 
 {VIEW}
 
-You do not need to select any GAUs at the beginning as you will work on the selected unit at the beginning.
+You do not need to select any GAUs at the beginning as you will start by working on the root unit.
 Please analyze the design proposal and give your plan, and providing guidance for the coder.
-Do not worry about the number of tokens in your reasoning and your response, you can use as many as you need to give the best response.
 """
 
-O1_IMPLEMENTATION_PLANNER_BEGIN=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_prompt)
+O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER_prompt)
+
 
 
 

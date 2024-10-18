@@ -212,6 +212,7 @@ class GUFlow(FlowCreator):
         self.search_settings=design_cfg['search_settings']
         self.running_mode=design_cfg['running_mode']
         self.num_samples=design_cfg['num_samples']
+        self.use_unlimited_prompt=design_cfg['use_unlimited_prompt']
         self.design_cfg=design_cfg
         self.user_input=user_input
 
@@ -220,7 +221,7 @@ class GUFlow(FlowCreator):
         self.sess_id = sess_id
         self.ptree=system.ptree
         seeds,refs,instruct,self.design_mode=self.ptree.get_session_input(sess_id)
-        self.stream.write(f'Number of seeds sampled: {len(seeds)}. Number of references: {len(refs)}. Working in design mode: {self.design_mode}')
+        self.stream.write(f'Number of seeds sampled: :green[{len(seeds)}].\tNumber of references: :orange[{len(refs)}].\tWorking in design mode: :violet[{self.design_mode}]')
         self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode,mutation_no_tree=design_cfg['mutation_no_tree'])
         if self.design_mode==DesignModes.MUTATION:
             self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
@@ -283,6 +284,8 @@ class GUFlow(FlowCreator):
         if context:
             print(f'[DEBUG] Switching context of {tid} ({callee}) to new context with length {len(context.get())}')
             self.dialog.switch_context(tid,copy.deepcopy(context))
+        if self.use_unlimited_prompt:
+            prompt += P.REASONING_TOKEN_UNLIMITED
         msg,out=self.dialog.call(tid,prompt)
         self.log_fn(f'{tid} ({callee}) returned.',status)
         return msg,out
@@ -357,19 +360,24 @@ class GUFlow(FlowCreator):
         if self.running_mode==RunningModes.IMPLEMENTATION_ONLY:
             self.stream.write('Implementation only mode, skipping proposal generation...')
             return query,state,{}
-        passed_proposals,_=self.ptree.session_proposals(self.sess_id,passed_only=True)
-        remaining_samples=self.num_samples['proposal']-len(passed_proposals)
-        info=f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} proposal{"s" if remaining_samples>1 else ""} to generate.'
-        self.stream.write(info)
-        self.log_fn(info,'PROPOSAL')
-        for i in range(remaining_samples):
+        
+        i=0
+        while True:
+            passed_proposals,_=self.ptree.session_proposals(self.sess_id,passed_only=True)
+            remaining_samples=self.num_samples['proposal']-len(passed_proposals)
+            info=f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} proposal{"s" if remaining_samples>1 else ""} to generate.'
+            self.stream.write(info)
+            self.log_fn(info,'PROPOSAL')
+            if len(passed_proposals)>=self.num_samples['proposal']:
+                break
             self.log_fn(f'Generating proposal {i+1}...','PROPOSAL')
             cost_raw=copy.deepcopy(self.costs)
             query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
             proposal,proposal_traces=RET['proposal'],RET['proposal_traces']
             costs={k:v-cost_raw[k] for k,v in self.costs.items()}
             self.ptree.propose(self.sess_id,proposal,proposal_traces,costs,self.design_cfg,self.user_input)
-            self.log_fn(f'Proposal {i+1} generated.','PROPOSAL')
+            self.log_fn(f'Proposal {i+1} generated: {proposal.modelname} (Passed: {proposal.passed}).','PROPOSAL')
+            i+=1
         self.log_fn(f'All proposals generated.','PROPOSAL')
         return query,state,{}
 
@@ -621,8 +629,8 @@ class GUFlow(FlowCreator):
                         if self.design_mode==DesignModes.MUTATION:
                             selection=out['selection']
                             self.stream.write(f'### Selection: {selection}')
-                        self.stream.write(f'### Abstract\n{abstract}')
-                        self.stream.write(f'### Proposal\n{proposal}')
+                        self.stream.markdown(f'### Abstract\n{abstract}')
+                        self.stream.markdown(f'### Proposal\n{proposal}')
                         self.print_raw_output(out,'DESIGN_PROPOSER')
                         if self.design_mode==DesignModes.MUTATION:
                             context_design_proposer_bkup=copy.deepcopy(context_design_proposer)
@@ -1051,6 +1059,7 @@ class GUFlow(FlowCreator):
                 self.tree=copy.deepcopy(tree_ckpt)
                 if status in ['initial_pass','unfinished']:
                     initial_pass=True
+                self.stream.write(f'Resuming implementation checkpoint of {acronym}...')
 
             cost_raw=copy.deepcopy(self.costs)
             RETS=self._implement_proposal_recursive(main_tid,proposal,acronym,resume=tree_ckpt is not None,initial_pass=initial_pass)
@@ -1179,7 +1188,7 @@ class GUFlow(FlowCreator):
             context_implementation_observer=AgentContext()
 
             succeed=False
-            if self.design_mode==DesignModes.MUTATION:
+            if self.design_mode==DesignModes.MUTATION or INITIAL_PASS:
                 IMPLEMENTED,UNIMPLEMENTED=self.tree.check_implemented()
                 # GAB_CODE=self.tree.compose()
                 UNIMPLEMENTED=list(set(UNIMPLEMENTED)-set(PROTECTED_UNITS)) # although its impossible to have unavailable units
@@ -1236,7 +1245,7 @@ class GUFlow(FlowCreator):
                     SKIP_PLANNING=False
                     if USE_O1_PLANNER:
                         if round==1:
-                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN
+                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION if self.design_mode==DesignModes.MUTATION else P.O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER
                             gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
                                 VIEW=VIEW_DETAILED,
                             )
@@ -1286,28 +1295,13 @@ class GUFlow(FlowCreator):
                             self.stream.write(f'### Plan\n{plan}')
                             self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
                             if not termination and round>1:
-                                context_implementation_planner_bkup=copy.deepcopy(context_implementation_planner)
-                                for _ in range(5):
-                                    context_implementation_planner=copy.deepcopy(context_implementation_planner_bkup)
-                                    succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
-                                    if succeed:
-                                        break
+                                succeed,selection,_=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                if not succeed:
+                                    if len(UNIMPLEMENTED)==0:
+                                        termination=True
                                     else:
-                                        if len(UNIMPLEMENTED)==0:
-                                            termination=True
-                                            break
-                                    self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,RETRY_PROMPT())
-                                    RETRY_PROMPT.apply(IMPLEMENTATION_PLANNER.obj)
-                                    self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
-                                    _,out=self.call_dialog(implementation_planner_tid,RETRY_PROMPT(),context=context_implementation_planner)
-                                    selection=out['selection']
-                                    self.stream.write(f'##### Correcting selection: {selection}')
-                                    self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
-                                if not succeed and not termination:
-                                    info = 'Failed to generate a valid design proposal, stopping design process'
-                                    self.log_fn(info,'ERROR')
-                                    raise Exception(info)
-                                context_implementation_planner=copy.deepcopy(context_implementation_planner_bkup)
+                                        selection = random.choice(UNIMPLEMENTED)
+                                        plan+=f'\n\n### NOTE: The selection does not successfully parsed, randomly select {selection} from {UNIMPLEMENTED} instead. You may ignore the plan if not useful.'
                         else:
                             if self.design_mode==DesignModes.MUTATION:
                                 selection=proposal.selection
@@ -1367,7 +1361,7 @@ class GUFlow(FlowCreator):
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
-                GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER,mode=self.design_mode)
+                GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER,mode=self.design_mode,INITAL_PASS=INITIAL_PASS)
                 if self.design_mode==DesignModes.MUTATION:
                     _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed}
                 elif self.design_mode==DesignModes.CROSSOVER:
@@ -1377,7 +1371,7 @@ class GUFlow(FlowCreator):
                 IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUT_IMPLEMENTATION_CODER_SYSTEM(
                     GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PLAN=plan,
                     PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
-                implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder.truncate(2), # keep last 2 messages and system message
+                implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder, # keep last 2 messages and system message
                                                     alias='implementation_coder',note=f'Starting design implementation...')
                 if attempt==0: # first attempt, implement the unit
                     status_info=f'Starting design implementation of {selection}...'
@@ -1421,8 +1415,9 @@ class GUFlow(FlowCreator):
 
 
                 with self.status_handler(status_info): # calling the agent
+                    context_implementation_coder=context_implementation_coder.truncate(4)
                     self.print_details(IMPLEMENTATION_CODER.obj,context_implementation_coder,gu_implement_unit_prompt)
-                    _,out=self.call_dialog(implementation_coder_tid,gu_implement_unit_prompt)
+                    _,out=self.call_dialog(implementation_coder_tid,gu_implement_unit_prompt,context_implementation_coder)
                     context_implementation_coder=self.dialog.context(implementation_coder_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
@@ -1559,6 +1554,8 @@ class GUFlow(FlowCreator):
                                 unit_name=root_name[0]
                                 if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
                                     self.tree.root = unit_name
+                                    if 'root' in unit_name.lower() or 'gau' in unit_name.lower():
+                                        format_warnings.append(f'Detected words like "root" or "gau" in the root unit name, which seems not a meaningful name, please use the model *block* name in the proposal as the root unit name.')
                                 
                                 reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
                                 # replace selection with unit_name
@@ -1685,7 +1682,8 @@ class GUFlow(FlowCreator):
                         self.stream.write(f'### Check passed: {checkpass}')
                         self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
-                        self.stream.write(f'### Reformatted GAB Code\n```python\n{gabcode_reformat}\n```')
+                        self.stream.write(f'### Reformatted GAB Code\n')
+                        self.stream.code(gabcode_reformat,language='python',line_numbers=True)
                         
                         checkpass = checkpass and _unit_test_passed if self.unittest_pass_required else checkpass
                         checker_report = check_report # XXX: Too long in the prompt

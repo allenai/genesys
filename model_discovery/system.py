@@ -308,6 +308,10 @@ class PrintSystem:
         if not self.silent:
             print(msg)
 
+    def code(self,code,**kwargs):
+        if not self.silent:
+            print(code)
+
     def balloons(self,**kwargs):
         if not self.silent:
             print('🎈🎈🎈🎈🎈')
@@ -352,6 +356,10 @@ class StreamWrapper:
     def snow(self,**kwargs):
         self.stream.snow(**kwargs)
         self.log('snow','snow')
+    
+    def code(self,code,**kwargs):
+        self.stream.code(code,**kwargs)
+        self.log(code,'code')
 
         
 
@@ -392,7 +400,7 @@ DEFAULT_NUM_SAMPLES={
 DEFAULT_UNITTEST_PASS_REQUIRED=False
 DEFAULT_CROSSOVER_NO_REF=True
 DEFAULT_MUTATION_NO_TREE=True
-
+DEFAULT_USE_UNLIMITED_PROMPT=False
 
 @exec_utils.Registry(
     resource_type="system_type",
@@ -566,6 +574,7 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
         design_cfg['crossover_no_ref'] = design_cfg.get('crossover_no_ref',DEFAULT_CROSSOVER_NO_REF)
         design_cfg['mutation_no_tree'] = design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
+        design_cfg['use_unlimited_prompt'] = design_cfg.get('use_unlimited_prompt',DEFAULT_USE_UNLIMITED_PROMPT)
 
         self.sss.reconfig(search_cfg,stream)
         self.sss._refresh_db()

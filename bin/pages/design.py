@@ -436,6 +436,8 @@ def show_log(log):
             line += f"st.balloons()"
         elif type == 'snow':
             line += f"st.snow()"
+        elif type == 'code':
+            line += f"st.code({text_repr},language='python',line_numbers=True)"
         else:
             line += f"st.write('{type}'+': '+{text_repr})"
         code.append(line)
@@ -548,8 +550,7 @@ def _design_tuning(evosys,project_dir):
                         display_name = f'RefWithCode ({sources[source]})'
                     n_sources[source] = st.number_input(label=display_name,min_value=0,value=1)#,max_value=1,disabled=True)
         with _scol2:
-            st.write('')
-            st.write('')
+            st.markdown("##### Input Settings")
             design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=True,
                 help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
             design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=True,
@@ -594,8 +595,8 @@ def _design_tuning(evosys,project_dir):
         design_cfg['max_attempts'] = max_attempts
 
         with col2:
-            st.markdown("##### Configure unittests")
-            st.write('')
+            st.markdown("##### Other settings")
+            design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=False)
             design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)#,help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
 
         with col3:

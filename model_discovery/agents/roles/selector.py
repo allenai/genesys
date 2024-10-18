@@ -727,6 +727,9 @@ class Selector:
         else:
             raise ValueError(f"Invalid select method: {select_method}")
 
+        if len(seeds)>n_seeds: # FIXME: not sure why this happens, keep it for now
+            seeds = seeds[:n_seeds]
+
         return instruct,seeds,refs
         
     def nodes2data(self,nodes): # convert the nodes to data: NodeObject

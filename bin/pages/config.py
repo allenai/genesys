@@ -22,7 +22,7 @@ from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TY
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
     DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
         SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
-from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,\
+from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,DEFAULT_USE_UNLIMITED_PROMPT,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS,DEFAULT_CROSSOVER_NO_REF,DEFAULT_MUTATION_NO_TREE
 from model_discovery.agents.search_utils import EmbeddingDistance,DEFAULT_VS_INDEX_NAME,\
@@ -342,6 +342,7 @@ def design_config(evosys):
     design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
     design_cfg['crossover_no_ref']=design_cfg.get('crossover_no_ref',DEFAULT_CROSSOVER_NO_REF)
     design_cfg['mutation_no_tree']=design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
+    design_cfg['use_unlimited_prompt']=design_cfg.get('use_unlimited_prompt',DEFAULT_USE_UNLIMITED_PROMPT)
 
     #### Configure design
     
@@ -368,7 +369,7 @@ def design_config(evosys):
             design_cfg['agent_types'] = agent_types
             st.caption('***Note:** If you choose "hybrid", you will need to configure the weights for each agent below in advanced configs later.*')
 
-            col1,col2=st.columns([3,2])
+            col1,col2,col3=st.columns([3,2,1])
             termination={}
             threshold={}
             max_attempts = {}
@@ -384,17 +385,25 @@ def design_config(evosys):
                 with cols[3]:
                     max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
             with col2:
-                st.markdown("##### Configure the threshold for rating the design")
+                st.markdown("##### Configure the threshold for ratings")
                 cols=st.columns(2)
                 with cols[0]:
                     threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0,max_value=5,value=4)
                 with cols[1]:
-                    threshold['implementation_rating'] = st.slider(label="Implementation rating",min_value=0,max_value=5,value=3)
+                    threshold['implementation_rating'] = st.slider(label="Implementation observation",min_value=0,max_value=5,value=3)
             design_cfg['termination'] = termination
             design_cfg['threshold'] = threshold 
 
+            with col3:
+                st.markdown("###### Input Settings")
+                design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg['crossover_no_ref'],
+                    help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
+                design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=design_cfg['mutation_no_tree'],
+                    help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
+            
 
-            col1,col2=st.columns([4,5])
+
+            col1,col2,col3=st.columns([5,5,2.5])
             with col1:
                 st.markdown("##### Configure max number of attempts")
                 cols=st.columns(3)
@@ -412,24 +421,18 @@ def design_config(evosys):
                 with cols[0]:
                     num_samples['proposal']=st.number_input(label="Proposal Samples",min_value=1,value=1)
                 with cols[1]:
-                    num_samples['implementation']=st.number_input(label="Implementation Samples",min_value=1,value=1)
+                    num_samples['implementation']=st.number_input(label="Impl. Samples",min_value=1,value=1)
                 with cols[2]:
                     rerank_methods=['random','rating']
                     num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
             design_cfg['num_samples']=num_samples
 
-
-            st.markdown("###### Other Configurations")
-            cols=st.columns([1,1,1,2])
-            with cols[0]:
+            with col3:
+                st.markdown("###### Other Configurations")
                 design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg['unittest_pass_required'],
                     help='If true, will require unittests to pass besides checkers and observers.')
-            with cols[1]:
-                design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg['crossover_no_ref'],
-                    help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
-            with cols[2]:
-                design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=design_cfg['mutation_no_tree'],
-                    help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
+                design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg['use_unlimited_prompt'],
+                    help='If true, will prompt the agent to not worry about the number of tokens in their reasoning and response, and use as many as needed to give the best response.')
 
             st.form_submit_button("Save and Apply",on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.evo_running)   
 
