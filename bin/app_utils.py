@@ -130,7 +130,10 @@ def running_status(st,evosys):
   #   st.write(f'⛅ [**Cloud Status**]({URL})')
 
   if st.session_state.evo_running:
-    st.status('🚀 ***Running Evolution***')
+    if st.session_state.command_center.benchmark_mode:
+      st.status('🪑 ***Running Benchmark***')
+    else:
+      st.status('🚀 ***Running Evolution***')
  
   if evosys.CM is not None:
     evosys.CM.get_active_connections()

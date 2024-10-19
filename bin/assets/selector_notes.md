@@ -132,5 +132,5 @@ For verification, the selector focuses on:
 
 1. **RL/Tuning of design agents**: Design agents can use utility as a signal to
    improve designs over the evolution process.
-2. **Online learning of scaling curves**: The selector can learn the scaling
+2. **Online learning of selector/scaling curves**: The selector can learn the scaling
    curve over time, improving exploration efficiency.

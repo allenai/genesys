@@ -571,6 +571,7 @@ class FirestoreManager:
 LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 
 
+FAILED_COLOR='#856d72'
 DESIGN_COLOR='#5698c3'
 DESIGN_IMPLEMENTED_COLOR='#1177b0'
 
@@ -586,17 +587,18 @@ NODE_COLOR_MAP={
 
 ROOT_COLOR='#9eccab'
 
+FAILED_SIZE=12
 DESIGN_SIZE=15
 DESIGN_IMPLEMENTED_SIZE=20
 
 NODE_SIZE_MAP={
-    '14M':15,
-    '31M':20,
-    '70M':25,
-    '125M':30,
-    '350M':35,
-    '760M':40,
-    '1300M':45,
+    '14M':22,
+    '31M':24,
+    '70M':26,
+    '125M':28,
+    '350M':30,
+    '760M':32,
+    '1300M':34,
 }
 
 CORE_COLOR = '#f0a1a8' # core reference
@@ -728,10 +730,10 @@ class LibraryReference(NodeObject):
             mdtext += f'\n**Authors:** {authors}'
         
         if self.tldr:
-            mdtext += f'\n\n**TL;DR:** {self.tldr}'
+            mdtext += f'\n\n**TL;DR:** \n{U.break_sentence(self.tldr, 100)}'
         
         if self.abstract:
-            abstract = self.abstract.replace('. ', '.\n') if reformat else self.abstract
+            abstract = U.break_sentence(self.abstract, 100) if reformat else self.abstract
             mdtext += f'\n\n**Abstract:**\n{abstract}'
         
         if self.venue:
@@ -744,7 +746,7 @@ class LibraryReference(NodeObject):
             mdtext += f'\n\n**Impactful Citations:** {self.influentialCitationCount}'
         
         if self.description:
-            description = self.description.replace('. ', '.\n') if reformat else self.description
+            description = U.break_sentence(self.description, 100) if reformat else self.description
             mdtext += f'\n\n### Description:\n{description}'
         
         if self.url:
@@ -1040,13 +1042,41 @@ class DesignArtifact(NodeObject):
 
     def to_desc(self):
         mdtext = f'## {self.proposal.modelname}'
-        mdtext += f'\n**Selection:** {self.proposal.selection}'
         mdtext += f'\n**Model:** {self.proposal.modelname}'
-        mdtext += f'\n**Variant:** {self.proposal.variantname}'
+        if self.proposal.selection:
+            mdtext += f'\n**Selection:** {self.proposal.selection} ({self.proposal.variantname})'
+        if self.proposal.abstract:
+            mdtext += f'\n**Abstract:**\n{U.break_sentence(self.proposal.abstract, 100)}'
         mdtext += f'\n**Rating:** {self.proposal.rating}/5'
         mdtext += f'\n**Passed:** {self.proposal.passed}'
-        if self.is_implemented():
-            mdtext += f'\n**Implementation:**\n\n{self.implementation.implementation.root_node.spec.document}'
+        if self.sess_snapshot:
+            mdtext += f'\n**Mode:** {self.sess_snapshot["mode"]}'
+            mdtext += f'\n**Seed IDs:** {self.sess_snapshot["seed_ids"]}'
+            mdtext += f'\n**Ref IDs:** {self.sess_snapshot["ref_ids"]}'
+            if self.sess_snapshot['instruct']:
+                mdtext += f'\n**Instruct:** {self.sess_snapshot["instruct"]}'
+        else:
+            mdtext += f'\n**Seed IDs:** {self.seed_ids}'
+        if self.implementation:
+            mdtext += f'\n**Implementated:** {self.implementation.status}'
+        else:
+            mdtext += f'\n**Implementated:** False'
+        mdtext += f'\n\n**Verification:**\n'
+        if len(self.verifications)>0:
+            for scale in self.verifications:
+                eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
+                avg_acc = 0
+                cnt = 0
+                for k,v in eval_results.items():
+                    if 'acc,none' in v:
+                        avg_acc += v['acc,none']
+                        cnt += 1
+                avg_acc /= cnt
+                wandb_ids = self.verifications[scale].verification_report['wandb_ids.json']
+                wandb_url = f"https://wandb.ai/{wandb_ids['entity']}/{wandb_ids['project']}/runs/{wandb_ids['pretrain']['id']}"
+                mdtext += f'{scale} avg. acc: {avg_acc:.4f} [wandb]({wandb_url})\n'
+        else:
+            mdtext += 'No verification results\n'
         return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
 
     def is_implemented(self):
@@ -1699,8 +1729,82 @@ class PhylogeneticTree:
         G=self.remove_redundant_edges(G)
 
         return G
+    
+    def add_legend(self,G,legend_x=-300,legend_y=-250,legend_step=100,legend_font_size=20,legend_width_constraint=50):
+        num_actual_nodes = len(self.G.nodes)
+        legend_sizes = {
+            'Reference\n(Size by cites)': 25,
+            'Core Reference\n(Size by cites)': 25,
+            'Reference with Code\n(Size by cites)': 25,
+            'Proposed\n(Unverified)': DESIGN_SIZE,
+            'Implemented\n(Unverified)': DESIGN_IMPLEMENTED_SIZE,
+            'Failed Proposals': FAILED_SIZE,
+            'Scratch Design\n(Unverified)': 15,
+        }
+        legend_colors = {
+            'Core Reference\n(Size by cites)': CORE_COLOR,
+            'Reference\n(Size by cites)': REFERENCE_COLOR,
+            'Reference with Code\n(Size by cites)': RWC_COLOR,
+            'Proposed\n(Unverified)': DESIGN_COLOR,
+            'Implemented\n(Unverified)': DESIGN_IMPLEMENTED_COLOR,
+            'Failed Proposals': FAILED_COLOR,
+            'Scratch Design\n(Unverified)': ROOT_COLOR,
+        }
+        legend_labels=list(legend_colors.keys())
+        for scale in NODE_COLOR_MAP:
+            legend_labels.append('Verified '+scale)
+            legend_colors[f'Verified {scale}'] = NODE_COLOR_MAP[scale]
+            legend_sizes[f'Verified {scale}'] = NODE_SIZE_MAP[scale]
+        num_legend_nodes = len(legend_labels)
+        legend_nodes = [
+            (
+                num_actual_nodes, 
+                {
+                    'group': 'legend',
+                    'label': 'Legend',
+                    'size': 20,
+                    'color': '#000000',
+                    # 'fixed': True, # So that we can move the legend nodes around to arrange them better
+                    'physics': False, 
+                    'x': legend_x, 
+                    'y': f'{legend_y}px',
+                    'shape': 'box', 
+                    'widthConstraint': 100, 
+                    'font': {'size': legend_font_size}
+                }
+            )
+        ]
+        G.add_nodes_from(legend_nodes)
 
-    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None,bgcolor="#fafafa"): # larger canvas may be needed for large trees
+        legend_nodes = []
+        for legend_node in range(num_legend_nodes):
+            label = legend_labels[legend_node]
+            size = legend_sizes[label]
+            color = legend_colors[label]
+            legend_nodes.append(
+                (
+                    num_actual_nodes +1 + legend_node, 
+                    {
+                        'group': legend_node, 
+                        'label': label,
+                        'size': size,
+                        'color': color,
+                        # 'fixed': True, # So that we can move the legend nodes around to arrange them better
+                        'physics': False, 
+                        'x': legend_x, 
+                        'y': f'{legend_y + (1+legend_node)*legend_step}px',
+                        # 'shape': 'box', 
+                        # 'widthConstraint': legend_width_constraint, 
+                        'font': {'size': legend_font_size}
+                    }
+                )
+            )
+        G.add_nodes_from(legend_nodes)
+        return G
+
+    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None,bgcolor="#fafafa",
+            legend_x=-300,legend_y=-250,legend_step=100,legend_font_size=20,legend_width_constraint=50): # larger canvas may be needed for large trees
+        # G=self.add_legend(G,legend_x,legend_y,legend_step,legend_font_size,legend_width_constraint)
         nt=Network(
             directed=True,height=height,width=width,
             layout=layout, 
@@ -1715,7 +1819,8 @@ class PhylogeneticTree:
         nt.show(U.pjoin(self.db_dir, '..', fname+'.html'))
 
 
-    def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee"): #,with_ext=False
+    def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee",
+               legend_x=-300,legend_y=-250,legend_step=100,legend_font_size=20,legend_width_constraint=100): #,with_ext=False
         G=nx.DiGraph()
         if not max_nodes or max_nodes==0 or max_nodes>=len(self.G.nodes):
             _G=self.G.copy()
@@ -1730,6 +1835,13 @@ class PhylogeneticTree:
                 if data.seed_ids == []:
                     color=ROOT_COLOR
                 size=DESIGN_SIZE if data.type=='DesignArtifact' else DESIGN_IMPLEMENTED_SIZE
+                if not data.proposal.passed:
+                    color=FAILED_COLOR
+                    size=FAILED_SIZE
+                for scale in list(NODE_COLOR_MAP.keys())[::-1]:
+                    if scale in data.verifications:
+                        color=NODE_COLOR_MAP[scale]
+                        size=NODE_SIZE_MAP[scale]
             elif data.type=='Reference':
                 color=REFERENCE_COLOR
                 citations=data.citationCount
@@ -1762,7 +1874,9 @@ class PhylogeneticTree:
         fname='phylogenetic_tree'
         if max_nodes: fname+=f'_{max_nodes}'
         # write_dot(G, U.pjoin(self.db_dir, '..', fname+".dot"))
-        self.viz(G,max_nodes=max_nodes,height=height,layout=layout,bgcolor=bgcolor)
+        self.viz(G,max_nodes=max_nodes,height=height,layout=layout,bgcolor=bgcolor,
+                 legend_x=legend_x,legend_y=legend_y,legend_step=legend_step,
+                 legend_font_size=legend_font_size,legend_width_constraint=legend_width_constraint)
 
 
 

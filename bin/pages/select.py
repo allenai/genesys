@@ -91,7 +91,8 @@ def design_selector(evosys,project_dir):
             ranking_args['normed_only'] = st.checkbox('Normed only',value=ranking_args['normed_only'])
         with cols[2]:
             st.write('')
-            ranking_args['drop_zero'] = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+            ranking_args['drop_zero'] = st.checkbox('Drop 0',value=ranking_args['drop_zero'],
+                                                    help='If set, will drop all-zero columns')
         with cols[3]:
             st.write('')
             ranking_args['drop_na'] = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
@@ -116,7 +117,7 @@ def design_selector(evosys,project_dir):
                 help='If set, will filter out metrics with the highest difference in rating compared to a random metric lower than this, -1 (i.e. -100%) means no filtering')
         with cols[1]:
             st.write('')
-            ranking_args['absolute_value_threshold'] = st.checkbox('Absolute Diff.',value=ranking_args['absolute_value_threshold'],
+            ranking_args['absolute_value_threshold'] = st.checkbox('Absolute',value=ranking_args['absolute_value_threshold'],
                 help='If set, will use absolute difference instead of relative difference `difference/random` for filtering')
         with cols[2]:
             st.write('')
@@ -225,7 +226,8 @@ def verify_selector(evosys,project_dir):
             ranking_args['normed_only'] = st.checkbox('Normed only',value=ranking_args['normed_only'])
         with cols[2]:
             st.write('')
-            ranking_args['drop_zero'] = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+            ranking_args['drop_zero'] = st.checkbox('Drop 0',value=ranking_args['drop_zero'],
+                                                    help='If set, will drop all-zero columns')
         with cols[3]:
             st.write('')
             ranking_args['drop_na'] = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
@@ -250,7 +252,7 @@ def verify_selector(evosys,project_dir):
                 help='If set, will filter out metrics with the highest difference in rating compared to a random metric lower than this, -1 (i.e. -100%) means no filtering')
         with cols[1]:
             st.write('')
-            ranking_args['absolute_value_threshold'] = st.checkbox('Absolute Diff.',value=ranking_args['absolute_value_threshold'],
+            ranking_args['absolute_value_threshold'] = st.checkbox('Absolute',value=ranking_args['absolute_value_threshold'],
                 help='If set, will use absolute difference instead of relative difference `difference/random` for filtering')
         with cols[2]:
             st.write('')

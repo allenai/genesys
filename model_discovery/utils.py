@@ -238,3 +238,8 @@ def save_local_doc(data):
     if CKPT_DIR is None:
         return
     save_json(data,pjoin(CKPT_DIR,'.node.json'))
+
+
+def break_sentence(text, max_length=100):
+    # insert \n every max_length
+    return '\n'.join([text[i:i+max_length] for i in range(0, len(text), max_length)])

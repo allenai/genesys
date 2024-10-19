@@ -32,6 +32,13 @@ def evo(ctx):
 
 @cli.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),add_help_option=False)
 @click.pass_context
+def benchmark(ctx):
+    """Run the agent benchmark"""
+    cmd = [sys.executable, '-m', 'bin.pages.evolve', '--benchmark'] + ctx.args
+    subprocess.run(cmd)
+
+@cli.command(context_settings=dict(ignore_unknown_options=True, allow_extra_args=True),add_help_option=False)
+@click.pass_context
 def design(ctx):
     """Sample a design"""
     cmd = [sys.executable, '-m', 'bin.pages.design'] + ctx.args

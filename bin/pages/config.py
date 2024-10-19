@@ -374,7 +374,7 @@ def design_config(evosys):
             threshold={}
             max_attempts = {}
             with col1:
-                st.markdown("##### Configure termination conditions and budgets (0 is no limit)")
+                st.markdown("##### Configure termination and budgets (0 is no limit)")
                 cols=st.columns(4)
                 with cols[0]:
                     termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=3)
@@ -390,7 +390,7 @@ def design_config(evosys):
                 with cols[0]:
                     threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0,max_value=5,value=4)
                 with cols[1]:
-                    threshold['implementation_rating'] = st.slider(label="Implementation observation",min_value=0,max_value=5,value=3)
+                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0,max_value=5,value=3)
             design_cfg['termination'] = termination
             design_cfg['threshold'] = threshold 
 
@@ -429,7 +429,7 @@ def design_config(evosys):
 
             with col3:
                 st.markdown("###### Other Configurations")
-                design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg['unittest_pass_required'],
+                design_cfg['unittest_pass_required']=st.checkbox('Unittests required',value=design_cfg['unittest_pass_required'],
                     help='If true, will require unittests to pass besides checkers and observers.')
                 design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg['use_unlimited_prompt'],
                     help='If true, will prompt the agent to not worry about the number of tokens in their reasoning and response, and use as many as needed to give the best response.')
@@ -496,7 +496,7 @@ def search_config(evosys):
                 with cols[1]:
                     search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Result Limit",value=3,min_value=0,step=1)
                 with cols[2]:
-                    search_cfg['result_limits']['pwc']=st.number_input("Papers w. Code Result Limit",value=3,min_value=0,step=1)
+                    search_cfg['result_limits']['pwc']=st.number_input("PwC Result Limit",value=3,min_value=0,step=1)
                 with cols[3]:
                     search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
                 with cols[4]:
@@ -678,7 +678,8 @@ def selector_ranking_exploration_config(evosys):
                 ranking_args['normed_only'] = st.checkbox('Normed only',value=ranking_args['normed_only'])
             with cols[2]:
                 st.write('')
-                ranking_args['drop_zero'] = st.checkbox('Drop All 0',value=ranking_args['drop_zero'])
+                ranking_args['drop_zero'] = st.checkbox('Drop 0',value=ranking_args['drop_zero'],
+                                                        help='If set, will drop all-zero columns')
             with cols[3]:
                 st.write('')
                 ranking_args['drop_na'] = st.checkbox('Drop N/A',value=ranking_args['drop_na'])
@@ -702,7 +703,7 @@ def selector_ranking_exploration_config(evosys):
                     help='If set, will filter out metrics with the highest difference in rating compared to a random metric lower than this, -1 (i.e. -100%) means no filtering')
             with cols[1]:
                 st.write('')
-                ranking_args['absolute_value_threshold'] = st.checkbox('Absolute Diff.',value=ranking_args['absolute_value_threshold'],
+                ranking_args['absolute_value_threshold'] = st.checkbox('Absolute',value=ranking_args['absolute_value_threshold'],
                     help='If set, will use absolute difference instead of relative difference `difference/random` for filtering')
             with cols[2]:
                 st.write('')
@@ -799,7 +800,7 @@ def check_configs(evosys):
 
 def local_experiments(evosys):
     
-    col1,col2,col3,_=st.columns([1.5,1,1,2])
+    col1,col2,col3,_=st.columns([1.5,1,1,1.8])
     with col1:
         st.header(f"Local Experiments")
     with col2:
@@ -870,7 +871,7 @@ def local_experiments(evosys):
         if ckpt==default_namespace:
             default_btn=('Default',None,True)
         else:
-            default_btn=('Set Default',ft.partial(set_default,ckpt), st.session_state.evo_running)
+            default_btn=('As Default',ft.partial(set_default,ckpt), st.session_state.evo_running)
         if exp_dir==evosys.evo_dir:
             experiment['ICON']='🏠'
             experiment['BUTTON']=[

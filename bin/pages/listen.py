@@ -237,8 +237,8 @@ def start_listener_thread(listener,add_ctx=True):
     return thread
 
 
-def launch_listener(evosys, node_id, group_id, max_design_threads, accept_verify_job):
-    listener = Listener(evosys, node_id, group_id, max_design_threads, accept_verify_job)
+def launch_listener(evosys, node_id, group_id, max_design_threads, accept_verify_job, cpu_only_checker):
+    listener = Listener(evosys, node_id, group_id, max_design_threads, accept_verify_job, cpu_only_checker)
     listener.build_connection()
     st.session_state.listener = listener
     st.session_state.listener_thread = start_listener_thread(listener)
@@ -265,7 +265,7 @@ def listen(evosys, project_dir):
     st.title('Listening Mode')
 
     if not st.session_state.listening_mode:
-        st.warning('**NOTE:** It is recommended to run a node by `run_node.sh` for production use. Run node here for demonstration.')
+        st.warning('**NOTE:** It is recommended to run a node by `run_node.sh` for production use. Run node here for demonstration only.')
 
 
     _node_id = AU._listener_running(evosys.ckpt_dir)
@@ -290,7 +290,7 @@ def listen(evosys, project_dir):
 
 
 
-    col1,col2,col3,col4,col5 = st.columns([1.2,1.2,1,0.9,1])
+    col1,col2,col3,col4,col5,col6 = st.columns([1.2,1.2,1,0.9,0.85,1])
 
 
     with col1:
@@ -306,14 +306,20 @@ def listen(evosys, project_dir):
     with col5:
         st.write('')    
         st.write('')
-        input_accept_verify_job = st.checkbox("Accept verify job", value=True, disabled=st.session_state.listening_mode)
+        input_accept_verify_job = st.checkbox("Accept verify", value=True, disabled=st.session_state.listening_mode)
+
+
+    with col6:
+        st.write('')    
+        st.write('')
+        input_cpu_only_checker = st.checkbox("CPU only checker", value=False, disabled=st.session_state.listening_mode)
 
     with col4:
         st.write('') 
         st.write('')    
         if not st.session_state.listening_mode:
             if st.button("**Start Listening**", use_container_width=True, disabled=st.session_state.evo_running or passive_mode):
-                launch_listener(evosys, input_node_id, input_group_id, input_max_design_threads, input_accept_verify_job)
+                launch_listener(evosys, input_node_id, input_group_id, input_max_design_threads, input_accept_verify_job, input_cpu_only_checker)
         else:
             if st.button("**Stop Listening**", use_container_width=True, disabled=st.session_state.evo_running or passive_mode):
                 stop_listening()
@@ -418,6 +424,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-i','--node_id', type=str, default='None', help='Node ID (empty for random)')
+    parser.add_argument('-V','--v_node', action='store_true', help='Fast launching as a verification-only node. It is recommended to separate the V and D nodes.')
+    parser.add_argument('-D','--d_node', action='store_true', help='Fast launching as a design-only node. It is recommended to separate the V and D nodes.')
     parser.add_argument('-n','--no_verify', action='store_true', help='Do not use GPUs (will not accept verify jobs)')
     parser.add_argument('-m','--max_design_threads', type=int, default=5, help='Max number of design threads can accept')
     parser.add_argument('-g','--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
@@ -431,6 +439,16 @@ if __name__ == "__main__":
             node_id = os.environ.get("GENESYS_NODE_ID")
     else:
         node_id = args.node_id
+
+    if args.v_node:
+        args.max_design_threads = 0
+
+    if args.d_node:
+        args.no_verify = True
+        assert not args.v_node, 'Cannot be both design-only and verification-only node.'
+        if args.max_design_threads <= 0:
+            print('⚠️ Design-only node must have at least 1 design thread. Set to 1.')
+            args.max_design_threads = 1
 
     # run in CLI mode
 

@@ -500,7 +500,7 @@ def _design_tuning(evosys,project_dir):
             agent_type_labels = {
                 'DESIGN_PROPOSER':'Proposal Agent',
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
-                'IMPLEMENTATION_PLANNER':'Implementation Planner',
+                'IMPLEMENTATION_PLANNER':'Impl. Planner',
                 'IMPLEMENTATION_CODER':'Implementation Coder',
                 'IMPLEMENTATION_OBSERVER':'Impl. Observer',
                 'SEARCH_ASSISTANT': '*Sep. Search Assistant*' # no need at all, can be integrated into search engine
@@ -535,7 +535,7 @@ def _design_tuning(evosys,project_dir):
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
-        _scol1,_scol2 = st.columns([5.5,1])
+        _scol1,_scol2 = st.columns([5,1])
         with _scol1:
             st.markdown("##### Configure the number of *References* to sample from each source")
             cols = st.columns(len(sources))
@@ -643,7 +643,7 @@ def _design_tuning(evosys,project_dir):
         with cols[2]:
             search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,disabled=True)
         with cols[3]:
-            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means no rerank)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 is disabled)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
         with cols[4]:
             search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1)
         with cols[5]:
@@ -655,7 +655,7 @@ def _design_tuning(evosys,project_dir):
         with cols[1]:
             search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
         with cols[2]:
-            search_cfg['result_limits']['pwc']=st.number_input("Papers With Code Search Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['pwc']=st.number_input("PwC Result Limit",value=3,min_value=0,step=1)
         with cols[3]:
             search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
         with cols[4]:
