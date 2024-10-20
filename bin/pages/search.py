@@ -160,7 +160,9 @@ def unit_explorer(evosys,project_dir):
         choose_variant = None if choose_variant == 'None (random)' else choose_variant
 
     if choose_unit is not None:
-        unit=GD.get_unit(choose_unit,choose_variant)
+        unit,tree_name,decl=GD.get_unit(choose_unit,choose_variant)
+        st.write(f'Tree: ```{tree_name}```')
+        st.write(f'Decl: ```{decl}```')
         cols=st.columns([1,1])
         with cols[0]:
             with st.expander("Code",expanded=False):
@@ -269,7 +271,7 @@ def units_search(evosys,project_dir):
     if search_proposal_btn:
         with st.spinner('Searching...'):
             sss.reconfig(_cfg,st)
-            _,prt=sss.query_unit_codes(query)
+            _,prt=sss.query_units_by_code(query)
             sss.reconfig(cfg_backup,st)
             st.markdown(prt,unsafe_allow_html=True)
     else:

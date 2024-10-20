@@ -226,9 +226,12 @@ class SuperScholarSearcher:
 
         self.design_proposals={}
         self.unit_codes={}
+        self.unit_descs={}
+        self.unit_trees={}
         self.embedding_cache={
             'design_proposals':{},
             'unit_codes':{},
+            'unit_descs':{},
         }
         self._refresh_db()
 
@@ -240,7 +243,10 @@ class SuperScholarSearcher:
         
         for name in self.ptree.GD.terms:
             if name not in self.unit_codes:
-                self.unit_codes[name]=self.ptree.GD.get_unit(name).code # randomly get one
+                unit,tree_name,desc=self.ptree.GD.get_unit(name)
+                self.unit_codes[name]=unit.code
+                self.unit_descs[name]=desc
+                self.unit_trees[name]=tree_name
 
     def _get_embedding_model(self,model_name):
         if model_name in OPENAI_EMBEDDING_MODELS:
@@ -266,7 +272,6 @@ class SuperScholarSearcher:
             embeddings=self.embedding_unit,
             distance_metric=EmbeddingDistance(self.embedding_distances['unitcode'])
         )
-
 
     def reconfig(self,cfg,stream=None):
         self.embedding_models=U.safe_get_cfg_dict(cfg,'embedding_models',DEFAULT_EMBEDDING_MODELS)
@@ -418,31 +423,41 @@ class SuperScholarSearcher:
             else:
                 prt+=f'### Found {len(pps)} similar design proposals from the previous designs for the given proposal:\n\n'
                 for i,p in pps:
-                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.design_proposals[i]}\n```\n\n</details>\n\n'
+                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Design Proposal</summary>\n\n```\n{self.design_proposals[i]}\n```\n\n</details>\n\n'
             return pps,prt
         else:
             return pps
-
-    def query_unit_codes(self,query,pp=True):
+    
+    def query_units(self,query,pp=True,by='code'):
         top_k=self.unit_search_cfg['top_k']
         if top_k<=0:
             return [],'Unit code search not available.' if pp else []
         cutoff=self.unit_search_cfg['cutoff']
-        pps,scores=self.emb_evaluate(query,self.unit_codes,self.emb_evaluator_unit,self.embedding_unit,top_k,cutoff,cache_key='unit_codes')
+        if by=='code':
+            pps,scores=self.emb_evaluate(query,self.unit_codes,self.emb_evaluator_unit,self.embedding_unit,top_k,cutoff,cache_key='unit_codes')
+        elif by=='desc':
+            pps,scores=self.emb_evaluate(query,self.unit_descs,self.emb_evaluator_unit,self.embedding_unit,top_k,cutoff,cache_key='unit_descs')
+        items={}
+        for i,p in pps: # i is the unit name
+            items[i]=(self.unit_codes[i],self.unit_descs[i],self.unit_trees[i],scores[i])
         if pp:
             prt='**Similar Unit Codes from Previous Designs**:\n\n'
             if not pps:
-                prt+='### No similar unit codes found from the previous designs for the given unit.\n\n'
+                prt+='### No similar unit codes found from the previous designs for the given query.\n\n'
             else:
-                prt+=f'### Found {len(pps)} similar unit codes from the previous designs for the given unit:\n\n'
+                prt+=f'### Found {len(pps)} similar unit codes from the previous designs for the given query:\n\n'
                 for i,p in pps:
-                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Click to Expand</summary>\n\n```\n{self.unit_codes[i]}\n```\n\n</details>\n\n'
-            return pps,prt
+                    prt+=f'#### {i} (Score: {scores[i]:.2f})\n\n<details><summary>Unit Implementation</summary>\n\n```\n{self.unit_codes[i]}\n```\n\n</details>\n\n'
+            return items,prt
         else:
-            return pps
+            return items
 
+    def query_units_by_code(self,query,pp=True):
+        return self.query_units(query,pp,by='code')
 
-
+    def query_units_by_desc(self,query,pp=True): 
+        return self.query_units(query,pp,by='desc')
+        
     #### Get Paper Files by URL or ArXiv ID
 
     def get_html(self,url,save_path):

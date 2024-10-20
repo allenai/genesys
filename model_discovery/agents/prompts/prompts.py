@@ -113,7 +113,7 @@ Do not worry about the number of tokens in your reasoning and your response; you
 """
 
 
-def gen_GU_IMPLEMENTATION_UNIT_RETRY(use_o1=False):
+def gen_GU_IMPLEMENTATION_UNIT_RETRY(unstruct=False):
    GU_IMPLEMENTATION_RETRY_prompt = """
 Your design has undergone checks by the format checker, functionality checker, and has been reviewed by the observer. Unfortunately, it did not pass. Below is the feedback:
 
@@ -135,8 +135,10 @@ Your design has undergone checks by the format checker, functionality checker, a
 
 - **Suggestions from the Observer**:
   {SUGGESTIONS}
+
+{REUSE_UNIT_PROMPT}
 """
-   if not use_o1:
+   if not unstruct:
       GU_IMPLEMENTATION_RETRY_prompt += """
 ### Next Steps:
 
@@ -174,7 +176,7 @@ Please refine your design and implementation based on the feedback provided. You
 # Please ensure your final submission is thoroughly tested and ready for the next round of review.
 # """
 
-   if use_o1:
+   if unstruct:
       GU_IMPLEMENTATION_RETRY_prompt += """
 Please try to fix the code based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
 """
@@ -2277,7 +2279,7 @@ You will start by refining an existing language model (LM) block design, structu
    - **Identify complex components**: Decide if a component should be turned into a child GAU.
    - **Perform requirement analysis**: Define the child GAU's name, requirements, inputs, and outputs. Add this information to the `CHILDREN_DECLARATION` list using the `UnitDecl` structure:
      - **Name**: The name of the child GAU.
-     - **Requirements**: Functional requirements for the child GAU.
+     - **Requirements**: Functional requirements for the child GAU. Please be really specific, like what kind of operations it should perform, what kind of inputs and outputs it should have, etc.
      - **Inputs**: Variables passed to the child GAU through the `Z` dictionary (e.g., `Z['input_name'] = ...`). If `X` is an input, it represents the sequence input (shape: `(B, L, D)`) and is not stored in `Z`.
      - **Outputs**: Variables returned by the child GAU through the `Z` dictionary (e.g., `Z'['output_name'] = ...`). If `Y` is an output, it represents the sequence output and is not stored in `Z`.
    > **Note**: `X` and `Y` are special inputs and outputs for sequences. They are not expected to be passed through `Z`.
@@ -2545,7 +2547,7 @@ You will start by refining an existing language model (LM) block design, structu
    - **Identify complex components**: Decide if a component should be turned into a child GAU.
    - **Perform requirement analysis**: Define the child GAU's name, requirements, inputs, and outputs. Add this information to the `CHILDREN_DECLARATION` list using the `UnitDecl` structure:
      - **Name**: The name of the child GAU.
-     - **Requirements**: Functional requirements for the child GAU.
+     - **Requirements**: Functional requirements for the child GAU. Please be really specific, like what kind of operations it should perform, what kind of inputs and outputs it should have, etc.
      - **Inputs**: Variables passed to the child GAU through the `Z` dictionary (e.g., `Z['input_name'] = ...`). If `X` is an input, it represents the sequence input (shape: `(B, L, D)`) and is not stored in `Z`.
      - **Outputs**: Variables returned by the child GAU through the `Z` dictionary (e.g., `Z'['output_name'] = ...`). If `Y` is an output, it represents the sequence output and is not stored in `Z`.
    > **Note**: `X` and `Y` are special inputs and outputs for sequences. They are not expected to be passed through `Z`.
@@ -3283,8 +3285,8 @@ GUT_GUILDLINES_O1=f"""
 
 
 
-# def gen_GUT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=True):
-#     if use_o1:
+# def gen_GUT_IMPLEMENTATION_PLANNER_SYSTEM(unstruct=True):
+#     if unstruct:
 #         guildlines=GUT_GUILDLINES_O1
 #     else:
 #         guildlines=GUT_GUILDLINES
@@ -3356,8 +3358,8 @@ GUT_GUILDLINES_O1=f"""
 #     return AgentPrompt(GUT_IMPLEMENTATION_PLANNER_SYSTEM_prompt)
 
 
-def gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=True,mode=DesignModes.MUTATION,INITAL_PASS=False):
-   if use_o1:
+def gen_GUT_IMPLEMENTATION_CODER_SYSTEM(unstruct=True,mode=DesignModes.MUTATION,INITAL_PASS=False):
+   if unstruct:
       GUT_IMPLEMENTATION_CODER_SYSTEM_prompt="""
 You are the Implementation Coder for a team designing a new autoregressive language model (LM). 
 
@@ -3685,8 +3687,8 @@ Remember that you are going to implement the units of a LM block, not the whole 
    
 
 
-def gen_GUT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=True,mode=DesignModes.MUTATION):
-   if use_o1:
+def gen_GUT_IMPLEMENTATION_OBSERVER_SYSTEM(unstruct=True,mode=DesignModes.MUTATION):
+   if unstruct:
       guildlines=GUT_GUILDLINES_O1
    else:
       guildlines=GUT_GUILDLINES
@@ -4036,7 +4038,37 @@ GUT_IMPLEMENTATION_UNIT_OBSERVE = AgentPrompt(GUT_IMPLEMENTATION_UNIT_OBSERVE_pr
 
 # O1 Prompt guides https://platform.openai.com/docs/guides/reasoning/advice-on-prompting
 
-def gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=False,root_first=False):
+def gen_REUSE_UNIT_PROMPT(reuse_code,reuse_from,reuse_type,mode,TYPE='coder'):
+   if reuse_type is None:
+      return ''
+   else:
+      if mode==DesignModes.MUTATION:
+         reuse_type='seed design' if reuse_type=='parents' else 'recommended'
+      if reuse_type=='recommended':
+         reuse_type='previous design'
+         unit_name,tree_name=reuse_from.split('.')
+      prompt = f"""
+Here is the code of the unit **{unit_name}** from the **{tree_name}** in the **{reuse_type}** found by the planner which may be able to be reused 
+for implenting this unit. The implementation of this unit is:
+
+{reuse_code}
+
+"""
+      if TYPE=='coder':
+         prompt+="""
+Please consider adapting this code to reuse it for the current unit.
+"""
+      elif TYPE=='observer':
+         prompt+="""
+The coder can optionally reuse this code for implementing the current unit.
+"""
+      return prompt
+   
+
+
+
+
+def gen_GUT_IMPLEMENTATION_UNIT(refine=False,unstruct=False): # refine is refining an implemented unit
 
    if refine:
       GUT_IMPLEMENTATION_UNIT_prompt = """
@@ -4061,7 +4093,7 @@ implemented:
 
 **Observer Suggestions**: {SUGGESTIONS}
 """
-      if not use_o1:
+      if not unstruct:
          GUT_IMPLEMENTATION_UNIT_prompt+="""
 ### Refinement Process
 
@@ -4107,12 +4139,21 @@ Please refine based on the information provided. Do not include anything else be
       GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
       GUT_IMPLEMENTATION_UNIT_prompt = """
+#### Current Design Overview:
+Below is a tree of the GAUs that compose the language model (LM) block you are implementing, and you will continue to implement, and the details of the GAUs:
+
+{VIEW}
+
+---
+
 #### GAU Declaration:
 You will start your implementation by implenting the GAU decalred below. Please ensure that your design and implementation align with the details provided:
 
 {DECLARATION}
+
+{REUSE_UNIT_PROMPT}
 """
-      if not use_o1:
+      if not unstruct:
          GUT_IMPLEMENTATION_UNIT_prompt+="""
 ---
 
@@ -4145,7 +4186,7 @@ Please start your implementation. Do not include anything else besides the imple
 """
       GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
    
-   if use_o1:
+   if unstruct:
       return AgentPrompt(GUT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
    else: 
       return AgentPrompt(GUT_IMPLEMENTATION_UNIT_prompt,GENERAL_JSON_parser,GUT_IMPLEMENTATION_UNIT_format)
@@ -4645,7 +4686,7 @@ O1M_PROPOSAL_FINISH = AgentPrompt(O1M_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser
 O1C_PROPOSAL_FINISH = AgentPrompt(O1C_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
 O1S_PROPOSAL_FINISH = AgentPrompt(O1S_PROPOSAL_FINISH_prompt,O1M_PROPOSAL_parser)
 
-def gen_O1_SELECTION_DEBUG_prompt(selections,SELECTIONS):
+def gen_SELECTION_DEBUG_prompt(selections,SELECTIONS):
    succeed=False
    selections=list(set([i.strip() for i in selections]))
    if len(selections)==0:
@@ -5137,6 +5178,7 @@ The coder is refining the GAU **{UNIT_NAME}**.
 - **Full GAU Implementation**:
   {IMPLEMENTATION}
 
+{REUSE_UNIT_PROMPT}
 
 ### Potential Similar Unit Codes from Previous Designs
 
@@ -5209,6 +5251,8 @@ The coder is refining the GAU **{UNIT_NAME}**. While the coder must follow the c
 
 #### Summary of Changes Made by the coder:
 {CHANGES}
+
+{REUSE_UNIT_PROMPT}
 
 ## Format and Functionality Checks
 
@@ -5535,12 +5579,51 @@ def O1_SELECTION_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
       selection = re.findall(r"```selection(.*?)```", raw_text, re.DOTALL)
+      reuse = re.findall(r"```reuse(.*?)```", raw_text, re.DOTALL)
       output["text"] = raw_text
       output["selection"] = [i.strip() for i in selection]
+      output["reuse"] = [i.strip() for i in reuse]
       output["_details"] = {}
       output["_details"]["cost"] = raw_output.usage
       output["_details"]["running_cost"] = raw_output.usage['cost']
       return output
+
+
+def gen_REUSE_PROMPT(mode, potential_reuses=None,reuse_prompt=None, parents_reuses=None):
+   if mode==DesignModes.CROSSOVER:
+      return f"""
+Please select one of the following GAUs from the parents to reuse for implementing the next unit you selected to work on: {list(parents_reuses.keys())}. 
+Each choice has the format of PARENT_NAME.GAU_NAME. Your selection must be one of the choices.
+Please wrap your reuse selection in a quoted block like this: ```reuse YOUR_SELECTION```, for example: ```reuse PARENT_NAME.GAU_NAME```. 
+You must include one and only one reuse quoted block in your response.
+      """
+   elif mode==DesignModes.MUTATION:
+      return f"""
+Here are some GAUs that may be useful to reuse for based on the declarations of the unimplemented GAUs: 
+
+{reuse_prompt}
+
+Please considering selecting one of those GAUs to reuse for implementing the next unit you selected to work on: {list(potential_reuses.keys())}. 
+Alternatively, you can choose to reuse a GAU from the seed design: {list(parents_reuses.keys())}.
+Each choice has the format of DESIGN_NAME.GAU_NAME. Your selection must be one of the choices.
+Please wrap your reuse selection in a quoted block like this: ```reuse YOUR_SELECTION```, for example: ```reuse DESIGN_NAME.GAU_NAME```. 
+You should include at most one reuse quoted block in your response.
+      """
+   else:
+      return f"""
+Here are some GAUs that may be useful to reuse for based on the declarations of the unimplemented GAUs: 
+
+{reuse_prompt}
+
+Please considering selecting one of those GAUs to reuse for implementing the next unit you selected to work on: {list(potential_reuses.keys())}.
+Each choice has the format of DESIGN_NAME.GAU_NAME. Your selection must be one of the choices.
+Please wrap your reuse selection in a quoted block like this: ```reuse YOUR_SELECTION```, for example: ```reuse DESIGN_NAME.GAU_NAME```. 
+You should include at most one reuse quoted block in your response. 
+      """
+
+
+
+
 
 O1_IMPLEMENTATION_PLANNER_SELECTION_prompt = """
 It is round {ROUND} for the design implementation. Please make your plan.
@@ -5563,7 +5646,9 @@ It is round {ROUND} for the design implementation. Please make your plan.
 
 *Reminder*: All unimplemented GAUs must be implemented eventually.
 
-Please wrap your selection in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
+{REUSE_PROMPT}
+
+Please wrap your selection of the next unit to implement in a quoted block like this: ```selection YOUR_SELECTION```, for example: ```selection GAU_NAME```. 
 You must include one and only one selection quoted block in your response.
 """
 
@@ -5597,34 +5682,39 @@ Or if you want to terminate the implementation process, you can include a ```ter
 O1_IMPLEMENTATION_PLANNER_POST_REFINE=AgentPrompt(O1_IMPLEMENTATION_PLANNER_POST_REFINE_prompt,O1_SELECTION_parser)
 
 
-
-O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION_prompt = """
+O1_IMPLEMENTATION_PLANNER_BEGIN_prompt = """
 It is the beginning of the design implementation. Please make your plan.
 
 #### Current Design Overview
 
 {VIEW}
 
+"""
+
+
+O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION_prompt = O1_IMPLEMENTATION_PLANNER_BEGIN_prompt+ """
 You do not need to select any GAUs at the beginning as you will work on the selected unit at the beginning.
 Please analyze the design proposal and give your plan, and providing guidance for the coder.
 """
 
 O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION_prompt)
 
-O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER_prompt = """
-It is the beginning of the design implementation. Please make your plan.
-
-#### Current Design Overview
-
-{VIEW}
-
+O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER_prompt = O1_IMPLEMENTATION_PLANNER_BEGIN_prompt+"""
 You do not need to select any GAUs at the beginning as you will start by working on the root unit.
 Please analyze the design proposal and give your plan, and providing guidance for the coder.
+Remember to consider how to reuse the parents' GAUs as the proposal should be a recombination of the parents.
 """
 
 O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER_prompt)
 
 
+
+O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH_prompt = O1_IMPLEMENTATION_PLANNER_BEGIN_prompt+ """
+You do not need to select any GAUs at the beginning as you will start by working on the root unit.
+Please analyze the design proposal and give your plan, and providing guidance for the coder.
+"""
+
+O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH_prompt)
 
 
 # endregion

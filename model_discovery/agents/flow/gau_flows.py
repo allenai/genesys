@@ -407,14 +407,14 @@ class GUFlow(FlowCreator):
             USE_ISEARCH=True
         if USE_ISEARCH:
             USE_2STAGE=False
-        USE_O1_PROPOSER='o1' in self.agent_types['DESIGN_PROPOSER']
-        USE_O1_REVIEWER='o1' in self.agent_types['PROPOSAL_REVIEWER']
+        UNSTRUCT_PROPOSER='o1' in self.agent_types['DESIGN_PROPOSER']
+        UNSTRUCT_REVIEWER='o1' in self.agent_types['PROPOSAL_REVIEWER']
 
         traces=[]
 
         if self.design_mode!=DesignModes.SCRATCH:
             units=set(self.seed_tree.units.keys())
-            SELECTIONS=units if USE_O1_PROPOSER else units-{self.seed_tree.root} 
+            SELECTIONS=units if UNSTRUCT_PROPOSER else units-{self.seed_tree.root} 
             SELECTIONS=list(SELECTIONS)
             self.log_fn(f'Searching sibling designs...','PROPOSAL')
             _,SIBLINGS=self.sss.query_sibling_designs(self.seed_ids)
@@ -423,7 +423,7 @@ class GUFlow(FlowCreator):
         cross_attempt_context=AgentContext()
         for attempt in range(self.max_attemps['design_proposal']):
             context_design_proposer=copy.deepcopy(cross_attempt_context.truncate(1))
-            if USE_O1_PROPOSER:
+            if UNSTRUCT_PROPOSER:
                 if self.design_mode==DesignModes.MUTATION:
                     DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1M_PROPOSER_BACKGROUND(
                         GAU_BASE=GAU_BASE,SEED=query,SELECTIONS=SELECTIONS,SIBLINGS=SIBLINGS))
@@ -450,7 +450,7 @@ class GUFlow(FlowCreator):
             if attempt==0:
                 status_info=f'Initial design proposal...'
                 if self.design_mode==DesignModes.MUTATION:
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         GUM_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL
                         proposal_prompt=GUM_DESIGN_PROPOSAL()
                     else:
@@ -462,7 +462,7 @@ class GUFlow(FlowCreator):
                         proposal_prompt=GUM_DESIGN_PROPOSAL(SEED=query,SIBLINGS=SIBLINGS)
                     GUM_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
                 elif self.design_mode==DesignModes.CROSSOVER:
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         GUC_DESIGN_PROPOSAL=P.O1C_DESIGN_PROPOSAL
                         proposal_prompt=GUC_DESIGN_PROPOSAL()
                     else:
@@ -471,7 +471,7 @@ class GUFlow(FlowCreator):
                         proposal_prompt=GUC_DESIGN_PROPOSAL(PARENTS=query,SIBLINGS=SIBLINGS)
                     GUC_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
                 else:
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         GUS_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL # reuse it
                         proposal_prompt=GUS_DESIGN_PROPOSAL()
                     else:
@@ -482,7 +482,7 @@ class GUFlow(FlowCreator):
             else:
                 status_info=f'Refining design proposal (attempt {attempt})...'
                 if self.design_mode==DesignModes.MUTATION:
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         GUM_PROPOSAL_REFINEMENT=P.O1M_DESIGN_PROPOSAL_REFINEMENT
                     else:
                         GUM_PROPOSAL_REFINEMENT=P.gen_GUM_PROPOSAL_REFINEMENT(SELECTIONS=SELECTIONS,two_stage=USE_2STAGE,use_isearch=USE_ISEARCH)
@@ -494,7 +494,7 @@ class GUFlow(FlowCreator):
                                                             PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                     GUM_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
                 elif self.design_mode==DesignModes.CROSSOVER:
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         GUC_PROPOSAL_REFINEMENT=P.O1C_DESIGN_PROPOSAL_REFINEMENT
                     else:
                         GUC_PROPOSAL_REFINEMENT = P.GUC_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
@@ -503,7 +503,7 @@ class GUFlow(FlowCreator):
                                                             PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                     GUC_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
                 else:
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         GUS_PROPOSAL_REFINEMENT=P.GUS_PROPOSAL_REFINEMENT_FINISH # reuse it
                     else:
                         GUS_PROPOSAL_REFINEMENT=P.GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
@@ -515,12 +515,12 @@ class GUFlow(FlowCreator):
             ideation,instructions,search_report,search_references=None,None,None,None
             thoughts,keywords,description=None,None,None
             search_stack=[]
-            if USE_ISEARCH or USE_O1_PROPOSER:
+            if USE_ISEARCH or UNSTRUCT_PROPOSER:
                 with self.status_handler(status_info):
                     self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,proposal_prompt)
                     _,out=self.call_dialog(design_proposer_tid,proposal_prompt)
                     context_design_proposer=self.dialog.context(design_proposer_tid) # past + begin_prompt + first query
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         thoughts,keywords,description=out['text'],out['keywords'],out['description']
                         ready="I'm ready" in thoughts
                         self.stream.markdown(thoughts,unsafe_allow_html=True)
@@ -539,7 +539,7 @@ class GUFlow(FlowCreator):
                 for i in range(_MAX_ROUNDS):
                     # TODO: perplexity context maintainance
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        if USE_O1_PROPOSER:
+                        if UNSTRUCT_PROPOSER:
                             detail=thoughts if description==[] else '\n'.join(description)
                             self.log_fn(f'Searching for {keywords}...','PROPOSAL')
                             search_ret=self.sss(keywords,detail,instruct=thoughts)
@@ -560,7 +560,7 @@ class GUFlow(FlowCreator):
                             'ready':ready,
                             'search_ret':search_ret,
                         })
-                        PROPOSAL_ISEARCH_CONT=P.O1M_PROPOSAL_ISEARCH_CONT if USE_O1_PROPOSER else P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT
+                        PROPOSAL_ISEARCH_CONT=P.O1M_PROPOSAL_ISEARCH_CONT if UNSTRUCT_PROPOSER else P.GUM_DESIGN_PROPOSAL_ISEARCH_CONT
                         search_cont_prompt=PROPOSAL_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
                         if i<=_MIN_ROUNDS:
                             search_cont_prompt+=f'\n\nNote: This is your {i+1}th set of search results, you are not allowed to propose without adaquate information, you need to propose with at least {_MIN_ROUNDS+1} sets of search results. And your first {_MIN_ROUNDS} readiness will not be accepted.'
@@ -570,7 +570,7 @@ class GUFlow(FlowCreator):
                         _,out=self.call_dialog(design_proposer_tid,search_cont_prompt,context_design_proposer)
                         context_design_proposer.append(out['text'],'assistant',{}) # append new note,ignore search results
                         
-                        if USE_O1_PROPOSER:
+                        if UNSTRUCT_PROPOSER:
                             thoughts,keywords,description=out['text'],out['keywords'],out['description']
                             ready="I'm ready" in thoughts
                             self.stream.markdown(thoughts,unsafe_allow_html=True)
@@ -591,7 +591,7 @@ class GUFlow(FlowCreator):
                 variantname,changes,reflection,abstract,selection=None,None,None,None,None
                 with self.status_handler('Finishing design proposal...'):
                     # final search, so at least two searches, first, and second in first ready
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         detail=thoughts if description==[] else '\n'.join(description)
                         self.log_fn(f'Searching for {keywords}...','PROPOSAL')
                         search_ret=self.sss(keywords,detail,instruct=thoughts)
@@ -612,7 +612,7 @@ class GUFlow(FlowCreator):
                         'ready':ready,
                         'search_ret':search_ret,
                     })
-                    if USE_O1_PROPOSER:
+                    if UNSTRUCT_PROPOSER:
                         if self.design_mode==DesignModes.MUTATION:
                             o1_finish_prompt=P.O1M_PROPOSAL_FINISH(SELECTIONS=SELECTIONS,SEARCH_RESULTS=search_ret)
                             PROPOSAL_FINISH=P.O1M_PROPOSAL_FINISH
@@ -636,7 +636,7 @@ class GUFlow(FlowCreator):
                             context_design_proposer_bkup=copy.deepcopy(context_design_proposer)
                             for _ in range(5):
                                 context_design_proposer=copy.deepcopy(context_design_proposer_bkup)
-                                succeed,selection,RETRY_PROMPT=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                succeed,selection,RETRY_PROMPT=P.gen_SELECTION_DEBUG_prompt(selection,SELECTIONS)
                                 if succeed:
                                     break
                                 self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,RETRY_PROMPT())
@@ -730,7 +730,7 @@ class GUFlow(FlowCreator):
             _proposal=f'Abstract: {abstract}\n\n{proposal}' if abstract else proposal
             # self.stream.markdown(top_k_pps)
 
-            if USE_O1_REVIEWER:
+            if UNSTRUCT_REVIEWER:
                 # o1_review_context=AgentContext()
                 if self.design_mode==DesignModes.MUTATION:
                     SYSTEM_PROMPT=P.O1M_PROPOSAL_REVIEWER_BACKGROUND(
@@ -752,7 +752,7 @@ class GUFlow(FlowCreator):
                                                 alias='proposal_reviewer',note=f'Reviewing proposal...')
             if attempt==0:
                 status_info=f'Reviewing initial proposal...'
-                if USE_O1_REVIEWER:
+                if UNSTRUCT_REVIEWER:
                     REVIEW_PROMPT=P.O1M_PROPOSAL_REVIEW
                     proposal_review_prompt=REVIEW_PROMPT()
                 else:
@@ -770,7 +770,7 @@ class GUFlow(FlowCreator):
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
             else:
                 status_info=f'Reviewing refined proposal (version {attempt})...'
-                if USE_O1_REVIEWER:
+                if UNSTRUCT_REVIEWER:
                     REREVIEW_PROMPT=P.O1M_PROPOSAL_REVIEW # context free
                     proposal_review_prompt=REREVIEW_PROMPT()
                 else:
@@ -794,12 +794,12 @@ class GUFlow(FlowCreator):
                 REVIEW_PROMPT.apply(PROPOSAL_REVIEWER.obj)
 
             review_search_stack=[]
-            if USE_ISEARCH_REVIEW or USE_O1_REVIEWER:
+            if USE_ISEARCH_REVIEW or UNSTRUCT_REVIEWER:
                 with self.status_handler(status_info):
                     self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
                     _,out=self.call_dialog(proposal_reviewer_tid,proposal_review_prompt)
                     context_proposal_reviewer=self.dialog.context(proposal_reviewer_tid)
-                    if USE_O1_REVIEWER:
+                    if UNSTRUCT_REVIEWER:
                         thoughts,keywords,description=out['text'],out['keywords'],out['description']
                         ready="I'm ready" in thoughts
                         self.stream.markdown(thoughts,unsafe_allow_html=True)
@@ -815,7 +815,7 @@ class GUFlow(FlowCreator):
                 _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS)
                 for i in range(_MAX_ROUNDS):
                     with self.status_handler(f'Searching... round {i+1}...'):
-                        if USE_O1_REVIEWER:
+                        if UNSTRUCT_REVIEWER:
                             detail=thoughts if description==[] else '\n'.join(description)
                             self.log_fn(f'Searching for {keywords}...','PROPOSAL')
                             search_ret=self.sss(keywords,detail,instruct=thoughts)
@@ -836,7 +836,7 @@ class GUFlow(FlowCreator):
                             'ready':ready,
                             'search_ret':search_ret,
                         })
-                        PROPOSAL_REVIEW_ISEARCH_CONT=P.GUM_PROPOSAL_REVIEW_ISEARCH_CONT if not USE_O1_REVIEWER else P.O1M_PROPOSAL_REVIEW_CONT
+                        PROPOSAL_REVIEW_ISEARCH_CONT=P.GUM_PROPOSAL_REVIEW_ISEARCH_CONT if not UNSTRUCT_REVIEWER else P.O1M_PROPOSAL_REVIEW_CONT
                         search_cont_prompt=PROPOSAL_REVIEW_ISEARCH_CONT(SEARCH_RESULTS=search_ret)
                         if i<=_MIN_ROUNDS:
                             search_cont_prompt+=f'\n\nNote: This is your {i+1}th set of search results, you are not allowed to propose without adaquate information, you need to propose with at least {_MIN_ROUNDS+1} sets of search results. And your first {_MIN_ROUNDS} readiness will not be accepted.'
@@ -844,7 +844,7 @@ class GUFlow(FlowCreator):
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,search_cont_prompt)
                         _,out=self.call_dialog(proposal_reviewer_tid,search_cont_prompt,context_proposal_reviewer)
                         context_proposal_reviewer.append(out['text'],'assistant',{})
-                        if USE_O1_REVIEWER:
+                        if UNSTRUCT_REVIEWER:
                             thoughts,keywords,description=out['text'],out['keywords'],out['description']
                             ready="I'm ready" in thoughts
                             self.stream.markdown(thoughts,unsafe_allow_html=True)
@@ -860,7 +860,7 @@ class GUFlow(FlowCreator):
                 
                 suggestions=None
                 with self.status_handler('Finishing proposal review...'):
-                    if USE_O1_REVIEWER:
+                    if UNSTRUCT_REVIEWER:
                         detail=thoughts if description==[] else '\n'.join(description)
                         self.log_fn(f'Searching for {keywords}...','PROPOSAL')
                         search_ret=self.sss(keywords,detail,instruct=thoughts)
@@ -881,7 +881,7 @@ class GUFlow(FlowCreator):
                         'ready':ready,
                         'search_ret':search_ret,
                     })
-                    if USE_O1_REVIEWER:
+                    if UNSTRUCT_REVIEWER:
                         o1m_finish_prompt=P.O1M_PROPOSAL_REVIEW_FINISH(SEARCH_RESULTS=search_ret)
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,o1m_finish_prompt)
                         P.O1M_PROPOSAL_REVIEW_FINISH.apply(PROPOSAL_REVIEWER.obj)
@@ -1126,20 +1126,47 @@ class GUFlow(FlowCreator):
         # TODO: the reformatter should rename the existing kwargs from the tree, okey for root node
         # TODO: remove any possible if __name__=='__main__' method from the code
         if selection is not None: # for non o1 mode
-            if unit_name not in self.tree.units:
-                if spec is not None:
-                    self.tree.add_unit(
-                        spec,reformatted_code,new_args,analysis,None,None,[child.unitname for child in children_decl],gau_tests,None,requirements=declaration.requirements
-                    )
-            else:
-                self.tree.units[unit_name].code=reformatted_code
-                self.tree.units[unit_name].args=new_args
-                self.tree.units[unit_name].analysis=analysis
-                self.tree.units[unit_name].children=[child.unitname for child in children_decl]
-                self.tree.units[unit_name].gau_tests=gau_tests
+            raise NotImplementedError('Non o1 mode need to be updated')
+            # if unit_name not in self.tree.units:
+            #     if spec is not None:
+            #         self.tree.add_unit(
+            #             spec,reformatted_code,new_args,analysis,None,None,[child.unitname for child in children_decl],gau_tests,None,requirements=declaration.requirements
+            #         )
+            # else:
+            #     self.tree.units[unit_name].code=reformatted_code
+            #     self.tree.units[unit_name].args=new_args
+            #     self.tree.units[unit_name].analysis=analysis
+            #     self.tree.units[unit_name].children=[child.unitname for child in children_decl]
+            #     self.tree.units[unit_name].gau_tests=gau_tests
             
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
-                        
+
+
+    def recommend_reuses(self,unimplemented_units): # all unimplemented units should have declarations
+        # return dict of dicts of units {unit_name: [unit_name, ...]}
+        _items={}
+        prt=''
+        for unit in unimplemented_units:
+            desc=self.tree.get_unit_desc(unit)
+            if desc is not None:
+                items,_=self.system.sss.query_units_by_desc(desc)
+                if items:
+                    prt+=f'#### Recommended Unit Reuses for unimplemented unit: {unit}\n\n'
+                for unit_name in items:
+                    code,desc,tree_name,score=items[unit_name]
+                    _items[f'{tree_name}.{unit_name}']=code
+                    prt+=f'##### {unit_name} from {tree_name} (Score: {score:.2f})\n\n<details><summary>Unit Implementation</summary>\n\n```\n{code}\n```\n\n</details>\n\n'
+        if _items=={}:
+            prt=None
+        return _items,prt
+    
+    def reuse_parents(self,seed_ids):
+        _items={}
+        for seed_id in seed_ids:
+            parent=self.ptree.get_node(seed_id)
+            for unit in parent.units:
+                _items[f'{seed_id}.{unit}']=parent.units[unit].code
+        return _items
 
     def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
         '''
@@ -1167,13 +1194,15 @@ class GUFlow(FlowCreator):
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
         USE_PAIRING=self.agent_types['IMPLEMENTATION_OBSERVER']!='None'
         # o1 beta does not support structured outputs, so let it output the code directly
-        USE_O1_CODER='o1' in self.agents['IMPLEMENTATION_CODER'].model_name
-        USE_O1_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
-        USE_O1_PLANNER='o1' in self.agents['IMPLEMENTATION_PLANNER'].model_name
+        # UNSTRUCT_CODER='o1' in self.agents['IMPLEMENTATION_CODER'].model_name
+        # UNSTRUCT_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
+        # UNSTRUCT_PLANNER='o1' in self.agents['IMPLEMENTATION_PLANNER'].model_name
+
+        UNSTRUCT_PLANNER=True # always use o1 planner prompts for now, i.e. no structured outputs
+        UNSTRUCT_OBSERVER=True # always use o1 observer prompts for now, i.e. no structured outputs
+        UNSTRUCT_CODER=True # always use o1 coder prompts for now, i.e. no structured outputs
 
         # NOTE: Better use all o1 here, others are not stable
-
-        assert USE_O1_CODER, 'Non-o1 coders are buggy now, please use o1 coders'
 
         context_implementation_planner=AgentContext() 
         planner_context=AgentContext()
@@ -1197,6 +1226,7 @@ class GUFlow(FlowCreator):
                 UNIMPLEMENTED=['root']
                 IMPLEMENTED=[]
 
+
             VIEW_DETAILED=self.tree.to_prompt(unit_code=True)
 
             self.stream.write(f'Round {round-1 if resume else round}. Unprotected Implemented: {IMPLEMENTED}, Unimplemented: {UNIMPLEMENTED}')
@@ -1214,13 +1244,6 @@ class GUFlow(FlowCreator):
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
-            # if USE_O1_PLANNER:
-            #     GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1_IMPLEMENTATION_PLANNER_BACKGROUND
-            #     context_implementation_planner=copy.deepcopy(planner_context)
-            # else:
-            #     GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.gen_GUT_IMPLEMENTATION_PLANNER_SYSTEM(use_o1=USE_O1_CODER)
-        
-            # if USE_O1_PLANNER:
             context_implementation_planner=copy.deepcopy(planner_context)
             if self.design_mode==DesignModes.MUTATION: 
                 GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1M_IMPLEMENTATION_PLANNER_BACKGROUND
@@ -1239,15 +1262,35 @@ class GUFlow(FlowCreator):
             implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
                                                 alias='implementation_planner',note=f'Starting implementation planning...')
             
-            if round>1 or USE_O1_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
+
+            if INITIAL_PASS:
+                potential_reuses={}
+                if self.design_mode==DesignModes.CROSSOVER:
+                    parents_reuses=self.reuse_parents(self.seed_ids)
+                    REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses)
+                else: 
+                    potential_reuses,reuse_prompt=self.recommend_reuses(UNIMPLEMENTED)
+                    if self.design_mode==DesignModes.MUTATION:
+                        parents_reuses=self.reuse_parents(self.seed_ids)
+                        REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
+                    else:
+                        REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
+
+
+            if round>1 or UNSTRUCT_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
                 with self.status_handler('Planning for the next round...'):
                     SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root}
                     SKIP_PLANNING=False
-                    if USE_O1_PLANNER:
-                        if round==1:
-                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION if self.design_mode==DesignModes.MUTATION else P.O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER
+                    if UNSTRUCT_PLANNER:
+                        if round==1: # working on the selected unit, no reuse
+                            if self.design_mode==DesignModes.MUTATION:
+                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION
+                            elif self.design_mode==DesignModes.CROSSOVER:
+                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER
+                            else:
+                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH
                             gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                                VIEW=VIEW_DETAILED,
+                                VIEW=VIEW_DETAILED
                             )
                         elif not INITIAL_PASS:
                             SKIP_PLANNING=True
@@ -1257,18 +1300,20 @@ class GUFlow(FlowCreator):
                                 ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
                                 PROTECTED=PROTECTED_UNITS,LOG='\n'.join(LOG)
                             )
-                        else:
+                        else: # SELECTION of unimplemented units
                             GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_SELECTION
                             gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
                                 ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,LOG='\n'.join(LOG),
-                                IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED,PROTECTED=PROTECTED_UNITS
+                                IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED,PROTECTED=PROTECTED_UNITS,
+                                REUSE_PROMPT=REUSE_PROMPT
                             )
                     else:
-                        GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
-                            SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
-                        gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                            VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
-                        )
+                        raise NotImplementedError('Structural prompts need to be updated.')
+                        # GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
+                        #     SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
+                        # gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                        #     VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
+                        # )
 
                     if not SKIP_PLANNING:
                         GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
@@ -1276,9 +1321,9 @@ class GUFlow(FlowCreator):
                         # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
                         planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
                         _,out=self.call_dialog(implementation_planner_tid,gu_implementation_unit_selection_prompt)
-                    motivation,rough_plan=None,None
+                    motivation,rough_plan,reuse_code,reuse_from,reuse_type=None,None,None,None,None
                     termination=False
-                    if USE_O1_PLANNER:
+                    if UNSTRUCT_PLANNER:
                         if not SKIP_PLANNING: # reuse the results last round, only happen when failed in the begining
                             if round==1:
                                 plan=out['text']
@@ -1287,7 +1332,19 @@ class GUFlow(FlowCreator):
                                 else:
                                     selection='root'
                             else:
-                                plan,selection=out['text'],out['selection']
+                                plan,selection,reuse_unit=out['text'],out['selection'],out['reuse']
+                                for _reuse in reuse_unit:
+                                    if _reuse in parents_reuses:
+                                        reuse_code = parents_reuses[_reuse]
+                                        reuse_from = _reuse
+                                        reuse_type = 'parents'
+                                        break
+                                    elif _reuse in potential_reuses:
+                                        reuse_code = potential_reuses[_reuse]
+                                        reuse_from = _reuse
+                                        reuse_type = 'recommended'
+                                        break
+
                             planner_context.append(plan,'assistant',{})
                             if round>1 and len(UNIMPLEMENTED)==0:
                                 termination="```terminate```" in plan
@@ -1310,20 +1367,22 @@ class GUFlow(FlowCreator):
                             termination=False
                             plan='Not available yet.'
                     else:
-                        selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
-                        plan=out['text']
-                        self.stream.write(f'### Selection: {selection}')
-                        self.stream.write(f'### Motivation\n{motivation}')    
-                        self.stream.write(f'### Rough Plan\n{rough_plan}')
-                        self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
-                        planner_context.append(plan,'assistant',{})
+                        raise NotImplementedError('Structural prompts need to be updated.')
+                        # selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
+                        # plan=out['text']
+                        # self.stream.write(f'### Selection: {selection}')
+                        # self.stream.write(f'### Motivation\n{motivation}')    
+                        # self.stream.write(f'### Rough Plan\n{rough_plan}')
+                        # self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                        # planner_context.append(plan,'assistant',{})
             else: # round 1, work on the selected unit
-                if self.design_mode==DesignModes.MUTATION:
-                    selection=proposal.selection
-                else:
-                    selection='root'
-                termination=False
-                plan='Not available for the first round.'
+                raise NotImplementedError('Structural prompts need to be updated.')
+                # if self.design_mode==DesignModes.MUTATION:
+                #     selection=proposal.selection
+                # else:
+                #     selection='root'
+                # termination=False
+                # plan='Not available for the first round.'
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
 
 
@@ -1361,7 +1420,8 @@ class GUFlow(FlowCreator):
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
-                GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUT_IMPLEMENTATION_CODER_SYSTEM(use_o1=USE_O1_CODER,mode=self.design_mode,INITAL_PASS=INITIAL_PASS)
+                GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUT_IMPLEMENTATION_CODER_SYSTEM(
+                    unstruct=UNSTRUCT_CODER,mode=self.design_mode,INITAL_PASS=INITIAL_PASS)
                 if self.design_mode==DesignModes.MUTATION:
                     _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed}
                 elif self.design_mode==DesignModes.CROSSOVER:
@@ -1377,7 +1437,7 @@ class GUFlow(FlowCreator):
                     status_info=f'Starting design implementation of {selection}...'
                     if selection in IMPLEMENTED:
                         REFINE=True 
-                        GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=True,use_o1=USE_O1_CODER) # first round can only be an implemented unit
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=True,unstruct=UNSTRUCT_CODER) # first round can only be an implemented unit
                         node=self.tree.units[selection]
                         gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
                             SPECIFICATION=node.spec.to_prompt(),
@@ -1390,14 +1450,19 @@ class GUFlow(FlowCreator):
                         )
                     else:
                         REFINE=False # implement a new unit
-                        GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=False,use_o1=USE_O1_CODER)
+                        REUSE_UNIT_PROMPT = P.gen_REUSE_UNIT_PROMPT(reuse_code,reuse_from,reuse_type,self.design_mode)
+                        GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=False,unstruct=UNSTRUCT_CODER)
                         declaration=self.tree.declares[selection].to_prompt()
-                        gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(DECLARATION=declaration)
+                        gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
+                            DECLARATION=declaration,
+                            VIEW=VIEW_DETAILED, 
+                            REUSE_UNIT_PROMPT=REUSE_UNIT_PROMPT
+                        )
                     GUM_IMPLEMENTATION_UNIT.apply(IMPLEMENTATION_CODER.obj)
                 else: # Debugging or refining the implementation
                     status_info=f'Refining design implementation of {selection} (attempt {attempt})...'
                     REFINE=True
-                    RETRY_RPOMPT=P.gen_GU_IMPLEMENTATION_UNIT_RETRY(use_o1=USE_O1_CODER)
+                    RETRY_RPOMPT=P.gen_GU_IMPLEMENTATION_UNIT_RETRY(unstruct=UNSTRUCT_CODER)
                     if USE_PAIRING:
                         pass_or_not='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
                     else:
@@ -1409,6 +1474,7 @@ class GUFlow(FlowCreator):
                         RATING=rating if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         SUGGESTIONS=suggestions if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
                         PASS_OR_NOT=pass_or_not,
+                        REUSE_UNIT_PROMPT=REUSE_UNIT_PROMPT
                         # GAU_BASE=GAU_BASE
                     )
                     RETRY_RPOMPT.apply(IMPLEMENTATION_CODER.obj)
@@ -1421,7 +1487,7 @@ class GUFlow(FlowCreator):
                     context_implementation_coder=self.dialog.context(implementation_coder_tid)
                     reflection,changes,debugging_steps=None,None,None
                     if REFINE: # 1. working on an existing unit 2. all >0 attempts
-                        if USE_O1_CODER:
+                        if UNSTRUCT_CODER:
                             reflection,analysis=None,None
                             codes=out['code']
                             implementations=[]
@@ -1430,18 +1496,19 @@ class GUFlow(FlowCreator):
                                     implementations.append(code)
                             changes="The coder didn't provide the summary of changes."
                         else:
-                            reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
-                            self.stream.write(f'### Reflection\n{reflection}')
-                            self.stream.write(f'## Refinement of {selection}')
-                            if 'debugging_steps' in out:
-                                debugging_steps=out['debugging_steps']
-                                if isinstance(debugging_steps,list):
-                                    self.stream.write(f'### Debugging Steps\n')
-                                    for idx,step in enumerate(debugging_steps):
-                                        self.stream.write(f'##### Diagnosis {idx+1}\n{step["diagnosis"]}\n')
-                                        self.stream.write(f'##### Suggested Action {idx+1}\n{step["suggested_action"]}\n')
-                                else:
-                                    self.stream.write(f'### Debugging Steps\n{debugging_steps}')
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # reflection,analysis,implementation,changes=out['reflection'],out['analysis'],out['implementation'],out['changes']
+                            # self.stream.write(f'### Reflection\n{reflection}')
+                            # self.stream.write(f'## Refinement of {selection}')
+                            # if 'debugging_steps' in out:
+                            #     debugging_steps=out['debugging_steps']
+                            #     if isinstance(debugging_steps,list):
+                            #         self.stream.write(f'### Debugging Steps\n')
+                            #         for idx,step in enumerate(debugging_steps):
+                            #             self.stream.write(f'##### Diagnosis {idx+1}\n{step["diagnosis"]}\n')
+                            #             self.stream.write(f'##### Suggested Action {idx+1}\n{step["suggested_action"]}\n')
+                            #     else:
+                            #         self.stream.write(f'### Debugging Steps\n{debugging_steps}')
                         if selection in IMPLEMENTED: # update the unit spec for now, unit name update at the end
                             spec=self.tree.units[selection].spec
                         else: # possible when debugging the implementation of a new unit
@@ -1459,14 +1526,15 @@ class GUFlow(FlowCreator):
                                 outputs=declaration.outputs
                             )
                     else: # only for the first attempt of a new unit, the reason we do this is that the response format is different for this case
-                        if USE_O1_CODER:
+                        if UNSTRUCT_CODER:
                             codes,analysis=out['code'],None
                             implementations=[]
                             for code in codes:
                                 if code.strip().startswith('# GAU_IMPLEMENTATION_FILE'):
                                     implementations.append(code)
                         else:
-                            implementation,analysis=out['implementation'],out['analysis']
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # implementation,analysis=out['implementation'],out['analysis']
                         self.stream.write(f'## Implementation of {selection}')
                         if isinstance(declaration,str):
                             declaration = UnitDecl(
@@ -1483,11 +1551,12 @@ class GUFlow(FlowCreator):
                         )                    
                     if analysis:
                         self.stream.write(analysis)
-                    if USE_O1_CODER:
+                    if UNSTRUCT_CODER:
                         for idx,implementation in enumerate(implementations):
                             self.stream.write(f'### Code {idx+1}\n```python\n{implementation}\n```')
                     else:
-                        self.stream.write(f'### Code\n```python\n{implementation}\n```')
+                        raise NotImplementedError('Structural prompts need to be updated.')
+                        # self.stream.write(f'### Code\n```python\n{implementation}\n```')
                     if REFINE and changes:
                         self.stream.write(f'### Changes\n{changes}')
                     
@@ -1497,7 +1566,7 @@ class GUFlow(FlowCreator):
                 # Run all checks for every implementations, optimize both grammar and semantics at the same time 
                 # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
                 with self.status_handler('Checking the implementation of the selected unit...'):
-                    if USE_O1_CODER:
+                    if UNSTRUCT_CODER:
                         format_checks={}
                         docstrings={}
                         new_args={}
@@ -1524,6 +1593,7 @@ class GUFlow(FlowCreator):
                             children_decls[unit_name]=_children_decl
                             for c in _children_decl:
                                 parents[c.unitname]=unit_name
+                                self.tree.declares[c.unitname]=c
                             reformatted_codes[unit_name]=_reformatted_code
                             unit_name=f'None_{idx+1}' if not unit_name else unit_name
                             format_checks[unit_name]=_format_checks
@@ -1562,18 +1632,19 @@ class GUFlow(FlowCreator):
                                 self.tree._replace_unit(selection,unit_name) # do replace first
                                 LOG.append(f'Replace unit {selection} with {unit_name}')
                                 self.stream.write(f'Replace local root unit {selection} with {unit_name}')
-                                self.tree.declares[unit_name]=UnitDecl(
-                                    unitname=str(unit_name),
-                                    requirements='N/A',
-                                    inputs=spec.inputs,
-                                    outputs=spec.outputs
-                                )
+                                if unit_name not in self.tree.declares:
+                                    self.tree.declares[unit_name]=UnitDecl(
+                                        unitname=str(unit_name),
+                                        requirements='N/A',
+                                        inputs=spec.inputs,
+                                        outputs=spec.outputs
+                                    )
                         for unit_name,docstring in docstrings.items():
                             if unit_name in self.tree.units: # the unit is already implemented
                                 format_errors.append(f'The unit {unit_name} has already been implemented. Please do not implement the same unit twice. If the existing unit can already meet your needs, please reuse it. If you are going to modify the existing unit, please provide a new name for the unit.')
                             if unit_name not in self.tree.declares:# and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
                                 format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
-                                declaration=UnitDecl(
+                                declaration=UnitDecl( # make a temoral declaration placeholder for checking
                                     unitname=str(unit_name),
                                     requirements='N/A',
                                     inputs=['N/A'],
@@ -1594,45 +1665,38 @@ class GUFlow(FlowCreator):
                             )           
                             _children=[c.unitname for c in children_decls[unit_name]]
                             self.tree.add_unit( # all new units are added 
-                                _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,_children,gau_tests[unit_name],None,requirements=declaration.requirements, overwrite=True
+                                _spec,reformatted_codes[unit_name],new_args[unit_name],None,None,None,_children,gau_tests[unit_name],None,
+                                requirements=declaration.requirements, overwrite=True, reuse_from=reuse_from
                             )   
                         unit_name=root_name[0] if len(root_name)>0 else selection
                         
                     else:   
-                        unit_name=selection
-                        if unit_name not in self.tree.declares and unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
-                            format_errors.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
-                            declaration=UnitDecl(
-                                unitname=str(unit_name),
-                                requirements='N/A',
-                                inputs=['N/A'],
-                                outputs=['N/A']
-                            )
-                        else:
-                            declaration=self.tree.declares[unit_name]
-                        format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, docstring,new_args,gau_tests,children_decl,NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis,declaration)
-                        reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
-                        if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
-                            self.tree.root = unit_name
-                        #     if unit_name != proposal.modelname:
-                        #         modelname=proposal.modelname
-                        #         docstring=docstring.replace(unit_name, proposal.modelname)
-                        #         reformatted_code=reformatted_code.replace(unit_name, proposal.modelname)
-                        #         format_warnings.append(f'The root unit name {unit_name} is different from the proposal model name {proposal.modelname}, it will be renamed to {proposal.modelname}.')
-                        #         for test_name, test_code in gau_tests.items():
-                        #             gau_tests[test_name] = test_code.replace(unit_name, proposal.modelname)
-                        #         unit_name=modelname
+                        raise NotImplementedError('Structural prompts need to be updated.')
+                        # unit_name=selection
+                        # if unit_name not in self.tree.declares:
+                        #     if unit_name not in self.tree.units: # if it is a new local root, then it is declared above, otherwise, it should be declared as a child
+                        #         format_warnings.append(f'A new implemented unit {unit_name} has not been declared. May cause errors when linking the units.')
+                        #         declaration=UnitDecl(unitname=str(unit_name),requirements='N/A',inputs=['N/A'],outputs=['N/A'])
+                        #     else:
+                        #         spec=self.tree.units[unit_name].spec
+                        #         declaration=UnitDecl(unitname=str(unit_name),requirements=spec.document,inputs=spec.inputs,outputs=spec.outputs)
+                        # else:
+                        #     declaration=self.tree.declares[unit_name]
+                        # format_checks,format_errors,format_warnings,fetal_errors, unit_name, reformatted_code, docstring,new_args,gau_tests,children_decl,NEW_DECLARED=self.check_code_format(implementation,selection,spec,analysis,declaration)
+                        # reformatted_code=f'### {unit_name} Reformatted Code\n```python\n{reformatted_code}\n```\n\n'
+                        # if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
+                        #     self.tree.root = unit_name
                         
-                        collapse_write(
-                            self.stream,
-                            'Code format check for '+unit_name,
-                            (
-                                f'\n\n#### Format Check Passed: {len(format_errors+fetal_errors)==0}\n\n'
-                                f'#### Format Errors\n{format_errors+fetal_errors}\n\n'
-                                f'#### Format Warnings\n{format_warnings}\n\n'
-                                f'\n\n{reformatted_code}\n\n'
-                            )
-                        )
+                        # collapse_write(
+                        #     self.stream,
+                        #     'Code format check for '+unit_name,
+                        #     (
+                        #         f'\n\n#### Format Check Passed: {len(format_errors+fetal_errors)==0}\n\n'
+                        #         f'#### Format Errors\n{format_errors+fetal_errors}\n\n'
+                        #         f'#### Format Warnings\n{format_warnings}\n\n'
+                        #         f'\n\n{reformatted_code}\n\n'
+                        #     )
+                        # )
 
         
                     if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
@@ -1644,7 +1708,7 @@ class GUFlow(FlowCreator):
                     _func_checkpass = False
                     if fetal_errors==[]:
                         # run unit tests
-                        if USE_O1_CODER:
+                        if UNSTRUCT_CODER:
                             _unit_test_passed=True
                             _unit_test_results=''
                             for unitname in format_checks.keys():
@@ -1659,15 +1723,16 @@ class GUFlow(FlowCreator):
                                 _unit_test_passed = _unit_test_passed and __unit_test_passed
                                 _unit_test_results += f'### {unitname} Unit Tests Results\n```bash\n{__unit_test_results}\n```\n\n'
                         else:
-                            _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
-                            self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
-                            self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
-                            collapse_write(
-                                self.stream,
-                                'Unit Tests Code for '+unitname,
-                                f'```python\n{_unit_test_code}\n```\n'
-                            )   
-                            _unit_test_results += f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```\n\n'
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # _unit_test_results, _unit_test_code, _unit_test_passed = self.tree.test_unit(spec.unitname, True)
+                            # self.stream.write(f'### Unit Tests Passed: {_unit_test_passed}')
+                            # self.stream.write(f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```')
+                            # collapse_write(
+                            #     self.stream,
+                            #     'Unit Tests Code for '+unitname,
+                            #     f'```python\n{_unit_test_code}\n```\n'
+                            # )   
+                            # _unit_test_results += f'### Unit Tests Results\n```bash\n{_unit_test_results}\n```\n\n'
 
                         gabcode = self.tree.compose()
                         self.log_fn(f'Checking the implementation of {selection}...','IMPLEMENTATION')
@@ -1735,7 +1800,7 @@ class GUFlow(FlowCreator):
                     else:
                         _FUNCTION_CHECKER_REPORT='Functionality check passed.'
                     
-                    if USE_O1_OBSERVER:
+                    if UNSTRUCT_OBSERVER:
                         if self.design_mode==DesignModes.MUTATION:
                             GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1M_IMPLEMENTATION_OBSERVER_BACKGROUND
                         elif self.design_mode==DesignModes.CROSSOVER:
@@ -1743,7 +1808,8 @@ class GUFlow(FlowCreator):
                         else:
                             GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.O1S_IMPLEMENTATION_OBSERVER_BACKGROUND
                     else:
-                        GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.gen_GUT_IMPLEMENTATION_OBSERVER_SYSTEM(use_o1=USE_O1_CODER,mode=self.design_mode)
+                        raise NotImplementedError('Structural prompts need to be updated.')
+                        # GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.gen_GUT_IMPLEMENTATION_OBSERVER_SYSTEM(unstruct=UNSTRUCT_CODER,mode=self.design_mode)
                     if self.design_mode==DesignModes.MUTATION:
                         _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed}
                     elif self.design_mode==DesignModes.CROSSOVER:
@@ -1754,68 +1820,75 @@ class GUFlow(FlowCreator):
                         GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
                         PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
                     implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
-                                                        alias='implementation_observer',note=f'Observing implementation...')
+                                alias='implementation_observer',note=f'Observing implementation...')
                     self.log_fn(f'Searching similar units for {selection}...','IMPLEMENTATION')
-                    unit_codes=self.system.sss.query_unit_codes(reformatted_code)[1]
+                    unit_codes=self.system.sss.query_units_by_code(reformatted_code)[1]
                     self.log_fn(f'Searching finished.','IMPLEMENTATION')
+                    REUSE_UNIT_PROMPT = P.gen_REUSE_UNIT_PROMPT(reformatted_code,reuse_from,reuse_type,self.design_mode,TYPE='observer')
                     if REFINE:
                         if attempt==0:
                             status_info=f'Observing refinement of {selection}...'
                             prompt_kwargs={}
-                            if USE_O1_OBSERVER:
+                            if UNSTRUCT_OBSERVER:
                                 GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.O1_IMPLEMENTATION_UNIT_REFINE_OBSERVE
                                 prompt_kwargs['FORMAT_CHECKER_REPORT']=_FORMAT_CHECKER_REPORT
                                 prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
                             else:
-                                GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE
+                                raise NotImplementedError('Structural prompts need to be updated.')
+                                # GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE=P.GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE
                             gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE(
                                 UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                 CHANGES=changes, VIEW=VIEW_DETAILED, DESCRIPTION=node.desc,
                                 REVIEW=node.review,RATING=node.rating,SUGGESTIONS=node.suggestions,
                                 SPECIFICATION=node.spec.to_prompt(),UNIT_CODES=unit_codes,
+                                REUSE_UNIT_PROMPT=REUSE_UNIT_PROMPT,
                                 **prompt_kwargs
                             )
                             GUT_IMPLEMENTATION_UNIT_REFINE_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                         else:
                             status_info=f'Observing refined implementation of {selection} (version {attempt})...'
-                            if USE_O1_OBSERVER:
+                            if UNSTRUCT_OBSERVER:
                                 GUT_IMPLEMENTATION_REOBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
                                 gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_REOBSERVE(
                                     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
                                     VIEW=VIEW_DETAILED, SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
                                     FORMAT_CHECKER_REPORT=_FORMAT_CHECKER_REPORT,
                                     FUNCTION_CHECKER_REPORT=_FUNCTION_CHECKER_REPORT,
+                                    REUSE_UNIT_PROMPT=REUSE_UNIT_PROMPT,
                                 )
                             else:
-                                GUT_IMPLEMENTATION_REOBSERVE=P.GUT_IMPLEMENTATION_REOBSERVE
-                                gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_REOBSERVE(
-                                    UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
-                                    CHANGES=changes,SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
-                                )
+                                raise NotImplementedError('Structural prompts need to be updated.')
+                                # GUT_IMPLEMENTATION_REOBSERVE=P.GUT_IMPLEMENTATION_REOBSERVE
+                                # gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_REOBSERVE(
+                                #     UNIT_NAME=selection,ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,
+                                #     CHANGES=changes,SPECIFICATION=spec.to_prompt(),UNIT_CODES=unit_codes,
+                                # )
                             GUT_IMPLEMENTATION_REOBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
                     else: # first attempt of a new unit
                         status_info=f'Observing implementation of {selection}...'
                         prompt_kwargs={}
-                        if USE_O1_OBSERVER:
+                        if UNSTRUCT_OBSERVER:
                             GUT_IMPLEMENTATION_UNIT_OBSERVE=P.O1_IMPLEMENTATION_UNIT_OBSERVE
                             prompt_kwargs['FORMAT_CHECKER_REPORT']=_FORMAT_CHECKER_REPORT
                             prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
                         else:
-                            GUT_IMPLEMENTATION_UNIT_OBSERVE=P.GUT_IMPLEMENTATION_UNIT_OBSERVE
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # GUT_IMPLEMENTATION_UNIT_OBSERVE=P.GUT_IMPLEMENTATION_UNIT_OBSERVE
                         gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_UNIT_OBSERVE(
                             UNIT_NAME=selection,VIEW=VIEW_DETAILED,SPECIFICATION=spec.to_prompt(),
                             ANALYSIS=analysis,IMPLEMENTATION=reformatted_code,UNIT_CODES=unit_codes,
+                            REUSE_UNIT_PROMPT=REUSE_UNIT_PROMPT,
                             **prompt_kwargs
                         )
                         GUT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
 
                     with self.status_handler(status_info):
-                        # if USE_O1_OBSERVER: # no history  
+                        # if UNSTRUCT_OBSERVER: # no history  
                         context_implementation_observer=AgentContext() # no history for all
                         self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,gum_implementation_unit_review_prompt)
                         _,out=self.call_dialog(implementation_observer_tid,gum_implementation_unit_review_prompt)
                         context_implementation_observer=self.dialog.context(implementation_observer_tid)
-                        if USE_O1_OBSERVER:
+                        if UNSTRUCT_OBSERVER:
                             suggestions=None
                             review,rating=out['text'],out['rating']
                             self.stream.write(review)
@@ -1838,12 +1911,13 @@ class GUFlow(FlowCreator):
                             passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
                             self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         else:
-                            review,rating,suggestions=out['review'],out['rating'],out['suggestions']
-                            passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
-                            self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
-                            self.stream.write(review)
-                            self.stream.write(suggestions)
-                            self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # review,rating,suggestions=out['review'],out['rating'],out['suggestions']
+                            # passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                            # self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                            # self.stream.write(review)
+                            # self.stream.write(suggestions)
+                            # self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
                             
                         if unit_name in self.tree.units:
                             self.tree.units[unit_name].rating=rating

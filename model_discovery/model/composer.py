@@ -9,6 +9,7 @@ import traceback
 from contextlib import redirect_stdout, redirect_stderr
 import torch
 import torch.nn as nn
+import numpy as np
 import random
 
 from dataclasses import dataclass, field
@@ -34,6 +35,7 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     suggestions: str # suggestions for the GAU from reviewer for further improvement
     design_traces: list = None # traces of the design process
     requirements: str = None # requirements of the GAU from declaration, root GAU has no requirements as the demand is the proposal
+    reuse_from: str = None # whether the GAU is reused from another one
 
     def json(self):
         data = self.to_dict()
@@ -57,6 +59,7 @@ class GAUNode: # this is mainly used to 1. track the hierarchies 2. used for the
     def load(cls, name, dir):
         data = U.load_json(U.pjoin(dir, f'{name}.json'))
         return cls.from_dict(data)
+    
 
 @dataclass
 class GAUDictTerm:
@@ -64,9 +67,11 @@ class GAUDictTerm:
     is_root: bool = False
     variants: Dict[str, GAUNode] = field(default_factory=lambda: {}) # tree name where the unit is registered
 
-    def append(self,variant,node):
+    def append(self,variant,node,desc):
         if variant not in self.variants:
-            self.variants[variant] = node
+            self.variants[variant] = (node,variant,desc)
+
+
 
 # TODO: WORK IN PROGRESS
 # Reuse: same name; New: different name
@@ -82,7 +87,8 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         for unit_name in tree.units:
             if unit_name not in self.terms:
                 self.terms[unit_name]=GAUDictTerm(name=unit_name)
-            self.terms[unit_name].append(acronym,tree.units[unit_name])
+            desc=tree.get_unit_desc(unit_name)
+            self.terms[unit_name].append(acronym,tree.units[unit_name],desc)
             if tree.root == unit_name:
                 self.terms[unit_name].is_root = True
 
@@ -98,32 +104,23 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
     def get_tree(self,name):
         return self.ptree.get_gau_tree(name)
 
-    def get_unit(self,name,tree_name=None,K=1):
+    def get_unit(self,name,tree_names=None,K=1): # K = None is return all, otherwise K random
         if name not in self.terms:
             return None
-        if tree_name is None:
-            tree_names=random.sample(list(self.terms[name].variants.keys()),min(K,len(self.terms[name].variants)))
+        if tree_names is None:
+            if K>1: # RETURN K RANDOM non overlapping trees
+                tree_names=np.random.choice(list(self.terms[name].variants.keys()),min(K,len(self.terms[name].variants)),replace=False)
+            else: # RETURN ALL
+                tree_names=self.terms[name].variants.keys()
+            tree_names=list(set(tree_names))
         else:
-            tree_names=[tree_name]
-        matches = [self.terms[name].variants[tree_name] for tree_name in tree_names]
+            if isinstance(tree_names,str):
+                tree_names=[tree_names]
+        matches=[self.terms[name].variants[tree_name] for tree_name in tree_names]
         if K==1:
-            return matches[0]
-        return matches
-
-    def search_by_unit(self,unit): # given a GAUNode, find all the GAUs that are similar
-        # compare the spec and code
-        raise NotImplementedError("Not implemented yet")
-
-    def search_by_decl(self,decl): # given a UnitDecl, find all the GAUs that are similar
-        raise NotImplementedError("Not implemented yet")
-
-    def sync_to_db(self,doc_ref):
-        raise NotImplementedError("Not implemented yet")
-
-    def sync_from_db(self,doc_ref):
-        raise NotImplementedError("Not implemented yet")
-
-
+            return matches[0] # for convenience
+        return matches # tuples of (node,tree_name,decl)
+    
 class GABComposer:
     def compose(self,tree):
         root_node = tree.root_node
@@ -273,17 +270,29 @@ class GAUTree:
         if lib_dir is not None:
             self.dict = GAUDict(lib_dir) # TODO: consider this later
         
+    def get_unit_desc(self,unit_name):
+        if unit_name in self.units:
+            unit=self.units[unit_name]
+            decl=self.declares.get(unit_name,None)
+            requirements=f'Declaration Requirements: {decl.requirements}' if decl is not None else ''
+            desc = unit.spec.to_prompt()
+            return f'{desc}\n\n{requirements}'
+        elif unit_name in self.declares:
+            return self.declares[unit_name].to_prompt
+        else:
+            return None
+    
     def set_lib_dir(self,lib_dir):
         self.dict = GAUDict(lib_dir)
 
-    def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, requirements=None, overwrite=False):
+    def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, requirements=None, overwrite=False, reuse_from=None):
         name = spec.unitname
         if name in self.units and not overwrite:
             print(f"Unit {name} is already in the tree")
             return
         # assert name not in self.units, f"Unit {name} is already in the tree"
         # assert not self.dict.exist(name), f"Unit {name} is already registered"
-        node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, requirements)
+        node = GAUNode(spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces, requirements, reuse_from)
         if len(self.units)==0:
             self.root = name
         self.units[name] = node
@@ -317,7 +326,6 @@ class GAUTree:
                     unit.code=unit.code.replace(f'{old},',f'{new},') # both new and old names are instance names
 
         # update the dict should be handled separately, should simply add a new entry for back compatibility, should be handled already
-
 
     def get_children(self,name):
         assert name in self.units, f"Unit {name} is not in the tree"
@@ -375,11 +383,15 @@ class GAUTree:
     @classmethod
     def from_dict(cls, dict: Dict, lib_dir=None):
         tree = cls(dict['name'], dict['proposal'], dict['review'], dict['rating'], dict['suggestions'], lib_dir)
-        for unit_name in dict['units']:
-            tree.units[unit_name] = GAUNode.from_dict(dict['units'][unit_name])
         tree.root = dict['root']
         for unit_name in dict['declares']:
             tree.declares[unit_name] = UnitDecl.model_validate_json(dict['declares'][unit_name])
+        for unit_name in dict['units']:
+            tree.units[unit_name] = GAUNode.from_dict(dict['units'][unit_name])
+            # if unit_name not in tree.declares:
+            #     spec=tree.units[unit_name].spec
+            #     decl=UnitDecl(unitname=unit_name,requirements=spec.document,inputs=spec.inputs,outputs=spec.outputs)
+            #     tree.declares[unit_name] = decl
         return tree
 
     @classmethod

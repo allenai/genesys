@@ -22,7 +22,7 @@ class DesignModes(Enum):
 
 class UnitDecl(BaseModel):
    unitname: str = Field(..., description="The name of the child GAU you are declaring.")
-   requirements: str = Field(..., description="The requirements of the child GAU you expect to implement.")
+   requirements: str = Field(..., description="The requirements of the child GAU you expect to implement. Please be really specific, like what kind of operations it should perform, what kind of inputs and outputs it should have, etc.")
    inputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to take as input from `Z`. `X` specifically means expect the sequence as input. asterisk (*) at the beginning of the variable name means that the variable is optional.")
    outputs: list[str] = Field(..., description="The variable names of which you expect the child GAU to output to `Z'`. `Y` specifically means expect the sequence as output.")
 
@@ -43,12 +43,12 @@ class UnitSpec(BaseModel):
    def to_prompt(self):
       return f"""
 ##### Unit Name: {self.unitname}
+- Inputs: {", ".join(self.inputs)}
+- Outputs: {", ".join(self.outputs)}
 - Document:
 ```python
 {self.document}  
 ```
-- Inputs: {", ".join(self.inputs)}
-- Outputs: {", ".join(self.outputs)}
 """
 
 
