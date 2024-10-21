@@ -134,7 +134,7 @@ def evosys_config(evosys):
                     for scale in _params['scales'].split(',')[::-1]:
                         _verify_budget[scale]=int(np.ceil(budget))
                         budget/=_params['selection_ratio']
-                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*',value=_params_manual_set_budget)
+                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will over write the above)*',value=_params_manual_set_budget)
                 _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
                 _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
                 _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
@@ -142,11 +142,14 @@ def evosys_config(evosys):
                 if _manual_set_budget:
                     _params['verify_budget']=_verify_budget
 
-                subcol1, subcol2 = st.columns([1,1])
+                subcol1, subcol2, subcol3 = st.columns([1.2,2,2])
                 with subcol1:
+                    _params['max_samples']=st.number_input('Max Samples',value=evosys.params.get('max_samples',0),min_value=0,step=1,
+                        help='Design-bound by the number of designs in the population to generate in total. 0 means no limit.')
+                with subcol2:
                     _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,
                         help='The total budget for running model design agents, 0 means no budget limit.')
-                with subcol2:
+                with subcol3:
                     bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
                         help=(
                             '**Design bound:** terminate the evolution after the design budget is used up, and will automatically promote verify budget; \n\n'

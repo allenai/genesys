@@ -2374,11 +2374,15 @@ class EvolutionSystem(exec_utils.System):
         self.target_scales=list(self._verify_budget.keys())
         self.target_scales.sort(key=lambda x:int(x.replace('M','')))
 
+        self.max_samples = self.params.get('max_samples',0)
+
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.target_scales]
 
         if self.stream:
             self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
             self.stream.write(f"Budget type: {self.params['budget_type']}")
+            if self.max_samples>0:
+                self.stream.write(f'Max samples: {self.max_samples}')
             self.stream.write(f'Design budget: {self.design_budget_limit}')
             self.stream.write(f"Verify budgets: {self._verify_budget}")
             self.stream.write(f"Checkpoint directory: {self.evo_dir}")
@@ -2440,10 +2444,14 @@ class EvolutionSystem(exec_utils.System):
             if len(self.ptree.get_finished_designs())>=self.CM.max_designs:
                 return True
         else:
-            if self.selector.budget_type=='design_bound' and self.selector.design_budget<=0:
-                return True
-            elif self.selector.budget_type=='verify_bound' and sum(self.selector.verify_budget.values())<=0:
-                return True
+            if self.selector.budget_type=='design_bound':
+                if self.selector.design_budget<=0:
+                    return True
+                elif self.max_samples>0 and len(self.ptree.get_finished_designs())>=self.max_samples:
+                    return True
+            elif self.selector.budget_type=='verify_bound':
+                if sum(self.selector.verify_budget.values())<=0:
+                    return True
         return False
     
     def conclude(self):

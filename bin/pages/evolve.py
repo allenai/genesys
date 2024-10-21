@@ -405,7 +405,7 @@ def evolution_launch_pad(evosys):
             help='Global control of the maximum number of design threads to run on each node in addition to the local settings on each node. 0 is unlimited.'
         )
     with col2:
-        input_max_designs_total=st.number_input("Max Parallel Designs",min_value=0,value=10,disabled=st.session_state.evo_running,
+        input_max_designs_total=st.number_input("Max Designs in Parallel",min_value=0,value=10,disabled=st.session_state.evo_running,
             help='The maximum number of design threads run across all nodes at the same time. 0 is unlimited (which means only bound by the per-node settings).'
         )
     with col3:
@@ -509,7 +509,7 @@ def benchmark_launch_pad(evosys):
             help='Global control of the maximum number of design threads to run on each node in addition to the local settings on each node. 0 is unlimited.'
         )
     with col2:
-        input_max_designs_total=st.number_input("**Max Parallel Designs**",min_value=0,value=10,disabled=st.session_state.evo_running,
+        input_max_designs_total=st.number_input("**Max Designs in Parallel**",min_value=0,value=10,disabled=st.session_state.evo_running,
             help='The maximum number of design threads run across all nodes at the same time. 0 is unlimited (which means only bound by the per-node settings). Please keep it consistent for fairer comparison in benchmarks.'
         )
     with col3:
