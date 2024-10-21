@@ -45,7 +45,7 @@ def _is_running(evosys):
     return None, None
 
 class CommandCenter:
-    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream,allow_resume=True):
+    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream,allow_resume=False):
         self.evosys=evosys
         self.evoname=evosys.evoname
         self.max_designs_per_node=max_designs_per_node
@@ -92,11 +92,12 @@ class CommandCenter:
             if not self.evosys.ptree.acquire_design_lock():
                 print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design is full, stopping design workload assignment')
                 return to_sleep
+            
         total_design_workloads = sum(design_workloads.values())
         if total_design_workloads == self.max_designs_total or self.max_designs_total==0:
             print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads are full ({total_design_workloads}/{self.max_designs_total}), skipping design workload assignment')
         else:
-            design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items() if v<self.max_designs_per_node}
+            design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items() if v<self.max_designs_per_node or self.max_designs_per_node==0}
             if sum(design_availability.values())>0:
                 available_design_threads = self.max_designs_total-sum(design_workloads.values())
                 for _ in range(max(0,available_design_threads)):
@@ -147,17 +148,19 @@ class CommandCenter:
             if self.active_mode:
                 # check if the status is still stopped
                 if self.doc_ref.get().to_dict().get('status','n/a') == 'stopped':
+                    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Command center for {self.evosys.evoname} in {mode} is stopped.')
                     break
 
                 if self.evosys.should_stop():
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Done, stopping the command center.')
                     self.evosys.conclude()
-                    self.stop()
                     break
 
                 # self.evosys.CM.get_active_connections() # refresh the connection status
                 design_workloads, verify_workloads = self.evosys.CM.get_all_workloads() # will refresh the connection status
                 design_workloads = {k:len(v) for k,v in design_workloads.items() if k in self.evosys.CM.connections}
+                
+                
                 if not self.evosys.benchmark_mode:
                     verify_workloads = {k:len(v) for k,v in verify_workloads.items() if k in self.evosys.CM.connections}
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}, Verify workloads: {verify_workloads}')
@@ -173,6 +176,9 @@ class CommandCenter:
             if to_sleep>0:
                 time.sleep(to_sleep)  
         # self.cleanup()
+
+        self.stop()
+
 
     def stop(self):
         self.running = False
@@ -215,7 +221,7 @@ def x_evolve(command_center):
     return process.pid
 
 
-def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,allow_resume=True):
+def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,allow_resume=False):
     if len(evosys.CM.get_active_connections())==0 and active_mode:
         st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
     command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st,allow_resume=allow_resume) # launch a passive command center first
@@ -440,7 +446,7 @@ def evolution_launch_pad(evosys):
     if not st.session_state.evo_running:
         if run_evo_btn:       
             with st.spinner('Launching... The evolution will be launched in the background. You may leave the gui and can always go back here to check.'):  
-                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total,input_allow_resume)
+                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total,True,allow_resume=input_allow_resume)
     else:
         if stop_evo_btn:
             if st.session_state.command_center:
