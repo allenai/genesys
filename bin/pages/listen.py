@@ -445,6 +445,7 @@ if __name__ == "__main__":
 
     if args.v_node:
         args.max_design_threads = 0
+        print('🐒 Running in verification-only mode. The node will not accept design jobs.')
 
     if args.d_node:
         args.no_verify = True
@@ -452,6 +453,7 @@ if __name__ == "__main__":
         if args.max_design_threads <= 0:
             print('⚠️ Design-only node must have at least 1 design thread. Set to 1.')
             args.max_design_threads = 1
+        print('🐒 Running in design-only mode. The node will not accept verify jobs.')
 
     # run in CLI mode
 
