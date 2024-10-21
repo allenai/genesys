@@ -360,14 +360,15 @@ class ConversationHistory:
     def __init__(self,history,query):
         # Initialize an empty list to store conversation turns
         self.turns = []
-        for content,role in history:
-            if isinstance(content,str):
-                if role=='assistant':
-                    self.add_turn_assistant(content)
+        if history:
+            for content,role in history:
+                if isinstance(content,str):
+                    if role=='assistant':
+                        self.add_turn_assistant(content)
+                    else:
+                        self.add_turn_user(content)
                 else:
-                    self.add_turn_user(content)
-            else:
-                self.add_turn_raw(content,'assistant') # raw content from agent
+                    self.add_turn_raw(content,'assistant') # raw content from agent
         self.add_turn_user(query)
 
     def add_turn_raw(self,content,role):
