@@ -395,7 +395,7 @@ def evolution_launch_pad(evosys):
     st.header("Launch Pad")
     col1, col2, col3, col4,col5,col6 = st.columns([1,1,1,1,1,0.9],gap='small')
     with col1:
-        input_max_designs_per_node=st.number_input("Max Designs Per Node",min_value=0,value=4,disabled=st.session_state.evo_running,
+        input_max_designs_per_node=st.number_input("Max Designs Per Node",min_value=0,value=0,disabled=st.session_state.evo_running,
             help='Global control of the maximum number of design threads to run on each node in addition to the local settings on each node. 0 is unlimited.'
         )
     with col2:
@@ -414,7 +414,7 @@ def evolution_launch_pad(evosys):
     with col6:
         st.write('')
         st.write('')
-        input_allow_resume=st.checkbox("Allow Resume",value=True,disabled=st.session_state.evo_running,
+        input_allow_resume=st.checkbox("Allow Resume",value=False,disabled=st.session_state.evo_running,
             help='Whether allow resume training, hugging face trainer sometimes cannot resume well.'
         )
 
