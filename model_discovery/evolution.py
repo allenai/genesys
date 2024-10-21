@@ -490,6 +490,8 @@ class FirestoreManager:
         log_collection=self.log_doc_ref.collection('design_sessions')
         index_ref = log_collection.document('index')
         index = index_ref.get().to_dict()
+        if index is None:
+            return
         sessions_dir=U.pjoin(self.db_dir,'sessions')
         sessions=os.listdir(sessions_dir)
         for sess_id in sessions:
