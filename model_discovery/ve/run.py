@@ -69,7 +69,7 @@ parser.add_argument("--scale", type=str, default='debug')
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
 parser.add_argument("--n_nodes", type=int, default=1)
 parser.add_argument("--save_steps", type=int, default=DEFAULT_SAVE_STEPS)
-parser.add_argument("--training_token_multiplier", type=int, default=DEFAULT_TOKEN_MULT) # by default equals to 20 suggested by Chinchilla
+parser.add_argument("--training_token_multiplier", type=int, default=20) # by default equals to 20 suggested by Chinchilla
 parser.add_argument("--optim", type=str, default=DEFAULT_OPTIM) # adamw_apex_fused is faster but BUGGY
 parser.add_argument("--wandb_project", type=str, default=DEFAULT_WANDB_PROJECT)
 parser.add_argument("--wandb_entity", type=str, default=DEFAULT_WANDB_ENTITY)

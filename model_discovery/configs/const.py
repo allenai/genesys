@@ -4,7 +4,15 @@ DEFAULT_TOKENIZER = 'meta-llama/Llama-2-7b-hf'
 DEFAULT_CONTEXT_LENGTH = 2048
 
 
-DEFAULT_TOKEN_MULT = 20
+DEFAULT_TOKEN_MULTS = {
+    '14M': 50,
+    '31M': 40,
+    '70M': 30,
+    '125M': 20,
+    '350M': 20,
+    '760M': 20,
+    '1300M': 20,
+}
 DEFAULT_OPTIM = "adamw_hf"
 DEFAULT_WANDB_PROJECT = 'model_discovery'
 DEFAULT_WANDB_ENTITY = 'aristo'

@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
-from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES
+from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,DEFAULT_BENCHMARK_SETTINGS,BENCH_MODE_OPTIONS
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
     DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
         SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
@@ -27,7 +27,7 @@ from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_T
     AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS,DEFAULT_CROSSOVER_NO_REF,DEFAULT_MUTATION_NO_TREE
 from model_discovery.agents.search_utils import EmbeddingDistance,DEFAULT_VS_INDEX_NAME,\
     OPENAI_EMBEDDING_MODELS,TOGETHER_EMBEDDING_MODELS,COHERE_EMBEDDING_MODELS
-from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKEN_MULT,\
+from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKEN_MULTS,\
     DEFAULT_TRAINING_DATA,DEFAULT_EVAL_TASKS,DEFAULT_TOKENIZER,DEFAULT_OPTIM,DEFAULT_WANDB_PROJECT,\
         DEFAULT_WANDB_ENTITY,DEFAULT_RANDOM_SEED,DEFAULT_SAVE_STEPS,DEFAULT_LOG_STEPS
 
@@ -109,7 +109,7 @@ def evosys_config(evosys):
                 _params['evoname']=st.text_input('Experiment Namespace',value=evosys.params['evoname'],
                     help='Changing this will create a new experiment namespace.')
                 
-                subcol1, subcol2, subcol3 = st.columns([1,1,0.25])
+                subcol1, subcol2, subcol3 = st.columns([1,1,0.3])
                 with subcol1:
                     target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
                         help='The largest scale to train, will train `N Target` models at this scale.')
@@ -124,12 +124,17 @@ def evosys_config(evosys):
                 with subcol3:
                     _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
                 
-                _verify_budget={i:0 for i in TARGET_SCALES}
-                budget=_params['n_target']
-                for scale in _params['scales'].split(',')[::-1]:
-                    _verify_budget[scale]=int(np.ceil(budget))
-                    budget/=_params['selection_ratio']
-                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*')
+
+                _verify_budget = evosys.get_verify_budget(full=True)
+                _params_manual_set_budget=True
+                if _verify_budget == {}:
+                    _params_manual_set_budget=False
+                    _verify_budget={i:0 for i in TARGET_SCALES}
+                    budget=_params['n_target']
+                    for scale in _params['scales'].split(',')[::-1]:
+                        _verify_budget[scale]=int(np.ceil(budget))
+                        budget/=_params['selection_ratio']
+                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will overwrite the above)*',value=_params_manual_set_budget)
                 _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
                 _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
                 _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
@@ -150,16 +155,28 @@ def evosys_config(evosys):
                         ))
                     _params['budget_type']=bound_type
                 
-                _col1, _col2 = st.columns([2.5,1])
+                _col1, _col2, _col3 = st.columns([1,1.25,1])
                 with _col1:
                     _params['group_id']=st.text_input('Network Group ID',value=evosys.params['group_id'],
                         help='Used for the master node to find its nodes. Change it only if you wish to run multiple evolutions on multiple networks.')
                 with _col2:
+                    _params['challenging_threshold']=st.number_input('Max Impl. Retries',value=evosys.params['challenging_threshold'],min_value=0,step=1,
+                        help='The number of failed *implementation retries* before a design is considered too challenging to give up.')
+                
+                with _col3:
                     st.write('')
                     st.write('')
                     _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
                 
-                if st.form_submit_button("Apply and Save"):
+
+                cols = st.columns([1,2.7])
+                with cols[1]:
+                    _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
+      
+                with cols[0]:
+                    apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running)
+                    
+                if apply_btn:
                     with st.spinner("Applying and saving..."):
                         if _params['evoname']=='design_bound' and _params['design_budget']==0:
                             st.warning("You give inifinity budget to a design-bound evolution. The evolution will not terminate automatically.")
@@ -167,28 +184,85 @@ def evosys_config(evosys):
                         if config['params']['evoname']!=evosys.params['evoname']:
                             evosys.switch_ckpt(config['params']['evoname'],load_params=False)
                         evosys.reload(config['params'])
-                        U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
-                        st.toast(f"Applied and saved params in {evosys.evo_dir}, please remember to upload to remote DB.")
+                        evosys.save_config()
+                        st.toast(f"Applied and saved params in {evosys.evo_dir}.")
 
         with col2:
             with st.form(f"Experiment Status"):
                 st.write(f"Current Status for ```{evosys.evoname}```:")
                 settings={}
-                settings['Experiment Directory']=evosys.evo_dir
+                # settings['Experiment Directory']=evosys.evo_dir
                 if evosys.design_budget_limit>0:
                     settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
                 else:
                     settings['Design Budget Usage']=f'{evosys.ptree.design_cost:.2f}/♾️'
                 settings['Verification Budge Usage']={}
-                for scale,num in evosys.selector._verify_budget.items():
-                    remaining = evosys.selector.verify_budget[scale] 
+                for scale,num in evosys.get_verify_budget(full=True).items():
+                    remaining = evosys.selector.verify_budget.get(scale,0) 
                     settings['Verification Budge Usage'][scale]=f'{remaining}/{num}'
                 settings['Budget Type']=evosys.params['budget_type']
+                settings['Max Implementation Retries']=evosys.ptree.challenging_threshold
                 settings['Use Remote DB']=evosys.params['use_remote_db']
                 if evosys.CM:
                     settings['Network Group ID']=evosys.CM.group_id
+                settings['Benchmark Mode']=evosys.benchmark_mode
                 st.write(settings)
                 st.form_submit_button("Refresh")
+
+        with st.form("Benchmark Settings"):
+            if not evosys.benchmark_mode:
+                st.caption(f'Benchmark Settings (`{evosys.evoname}` is not in benchmark mode)')
+            else:
+                st.caption('Benchmark Settings')
+            cols = st.columns([0.8,1,2,1.2,0.8])
+            with cols[0]:
+                _n_trials = st.number_input('Number of Trials',min_value=1,value=100,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+                    help='The number of design sessions to run.')
+            with cols[1]:
+                _MODE_OPTIONS = BENCH_MODE_OPTIONS.copy()
+                _MODE_OPTIONS[3] = 'Mixed (Use right or select config)'
+                _design_mode = st.selectbox('Design Mode',options=_MODE_OPTIONS,index=0,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+                    help='If you choose Mixed mode, the number of seeds will follow the distribution settings, otherwise, it will always sample 1 (Mutation-only), 2 (Crossover-only), 0 (Scratch-only) seeds respectively.'
+                )
+                if _design_mode == 'Mixed (Use right or select config)':
+                    _design_mode = 'Mixed'
+            with cols[2]:
+                default_n_seeds_dist = {
+                    '0': 0.1,
+                    '1': 0.8,
+                    '2': 0.1,
+                    '3': 0,
+                    '4': 0,
+                    '5': 0,
+                }
+                _n_seeds_dist_df = pd.DataFrame(default_n_seeds_dist,index=['Weights'])
+                _n_seeds_dist_df = st.data_editor(_n_seeds_dist_df,use_container_width=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode)
+                _n_seeds_dist = _n_seeds_dist_df.to_dict(orient='records')[0]
+                _n_seeds_dist = {k:v for k,v in _n_seeds_dist.items()}
+            with cols[3]:
+                _allow_tree=st.checkbox("Allow Sampling Tree",value=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+                    help='Whether allow sampling from the phylogenetic tree or only sampling from the seed references.'
+                )
+                _overwrite_config = st.checkbox('Overwrite Mixed Cfg.',value=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+                    help='If checked, will apply the n seeds distribution on the left instead of the one in config in Mixed mode. Notice that if use this one, there will be no warmup.')
+                
+            benchmark_settings = {
+                'n_trials': _n_trials,
+                'max_retries': None,
+                'design_mode': _design_mode,
+                'n_seeds_dist': _n_seeds_dist,
+                'overwrite_config': _overwrite_config,
+                'allow_tree': _allow_tree,
+            }
+
+            with cols[4]:
+                st.write('')
+                apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running or not evosys.benchmark_mode)
+            
+            if apply_btn:
+                with st.spinner("Applying and saving..."):
+                    evosys.reconfig(benchmark_settings=benchmark_settings)
+                    st.toast("Applied and saved benchmark config")
 
 
 def ve_config(evosys):
@@ -208,13 +282,18 @@ def ve_config(evosys):
             with cols[4]:
                 _ve_cfg['wandb_entity'] = st.text_input('Weights & Biases Entity',value=_ve_cfg.get('wandb_entity',DEFAULT_WANDB_ENTITY))
             
-            cols=st.columns(4)
+            cols=st.columns([4,1.55,1,1])
             with cols[0]:
-                _ve_cfg['training_token_multiplier']=st.number_input('Training Token Multiplier',min_value=0,value=_ve_cfg.get('training_token_multiplier',DEFAULT_TOKEN_MULT))
+                training_token_multipliers = _ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS)
+                training_token_multipliers_df = pd.DataFrame(training_token_multipliers,index=['mult'])
+                training_token_multipliers_df = st.data_editor(training_token_multipliers_df,use_container_width=True)
+                training_token_multipliers = training_token_multipliers_df.to_dict(orient='records')[0]
+                _ve_cfg['training_token_multipliers']=training_token_multipliers
+                # _ve_cfg['training_token_multiplier']=st.number_input('Training Token Multiplier',min_value=0,value=_ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS))
             with cols[1]:
                 _ve_cfg['tokenizer'] = st.text_input('Tokenizer',value=_ve_cfg.get('tokenizer',DEFAULT_TOKENIZER))
             with cols[2]:
-                _ve_cfg['context_length'] = st.number_input('Context Length',min_value=0,value=_ve_cfg.get('context_length',DEFAULT_CONTEXT_LENGTH))
+                _ve_cfg['context_length'] = st.number_input('Context Length',min_value=0,value=int(_ve_cfg.get('context_length',DEFAULT_CONTEXT_LENGTH)))
             with cols[3]:
                 _ve_cfg['optim'] = st.text_input('Optimizer',value=_ve_cfg.get('optim',DEFAULT_OPTIM))
             
@@ -575,14 +654,6 @@ def search_config(evosys):
             st.form_submit_button("Save and Apply",on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.evo_running)
 
 
-def upload_exp_to_db(evosys,exp,config=None):
-    collection=evosys.ptree.remote_db.collection('experiments')
-    to_set={}
-    if config:
-        to_set['config']=config
-    if len(to_set)>0:
-        collection.document(exp).set(to_set,merge=True)
-
 def delete_exp_from_db(evosys,exp):
     collection=evosys.ptree.remote_db.collection('experiments')
     collection.document(exp).delete()
@@ -591,23 +662,12 @@ def delete_exp_from_db(evosys,exp):
 def sync_exps_to_db(evosys):
     for exp in os.listdir(evosys.ckpt_dir):
         config=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'config.json'))
-        upload_exp_to_db(evosys,exp,config)
+        evosys.FM.upload_experiment(exp,config)
     st.toast("Synced all experiments to remote DB")
 
 
 def download_exp_from_db(evosys,exp):
-    collection=evosys.ptree.remote_db.collection('experiments')
-    doc=collection.document(exp).get()
-    if doc.exists:
-        doc_id=doc.id
-        doc=doc.to_dict()
-        config=doc.get('config',{})
-        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id))
-        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'ve'))
-        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','sessions'))
-        U.mkdir(U.pjoin(evosys.ckpt_dir,doc_id,'db','designs'))
-        if config:
-            U.save_json(config,U.pjoin(evosys.ckpt_dir,doc_id,'config.json'))
+    evosys.FM.download_experiment(evosys.ckpt_dir,exp)
 
 def sync_exps_from_db(evosys):
     collection=evosys.ptree.remote_db.collection('experiments')
@@ -770,7 +830,7 @@ def env_vars_settings(evosys):
                 env_vars['PERPLEXITY_API_KEY']=st.text_input('Perplexity API Key',type='password')
                 # optional: mathpix api key, aws keys
 
-            if st.form_submit_button("Apply *(will not save any secrets)*"):
+            if st.form_submit_button("Apply *(will not save any secrets)*",disabled=st.session_state.evo_running):
                 changed=apply_env_vars(evosys,env_vars)
                 if changed:
                     evosys.reload()
@@ -903,7 +963,7 @@ def config(evosys,project_dir):
 
     st.title("Experiment Management")
 
-    st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
+    # st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
 
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")

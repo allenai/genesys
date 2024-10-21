@@ -32,8 +32,8 @@ def do_log(log_ref,log):
 # Do not need a lock, as each node will maintain its own design sessions, so
 # unless a node is permanently lost (never join the network again, unlikely
 # happen), the design sessions will always be finished by resumes. 
-def design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False, silent=False, running_sessions=[]):
-    sess_id,pid =_design_command(node_id, evosys, evoname, resume, cli, cpu_only, silent, running_sessions)
+def design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False, silent=False, running_sessions=[],sess_id=None):
+    sess_id,pid =_design_command(node_id, evosys, evoname, resume, cli, cpu_only, silent, running_sessions,sess_id)
     exp_log_ref = evosys.CM.get_log_ref()
     if sess_id:
         log=f'Node {node_id} running design thread with session id {sess_id}'
@@ -46,7 +46,7 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=Fa
         do_log(exp_log_ref,log)
     return sess_id,pid
 
-def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False, silent=False, running_sessions=[]):
+def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False, silent=False, running_sessions=[],sess_id=None):
     sess_id = None
     params = {'evoname': evoname}
     if evosys.evoname != evoname: # FIXME: initialize evosys inside
@@ -182,7 +182,7 @@ def _design_engine(evosys,project_dir):
     with st.expander("Finished Design Sessions (braket indicates # of given up challenging implementations)"):
         if len(finished_designs)>0:
             for sess_id in finished_designs:
-                sessdata=evosys.ptree.design_sessions[sess_id]
+                sessdata=evosys.ptree.get_design_session(sess_id)
                 passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(sess_id)
                 cols=st.columns([3,2,3,0.1,1])
                 with cols[0]:
@@ -203,7 +203,7 @@ def _design_engine(evosys,project_dir):
     with st.expander("Unfinished Design Sessions (braket indicates # of given up challenging implementations)",expanded=False):
         if len(unfinished_designs)>0:
             for sess_id in unfinished_designs:
-                sessdata=evosys.ptree.design_sessions[sess_id]
+                sessdata=evosys.ptree.get_design_session(sess_id)
                 passed,implemented,challenging,unfinished=evosys.ptree.get_session_state(sess_id)
                 cols=st.columns([3,2,3,1,1,1])
                 with cols[0]:
@@ -331,17 +331,11 @@ def _design_engine(evosys,project_dir):
         st.write('')
 
     with st.sidebar:
-        analyze_btn = st.button('🔍 *Analyze Sessions*',use_container_width=True)
+        analyze_btn = st.button('🔍 *Analyze Logs*',use_container_width=True)
 
     if analyze_btn:
-        all_logs = []
-        local_sessions = os.listdir(U.pjoin(evosys.ptree.db_dir,'sessions'))
-        for sess in local_sessions:
-            log_dir = U.pjoin(evosys.ptree.db_dir,'sessions',sess,'log')
-            for log_file in os.listdir(log_dir):
-                if log_file.endswith('.log'):
-                    all_logs.append(load_log(U.pjoin(log_dir,log_file)))
-        with st.status('Analyzing sessions...'):
+        all_logs,local_sessions = load_logs(U.pjoin(evosys.ptree.db_dir,'sessions'))
+        with st.status('Analyzing Logs...'):
             st.write(f'###### Design sessions in this node for ```{evosys.evoname}```')
             st.write(f'Total number of sessions: {len(local_sessions)}')
             st.write(f'Total number of logs: {len(all_logs)}')
@@ -349,6 +343,17 @@ def _design_engine(evosys,project_dir):
 
 
 #################################################
+
+def load_logs(sess_dir):
+    all_logs = []
+    local_sessions = os.listdir(sess_dir)
+    for sess in local_sessions:
+        log_dir = U.pjoin(sess_dir,sess,'log')
+        for log_file in os.listdir(log_dir):
+            if log_file.endswith('.log'):
+                all_logs.append(load_log(U.pjoin(log_dir,log_file)))
+    return all_logs,local_sessions
+
 
 def stat_logs(logs):
     end_reasons = {}

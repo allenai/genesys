@@ -130,7 +130,7 @@ def running_status(st,evosys):
   #   st.write(f'⛅ [**Cloud Status**]({URL})')
 
   if st.session_state.evo_running:
-    if st.session_state.command_center.benchmark_mode:
+    if evosys.benchmark_mode:
       st.status('🪑 ***Running Benchmark***')
     else:
       st.status('🚀 ***Running Evolution***')

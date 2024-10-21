@@ -28,8 +28,8 @@ MERGE_METHODS = ['borda','average']
 
 SCHEDULER_OPTIONS = ['constant']
 
-SELECT_METHODS = ['quadrant']
-VERIFY_STRATEGIES = ['quadrant']
+SELECT_METHODS = ['quadrant','random']
+VERIFY_STRATEGIES = ['quadrant','random']
 
 
 
@@ -724,6 +724,8 @@ class Selector:
             n_seeds = self._get_n_seeds(select_cfg)
         if select_method=='quadrant':
             instruct,seeds,refs=self._quadrant_select_design(n_seeds,select_cfg=select_cfg,**selector_args)
+        elif select_method=='random':
+            instruct,seeds,refs=self._random_select_design(n_seeds,select_cfg=select_cfg,**selector_args)
         else:
             raise ValueError(f"Invalid select method: {select_method}")
 
@@ -734,6 +736,16 @@ class Selector:
         
     def nodes2data(self,nodes): # convert the nodes to data: NodeObject
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
+    
+    def _random_select_design(self,n_seeds,n_sources,select_cfg=None,allow_tree=True):
+        refs=self._sample_from_sources(n_sources)
+        if allow_tree:
+            pool = self.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented'])
+        else:
+            pool = self.ptree.filter_by_type(['DesignArtifactImplemented'])
+        seeds = self._sample_k_pool(pool,n_seeds,1,topk=False)
+        seeds = [self.ptree.get_node(i) for i in seeds]
+        return '',seeds,refs
 
     def _quadrant_select_design(self,n_seeds, n_sources: Dict[str,int],select_cfg=None):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
@@ -908,8 +920,21 @@ class Selector:
                 raise ValueError(f"Invalid budget type: {self.budget_type}")
         if verify_strategy=='quadrant':
             return self._quadrant_select_verify(available_verify_budget,exclude_list,select_cfg)
+        elif verify_strategy=='random':
+            return self._random_select_verify(available_verify_budget,exclude_list,select_cfg)  
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
+
+    def _random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None):
+        unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+        unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
+        n_unverified=sum([len(v) for v in unverified_by_scale.values()])
+        if n_unverified==0:
+            return None,None
+        lowest_scale=sorted(unverified_by_scale.keys())[0]
+        design_id = random.choice(unverified_by_scale[lowest_scale])
+        return design_id,lowest_scale
+
 
     def _quadrant_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
         unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale

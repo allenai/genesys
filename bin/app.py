@@ -60,7 +60,7 @@ if not DEPLOY_MODE:
     launch_listener = import_and_reload('listen').launch_listener
 else:
     from bin.pages import home,viewer,design,evolve,verify,config,search,select,listen
-    from bin.pages.listen import _listener_running,launch_listener
+    from bin.pages.listen import launch_listener
 
 
 
@@ -129,10 +129,11 @@ def _check_local_listener(st):
         _group_id = _local_doc['group_id']
         _max_design_threads = _local_doc['max_design_threads']
         _accept_verify_job = _local_doc['accept_verify_job']
+        _cpu_only_checker = _local_doc.get('cpu_only_checker',False)
         if not st.session_state.listening_mode:
             st.toast(f'Local running listener detected. Node ID: {_node_id}. Group ID: {_group_id}. Launching a listener in passive mode.')
             with st.spinner('Launching listener...'):
-                launch_listener(evosys, _node_id, _group_id, _max_design_threads, _accept_verify_job)
+                launch_listener(evosys, _node_id, _group_id, _max_design_threads, _accept_verify_job,_cpu_only_checker)
 
 _check_local_listener(st)
 
@@ -174,6 +175,7 @@ pages = {
     'Listen': listen,
 }
 if not DEPLOY_MODE:
+    # pages['Listen'] = listen
     pages['Tester'] = tester
 
 

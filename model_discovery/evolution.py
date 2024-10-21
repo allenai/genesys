@@ -34,6 +34,7 @@ import pathlib
 from datetime import datetime, timedelta, timezone
 import json
 import copy
+from enum import Enum
 import time
 import tempfile
 from dataclasses import dataclass, field, asdict
@@ -82,7 +83,7 @@ from .configs.gam_config import (
     GAMConfig,GAMConfig_14M,GAMConfig_31M,GAMConfig_70M,GAMConfig_125M,GAMConfig_350M,GAMConfig_760M,
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
-from .configs.const import VERIFY_ACTIVE_STATES,VERIFY_TERMINAL_STATES,VERIFY_ZOMBIE_THRESHOLD,NODE_ZOMBIE_THRESHOLD
+from .configs.const import *
 from .ve.run import main as ve_main
 from .ve.run import parser as ve_parser
 from .ve.run import get_history_report
@@ -100,6 +101,8 @@ __all__ = [
 class FirestoreManager:
     def __init__(self, evoname, db_dir, remote_db):
         self.db_dir = db_dir
+        self.evoname = evoname
+        self.remote_db = remote_db
         self.collection=remote_db.collection(evoname)
         self.key_dict={
             'metadata':'m',
@@ -120,6 +123,7 @@ class FirestoreManager:
         self.key_dict_inv={v: k for k, v in self.key_dict.items()}
         self.cache={}
         self.index=None
+        self.log_doc_ref = self.remote_db.collection('experiment_logs').document(self.evoname)
         self.sync_to_db(verbose=False) # see if there is anything to upload
         self.updated_terms=[]
 
@@ -161,6 +165,27 @@ class FirestoreManager:
                     # if index_updates: # WILL TRIGGER NESTED DELETE ERROR
                     #     self.collection.document('index').update({id: index_updates})
 
+    def upload_experiment(self,exp,config=None):
+        collection=self.remote_db.collection('experiments')
+        to_set={}
+        if config:
+            to_set['config']=config
+        if len(to_set)>0:
+            collection.document(exp).set(to_set,merge=True)
+
+    def download_experiment(self,ckpt_dir,exp):
+        collection=self.remote_db.collection('experiments')
+        doc=collection.document(exp).get()
+        if doc.exists:
+            doc_id=doc.id
+            doc=doc.to_dict()
+            config=doc.get('config',{})
+            U.mkdir(U.pjoin(ckpt_dir,doc_id))
+            U.mkdir(U.pjoin(ckpt_dir,doc_id,'ve'))
+            U.mkdir(U.pjoin(ckpt_dir,doc_id,'db','sessions'))
+            U.mkdir(U.pjoin(ckpt_dir,doc_id,'db','designs'))
+            if config:
+                U.save_json(config,U.pjoin(ckpt_dir,doc_id,'config.json'))
 
     def get_index(self):
         index=self.collection.document('index').get().to_dict()
@@ -441,12 +466,47 @@ class FirestoreManager:
         if upload_index:
             self.update_index()
     
+    def to_session_progress(self,sessdata):
+        proposed=sessdata['proposed']
+        reranked=sessdata['reranked']
+        return f'{proposed}, {reranked}'
+
+    def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
+        log_collection=self.log_doc_ref.collection('design_sessions')
+        log_ref = log_collection.document(sess_id)
+        log_ref.set(sessdata,merge=True)
+        index_ref = log_collection.document('index')
+        index_ref.set({sess_id:{'progress':self.to_session_progress(sessdata)}},merge=True)
+        print(f'Uploaded session {sess_id} to DB')
+
+    def get_design_session(self,sess_id):
+        log_collection=self.log_doc_ref.collection('design_sessions')
+        log_ref = log_collection.document(sess_id).get()
+        if not log_ref.exists:
+            return None
+        return log_ref.to_dict()
+    
+    def sync_sessions_to_db(self,overwrite=False,verbose=False):
+        log_collection=self.log_doc_ref.collection('design_sessions')
+        index_ref = log_collection.document('index')
+        index = index_ref.get().to_dict()
+        sessions_dir=U.pjoin(self.db_dir,'sessions')
+        sessions=os.listdir(sessions_dir)
+        for sess_id in sessions:
+            sessdata = U.load_json(U.pjoin(sessions_dir,sess_id, 'metadata.json'))
+            if sessdata:
+                if sess_id in index:
+                    if index[sess_id].get('progress','')==self.to_session_progress(sessdata):
+                        continue
+                self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
+
     def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db
         self.get_index()
         designs=os.listdir(U.pjoin(self.db_dir,'designs'))
         for design_id in designs:
             design=self.load_design_local(design_id)
             self.upload_design(design_id,design,overwrite=overwrite,upload_index=False,verbose=verbose)
+        self.sync_sessions_to_db(overwrite=overwrite,verbose=verbose)
         self.update_index()
         print('Local designs synced to remote DB')
     
@@ -926,6 +986,10 @@ class Implementation:
         dict=U.load_json(U.pjoin(design_dir, 'implementation.json'))
         return cls.from_dict(dict)
     
+    @property
+    def cost(self):
+        return self.get_cost()
+    
     def get_cost(self):
         costs={}
         for attempt in self.history:
@@ -977,6 +1041,16 @@ class DesignArtifact(NodeObject):
         timestr=self.sess_id[:-len(tail)-1]
         timeformat='%Y-%m-%d-%H-%M-%S'
         return datetime.strptime(timestr, timeformat)
+    
+    def is_finished(self,challenging_threshold):
+        if self.implementation and self.implementation.status=='implemented':
+            return True
+        if not self.proposal.passed:
+            return True
+        if self.implementation and len(self.implementation.history)>=challenging_threshold:
+            return True
+        return False
+        
         
     @classmethod
     def load(cls, design_dir: str):
@@ -1082,6 +1156,10 @@ class DesignArtifact(NodeObject):
     def is_implemented(self):
         return self.implementation is not None and self.implementation.status=='implemented'
 
+    @property
+    def costs(self):
+        return self.get_cost()
+    
     def get_cost(self):
         costs=self.proposal.costs
         if self.implementation:
@@ -1107,6 +1185,13 @@ class DesignArtifact(NodeObject):
 #     with open(path, "w", encoding='utf-8') as f:
 #         f.write(P.to_string())
 #     return
+
+
+class DesignState(Enum):
+    BEGIN = 'begin'
+    PROPOSED = 'proposed'
+    FAILED = 'failed'
+ 
 
 
 class PhylogeneticTree:
@@ -1136,7 +1221,7 @@ class PhylogeneticTree:
     | ... # units, etc.
     """
     def __init__(self, evoname, target_scales, db_dir: str, db_only=False, 
-            remote_db=None, use_remote_db=True,challanging_threshold=3): 
+            remote_db=None, use_remote_db=True,challenging_threshold=3,CM=None): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
@@ -1146,10 +1231,11 @@ class PhylogeneticTree:
         U.mkdir(db_dir)
         U.mkdir(U.pjoin(db_dir,'designs'))
         U.mkdir(U.pjoin(db_dir,'sessions'))
-        self.challanging_threshold=challanging_threshold
+        self.challenging_threshold=challenging_threshold
         self.db_only=db_only
         self.FM = None
         self.GD = None
+        self.CM = CM
         self.use_remote_db=use_remote_db
         self.remote_db = remote_db
         if use_remote_db and self.remote_db is not None:
@@ -1204,12 +1290,28 @@ class PhylogeneticTree:
             if design.seed_ids == parents:
                 siblings.append(acronym)
         return siblings
+    
+    def get_design_session(self,sess_id:str):
+        if sess_id not in self.design_sessions and self.FM:
+            sessdata = self.FM.get_design_session(sess_id)
+            if sessdata:
+                sessdata['mode']=DesignModes(sessdata['mode'])
+                self.design_sessions[sess_id] = sessdata
+                self.save_session(sess_id)
+        if sess_id not in self.design_sessions:
+            return None
+        return self.design_sessions[sess_id]
 
     def load_design_sessions(self):
         self.design_sessions={}
         to_delete=[]
         for sess_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
-            metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
+            if self.FM:
+                metadata = self.FM.get_design_session(sess_id)
+                if not metadata:
+                    metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
+            else:
+                metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
             if 'mode' in metadata:
                 metadata['mode']=DesignModes(metadata['mode'])
             if not metadata:
@@ -1224,7 +1326,7 @@ class PhylogeneticTree:
         costs=0
         designs=self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
         for design in designs:
-            costs+=sum(self.get_node(design).get_cost().values())
+            costs+=sum(self.get_node(design).costs.values())
         return costs
 
     def budget_status(self,budgets,ret_verified=False):
@@ -1299,7 +1401,7 @@ class PhylogeneticTree:
             'mode': mode,
             'proposed': [],
             'reranked': {},
-            'num_samples': num_samples
+            'num_samples': num_samples,
         }
         self.design_sessions[sess_id] = sessdata
         sess_dir=self.session_dir(sess_id)
@@ -1381,6 +1483,12 @@ class PhylogeneticTree:
         self.design_sessions[sess_id][key]=value
         self.save_session(sess_id)
     
+    def session_append(self,sess_id:str,key:str,value):
+        if key not in self.design_sessions[sess_id]:
+            self.design_sessions[sess_id][key]=[]
+        self.design_sessions[sess_id][key].append(value)
+        self.save_session(sess_id)
+    
     def design_dir(self, acronym: str):
         design_dir=U.pjoin(self.db_dir, 'designs', acronym)
         U.mkdir(design_dir)
@@ -1413,6 +1521,25 @@ class PhylogeneticTree:
             node = self._get_node(f"'{acronym}'")
         return node
     
+    def get_finished_designs(self):
+        self.update_design_tree()
+        designs = self.filter_by_type(['DesignArtifactImplemented','DesignArtifact'])
+        finished = [design for design in designs if self.get_node(design).is_finished(self.challenging_threshold)]
+        return finished
+    
+    def acquire_design_lock(self,sess_id=None): # no need to really lock, as CC is still sequential
+        if not self.CM.benchmark_mode:
+            return True
+        active_sessions = self.CM.get_active_design_sessions()
+        active_sessions=list(active_sessions.keys())
+        finished_designs = self.get_finished_designs()
+        if sess_id and sess_id not in active_sessions:
+            active_sessions.append(sess_id)
+        if len(active_sessions)+len(finished_designs)<=self.CM.max_designs:
+            return True
+        else:
+            return False
+    
     def get_session_state(self,sess_id:str):
         passed,_ = self.session_proposals(sess_id,passed_only=True)
         implemented,unfinished = self.session_implementations(sess_id)
@@ -1420,18 +1547,18 @@ class PhylogeneticTree:
         challenging=[]
         for acronym in unfinished_impls:
             impl=unfinished_impls[acronym]
-            if len(impl.history)>self.challanging_threshold:
+            if len(impl.history)>self.challenging_threshold:
                 challenging.append(acronym)
         return passed,implemented,challenging,unfinished
 
-    def get_challanging_designs(self,sess_id:str):
+    def get_challenging_designs(self,sess_id:str):
         sessdata=self.design_sessions[sess_id]
         challenging={}
         for acronym in sessdata['proposed']:
             impl=self.get_node(acronym).implementation  
             if impl:
                 if impl.status!='implemented':
-                    if len(impl.history)>self.challanging_threshold:
+                    if len(impl.history)>self.challenging_threshold:
                         challenging[acronym]=len(impl.history)
         return challenging
 
@@ -1490,6 +1617,14 @@ class PhylogeneticTree:
             return unfinished_designs,finished_designs
         else:
             return unfinished_designs
+
+    def is_challenging(self,acronym:str):
+        design=self.get_node(acronym)
+        if design.implementation:
+            impl=design.implementation
+            if len(impl.history)>self.challenging_threshold:
+                return True
+        return False
 
     def get_implementation_checkpoint(self,acronym:str):
         design=self.get_node(acronym)
@@ -1553,7 +1688,7 @@ class PhylogeneticTree:
         _proposal_traces={}
         for idx,trace in enumerate(proposal_traces):
             U.mkdir(traces_dir)
-            trace['costs']=costs
+            trace['costs']=costs # show the full cost directly
             trace['design_cfg']=design_cfg
             trace['user_input']=user_input
             proposal_trace=Proposal(**trace)
@@ -1561,8 +1696,7 @@ class PhylogeneticTree:
             _proposal_traces[f'trace_{idx}']=proposal_trace.to_dict()
         design_artifact = DesignArtifact(sess_id=sess_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
         self.G.add_node(acronym, data=design_artifact)
-        self.design_sessions[sess_id]['proposed'].append(acronym)
-        self.save_session(sess_id)
+        self.session_append(sess_id,'proposed',acronym)
         self.FM.upload_metadata(acronym,metadata,overwrite=True)
         self.FM.upload_proposal(acronym,proposal.to_dict(),overwrite=True)
         self.FM.upload_proposal_traces(acronym,_proposal_traces,overwrite=True)
@@ -1576,6 +1710,8 @@ class PhylogeneticTree:
             pass
         sessdata['mode']=sessdata['mode'].value
         U.save_json(sessdata, U.pjoin(self.session_dir(sess_id), 'metadata.json'))
+        if self.FM: # keep firestore always up to date
+            self.FM.upload_design_session(sess_id,sessdata)
         sessdata['mode']=DesignModes(sessdata['mode'])
 
     def implement(self, acronym: str, tree,ROUNDS,status,costs,design_cfg,user_input): # update a proposal node with implementation
@@ -1893,6 +2029,15 @@ class ConnectionManager:
         self.max_design_threads={}
         self.accept_verify_job={}
         self.last_refresh = 0
+        self.benchmark_mode = False
+
+    def set_benchmark_mode(self,max_designs):
+        self.benchmark_mode = True
+        self.max_designs = max_designs
+    
+    def unset_benchmark_mode(self):
+        self.benchmark_mode = False
+        self.max_designs = None
 
     def switch_ckpt(self,evoname):
         self.evoname = evoname
@@ -1922,7 +2067,7 @@ class ConnectionManager:
     
     def get_active_connections(self):
         if time.time()-self.last_refresh < 1:
-            return
+            return list(self.connections.keys())
         self.clear_zombie_connections()
         self.last_refresh = time.time()
         query = firestore.And([
@@ -2125,6 +2270,8 @@ DEFAULT_PARAMS = {
     'group_id': 'default',
     'budget_type': 'design_bound',
     'n_target': 1,
+    'challenging_threshold': 3,
+    'benchmark_mode': False,
 }
 
 
@@ -2139,6 +2286,17 @@ DEFAULT_N_SOURCES={
 
 
 BUDGET_TYPES = ['design_bound','verify_bound']
+
+BENCH_MODE_OPTIONS = ['Mutation-only','Crossover-only','Scratch-only','Mixed']
+
+DEFAULT_BENCHMARK_SETTINGS = {
+    'n_trials': 100,
+    'max_retries': None,
+    'design_mode': 'Mutation-only',
+    'n_seeds_dist': {'0': 0.1,'1': 0.8,'2': 0.1,'3': 0,'4': 0,'5': 0},
+    'overwrite_config': True,
+    'allow_tree': True,
+}
 
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
@@ -2165,6 +2323,8 @@ class EvolutionSystem(exec_utils.System):
         self.search_cfg = {}
         self.select_cfg = {}
         self.ve_cfg = {}
+        self.benchmark_mode = False
+        self.benchmark_settings = {}
         self.load(**kwargs)
 
     def load(self,**kwargs):
@@ -2191,6 +2351,11 @@ class EvolutionSystem(exec_utils.System):
 
         self.params=U.init_dict(self.params,DEFAULT_PARAMS)
 
+        if self.params['benchmark_mode']:
+            self.set_benchmark_mode(self.benchmark_settings)
+        else:
+            self.unset_benchmark_mode()
+
         if self.CM:
             print(f"Connecting to group id: {self.params['group_id']}")
             self.CM.set_group_id(self.params['group_id'])
@@ -2199,7 +2364,7 @@ class EvolutionSystem(exec_utils.System):
         self.design_budget_limit=self.params['design_budget']
 
         self._verify_budget=self.params.get('verify_budget',{})
-        if len(self._verify_budget)==0:
+        if self._verify_budget == {}:
             budget=self.params['n_target']
             for scale in self.params['scales'].split(',')[::-1]:
                 self._verify_budget[scale]=int(np.ceil(budget))
@@ -2211,10 +2376,13 @@ class EvolutionSystem(exec_utils.System):
 
         if self.stream:
             self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
+            self.stream.write(f"Budget type: {self.params['budget_type']}")
+            self.stream.write(f'Design budget: {self.design_budget_limit}')
             self.stream.write(f"Verify budgets: {self._verify_budget}")
             self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
-        self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],self.remote_db,self.params['use_remote_db'])
+        self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],
+                self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],CM=self.CM)
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         
         # Scan VE for missing verifications
@@ -2246,6 +2414,40 @@ class EvolutionSystem(exec_utils.System):
             self.agents.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
 
+    def get_verify_budget(self,full=False):
+        if full:
+            _verify_budget = copy.deepcopy(self._verify_budget)
+            _TARGET_SCALES = sorted(TARGET_SCALES,key=lambda x:int(x.replace('M','')))
+            for scale in _TARGET_SCALES:
+                _verify_budget[scale] = _verify_budget.get(scale,0)
+            return _verify_budget
+        else:
+            return self._verify_budget
+        
+    def set_benchmark_mode(self,benchmark_settings={}):
+        self.benchmark_mode = True
+        self.benchmark_settings = U.init_dict(benchmark_settings,DEFAULT_BENCHMARK_SETTINGS)
+        self.CM.set_benchmark_mode(benchmark_settings['n_trials'])
+    
+    def unset_benchmark_mode(self):
+        self.benchmark_mode = False
+        self.CM.unset_benchmark_mode()
+
+    def should_stop(self):
+        if self.CM.benchmark_mode:
+            if len(self.ptree.get_finished_designs())>=self.CM.max_designs:
+                return True
+        else:
+            if self.selector.budget_type=='design_bound' and self.selector.design_budget<=0:
+                return True
+            elif self.selector.budget_type=='verify_bound' and sum(self.selector.verify_budget.values())<=0:
+                return True
+        return False
+    
+    def conclude(self):
+        # conclude results and report to db
+        pass
+
     def get_evo_state(self):
         evo_state={}
         evo_state['Seed Selection Method']=self.design_cfg.get('select_method',DEFAULT_SELECT_METHOD)
@@ -2268,7 +2470,7 @@ class EvolutionSystem(exec_utils.System):
         if self.CM is not None:
             self.CM.st = stream
 
-    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None,ve_cfg=None):
+    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None,ve_cfg=None,benchmark_settings=None):
         if design_cfg is not None:
             self.design_cfg = design_cfg
         if search_cfg is not None:
@@ -2277,7 +2479,9 @@ class EvolutionSystem(exec_utils.System):
             self.select_cfg = select_cfg
         if ve_cfg is not None:
             self.ve_cfg = ve_cfg
-        if design_cfg is not None or search_cfg is not None or select_cfg is not None or ve_cfg is not None:
+        if benchmark_settings is not None:
+            self.set_benchmark_mode(benchmark_settings)
+        if design_cfg is not None or search_cfg is not None or select_cfg is not None or ve_cfg is not None or benchmark_settings is not None:
             self.save_config()
 
     def reload(self,params=None):
@@ -2357,6 +2561,7 @@ class EvolutionSystem(exec_utils.System):
         self.search_cfg = config.get('search_cfg',{})
         self.select_cfg = config.get('select_cfg',{})
         self.ve_cfg = config.get('ve_cfg',{})
+        self.benchmark_settings = config.get('benchmark_settings',{})
         params = config.get('params',{})
         params.update(self.params) # to directly use config, provide only evoname in config
         self.params = params # logic is that, if new params provided, use new params, otherwise, use config, otherwise, use default
@@ -2371,8 +2576,11 @@ class EvolutionSystem(exec_utils.System):
         config['search_cfg'] = self.search_cfg
         config['select_cfg'] = self.select_cfg
         config['ve_cfg'] = self.ve_cfg
+        config['benchmark_settings'] = self.benchmark_settings
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
-
+        if self.ptree.FM:
+            self.ptree.FM.upload_experiment(self.evoname,config)
+            self.stream.toast(f"Saved experiment configs to remote DB: {self.evoname}")
 
     def check_budget(self,action):
         if action=='design': # check the design budget
@@ -2436,6 +2644,22 @@ class EvolutionSystem(exec_utils.System):
             design_cfg = self.design_cfg
         if search_cfg is None:
             search_cfg = self.search_cfg
+
+        if self.benchmark_mode:
+            if self.benchmark_settings['design_mode']=='Mutation-only':
+                select_cfg['n_seeds_dist'] = {'0': 0, '1': 1.0, '2': 0, '3': 0, '4': 0, '5': 0}
+            elif self.benchmark_settings['design_mode']=='Crossover-only':
+                select_cfg['n_seeds_dist'] = {'0': 0, '1': 0, '2': 1.0, '3': 0, '4': 0, '5': 0}
+            elif self.benchmark_settings['design_mode']=='Scratch-only':
+                select_cfg['n_seeds_dist'] = {'0': 1.0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0}
+            else:
+                if self.benchmark_settings['overwrite_config']:
+                    select_cfg['n_seeds_dist'] = self.benchmark_settings['n_seeds_dist']
+                    select_cfg['n_seeds_settings'] = {'warmup_rounds_scratch': 0,'warmup_rounds_crossover': 0}
+            if self.benchmark_settings['max_retries'] is not None:
+                self.ptree.challenging_threshold = self.benchmark_settings['max_retries']
+
+
         unfinished_designs = self.ptree.get_unfinished_designs()
         if self.stream:
             self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
@@ -2447,7 +2671,12 @@ class EvolutionSystem(exec_utils.System):
         manual_refs = self._process_manual_input(manual_refs)
 
         def _new_sample(selector_args,sess_id=None,_silent=False,_cpu_only=False):
-            instruct,seeds,refs=self.selector.select_design(selector_args,n_seeds=n_seeds) # use the seed_ids to record the phylogenetic tree
+            if self.benchmark_mode:
+                select_cfg['select_method'] = 'random'
+                selector_args['allow_tree'] = self.benchmark_settings['allow_tree']
+                instruct,seeds,refs=self.selector.select_design(selector_args,n_seeds=n_seeds,select_cfg=select_cfg) # use the seed_ids to record the phylogenetic tree
+            else:
+                instruct,seeds,refs=self.selector.select_design(selector_args,n_seeds=n_seeds,select_cfg=select_cfg) # use the seed_ids to record the phylogenetic tree
             seeds = manual_seed if manual_seed is not None else seeds
             refs = manual_refs if manual_refs is not None else refs
             self.sample(instruct,seeds,refs,sess_id=sess_id,user_input=user_input,
@@ -2466,7 +2695,8 @@ class EvolutionSystem(exec_utils.System):
                     self.stream.write(f"Restoring a session {sess_id}, mode: {mode}. {len(passed)} proposals passed, {len(implemented)} implemented, {len(unfinished)} are unfinished where {len(challenging)} are challenging.")
                 self.sample(sess_id=sess_id,user_input=user_input,design_cfg=design_cfg,search_cfg=search_cfg,silent=silent,cpu_only=cpu_only) # should not change the design_cfg
         else:
-            if sess_id in self.ptree.design_sessions:
+            sessdata = self.ptree.get_design_session(sess_id)
+            if sessdata is not None:
                 print(f'Design id provided and exists, will restore session {sess_id}')
                 mode=DesignModes(self.ptree.session_get(sess_id,'mode'))
                 if self.stream:
@@ -2516,28 +2746,18 @@ class EvolutionSystem(exec_utils.System):
             raise ValueError(f"Invalid action policy: {self.action_policy}")
 
     def _prep_ve_args(self,args,design_id,scale):
-        if 'training_token_multiplier' in self.ve_cfg:
-            args.training_token_multiplier=self.ve_cfg['training_token_multiplier']
-        if 'wandb_project' in self.ve_cfg:
-            args.wandb_project=self.ve_cfg['wandb_project']
-        if 'wandb_entity' in self.ve_cfg:
-            args.wandb_entity=self.ve_cfg['wandb_entity']
-        if 'eval_tasks' in self.ve_cfg:
-            args.eval_tasks=self.ve_cfg['eval_tasks']
-        if 'training_data' in self.ve_cfg:
-            args.training_data=self.ve_cfg['training_data']
-        if 'tokenizer' in self.ve_cfg:
-            args.tokenizer=self.ve_cfg['tokenizer']
-        if 'context_length' in self.ve_cfg:
-            args.context_length=self.ve_cfg['context_length']
-        if 'optim' in self.ve_cfg:
-            args.optim=self.ve_cfg['optim']
-        if 'seed' in self.ve_cfg:
-            args.seed=self.ve_cfg['seed']
-        if 'save_steps' in self.ve_cfg:
-            args.save_steps=self.ve_cfg['save_steps']
-        if 'logging_steps' in self.ve_cfg:
-            args.logging_steps=self.ve_cfg['logging_steps']
+        training_token_multipliers = self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS)
+        args.training_token_multiplier=training_token_multipliers[scale]
+        args.wandb_project=self.ve_cfg.get('wandb_project',DEFAULT_WANDB_PROJECT)
+        args.wandb_entity=self.ve_cfg.get('wandb_entity',DEFAULT_WANDB_ENTITY)
+        args.eval_tasks=self.ve_cfg.get('eval_tasks',','.join(DEFAULT_EVAL_TASKS))
+        args.training_data=self.ve_cfg.get('training_data',','.join(DEFAULT_TRAINING_DATA))
+        args.tokenizer=self.ve_cfg.get('tokenizer',DEFAULT_TOKENIZER)
+        args.context_length=self.ve_cfg.get('context_length',DEFAULT_CONTEXT_LENGTH)
+        args.optim=self.ve_cfg.get('optim',DEFAULT_OPTIM)
+        args.seed=self.ve_cfg.get('seed',DEFAULT_RANDOM_SEED)
+        args.save_steps=self.ve_cfg.get('save_steps',DEFAULT_SAVE_STEPS)
+        args.logging_steps=self.ve_cfg.get('logging_steps',DEFAULT_LOG_STEPS)
             
         args.evoname=self.evoname
         args.design_id=design_id+f'_{scale}'

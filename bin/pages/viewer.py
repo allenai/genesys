@@ -31,11 +31,13 @@ from model_discovery.agents.roles.selector import *
 from model_discovery.agents.roles.selector import _group_results,_flat_weighted_metrics,\
     _combine_design_quadrant,_rank_combined_quadrant,_get_ranking_quadrant,_01_normed_soft_filter
 
+from bin.pages.design import show_log,load_log
 
 
 class ViewModes(Enum):
     METRICS = 'Experiment Visulizer'
     DESIGNS = 'Design Artifacts'
+    SESSIONS = 'Local Session Logs'
     DIALOGS = 'Agent Dialogs (Experimental)'
     FLOW = 'Agent Flows (Experimental)'
 
@@ -143,6 +145,42 @@ def _view_dialogs(evosys):
                 selected_thread = st.selectbox("Select a thread", list(dialog.threads.keys()))
                 thread = dialog.threads[selected_thread]
                 timeline(thread.to_timeline(),height=800)
+
+
+def _view_sessions(evosys):
+    st.title('Local Session Logs')
+
+    with st.sidebar:
+        _folders = os.listdir(U.pjoin(evosys.ckpt_dir))
+        folders = []
+        for folder in _folders:
+            if os.path.exists(U.pjoin(evosys.ckpt_dir,folder,'config.json')):
+                folders.append(folder)
+        evoname = st.selectbox("Select a folder", folders)
+
+    sess_dir = U.pjoin(evosys.ckpt_dir, evoname, 'db', 'sessions')
+
+    if not os.path.exists(sess_dir):
+        st.warning("No session logs found in the log directory")
+    else:
+        cols = st.columns([3,3,1])
+        with cols[0]:
+            sessions = os.listdir(sess_dir)
+            selected_session = st.selectbox("Select a session", sessions)
+        with cols[1]:
+            if selected_session:
+                logs = os.listdir(U.pjoin(sess_dir,selected_session,'log'))
+                logs = [i for i in logs if i.endswith('.log')]
+                selected_log = st.selectbox("Select a log", logs)
+        with cols[2]:
+            st.write('')
+            st.write('')
+            view_btn = st.button("View",use_container_width=True,disabled=not (selected_session and selected_log))
+
+        if view_btn:
+            log = load_log(U.pjoin(sess_dir,selected_session,'log',selected_log))
+            show_log(log)
+    
 
 
 
@@ -778,7 +816,11 @@ def viewer(evosys,project_dir):
     ### Sidebar
     with st.sidebar:
         AU.running_status(st,evosys)
-        view_mode = st.selectbox("Choose a view", list([i.value for i in ViewModes]))
+        if st.session_state.is_deploy:
+            modes = [ViewModes.METRICS.value,ViewModes.DESIGNS.value,ViewModes.SESSIONS.value]
+        else:
+            modes = list([i.value for i in ViewModes])
+        view_mode = st.selectbox("Choose a view", modes)
         view_mode = ViewModes(view_mode)
         if view_mode == ViewModes.FLOW:
             # Lagacy flows for development
@@ -805,6 +847,9 @@ def viewer(evosys,project_dir):
 
     elif view_mode == ViewModes.DIALOGS:
         _view_dialogs(evosys)
+
+    elif view_mode == ViewModes.SESSIONS:
+        _view_sessions(evosys)
             
     elif view_mode == ViewModes.FLOW:
         _view_flows(evosys,selected_flow,flow)

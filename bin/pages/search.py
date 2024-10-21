@@ -265,13 +265,21 @@ def units_search(evosys,project_dir):
     _cfg['embedding_models']['unitcode'] = _unit_embedding_model
     _cfg['embedding_distances']['unitcode'] = _unit_embedding_distance
 
-    query=st.text_area("Unit code query (you can paste here)")
-    search_proposal_btn=st.button("Search Unit Code")
+    desc_query=st.text_input("Unit description (you can paste here)")
+    code_query=st.text_area("Unit code query (you can paste here)")
+    cols=st.columns([1,1,3])
+    with cols[0]:
+        search_unit_code_btn=st.button("Search Units by Code")
+    with cols[1]:
+        search_unit_desc_btn=st.button("Search Units by Description")
 
-    if search_proposal_btn:
+    if search_unit_code_btn or search_unit_desc_btn:
         with st.spinner('Searching...'):
             sss.reconfig(_cfg,st)
-            _,prt=sss.query_units_by_code(query)
+            if search_unit_code_btn:
+                _,prt=sss.query_units_by_code(code_query)
+            else:
+                _,prt=sss.query_units_by_desc(desc_query)
             sss.reconfig(cfg_backup,st)
             st.markdown(prt,unsafe_allow_html=True)
     else:

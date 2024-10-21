@@ -498,6 +498,7 @@ class ModelDiscoverySystem(exec_utils.System):
 
     def new_session(self,sess_id,stream,log_collection=None):
         self.log_dir = U.pjoin(self.ptree.session_dir(sess_id), 'log')
+        U.mkdir(self.log_dir)
         log_file = U.pjoin(self.log_dir,f'{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}.log')
         self.sess_state = {} 
         self.dialog = AgentDialogManager(self.log_dir,self.get_system_info(),stream)
@@ -602,7 +603,8 @@ class ModelDiscoverySystem(exec_utils.System):
             sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'])
             stream.write(f"Starting new design session: {sess_id}")
         else: # resuming a session or creating a new session with a given id
-            if sess_id not in self.ptree.design_sessions:
+            sessdata = self.ptree.get_design_session(sess_id)
+            if sessdata is None:
                 seed_ids = [seed.acronym for seed in seeds]
                 if design_cfg['crossover_no_ref'] and len(seeds)>1 and refs:
                     stream.write('Crossover no ref is set to True, ignore all references')

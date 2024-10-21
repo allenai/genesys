@@ -20,7 +20,7 @@ from model_discovery.model.utils.modules import GABBase, UnitDecl,DesignModes
 import model_discovery.utils as U
 
 
-DESIGN_ZOMBIE_THRESHOLD = 360 # O1 is really really slow
+DESIGN_ZOMBIE_THRESHOLD = 300 # O1 is really really slow
 
 LOG_STATES={
     'BEGIN':'Begin',
@@ -239,8 +239,7 @@ class GUFlow(FlowCreator):
             self.seed = None
         else:
             raise ValueError(f'Invalid design mode: {self.design_mode}')
-
-
+        
     def _links(self):
         links_def=[
             'ENTRY->design_initializer',
@@ -308,44 +307,45 @@ class GUFlow(FlowCreator):
         return query,state,{}
     
     def call_search_assistant(self,main_tid,ideation,instructions):
-        self.stream.write(f'Warning: Search Assistant prompt has not been updated, performance may degrade.')
-        S2_SEARCH_SYSTEM=P.S2_SEARCH_ASSISTANT_SYSTEM()
-        S2_SEARCH_ASSISTANT=reload_role('search_assistant',self.agents['SEARCH_ASSISTANT'],S2_SEARCH_SYSTEM)
-        context_search_assistant=AgentContext()
-        search_assistant_tid=self.dialog.fork(main_tid,USER_CALLER,S2_SEARCH_ASSISTANT,context=context_search_assistant,
-                                                alias='search_assistant',note=f'Starting search S2...')
+        raise NotImplementedError('Independent Search Assistant need to be updated')
+        # self.stream.write(f'Warning: Search Assistant prompt has not been updated, performance may degrade.')
+        # S2_SEARCH_SYSTEM=P.S2_SEARCH_ASSISTANT_SYSTEM()
+        # S2_SEARCH_ASSISTANT=reload_role('search_assistant',self.agents['SEARCH_ASSISTANT'],S2_SEARCH_SYSTEM)
+        # context_search_assistant=AgentContext()
+        # search_assistant_tid=self.dialog.fork(main_tid,USER_CALLER,S2_SEARCH_ASSISTANT,context=context_search_assistant,
+        #                                         alias='search_assistant',note=f'Starting search S2...')
         
-        for i in range(self.max_attemps['max_search_rounds']):
-            self.stream.write(f'## Searching from S2, round {i+1}...')
-            # S2 Search Query
-            s2_search_query_prompt=P.S2_SEARCH_PROPOSAL_QUERY(IDEATION=ideation,INSTRUCTIONS=instructions)
-            P.S2_SEARCH_PROPOSAL_QUERY.apply(S2_SEARCH_ASSISTANT.obj)
-            self.print_details(S2_SEARCH_ASSISTANT.obj,context_search_assistant,s2_search_query_prompt)
-            _,out=self.call_dialog(search_assistant_tid,s2_search_query_prompt)
-            analysis,query=out['analysis'],out['query']
-            self.stream.write(f'### Analysis\n{analysis}')
-            self.stream.write(f'### Query\n{query}')
-            self.log_fn(f'Searching papers...')
-            rets=self.sss(query,analysis) # TODO: specifically prompts details for search assistant
-            self.log_fn(f'Search finished.')
-            self.stream.markdown(rets,unsafe_allow_html=True)
-            self.print_raw_output(out,'SEARCH_ASSISTANT')
+        # for i in range(self.max_attemps['max_search_rounds']):
+        #     self.stream.write(f'## Searching from S2, round {i+1}...')
+        #     # S2 Search Query
+        #     s2_search_query_prompt=P.S2_SEARCH_PROPOSAL_QUERY(IDEATION=ideation,INSTRUCTIONS=instructions)
+        #     P.S2_SEARCH_PROPOSAL_QUERY.apply(S2_SEARCH_ASSISTANT.obj)
+        #     self.print_details(S2_SEARCH_ASSISTANT.obj,context_search_assistant,s2_search_query_prompt)
+        #     _,out=self.call_dialog(search_assistant_tid,s2_search_query_prompt)
+        #     analysis,query=out['analysis'],out['query']
+        #     self.stream.write(f'### Analysis\n{analysis}')
+        #     self.stream.write(f'### Query\n{query}')
+        #     self.log_fn(f'Searching papers...')
+        #     rets=self.sss(query,analysis) # TODO: specifically prompts details for search assistant
+        #     self.log_fn(f'Search finished.')
+        #     self.stream.markdown(rets,unsafe_allow_html=True)
+        #     self.print_raw_output(out,'SEARCH_ASSISTANT')
 
-            # S2 Search Response
-            s2_search_response_prompt=P.S2_SEARCH_PROPOSAL_RESPONSE(SEARCH_RESULTS=rets)
-            P.S2_SEARCH_PROPOSAL_RESPONSE.apply(S2_SEARCH_ASSISTANT.obj)
-            self.print_details(S2_SEARCH_ASSISTANT.obj,context_search_assistant,s2_search_response_prompt)
-            _,out=self.call_dialog(search_assistant_tid,s2_search_response_prompt)
-            report,references,continue_search=out['report'],out['references'],out['continue_search']
-            self.stream.write(f'### Report\n{report}')
-            self.stream.write(f'### References\n{references}')
-            self.print_raw_output(out,'SEARCH_ASSISTANT')
-            self.stream.write('---')
-            if not continue_search:
-                self.stream.write(f'### Search Assistant chose to stop search')
-                break
-        self.stream.write(f'### Search Finished')
-        return report,references
+        #     # S2 Search Response
+        #     s2_search_response_prompt=P.S2_SEARCH_PROPOSAL_RESPONSE(SEARCH_RESULTS=rets)
+        #     P.S2_SEARCH_PROPOSAL_RESPONSE.apply(S2_SEARCH_ASSISTANT.obj)
+        #     self.print_details(S2_SEARCH_ASSISTANT.obj,context_search_assistant,s2_search_response_prompt)
+        #     _,out=self.call_dialog(search_assistant_tid,s2_search_response_prompt)
+        #     report,references,continue_search=out['report'],out['references'],out['continue_search']
+        #     self.stream.write(f'### Report\n{report}')
+        #     self.stream.write(f'### References\n{references}')
+        #     self.print_raw_output(out,'SEARCH_ASSISTANT')
+        #     self.stream.write('---')
+        #     if not continue_search:
+        #         self.stream.write(f'### Search Assistant chose to stop search')
+        #         break
+        # self.stream.write(f'### Search Finished')
+        # return report,references
 
 
     @register_module(
@@ -370,20 +370,19 @@ class GUFlow(FlowCreator):
             self.log_fn(info,'PROPOSAL')
             if len(passed_proposals)>=self.num_samples['proposal']:
                 break
+            if not self.ptree.acquire_design_lock(self.sess_id): # For benchmark, active sessions + finished designs < max designs
+                self.log_fn(f'Design lock not acquired, design is full, stopping proposal generation...','PROPOSAL')
+                break
             self.log_fn(f'Generating proposal {i+1}...','PROPOSAL')
             cost_raw=copy.deepcopy(self.costs)
             query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
+            costs={k:v-cost_raw[k] for k,v in self.costs.items()} # run cost
             proposal,proposal_traces=RET['proposal'],RET['proposal_traces']
-            costs={k:v-cost_raw[k] for k,v in self.costs.items()}
             self.ptree.propose(self.sess_id,proposal,proposal_traces,costs,self.design_cfg,self.user_input)
             self.log_fn(f'Proposal {i+1} generated: {proposal.modelname} (Passed: {proposal.passed}).','PROPOSAL')
             i+=1
         self.log_fn(f'All proposals generated.','PROPOSAL')
         return query,state,{}
-
-
-    def _o1_selection_debug(self,context,prompt):
-        pass
 
 
     def _generate_proposal(self,query,state,main_tid):
@@ -809,7 +808,7 @@ class GUFlow(FlowCreator):
                         self.stream.write(f'### Query\n{keywords}')
                         self.stream.write(f'### Detail\n{detail}')
                         self.stream.write(f'### Ready\n{ready}')
-                        self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                    self.print_raw_output(out,'PROPOSAL_REVIEWER')
                 
                 _MIN_ROUNDS=2
                 _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS)
@@ -917,7 +916,7 @@ class GUFlow(FlowCreator):
                         self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
                         self.stream.write(review)
                         self.stream.write(suggestions)
-                    self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                        self.print_raw_output(out,'PROPOSAL_REVIEWER')
             else:
                 with self.status_handler(status_info):
                     self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,proposal_review_prompt)
@@ -1042,12 +1041,18 @@ class GUFlow(FlowCreator):
             proposals=[proposal]
             acronyms=[proposal.acronym]
         if len(proposals) == 0:
-            self.stream.write('No successful proposals to implement, stopping design process')
+            self.stream.write('No remaining proposals to implement, stopping design process')
             end_reason = EndReasons.PROPOSAL_FAILED
             self.stream.log(end_reason,'end')
             return query,state,{}
         self.stream.write(f'Implementing {len(proposals)} proposals: {", ".join([f"{i+1}. {proposal.modelname} with rating {proposal.rating} out of 5" for i,proposal in enumerate(proposals)])}')
         for proposal,acronym in zip(proposals,acronyms):
+            if not self.ptree.acquire_design_lock(self.sess_id): # For benchmark, active sessions + finished designs < max designs
+                self.log_fn(f'Design lock not acquired, design is full, stopping implementation...','IMPLEMENTATION')
+                break
+            if self.ptree.is_challenging(acronym):
+                self.stream.write(f'Design {acronym} is too challenging, retried for {self.ptree.challenging_threshold} times already, skipping implementation...')
+                continue
             self.log_fn(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5','IMPLEMENTATION')
             self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
             tree_ckpt,status=self.ptree.get_implementation_checkpoint(acronym)
@@ -1068,10 +1073,7 @@ class GUFlow(FlowCreator):
             if SUCCEED:
                 status='implemented'
             else:
-                if INITIAL_PASS:
-                    status='initial_pass'
-                else:
-                    status='failed'
+                status='initial_pass' if INITIAL_PASS else 'failed'
             self.log_fn(f'Adding implementation to tree, tuning and exporting full LM codes...','IMPLEMENTATION')
             with self.status_handler(f'Adding implementation to tree, tuning and exporting full LM codes...'):
                 self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)

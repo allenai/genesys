@@ -64,12 +64,14 @@ class Listener:
         self.initialize(node_id)
 
     def hanging(self):
-        assert not self.active_mode
+        # assert not self.active_mode
+        self.active_mode = False
         self.node_id = None
         self.doc_ref = None
 
     def wake_up(self,node_id):
-        assert not self.active_mode
+        # assert not self.active_mode
+        self.active_mode = False
         self.node_id = node_id
         self.doc_ref = self.collection.document(self.node_id)
 
@@ -89,6 +91,7 @@ class Listener:
             local_doc['group_id'] = self.group_id
             local_doc['max_design_threads'] = self.max_design_threads
             local_doc['accept_verify_job'] = self.accept_verify_job
+            local_doc['cpu_only_checker'] = self.cpu_only
             U.save_json(local_doc,self.local_dir)
         self.doc_ref = self.collection.document(self.node_id)
     
