@@ -221,6 +221,9 @@ class GUFlow(FlowCreator):
         self.sess_id = sess_id
         self.ptree=system.ptree
         seeds,refs,instruct,self.design_mode=self.ptree.get_session_input(sess_id)
+        if isinstance(self.design_mode,str):
+            self.design_mode=DesignModes(self.design_mode)
+        
         self.stream.write(f'Number of seeds sampled: :green[{len(seeds)}].\tNumber of references: :orange[{len(refs)}].\tWorking in design mode: :violet[{self.design_mode}]')
         self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode,mutation_no_tree=design_cfg['mutation_no_tree'])
         if self.design_mode==DesignModes.MUTATION:
@@ -260,7 +263,7 @@ class GUFlow(FlowCreator):
     @property
     def proposal_cost(self):
         return self.costs['DESIGN_PROPOSER']+self.costs['PROPOSAL_REVIEWER']
-
+    
     def print_raw_output(self,out,agent):
         print_raw_output(self.stream,out)
         self.costs[agent]+=out["_details"]["running_cost"]
@@ -409,6 +412,7 @@ class GUFlow(FlowCreator):
         UNSTRUCT_PROPOSER='o1' in self.agent_types['DESIGN_PROPOSER']
         UNSTRUCT_REVIEWER='o1' in self.agent_types['PROPOSAL_REVIEWER']
 
+
         traces=[]
 
         if self.design_mode!=DesignModes.SCRATCH:
@@ -429,9 +433,11 @@ class GUFlow(FlowCreator):
                 elif self.design_mode==DesignModes.CROSSOVER:
                     DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1C_PROPOSER_BACKGROUND(
                         GAU_BASE=GAU_BASE,PARENTS=query,SIBLINGS=SIBLINGS))
-                else:
+                elif self.design_mode==DesignModes.SCRATCH:
                     DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],P.O1S_PROPOSER_BACKGROUND(
                         GAU_BASE=GAU_BASE,REFS=query))
+                else:
+                    raise ValueError(f'Unsupported design mode: {self.design_mode}')
             else:
                 if self.design_mode==DesignModes.MUTATION:
                     DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM 
@@ -441,8 +447,10 @@ class GUFlow(FlowCreator):
                         DESIGN_PROPOSER_SYSTEM=P.GUM_DESIGN_PROPOSER_SYSTEM_2STAGE
                 elif self.design_mode==DesignModes.CROSSOVER:
                     DESIGN_PROPOSER_SYSTEM=P.GUC_DESIGN_PROPOSER_SYSTEM_ISEARCH
-                else:
+                elif self.design_mode==DesignModes.SCRATCH:
                     DESIGN_PROPOSER_SYSTEM=P.GUS_DESIGN_PROPOSER_SYSTEM_ISEARCH
+                else:
+                    raise ValueError(f'Unsupported design mode: {self.design_mode}')
                 DESIGN_PROPOSER=reload_role('design_proposer',self.agents['DESIGN_PROPOSER'],DESIGN_PROPOSER_SYSTEM(GAU_BASE=GAU_BASE))
             design_proposer_tid=self.dialog.fork(main_tid,USER_CALLER,DESIGN_PROPOSER,context=context_design_proposer,
                                                 alias='design_proposer',note=f'Starting design proposal...')
@@ -469,7 +477,7 @@ class GUFlow(FlowCreator):
                         GU_DESIGN_PROPOSAL_FINISH=P.GUC_DESIGN_PROPOSAL_ISEARCH_FINISH
                         proposal_prompt=GUC_DESIGN_PROPOSAL(PARENTS=query,SIBLINGS=SIBLINGS)
                     GUC_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
-                else:
+                elif self.design_mode==DesignModes.SCRATCH:
                     if UNSTRUCT_PROPOSER:
                         GUS_DESIGN_PROPOSAL=P.O1M_DESIGN_PROPOSAL # reuse it
                         proposal_prompt=GUS_DESIGN_PROPOSAL()
@@ -478,6 +486,8 @@ class GUFlow(FlowCreator):
                         GU_DESIGN_PROPOSAL_FINISH=P.GUS_DESIGN_PROPOSAL_ISEARCH_FINISH
                         proposal_prompt=GUS_DESIGN_PROPOSAL(REFS=query)
                     GUS_DESIGN_PROPOSAL.apply(DESIGN_PROPOSER.obj)
+                else:
+                    raise ValueError(f'Unsupported design mode: {self.design_mode}')
             else:
                 status_info=f'Refining design proposal (attempt {attempt})...'
                 if self.design_mode==DesignModes.MUTATION:
@@ -501,15 +511,17 @@ class GUFlow(FlowCreator):
                     proposal_prompt=GUC_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                             PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                     GUC_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
-                else:
+                elif self.design_mode==DesignModes.SCRATCH:
                     if UNSTRUCT_PROPOSER:
-                        GUS_PROPOSAL_REFINEMENT=P.GUS_PROPOSAL_REFINEMENT_FINISH # reuse it
+                        GUS_PROPOSAL_REFINEMENT=P.O1M_DESIGN_PROPOSAL_REFINEMENT # reuse it
                     else:
                         GUS_PROPOSAL_REFINEMENT=P.GUS_DESIGN_PROPOSAL_ISEARCH_REFINEMENT
                         GU_DESIGN_PROPOSAL_FINISH=P.GUS_PROPOSAL_REFINEMENT_FINISH
                     proposal_prompt=GUS_PROPOSAL_REFINEMENT(REVIEW=review,RATING=rating,SUGGESTIONS=suggestions,
                                                             PASS_OR_NOT='Pass' if rating>=4 else 'Fail')
                     GUS_PROPOSAL_REFINEMENT.apply(DESIGN_PROPOSER.obj)
+                else:
+                    raise ValueError(f'Unsupported design mode: {self.design_mode}')
             
             ideation,instructions,search_report,search_references=None,None,None,None
             thoughts,keywords,description=None,None,None
@@ -618,9 +630,11 @@ class GUFlow(FlowCreator):
                         elif self.design_mode==DesignModes.CROSSOVER:
                             o1_finish_prompt=P.O1C_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
                             PROPOSAL_FINISH=P.O1C_PROPOSAL_FINISH
-                        else:
+                        elif self.design_mode==DesignModes.SCRATCH:
                             o1_finish_prompt=P.O1S_PROPOSAL_FINISH(SEARCH_RESULTS=search_ret)
                             PROPOSAL_FINISH=P.O1S_PROPOSAL_FINISH
+                        else:
+                            raise ValueError(f'Unsupported design mode: {self.design_mode}')
                         self.print_details(DESIGN_PROPOSER.obj,context_design_proposer,o1_finish_prompt)
                         PROPOSAL_FINISH.apply(DESIGN_PROPOSER.obj)
                         _,out=self.call_dialog(design_proposer_tid,o1_finish_prompt,context_design_proposer) # all notes + final query
