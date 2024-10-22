@@ -927,11 +927,13 @@ class Selector:
 
     def _random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None):
         unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+
         unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
         n_unverified=sum([len(v) for v in unverified_by_scale.values()])
         if n_unverified==0:
             return None,None
-        lowest_scale=sorted(unverified_by_scale.keys())[0]
+        scales=list(unverified_by_scale.keys())
+        lowest_scale = sorted(scales,key=lambda x:int(x.replace('M','')))[0]
         design_id = random.choice(unverified_by_scale[lowest_scale])
         return design_id,lowest_scale
 

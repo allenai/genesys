@@ -191,7 +191,7 @@ class GUFlow(FlowCreator):
             'None':None, # None for search assistiant 
         }
         AGENT_TYPES_MODEL_NAMES = {
-            'claude3.5_sonnet':'claude-3-5-sonnet-20240620', # maybe incompatible with exec_utils
+            'claude3.5_sonnet':'claude-3-5-sonnet-20241022', # maybe incompatible with exec_utils
             'gpt4o_0806':'gpt-4o-2024-08-06',
             'gpt4o_mini':'gpt-4o-mini',
             'o1_preview':'o1-preview',

@@ -92,7 +92,7 @@ def openai_costs(usage,model_name):
     return usage
 
 ANTHROPIC_COSTS_DICT={
-    "claude-3-5-sonnet-20240620":{
+    "claude-3-5-sonnet-20241022":{
         'input':3/1e6,
         'output':15/1e6,
         'cache_creation':3.75/1e6,
@@ -101,7 +101,7 @@ ANTHROPIC_COSTS_DICT={
 }
 
 
-def anthropic_costs(usage,model_name='claude-3-5-sonnet-20240620'):
+def anthropic_costs(usage,model_name='claude-3-5-sonnet-20241022'):
     costs=ANTHROPIC_COSTS_DICT
     cost=usage['input_tokens']*costs[model_name]['input'] + usage['output_tokens']*costs[model_name]['output']
     if 'cache_creation_input_tokens' in usage:
@@ -128,11 +128,11 @@ OPENAI_OUTPUT_BUFFER={
 
 
 ANTHROPIC_TOKEN_LIMITS={
-    "claude-3-5-sonnet-20240620":200000,
+    "claude-3-5-sonnet-20241022":200000,
 }
 
 ANTHROPIC_OUTPUT_BUFFER={
-    "claude-3-5-sonnet-20240620":8192,
+    "claude-3-5-sonnet-20241022":8192,
 }
 
 
@@ -478,7 +478,7 @@ def claude__call__(
         logprobs=False, # not supported for claude
         use_cache: bool = False, # XXX: not working with self-managed contexts as its changing, hard to track
         system: Optional[str] = None,
-        model_name: Optional[str] = 'claude-3-5-sonnet-20240620',
+        model_name: Optional[str] = 'claude-3-5-sonnet-20241022',
         **kwargs
     ):
     """Makes a call the underlying model 

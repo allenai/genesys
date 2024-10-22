@@ -124,6 +124,8 @@ class CommandCenter:
         # assigned_verify_workloads = False
         if to_sleep<=0:
             return to_sleep
+        if self.evosys.benchmark_mode:
+            return to_sleep
         for node_id in verify_workloads:
             if verify_workloads[node_id] == 0 and self.evosys.CM.accept_verify_job[node_id]:
                 if self.evosys.CM.verify_command(node_id,resume=self.allow_resume):
@@ -159,17 +161,15 @@ class CommandCenter:
                 # self.evosys.CM.get_active_connections() # refresh the connection status
                 design_workloads, verify_workloads = self.evosys.CM.get_all_workloads() # will refresh the connection status
                 design_workloads = {k:len(v) for k,v in design_workloads.items() if k in self.evosys.CM.connections}
-                
+                verify_workloads = {k:len(v) for k,v in verify_workloads.items() if k in self.evosys.CM.connections}
                 
                 if not self.evosys.benchmark_mode:
-                    verify_workloads = {k:len(v) for k,v in verify_workloads.items() if k in self.evosys.CM.connections}
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}, Verify workloads: {verify_workloads}')
                 else:
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}')
 
                 to_sleep = self.assign_design_workloads(design_workloads,to_sleep)
-                if not self.evosys.benchmark_mode:
-                    to_sleep = self.assign_verify_workloads(verify_workloads,to_sleep)
+                to_sleep = self.assign_verify_workloads(verify_workloads,to_sleep)
 
                 self.doc_ref.update({'last_heartbeat': firestore.SERVER_TIMESTAMP})
             
@@ -203,6 +203,9 @@ def x_evolve(command_center):
         f'--max_designs_total {command_center.max_designs_total} '
         f'--group_id {command_center.evosys.CM.group_id}'
     )
+    if not command_center.allow_resume:
+        cmd += ' --no_resume'
+
     # Use subprocess.DETACH_PROCESS on Windows, or os.setsid on Unix-like systems
     if os.name == 'nt':  # For Windows
         process = subprocess.Popen(
@@ -336,6 +339,8 @@ def network_status(evosys,benchmark_mode):
                 running_verifications_df = pd.DataFrame(running_verifications).T
                 del running_verifications_df['latest_log']
                 del running_verifications_df['timestamp']
+                if 'wandb_url' in running_verifications_df.columns:
+                    running_verifications_df.rename(columns={'wandb_url':'W&B Training Run'},inplace=True)
                 if 'W&B Training Run' not in running_verifications_df.columns:
                     wandb_urls = []
                     for sess_id in running_verifications_df.index:

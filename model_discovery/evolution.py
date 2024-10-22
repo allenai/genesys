@@ -486,6 +486,12 @@ class FirestoreManager:
             return None
         return log_ref.to_dict()
     
+    def upload_baselines(self,overwrite=False,verbose=False):
+        pass
+
+    def download_baselines(self,overwrite=False,verbose=False):
+        pass
+    
     def sync_sessions_to_db(self,overwrite=False,verbose=False):
         log_collection=self.log_doc_ref.collection('design_sessions')
         index_ref = log_collection.document('index')
@@ -761,7 +767,7 @@ class LibraryReference(NodeObject):
                     if 'trainer_state.json' not in reports:
                         error=True
                     if not error:
-                        self.verifications[scale]=_verification
+                        self.verifications[scale]={'20':_verification}
                     
         else:
             self.code=None
@@ -1190,12 +1196,6 @@ class DesignArtifact(NodeObject):
 #     return
 
 
-class DesignState(Enum):
-    BEGIN = 'begin'
-    PROPOSED = 'proposed'
-    FAILED = 'failed'
- 
-
 
 class PhylogeneticTree:
     # Read from a design base and construct a phylogenetic tree
@@ -1223,8 +1223,8 @@ class PhylogeneticTree:
     │   └── ...
     | ... # units, etc.
     """
-    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, 
-            remote_db=None, use_remote_db=True,challenging_threshold=3,CM=None): 
+    def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True,
+                 challenging_threshold=3,CM=None,token_mults=None): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
@@ -1241,6 +1241,7 @@ class PhylogeneticTree:
         self.CM = CM
         self.use_remote_db=use_remote_db
         self.remote_db = remote_db
+        self.token_mults = token_mults
         if use_remote_db and self.remote_db is not None:
             self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
             self.FM.sync_from_db()
@@ -1369,7 +1370,14 @@ class PhylogeneticTree:
                 vector['units'][unit_name] = unit.rating
         vector['verifications'] = {}
         for scale in node.verifications:
-            verification_report = node.verifications[scale].verification_report
+            vs = node.verifications[scale]
+            if is_baseline:
+                token_mult = 20 if self.token_mults is None else self.token_mults[scale]
+                if token_mult not in vs:
+                    continue
+                verification_report = vs[token_mult].verification_report
+            else:
+                verification_report = vs.verification_report
             if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
                 if 'wandb_ids.json' in verification_report:
                     verification_report.update(get_history_report(verification_report['wandb_ids.json']))
@@ -1497,8 +1505,11 @@ class PhylogeneticTree:
         U.mkdir(design_dir)
         return design_dir
     
-    def coreref_dir(self, acronym: str):
-        coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym,'reports')
+    def coreref_dir(self, acronym: str, token_mult=20):
+        if token_mult==20:
+            coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym,'reports')
+        else:
+            coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym,'reports',f'token_mult_{token_mult}')
         U.mkdir(coreref_dir)
         return coreref_dir
     
@@ -1744,7 +1755,7 @@ class PhylogeneticTree:
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()
 
-    def verify(self, acronym: str, scale: str, verification_report, RANDOM_TESTING=False): # attach a verification report under a scale to an implemented node
+    def verify(self, acronym: str, scale: str, verification_report, RANDOM_TESTING=False, token_mult=20): # attach a verification report under a scale to an implemented node
         if 'eval_results.json' not in verification_report:
             return
         if RANDOM_TESTING:
@@ -1764,7 +1775,8 @@ class PhylogeneticTree:
             self.FM.update_index()
         else:
             # for baselines, it should be saved in repo already, can be synced by github
-            verification.save(self.coreref_dir(acronym))
+            verification.save(self.coreref_dir(acronym,token_mult))
+            self.upload_baselines(overwrite=True,verbose=True)
 
     def unique_acronym(self, acronym: str, max_length=32) -> str:
         acronym = acronym.lower()
@@ -2146,7 +2158,6 @@ class ConnectionManager:
         running_verifications = {}
         log_collection = self.log_doc_ref.collection('verifications')
         index_term = log_collection.document('index').get()
-        index_ref = self.log_doc_ref.collection('verifications').document('index')
         if not index_term.exists:
             return {}
         index_term = index_term.to_dict()
@@ -2389,7 +2400,8 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"Checkpoint directory: {self.evo_dir}")
 
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],
-                self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],CM=self.CM)
+                self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],
+                CM=self.CM,token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS))
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         
         # Scan VE for missing verifications
@@ -2782,6 +2794,7 @@ class EvolutionSystem(exec_utils.System):
 
     def verify(self,args,design_id=None,scale=None,in_process=False): # choose then verify
         if design_id is None or scale is None:
+            self.ptree.update_design_tree()
             design_id,scale=self.selector.select_verify()
         if design_id is None or scale is None: # no available design to verify
             return None
@@ -2832,7 +2845,8 @@ class EvolutionSystem(exec_utils.System):
         else:
             report_dir=U.pjoin(self.evo_dir,'ve',design_id+f'_{scale}','report.json')
         report=U.load_json(report_dir)
-        self.ptree.verify(design_id,scale,report,RANDOM_TESTING=args.RANDOM_TESTING)
+        token_mult = self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS)[scale]
+        self.ptree.verify(design_id,scale,report,RANDOM_TESTING=args.RANDOM_TESTING,token_mult=token_mult)
         if in_process:
             sys.exit(0)
         if report!={}: 
@@ -2918,7 +2932,7 @@ if __name__ == '__main__':
     # print('*'*20)
     if args.mode=='test':
         params={
-            'evoname':'evolution_test1',
+            'evoname':'temp',
             'scales':'14M,31M,70M',
             'selection_ratio':0.25,
             'design_budget':0,
