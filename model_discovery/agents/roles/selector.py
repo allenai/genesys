@@ -632,14 +632,16 @@ def get_ranked_quadrant(select_cfg,design_rank,confidence_rank):
 
 class Selector:
     def __init__(self,ptree,select_cfg,_verify_budget,stream,
-            design_budget_limit,budget_type):
+            design_budget_limit,budget_type,token_mults,target_scales):
         self.ptree=ptree
         self.select_cfg=select_cfg
         self.budget_type=budget_type
         self._verify_budget=_verify_budget
         self.stream=stream
         self.design_budget_limit=design_budget_limit
-        
+        self.token_mults=token_mults
+        self.target_scales=target_scales
+
     @property
     def design_budget(self):
         if self.design_budget_limit>0:
@@ -905,6 +907,10 @@ class Selector:
         return unverified_design_scales
 
     def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None):
+        design,scale=self._verify_baselines(exclude_list)
+        if design is not None:
+            if (design,scale) not in exclude_list:
+                return design,scale
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
@@ -924,6 +930,22 @@ class Selector:
             return self._random_select_verify(available_verify_budget,exclude_list,select_cfg)  
         else:
             raise ValueError(f"Invalid verify strategy: {verify_strategy}")
+        
+    def _verify_baselines(self,exclude_list=[]):
+        self.ptree.update_baselines()
+        baselines = self.ptree.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+        for scale in self.target_scales:
+            mult=self.token_mults[scale]
+            for acronym in baselines:
+                node = self.ptree.get_node(acronym)['data']
+                if not node.verifications:
+                    return acronym,scale
+                if scale not in node.verifications:
+                    return acronym,scale
+                if mult not in node.verifications[scale]:
+                    return acronym,scale
+        return None,None
+            
 
     def _random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None):
         unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale

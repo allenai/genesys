@@ -104,6 +104,7 @@ class FirestoreManager:
         self.evoname = evoname
         self.remote_db = remote_db
         self.collection=remote_db.collection(evoname)
+        self.baseline_collection=remote_db.collection('baselines')
         self.key_dict={
             'metadata':'m',
             'proposal':'p',
@@ -187,27 +188,38 @@ class FirestoreManager:
             if config:
                 U.save_json(config,U.pjoin(ckpt_dir,doc_id,'config.json'))
 
-    def get_index(self):
-        index=self.collection.document('index').get().to_dict()
+    def get_index(self,is_baseline=False):
+        collection = self.baseline_collection if is_baseline else self.collection
+        index=collection.document('index').get().to_dict()
         if index is None:
             index={}
         _index=self.decompress_index(index)
-        if self.index is None:
-            self.index=_index
+        if is_baseline:
+            self.baseline_index=_index
         else:
-            for id in _index:
-                if id not in self.updated_terms:
-                    self.updated_terms.append(id)
-                else:
-                    _term=_index[id]
-                    term=self.index[id]
-                    if U.dict_diff(term,_term):
+            if self.index is None:  
+                self.index=_index
+            else:
+                for id in _index:
+                    if id not in self.updated_terms:
                         self.updated_terms.append(id)
-            self.index=_index
-        self.fix_index()
+                    else:
+                        _term=_index[id]
+                        term=self.index[id]
+                        if U.dict_diff(term,_term):
+                            self.updated_terms.append(id)
+                self.index=_index
+            self.fix_index()
+        return self.index
+        
+    def get_baseline_index(self):
+        self.get_index(is_baseline=True)
+        return self.baseline_index
 
-    def update_index(self,merge=True):
-        self.safe_upload(self.collection.document('index'),self.compress_index(self.index),merge=merge)
+    def update_index(self,merge=True,is_baseline=False):
+        collection = self.baseline_collection if is_baseline else self.collection
+        Index = self.baseline_index if is_baseline else self.index
+        self.safe_upload(collection.document('index'),self.compress_index(Index),merge=merge)
 
     def doc_to_design(self,doc):
         design_data = doc.to_dict()
@@ -288,9 +300,10 @@ class FirestoreManager:
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}"')
 
-    def upload_collection_key_data(self, design_id, collection_name, key, data, overwrite=False, verbose=False):
+    def upload_collection_key_data(self, design_id, collection_name, key, data, overwrite=False, verbose=False,collection=None):
         key=str(key)
-        design_ref = self.collection.document(design_id)
+        collection = collection if collection is not None else self.collection
+        design_ref = collection.document(design_id)
         data_ref = design_ref.collection(collection_name).document(str(key))
         if design_id not in self.index:
             self.index[design_id]={}
@@ -333,24 +346,26 @@ class FirestoreManager:
                     else:
                         print(f'Failed to upload round "{round_idx}" for design "{design_id}" implementation history "{idx}"')
 
-    def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False):
+    def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False,is_baseline=False):
+        collection = self.baseline_collection if is_baseline else self.collection
+        Index = self.baseline_index if is_baseline else self.index  
         reports=verification.pop('verification_report')
         if 'eval_results.json' not in reports:
             return
         if 'trainer_state.json' not in reports:
             return
-        if design_id not in self.index:
-            self.index[design_id]={}
-        if 'verifications' not in self.index[design_id]:
-            self.index[design_id]['verifications']={}
+        if design_id not in Index:
+            Index[design_id]={}
+        if 'verifications' not in Index[design_id]:
+            Index[design_id]['verifications']={}
         upload=True
-        if scale in self.index[design_id]['verifications'] and not overwrite:
+        if scale in Index[design_id]['verifications'] and not overwrite:   
             upload=False
             if verbose:
                 print(f'Verification for scale "{scale}" already exists in design "{design_id}"')
         if upload:
-            self.index[design_id]['verifications'][scale]={}
-            if self.safe_upload(self.collection.document(design_id).collection('verifications').document(scale),verification):
+            Index[design_id]['verifications'][scale]={}        
+            if self.safe_upload(collection.document(design_id).collection('verifications').document(scale),verification):
                 print(f'Uploaded verification metadata for scale "{scale}" in design "{design_id}"')
             else:
                 print(f'Failed to upload verification metadata for scale "{scale}" in design "{design_id}"')
@@ -358,18 +373,22 @@ class FirestoreManager:
             if key in ['training_record.csv','system_metrics.csv']:
                 continue # XXX: skip these files for now
             upload=True        
-            if key in self.index[design_id]['verifications'][scale] and not overwrite:
+            if key in Index[design_id]['verifications'][scale] and not overwrite:
                 if key in ['training_record.csv','system_metrics.csv']: continue
                 upload=False
                 if verbose:
                     print(f'Verification report for scale "{scale}" and key "{key}" already exists in design "{design_id}"')
             if upload:
-                if self.safe_upload(self.collection.document(design_id).collection('verifications').document(scale).collection('verification_report').document(key),report):
-                    self.index[design_id]['verifications'][scale][key]=1
+                if self.safe_upload(collection.document(design_id).collection('verifications').document(scale).collection('verification_report').document(key),report):
+                    Index[design_id]['verifications'][scale][key]=1
                     print(f'Uploaded verification report for scale "{scale}" and key "{key}" in design "{design_id}"')
                 else:
                     print(f'Failed to upload verification report for scale "{scale}" and key "{key}" in design "{design_id}"')
-            
+        if is_baseline:
+            self.baseline_index=Index
+        else:
+            self.index=Index
+
     def load_design_local(self, design_id):
         design_path = os.path.join(self.db_dir, 'designs', design_id)
         if not U.pexists(design_path):
@@ -486,11 +505,38 @@ class FirestoreManager:
             return None
         return log_ref.to_dict()
     
-    def upload_baselines(self,overwrite=False,verbose=False):
-        pass
-
-    def download_baselines(self,overwrite=False,verbose=False):
-        pass
+    def upload_baselines(self,ptree,overwrite=False,verbose=False):
+        corerefs=ptree.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+        for coreref in corerefs:
+            node=ptree.get_node(coreref)['data']
+            if node.verifications:
+                for scale,verifications in node.verifications.items():
+                    for mult,verification in verifications.items():
+                        scale = f'{scale}_{mult}'
+                        self.upload_verification(coreref,verification.verification_report,scale,overwrite=overwrite,verbose=verbose,is_baseline=True)
+    
+    def download_baselines(self,ptree,overwrite=False,verbose=False):
+        # TODO: WIP
+        self.get_baseline_index()
+        for acronym in self.baseline_index:
+            index_term=self.baseline_index[acronym]
+            if 'verifications' in index_term:
+                for scale_mult in index_term['verifications']:
+                    scale,mult=scale_mult.split('_')
+                    coreref_dir=ptree.coreref_dir(acronym,mult)
+                    verification_path=U.pjoin(coreref_dir,'verifications',scale+'.json')
+                    if not U.pexists(verification_path) or overwrite:
+                        U.mkdir(U.pjoin(coreref_dir,'verifications'))
+                        verification=self.baseline_collection.document(acronym).collection('verifications').document(scale).get().to_dict()
+                        if not verification:
+                            continue
+                        verification['verification_report']={}
+                        for key in index_term['verifications'][scale_mult]:
+                            report=self.baseline_collection.document(acronym).collection('verifications').document(scale_mult).collection('verification_report').document(key).get().to_dict()
+                            verification['verification_report'][key]=report
+                        U.save_json(verification,verification_path)
+                        print(f'Downloaded verification for scale {scale} and mult {mult} in baseline {acronym}')
+            
     
     def sync_sessions_to_db(self,overwrite=False,verbose=False):
         log_collection=self.log_doc_ref.collection('design_sessions')
@@ -620,6 +666,7 @@ class FirestoreManager:
 
     def sync_from_db(self,overwrite=False): # download all designs from db if out of date
         self.get_index()
+        self.get_baseline_index()
         for design_id in self.index:
             self.download_design(design_id,overwrite=overwrite)
         print('Local designs synced from remote DB')
@@ -644,13 +691,13 @@ DESIGN_COLOR='#5698c3'
 DESIGN_IMPLEMENTED_COLOR='#1177b0'
 
 NODE_COLOR_MAP={
-    '14M':'#5698c3',
-    '31M':'#1177b0',
-    '70M':'#15559a',
-    '125M':'#f0a1a8',
-    '350M':'#f07c82',
-    '760M':'#ee3f4d',
-    '1300M':'#fcb70a',
+    '14M':'#8B81C3',
+    '31M':'#70649A',
+    '70M':'#9B90C2',
+    '125M':'#8A6BBE',
+    '350M':'#6A4C9C',
+    '760M':'#77428D',
+    '1300M':'#4A225D',
 }
 
 ROOT_COLOR='#9eccab'
@@ -731,6 +778,41 @@ class LibraryReference(NodeObject):
     tree: GAUTree = None
     verifications: Dict[str, Verification] = field(default_factory=dict)
 
+    def load_verifications(self,verification_dir,mult=20):
+        if U.pexists(verification_dir):
+            for scale in os.listdir(verification_dir):
+                report_dir=U.pjoin(verification_dir,scale)
+                report=U.load_json(report_dir)
+                scale=scale.split('.')[0]
+                if 'verification_report' in report:
+                    _verification=Verification.from_dict(report['verification_report'])
+                else:
+                    _verification=Verification(scale=scale,verification_report=report)
+                reports=_verification.verification_report
+                error=False
+                # if 'wandb_ids.json' not in reports:
+                #     error=True
+                if 'eval_results.json' not in reports:
+                    error=True
+                if 'trainer_state.json' not in reports:
+                    error=True
+                if not error:
+                    if scale not in self.verifications:
+                        self.verifications[scale]={}
+                    self.verifications[scale][f'{mult}']=_verification
+
+    def reload_verifications(self):
+        core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym)
+        DATA_DIR=os.environ.get('DATA_DIR')
+        if U.pexists(core_dir):
+            verification_dir=U.pjoin(core_dir,'verifications')
+            token_mults_dir=U.pjoin(DATA_DIR,'corerefs',self.acronym,'token_mults')
+            U.mkdir(verification_dir)
+            # self.load_verifications(verification_dir,mult=20)
+            U.mkdir(token_mults_dir)
+            for mult in os.listdir(token_mults_dir):
+                self.load_verifications(U.pjoin(token_mults_dir,mult),mult=int(mult))
+
     def __post_init__(self):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
         go_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.go')
@@ -748,26 +830,7 @@ class LibraryReference(NodeObject):
                 self.tree=GAUTree.load_from_base(tree_dir)
             if self.tree is not None:
                 print(f'{self.acronym} tree loaded')
-            verification_dir=U.pjoin(core_dir,'verifications')
-            if U.pexists(verification_dir):
-                for scale in os.listdir(verification_dir):
-                    report_dir=U.pjoin(verification_dir,scale)
-                    report=U.load_json(report_dir)
-                    scale=scale.split('.')[0]
-                    if 'verification_report' in report:
-                        _verification=Verification.from_dict(report['verification_report'])
-                    else:
-                        _verification=Verification(scale=scale,verification_report=report)
-                    reports=_verification.verification_report
-                    error=False
-                    # if 'wandb_ids.json' not in reports:
-                    #     error=True
-                    if 'eval_results.json' not in reports:
-                        error=True
-                    if 'trainer_state.json' not in reports:
-                        error=True
-                    if not error:
-                        self.verifications[scale]={'20':_verification}
+            self.reload_verifications()
                     
         else:
             self.code=None
@@ -1348,9 +1411,16 @@ class PhylogeneticTree:
             return budgets,verified
         else:
             return budgets
+        
+    def update_baselines(self):
+        self.FM.download_baselines()
+        designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+        for design in designs:
+            self.G.nodes[design]['data'].reload_verifications()
 
     def get_design_vectors(self,is_baseline=False): # a more numerical representation of a design, selector to use
         if is_baseline:
+            self.FM.download_baselines()
             designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
         else:
             self.update_design_tree()
@@ -1506,10 +1576,12 @@ class PhylogeneticTree:
         return design_dir
     
     def coreref_dir(self, acronym: str, token_mult=20):
-        if token_mult==20:
-            coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym,'reports')
-        else:
-            coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym,'reports',f'token_mult_{token_mult}')
+        # token_mult = int(token_mult)
+        # if token_mult==20:
+        #     coreref_dir=U.pjoin(LIBRARY_DIR,'core',acronym)
+        # else:
+        DATA_DIR=os.environ.get("DATA_DIR")
+        coreref_dir=U.pjoin(DATA_DIR,'corerefs',acronym,'token_mults',f'{token_mult}')
         U.mkdir(coreref_dir)
         return coreref_dir
     
@@ -1762,8 +1834,8 @@ class PhylogeneticTree:
             eval_results = verification_report['eval_results.json']
             self.remote_db.collection('random_baseline').document('eval_results.json').set(eval_results)
             return
-        if 'trainer_state.json' not in verification_report:
-            return
+        # if 'trainer_state.json' not in verification_report:
+        #     return
         design_artifact=self.get_node(acronym)
         acronym=design_artifact.acronym
         verification=Verification(scale=scale, verification_report=verification_report)
@@ -1776,7 +1848,8 @@ class PhylogeneticTree:
         else:
             # for baselines, it should be saved in repo already, can be synced by github
             verification.save(self.coreref_dir(acronym,token_mult))
-            self.upload_baselines(overwrite=True,verbose=True)
+            self.FM.upload_baselines(overwrite=True,verbose=True)
+            self.FM.update_index(is_baseline=True)
 
     def unique_acronym(self, acronym: str, max_length=32) -> str:
         acronym = acronym.lower()
@@ -2416,7 +2489,9 @@ class EvolutionSystem(exec_utils.System):
                 self.ptree.verify(node.acronym,scale,report)
 
         self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,
-            self.stream,self.design_budget_limit,self.params['budget_type'])
+            self.stream,self.design_budget_limit,self.params['budget_type'],
+            token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS),
+            target_scales=self.target_scales)
 
         if self.params['no_agent']:
             self.agents = None
