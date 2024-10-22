@@ -52,7 +52,7 @@ def GENERAL_JSON_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       output["_details"]["running_cost"] = raw_output.usage['cost']
       return output
       
-      
+
 def GENERAL_CODE_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
@@ -1564,7 +1564,7 @@ GUM_PROPOSAL_REVIEW_ISEARCH_CONT=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_CONT_pr
 GUM_PROPOSAL_REVIEW_ISEARCH_FINAL=AgentPrompt(GUM_PROPOSAL_REVIEW_ISEARCH_FINAL_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 
 GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN=AgentPrompt(GUC_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
-
+GUS_PROPOSAL_REVIEW_ISEARCH_BEGIN=AgentPrompt(GUS_PROPOSAL_REVIEW_ISEARCH_BEGIN_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 # endregion
 
 
@@ -1945,6 +1945,7 @@ Be strict and objective. Approve the proposal only if it meets the necessary sta
 
 GUM_PROPOSAL_REREVIEW = AgentPrompt(GUM_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 GUC_PROPOSAL_REREVIEW = AgentPrompt(GUC_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
+GUS_PROPOSAL_REREVIEW = AgentPrompt(GUS_PROPOSAL_REREVIEW_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_format)
 
 GUM_PROPOSAL_REREVIEW_ISEARCH_prompt = GUM_PROPOSAL_REREVIEW_prompt+ """
 Please review with the help of the search engine.
@@ -1960,7 +1961,7 @@ Please review with the help of the search engine.
 
 GUM_PROPOSAL_REREVIEW_ISEARCH = AgentPrompt(GUM_PROPOSAL_REREVIEW_ISEARCH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 GUC_PROPOSAL_REREVIEW_ISEARCH = AgentPrompt(GUC_PROPOSAL_REREVIEW_ISEARCH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
-
+GUS_PROPOSAL_REREVIEW_ISEARCH = AgentPrompt(GUS_PROPOSAL_REREVIEW_ISEARCH_prompt,GENERAL_JSON_parser,GUM_PROPOSAL_REVIEW_ISEARCH_format)
 # endregion
 
 
