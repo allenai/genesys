@@ -1,6 +1,7 @@
 import time
 import os
 import json
+import re
 
 from typing import List,Any,Optional,Dict,Union
 from pydantic import BaseModel
@@ -13,6 +14,56 @@ from exec_utils.models.utils import openai_costs
 
 
 ## YOU SHOULD ALWAYS THE CALLS HERE INSTEAD OF THE ORIGINAL CALLS IN EXEC_UTILS
+
+
+
+
+
+def find_level1_blocks(text):
+    # Regular expressions for opening and closing patterns
+    opening_pattern = r'```[^\s]+'  # Matches any pattern like ```xxx followed by non-whitespace characters
+    closing_pattern = r'```(?=\s|$)'  # Matches standalone closing patterns, followed by space, newline, or end of string
+
+    # Finding all opening and closing positions
+    open_positions = [(m.start(), m.group()) for m in re.finditer(opening_pattern, text)]
+    close_positions = [m.start() for m in re.finditer(closing_pattern, text)]
+
+    matches = []
+    open_stack = []
+    nesting_level = 0
+
+    i, j = 0, 0
+    last_match_end = -1
+
+    while i < len(open_positions) or j < len(close_positions):
+        if i < len(open_positions) and (j >= len(close_positions) or open_positions[i][0] < close_positions[j]):
+            # Handle an opening pattern
+            open_stack.append(open_positions[i])
+            nesting_level += 1
+            i += 1
+        else:
+            # Handle a closing pattern
+            if open_stack:
+                start_pos, start_tag = open_stack.pop()
+                nesting_level -= 1
+                # If we're back to level 0, it's a level 1 match
+                if nesting_level == 0:
+                    match_start = start_pos
+                    match_end = close_positions[j] + len('```')
+                    if match_start > last_match_end:
+                        matches.append((match_start, match_end))
+                        last_match_end = match_end
+            j += 1
+
+    # Extract the substrings corresponding to the level 1 matches
+    result = [text[start:end] for start, end in matches]
+    return result
+
+
+def block_finder(raw_text:str,block_tag:str):
+   blocks = find_level1_blocks(raw_text)
+   matches = [block[len(f'```{block_tag}'):-3].strip() for block in blocks if block.startswith(f'```{block_tag}')]
+   return matches
 
 
 OPENAI_COSTS_DICT={
@@ -128,6 +179,8 @@ def truncate_text(text,token_limit,model_name,buffer=128):
     return text
 
 def truncate_history(history,token_limit,model_name,buffer=128):
+    if len(history)==0:
+        return history
     truncated_history=[]
     for content,role in history[::-1]: # add latest messages first
         num_tokens=count_tokens(content,model_name)
@@ -141,7 +194,7 @@ def truncate_history(history,token_limit,model_name,buffer=128):
     return truncated_history
 
 def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
-    history = copy.deepcopy(history)
+    history = copy.deepcopy(list(history))
     _token_limit=get_token_limit(model_name)
     token_limit=_token_limit
     if system is not None:
@@ -157,7 +210,7 @@ def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
         history = []
     else:
         history=truncate_history(history,token_limit,model_name,buffer)
-    return history,prompt
+    return tuple(history),prompt
 
 
 class ModelOutputPlus(UtilityModel):
@@ -442,7 +495,7 @@ def claude__call__(
         The optional model state at the point of querying 
     
     """
-    history=context_safe_guard(history,model._config.model_name,prompt,system)
+    history,prompt=context_safe_guard(history,model._config.model_name,prompt,system)
     messages=ConversationHistory(history,prompt).get_turns(use_cache)
     model._config.model_name=model_name
     if use_cache:

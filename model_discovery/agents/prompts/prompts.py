@@ -6,7 +6,7 @@ import re
 import json
 from typing import Dict, Any, List
 from pydantic import BaseModel, Field
-from ..agent_utils import ModelOutputPlus
+from ..agent_utils import ModelOutputPlus,block_finder
 from enum import Enum
 
 
@@ -51,11 +51,12 @@ def GENERAL_JSON_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       output["_details"]["cost"] = raw_output.usage
       output["_details"]["running_cost"] = raw_output.usage['cost']
       return output
-
+      
+      
 def GENERAL_CODE_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      codes = re.findall(r"```python(.*?)```", raw_text, re.DOTALL)
+      codes = block_finder(raw_text,'python')
       if not codes:
          codes = ['No code is generated, please try again.']
       output["text"] = raw_text
@@ -4475,8 +4476,8 @@ Follow these guidelines in your response:
 def O1_SEARCH_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      keywords = re.findall(r"```keywords(.*?)```", raw_text, re.DOTALL)
-      description = re.findall(r"```description(.*?)```", raw_text, re.DOTALL)
+      keywords = block_finder(raw_text,'keywords')
+      description = block_finder(raw_text,'description')
       output["text"] = raw_text
       kws=[]
       for kw in keywords:
@@ -4667,14 +4668,14 @@ Now please give your final proposal.
 def O1M_PROPOSAL_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      selection = re.findall(r"```selection(.*?)```", raw_text, re.DOTALL)
+      selection = block_finder(raw_text,'selection')
       output["text"] = raw_text
-      title = re.findall(r"# (.*?)\n", raw_text, re.DOTALL)
+      title = block_finder(raw_text,'#')
       output["title"] = [i.strip() for i in title]
       output["selection"] = [i.strip() for i in selection]
-      model_name = re.findall(r"```model_name(.*?)```", raw_text, re.DOTALL)
+      model_name = block_finder(raw_text,'model_name')
       output["model_name"] = [i.strip() for i in model_name]
-      abstract = re.findall(r"```abstract(.*?)```", raw_text, re.DOTALL)
+      abstract = block_finder(raw_text,'abstract')
       output["abstract"] = [i.strip() for i in abstract]
       output["abstract"] = output["abstract"][0] if output["abstract"]!=[] else None
       output["_details"] = {}
@@ -4947,7 +4948,7 @@ Remember to be objective, strict, and fair. Approve the proposal only if it meet
 def O1_REVIEW_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      rating = re.findall(r"```rating(.*?)```", raw_text, re.DOTALL)
+      rating = block_finder(raw_text,'rating')
       output["text"] = raw_text
       output["rating"] = [i.strip() for i in rating]
       output["_details"] = {}
@@ -5578,8 +5579,8 @@ O1S_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(O1S_IMPLEMENTATION_PLANNER_BAC
 def O1_SELECTION_parser(raw_output: ModelOutputPlus) -> Dict[Any,Any]:
       raw_text = raw_output.text
       output = {}
-      selection = re.findall(r"```selection(.*?)```", raw_text, re.DOTALL)
-      reuse = re.findall(r"```reuse(.*?)```", raw_text, re.DOTALL)
+      selection = block_finder(raw_text,'selection')
+      reuse = block_finder(raw_text,'reuse')
       output["text"] = raw_text
       output["selection"] = [i.strip() for i in selection]
       output["reuse"] = [i.strip() for i in reuse]

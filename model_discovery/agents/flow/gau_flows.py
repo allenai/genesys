@@ -46,14 +46,18 @@ GAU_TEMPLATE=open(gau_template_path).read()
 GAU_BASE=inspect.getsource(GAUBase)
 GAB_BASE=inspect.getsource(GABBase)
 
-AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini','o1_preview','o1_mini']
+O1_MODELS = ['o1_preview','o1_mini']
+GPT_MODELS = ['gpt4o_0806','gpt4o_mini']
+CLAUDE_MODELS = ['claude3.5_sonnet']
+NONE_MODEL = ['None']
+AGENT_TYPES = O1_MODELS+GPT_MODELS+CLAUDE_MODELS
 AGENT_OPTIONS = {
-    'DESIGN_PROPOSER':AGENT_TYPES,
-    'PROPOSAL_REVIEWER':AGENT_TYPES,
+    'DESIGN_PROPOSER':O1_MODELS+GPT_MODELS+CLAUDE_MODELS,
+    'PROPOSAL_REVIEWER':O1_MODELS+GPT_MODELS+CLAUDE_MODELS,
     'IMPLEMENTATION_PLANNER':AGENT_TYPES,
-    'IMPLEMENTATION_CODER':['o1_preview','o1_mini'],
-    'IMPLEMENTATION_OBSERVER':AGENT_TYPES+['None'],
-    'SEARCH_ASSISTANT':['claude3.5_sonnet','gpt4o_0806','gpt4o_mini','None']
+    'IMPLEMENTATION_CODER':O1_MODELS,
+    'IMPLEMENTATION_OBSERVER':AGENT_TYPES+NONE_MODEL,
+    'SEARCH_ASSISTANT':NONE_MODEL
 }
 
 DEFAULT_AGENT_WEIGHTS = {
@@ -63,6 +67,8 @@ DEFAULT_AGENT_WEIGHTS = {
     'IMPLEMENTATION_CODER': [1,0],
     'IMPLEMENTATION_OBSERVER': [0.1,0.1,0,0.1,0.7,0.0],
 } # THE ORDER MUST BE CORRESPONDING TO AGENT_OPTIONS
+
+
 
 @dataclass
 class AgentModelDef:
@@ -199,14 +205,20 @@ class GUFlow(FlowCreator):
         self.unittest_pass_required=design_cfg['unittest_pass_required']
         self.agents={}
 
+        self._agent_types = {}
+
         with self.stream.status('Setting up agents'):
             for name,agent_type in self.agent_types.items():
                 if agent_type == 'hybrid':
                     weights=design_cfg['agent_weights'][name]
                     agent_type=random.choices(AGENT_OPTIONS[name],weights=weights,k=1)[0]
                     self.stream.write(f'Agent ```{name}``` is randomly selected as ```{agent_type}``` with hybrid weights ```{weights}```')
+                else:
+                    self.stream.write(f'Agent ```{name}``` is set to ```{agent_type}```')
+                self._agent_types[name]=agent_type
                 self.agents[name]=AgentModelDef(AGENT_TYPES[agent_type],AGENT_TYPES_MODEL_NAMES[agent_type])
 
+        design_cfg['_agent_types']=self._agent_types # actually used in the design flow
         self.termination=design_cfg['termination']
         self.threshold=design_cfg['threshold']
         self.search_settings=design_cfg['search_settings']
@@ -251,6 +263,7 @@ class GUFlow(FlowCreator):
 
     def print_details(self,agent,context,prompt):
         print_details(self.stream,agent,context,prompt)
+
 
     @property
     def total_cost(self):
@@ -382,7 +395,7 @@ class GUFlow(FlowCreator):
             costs={k:v-cost_raw[k] for k,v in self.costs.items()} # run cost
             proposal,proposal_traces=RET['proposal'],RET['proposal_traces']
             self.ptree.propose(self.sess_id,proposal,proposal_traces,costs,self.design_cfg,self.user_input)
-            self.log_fn(f'Proposal {i+1} generated: {proposal.modelname} (Passed: {proposal.passed}).','PROPOSAL')
+            self.log_fn(f'Proposal {i+1} generated: {proposal["modelname"]} (Passed: {proposal["passed"]}).','PROPOSAL')
             i+=1
         self.log_fn(f'All proposals generated.','PROPOSAL')
         return query,state,{}
@@ -403,14 +416,14 @@ class GUFlow(FlowCreator):
 
         USE_2STAGE=self.search_settings['proposal_search']
         # Iterative Search is default now, designed for claude, utilizing cache mechanism
-        USE_ISEARCH=self.agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
+        USE_ISEARCH=self._agent_types['SEARCH_ASSISTANT']=='None' and USE_2STAGE 
         if self.design_mode!=DesignModes.MUTATION:
             # only isearch is supported for crossover and scratch
             USE_ISEARCH=True
         if USE_ISEARCH:
             USE_2STAGE=False
-        UNSTRUCT_PROPOSER='o1' in self.agent_types['DESIGN_PROPOSER']
-        UNSTRUCT_REVIEWER='o1' in self.agent_types['PROPOSAL_REVIEWER']
+        UNSTRUCT_PROPOSER='o1' in self._agent_types['DESIGN_PROPOSER']
+        UNSTRUCT_REVIEWER='o1' in self._agent_types['PROPOSAL_REVIEWER']
 
 
         traces=[]
@@ -1208,11 +1221,11 @@ class GUFlow(FlowCreator):
         else:
             PROTECTED_UNITS=[]
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
-        USE_PAIRING=self.agent_types['IMPLEMENTATION_OBSERVER']!='None'
+        USE_PAIRING=self._agent_types['IMPLEMENTATION_OBSERVER']!='None'
         # o1 beta does not support structured outputs, so let it output the code directly
-        # UNSTRUCT_CODER='o1' in self.agents['IMPLEMENTATION_CODER'].model_name
-        # UNSTRUCT_OBSERVER='o1' in self.agents['IMPLEMENTATION_OBSERVER'].model_name
-        # UNSTRUCT_PLANNER='o1' in self.agents['IMPLEMENTATION_PLANNER'].model_name
+        # UNSTRUCT_CODER='o1' in self._agent_types['IMPLEMENTATION_CODER']
+        # UNSTRUCT_OBSERVER='o1' in self._agent_types['IMPLEMENTATION_OBSERVER']
+        # UNSTRUCT_PLANNER='o1' in self._agent_types['IMPLEMENTATION_PLANNER']
 
         UNSTRUCT_PLANNER=True # always use o1 planner prompts for now, i.e. no structured outputs
         UNSTRUCT_OBSERVER=True # always use o1 observer prompts for now, i.e. no structured outputs

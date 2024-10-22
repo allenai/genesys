@@ -2652,6 +2652,10 @@ class EvolutionSystem(exec_utils.System):
             select_cfg = self.select_cfg
         if design_cfg is None:
             design_cfg = self.design_cfg
+        else:
+            _design_cfg = self.design_cfg.copy()
+            _design_cfg.update(design_cfg)
+            design_cfg = _design_cfg
         if search_cfg is None:
             search_cfg = self.search_cfg
 

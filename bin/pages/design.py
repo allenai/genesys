@@ -546,14 +546,17 @@ def _design_tuning(evosys,project_dir):
             cols = st.columns(len(sources))
             for i,source in enumerate(sources):
                 with cols[i]:
+                    value=1
                     display_name = f'{source} ({sources[source]})'
                     if source=='ReferenceCoreWithTree':
                         display_name = f'RefCoreWithTree ({sources[source]})'
+                        value=0
                     elif source=='DesignArtifactImplemented':
                         display_name = f'DesignArtImp ({sources[source]})'
+                        value=0
                     elif source=='ReferenceWithCode':
                         display_name = f'RefWithCode ({sources[source]})'
-                    n_sources[source] = st.number_input(label=display_name,min_value=0,value=1)#,max_value=1,disabled=True)
+                    n_sources[source] = st.number_input(label=display_name,min_value=0,value=value)#,max_value=1,disabled=True)
         with _scol2:
             st.markdown("##### Input Settings")
             design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=True,
@@ -634,7 +637,7 @@ def _design_tuning(evosys,project_dir):
                 st.write('')
                 view_log_btn = st.button("*View*",disabled=selected_design_log=='')
 
-    with st.expander("Simple Search Settings",expanded=False):
+    with st.expander("Simplified Search Settings",expanded=False):
         search_cfg={}
         search_cfg['result_limits']={}
         search_cfg['perplexity_settings']={}
@@ -705,7 +708,7 @@ def _design_tuning(evosys,project_dir):
                 spinner_text = f"running model design loop ({i+1}/{EXPERIMENT_RUNS})"
             with st.spinner(text=spinner_text):
                 _mode = DesignModes(mode)
-                st.write(f"Design Mode: {_mode}")
+                st.write(f"Design Mode:  {_mode}")
                 sess_id=None
                 select_cfg={'n_sources':n_sources}
                 manual_seed = None if manual_seed == 'None' else manual_seed

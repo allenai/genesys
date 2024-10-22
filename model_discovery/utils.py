@@ -243,3 +243,4 @@ def save_local_doc(data):
 def break_sentence(text, max_length=100):
     # insert \n every max_length
     return '\n'.join([text[i:i+max_length] for i in range(0, len(text), max_length)])
+
