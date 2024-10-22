@@ -701,7 +701,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-e','--evoname', default=default_namespace, type=str) # the name of the whole evolution
-    parser.add_argument('-dn','--max_designs_per_node', type=int, default=3) # the max number of threads to use
+    parser.add_argument('-dn','--max_designs_per_node', type=int, default=0) # the max number of threads to use
     parser.add_argument('-dt','--max_designs_total', type=int, default=10) # the group id of the evolution
     parser.add_argument('-g','--group_id', default='default', type=str) # the group id of the evolution
     parser.add_argument('-nr','--no_resume', action='store_true')

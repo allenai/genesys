@@ -27,9 +27,10 @@ class GPT2(GAUBase):
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = MHA(embed_dim=self.embed_dim, block_loc=self.block_loc,
-            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
-        self.mlp = GeminiGatedMLP(embed_dim=self.embed_dim, block_loc=self.
+        self.mha = SinkFlashMHA(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
         self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
@@ -50,315 +51,190 @@ class GPT2(GAUBase):
 
 
 import torch.nn.functional as F
-from typing import Optional, Callable, Tuple
 
 
-class GeminiGatedMLP(GAUBase):
-    """
-    GeminiGatedMLP integrates a block-sparse Mixture of Experts (MoE) within the GatedMLP unit.
-    This integration enables dynamic routing of inputs to a subset of experts, enhancing computational
-    efficiency, scalability, and model expressivity.
-
-    **Code Example:**
-
-        gemini_gated_mlp = GeminiGatedMLP(embed_dim=512, block_loc=(0, 0), kwarg_all={},
-                                          num_experts=16, top_k=2)
-        x = torch.randn(32, 128, 512)
-        y, z = gemini_gated_mlp(x)
-        print(y.shape)  # Expected: torch.Size([32, 128, 512])
-
-    And here is a verbatim-text diagram example:
-
-        [ Input X ]
-            |
-        [ FC1 Linear ]
-            |
-        [ Split into y and gate ]
-            |
-        [ Apply activation to gate ]
-            |
-        [ y * activation(gate) ]
-            |
-        [ Gating for MoE (Top-K selection) ]
-            |
-        [ Dispatch to top-K Experts ]
-            |
-        [ Aggregate Expert Outputs ]
-            |
-        [ FC2 Linear ]
-            |
-        [ Output Y ]
-
-    Todo:
-        * Implement block-sparse MoE routing.
-        * Ensure efficient parameter sharing among experts.
-
-    Args:
-        embed_dim (int): The size of each input sample.
-        block_loc (tuple): The location of this GAU within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
-        device (torch.device, optional): The device to run the module on.
-        dtype (torch.dtype, optional): The data type for the module.
-        hidden_features (int, optional): The size of the hidden layer. Defaults to None.
-        out_features (int, optional): The size of the output layer. Defaults to None.
-        activation (Callable, optional): Activation function. Defaults to F.silu.
-        bias (bool, optional): Whether to include bias in linear layers. Defaults to False.
-        multiple_of (int, optional): Round hidden_features to be a multiple of this value. Defaults to 128.
-        num_experts (int, optional): Number of experts in the MoE. Defaults to 4.
-        top_k (int, optional): Number of top experts to select per input. Defaults to 2.
-
-    Returns:
-        Tuple[Tensor, dict]: Output tensor Y of shape (B, L, D) and updated Z.
-
-    Raises:
-        AttributeError: If dimensionalities do not align.
-
-    Example:
-        >>> gemini_gated_mlp = GeminiGatedMLP(embed_dim=512, block_loc=(0, 0), kwarg_all={},
-        ...                                   num_experts=16, top_k=2)
-        >>> x = torch.randn(32, 128, 512)
-        >>> y, z = gemini_gated_mlp(x)
-        >>> print(y.shape)
-        torch.Size([32, 128, 512])
-
-    Note:
-        For more info on reStructuredText docstrings, see
-        `here <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__
-        and
-        `here <https://peps.python.org/pep-0287/>`__.
-    """
+class GatedMLP(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features: Optional[int]=None,
-        out_features: Optional[int]=None, activation: Optional[Callable]=
-        None, bias: bool=False, multiple_of: int=128, num_experts: int=4,
-        top_k: int=2, **kwargs):
+        device=None, dtype=None, hidden_features=None, out_features=None,
+        activation=None, bias=False, multiple_of=128, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        """
-        Initializes the GeminiGatedMLP module with block-sparse MoE.
-
-        Arguments:
-            embed_dim (int): The size of each input sample.
-            block_loc (tuple): The location of this GAU within the network.
-            kwarg_all (dict): Dictionary of all keyword arguments.
-            device (torch.device, optional): The device to run the module on.
-            dtype (torch.dtype, optional): The data type for the module.
-            hidden_features (int, optional): The size of the hidden layer.
-            out_features (int, optional): The size of the output layer.
-            activation (Callable, optional): Activation function.
-            bias (bool, optional): Whether to include bias in linear layers.
-            multiple_of (int, optional): Round hidden_features to be a multiple of this value.
-            num_experts (int, optional): Number of experts in the MoE.
-            top_k (int, optional): Number of top experts to select per input.
-        """
         out_features = out_features if out_features is not None else embed_dim
         hidden_features = (hidden_features if hidden_features is not None else
             int(8 * embed_dim / 3))
         hidden_features = (hidden_features + multiple_of - 1
             ) // multiple_of * multiple_of
-        self.num_experts = num_experts
-        self.top_k = top_k
         self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
             self.factory_kwargs)
         self.activation = activation if activation is not None else F.silu
-        self.moe_gate = nn.Linear(hidden_features, self.num_experts, bias=
-            True, **self.factory_kwargs)
-        self.experts = nn.ModuleList([nn.Linear(hidden_features,
-            hidden_features, bias=bias, **self.factory_kwargs) for _ in
-            range(self.num_experts)])
         self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
             self.factory_kwargs)
 
-    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, dict]:
-        """
-        Forward pass for GeminiGatedMLP with block-sparse MoE.
-
-        Args:
-            X (Tensor): Input tensor of shape (B, L, D)
-            Z (dict): Dictionary of intermediate variables.
-
-        Returns:
-            Tuple[Tensor, dict]: Output tensor Y of shape (B, L, D) and updated Z.
-        """
+    def _forward(self, X, **Z):
         y = self.fc1(X)
         y, gate = y.chunk(2, dim=-1)
         y = y * self.activation(gate)
-        gate_scores = self.moe_gate(y)
-        gate_scores = F.softmax(gate_scores, dim=-1)
-        topk_gates, topk_indices = torch.topk(gate_scores, self.top_k, dim=-1)
-        B, L, H = y.shape
-        K = self.top_k
-        E = self.num_experts
-        T = B * L
-        y_flat = y.view(T, H)
-        topk_indices_flat = topk_indices.view(T, K)
-        topk_gates_flat = topk_gates.view(T, K)
-        out = torch.zeros(T, H, device=y.device, dtype=y.dtype)
-        for k in range(K):
-            expert_idx = topk_indices_flat[:, k]
-            gate_score = topk_gates_flat[:, k].unsqueeze(-1)
-            for e in range(E):
-                mask = expert_idx == e
-                if torch.any(mask):
-                    selected_input = y_flat[mask]
-                    selected_output = self.experts[e](selected_input)
-                    out[mask] += gate_score[mask] * selected_output
-        out = out.view(B, L, H)
-        y_out = self.fc2(out)
-        y_out = y_out + X
-        return y_out, Z
-
-
-import torch.nn.functional as F
-from torch import Tensor
-
-
-class RMSNorm(GAUBase):
-    """
-    Root Mean Square Layer Normalization (RMSNorm).
-
-    This layer applies a variant of layer normalization that uses only the root mean square
-    statistics, without centering. It's computationally more efficient than standard
-    layer normalization and has been shown to be effective in various NLP tasks.
-
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
-
-    Attributes:
-        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
-        variance_epsilon (float): The epsilon value used in the normalization formula.
-
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
-    Examples:
-        >>> rmsnorm = RMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
+        y = self.fc2(y)
+        return y
 
 
 import torch.nn.functional as F
 import math
-from einops import rearrange, repeat
+import warnings
+try:
+    from flash_attn.flash_attention import FlashAttention
+    FLASH_ATTENTION_AVAILABLE = True
+except ImportError:
+    FLASH_ATTENTION_AVAILABLE = False
+    warnings.warn(
+        'FlashAttention is not available. Falling back to standard attention.')
 
 
-class MHA(GAUBase):
-    """Multi-head self-attention and cross-attention"""
+class SinkFlashMHA(GAUBase):
+    """
+    Multi-Head Attention with Attention Sinks integration (SinkFlashMHA).
+
+    This GAU implements a modified Multi-Head Attention mechanism that integrates attention sinks into FlashMHA. It allows efficient long-sequence processing by retaining key-value pairs of designated sink tokens, which serve as a persistent global context.
+
+    **Key Features:**
+
+    - Integrates attention sinks into the attention mechanism.
+    - Retains key-value pairs of designated sink tokens to provide global context.
+    - Modifies the attention mask to allow all tokens to attend to sink tokens.
+    - Compatible with FlashAttention for efficient computation.
+
+    **Args:**
+
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of this block within the network.
+        kwarg_all (dict): Dictionary of all keyword arguments.
+        n_heads (int, optional): Number of attention heads. Default is 8.
+        causal (bool, optional): Whether to apply causal masking. Default is True.
+        use_flash_attn (bool, optional): Whether to use FlashAttention if available. Default is True.
+        num_sink_tokens (int, optional): Number of sink tokens to use. Default is 1.
+        **kwargs: Additional keyword arguments.
+
+    **Integration Details:**
+
+    - Initializes trainable sink token embeddings.
+    - Concatenates sink tokens to the input sequence during forward pass.
+    - Adjusts attention masks to allow all tokens to attend to sink tokens and enforce causality for local tokens.
+    - Uses FlashAttention if available; falls back to standard attention if necessary.
+
+    **Returns:**
+
+        Output tensor with the same shape as the input.
+
+    **Raises:**
+
+        AssertionError: If input dimensions are incorrect.
+
+    **Example:**
+
+        # Create an instance of SinkFlashMHA
+        sink_mha = SinkFlashMHA(embed_dim=768, block_loc=(0, 12), kwarg_all={}, n_heads=12, num_sink_tokens=2)
+        # Input tensor of shape (batch_size, seq_len, embed_dim)
+        X = torch.randn(2, 128, 768)
+        # Perform forward pass
+        Y, Z = sink_mha(X)
+        # Output tensor Y has the same shape as X
+        print(Y.shape)  # torch.Size([2, 128, 768])
+
+    **Note:**
+
+        For more info on attention sinks, see the paper:
+        "Efficient Streaming Language Models with Attention Sinks" by Xiao et al., 2023.
+
+    **Hardware Requirements:**
+
+        - NVIDIA GPUs with compute capability >= 7.5 (e.g., T4, V100, A100, RTX 20-series or newer)
+        - Sufficient GPU memory to accommodate large batch sizes and sequence lengths
+        - CUDA toolkit and compatible PyTorch version
+
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:
-        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:
-        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,
-        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:
-        """
-        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.
-        return_residual: whether to return the input x along with the output. This is for
-            performance reason: for post-norm architecture, returning the input allows us
-            to fuse the backward of nn.Linear with the residual connection.
-        """
+        device=None, dtype=None, n_heads: int=8, causal: bool=True,
+        use_flash_attn: bool=True, num_sink_tokens: int=1, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.embed_dim = embed_dim
-        self.d_conv = d_conv
-        self.softmax_scale = softmax_scale
-        self.causal = causal
         self.num_heads = n_heads
-        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else
-            n_heads)
-        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'
-        if head_dim is None:
-            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'
-        self.head_dim = (head_dim if head_dim is not None else self.
-            embed_dim // n_heads)
-        self.mlp_dim = math.ceil(mlp_dim / 256) * 256
-        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)
-        out_dim = self.head_dim * self.num_heads
+        self.causal = causal
+        self.use_flash_attn = use_flash_attn and FLASH_ATTENTION_AVAILABLE
+        self.num_sink_tokens = num_sink_tokens
+        assert self.embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_heads'
+        self.head_dim = self.embed_dim // self.num_heads
+        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.sink_tokens = nn.Parameter(torch.randn(1, self.num_sink_tokens,
+            embed_dim, **self.factory_kwargs))
         kwarg_all['rotary_emb_dim'] = self.head_dim
         self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
             embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
             **self.factory_kwargs, **self.kwarg_all)
-        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=
-            qkv_proj_bias, **self.factory_kwargs)
-        if self.d_conv > 0:
-            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.
-                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.
-                factory_kwargs)
-        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,
-            bias=out_proj_bias, **self.factory_kwargs)
+        if not FLASH_ATTENTION_AVAILABLE and use_flash_attn:
+            warnings.warn(
+                'FlashAttention is not available. Falling back to standard attention.'
+                )
 
     def _forward(self, X, **Z):
-        """
-        Arguments:
-            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if
-                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total
-                is the is the sum of the sequence lengths in the batch.
-            inference_params: for generation. Adapted from Megatron-LM (and Apex)
-            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470
-        """
-        qkv = self.in_proj(X)
-        if self.mlp_dim > 0:
-            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.
-                mlp_dim], dim=-1)
-            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)
-            x_mlp = x_mlp_up * F.silu(x_mlp_gate)
-        if self.d_conv > 0:
-            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[
-                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()
-        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)
-        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)
-        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)
-        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)
+        X = X.to(**self.factory_kwargs)
+        B, L, _ = X.size()
+        num_sink_tokens = self.num_sink_tokens
+        sink_tokens = self.sink_tokens.expand(B, -1, -1)
+        X_combined = torch.cat([sink_tokens, X], dim=1)
+        q = self.q_proj(X)
+        q = q.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        k_combined = self.k_proj(X_combined)
+        v_combined = self.v_proj(X_combined)
+        k_combined = k_combined.view(B, num_sink_tokens + L, self.num_heads,
+            self.head_dim).transpose(1, 2)
+        v_combined = v_combined.view(B, num_sink_tokens + L, self.num_heads,
+            self.head_dim).transpose(1, 2)
         Z['input_emb'] = q
+        Z['input_pos'] = None
         _, Z = self.rotary_emb(X, **Z)
         q = Z['output_emb']
-        Z['input_emb'] = k
+        Z['input_emb'] = k_combined
+        Z['input_pos'] = None
         _, Z = self.rotary_emb(X, **Z)
-        k = Z['output_emb']
-        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //
-            self.num_heads_kv)
-        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //
-            self.num_heads_kv)
-        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.
-            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,
-            scale=self.softmax_scale).transpose(1, 2)
-        context = rearrange(context, '... h d -> ... (h d)')
-        if self.mlp_dim > 0:
-            context = torch.cat([context, x_mlp], dim=-1)
-        out = self.out_proj(context)
-        return out
+        k_combined = Z['output_emb']
+        q = q.reshape(B * self.num_heads, L, self.head_dim)
+        k_combined = k_combined.reshape(B * self.num_heads, num_sink_tokens +
+            L, self.head_dim)
+        v_combined = v_combined.reshape(B * self.num_heads, num_sink_tokens +
+            L, self.head_dim)
+        attn_mask = self._generate_attention_mask(L, num_sink_tokens,
+            device=X.device)
+        attn_mask = attn_mask.unsqueeze(0).expand(B * self.num_heads, -1, -1)
+        if self.use_flash_attn and num_sink_tokens == 0:
+            flash_attn = FlashAttention(causal=self.causal)
+            attn_output = flash_attn(q, k_combined, v_combined)
+        else:
+            attn_output = F.scaled_dot_product_attention(q, k_combined,
+                v_combined, attn_mask=attn_mask, dropout_p=0.0, is_causal=False
+                )
+        attn_output = attn_output.view(B, self.num_heads, L, self.head_dim)
+        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L,
+            self.embed_dim)
+        Y = self.out_proj(attn_output)
+        return Y, Z
+
+    def _generate_attention_mask(self, L: int, num_sink_tokens: int, device):
+        total_len = num_sink_tokens + L
+        mask = torch.zeros((L, total_len), device=device)
+        causal_mask = torch.triu(torch.full((L, L), float('-inf'), device=
+            device), diagonal=1)
+        mask[:, num_sink_tokens:] = causal_mask
+        return mask
 
 
 import torch.nn.functional as F
@@ -452,19 +328,74 @@ class RotaryPositionalEmbeddings(GAUBase):
         return X, {'output_emb': output_emb}
 
 
-gab_config = {'hidden_dim': 2048, 'num_experts': 4, 'dropout': 0.1, 'top_k':
-    2, 'softmax_scale': None, 'out_proj_bias': True, 'n_heads': 8,
-    'num_heads_kv': None, 'd_conv': 0, 'mlp_dim': 0, 'head_dim': None,
-    'causal': True, 'qkv_proj_bias': True, 'rotary_emb_base': 10000,
-    'max_seq_len': 4096, 'out_features': None, 'bias': False, 'multiple_of':
-    128, 'hidden_features': None, 'activation': None, 'eps': 1e-05}
+import torch.nn.functional as F
+from torch import Tensor
+
+
+class RMSNorm(GAUBase):
+    """
+    Root Mean Square Layer Normalization (RMSNorm).
+
+    This layer applies a variant of layer normalization that uses only the root mean square
+    statistics, without centering. It's computationally more efficient than standard
+    layer normalization and has been shown to be effective in various NLP tasks.
+
+    Args:
+        embed_dim (int): The size of the input feature dimension.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the parent class.
+        device (torch.device, optional): The device on which to allocate the module's parameters.
+        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        eps (float, optional): A small constant added to the denominator for numerical stability.
+            Default: 1e-5.
+
+    Attributes:
+        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
+        variance_epsilon (float): The epsilon value used in the normalization formula.
+
+    Shape:
+        - Input: (*, embed_dim)
+        - Output: (*, embed_dim) (same shape as input)
+
+    Examples:
+        >>> rmsnorm = RMSNorm(128, (0, 6), {})
+        >>> x = torch.randn(1, 100, 128)
+        >>> output = rmsnorm(x)
+        >>> print(output.shape)
+        torch.Size([1, 100, 128])
+
+    References:
+        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
+          https://arxiv.org/abs/1910.07467
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.variance_epsilon = eps
+
+    def _forward(self, X, **Z):
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        variance = X.pow(2).mean(-1, keepdim=True)
+        X = X * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * X.to(input_dtype)
+
+
+gab_config = {'n_heads': 8, 'num_sink_tokens': 1, 'use_flash_attn': True,
+    'causal': True, 'eps': 1e-05, 'max_seq_len': 4096, 'rotary_emb_base': 
+    10000, 'bias': False, 'multiple_of': 128, 'hidden_features': None,
+    'out_features': None, 'activation': None}
 
 
 
-autoconfig = {
-    'd_model': 128,
-    'n_block': 2
-}
+autoconfig={}
 block_config=gab_config
 block_config.update(autoconfig)
 

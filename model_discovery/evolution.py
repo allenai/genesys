@@ -1135,6 +1135,7 @@ class DesignArtifact(NodeObject):
             mdtext += f'\n**Seed IDs:** {self.seed_ids}'
         if self.implementation:
             mdtext += f'\n**Implementated:** {self.implementation.status}'
+            mdtext += f'\n**Units:** {list(self.implementation.implementation.units.keys())}'
         else:
             mdtext += f'\n**Implementated:** False'
         mdtext += f'\n\n**Verification:**\n'
@@ -2798,6 +2799,16 @@ class EvolutionSystem(exec_utils.System):
             log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
             index_ref = log_collection.document('index')
             def log_fn(msg,status='RUNNING'):
+                ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
+                if os.path.exists(ve_dir):
+                    wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
+                    if 'pretrain' in wandb_ids:
+                        wandb_id=wandb_ids['pretrain']['id']
+                        project=wandb_ids['project']
+                        entity=wandb_ids['entity']
+                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                    else:
+                        url='N/A'
                 timestamp = str(time.time())
                 log_ref.set({
                     timestamp:{
@@ -2810,7 +2821,8 @@ class EvolutionSystem(exec_utils.System):
                     sess_id:{
                         'timestamp':timestamp,
                         'status':status,
-                        'latest_log':latest_log
+                        'latest_log':latest_log,
+                        'wandb_url':url
                     }
                 },merge=True)
                     
