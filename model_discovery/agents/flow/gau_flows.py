@@ -1481,7 +1481,10 @@ class GUFlow(FlowCreator):
                         REFINE=False # implement a new unit
                         REUSE_UNIT_PROMPT = P.gen_REUSE_UNIT_PROMPT(reuse_code,reuse_from,reuse_type,self.design_mode)
                         GUM_IMPLEMENTATION_UNIT=P.gen_GUT_IMPLEMENTATION_UNIT(refine=False,unstruct=UNSTRUCT_CODER)
-                        declaration=self.tree.declares[selection].to_prompt()
+                        if selection in self.tree.declares:
+                            declaration=self.tree.declares[selection].to_prompt()
+                        else:
+                            declaration=f'Declaration for the unit {selection} is not available.' # XXX: fix me, why is this happening?
                         gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT(
                             DECLARATION=declaration,
                             VIEW=VIEW_DETAILED, 
