@@ -2813,6 +2813,7 @@ class EvolutionSystem(exec_utils.System):
             index_ref = log_collection.document('index')
             def log_fn(msg,status='RUNNING'):
                 ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
+                url='N/A'
                 if os.path.exists(ve_dir):
                     wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
                     if 'pretrain' in wandb_ids:
@@ -2820,8 +2821,6 @@ class EvolutionSystem(exec_utils.System):
                         project=wandb_ids['project']
                         entity=wandb_ids['entity']
                         url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                    else:
-                        url='N/A'
                 timestamp = str(time.time())
                 log_ref.set({
                     timestamp:{
