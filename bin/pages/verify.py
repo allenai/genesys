@@ -36,7 +36,7 @@ from model_discovery.configs.gam_config import (
 
 
 from model_discovery.ve.data_loader import load_datasets
-from model_discovery.configs.const import TARGET_SCALES, SMOLLM_125_CORPUS,\
+from model_discovery.configs.const import TARGET_SCALES, SMOLLM_125_CORPUS,DEFAULT_TOKEN_MULTS,\
     VERIFY_TERMINAL_STATES,VERIFY_ACTIVE_STATES,VERIFY_ZOMBIE_THRESHOLD,LOCK_ZOMBIE_THRESHOLD
 from model_discovery.agents.agent_utils import OPENAI_COSTS_DICT, ANTHROPIC_COSTS_DICT
 
@@ -723,7 +723,6 @@ SPEEDUP = {
     'H100': 3.6
 }
 
-
 def verify_budget_tool(evosys,project_dir):
     
     st.header("Verify Budget Tool")
@@ -754,7 +753,7 @@ def verify_budget_tool(evosys,project_dir):
             time_2k_a6000_single = optimistic_level*opt_cost + (1-optimistic_level)*pas_cost
             linear_cost[f'{scale}M'] = time_2k_a6000_single/speedup/n_gpus/n_nodes
 
-        st.caption('Estimated Training Time for models with 2K token context on each scale (in seconds):')
+        st.caption('Estimated Training Time for models with 2K token context and 20x tokens on each scale (in seconds):')
         linear_cost_df = pd.DataFrame(linear_cost,index=['Train (s)']).round(0)
         _cost_est_mat = st.data_editor(linear_cost_df,use_container_width=True)
         if _use_manual_cost:
@@ -784,18 +783,24 @@ def verify_budget_tool(evosys,project_dir):
             _verify_budget[scale]=int(np.ceil(budget))
             budget/=selection_ratio
         verify_budget=_verify_budget.copy()
-        _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
-        _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True,use_container_width=True)
+        _verify_budget_df = pd.DataFrame(_verify_budget,index=['Training runs'])
+        _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=False,use_container_width=True)
         _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
         _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
         if _manual_set_budget:
             verify_budget=_verify_budget
 
-        st.info(f'**Note:** The budget estimated is based on simple linear scaling assumption, based on the data from training on 8 x A6000 GPUs, and the actual cost might be different.')
+        st.caption('Training Token Multipliers for each Scale (Training tokens = #Params * Multiplier):')
+        token_mults = copy.deepcopy(DEFAULT_TOKEN_MULTS)
+        token_mults_df = pd.DataFrame(token_mults,index=['Token Multiplier'])
+        token_mults_df = st.data_editor(token_mults_df,use_container_width=True)
+        token_mults = token_mults_df.to_dict(orient='records')[0]
+
+    st.info(f'**Note:** The budget estimated is based on simple linear scaling assumption, based on the data from training on 8 x A6000 GPUs, and the actual cost might be different.')
 
     st.write('#### Estimated Training Time')
 
-    verify_costs = {s:linear_cost[s]*verify_budget[s] for s in verify_budget}
+    verify_costs = {s:linear_cost[s]*verify_budget[s]*token_mults[s]/20 for s in verify_budget}
     verify_time = {s:verify_costs[s]/3600 for s in verify_costs}
     verify_ghrs = {s:verify_costs[s]*n_gpus*n_nodes/3600 for s in verify_costs}
 
