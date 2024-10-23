@@ -489,7 +489,12 @@ if __name__ == "__main__":
         listener.build_connection()
         listener_thread = start_listener_thread(listener,add_ctx=False)
 
-        print(f"🐵 Listener launched: \nNode ID: {listener.node_id} \nGroup ID: {listener.group_id} \nMax design threads: {listener.max_design_threads} \nAccept verify job: {listener.accept_verify_job}")
+        print(f"🐵 Listener launched: \n"
+              f"Node ID: {listener.node_id} \n"
+              f"Group ID: {listener.group_id} \n"
+              f"Max design threads: {listener.max_design_threads} \n"
+              f"Accept verify job: {listener.accept_verify_job} \n"
+              f"Accept baseline verifications: {listener.accept_baselines}")
         if args.silent:
             print('🙊 Running in silent mode. The design threads will not print in screen, please check logs.')
         if args.no_verify:
