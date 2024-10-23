@@ -676,7 +676,7 @@ class FirestoreManager:
         self.get_baseline_index()
         for design_id in self.index:
             self.download_design(design_id,overwrite=overwrite)
-        self.FM.download_baselines()
+        self.download_baselines(overwrite=overwrite)
         print('Local designs synced from remote DB')
 
     def delete_design(self,design_id):
