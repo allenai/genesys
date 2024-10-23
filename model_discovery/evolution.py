@@ -524,6 +524,7 @@ class FirestoreManager:
 
     def download_baselines(self,overwrite=False,verbose=False):
         self.get_baseline_index()
+        print(self.baseline_index)
         for acronym in self.baseline_index:
             index_term=self.baseline_index[acronym]
             if 'verifications' in index_term:
@@ -675,6 +676,7 @@ class FirestoreManager:
         self.get_baseline_index()
         for design_id in self.index:
             self.download_design(design_id,overwrite=overwrite)
+        self.FM.download_baselines()
         print('Local designs synced from remote DB')
 
     def delete_design(self,design_id):
