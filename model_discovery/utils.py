@@ -259,10 +259,10 @@ def sort_dict_by_scale(dict,ascending=True):
 def read_local_doc():
     CKPT_DIR = os.environ.get("CKPT_DIR")
     local_doc_path = f"{CKPT_DIR}/.node.json"
-    local_doc = U.load_json(local_doc_path)
+    local_doc = load_json(local_doc_path)
     return local_doc
 
 def write_local_doc(local_doc):
     CKPT_DIR = os.environ.get("CKPT_DIR")
     local_doc_path = f"{CKPT_DIR}/.node.json"
-    U.dump_json(local_doc,local_doc_path)
+    save_json(local_doc,local_doc_path)
