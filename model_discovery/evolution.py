@@ -792,7 +792,7 @@ class LibraryReference(NodeObject):
                 report=U.load_json(report_dir)
                 scale=scale.split('.')[0]
                 if 'verification_report' in report:
-                    _verification=Verification.from_dict(report['verification_report'])
+                    _verification=Verification.from_dict(report)#['verification_report'])
                 else:
                     _verification=Verification(scale=scale,verification_report=report)
                 reports=_verification.verification_report
@@ -841,8 +841,6 @@ class LibraryReference(NodeObject):
                     
         else:
             self.code=None
-
-        
 
     @property
     def type(self) -> str:

@@ -333,12 +333,15 @@ def network_status(evosys,benchmark_mode):
 
         if not benchmark_mode:
             running_verifications = evosys.CM.get_running_verifications()
+            running_verifications = {v:running_verifications[v] for v in running_verifications if running_verifications[v]['heartbeat'] is not None}
             st.write(f'##### Running Verifications ```{len(running_verifications)}```')
             if len(running_verifications)>0:
                 # for sess_id in running_verifications:
                 running_verifications_df = pd.DataFrame(running_verifications).T
-                del running_verifications_df['latest_log']
-                del running_verifications_df['timestamp']
+                if 'latest_log' in running_verifications_df.columns:
+                    del running_verifications_df['latest_log']
+                if 'timestamp' in running_verifications_df.columns:
+                    del running_verifications_df['timestamp']
                 if 'wandb_url' in running_verifications_df.columns:
                     running_verifications_df.rename(columns={'wandb_url':'W&B Training Run'},inplace=True)
                 if 'W&B Training Run' not in running_verifications_df.columns:
