@@ -685,7 +685,7 @@ def evolve(evosys,project_dir):
         st.write('')
         if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
             evosys.ptree.update_design_tree()
-            evosys.ptree.export(max_nodes=_max_nodes,height='1200px',bgcolor=_bg_color,
+            evosys.ptree.export(max_nodes=_max_nodes,height='1000px',bgcolor=_bg_color,
                 legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100)
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             st.session_state.ptree_max_nodes=_max_nodes

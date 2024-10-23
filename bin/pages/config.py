@@ -42,6 +42,7 @@ def apply_config(evosys,config):
     evosys.reload(config['params'])
     U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
     st.toast(f"Applied and saved config in {evosys.evo_dir}")
+    st.rerun()
 
 
 def apply_env_vars(evosys,env_vars):
@@ -71,6 +72,7 @@ def apply_select_config(evosys,select_cfg):
         with st.spinner('Applying and saving select config...'):
             evosys.reconfig(select_cfg=select_cfg)
             st.toast("Applied and saved select config")
+            st.rerun()
     else:
         st.toast("The sum of the weights of the seeds distribution is 0, failed to apply select config.")
 
@@ -78,18 +80,18 @@ def apply_design_config(evosys,design_cfg):
     with st.spinner('Applying and saving design config...'):
         evosys.reconfig(design_cfg=design_cfg)
         st.toast("Applied and saved design config")
-
+        st.rerun()
 def apply_search_config(evosys,search_cfg):
     with st.spinner('Applying and saving search config...'):    
         evosys.reconfig(search_cfg=search_cfg)
         st.toast("Applied and saved search config")
+        st.rerun()
 
 def apply_ve_config(evosys,ve_cfg):
     with st.spinner('Applying and saving ve config...'):    
         evosys.reconfig(ve_cfg=ve_cfg)
         st.toast("Applied and saved ve config")
-
-
+        st.rerun()
 
 
 
@@ -193,7 +195,7 @@ def evosys_config(evosys):
                         evosys.reload(config['params'])
                         evosys.save_config()
                         st.toast(f"Applied and saved params in {evosys.evo_dir}.")
-
+                        st.rerun()
         with col2:
             with st.form(f"Experiment Status"):
                 st.write(f"Current Status for ```{evosys.evoname}```:")
@@ -270,7 +272,7 @@ def evosys_config(evosys):
                 with st.spinner("Applying and saving..."):
                     evosys.reconfig(benchmark_settings=benchmark_settings)
                     st.toast("Applied and saved benchmark config")
-
+                    st.rerun()
 
 def ve_config(evosys):
     with st.expander(f"Verification Engine Settings for ```{evosys.evoname}```",expanded=False,icon='⚙️'):

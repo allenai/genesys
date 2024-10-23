@@ -42,7 +42,7 @@ NODE_EXECUTION_DELAY = 2
 
 class Listener:
     def __init__(self, evosys, node_id=None, group_id='default', max_design_threads=5, accept_verify_job=True, 
-                 accept_baselines=False, cpu_only=False, silent=False, cli=False):
+                 accept_baselines=False, cpu_only=False, silent=False, cli=False, free_verifier=False):
         self.evosys = evosys
         remote_db = evosys.ptree.remote_db
         self.evoname = evosys.evoname
@@ -61,7 +61,7 @@ class Listener:
         self.cpu_only = cpu_only
         self.silent = silent
         self.group_id = group_id
-
+        self.free_verifier = free_verifier
         self.initialize(node_id)
 
     def hanging(self):
@@ -214,9 +214,9 @@ class Listener:
                 print(f"There is already a verification job running. Please wait for it to finish.")
                 return None,None
             if len(comps) == 2 or (len(comps) == 3 and 'resume' in comps):
-                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli, accept_baselines=self.accept_baselines)
+                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli, accept_baselines=self.accept_baselines, free_verifier=self.free_verifier)
             else:
-                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli, accept_baselines=self.accept_baselines)
+                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli, accept_baselines=self.accept_baselines, free_verifier=self.free_verifier)
         else:
             raise ValueError(f"Unknown command: {command}")
         return sess_id,pid
@@ -436,6 +436,7 @@ if __name__ == "__main__":
     parser.add_argument('-g','--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
     parser.add_argument('-c','--cpu_only', action='store_true', help='Run design threads in CPU only mode')
     parser.add_argument('-s','--silent', action='store_true', help='Run in silent mode')
+    parser.add_argument('-f','--free_verifier', action='store_true', help='Free verifier can ignore the requirement of verifying all models in at least one scale.')
     args = parser.parse_args()
 
     node_id = None
@@ -485,7 +486,7 @@ if __name__ == "__main__":
             # cache_type='diskcache',
         )
         listener = Listener(evosys, node_id, args.group_id, max_design_threads=args.max_design_threads, accept_baselines=args.accept_baselines,
-                            accept_verify_job=not args.no_verify, cpu_only=args.cpu_only, silent=args.silent, cli=True)
+                            accept_verify_job=not args.no_verify, cpu_only=args.cpu_only, silent=args.silent, cli=True, free_verifier=args.free_verifier)
         listener.build_connection()
         listener_thread = start_listener_thread(listener,add_ctx=False)
 

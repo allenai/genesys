@@ -45,11 +45,11 @@ def letternum2num(s):
     'M' is treated as 1,000,000
     'B' is treated as 1,000,000,000
     """
-    if not isinstance(s,float):
+    if isinstance(s,float):
         return s
     if isinstance(s,int):
         return s    
-    if 'M' not in s and 'B' not in s:
+    if s.isdigit():
         return int(s)
     num = float(s[:-1])
     unit = s[-1]

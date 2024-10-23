@@ -906,7 +906,7 @@ class Selector:
         unverified_design_scales=self.ptree.get_unverified_scales(exclude_inv=exclude_inv)
         return unverified_design_scales
 
-    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False):
+    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False, free_verifier=False):
         local_doc = U.read_local_doc()
         too_slow = local_doc.get('too_slow',{})
         print(f'Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
@@ -933,6 +933,8 @@ class Selector:
                 available_verify_budget=self.request_temporal_budget()
             else:
                 raise ValueError(f"Invalid budget type: {self.budget_type}")
+        if free_verifier:
+            select_cfg['verify_all']=False
         if verify_strategy=='quadrant':
             return self._quadrant_select_verify(available_verify_budget,exclude_list,select_cfg)
         elif verify_strategy=='random':
