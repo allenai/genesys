@@ -515,10 +515,9 @@ class FirestoreManager:
             if node.verifications:
                 for scale,verifications in node.verifications.items():
                     for mult,verification in verifications.items():
-                        scale = f'{scale}_{mult}'
-                        if 'verifications' in index_term and scale in index_term['verifications']:
+                        if 'verifications' in index_term and f'{scale}_{mult}' in index_term['verifications']:
                             continue
-                        self.upload_verification(coreref,verification.to_dict(),scale,overwrite=overwrite,verbose=verbose,is_baseline=True)
+                        self.upload_verification(coreref,verification.to_dict(),f'{scale}_{mult}',overwrite=overwrite,verbose=verbose,is_baseline=True)
                         print(f'Uploaded verification for scale {scale} with mult {mult} in baseline {coreref}')
         self.update_index(is_baseline=True)
 
@@ -792,7 +791,7 @@ class LibraryReference(NodeObject):
                 report=U.load_json(report_dir)
                 scale=scale.split('.')[0]
                 if 'verification_report' in report:
-                    _verification=Verification.from_dict(report)#['verification_report'])
+                    _verification=Verification.from_dict(report)
                 else:
                     _verification=Verification(scale=scale,verification_report=report)
                 reports=_verification.verification_report
