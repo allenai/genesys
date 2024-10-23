@@ -891,8 +891,8 @@ class LibraryReference(NodeObject):
             mdtext += '\n\n**Verification:**\n'
             for scale, verification in self.verifications.items():
                 mdtext += f'{scale} avg. acc: '
-                for mult in verification.verification_report:
-                    eval_results = verification.verification_report[mult]['eval_results.json']['results']
+                for mult in verification:
+                    eval_results = verification[mult].verification_report['eval_results.json']['results']
                     avg_acc = 0
                     cnt = 0
                     for k,v in eval_results.items():
