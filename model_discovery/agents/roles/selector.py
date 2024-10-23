@@ -944,7 +944,7 @@ class Selector:
                     return acronym,scale
                 if scale not in node.verifications:
                     return acronym,scale
-                if mult not in node.verifications[scale]:
+                if str(mult) not in node.verifications[scale]:
                     return acronym,scale
         return None,None
             
