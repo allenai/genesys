@@ -524,7 +524,6 @@ class FirestoreManager:
 
     def download_baselines(self,overwrite=False,verbose=False):
         self.get_baseline_index()
-        print(self.baseline_index)
         for acronym in self.baseline_index:
             index_term=self.baseline_index[acronym]
             if 'verifications' in index_term:
