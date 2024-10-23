@@ -135,6 +135,8 @@ def evosys_config(evosys):
                         _verify_budget[scale]=int(np.ceil(budget))
                         budget/=_params['selection_ratio']
                 _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will over write the above)*',value=_params_manual_set_budget)
+                sorted_keys = sorted(list(_verify_budget.keys()),key=lambda x: int(x.replace('M','')))
+                _verify_budget = {k: _verify_budget[k] for k in sorted_keys}
                 _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
                 _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
                 _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
@@ -288,6 +290,8 @@ def ve_config(evosys):
             cols=st.columns([4,1.55,1,1])
             with cols[0]:
                 training_token_multipliers = _ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS)
+                sorted_keys = sorted(training_token_multipliers.keys(),key=lambda x: int(x.replace('M','')))
+                training_token_multipliers = {k:training_token_multipliers[k] for k in sorted_keys}
                 training_token_multipliers_df = pd.DataFrame(training_token_multipliers,index=['mult'])
                 training_token_multipliers_df = st.data_editor(training_token_multipliers_df,use_container_width=True)
                 training_token_multipliers = training_token_multipliers_df.to_dict(orient='records')[0]
@@ -447,6 +451,7 @@ def design_config(evosys):
                     elif agent in ['IMPLEMENTATION_CODER']:
                         index=len(options)-1
                     options += ['hybrid']
+                    index = options.index(design_cfg['agent_types'][agent]) if design_cfg['agent_types'][agent] in options else 0
                     agent_types[agent] = st.selectbox(label=AGENT_TYPE_LABELS[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT',help=help)
             design_cfg['agent_types'] = agent_types
             st.caption('***Note:** If you choose "hybrid", you will need to configure the weights for each agent below in advanced configs later.*')
@@ -470,9 +475,9 @@ def design_config(evosys):
                 st.markdown("##### Configure the threshold for ratings")
                 cols=st.columns(2)
                 with cols[0]:
-                    threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0,max_value=5,value=4)
+                    threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0.0,max_value=5.0,value=4.0,step=0.5)
                 with cols[1]:
-                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0,max_value=5,value=3)
+                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0.0,max_value=5.0,value=3.0,step=0.5)
             design_cfg['termination'] = termination
             design_cfg['threshold'] = threshold 
 
@@ -705,7 +710,8 @@ def hybrid_agent_weights(evosys):
                 st.write(f'###### {AGENT_TYPE_LABELS[agent_type]}')
                 for idx,option in enumerate(AGENT_OPTIONS[agent_type]):
                     cur_weight=float(design_cfg['agent_weights'][agent_type][idx])
-                    design_cfg["agent_weights"][agent_type][idx]=st.number_input(option,min_value=0.0,max_value=1.0,value=cur_weight,step=0.05,key=f'agent_weight_{agent_type}_{idx}')
+                    design_cfg["agent_weights"][agent_type][idx]=st.number_input(option,min_value=0.0,max_value=1.0,value=cur_weight,step=0.05,
+                            key=f'agent_weight_{agent_type}_{idx}')
                 remaining_weight=1.0-sum(design_cfg['agent_weights'][agent_type])
                 if remaining_weight==0:
                     st.success(f'Remaining weight: ```{remaining_weight:.2f}```')

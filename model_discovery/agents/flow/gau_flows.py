@@ -55,7 +55,7 @@ AGENT_OPTIONS = {
     'DESIGN_PROPOSER':AGENT_TYPES,
     'PROPOSAL_REVIEWER':AGENT_TYPES,
     'IMPLEMENTATION_PLANNER':AGENT_TYPES,
-    'IMPLEMENTATION_CODER':O1_MODELS,
+    'IMPLEMENTATION_CODER':AGENT_TYPES,
     'IMPLEMENTATION_OBSERVER':AGENT_TYPES+NONE_MODEL,
     'SEARCH_ASSISTANT':NONE_MODEL
 }
@@ -64,7 +64,7 @@ DEFAULT_AGENT_WEIGHTS = {
     'DESIGN_PROPOSER': [0.6,0.1,0,0.2,0.1],
     'PROPOSAL_REVIEWER': [0.6,0.1,0,0.2,0.1],
     'IMPLEMENTATION_PLANNER': [0.3,0.1,0,0.2,0.4],
-    'IMPLEMENTATION_CODER': [1,0],
+    'IMPLEMENTATION_CODER': [0,0,0,1.0,0],
     'IMPLEMENTATION_OBSERVER': [0.1,0.1,0,0.1,0.7,0.0],
 } # THE ORDER MUST BE CORRESPONDING TO AGENT_OPTIONS
 
@@ -212,9 +212,9 @@ class GUFlow(FlowCreator):
                 if agent_type == 'hybrid':
                     weights=design_cfg['agent_weights'][name]
                     agent_type=random.choices(AGENT_OPTIONS[name],weights=weights,k=1)[0]
-                    self.stream.write(f'Agent ```{name}``` is randomly selected as ```{agent_type}``` with hybrid weights ```{weights}```')
+                    self.stream.write(f'Agent ```{name}``` is randomly selected as ```{agent_type}``` ({AGENT_TYPES_MODEL_NAMES[agent_type]}) with hybrid weights ```{weights}```')
                 else:
-                    self.stream.write(f'Agent ```{name}``` is set to ```{agent_type}```')
+                    self.stream.write(f'Agent ```{name}``` is set to ```{agent_type}``` ({AGENT_TYPES_MODEL_NAMES[agent_type]})')
                 self._agent_types[name]=agent_type
                 self.agents[name]=AgentModelDef(AGENT_TYPES[agent_type],AGENT_TYPES_MODEL_NAMES[agent_type])
 

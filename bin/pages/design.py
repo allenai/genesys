@@ -520,7 +520,7 @@ def _design_tuning(evosys,project_dir):
                         options=AGENT_TYPES+['o1_preview','o1_mini','None']
                         index=len(options)-2
                     elif agent in ['IMPLEMENTATION_CODER']:
-                        options=['o1_preview','o1_mini']
+                        options=AGENT_TYPES+['o1_preview','o1_mini']
                         index=len(options)-1
                     elif agent in ['DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
                         options=AGENT_TYPES+['o1_preview','o1_mini']
@@ -687,7 +687,7 @@ def _design_tuning(evosys,project_dir):
     with cols[3]:
         st.write('')  
         st.write('')
-        submit = st.button(label="***Run***",disabled=st.session_state.evo_running,use_container_width=True)
+        submit = st.button(label="***Run***",use_container_width=True)
     with cols[4]:
         st.write('')
         st.write('')
