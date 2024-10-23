@@ -907,6 +907,14 @@ class Selector:
         return unverified_design_scales
 
     def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False):
+        local_doc = U.read_local_doc()
+        too_slow = local_doc.get('too_slow',{})
+        print(f'Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
+        for _design_scale in too_slow:
+            _design,_scale=_design_scale.split('_')
+            if (_design,_scale) in exclude_list:
+                exclude_list.append((_design,_scale))
+        
         if accept_baselines:
             design,scale=self._verify_baselines(exclude_list)
             if design is not None:

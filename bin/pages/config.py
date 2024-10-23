@@ -407,6 +407,7 @@ def select_config(evosys):
             with cols[1]:
                 n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
             with cols[2]:
+                n_seeds_dist = U.sort_dict_by_scale(n_seeds_dist)
                 n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['Weights'])
                 n_seeds_dist_df = st.data_editor(n_seeds_dist_df,use_container_width=True)
                 n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]

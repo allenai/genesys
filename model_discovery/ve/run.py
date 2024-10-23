@@ -105,6 +105,16 @@ parser.add_argument("--silent", action='store_true')
 ########################################### Tools ###########################################
 
 
+TIME_LOWER={
+    '14M':174,
+    '31M':437,
+    '70M':22.3*60,
+    '125M':146.3*60,
+    '350M':17*3600,
+    '760M':54.3*3600,
+    '1300M':137.5*3600,
+}
+
 
 def _explore_setup(args):
     setup(args)
@@ -113,12 +123,31 @@ def _explore_setup(args):
     util_logger.info(f"Using port for training: {free_port}")
     num_steps=10 # a small number for testing OOM
 
+    time_start = time.perf_counter()
     notebook_launcher(
         run_train, 
         args=(vars(args),gab,gab_config,num_steps), 
         num_processes=args.n_gpus, 
         use_port=free_port,
     )
+    time_elapsed = time.perf_counter() - time_start
+    scale = args.scale
+    n_gpus = args.n_gpus
+
+    config = eval(f"GAMConfig_{args.scale}()")
+    time_lower = TIME_LOWER[scale] * 8/n_gpus
+    training_tokens = config.reference_size * 20
+    num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
+    time_lower = time_lower * 10 / num_steps 
+
+    if time_elapsed > time_lower*5: # 5 times slower than the lower bound
+        util_logger.warning(f"Training time is too long: {time_elapsed:.1f} s, expected: {time_lower:.1f} s")
+        local_doc = U.read_local_doc()
+        if 'too_slow' not in local_doc:
+            local_doc['too_slow'] = {}
+        local_doc['too_slow'][f'{args.design_id}_{args.scale}'] = (time_elapsed,time_lower)
+        U.write_local_doc(local_doc)
+
 
 # stable but slow
 def _auto_tune_setup(args,log_fn=None): # Need to be called before training after models are prepared
@@ -164,6 +193,12 @@ def setup(args,log_fn=None) -> None:
     :raises: ValueError 
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
+
+    local_doc = U.read_local_doc()
+    if f'{args.design_id}_{args.scale}' in local_doc.get('too_slow',{}):
+        time_elapsed,time_lower = local_doc['too_slow'][f'{args.design_id}_{args.scale}']
+        log_fn(f'{args.design_id} {args.scale} is too slow in this machine: {time_elapsed:.1f} s, lower bound: {time_lower:.1f} s x 5, skipping...','EXIT')
+        exit()
 
     log_fn('Setting up the run environment...')
 

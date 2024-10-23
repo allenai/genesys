@@ -38,21 +38,50 @@ class ViewModes(Enum):
     METRICS = 'Experiment Visulizer'
     DESIGNS = 'Design Artifacts'
     SESSIONS = 'Local Session Logs'
-    DIALOGS = 'Agent Dialogs (Experimental)'
-    FLOW = 'Agent Flows (Experimental)'
+    DIALOGS = 'Local Agent Dialogs'
+    # FLOW = 'Agent Flows (Experimental)'
+
+
+
+
+
+
+def _view_tree(tree):
+    with st.expander('View detailed tree'):
+        st.write(tree.view()[0],unsafe_allow_html=True)
+    
+    col1, col2 = st.columns([1,1.5])
+    with col1:
+        updated_state = tree.export(800,light_mode=False)
+
+    with col2:
+        selected_id=updated_state.selected_id 
+        if selected_id:
+            source=tree.units[selected_id].code
+            st.markdown(f'### Selected Unit: {selected_id}')
+            with st.container(height=750):
+                st.code(source,line_numbers=True)
+        else:
+            st.markdown('### Select a node to view the source of the node here.')
+
 
 
 def _view_designs(evosys):
-
     st.title('Design Artifact Viewer')
-
 
     
     with st.status('Loading design artifacts...'):
         design_artifacts = evosys.ptree.get_design_artifacts()
+        acronyms= evosys.ptree.filter_by_type(['ReferenceCoreWithTree'])
+        corerefs_with_tree = {acronym:evosys.ptree.get_node(acronym) for acronym in acronyms}
+
 
     with st.sidebar:
-        selected_design = st.selectbox('Select a design',list(design_artifacts.keys()))
+        category = st.selectbox('Select a category',['Design Artifacts','Seed Trees'])
+        if category == 'Design Artifacts':
+            selected_design = st.selectbox('Select a design',list(design_artifacts.keys()))
+        else:
+            selected_coreref = st.selectbox('Select a core reference',list(corerefs_with_tree.keys()))
 
     # # st.header('14M Training Results')
     # csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')
@@ -68,54 +97,73 @@ def _view_designs(evosys):
     #     st.markdown('### Relative to Random (%)')
     #     st.dataframe(df_norm)
 
-    if design_artifacts:
-        design=design_artifacts[selected_design]
-        with st.expander(f'Meta Data for {selected_design}',expanded=False):
+    if category == 'Design Artifacts':
+        if design_artifacts:
+            design=design_artifacts[selected_design]
+            with st.expander(f'Meta Data for {selected_design}',expanded=False):
+                metadata = {
+                    'Design Session ID': design.sess_id,
+                    'Seed IDs': design.seed_ids,
+                    'Agents': design.proposal.design_cfg['_agent_types'],
+                }
+                st.json(metadata)
+            st.subheader(f'Proposal for {selected_design}')
+            with st.expander('View Proposal'):
+                st.markdown(design.proposal.proposal)
+            with st.expander('View Review'):
+                st.markdown(design.proposal.review)
+                st.write('#### Rating: ',design.proposal.rating,'out of 5')
+            if design.implementation:
+                st.subheader(f'GAU Tree for {selected_design}')
+                itree=design.implementation.implementation
+                _view_tree(itree)
+                gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
+                st.subheader('Exported GAB Code')
+                with st.expander('Click to expand'):
+                    st.code(gab_code,language='python')
+            else:
+                st.warning('The design has not been implemented yet.')
+            if design.verifications:
+                st.subheader('Verification Results')
+                for scale in design.verifications:
+                    with st.expander(f'{scale} Verification Results',expanded=True):
+                        reports = design.verifications[scale].verification_report
+                        if 'wandb_ids.json' in reports:
+                            wandb_ids = reports['wandb_ids.json']
+                            if 'pretrain' in wandb_ids:
+                                wandb_id=wandb_ids['pretrain']['id']
+                                wandb_name=wandb_ids['pretrain']['name']
+                                project=wandb_ids['project']
+                                entity=wandb_ids['entity']
+                                url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                                st.write(f'WANDB URL: {url}')
+            else:
+                st.warning('No verification results found for this design.')
+        else:
+            st.warning('No design artifacts found in the experiment directory')
+    
+    elif corerefs_with_tree and category == 'Seed Trees':
+        coreref = corerefs_with_tree[selected_coreref]
+        with st.expander(f'Meta Data for {selected_coreref}',expanded=False):
             metadata = {
-                'Design Session ID': design.sess_id,
-                'Seed IDs': design.seed_ids,
+                'Reference ID': coreref.acronym,
+                'S2 ID': coreref.s2id,
+                'Abstract': coreref.abstract,
+                'Authors': coreref.authors,
+                'Year': coreref.year,
+                'Venue': coreref.venue,
+                'TLDR': coreref.tldr,
+                'Citation Count': coreref.citationCount,
+                'Influential Citation Count': coreref.influentialCitationCount,
             }
             st.json(metadata)
-        st.subheader(f'Proposal for {selected_design}')
-        with st.expander('View Proposal'):
-            st.markdown(design.proposal.proposal)
-        with st.expander('View Review'):
-            st.markdown(design.proposal.review)
-            st.write('#### Rating: ',design.proposal.rating,'out of 5')
-        if design.implementation:
-            st.subheader(f'GAU Tree for {selected_design}')
-            with st.expander('Click to expand'):
-                itree=design.implementation.implementation
-                st.write(itree.view()[0],unsafe_allow_html=True)
-            gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
-            st.subheader('Exported GAB Code')
-            with st.expander('Click to expand'):
-                st.code(gab_code,language='python')
-        else:
-            st.warning('The design has not been implemented yet.')
-        if design.verifications:
-            st.subheader('Verification Results')
-            for scale in design.verifications:
-                with st.expander(f'{scale} Verification Results',expanded=True):
-                    reports = design.verifications[scale].verification_report
-                    if 'wandb_ids.json' in reports:
-                        wandb_ids = reports['wandb_ids.json']
-                        if 'pretrain' in wandb_ids:
-                            wandb_id=wandb_ids['pretrain']['id']
-                            wandb_name=wandb_ids['pretrain']['name']
-                            project=wandb_ids['project']
-                            entity=wandb_ids['entity']
-                            url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                            st.write(f'WANDB URL: {url}')
-        else:
-            st.warning('No verification results found for this design.')
-    else:
-        st.warning('No design artifacts found in the experiment directory')
+        st.subheader(f'GAU Tree for {selected_coreref}')
+        _view_tree(coreref.tree)
 
 
 
 def _view_dialogs(evosys):
-    st.title('ALang Dialog Viewer (Experimental)')
+    st.title('Agent Dialog Viewer')
 
     with st.sidebar:
         folders = [i for i in list(os.listdir(U.pjoin(evosys.ckpt_dir))) if not i.endswith('.json')]
@@ -816,30 +864,30 @@ def viewer(evosys,project_dir):
     ### Sidebar
     with st.sidebar:
         AU.running_status(st,evosys)
-        if st.session_state.is_deploy:
-            modes = [ViewModes.METRICS.value,ViewModes.DESIGNS.value,ViewModes.SESSIONS.value]
-        else:
-            modes = list([i.value for i in ViewModes])
+        # if st.session_state.is_deploy:
+        #     modes = [ViewModes.METRICS.value,ViewModes.DESIGNS.value,ViewModes.SESSIONS.value]
+        # else:
+        modes = list([i.value for i in ViewModes])
         view_mode = st.selectbox("Choose a view", modes)
         view_mode = ViewModes(view_mode)
-        if view_mode == ViewModes.FLOW:
-            # Lagacy flows for development
-            DESIGN_ALANG =design_flow_definition()
-            design_flow,DESIGN_ALANG_reformatted=ALangCompiler().compile(DESIGN_ALANG,design_flow_definition,reformat=True)
+        # if view_mode == ViewModes.FLOW:
+        #     # Lagacy flows for development
+        #     DESIGN_ALANG =design_flow_definition()
+        #     design_flow,DESIGN_ALANG_reformatted=ALangCompiler().compile(DESIGN_ALANG,design_flow_definition,reformat=True)
             
-            design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
-            review_flow_naive=AgentDialogFlowNaive('Model Review Flow',review_naive)
-            # gu_flow_scratch = GUFlowScratch(system,None,None)
-            # gu_flow_mutation = GUFlowMutation(system,None,None,'',{})
+        #     design_flow_naive=AgentDialogFlowNaive('Model Design Flow',design_naive)
+        #     review_flow_naive=AgentDialogFlowNaive('Model Review Flow',review_naive)
+        #     # gu_flow_scratch = GUFlowScratch(system,None,None)
+        #     # gu_flow_mutation = GUFlowMutation(system,None,None,'',{})
 
-            flows={
-                # 'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
-                # 'GU Flow (Mutation)':gu_flow_mutation,
-                'Naive Design Flow (Legacy)':(design_flow,DESIGN_ALANG_reformatted),
-                # 'Naive Review Flow':(review_flow_naive,''),
-            }
-            selected_flow = st.selectbox("Select a flow", list(flows.keys()))
-            flow = flows[selected_flow]
+        #     flows={
+        #         # 'GU Flow (Scratch) (Legacy)':gu_flow_scratch,
+        #         # 'GU Flow (Mutation)':gu_flow_mutation,
+        #         'Naive Design Flow (Legacy)':(design_flow,DESIGN_ALANG_reformatted),
+        #         # 'Naive Review Flow':(review_flow_naive,''),
+        #     }
+        #     selected_flow = st.selectbox("Select a flow", list(flows.keys()))
+        #     flow = flows[selected_flow]
 
 
     if view_mode == ViewModes.DESIGNS:
@@ -851,8 +899,8 @@ def viewer(evosys,project_dir):
     elif view_mode == ViewModes.SESSIONS:
         _view_sessions(evosys)
             
-    elif view_mode == ViewModes.FLOW:
-        _view_flows(evosys,selected_flow,flow)
+    # elif view_mode == ViewModes.FLOW:
+    #     _view_flows(evosys,selected_flow,flow)
 
     elif view_mode == ViewModes.METRICS:
         selector_lab(evosys,project_dir)

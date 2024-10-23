@@ -378,7 +378,8 @@ def system_status(evosys):
         else:
             text=f'💲: {evosys.ptree.design_cost:.2f}/♾️'
             st.progress(1.0,text=text)
-        for scale,num in evosys.selector._verify_budget.items():
+        _verify_budget = U.sort_dict_by_scale(evosys.selector._verify_budget,False)
+        for scale,num in _verify_budget.items():
             remaining = evosys.selector.verify_budget[scale] 
             text=f'{scale}: {remaining}/{num}'
             st.progress(remaining/num,text=text)
@@ -684,7 +685,7 @@ def evolve(evosys,project_dir):
         st.write('')
         if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
             evosys.ptree.update_design_tree()
-            evosys.ptree.export(max_nodes=_max_nodes,height='800px',bgcolor=_bg_color,
+            evosys.ptree.export(max_nodes=_max_nodes,height='1200px',bgcolor=_bg_color,
                 legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100)
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             st.session_state.ptree_max_nodes=_max_nodes
@@ -694,7 +695,7 @@ def evolve(evosys,project_dir):
 
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
-    components.html(source_code, height = 800)
+    components.html(source_code, height = 1000)
 
 
 

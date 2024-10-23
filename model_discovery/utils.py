@@ -45,6 +45,12 @@ def letternum2num(s):
     'M' is treated as 1,000,000
     'B' is treated as 1,000,000,000
     """
+    if not isinstance(s,float):
+        return s
+    if isinstance(s,int):
+        return s    
+    if 'M' not in s and 'B' not in s:
+        return int(s)
     num = float(s[:-1])
     unit = s[-1]
     
@@ -244,3 +250,19 @@ def break_sentence(text, max_length=100):
     # insert \n every max_length
     return '\n'.join([text[i:i+max_length] for i in range(0, len(text), max_length)])
 
+
+def sort_dict_by_scale(dict,ascending=True):
+    sorted_keys = sorted(dict.keys(), key=lambda x: letternum2num(x),reverse=not ascending)
+    return {k: dict[k] for k in sorted_keys}
+
+
+def read_local_doc():
+    CKPT_DIR = os.environ.get("CKPT_DIR")
+    local_doc_path = f"{CKPT_DIR}/.node.json"
+    local_doc = U.load_json(local_doc_path)
+    return local_doc
+
+def write_local_doc(local_doc):
+    CKPT_DIR = os.environ.get("CKPT_DIR")
+    local_doc_path = f"{CKPT_DIR}/.node.json"
+    U.dump_json(local_doc,local_doc_path)

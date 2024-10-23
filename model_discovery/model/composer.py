@@ -8,9 +8,14 @@ import sys
 import traceback
 from contextlib import redirect_stdout, redirect_stderr
 import torch
+import copy
 import torch.nn as nn
 import numpy as np
 import random
+from streamlit_flow import streamlit_flow
+from streamlit_flow.state import StreamlitFlowState
+from streamlit_flow.elements import StreamlitFlowNode, StreamlitFlowEdge
+from streamlit_flow.layouts import TreeLayout, RadialLayout
 
 from dataclasses import dataclass, field
 from .utils.modules import GAUBase, gau_test
@@ -623,4 +628,63 @@ class GAUTree:
         return tree
 
 
+    def _traverse(self,parent,flow_nodes,flow_edges,with_code=False):
+        children=self.units[parent].children
+        for child in children:
+            code = f'\n\n```python\n{self.units[child].code}\n```' if with_code else ''
+            node=StreamlitFlowNode(child,(0,0),{'content':f'{child}{code}'})
+            flow_nodes[child] = node
+            flow_edges.append(StreamlitFlowEdge(f'{parent}-{child}',parent,child,animated=True,
+                                                style={'markerEnd': 'url(#arrow)'}))
+            flow_nodes,flow_edges = self._traverse(child,flow_nodes,flow_edges,with_code)
+        return flow_nodes,flow_edges
 
+
+    def get_flow_nodes(self,with_code=False):
+        flow_nodes = {}
+        flow_edges = []
+        code = f'\n\n```python\n{self.units[self.root].code}\n```' if with_code else ''
+        flow_st=StreamlitFlowNode(self.root,(0,0),{'content':f'{self.root}{code}'},'input',
+                                # source_position='right',target_position='left',
+                                style={'backgroundColor': '#20a162'})
+        flow_nodes[self.root] = flow_st
+        flow_nodes,flow_edges = self._traverse(self.root,flow_nodes,flow_edges,with_code)
+        
+        return flow_nodes,flow_edges
+
+    def export(self,height=800,with_code=False,light_mode=False):
+        flow_nodes,flow_edges = self.get_flow_nodes(with_code)
+
+        if not with_code:
+            horizontal_spacing=300
+            vertical_spacing=75
+            node_node_spacing=150
+        else:
+            horizontal_spacing=300
+            vertical_spacing=150
+            node_node_spacing=450
+        style = {}
+        if light_mode:
+            style = {'backgroundColor': '#f0f0f0', 'textColor': '#000000'}
+        state = StreamlitFlowState(list(flow_nodes.values()), flow_edges)
+        return streamlit_flow(
+            self.name, 
+            state,
+            layout=TreeLayout(
+                "down",
+                # horizontal_spacing=horizontal_spacing,
+                # vertical_spacing=vertical_spacing,
+                node_node_spacing=node_node_spacing,
+            ), 
+            fit_view=True, 
+            height=height, 
+            enable_node_menu=False, 
+            show_minimap=False, 
+            enable_pane_menu=False, 
+            hide_watermark=True, 
+            allow_new_edges=False, 
+            get_node_on_click=True,
+            get_edge_on_click=True,
+            min_zoom=0.1,
+            style=style
+        )

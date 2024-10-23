@@ -1463,7 +1463,7 @@ class PhylogeneticTree:
         for scale in node.verifications:
             vs = node.verifications[scale]
             if is_baseline:
-                token_mult = 20 if self.token_mults is None else self.token_mults[scale]
+                token_mult = str(self.token_mults[scale])
                 if token_mult not in vs:
                     continue
                 verification_report = vs[token_mult].verification_report
@@ -1484,7 +1484,6 @@ class PhylogeneticTree:
         return {acronym:self.get_node(acronym) for acronym in acronyms}
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
-
     def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None): # new design session, a session explore the steps from a selected node
         if len(seed_ids)==0:
             mode=DesignModes.SCRATCH
