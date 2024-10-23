@@ -2082,7 +2082,7 @@ class PhylogeneticTree:
                 if not data.proposal.passed:
                     color=FAILED_COLOR
                     size=FAILED_SIZE
-                for scale in list(NODE_COLOR_MAP.keys())[::-1]:
+                for scale in list(NODE_COLOR_MAP.keys()):#[::-1]:
                     if scale in data.verifications:
                         color=NODE_COLOR_MAP[scale]
                         size=NODE_SIZE_MAP[scale]

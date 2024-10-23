@@ -63,7 +63,7 @@ def find_free_port(start_port=25986, max_port=65535):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
-parser.add_argument("--design_id", type=str, default="test") # should be named after the agent, it should be the same as gab name
+parser.add_argument("--design_id", type=str, default="test") # evosytem will assign acronym_scale as id
 parser.add_argument("--resume", action='store_true', help="Whether to resume from the latest checkpoint if there is one, or fully retrain")
 parser.add_argument("--scale", type=str, default='debug') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
@@ -145,7 +145,7 @@ def _explore_setup(args):
         local_doc = U.read_local_doc()
         if 'too_slow' not in local_doc:
             local_doc['too_slow'] = {}
-        local_doc['too_slow'][f'{args.design_id}_{args.scale}'] = (time_elapsed,time_lower)
+        local_doc['too_slow'][f'{args.design_id}'] = (time_elapsed,time_lower)
         U.write_local_doc(local_doc)
 
 
@@ -193,12 +193,6 @@ def setup(args,log_fn=None) -> None:
     :raises: ValueError 
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
-
-    local_doc = U.read_local_doc()
-    if f'{args.design_id}_{args.scale}' in local_doc.get('too_slow',{}):
-        time_elapsed,time_lower = local_doc['too_slow'][f'{args.design_id}_{args.scale}']
-        log_fn(f'{args.design_id} {args.scale} is too slow in this machine: {time_elapsed:.1f} s, lower bound: {time_lower:.1f} s x 5, skipping...','EXIT')
-        exit()
 
     log_fn('Setting up the run environment...')
 
@@ -672,6 +666,13 @@ def main(args,log_fn=None):
         args.training_token_multiplier = 0
         args.resume = False
         print("Running random testing...")
+        
+    local_doc = U.read_local_doc()
+    if f'{args.design_id}' in local_doc.get('too_slow',{}):
+        time_elapsed,time_lower = local_doc['too_slow'][f'{args.design_id}']
+        log_fn(f'{args.design_id} is too slow in this machine: {time_elapsed:.1f} s, lower bound: {time_lower:.1f} s x 5, skipping...','EXIT')
+        return
+
     setup(args,log_fn)
     train(args,log_fn)
     evalu(args,log_fn)
