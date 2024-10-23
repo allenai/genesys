@@ -890,7 +890,18 @@ class LibraryReference(NodeObject):
         if self.verifications:
             mdtext += '\n\n**Verification:**\n'
             for scale, verification in self.verifications.items():
-                mdtext += f'{scale}: {verification.verification_report["eval_results"]["accuracy"]}\n'
+                mdtext += f'{scale} avg. acc: '
+                for mult in verification.verification_report:
+                    eval_results = verification.verification_report[mult]['eval_results.json']['results']
+                    avg_acc = 0
+                    cnt = 0
+                    for k,v in eval_results.items():
+                        if 'acc,none' in v:
+                            avg_acc += v['acc,none']
+                            cnt += 1
+                    avg_acc /= cnt
+                    mdtext += f'{avg_acc:.4f} (x{mult})\t'
+                mdtext += '\n'
 
         if reformat:
             return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
