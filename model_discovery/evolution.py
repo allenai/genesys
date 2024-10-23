@@ -887,6 +887,11 @@ class LibraryReference(NodeObject):
         if self.url:
             mdtext += f'\n\n**[Link to Paper]({self.url})**'
 
+        if self.verifications:
+            mdtext += '\n\n**Verification:**\n'
+            for scale, verification in self.verifications.items():
+                mdtext += f'{scale}: {verification.verification_report["eval_results"]["accuracy"]}\n'
+
         if reformat:
             return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
         
