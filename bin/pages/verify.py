@@ -49,8 +49,9 @@ def do_log(log_ref,log):
     real_time_utc = datetime.utcfromtimestamp(timestamp)
     print(f'[{real_time_utc}] {log}')
 
-def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False):
-    sess_id, pid, _design_id, _scale = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli, ret_id=True, RANDOM_TESTING=RANDOM_TESTING)
+def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False, accept_baselines=False):
+    sess_id, pid, _design_id, _scale = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli, 
+                                                       ret_id=True, RANDOM_TESTING=RANDOM_TESTING, accept_baselines=accept_baselines)
     exp_log_ref = evosys.CM.get_log_ref()
     
     if sess_id:
@@ -69,7 +70,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
 # python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {design_id} --scale {scale} --node_id {node_id} --pid {pid}
 
 
-def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False,ret_id=False, RANDOM_TESTING=False):
+def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False,ret_id=False, RANDOM_TESTING=False, accept_baselines=False):
     
     if not RANDOM_TESTING:
         if evosys.evoname != evoname:
@@ -126,7 +127,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                         design_id, scale = U.parse_verify_id(key)
                         exclude_list.append((design_id,scale))  
                     print(f'Selecting with exclude_list: {exclude_list}')
-                    design_id, scale = evosys.selector.select_verify(exclude_list=exclude_list)
+                    design_id, scale = evosys.selector.select_verify(exclude_list=exclude_list, accept_baselines=accept_baselines)
                     if design_id is None:
                         msg = "No unverified design found at any scale."
                         if not cli:

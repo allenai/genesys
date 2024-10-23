@@ -906,11 +906,12 @@ class Selector:
         unverified_design_scales=self.ptree.get_unverified_scales(exclude_inv=exclude_inv)
         return unverified_design_scales
 
-    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None):
-        design,scale=self._verify_baselines(exclude_list)
-        if design is not None:
-            print(f'Select unverified baseline design: {design}_{scale}')
-            return design,scale
+    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False):
+        if accept_baselines:
+            design,scale=self._verify_baselines(exclude_list)
+            if design is not None:
+                print(f'Select unverified baseline design: {design}_{scale}')
+                return design,scale
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)

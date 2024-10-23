@@ -42,7 +42,7 @@ NODE_EXECUTION_DELAY = 2
 
 class Listener:
     def __init__(self, evosys, node_id=None, group_id='default', max_design_threads=5, accept_verify_job=True, 
-                 cpu_only=False, silent=False, cli=False):
+                 accept_baselines=False, cpu_only=False, silent=False, cli=False):
         self.evosys = evosys
         remote_db = evosys.ptree.remote_db
         self.evoname = evosys.evoname
@@ -57,6 +57,7 @@ class Listener:
         self.local_dir = U.pjoin(evosys.ckpt_dir,'.node.json')
         self.max_design_threads = max_design_threads
         self.accept_verify_job = accept_verify_job # XXX: if accepting verify jobs, may not allow design jobs to use GPUs?
+        self.accept_baselines = accept_baselines
         self.cpu_only = cpu_only
         self.silent = silent
         self.group_id = group_id
@@ -213,9 +214,9 @@ class Listener:
                 print(f"There is already a verification job running. Please wait for it to finish.")
                 return None,None
             if len(comps) == 2 or (len(comps) == 3 and 'resume' in comps):
-                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli)
+                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], resume='resume' in comps, cli=self.cli, accept_baselines=self.accept_baselines)
             else:
-                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli)
+                sess_id,pid = verify_command(self.node_id, self.evosys, comps[1], comps[2], comps[3], resume='resume' in comps, cli=self.cli, accept_baselines=self.accept_baselines)
         else:
             raise ValueError(f"Unknown command: {command}")
         return sess_id,pid
@@ -430,6 +431,7 @@ if __name__ == "__main__":
     parser.add_argument('-V','--v_node', action='store_true', help='Fast launching as a verification-only node. It is recommended to separate the V and D nodes.')
     parser.add_argument('-D','--d_node', action='store_true', help='Fast launching as a design-only node. It is recommended to separate the V and D nodes.')
     parser.add_argument('-n','--no_verify', action='store_true', help='Do not use GPUs (will not accept verify jobs)')
+    parser.add_argument('-b','--accept_baselines', action='store_true', help='Accept baseline verifications')
     parser.add_argument('-m','--max_design_threads', type=int, default=5, help='Max number of design threads can accept')
     parser.add_argument('-g','--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
     parser.add_argument('-c','--cpu_only', action='store_true', help='Run design threads in CPU only mode')
@@ -470,6 +472,7 @@ if __name__ == "__main__":
             f'Network Group ID: {_group_id}.\n'
             f'Max design threads: {_max_design_threads}.\n'
             f'Accept verify job: {_accept_verify_job}.\n'
+            f'Accept baseline verifications: {args.accept_baselines}.\n'
             f'Please view it in the GUI Listen tab.\n'
             f'❕ If you just stopped a listener, please wait for {NODE_ZOMBIE_THRESHOLD} seconds for it to cool down and cleanup.'
         )
@@ -481,7 +484,7 @@ if __name__ == "__main__":
             do_cache=False,
             # cache_type='diskcache',
         )
-        listener = Listener(evosys, node_id, args.group_id, max_design_threads=args.max_design_threads, 
+        listener = Listener(evosys, node_id, args.group_id, max_design_threads=args.max_design_threads, accept_baselines=args.accept_baselines,
                             accept_verify_job=not args.no_verify, cpu_only=args.cpu_only, silent=args.silent, cli=True)
         listener.build_connection()
         listener_thread = start_listener_thread(listener,add_ctx=False)
