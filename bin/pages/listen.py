@@ -474,6 +474,7 @@ if __name__ == "__main__":
             f'Max design threads: {_max_design_threads}.\n'
             f'Accept verify job: {_accept_verify_job}.\n'
             f'Accept baseline verifications: {args.accept_baselines}.\n'
+            f'Free verifier: {args.free_verifier}.\n'
             f'Please view it in the GUI Listen tab.\n'
             f'❕ If you just stopped a listener, please wait for {NODE_ZOMBIE_THRESHOLD} seconds for it to cool down and cleanup.'
         )
@@ -495,7 +496,8 @@ if __name__ == "__main__":
               f"Group ID: {listener.group_id} \n"
               f"Max design threads: {listener.max_design_threads} \n"
               f"Accept verify job: {listener.accept_verify_job} \n"
-              f"Accept baseline verifications: {listener.accept_baselines}")
+              f"Accept baseline verifications: {listener.accept_baselines} \n"
+              f"Free verifier: {listener.free_verifier}")
         if args.silent:
             print('🙊 Running in silent mode. The design threads will not print in screen, please check logs.')
         if args.no_verify:
