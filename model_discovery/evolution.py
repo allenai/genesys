@@ -99,7 +99,8 @@ __all__ = [
 
 
 class FirestoreManager:
-    def __init__(self, evoname, db_dir, remote_db):
+    def __init__(self, ptree, evoname, db_dir, remote_db):
+        self.ptree = ptree
         self.db_dir = db_dir
         self.evoname = evoname
         self.remote_db = remote_db
@@ -505,29 +506,34 @@ class FirestoreManager:
             return None
         return log_ref.to_dict()
     
-    def upload_baselines(self,ptree,overwrite=False,verbose=False):
-        corerefs=ptree.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+    def upload_baselines(self,overwrite=False,verbose=False):
+        corerefs=self.ptree.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+        baseline_index=self.get_baseline_index()
         for coreref in corerefs:
-            node=ptree.get_node(coreref)['data']
+            node=self.ptree.get_node(coreref)
+            index_term=baseline_index.get(coreref,{})
             if node.verifications:
                 for scale,verifications in node.verifications.items():
                     for mult,verification in verifications.items():
                         scale = f'{scale}_{mult}'
-                        self.upload_verification(coreref,verification.verification_report,scale,overwrite=overwrite,verbose=verbose,is_baseline=True)
-    
-    def download_baselines(self,ptree,overwrite=False,verbose=False):
-        # TODO: WIP
+                        if 'verifications' in index_term and scale in index_term['verifications']:
+                            continue
+                        self.upload_verification(coreref,verification.to_dict(),scale,overwrite=overwrite,verbose=verbose,is_baseline=True)
+                        print(f'Uploaded verification for scale {scale} with mult {mult} in baseline {coreref}')
+        self.update_index(is_baseline=True)
+
+    def download_baselines(self,overwrite=False,verbose=False):
         self.get_baseline_index()
         for acronym in self.baseline_index:
             index_term=self.baseline_index[acronym]
             if 'verifications' in index_term:
                 for scale_mult in index_term['verifications']:
                     scale,mult=scale_mult.split('_')
-                    coreref_dir=ptree.coreref_dir(acronym,mult)
+                    coreref_dir=self.ptree.coreref_dir(acronym,mult)
                     verification_path=U.pjoin(coreref_dir,'verifications',scale+'.json')
                     if not U.pexists(verification_path) or overwrite:
                         U.mkdir(U.pjoin(coreref_dir,'verifications'))
-                        verification=self.baseline_collection.document(acronym).collection('verifications').document(scale).get().to_dict()
+                        verification=self.baseline_collection.document(acronym).collection('verifications').document(scale_mult).get().to_dict()
                         if not verification:
                             continue
                         verification['verification_report']={}
@@ -805,13 +811,13 @@ class LibraryReference(NodeObject):
         core_dir=U.pjoin(LIBRARY_DIR,'core',self.acronym)
         DATA_DIR=os.environ.get('DATA_DIR')
         if U.pexists(core_dir):
-            verification_dir=U.pjoin(core_dir,'verifications')
-            token_mults_dir=U.pjoin(DATA_DIR,'corerefs',self.acronym,'token_mults')
-            U.mkdir(verification_dir)
+            # verification_dir=U.pjoin(core_dir,'verifications')
+            # U.mkdir(verification_dir)
             # self.load_verifications(verification_dir,mult=20)
+            token_mults_dir=U.pjoin(DATA_DIR,'corerefs',self.acronym,'token_mults')
             U.mkdir(token_mults_dir)
             for mult in os.listdir(token_mults_dir):
-                self.load_verifications(U.pjoin(token_mults_dir,mult),mult=int(mult))
+                self.load_verifications(U.pjoin(token_mults_dir,mult,'verifications'),mult=int(mult))
 
     def __post_init__(self):
         py_dir=U.pjoin(LIBRARY_DIR,'base',self.acronym,self.acronym+'_edu.py')
@@ -851,14 +857,14 @@ class LibraryReference(NodeObject):
             return 'Reference'
 
     def to_desc(self, reformat=True) -> str:
-        mdtext = f'## {self.title}'
+        mdtext = f'## {self.title}\n'
         
         if self.s2id:
             mdtext += f'\n**S2 ID:** {self.s2id}'
         
         if self.authors:
             authors = ', '.join(self.authors)
-            mdtext += f'\n**Authors:** {authors}'
+            mdtext += f'\n**Authors:** {U.break_sentence(authors, 100)}'
         
         if self.tldr:
             mdtext += f'\n\n**TL;DR:** \n{U.break_sentence(self.tldr, 100)}'
@@ -1306,14 +1312,15 @@ class PhylogeneticTree:
         self.remote_db = remote_db
         self.token_mults = token_mults
         if use_remote_db and self.remote_db is not None:
-            self.FM = FirestoreManager(evoname,db_dir,self.remote_db)
+            self.FM = FirestoreManager(self,evoname,db_dir,self.remote_db)
             self.FM.sync_from_db()
         self.load()
 
         random_baseline = self.remote_db.collection('random_baseline').document('eval_results.json').get()
         self.random_baseline = random_baseline.to_dict() if random_baseline.exists else {}
         assert self.random_baseline, 'No random baseline eval results found, please run `bash scripts/run_verify.sh --RANDOM_TESTING` first'
-            
+        if self.FM:
+            self.FM.upload_baselines()
         
     # new design: proposal -> implement -> verify
 
@@ -2636,7 +2643,7 @@ class EvolutionSystem(exec_utils.System):
             'select_cfg': self.select_cfg,
         })
         collection.document(self.evoname).set({'config': config})
-
+        
     def sync_from_db(self,evoname=None):
         if evoname is None:
             evoname=self.evoname

@@ -909,8 +909,8 @@ class Selector:
     def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None):
         design,scale=self._verify_baselines(exclude_list)
         if design is not None:
-            if (design,scale) not in exclude_list:
-                return design,scale
+            print(f'Select unverified baseline design: {design}_{scale}')
+            return design,scale
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
@@ -937,7 +937,9 @@ class Selector:
         for scale in self.target_scales:
             mult=self.token_mults[scale]
             for acronym in baselines:
-                node = self.ptree.get_node(acronym)['data']
+                if (acronym,scale) in exclude_list:
+                    continue
+                node = self.ptree.get_node(acronym)
                 if not node.verifications:
                     return acronym,scale
                 if scale not in node.verifications:
