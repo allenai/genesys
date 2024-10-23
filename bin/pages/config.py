@@ -143,6 +143,8 @@ def evosys_config(evosys):
                 _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
                 if _manual_set_budget:
                     _params['verify_budget']=_verify_budget
+                else:
+                    _params['verify_budget']={}
 
                 subcol1, subcol2, subcol3 = st.columns([1.2,2,2])
                 with subcol1:
