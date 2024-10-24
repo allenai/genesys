@@ -4048,7 +4048,7 @@ def gen_REUSE_UNIT_PROMPT(reuse_code,reuse_from,reuse_type,mode,TYPE='coder'):
          reuse_type='seed design' if reuse_type=='parents' else 'recommended'
       if reuse_type=='recommended':
          reuse_type='previous design'
-         unit_name,tree_name=reuse_from.split('.')
+      unit_name,tree_name=reuse_from.split('.')
       prompt = f"""
 Here is the code of the unit **{unit_name}** from the **{tree_name}** in the **{reuse_type}** found by the planner which may be able to be reused 
 for implenting this unit. The implementation of this unit is:
