@@ -76,7 +76,9 @@ def _view_designs(evosys):
     with st.sidebar:
         category = st.selectbox('Select a category',['Design Artifacts','Seed Trees'])
         if category == 'Design Artifacts':
-            selected_design = st.selectbox('Select a design',list(design_artifacts.keys()))
+            # sort by alphabetical order
+            designs = sorted(list(design_artifacts.keys()))
+            selected_design = st.selectbox('Select a design',designs)
         else:
             selected_coreref = st.selectbox('Select a core reference',list(corerefs_with_tree.keys()))
 

@@ -266,3 +266,13 @@ def write_local_doc(local_doc):
     CKPT_DIR = os.environ.get("CKPT_DIR")
     local_doc_path = f"{CKPT_DIR}/.node.json"
     save_json(local_doc,local_doc_path)
+
+def log_error_model(design_id,scale):
+    local_doc = read_local_doc()
+    local_doc['error_models'] = local_doc.get('error_models',{})
+    local_doc['error_models'][design_id] = scale
+    write_local_doc(local_doc)
+
+def check_error_model(design_id):
+    local_doc = read_local_doc()
+    return design_id in local_doc.get('error_models',{})

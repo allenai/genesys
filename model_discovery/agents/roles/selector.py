@@ -909,10 +909,15 @@ class Selector:
     def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False, free_verifier=False):
         local_doc = U.read_local_doc()
         too_slow = local_doc.get('too_slow',{})
+        error_models = local_doc.get('error_models',{})
         print(f'Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
+        print(f'Found {len(error_models)} models that are error in this node, skipping: {error_models.keys()}')
         for _design_scale in too_slow:
-            _design,_scale=_design_scale.split('_')
-            if (_design,_scale) in exclude_list:
+            _design,_=_design_scale.split('_')
+            for _scale in self.target_scales:
+                exclude_list.append((_design,_scale))
+        for _design in error_models:
+            for _scale in self.target_scales:
                 exclude_list.append((_design,_scale))
         
         if accept_baselines:

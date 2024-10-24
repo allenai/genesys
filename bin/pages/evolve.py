@@ -368,24 +368,6 @@ def network_status(evosys,benchmark_mode):
             else:
                 st.info('No running verifications')
 
-
-def system_status(evosys):
-    with st.expander(f"System Status for ```{evosys.evoname}```",expanded=False,icon='💻'):
-        settings={}
-        settings['Experiment Directory']=evosys.evo_dir
-        if evosys.design_budget_limit>0:
-            text=f'💲: {evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
-            st.progress(1-evosys.ptree.design_cost/evosys.design_budget_limit,text=text)
-        else:
-            text=f'💲: {evosys.ptree.design_cost:.2f}/♾️'
-            st.progress(1.0,text=text)
-        _verify_budget = U.sort_dict_by_scale(evosys.selector._verify_budget,False)
-        for scale,num in _verify_budget.items():
-            remaining = num-evosys.selector.verify_budget[scale] 
-            text=f'{scale}: {remaining}/{num}'
-            st.progress(remaining/num,text=text)
-        st.write(f'Budget Type: ```{evosys.params["budget_type"]}```')
-
 # def system_config(evosys):
 #     with st.expander(f"System Config for ```{evosys.evoname}```",expanded=False,icon='🔍'):
 #         col1,col2=st.columns(2)
@@ -597,9 +579,6 @@ def evolve(evosys,project_dir):
             value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
 
         st.button('🔄 Refresh',use_container_width=True)
-
-        
-        system_status(evosys)
         
         if st.session_state.command_center:
             st.download_button(

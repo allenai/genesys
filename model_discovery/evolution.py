@@ -2986,7 +2986,9 @@ class EvolutionSystem(exec_utils.System):
             else:
                 raise FileNotFoundError(f"Code file not found for design {design_id}")
         code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
-        
+        if code is None:
+            U.log_error_model(design_id,scale)
+            return None
         with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
             f.write(code)
 

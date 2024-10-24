@@ -51,6 +51,8 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
         raise Exception('Model does not pass the checker')
     print('Starting tuning...')
     autocfg = checker.tune(cfg,code,model_name, cpu_only=cpu_only) # cause segment error when using with evo
+    if autocfg is None:
+        return None
     # autocfg = "autoconfig = { }"
     print('Tuning complete, saving the code with autocfg.')
     code=code+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'

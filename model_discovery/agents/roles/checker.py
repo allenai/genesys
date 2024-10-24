@@ -1040,9 +1040,10 @@ class Checker(exec_utils.BaseTool):
             return 'autoconfig={}'
         
         MIN_DIM = 96  # model dim is always a multiple of 64 or 96
-        
+
         # Guarantee the n_block first, then d_model, only if d_model is smaller than MIN_DIM
 
+        last_size = size
         while True:
             if LB < size < UB:
                 break
@@ -1060,6 +1061,10 @@ class Checker(exec_utils.BaseTool):
             del glm  # Clear previous model
             glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
             size = sum(p.numel() for p in glm.parameters())
+            diff = size - last_size
+            if diff == 0:
+                return None
+            last_size = size
 
         print(f'Checking model correctness')
         step_size = 16

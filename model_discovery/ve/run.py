@@ -116,7 +116,7 @@ TIME_LOWER={
 }
 
 
-def _explore_setup(args):
+def _explore_setup(args,slow_threshold=3):
     setup(args)
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
@@ -140,7 +140,7 @@ def _explore_setup(args):
     num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
     time_lower = time_lower * 10 / num_steps 
 
-    if time_elapsed > time_lower*5: # 5 times slower than the lower bound
+    if time_elapsed > time_lower*slow_threshold: # X times slower than the lower bound
         util_logger.warning(f"Training time is too long: {time_elapsed:.1f} s, expected: {time_lower:.1f} s")
         local_doc = U.read_local_doc()
         if 'too_slow' not in local_doc:
