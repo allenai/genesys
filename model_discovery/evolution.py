@@ -497,7 +497,10 @@ class FirestoreManager:
         log_ref = log_collection.document(sess_id)
         log_ref.set(sessdata,merge=True)
         index_ref = log_collection.document('index')
-        index_ref.set({sess_id:{'progress':self.to_session_progress(sessdata)}},merge=True)
+        index_ref.set({sess_id:{
+            'progress':self.to_session_progress(sessdata),
+            'mode': sessdata.get('mode','')
+        }},merge=True)
         print(f'Uploaded session {sess_id} to DB')
 
     def get_design_session(self,sess_id):
@@ -1254,10 +1257,14 @@ class DesignArtifact(NodeObject):
         return self.get_cost()
     
     def get_cost(self):
-        costs=self.proposal.costs
+        costs = self.proposal.costs.copy()  # Create a copy of the proposal costs
         if self.implementation:
-            icosts=self.implementation.get_cost()
-            costs={k:v+icosts[k] for k,v in costs.items() if k in icosts}
+            icosts = self.implementation.get_cost()
+            for k, v in icosts.items():
+                if k in costs:
+                    costs[k] += v
+                else:
+                    costs[k] = v
         # TODO: maybe cost of rerank, selection, etc. also considered, now only agents 
         return costs
 
@@ -1412,11 +1419,11 @@ class PhylogeneticTree:
 
     @property
     def design_cost(self):
-        costs=0
+        cost=0
         designs=self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
         for design in designs:
-            costs+=sum(self.get_node(design).costs.values())
-        return costs
+            cost+=sum(self.get_node(design).costs.values())
+        return cost
 
     def budget_status(self,budgets,ret_verified=False):
         budgets=copy.deepcopy(budgets)

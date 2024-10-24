@@ -126,13 +126,12 @@ OPENAI_OUTPUT_BUFFER={
     "o1-mini":32768,
 }
 
-
 ANTHROPIC_TOKEN_LIMITS={
-    "claude-3-5-sonnet-20241022":200000,
+    "claude-3-5-sonnet-20241022":199999,
 }
 
 ANTHROPIC_OUTPUT_BUFFER={
-    "claude-3-5-sonnet-20241022":8192,
+    "claude-3-5-sonnet-20241022":8192*2,
 }
 
 
@@ -193,24 +192,51 @@ def truncate_history(history,token_limit,model_name,buffer=128):
     truncated_history=truncated_history[::-1] # revert to original order
     return truncated_history
 
-def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
+# def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
+#     history = copy.deepcopy(list(history))
+#     _token_limit=get_token_limit(model_name)
+#     token_limit=_token_limit
+#     if system is not None:
+#         token_limit-=count_tokens(system,model_name)
+#     if token_limit<0:
+#         try_truncate = _token_limit-count_tokens(system,model_name)
+#         raise ValueError(f'Token limit exceeded by system prompt: {token_limit}')
+#     if prompt is not None:
+#         token_limit-=count_tokens(prompt,model_name)
+#     if token_limit<0:
+#         try_truncate = _token_limit-count_tokens(system,model_name)
+#         prompt = truncate_text(prompt,try_truncate,model_name,buffer)
+#         history = []
+#     else:
+#         history=truncate_history(history,token_limit,model_name,buffer)
+#     return tuple(history),prompt
+
+def context_safe_guard(history, model_name, prompt=None, system=None, buffer=128):
     history = copy.deepcopy(list(history))
-    _token_limit=get_token_limit(model_name)
-    token_limit=_token_limit
-    if system is not None:
-        token_limit-=count_tokens(system,model_name)
-    if token_limit<0:
-        try_truncate = _token_limit-count_tokens(system,model_name)
-        raise ValueError(f'Token limit exceeded by system prompt: {token_limit}')
-    if prompt is not None:
-        token_limit-=count_tokens(prompt,model_name)
-    if token_limit<0:
-        try_truncate = _token_limit-count_tokens(system,model_name)
-        prompt = truncate_text(prompt,try_truncate,model_name,buffer)
-        history = []
-    else:
-        history=truncate_history(history,token_limit,model_name,buffer)
-    return tuple(history),prompt
+    total_limit = get_token_limit(model_name)
+    remaining_tokens = total_limit - buffer
+    
+    # Handle system prompt
+    system_tokens = count_tokens(system, model_name) if system else 0
+    if system_tokens > remaining_tokens:
+        raise ValueError(f'Token limit exceeded by system prompt: {system_tokens} > {remaining_tokens}')
+    remaining_tokens -= system_tokens
+
+    # Handle user prompt
+    prompt_tokens = count_tokens(prompt, model_name) if prompt else 0
+    if prompt_tokens > remaining_tokens:
+        prompt = truncate_text(prompt, remaining_tokens, model_name, buffer=0)
+        prompt_tokens = count_tokens(prompt, model_name)
+    remaining_tokens -= prompt_tokens
+
+    # Truncate history
+    history = truncate_history(history, remaining_tokens, model_name, buffer=0)
+
+    # Final check
+    total_tokens = system_tokens + prompt_tokens + sum(count_tokens(content, model_name) for content, _ in history)
+    if total_tokens > total_limit - buffer:
+        raise ValueError(f'Failed to fit context within token limit: {total_tokens} > {total_limit - buffer}')
+    return tuple(history), prompt
 
 
 class ModelOutputPlus(UtilityModel):

@@ -327,6 +327,7 @@ def network_status(evosys,benchmark_mode):
                 active_design_sessions_df['started_at'] = pd.to_datetime(active_design_sessions_df['started_at'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
             if 'heartbeat' in active_design_sessions_df.columns:
                 active_design_sessions_df['heartbeat'] = pd.to_datetime(active_design_sessions_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            active_design_sessions_df.rename(columns={'mode':'Mode'},inplace=True)
             st.dataframe(active_design_sessions_df,use_container_width=True)
         else:
             st.info('No active design sessions')

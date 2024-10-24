@@ -1301,6 +1301,7 @@ class GUFlow(FlowCreator):
 
             if INITIAL_PASS:
                 potential_reuses={}
+                parents_reuses={}
                 if self.design_mode==DesignModes.CROSSOVER:
                     parents_reuses=self.reuse_parents(self.seed_ids)
                     REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses)
