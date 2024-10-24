@@ -5,7 +5,7 @@ import streamlit as st
 import sys,os
 from datetime import datetime
 import asyncio
-import python_weather
+# import python_weather
 
 
 sys.path.append('.')
@@ -19,11 +19,11 @@ logo_path = U.pjoin(current_dir,'..','assets','storm_logo.svg')
 logo=AU.svg_to_image(logo_path)
 
 
-async def _getweather(city):
-  # declare the client. the measuring unit used defaults to the metric system (celcius, km/h, etc.)
-  async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
-    weather = await client.get(city)
-    return weather.temperature
+# async def _getweather(city):
+#   # declare the client. the measuring unit used defaults to the metric system (celcius, km/h, etc.)
+#   async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
+#     weather = await client.get(city)
+#     return weather.temperature
   
 
 def tabs():
