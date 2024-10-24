@@ -374,13 +374,13 @@ def system_status(evosys):
         settings['Experiment Directory']=evosys.evo_dir
         if evosys.design_budget_limit>0:
             text=f'💲: {evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
-            st.progress(evosys.ptree.design_cost/evosys.design_budget_limit,text=text)
+            st.progress(1-evosys.ptree.design_cost/evosys.design_budget_limit,text=text)
         else:
             text=f'💲: {evosys.ptree.design_cost:.2f}/♾️'
             st.progress(1.0,text=text)
         _verify_budget = U.sort_dict_by_scale(evosys.selector._verify_budget,False)
         for scale,num in _verify_budget.items():
-            remaining = evosys.selector.verify_budget[scale] 
+            remaining = num-evosys.selector.verify_budget[scale] 
             text=f'{scale}: {remaining}/{num}'
             st.progress(remaining/num,text=text)
         st.write(f'Budget Type: ```{evosys.params["budget_type"]}```')

@@ -1193,8 +1193,14 @@ class GUFlow(FlowCreator):
         _items={}
         for seed_id in seed_ids:
             parent=self.ptree.get_node(seed_id)
-            for unit in parent.units:
-                _items[f'{seed_id}.{unit}']=parent.units[unit].code
+            if parent.type=='DesignArtifactImplemented':
+                tree=parent.implementation.implementation
+            elif parent.type=='ReferenceCoreWithTree':
+                tree=parent.tree
+            else:
+                continue
+            for unit in tree.units:
+                _items[f'{seed_id}.{unit}']=tree.units[unit].code
         return _items
 
     def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
@@ -1271,6 +1277,7 @@ class GUFlow(FlowCreator):
                 break
             
 
+
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
             context_implementation_planner=copy.deepcopy(planner_context)
@@ -1290,13 +1297,14 @@ class GUFlow(FlowCreator):
             
             implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
                                                 alias='implementation_planner',note=f'Starting implementation planning...')
-            
+
 
             if INITIAL_PASS:
                 potential_reuses={}
                 if self.design_mode==DesignModes.CROSSOVER:
                     parents_reuses=self.reuse_parents(self.seed_ids)
                     REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses)
+
                 else: 
                     potential_reuses,reuse_prompt=self.recommend_reuses(UNIMPLEMENTED)
                     if self.design_mode==DesignModes.MUTATION:
@@ -1304,6 +1312,7 @@ class GUFlow(FlowCreator):
                         REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
                     else:
                         REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
+
 
 
             if round>1 or UNSTRUCT_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
@@ -1381,7 +1390,7 @@ class GUFlow(FlowCreator):
                             self.stream.write(f'### Plan\n{plan}')
                             self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
                             if not termination and round>1:
-                                succeed,selection,_=P.gen_O1_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                succeed,selection,_=P.gen_SELECTION_DEBUG_prompt(selection,SELECTIONS)
                                 if not succeed:
                                     if len(UNIMPLEMENTED)==0:
                                         termination=True
@@ -1415,11 +1424,11 @@ class GUFlow(FlowCreator):
             LOG.append(f'Round {round} started. Implementing unit {selection}.')
 
 
+
             if selection in IMPLEMENTED:
                 self.stream.write(f'##### Start implementing refined unit {selection}')
             else:
                 self.stream.write(f'##### Start implementing new unit {selection}')
-            self.stream.write(f'###### **Current time: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}**')
 
 
             ### Termination

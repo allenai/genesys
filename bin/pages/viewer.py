@@ -43,9 +43,6 @@ class ViewModes(Enum):
 
 
 
-
-
-
 def _view_tree(tree):
     with st.expander('View detailed tree'):
         st.write(tree.view()[0],unsafe_allow_html=True)
@@ -607,6 +604,7 @@ def leaderboard_filter(leaderboard,task_filter=[]):
         return leaderboard
     filtered_columns = [col for col in leaderboard.columns if any(task in col for task in task_filter)]
     filtered_leaderboard = leaderboard[filtered_columns]
+    filtered_leaderboard = filtered_leaderboard.dropna(axis=1)
     filtered_leaderboard['avg.'] = filtered_leaderboard.mean(axis=1)
     return filtered_leaderboard
 
@@ -622,7 +620,7 @@ def selector_lab(evosys,project_dir):
         leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l=export_leaderboards(evosys,design_vectors,baseline_vectors)
         cols = st.columns([1,1,3])
         with cols[0]:
-            scale = st.selectbox('Select scale',options=list(leaderboards_normed.keys()))
+            scale = st.selectbox('Select scale',options=list(sorted(leaderboards_normed.keys(),key=lambda x:U.letternum2num(x))))
         with cols[1]:
             _options = ['random']+list(baseline_vectors.keys())
             relative = st.selectbox('Relative to',options=_options)
@@ -669,7 +667,12 @@ def selector_lab(evosys,project_dir):
                 st.info('No results available at this moment.')
 
 
+
     st.subheader('Metrics Explorer')
+
+    # metrics_btn = st.button('Compute and show metrics and rankings',use_container_width=True)
+    # if not metrics_btn:
+    #     return
 
     cols = st.columns(3)
     with cols[0]:

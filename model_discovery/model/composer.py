@@ -283,7 +283,7 @@ class GAUTree:
             desc = unit.spec.to_prompt()
             return f'{desc}\n\n{requirements}'
         elif unit_name in self.declares:
-            return self.declares[unit_name].to_prompt
+            return self.declares[unit_name].to_prompt()
         else:
             return None
     

@@ -38,6 +38,7 @@ from enum import Enum
 import time
 import tempfile
 from dataclasses import dataclass, field, asdict
+from concurrent.futures import ThreadPoolExecutor
 import networkx as nx
 import pandas as pd
 import numpy as np
@@ -1432,7 +1433,7 @@ class PhylogeneticTree:
             return budgets,verified
         else:
             return budgets
-        
+    
     def update_baselines(self):
         self.FM.download_baselines()
         designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
@@ -1446,32 +1447,48 @@ class PhylogeneticTree:
         else:
             self.update_design_tree()
             designs=self.filter_by_type('DesignArtifactImplemented')
-        design_vectors = {}
-        for design in designs:
-            design_vectors[design] = self.get_design_vector(design,is_baseline)
+        # design_vectors = {}
+        # for design in designs:
+        #     design_vectors[design] = self.get_design_vector(design,is_baseline)
+
+        node_dicts = [self.get_node(design).to_dict() for design in designs]
+        _is_baseline = [is_baseline]*len(node_dicts)
+        # Use multiprocessing to parallelize the process
+        # with multiprocessing.Pool() as pool:
+        #     results = pool.starmap(self.get_design_vector, [(node_dict, is_baseline) for node_dict in node_dicts])
+        
+        with ThreadPoolExecutor() as executor:
+            results = list(executor.map(self.get_design_vector, node_dicts, _is_baseline))
+    
+        # Combine results into a dictionary
+        design_vectors = dict(zip(designs, results))
+
         return design_vectors
 
-    def get_design_vector(self,acronym,is_baseline=False):
+
+    def get_design_vector(self,node_dict,is_baseline=False, unit_info=False,load_wandb=False):
         vector = {}
-        node = self.get_node(acronym)
+        node = node_dict
         if not is_baseline:
-            vector['proposal_rating'] = node.proposal.rating
+            vector['proposal_rating'] = node['proposal']['rating']
             vector['units'] = {}
-            for unit_name, unit in node.implementation.implementation.units.items():
-                vector['units'][unit_name] = unit.rating
+            if unit_info:
+                for unit_name, unit in node['implementation']['implementation']['units'].items():
+                    vector['units'][unit_name] = unit['rating']
         vector['verifications'] = {}
-        for scale in node.verifications:
-            vs = node.verifications[scale]
+        for scale in node['verifications']:
+            vs = node['verifications'][scale]
             if is_baseline:
                 token_mult = str(self.token_mults[scale])
                 if token_mult not in vs:
                     continue
-                verification_report = vs[token_mult].verification_report
+                verification_report = vs[token_mult]['verification_report']
             else:
-                verification_report = vs.verification_report
-            if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
-                if 'wandb_ids.json' in verification_report:
-                    verification_report.update(get_history_report(verification_report['wandb_ids.json']))
+                verification_report = vs['verification_report']
+            if load_wandb:
+                if 'training_record.csv' not in verification_report or 'system_metrics.csv' not in verification_report:
+                    if 'wandb_ids.json' in verification_report:
+                        verification_report.update(get_history_report(verification_report['wandb_ids.json']))
             vector['verifications'][scale] = verification_report
         return vector
 
