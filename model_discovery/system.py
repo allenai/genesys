@@ -619,12 +619,14 @@ class ModelDiscoverySystem(exec_utils.System):
         
         design_stream,log_fn=self.new_session(sess_id,stream,log_collection)
         
-        
         try:
             self.design_fn(self,design_stream,sess_id,design_cfg,user_input,proposal,cpu_only=cpu_only,log_fn=log_fn)
         except Exception as e:
             trace = traceback.format_exc()
-            self.log_error(f'Error in design session {sess_id}: {e}\n\n{trace}')
+            error_msg = f'Error in design session {sess_id}: {e}\n\n{trace}'
+            self.log_error(error_msg)
+            print(error_msg)
+
 
     def log_error(self,error_msg):
         error_log_dir = U.pjoin(self.ptree.db_dir,'error_logs')
