@@ -13,9 +13,9 @@ transformers==4.43.3
 datasets
 evaluate
 accelerate
-causal-conv1d
-mamba-ssm
-flash-attn
+# causal-conv1d # optional
+# mamba-ssm # optional
+# flash-attn # optional
 torchtune==0.2.0 # higher version has problem of initializing CUDA early
 torchao
 boto3

@@ -485,14 +485,23 @@ class EffectiveChecker: # WORING IN PROGRESS
             benchmark=benchmarks['training'][cache_key]
 
         print('Entering test training...')
-        run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,model)
+        try:
+            run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss,grad_norms=self.test_training(config,model)
+        except Exception as e:
+            trace=traceback.format_exc()
+            error_msg=f'The training failed. {e}\n{trace}'
+            self.errors.append(error_msg)
+            print(error_msg)
+            return
         print('Test training done.')
         if gradient_of_losses>0:
             self.errors.append('The model is not training correctly. The loss is not decreasing. ')
         if loss>1e4: # its already abnormal
             self.errors.append('The model is diverging. The loss is NaN. ')
-        # if run_time>benchmark['run_time']*10: # NOTE: MAKE IT REALLY LOOSE NOW
-        #     self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
+        if any(grad_norm>1e4 for grad_norm in grad_norms):
+            self.errors.append('The model is diverging. The gradient norm is NaN. ')
+        if run_time>benchmark['run_time']*10:
+            self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         elif run_time>benchmark['run_time']*5:
             self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         if max_memory_allocated>benchmark['max_memory_allocated']*5:
@@ -565,7 +574,7 @@ class EffectiveChecker: # WORING IN PROGRESS
         self.results['space_complexity'] = space_complexity
 
 
-    def test_training(self, config, model):
+    def test_training(self, config, model): 
         # TODO: maybe use profiler to get more metrics
         model.train()
         torch.cuda.reset_peak_memory_stats()
@@ -575,8 +584,8 @@ class EffectiveChecker: # WORING IN PROGRESS
             overwrite_output_dir=True,
             learning_rate=config.learning_rate,
             save_strategy='no',
-            max_steps=5,
-            per_device_train_batch_size=2,
+            max_steps=10,
+            per_device_train_batch_size=16, # actually just check 14M
             auto_find_batch_size=True, # for safety
             optim="adamw_hf",
             logging_steps=1,
@@ -604,11 +613,12 @@ class EffectiveChecker: # WORING IN PROGRESS
         run_time=output.metrics['train_runtime']
         loss=output.training_loss
         losses=[log['loss'] for log in trainer.state.log_history if 'loss' in log]
+        grad_norms=[log['grad_norm'] for log in trainer.state.log_history if 'grad_norm' in log]
         gradient_of_losses=np.gradient(losses).mean()
         total_flos=output.metrics['total_flos']
         train_loss=trainer.state.log_history[-1]['train_loss'] # average the loss across all steps
         max_memory_allocated = torch.cuda.max_memory_allocated() / 1024 ** 2  # Convert bytes to MB
-        return run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss
+        return run_time,loss,gradient_of_losses,max_memory_allocated,total_flos,train_loss,grad_norms
 
     def reset(self):
         self.errors.clear()
@@ -847,7 +857,7 @@ class Checker(exec_utils.BaseTool):
         return True
     
 
-    def check(self, config, gab_code: str, name: str, eff=False, cpu_only=False, reformat_only=False) -> bool:
+    def check(self, config, gab_code: str, name: str, eff=True, cpu_only=False, reformat_only=False) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
@@ -1015,7 +1025,7 @@ class Checker(exec_utils.BaseTool):
         return check_report
 
 
-    def tune(self, config, gab_code, name, cpu_only=False) -> str:
+    def tune(self, config, gab_code, name, cpu_only=False,max_tries=1000) -> str:
         print('Tuning the model scale...')
         d_model = config.d_model
         n_block = config.n_block
@@ -1044,6 +1054,7 @@ class Checker(exec_utils.BaseTool):
         # Guarantee the n_block first, then d_model, only if d_model is smaller than MIN_DIM
 
         last_size = size
+        n_tries = 0
         while True:
             if LB < size < UB:
                 break
@@ -1055,7 +1066,7 @@ class Checker(exec_utils.BaseTool):
                 else:
                     d_model //= 2
             
-            print(f'Trying n_block={n_block}, d_model={d_model}')
+            print(f'Attempt {n_tries}: Trying n_block={n_block}, d_model={d_model}')
             auto_cfg = {'d_model': d_model, 'n_block': n_block}
             
             del glm  # Clear previous model
@@ -1065,6 +1076,9 @@ class Checker(exec_utils.BaseTool):
             if diff == 0:
                 return None
             last_size = size
+            n_tries += 1
+            if n_tries > max_tries:
+                return None
 
         print(f'Checking model correctness')
         step_size = 16

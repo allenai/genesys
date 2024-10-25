@@ -8,7 +8,7 @@ except:
 
 from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
-from torchtune.modules import RMSNorm
+# from torchtune.modules import RMSNorm
 
 class GAB(GABBase):
     def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype

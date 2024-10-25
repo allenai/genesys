@@ -5,7 +5,7 @@ import streamlit as st
 import sys,os
 from datetime import datetime
 import asyncio
-# import python_weather
+import python_weather
 
 
 sys.path.append('.')
@@ -19,11 +19,11 @@ logo_path = U.pjoin(current_dir,'..','assets','storm_logo.svg')
 logo=AU.svg_to_image(logo_path)
 
 
-# async def _getweather(city):
-#   # declare the client. the measuring unit used defaults to the metric system (celcius, km/h, etc.)
-#   async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
-#     weather = await client.get(city)
-#     return weather.temperature
+async def _getweather(city):
+  # declare the client. the measuring unit used defaults to the metric system (celcius, km/h, etc.)
+  async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
+    weather = await client.get(city)
+    return weather.temperature
   
 
 def tabs():
@@ -83,15 +83,15 @@ def howtouse():
 
     # col1,col2=st.columns([1.45,1])
     # with col1: 
-    st.markdown('# Welcome to the Model Discovery System')
+    st.markdown('# Welcome to Genesys')
     # with col2:
     #   st.write('')
     #   st.image(logo,width=80)
     
     st.markdown('''
-The Model Discovery System is a system aimed at using large language model
-agents to discover novel and human-level autoregressive language model designs.
-This is a graphical user interface (GUI) for the Model Discovery System. You can
+The Genesys Genetic Programming Model Discovery System is a system aimed at using large language model
+agents to discover novel and human-level autoregressive language model designs by genetic programming.
+This is a graphical user interface (GUI) for Genesys. You can
 use it to run experiments, view results, and tune the agents. We use this GUI as
 the main interface to the system instead of the common command-line interface
 (CLI).
