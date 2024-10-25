@@ -116,7 +116,7 @@ TIME_LOWER={
 }
 
 
-def _explore_setup(args,slow_threshold=3):
+def _explore_setup(args,slow_threshold=5):
     setup(args)
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
@@ -491,6 +491,7 @@ def train(args,log_fn=None):
         return
     start = time.perf_counter()
     args,gab,gab_config=before_train(args,log_fn)
+    check_too_slow(args.design_id,log_fn) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -654,6 +655,14 @@ def report(args,log_fn=None) -> dict:
     log_fn(f'Report generated.')
     return report
 
+
+def check_too_slow(design_id,log_fn):
+    local_doc = U.read_local_doc()
+    if f'{design_id}' in local_doc.get('too_slow',{}):
+        time_elapsed,time_lower = local_doc['too_slow'][f'{design_id}']
+        log_fn(f'{design_id} is too slow in this machine: {time_elapsed:.1f} s, lower bound: {time_lower:.1f} s x 5, skipping...','EXIT')
+        sys.exit()
+
 def main(args,log_fn=None):
     """Main run entry point 
 
@@ -661,6 +670,10 @@ def main(args,log_fn=None):
         The CLI arguments. 
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
+
+    
+    check_too_slow(args.design_id,log_fn) # check before starting
+    
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
     log_fn('Starting verification...','BEGIN')
@@ -673,11 +686,6 @@ def main(args,log_fn=None):
         args.resume = False
         print("Running random testing...")
         
-    local_doc = U.read_local_doc()
-    if f'{args.design_id}' in local_doc.get('too_slow',{}):
-        time_elapsed,time_lower = local_doc['too_slow'][f'{args.design_id}']
-        log_fn(f'{args.design_id} is too slow in this machine: {time_elapsed:.1f} s, lower bound: {time_lower:.1f} s x 5, skipping...','EXIT')
-        return
 
     setup(args,log_fn)
     train(args,log_fn)
