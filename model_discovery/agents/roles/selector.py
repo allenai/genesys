@@ -1014,6 +1014,9 @@ class Selector:
                 break
             acronym = acronyms[0]
             scales = unverified_by_design[acronym]
+            if len(scales)==0:
+                exclude_design.append(acronym)
+                continue
             scale = sorted(scales,key=lambda x:int(x.replace('M','')))[0]
             if scale in available_verify_budget:
                 return acronym,scale
