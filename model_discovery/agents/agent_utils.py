@@ -192,24 +192,6 @@ def truncate_history(history,token_limit,model_name,buffer=128):
     truncated_history=truncated_history[::-1] # revert to original order
     return truncated_history
 
-# def context_safe_guard(history,model_name,prompt=None,system=None,buffer=128):
-#     history = copy.deepcopy(list(history))
-#     _token_limit=get_token_limit(model_name)
-#     token_limit=_token_limit
-#     if system is not None:
-#         token_limit-=count_tokens(system,model_name)
-#     if token_limit<0:
-#         try_truncate = _token_limit-count_tokens(system,model_name)
-#         raise ValueError(f'Token limit exceeded by system prompt: {token_limit}')
-#     if prompt is not None:
-#         token_limit-=count_tokens(prompt,model_name)
-#     if token_limit<0:
-#         try_truncate = _token_limit-count_tokens(system,model_name)
-#         prompt = truncate_text(prompt,try_truncate,model_name,buffer)
-#         history = []
-#     else:
-#         history=truncate_history(history,token_limit,model_name,buffer)
-#     return tuple(history),prompt
 
 def context_safe_guard(history, model_name, prompt=None, system=None, buffer=128):
     history = copy.deepcopy(list(history))
@@ -234,9 +216,31 @@ def context_safe_guard(history, model_name, prompt=None, system=None, buffer=128
 
     # Final check
     total_tokens = system_tokens + prompt_tokens + sum(count_tokens(content, model_name) for content, _ in history)
-    if total_tokens > total_limit - buffer:
-        raise ValueError(f'Failed to fit context within token limit: {total_tokens} > {total_limit - buffer}')
-    return tuple(history), prompt
+    # if total_tokens > total_limit - buffer:
+    #     raise ValueError(f'Failed to fit context within token limit: {total_tokens} > {total_limit - buffer}')
+    
+    while total_tokens > total_limit - buffer:
+        if history:
+            # Remove the oldest message from history
+            history.pop(0)
+        elif prompt:
+            # If no history left, truncate the prompt further
+            prompt = truncate_text(prompt, len(_encode_text(prompt, model_name)) - 1, model_name, buffer=0)
+        elif system:
+            # If no prompt left, truncate the system message
+            system = truncate_text(system, len(_encode_text(system, model_name)) - 1, model_name, buffer=0)
+        else:
+            # If we can't truncate anything else, raise an error
+            # raise ValueError("Unable to fit context within token limit even after maximum truncation")
+            break # just try
+        
+        # Recalculate total tokens
+        total_tokens = (count_tokens(system, model_name) if system else 0) + \
+                        (count_tokens(prompt, model_name) if prompt else 0) + \
+                       sum(count_tokens(content, model_name) for content, _ in history)
+
+    
+    return tuple(history), prompt, system
 
 
 class ModelOutputPlus(UtilityModel):
@@ -295,7 +299,7 @@ def structured__call__(
         The optional model state at the point of querying 
     
     """
-    history,prompt=context_safe_guard(history,model._config.model_name,prompt,system)
+    history,prompt,_=context_safe_guard(history,model._config.model_name,prompt,system)
     if model_state is None:
         return _prompt_model_structured(
             model,
@@ -521,7 +525,7 @@ def claude__call__(
         The optional model state at the point of querying 
     
     """
-    history,prompt=context_safe_guard(history,model._config.model_name,prompt,system)
+    history,prompt,system=context_safe_guard(history,model._config.model_name,prompt,system)
     messages=ConversationHistory(history,prompt).get_turns(use_cache)
     model._config.model_name=model_name
     if use_cache:
