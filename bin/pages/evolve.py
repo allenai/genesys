@@ -523,7 +523,7 @@ def evolution_launch_pad(evosys):
                     stop_evo(evosys)
 
     st.subheader("Command Center Panel")
-    cols = st.columns([3,1,1,3])
+    cols = st.columns([3,1,1,2.5])
     with cols[0]:
         user_command = st.text_input('Input a command',value='',disabled=not st.session_state.evo_running,help='''
 You can send command to the command center. Format example:

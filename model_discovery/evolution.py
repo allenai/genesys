@@ -688,6 +688,10 @@ class FirestoreManager:
         # 3. delete from GAUDict
         raise NotImplementedError("Not implemented yet")
 
+    def sync(self,overwrite=False,verbose=False):
+        self.sync_to_db(overwrite=overwrite,verbose=verbose)
+        self.sync_from_db(overwrite=overwrite)
+
 
 
 
@@ -1716,7 +1720,7 @@ class PhylogeneticTree:
 
     def update_design_tree(self):
         if self.FM:
-            self.FM.sync_from_db()
+            self.FM.sync()
             updated_terms=self.FM.updated_terms
         edges_to_add = []
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):

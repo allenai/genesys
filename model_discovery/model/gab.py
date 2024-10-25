@@ -1,448 +1,492 @@
 import torch
 import torch.nn as nn
 from model_discovery.model.utils.modules import GABBase
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+import torch.utils.checkpoint
+from torch.utils._pytree import tree_map
+from transformers.utils import logging
+from transformers.activations import ACT2FN
+try:
+    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
+except:
+    causal_conv1d_update, causal_conv1d_fn = None, None
+
+
+def rotate_half(x):
+    """Rotates half the hidden dims of the input."""
+    x1 = x[..., :x.shape[-1] // 2]
+    x2 = x[..., x.shape[-1] // 2:]
+    return torch.cat((-x2, x1), dim=-1)
+
+
+def permute_qk(q, k):
+    bsz, num_head, seq_len, head_dim = q.shape
+    q = q.reshape(bsz, num_head, seq_len, head_dim // 2, 2).transpose(3, 4
+        ).reshape(bsz, num_head, seq_len, head_dim)
+    k = k.reshape(bsz, num_head, seq_len, head_dim // 2, 2).transpose(3, 4
+        ).reshape(bsz, num_head, seq_len, head_dim)
+    return q, k
+
+
+def undo_permute_qk(q, k):
+    bsz, num_head, seq_len, head_dim = q.shape
+    q = q.reshape(bsz, num_head, seq_len, 2, head_dim // 2).transpose(3, 4
+        ).reshape(bsz, num_head, seq_len, head_dim)
+    k = k.reshape(bsz, num_head, seq_len, 2, head_dim // 2).transpose(3, 4
+        ).reshape(bsz, num_head, seq_len, head_dim)
+    return q, k
+
+
+def apply_rotary_pos_emb(q, k, cos, sin, unsqueeze_dim=1):
+    """Applies Rotary Position Embedding to the query and key tensors.
+
+    Args:
+        q (`torch.Tensor`): The query tensor.
+        k (`torch.Tensor`): The key tensor.
+        cos (`torch.Tensor`): The cosine part of the rotary embedding.
+        sin (`torch.Tensor`): The sine part of the rotary embedding.
+        position_ids (`torch.Tensor`, *optional*):
+            Deprecated and unused.
+        unsqueeze_dim (`int`, *optional*, defaults to 1):
+            The 'unsqueeze_dim' argument specifies the dimension along which to unsqueeze cos[position_ids] and
+            sin[position_ids] so that they can be properly broadcasted to the dimensions of q and k. For example, note
+            that cos[position_ids] and sin[position_ids] have the shape [batch_size, seq_len, head_dim]. Then, if q and
+            k have the shape [batch_size, heads, seq_len, head_dim], then setting unsqueeze_dim=1 makes
+            cos[position_ids] and sin[position_ids] broadcastable to the shapes of q and k. Similarly, if q and k have
+            the shape [batch_size, seq_len, heads, head_dim], then set unsqueeze_dim=2.
+    Returns:
+        `tuple(torch.Tensor)` comprising of the query and key tensors rotated using the Rotary Position Embedding.
+    """
+    cos = cos.unsqueeze(unsqueeze_dim)
+    sin = sin.unsqueeze(unsqueeze_dim)
+    q_embed = q * cos + rotate_half(q) * sin
+    k_embed = k * cos + rotate_half(k) * sin
+    return q_embed, k_embed
+
+
+class RMSNorm(nn.Module):
+
+    def __init__(self, hidden_size, eps=1e-06):
+        super().__init__()
+        self.weight = nn.Parameter(torch.ones(hidden_size))
+        self.variance_epsilon = eps
+
+    def forward(self, hidden_states):
+        input_dtype = hidden_states.dtype
+        hidden_states = hidden_states.to(torch.float32)
+        variance = hidden_states.pow(2).mean(-1, keepdim=True)
+        hidden_states = hidden_states * torch.rsqrt(variance + self.
+            variance_epsilon)
+        return self.weight * hidden_states.to(input_dtype)
+
+
+class SwiGluMLP(nn.Module):
+
+    def __init__(self, hidden_size, intermediate_size):
+        super().__init__()
+        self.hidden_size = hidden_size
+        self.intermediate_size = intermediate_size
+        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False)
+        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False)
+        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
+            bias=False)
+        self.act_fn = ACT2FN['silu']
+
+    def forward(self, x):
+        down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.
+            up_proj(x))
+        return down_proj
+
+
+class RotaryEmbedding(nn.Module):
+
+    def __init__(self, dim, max_position_embeddings=16, base=10000, device=
+        None, scaling_factor=1.0):
+        super().__init__()
+        self.scaling_factor = scaling_factor
+        self.dim = dim
+        self.max_position_embeddings = max_position_embeddings
+        self.base = base
+        inv_freq = 1.0 / self.base ** (torch.arange(0, self.dim, 2, dtype=
+            torch.int64).float().to(device) / self.dim)
+        self.register_buffer('inv_freq', inv_freq, persistent=False)
+
+    @torch.no_grad()
+    def forward(self, x, position_ids):
+        inv_freq_expanded = self.inv_freq[None, :, None].float().expand(
+            position_ids.shape[0], -1, 1)
+        position_ids_expanded = position_ids[:, None, :].float()
+        device_type = x.device.type
+        device_type = device_type if isinstance(device_type, str
+            ) and device_type != 'mps' else 'cpu'
+        with torch.autocast(device_type=device_type, enabled=False):
+            freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()
+                ).transpose(1, 2)
+            emb = torch.cat((freqs, freqs), dim=-1)
+            cos = emb.cos()
+            sin = emb.sin()
+        return cos.to(dtype=x.dtype), sin.to(dtype=x.dtype)
+
+
+class Conv(nn.Module):
+
+    def __init__(self, hidden_size, conv_kernel, rms_norm_eps):
+        super().__init__()
+        self.norm = RMSNorm(hidden_size, eps=rms_norm_eps)
+        self.conv = nn.Conv1d(hidden_size, hidden_size, bias=True,
+            kernel_size=conv_kernel, groups=hidden_size, padding=
+            conv_kernel - 1)
+
+    def __call__(self, hidden_states):
+        seq_len = hidden_states.shape[1]
+        hidden_states = self.norm(hidden_states)
+        hidden_states = hidden_states.transpose(1, 2)
+        if causal_conv1d_fn is None:
+            hidden_states = self.conv(hidden_states)[..., :seq_len]
+        else:
+            conv_weights = self.conv.weight.view(self.conv.weight.size(0),
+                self.conv.weight.size(2))
+            hidden_states = causal_conv1d_fn(hidden_states, conv_weights,
+                self.conv.bias, activation=None)
+        hidden_states = hidden_states.transpose(1, 2)
+        return hidden_states
+
+
+def scan(f, init, xs, out, checkpoint_group=0):
+    """Minic jax.lax.scan function."""
+    carry = init
+    if isinstance(xs, dict):
+        num_items = len(next(iter(xs.values())))
+    else:
+        num_items = len(xs[0])
+
+    def scan_fn(carry, i_start, i_end):
+        for i in range(i_start, i_end):
+            if isinstance(xs, dict):
+                x = {key: tensor[i] for key, tensor in xs.items()}
+            else:
+                x = [x[i] for x in xs]
+            carry, y = f(carry, x)
+            out[i] = y
+        return carry
+    if checkpoint_group > 0:
+        ckpt_every_n = num_items // checkpoint_group
+        for k in range(0, num_items, ckpt_every_n):
+            carry = torch.utils.checkpoint.checkpoint(scan_fn, carry, k,
+                min(k + ckpt_every_n, num_items), use_reentrant=False)
+    else:
+        carry = scan_fn(carry, 0, num_items)
+    return carry, out
+
+
+def ln_fwd(x, gamma, beta, eps=1e-06):
+    """Batch forward for LayerNorm."""
+    mu = x.mean(dim=-1, keepdim=True)
+    var = x.var(dim=-1, keepdim=True, unbiased=False)
+    std = torch.sqrt(var + eps)
+    x_hat = (x - mu) / std
+    y = gamma * x_hat + beta
+    return y
+
+
+def ln_fused_l2_bwd(x, l2_target, gamma, beta, eps=1e-06):
+    """Batch backward for LayerNorm fused with L2 loss."""
+    D = x.shape[-1]
+    mu = x.mean(dim=-1, keepdim=True)
+    var = x.var(dim=-1, keepdim=True, unbiased=False)
+    std = torch.sqrt(var + eps)
+    x_hat = (x - mu) / std
+    y = gamma * x_hat + beta
+    grad_output = y - l2_target
+    grad_x_hat = grad_output * gamma
+    z = 1.0 / D * (D * grad_x_hat - grad_x_hat.sum(dim=-1, keepdim=True) - 
+        x_hat * (grad_x_hat * x_hat).sum(dim=-1, keepdim=True)) / std
+    return z
+
+
+class TTTLinear(nn.Module):
+
+    def __init__(self, hidden_size, num_attention_heads,
+        scan_checkpoint_group_size, conv_kernel, mini_batch_size,
+        rope_theta, ttt_base_lr):
+        super().__init__()
+        self.num_heads = num_attention_heads
+        self.width = hidden_size
+        self.hidden_size = hidden_size
+        self.head_dim = self.width // self.num_heads
+        self.mini_batch_size = mini_batch_size
+        self.rope_theta = rope_theta
+        self.ttt_base_lr = ttt_base_lr
+        token_idx = 1.0 / torch.arange(1, self.mini_batch_size + 1)
+        self.register_buffer('token_idx', token_idx, persistent=False)
+        self.learnable_token_idx = nn.Parameter(torch.zeros((self.
+            mini_batch_size,)))
+        self.conv_kernel = conv_kernel
+        self._init_qkvo_proj()
+        self._init_rope()
+        self._init_ttt_lr_gate()
+        self._init_ttt_ln()
+        self.post_norm = nn.LayerNorm(self.width, eps=1e-06)
+        self.scan_checkpoint_group_size = scan_checkpoint_group_size
+        self.W1 = nn.Parameter(torch.normal(0, 0.02, size=(self.num_heads,
+            self.head_dim, self.head_dim)))
+        self.b1 = nn.Parameter(torch.zeros(self.num_heads, 1, self.head_dim))
+
+    def _init_qkvo_proj(self):
+        self.q_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
+            bias=False)
+        self.k_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
+            bias=False)
+        self.v_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
+            bias=False)
+        self.o_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
+            bias=False)
+
+    def _init_rope(self):
+        self.rope_theta = self.rope_theta
+        self.rotary_emb = RotaryEmbedding(self.head_dim,
+            max_position_embeddings=self.mini_batch_size, base=self.rope_theta)
+
+    def _init_ttt_lr_gate(self):
+        linear_weight_data = nn.Linear(self.width, 1, bias=True).weight.data
+        self.learnable_ttt_lr_weight = nn.Parameter(torch.stack([torch.
+            normal(0, 0.02, size=linear_weight_data.shape) for _ in range(
+            self.num_heads)], dim=0))
+        linear_bias_data = nn.Linear(self.width, 1, bias=True).bias.data
+        self.learnable_ttt_lr_bias = nn.Parameter(torch.stack([torch.
+            zeros_like(linear_bias_data) for _ in range(self.num_heads)],
+            dim=0))
+
+    def _init_ttt_ln(self):
+        ln_weight_data = nn.LayerNorm(self.head_dim).weight.data
+        self.ttt_norm_weight = nn.Parameter(torch.tile(ln_weight_data.
+            unsqueeze(0), (self.num_heads, 1)))
+        ln_bias_data = nn.LayerNorm(self.head_dim).bias.data
+        self.ttt_norm_bias = nn.Parameter(torch.tile(ln_bias_data.unsqueeze
+            (0), (self.num_heads, 1)))
+
+    def get_qkv_projections(self, hidden_states):
+        XQ, XK, XV = self.q_proj(hidden_states), self.k_proj(hidden_states
+            ), self.v_proj(hidden_states)
+        return XQ, XK, XV
+
+    def _split_heads(self, hidden_states):
+        return hidden_states.reshape(hidden_states.shape[:2] + (self.
+            num_heads, self.head_dim))
+
+    def get_eta(self, X, mini_batch_size):
+        ttt_lr = torch.einsum('bnkc,hdc->bhnkd', X, self.
+            learnable_ttt_lr_weight) + self.learnable_ttt_lr_bias.reshape(1,
+            -1, 1, 1, 1)
+        ttt_lr = F.sigmoid(ttt_lr)
+        ttt_lr = ttt_lr.permute(0, 1, 2, 4, 3)
+        ttt_lr_eta = self.ttt_base_lr * ttt_lr / self.head_dim
+        token_idx = self.token_idx + self.learnable_token_idx
+        token_idx = token_idx[0:mini_batch_size]
+        token_idx = torch.clamp_min(token_idx, 0.0)
+        token_eta = torch.broadcast_to(token_idx.reshape(1, 1, 1,
+            mini_batch_size, 1), (X.shape[0], self.num_heads, X.shape[1],
+            mini_batch_size, 1))
+        return token_eta, ttt_lr_eta
+
+    def get_ttt_inputs(self, inputs, mini_batch_size):
+        XQ = inputs['XQ']
+        XK = inputs['XK']
+        XV = inputs['XV']
+        X = inputs['X']
+        B, L, C = X.shape
+        num_mini_batch = L // mini_batch_size
+        X = X.reshape(B, num_mini_batch, mini_batch_size, self.width)
+        XQ = XQ.reshape(B, self.num_heads, L // mini_batch_size,
+            mini_batch_size, self.head_dim)
+        XK = XK.reshape(B, self.num_heads, L // mini_batch_size,
+            mini_batch_size, self.head_dim)
+        XV = XV.reshape(B, self.num_heads, L // mini_batch_size,
+            mini_batch_size, self.head_dim)
+        token_eta, ttt_lr_eta = self.get_eta(X, mini_batch_size)
+        eta = token_eta * ttt_lr_eta
+        inputs = {'XQ': XQ, 'XK': XK, 'XV': XV, 'eta': eta, 'token_eta':
+            token_eta, 'ttt_lr_eta': ttt_lr_eta}
+        return inputs
+
+    def ttt(self, inputs, mini_batch_size, last_mini_batch_params_dict):
+        if mini_batch_size is None:
+            mini_batch_size = self.mini_batch_size
+        B = inputs['XV'].shape[0]
+        num_mini_batch = inputs['XV'].shape[2]
+        L = inputs['XV'].shape[2] * inputs['XV'].shape[3]
+        device = inputs['XV'].device
+        dtype = inputs['XV'].dtype
+        use_dual_form = True
+
+        def compute_mini_batch(params_dict, inputs):
+            W1_init = params_dict['W1_states']
+            b1_init = params_dict['b1_states']
+            XQ_mini_batch = inputs['XQ']
+            XV_mini_batch = inputs['XV']
+            XK_mini_batch = inputs['XK']
+            eta_mini_batch = inputs['eta']
+            token_eta_mini_batch = inputs['token_eta']
+            ttt_lr_eta_mini_batch = inputs['ttt_lr_eta']
+            X1 = XK_mini_batch
+            Z1 = X1 @ W1_init + b1_init
+            reconstruction_target = XV_mini_batch - XK_mini_batch
+            ln_weight = self.ttt_norm_weight.reshape(self.num_heads, 1,
+                self.head_dim)
+            ln_bias = self.ttt_norm_bias.reshape(self.num_heads, 1, self.
+                head_dim)
+            grad_l_wrt_Z1 = ln_fused_l2_bwd(Z1, reconstruction_target,
+                ln_weight, ln_bias)
+            if use_dual_form:
+                Attn1 = torch.tril(XQ_mini_batch @ X1.transpose(-2, -1))
+                b1_bar = b1_init - torch.tril(eta_mini_batch) @ grad_l_wrt_Z1
+                Z1_bar = (XQ_mini_batch @ W1_init - eta_mini_batch * Attn1 @
+                    grad_l_wrt_Z1 + b1_bar)
+                last_eta_mini_batch = eta_mini_batch[:, :, -1, :, None]
+                W1_last = W1_init - (last_eta_mini_batch * X1).transpose(-1, -2
+                    ) @ grad_l_wrt_Z1
+                b1_last = b1_init - torch.sum(last_eta_mini_batch *
+                    grad_l_wrt_Z1, dim=-2, keepdim=True)
+                grad_W1_last = torch.zeros_like(W1_last)
+                grad_b1_last = torch.zeros_like(b1_last)
+            else:
+                ttt_lr_eta_mini_batch = torch.broadcast_to(
+                    ttt_lr_eta_mini_batch, (*ttt_lr_eta_mini_batch.shape[:2
+                    ], mini_batch_size, mini_batch_size))
+                grad_W1 = torch.einsum('bhki,bhkj->bhkij', X1, grad_l_wrt_Z1)
+                grad_W1 = torch.einsum('bhnk,bhkij->bhnij', torch.tril(
+                    ttt_lr_eta_mini_batch), grad_W1)
+                grad_W1 = grad_W1 + params_dict['W1_grad'].unsqueeze(2)
+                grad_b1 = torch.einsum('bhnk,bhki->bhni', torch.tril(
+                    ttt_lr_eta_mini_batch), grad_l_wrt_Z1)
+                grad_b1 = grad_b1 + params_dict['b1_grad']
+                W1_bar = W1_init.unsqueeze(2
+                    ) - grad_W1 * token_eta_mini_batch.unsqueeze(-1)
+                b1_bar = b1_init - grad_b1 * token_eta_mini_batch
+                Z1_bar = (XQ_mini_batch.unsqueeze(3) @ W1_bar).squeeze(3
+                    ) + b1_bar
+                W1_last = W1_bar[:, :, -1]
+                b1_last = b1_bar[:, :, -1:]
+                grad_W1_last = grad_W1[:, :, -1]
+                grad_b1_last = grad_b1[:, :, -1:]
+            Z1_bar = ln_fwd(Z1_bar, ln_weight, ln_bias)
+            XQW_mini_batch = XQ_mini_batch + Z1_bar
+            last_param_dict = {'W1_states': W1_last, 'b1_states': b1_last,
+                'W1_grad': grad_W1_last, 'b1_grad': grad_b1_last}
+            return last_param_dict, XQW_mini_batch
+        if last_mini_batch_params_dict is not None:
+            init_params_dict = last_mini_batch_params_dict
+        else:
+            init_params_dict = {'W1_states': torch.tile(self.W1.unsqueeze(0
+                ), dims=(B, 1, 1, 1)), 'b1_states': torch.tile(self.b1.
+                unsqueeze(0), dims=(B, 1, 1, 1))}
+            init_params_dict.update(W1_grad=torch.zeros_like(
+                init_params_dict['W1_states']))
+            init_params_dict.update(b1_grad=torch.zeros_like(
+                init_params_dict['b1_states']))
+        inputs = tree_map(lambda x: x.permute(2, 0, 1, 3, 4), inputs)
+        XQW_batch = torch.empty((num_mini_batch, B, self.num_heads,
+            mini_batch_size, self.head_dim), device=device, dtype=dtype)
+        batch_params_dict, XQW_batch = scan(compute_mini_batch,
+            init_params_dict, inputs, XQW_batch, self.
+            scan_checkpoint_group_size if self.training else 0)
+        XQW_batch = XQW_batch.permute(1, 0, 3, 2, 4)
+        XQW_batch = XQW_batch.reshape(B, L, self.width)
+        return XQW_batch, batch_params_dict
+
+    def forward(self, hidden_states: torch.Tensor, position_ids: Optional[
+        torch.LongTensor]=None):
+        B, L = hidden_states.shape[:2]
+        reminder_len = L % self.mini_batch_size
+        num_mini_batch = L // self.mini_batch_size
+        last_mini_batch_params_dict = None
+        XQ, XK, XV = self.get_qkv_projections(hidden_states)
+        XQ = XQ.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        XK = XK.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        XV = XV.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        cos, sin = self.rotary_emb(XV, position_ids % self.mini_batch_size)
+        XQ, XK = permute_qk(XQ, XK)
+        XQ, XK = apply_rotary_pos_emb(XQ, XK, cos, sin)
+        XQ, XK = undo_permute_qk(XQ, XK)
+        output_hidden_states = []
+        if num_mini_batch > 0:
+            inputs = {'XQ': XQ[:, :, :num_mini_batch * self.mini_batch_size
+                ], 'XK': XK[:, :, :num_mini_batch * self.mini_batch_size],
+                'XV': XV[:, :, :num_mini_batch * self.mini_batch_size], 'X':
+                hidden_states[:, :num_mini_batch * self.mini_batch_size]}
+            output_mod, last_mini_batch_params_dict = self.ttt(self.
+                get_ttt_inputs(inputs, self.mini_batch_size),
+                mini_batch_size=self.mini_batch_size,
+                last_mini_batch_params_dict=last_mini_batch_params_dict)
+            output_hidden_states.append(output_mod)
+        if reminder_len > 0:
+            inputs = {'XQ': XQ[:, :, -reminder_len:], 'XK': XK[:, :, -
+                reminder_len:], 'XV': XV[:, :, -reminder_len:], 'X':
+                hidden_states[:, -reminder_len:]}
+            output_reminder, _ = self.ttt(self.get_ttt_inputs(inputs,
+                reminder_len), mini_batch_size=reminder_len,
+                last_mini_batch_params_dict=last_mini_batch_params_dict)
+            output_hidden_states.append(output_reminder)
+        output_hidden_states = torch.cat(output_hidden_states, dim=1)
+        output_hidden_states = self.post_norm(output_hidden_states)
+        output_hidden_states = self.o_proj(output_hidden_states)
+        return output_hidden_states
 
 
 class GAB(GABBase):
+    """Generalized Autoregressive Block
+        Input:        X: (batch, seqlen, embed_dim)
+        Output:       Y: (batch, seqlen, embed_dim)
+        Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
+    """
 
-    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
-        =None, **kwargs):
+    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
+        scan_checkpoint_group_size=4, conv_kernel=4, mini_batch_size=16,
+        rope_theta=10000.0, rms_norm_eps=1e-06, ttt_base_lr=1.0, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = GPT2(embed_dim=embed_dim, block_loc=block_loc,
-            kwarg_all=kwargs, **factory_kwargs, **kwargs)
-
-    def _forward(self, X, **Z):
-        X, Z = self.root(X, **Z)
-        return X, Z
-
-
-import torch.nn.functional as F
-from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
-
-
-class GPT2(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = EnhancedSinkFlashMHA(embed_dim=self.embed_dim, block_loc
-            =self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-
-    def _forward(self, X, **Z):
-        X1, Z = self.norm1(X, **Z)
-        X2, Z = self.mha(X1, **Z)
-        X = X + X2
-        X3, Z = self.norm2(X, **Z)
-        X4, Z = self.mlp(X3, **Z)
-        X = X + X4
-        return X, Z
-
-
-import torch.nn.functional as F
-
-
-class GatedMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
-
-    def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
-
-
-import torch.nn.functional as F
-import warnings
-try:
-    from flash_attn.flash_attention import FlashAttention
-    FLASH_ATTENTION_AVAILABLE = True
-except ImportError:
-    FLASH_ATTENTION_AVAILABLE = False
-    warnings.warn(
-        'FlashAttention is not available. Falling back to standard attention.')
-
-
-class EnhancedSinkFlashMHA(GAUBase):
-    """
-    Multi-Head Attention with Enhanced Attention Sinks Integration (EnhancedSinkFlashMHA).
-
-    This GAU extends the SinkFlashMHA by introducing optimizations and enhancements based on observer feedback.
-
-    **Key Features:**
-
-    - **Optimized Tensor Operations:** Improved reshaping and permuting operations to reduce computational overhead.
-    - **Refined Attention Mask Logic:** Ensures sink tokens can attend to all tokens, including themselves, without restrictions.
-    - **Flexible Sink Tokens:** Supports varying numbers of sink tokens, including zero, with dynamic configuration.
-    - **Comprehensive Unit Testing:** Enhanced tests covering diverse sink token configurations and comparative validation.
-    - **Integration of FlashAttention:** Utilizes FlashAttention for efficient computation when available and supported.
-    - **Support for Mixed-Precision Training (AMP):** Enhances computational efficiency and reduces memory usage.
-    - **Robust Hardware Compatibility Checks:** Ensures compatibility with available hardware and provides clear warnings.
-
-    **Args:**
-
-        embed_dim (int): The embedding dimension of the input.
-        block_loc (tuple): The location of this block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
-        n_heads (int, optional): Number of attention heads. Default is 8.
-        causal (bool, optional): Whether to apply causal masking. Default is True.
-        use_flash_attn (bool, optional): Whether to use FlashAttention if available and supported. Default is True.
-        num_sink_tokens (int, optional): Number of sink tokens to use. Default is 1.
-        **kwargs: Additional keyword arguments.
-
-    **Integration Details:**
-
-    - Initializes trainable sink token embeddings with flexible configuration.
-    - Concatenates sink tokens to the input sequence during the forward pass.
-    - Adjusts attention masks to allow all tokens, including sink tokens, to attend to each other without restrictions.
-    - Applies causal masking only among local tokens when `causal` is set to `True`.
-    - Uses optimized tensor operations to enhance computational efficiency.
-    - Utilizes FlashAttention if available and supported; otherwise falls back to standard attention mechanisms.
-    - Supports mixed-precision training using Automatic Mixed Precision (AMP) for enhanced computational efficiency.
-    - Performs comprehensive hardware checks to ensure compatibility with FlashAttention.
-
-    **Returns:**
-
-        Tuple[Tensor, dict]: Output tensor Y with the same shape as the input X, and updated intermediate variables Z.
-
-    **Raises:**
-
-        AssertionError: If input dimensions are incorrect.
-
-    **Example:**
-
-        # Create an instance of EnhancedSinkFlashMHA
-        sink_mha = EnhancedSinkFlashMHA(embed_dim=768, block_loc=(0, 12), kwarg_all={}, n_heads=12, num_sink_tokens=2)
-        # Input tensor of shape (batch_size, seq_len, embed_dim)
-        X = torch.randn(2, 128, 768)
-        # Perform forward pass
-        Y, Z = sink_mha(X)
-        # Output tensor Y has the same shape as X
-        print(Y.shape)  # torch.Size([2, 128, 768])
-
-    **Note:**
-
-        For more information on attention sinks, see the paper:
-        "Efficient Streaming Language Models with Attention Sinks" by Xiao et al., 2023.
-
-        For details on FlashAttention, refer to:
-        "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness"
-        and the GitHub repository: https://github.com/HazyResearch/flash-attention
-
-    **Hardware Requirements:**
-
-        - NVIDIA GPUs with compute capability >= 7.5 (e.g., T4, V100, A100, RTX 20-series or newer)
-        - CUDA toolkit and compatible PyTorch version
-        - Sufficient GPU memory to accommodate large batch sizes and sequence lengths
-
-    **Installation Instructions for FlashAttention:**
-
-        To install FlashAttention, ensure you have the following prerequisites:
-
-        - NVIDIA GPU with compute capability >= 7.5
-        - CUDA Toolkit compatible with your PyTorch version
-        - PyTorch version compatible with FlashAttention
-
-        Install FlashAttention via pip:
-
-        ```bash
-        pip install flash-attn
-        ```
-
-        For more detailed installation instructions and troubleshooting, refer to the
-        [FlashAttention GitHub repository](https://github.com/HazyResearch/flash-attention).
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, n_heads: int=8, causal: bool=True,
-        use_flash_attn: bool=True, num_sink_tokens: int=1, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.embed_dim = embed_dim
-        self.num_heads = n_heads
-        self.head_dim = embed_dim // n_heads
-        self.causal = causal
-        self.use_flash_attn = use_flash_attn
-        self.num_sink_tokens = num_sink_tokens
-        assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'
-        if self.use_flash_attn:
-            if FLASH_ATTENTION_AVAILABLE:
-                if torch.cuda.is_available():
-                    major, minor = torch.cuda.get_device_capability(device=
-                        device)
-                    if major < 7 or major == 7 and minor < 5:
-                        self.use_flash_attn = False
-                        warnings.warn(
-                            'FlashAttention requires GPUs with compute capability >= 7.5. Falling back to standard attention.'
-                            )
-                else:
-                    self.use_flash_attn = False
-                    warnings.warn(
-                        'CUDA is not available. Falling back to standard attention.'
-                        )
-            else:
-                self.use_flash_attn = False
-                warnings.warn(
-                    'FlashAttention is not installed. Falling back to standard attention.'
-                    )
-        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.sink_tokens = nn.Parameter(torch.randn(1, self.num_sink_tokens,
-            embed_dim, **self.factory_kwargs))
-        kwarg_all['rotary_emb_dim'] = self.head_dim
-        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
-            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
-            **self.factory_kwargs, **self.kwarg_all)
-
-    def _forward(self, X, **Z):
-        X = X.to(**self.factory_kwargs)
-        B, L, _ = X.size()
-        num_sink_tokens = self.num_sink_tokens
-        total_len = num_sink_tokens + L
-        sink_tokens = self.sink_tokens.expand(B, -1, -1)
-        X_combined = torch.cat([sink_tokens, X], dim=1)
-        with torch.amp.autocast(device_type='cuda', dtype=self.
-            factory_kwargs.get('dtype', torch.float16)):
-            q = self.q_proj(X)
-            k_combined = self.k_proj(X_combined)
-            v_combined = self.v_proj(X_combined)
-            q = q.view(B, L, self.num_heads, self.head_dim).permute(0, 2, 1, 3)
-            k_combined = k_combined.view(B, total_len, self.num_heads, self
-                .head_dim).permute(0, 2, 1, 3)
-            v_combined = v_combined.view(B, total_len, self.num_heads, self
-                .head_dim).permute(0, 2, 1, 3)
-            Z['input_emb'] = q
-            Z['input_pos'] = None
-            _, Z = self.rotary_emb(X, **Z)
-            q = Z['output_emb']
-            Z['input_emb'] = k_combined
-            Z['input_pos'] = None
-            _, Z = self.rotary_emb(X_combined, **Z)
-            k_combined = Z['output_emb']
-            q = q.reshape(B * self.num_heads, L, self.head_dim)
-            k_combined = k_combined.reshape(B * self.num_heads, total_len,
-                self.head_dim)
-            v_combined = v_combined.reshape(B * self.num_heads, total_len,
-                self.head_dim)
-            attn_mask = self._generate_attention_mask(L, num_sink_tokens,
-                device=X.device)
-            attn_mask = attn_mask.unsqueeze(0).expand(B * self.num_heads, -
-                1, -1)
-            if self.use_flash_attn and num_sink_tokens == 0:
-                flash_attn = FlashAttention(causal=self.causal)
-                attn_output = flash_attn(q, k_combined, v_combined)
-            else:
-                attn_output = F.scaled_dot_product_attention(q, k_combined,
-                    v_combined, attn_mask=attn_mask, dropout_p=0.0,
-                    is_causal=False)
-            attn_output = attn_output.view(B, self.num_heads, L, self.head_dim)
-            attn_output = attn_output.permute(0, 2, 1, 3).contiguous().view(B,
-                L, self.embed_dim)
-            Y = self.out_proj(attn_output)
-        return Y, Z
-
-    def _generate_attention_mask(self, L: int, num_sink_tokens: int, device):
-        """
-        Generates an attention mask that allows all tokens (including sink tokens) to attend to each other without restrictions.
-        Applies causal masking among local tokens if `self.causal` is True.
-        """
-        total_len = num_sink_tokens + L
-        mask = torch.zeros((L, total_len), device=device)
-        if self.causal:
-            causal_mask = torch.triu(torch.full((L, L), float('-inf'),
-                device=device), diagonal=1)
-            mask[:, num_sink_tokens:] = causal_mask
-        return mask
-
-
-import torch.nn.functional as F
-from torch import Tensor
-from typing import Optional
-
-
-class RotaryPositionalEmbeddings(GAUBase):
-    """
-    This class implements Rotary Positional Embeddings (RoPE)
-    proposed in https://arxiv.org/abs/2104.09864.
-
-    Reference implementation (used for correctness verfication)
-    can be found here:
-    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80
-
-    In this implementation we cache the embeddings for each position upto
-    ``max_seq_len`` by computing this during init.
-
-    Args:
-        dim (int): Embedding dimension. This is usually set to the dim of each
-            head in the attention module computed as ````embed_dim`` // ``num_heads````
-        max_seq_len (int): Maximum expected sequence length for the
-            model, if exceeded the cached freqs will be recomputed
-        base (int): The base for the geometric progression used to compute
-            the rotation angles
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:
-        int=None, max_seq_len: int=4096, **kwargs) ->None:
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.dim = rotary_emb_dim
-        self.base = rotary_emb_base
-        self.max_seq_len = max_seq_len
-        self._rope_init()
-
-    def reset_parameters(self):
-        self._rope_init()
-
-    def _rope_init(self):
-        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.
-            factory_kwargs)[:self.dim // 2].float() / self.dim)
-        self.register_buffer('theta', theta, persistent=False)
-        self.build_rope_cache(self.max_seq_len)
-
-    def build_rope_cache(self, max_seq_len: int=4096) ->None:
-        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=
-            self.theta.device)
-        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()
-        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],
-            dim=-1)
-        self.register_buffer('cache', cache, persistent=False)
-
-    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[
-        Tensor]=None) ->Tensor:
-        """
-        Args:
-            x (Tensor): input tensor with shape
-                [b, s, n_h, h_d]
-            input_pos (Optional[Tensor]): Optional tensor which contains the position ids
-                of each token. During training, this is used to indicate the positions
-                of each token relative to its sample when packed, shape [b, s].
-                During inference, this indicates the position of the current token.
-                If none, assume the index of the token is its position id. Default is None.
-
-        Returns:
-            Tensor: output tensor with RoPE applied
-
-        Notation used for tensor shapes:
-            - b: batch size
-            - s: sequence length
-            - n_h: num heads
-            - h_d: head dim
-
-        TODO: The implementation below can be made more efficient
-        for inference.
-        """
-        seq_len = input_emb.size(1)
-        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[
-            input_pos]
-        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)
-        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2
-            )
-        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped
-            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,
-            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)
-        x_out = x_out.flatten(3)
-        output_emb = x_out.type_as(input_emb)
-        return X, {'output_emb': output_emb}
-
-
-import torch.nn.functional as F
-from torch import Tensor
-
-
-class RMSNorm(GAUBase):
-    """
-    Root Mean Square Layer Normalization (RMSNorm).
-
-    This layer applies a variant of layer normalization that uses only the root mean square
-    statistics, without centering. It's computationally more efficient than standard
-    layer normalization and has been shown to be effective in various NLP tasks.
-
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
-
-    Attributes:
-        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
-        variance_epsilon (float): The epsilon value used in the normalization formula.
-
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
-    Examples:
-        >>> rmsnorm = RMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
-
-
-gab_config = {'n_heads': 8, 'causal': True, 'use_flash_attn': True, 'eps': 
-    1e-05, 'max_seq_len': 4096, 'rotary_emb_base': 10000, 'num_sink_tokens':
-    1, 'bias': False, 'multiple_of': 128, 'hidden_features': None,
-    'out_features': None, 'activation': None}
+        self.hidden_size = embed_dim
+        num_attention_heads = max(4, embed_dim // 64)
+        self.seq_modeling_block = TTTLinear(hidden_size=embed_dim,
+            num_attention_heads=num_attention_heads,
+            scan_checkpoint_group_size=scan_checkpoint_group_size,
+            conv_kernel=conv_kernel, mini_batch_size=mini_batch_size,
+            rope_theta=rope_theta, ttt_base_lr=ttt_base_lr)
+        self.mlp = SwiGluMLP(embed_dim, int(embed_dim * 2.5))
+        self.conv = Conv(embed_dim, conv_kernel, rms_norm_eps)
+        self.seq_norm = RMSNorm(embed_dim, eps=rms_norm_eps)
+        self.ffn_norm = RMSNorm(embed_dim, eps=rms_norm_eps)
+        self.seq_modeling_block = self.seq_modeling_block.to(device=device,
+            dtype=dtype)
+        self.mlp = self.mlp.to(device=device, dtype=dtype)
+        self.conv = self.conv.to(device=device, dtype=dtype)
+        self.seq_norm = self.seq_norm.to(device=device, dtype=dtype)
+        self.ffn_norm = self.ffn_norm.to(device=device, dtype=dtype)
+
+    def _forward(self, X, *Z, **intermediate_vars):
+        hidden_states = X
+        position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
+            =X.device).unsqueeze(0)
+        residual = hidden_states
+        hidden_states = self.conv(hidden_states)
+        hidden_states = residual + hidden_states
+        residual = hidden_states
+        hidden_states = self.seq_norm(hidden_states)
+        hidden_states = self.seq_modeling_block(hidden_states, position_ids)
+        hidden_states = residual + hidden_states
+        residual = hidden_states
+        hidden_states = self.ffn_norm(hidden_states)
+        hidden_states = self.mlp(hidden_states)
+        hidden_states = residual + hidden_states
+        return hidden_states
+
+
+gab_config = {'scan_checkpoint_group_size': 0, 'conv_kernel': 4,
+    'mini_batch_size': 16, 'rope_theta': 10000.0, 'rms_norm_eps': 1e-06,
+    'ttt_base_lr': 1.0}
 
 
 
