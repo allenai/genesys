@@ -143,7 +143,7 @@ def system_status(st,evosys,title,icon):
 
 
 def running_status(st,evosys):
-  db_status = '📶' if evosys.ptree.remote_db else '📴'
+  db_status = f'📶 (```{evosys.CM.group_id}```)' if evosys.ptree.remote_db else '📴'
   st.write(f'🏠 **Namespace\n```{evosys.evoname}``` {db_status}**')
   # if evosys.remote_db:
   #   URL='https://console.firebase.google.com/u/0/project/model-discovery/firestore/databases/-default-/data'
