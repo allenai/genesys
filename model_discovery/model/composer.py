@@ -490,7 +490,12 @@ class GAUTree:
         else:
             if node.rating is not None:
                 name += f" (Rating: {node.rating}/5)"
-        
+            if node.reuse_from:
+                if name != node.reuse_from.split('.')[-1]:
+                    name += f" [Adapted from {node.reuse_from}]"
+                else:
+                    name += f" [Reused from {node.reuse_from}]"
+
         # Define levels for tree structure indentation
         if path != '':
             level = len(path.split('.'))

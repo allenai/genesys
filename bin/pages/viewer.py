@@ -110,8 +110,10 @@ def _view_designs(evosys):
                 st.json(metadata)
             st.subheader(f'Proposal for {selected_design}')
             with st.expander('View Proposal'):
+                st.download_button('Download Proposal',design.proposal.proposal,file_name=f'{selected_design}_proposal.md')
                 st.markdown(design.proposal.proposal)
             with st.expander('View Review'):
+                st.download_button('Download Review',design.proposal.review,file_name=f'{selected_design}_review.md')
                 st.markdown(design.proposal.review)
                 st.write('#### Rating: ',design.proposal.rating,'out of 5')
             if design.implementation:
@@ -121,6 +123,7 @@ def _view_designs(evosys):
                 gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
                 st.subheader('Exported GAB Code')
                 with st.expander('Click to expand'):
+                    st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')
                     st.code(gab_code,language='python')
             else:
                 st.warning('The design has not been implemented yet.')

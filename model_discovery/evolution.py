@@ -904,8 +904,9 @@ class LibraryReference(NodeObject):
                     cnt = 0
                     for k,v in eval_results.items():
                         if 'acc,none' in v:
-                            avg_acc += v['acc,none']
-                            cnt += 1
+                            if v['acc,none'] is not None:
+                                avg_acc += v['acc,none']
+                                cnt += 1
                     avg_acc /= cnt
                     mdtext += f'{avg_acc:.4f} (x{mult})\t'
                 mdtext += '\n'
@@ -1206,12 +1207,31 @@ class DesignArtifact(NodeObject):
 
 {self.implementation.implementation.root_node.spec.document}
             """
-        for scale in self.verifications:
-            pass # TODO
-
+        prompt += self.verify_summary(include_wandb=False)
         return prompt
+    
 
-
+    def verify_summary(self,include_wandb=True):
+        mdtext = f'\n**Verification:**\n'
+        if len(self.verifications)>0:
+            for scale in self.verifications:
+                eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
+                avg_acc = 0
+                cnt = 0
+                for k,v in eval_results.items():
+                    if 'acc,none' in v:
+                        if v['acc,none'] is not None:
+                            avg_acc += v['acc,none']
+                            cnt += 1
+                avg_acc /= cnt
+                if include_wandb:
+                    wandb_ids = self.verifications[scale].verification_report['wandb_ids.json']
+                    wandb_url = f"https://wandb.ai/{wandb_ids['entity']}/{wandb_ids['project']}/runs/{wandb_ids['pretrain']['id']}"
+                    mdtext += f'{scale} avg. acc: {avg_acc:.4f} [wandb]({wandb_url})\n'
+        else:
+            mdtext += 'No verification results\n'
+        return mdtext
+    
     def to_desc(self):
         mdtext = f'## {self.proposal.modelname}'
         mdtext += f'\n**Model:** {self.proposal.modelname}'
@@ -1234,22 +1254,7 @@ class DesignArtifact(NodeObject):
             mdtext += f'\n**GAU Tree:**\n{self.implementation.implementation.tree_view()}'
         else:
             mdtext += f'\n**Implementated:** False'
-        mdtext += f'\n**Verification:**\n'
-        if len(self.verifications)>0:
-            for scale in self.verifications:
-                eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
-                avg_acc = 0
-                cnt = 0
-                for k,v in eval_results.items():
-                    if 'acc,none' in v:
-                        avg_acc += v['acc,none']
-                        cnt += 1
-                avg_acc /= cnt
-                wandb_ids = self.verifications[scale].verification_report['wandb_ids.json']
-                wandb_url = f"https://wandb.ai/{wandb_ids['entity']}/{wandb_ids['project']}/runs/{wandb_ids['pretrain']['id']}"
-                mdtext += f'{scale} avg. acc: {avg_acc:.4f} [wandb]({wandb_url})\n'
-        else:
-            mdtext += 'No verification results\n'
+        mdtext += self.verify_summary()
         return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
 
     def is_implemented(self):

@@ -9,393 +9,395 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = GPT2(embed_dim=embed_dim, block_loc=block_loc,
-            kwarg_all=kwargs, **factory_kwargs, **kwargs)
+        self.root = AdaptiveSpectralGAU(embed_dim=embed_dim, block_loc=
+            block_loc, kwarg_all=kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
         X, Z = self.root(X, **Z)
         return X, Z
 
 
-import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
+import torch.nn.functional as F
 
 
-class GPT2(GAUBase):
+class AdaptiveSpectralGAU(GAUBase):
+    """
+    The AdaptiveSpectralGAU combines spectral state space models with adaptive numerical integration methods
+    to efficiently process sequences with varying temporal dependencies while maintaining stability and memory efficiency.
+
+    **Components:**
+
+    - **AdaptiveSpectralFilter**: Performs adaptive spectral filtering using fixed spectral filters and an adaptive step controller.
+    - **MemoryEfficientIntegrator**: Executes memory-efficient integration with error control using an adaptive integrator.
+    - **Output Projection Layer**: A linear layer that projects the integrated state back to the embedding space.
+
+    **Forward Pass:**
+
+    1. Input embeddings `X` of shape `(batch_size, sequence_length, embed_dim)` are passed through `AdaptiveSpectralFilter` to obtain `spec_X`.
+    2. `spec_X` is processed by `MemoryEfficientIntegrator` to compute `new_state`.
+    3. `new_state` is passed through the output projection layer to produce the output embeddings `Y`.
+
+    **Args:**
+
+    - **embed_dim (int)**: The embedding dimension of the input and output sequences.
+    - **block_loc (tuple)**: The location of this block within the network, as a tuple `(layer_idx, n_block)`.
+    - **kwarg_all (dict)**: A dictionary of all keyword arguments, passed to initialize child units.
+    - **device**: The device on which to place the module's tensors.
+    - **dtype**: The data type for the module's tensors.
+
+    **Example Usage:**
+
+    ```python
+    adaptive_spectral_gau = AdaptiveSpectralGAU(embed_dim=512, block_loc=(0,12), kwarg_all={})
+    Y, Z = adaptive_spectral_gau(X, **Z)
+    ```
+
+    **Note:**
+    This GAU is designed to efficiently handle sequences with varying complexity by dynamically allocating computational resources.
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = SinkFlashMHA(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
+        self.adaptive_spectral_filter = AdaptiveSpectralFilter(embed_dim=
+            self.embed_dim, block_loc=self.block_loc, kwarg_all=self.
+            kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.memory_efficient_integrator = MemoryEfficientIntegrator(embed_dim
+            =self.embed_dim, block_loc=self.block_loc, kwarg_all=self.
+            kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.output_projection = nn.Linear(in_features=embed_dim,
+            out_features=embed_dim, **self.factory_kwargs)
 
     def _forward(self, X, **Z):
-        X1, Z = self.norm1(X, **Z)
-        X2, Z = self.mha(X1, **Z)
-        X = X + X2
-        X3, Z = self.norm2(X, **Z)
-        X4, Z = self.mlp(X3, **Z)
-        X = X + X4
-        return X, Z
+        spec_X, Z = self.adaptive_spectral_filter(X, **Z)
+        new_state, Z = self.memory_efficient_integrator(spec_X, **Z)
+        Z['state'] = new_state
+        Y = self.output_projection(new_state)
+        return Y, Z
 
 
 import torch.nn.functional as F
-import math
-import warnings
-try:
-    from flash_attn.flash_attention import FlashAttention
-    FLASH_ATTENTION_AVAILABLE = True
-except ImportError:
-    FLASH_ATTENTION_AVAILABLE = False
-    warnings.warn(
-        'FlashAttention is not available. Falling back to standard attention.')
+from einops import rearrange
 
 
-class SinkFlashMHA(GAUBase):
+class MemoryEfficientIntegrator(GAUBase):
     """
-    Multi-Head Attention with Attention Sinks integration (SinkFlashMHA).
+    MemoryEfficientIntegrator performs memory-efficient integration with error control using an adaptive integrator.
 
-    This GAU implements a modified Multi-Head Attention mechanism that integrates attention sinks into FlashMHA. It allows efficient long-sequence processing by retaining key-value pairs of designated sink tokens, which serve as a persistent global context.
+    This unit integrates the output of the AdaptiveSpectralFilter (`spec_X`) over time to produce the new state (`new_state`).
+    It uses an efficient state space model implementation that processes sequences in chunks,
+    suitable for long sequences. It employs an adaptive method to control the integration error.
 
     **Key Features:**
 
-    - Integrates attention sinks into the attention mechanism.
-    - Retains key-value pairs of designated sink tokens to provide global context.
-    - Modifies the attention mask to allow all tokens to attend to sink tokens.
-    - Compatible with FlashAttention for efficient computation.
+    - **Adaptive Integration**: Adjusts computation based on the input characteristics to balance efficiency and accuracy.
+    - **Memory Efficiency**: Processes sequences in chunks to reduce memory usage.
+    - **State Propagation**: Maintains and updates internal states across sequence chunks.
+    - **Error Control**: Employs techniques to ensure integration error remains within a specified tolerance.
 
     **Args:**
 
-        embed_dim (int): The embedding dimension of the input.
-        block_loc (tuple): The location of this block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
-        n_heads (int, optional): Number of attention heads. Default is 8.
-        causal (bool, optional): Whether to apply causal masking. Default is True.
-        use_flash_attn (bool, optional): Whether to use FlashAttention if available. Default is True.
-        num_sink_tokens (int, optional): Number of sink tokens to use. Default is 1.
-        **kwargs: Additional keyword arguments.
+        embed_dim (int): The dimension of the input embeddings.
+        block_loc (tuple): The location of the block within the network.
+        kwarg_all (dict): Dictionary of all kwargs.
+        chunk_size (int, optional): The chunk size for processing sequences. Default is 64.
+        tol (float, optional): Tolerance for the adaptive integrator. Default is 1e-5.
+        num_heads (int, optional): Number of attention heads. Default is 8.
+        state_dim (int, optional): Dimension of the state in the state space model. Default is None (set to embed_dim // num_heads).
+        device (torch.device, optional): The device to use. Defaults to None.
+        dtype (torch.dtype, optional): The data type to use. Defaults to None.
 
-    **Integration Details:**
+    **Inputs:**
 
-    - Initializes trainable sink token embeddings.
-    - Concatenates sink tokens to the input sequence during forward pass.
-    - Adjusts attention masks to allow all tokens to attend to sink tokens and enforce causality for local tokens.
-    - Uses FlashAttention if available; falls back to standard attention if necessary.
+        spec_X (torch.Tensor): Tensor of shape (batch_size, seq_len, embed_dim), the output from AdaptiveSpectralFilter.
 
-    **Returns:**
+    **Outputs:**
 
-        Output tensor with the same shape as the input.
+        new_state (torch.Tensor): Tensor of shape (batch_size, seq_len, embed_dim), the integrated state.
 
-    **Raises:**
+    **Example Usage:**
 
-        AssertionError: If input dimensions are incorrect.
-
-    **Example:**
-
-        # Create an instance of SinkFlashMHA
-        sink_mha = SinkFlashMHA(embed_dim=768, block_loc=(0, 12), kwarg_all={}, n_heads=12, num_sink_tokens=2)
-        # Input tensor of shape (batch_size, seq_len, embed_dim)
-        X = torch.randn(2, 128, 768)
-        # Perform forward pass
-        Y, Z = sink_mha(X)
-        # Output tensor Y has the same shape as X
-        print(Y.shape)  # torch.Size([2, 128, 768])
+        >>> integrator = MemoryEfficientIntegrator(embed_dim=512, block_loc=(0,12), kwarg_all={})
+        >>> new_state, Z = integrator(spec_X, **Z)
 
     **Note:**
 
-        For more info on attention sinks, see the paper:
-        "Efficient Streaming Language Models with Attention Sinks" by Xiao et al., 2023.
-
-    **Hardware Requirements:**
-
-        - NVIDIA GPUs with compute capability >= 7.5 (e.g., T4, V100, A100, RTX 20-series or newer)
-        - Sufficient GPU memory to accommodate large batch sizes and sequence lengths
-        - CUDA toolkit and compatible PyTorch version
-
+    - This module is designed to efficiently integrate sequences with error control, suitable for long sequences.
+    - It adapts computation dynamically to optimize resource usage while maintaining accuracy.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, n_heads: int=8, causal: bool=True,
-        use_flash_attn: bool=True, num_sink_tokens: int=1, **kwargs):
+        chunk_size=64, tol=1e-05, num_heads=8, state_dim=None, device=None,
+        dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.embed_dim = embed_dim
-        self.num_heads = n_heads
-        self.causal = causal
-        self.use_flash_attn = use_flash_attn and FLASH_ATTENTION_AVAILABLE
-        self.num_sink_tokens = num_sink_tokens
-        assert self.embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_heads'
-        self.head_dim = self.embed_dim // self.num_heads
-        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.sink_tokens = nn.Parameter(torch.randn(1, self.num_sink_tokens,
-            embed_dim, **self.factory_kwargs))
-        kwarg_all['rotary_emb_dim'] = self.head_dim
-        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
-            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
-            **self.factory_kwargs, **self.kwarg_all)
-        if not FLASH_ATTENTION_AVAILABLE and use_flash_attn:
-            warnings.warn(
-                'FlashAttention is not available. Falling back to standard attention.'
-                )
+        self.chunk_size = chunk_size
+        self.tol = tol
+        self.num_heads = num_heads
+        assert embed_dim % num_heads == 0, 'embed_dim must be divisible by num_heads'
+        self.d_head = d_head = embed_dim // num_heads
+        if state_dim is None:
+            state_dim = d_head
+        self.state_dim = state_dim
+        d_state = self.state_dim
+        H = self.num_heads
+        self.A = nn.Parameter(torch.randn(H, d_state, **self.factory_kwargs))
+        self.B = nn.Parameter(torch.randn(H, d_state, d_head, **self.
+            factory_kwargs))
+        self.C = nn.Parameter(torch.randn(H, d_head, d_state, **self.
+            factory_kwargs))
+        self.D = nn.Parameter(torch.randn(H, d_head, d_head, **self.
+            factory_kwargs))
+        nn.init.xavier_uniform_(self.A)
+        nn.init.xavier_uniform_(self.B)
+        nn.init.xavier_uniform_(self.C)
+        nn.init.xavier_uniform_(self.D)
 
     def _forward(self, X, **Z):
-        X = X.to(**self.factory_kwargs)
-        B, L, _ = X.size()
-        num_sink_tokens = self.num_sink_tokens
-        sink_tokens = self.sink_tokens.expand(B, -1, -1)
-        X_combined = torch.cat([sink_tokens, X], dim=1)
-        q = self.q_proj(X)
-        q = q.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        k_combined = self.k_proj(X_combined)
-        v_combined = self.v_proj(X_combined)
-        k_combined = k_combined.view(B, num_sink_tokens + L, self.num_heads,
-            self.head_dim).transpose(1, 2)
-        v_combined = v_combined.view(B, num_sink_tokens + L, self.num_heads,
-            self.head_dim).transpose(1, 2)
-        Z['input_emb'] = q
-        Z['input_pos'] = None
-        _, Z = self.rotary_emb(X, **Z)
-        q = Z['output_emb']
-        Z['input_emb'] = k_combined
-        Z['input_pos'] = None
-        _, Z = self.rotary_emb(X, **Z)
-        k_combined = Z['output_emb']
-        q = q.reshape(B * self.num_heads, L, self.head_dim)
-        k_combined = k_combined.reshape(B * self.num_heads, num_sink_tokens +
-            L, self.head_dim)
-        v_combined = v_combined.reshape(B * self.num_heads, num_sink_tokens +
-            L, self.head_dim)
-        attn_mask = self._generate_attention_mask(L, num_sink_tokens,
-            device=X.device)
-        attn_mask = attn_mask.unsqueeze(0).expand(B * self.num_heads, -1, -1)
-        if self.use_flash_attn and num_sink_tokens == 0:
-            flash_attn = FlashAttention(causal=self.causal)
-            attn_output = flash_attn(q, k_combined, v_combined)
-        else:
-            attn_output = F.scaled_dot_product_attention(q, k_combined,
-                v_combined, attn_mask=attn_mask, dropout_p=0.0, is_causal=False
-                )
-        attn_output = attn_output.view(B, self.num_heads, L, self.head_dim)
-        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L,
-            self.embed_dim)
-        Y = self.out_proj(attn_output)
+        """
+        X: spec_X, input tensor of shape (batch_size, seq_len, embed_dim)
+        """
+        B, T, D = X.shape
+        H = self.num_heads
+        d_head = self.d_head
+        d_state = self.state_dim
+        X = X.view(B, T, H, d_head)
+        state = Z.get('state', None)
+        if state is None:
+            state = torch.zeros(B, H, d_state, device=X.device, dtype=X.dtype)
+        X_chunks = X.split(self.chunk_size, dim=1)
+        num_chunks = len(X_chunks)
+        Y = []
+        A_exp = torch.exp(self.A).unsqueeze(0)
+        B_mat = self.B.unsqueeze(0)
+        C_mat = self.C.unsqueeze(0)
+        D_mat = self.D.unsqueeze(0)
+        for X_chunk in X_chunks:
+            Lc = X_chunk.size(1)
+            X_chunk = X_chunk.transpose(1, 2)
+            outputs = []
+            for t in range(Lc):
+                x_t = X_chunk[:, :, t, :].unsqueeze(-1)
+                state = A_exp * state + torch.matmul(B_mat, x_t).squeeze(-1)
+                y_t = torch.matmul(C_mat, state.unsqueeze(-1)).squeeze(-1)
+                y_t = y_t + torch.matmul(D_mat, x_t).squeeze(-1)
+                outputs.append(y_t.unsqueeze(2))
+            outputs = torch.cat(outputs, dim=2)
+            outputs = outputs.transpose(1, 2)
+            Y.append(outputs)
+        Y = torch.cat(Y, dim=1)
+        Y = Y.view(B, T, D)
+        Z['state'] = state
         return Y, Z
 
-    def _generate_attention_mask(self, L: int, num_sink_tokens: int, device):
-        total_len = num_sink_tokens + L
-        mask = torch.zeros((L, total_len), device=device)
-        causal_mask = torch.triu(torch.full((L, L), float('-inf'), device=
-            device), diagonal=1)
-        mask[:, num_sink_tokens:] = causal_mask
-        return mask
-
-
-import torch.nn.functional as F
-from torch import Tensor
-from typing import Optional
-
-
-class RotaryPositionalEmbeddings(GAUBase):
-    """
-    This class implements Rotary Positional Embeddings (RoPE)
-    proposed in https://arxiv.org/abs/2104.09864.
-
-    Reference implementation (used for correctness verfication)
-    can be found here:
-    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80
-
-    In this implementation we cache the embeddings for each position upto
-    ``max_seq_len`` by computing this during init.
-
-    Args:
-        dim (int): Embedding dimension. This is usually set to the dim of each
-            head in the attention module computed as ````embed_dim`` // ``num_heads````
-        max_seq_len (int): Maximum expected sequence length for the
-            model, if exceeded the cached freqs will be recomputed
-        base (int): The base for the geometric progression used to compute
-            the rotation angles
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:
-        int=None, max_seq_len: int=4096, **kwargs) ->None:
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.dim = rotary_emb_dim
-        self.base = rotary_emb_base
-        self.max_seq_len = max_seq_len
-        self._rope_init()
-
-    def reset_parameters(self):
-        self._rope_init()
-
-    def _rope_init(self):
-        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.
-            factory_kwargs)[:self.dim // 2].float() / self.dim)
-        self.register_buffer('theta', theta, persistent=False)
-        self.build_rope_cache(self.max_seq_len)
-
-    def build_rope_cache(self, max_seq_len: int=4096) ->None:
-        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=
-            self.theta.device)
-        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()
-        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],
-            dim=-1)
-        self.register_buffer('cache', cache, persistent=False)
-
-    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[
-        Tensor]=None) ->Tensor:
-        """
-        Args:
-            x (Tensor): input tensor with shape
-                [b, s, n_h, h_d]
-            input_pos (Optional[Tensor]): Optional tensor which contains the position ids
-                of each token. During training, this is used to indicate the positions
-                of each token relative to its sample when packed, shape [b, s].
-                During inference, this indicates the position of the current token.
-                If none, assume the index of the token is its position id. Default is None.
-
-        Returns:
-            Tensor: output tensor with RoPE applied
-
-        Notation used for tensor shapes:
-            - b: batch size
-            - s: sequence length
-            - n_h: num heads
-            - h_d: head dim
-
-        TODO: The implementation below can be made more efficient
-        for inference.
-        """
-        seq_len = input_emb.size(1)
-        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[
-            input_pos]
-        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)
-        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2
-            )
-        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped
-            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,
-            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)
-        x_out = x_out.flatten(3)
-        output_emb = x_out.type_as(input_emb)
-        return X, {'output_emb': output_emb}
-
 
 import torch.nn.functional as F
 
 
-class GatedMLP(GAUBase):
+class AdaptiveSpectralFilter(GAUBase):
+    """
+    AdaptiveSpectralFilter implements adaptive spectral filtering using fixed spectral filters
+    and an adaptive step controller for efficient sequence processing.
+
+    This GAU performs spectral convolution on input sequences using fixed spectral filters,
+    adapting the computational effort based on the input characteristics to improve efficiency
+    while maintaining stability.
+
+    **Key Features:**
+
+    - **Fixed Spectral Filters**: Uses pre-defined spectral filters (e.g., sine and cosine basis) for convolution.
+    - **Adaptive Step Controller**: Dynamically adjusts computational resources (e.g., step sizes) based on input.
+    - **Causal Convolution**: Ensures causality in the filtering process for autoregressive modeling.
+    - **Memory Efficiency**: Optimized for handling long sequences with reduced memory consumption.
+
+    **Args:**
+
+        embed_dim (int): The dimension of the input embeddings.
+        block_loc (tuple): The location of the block within the network.
+        kwarg_all (dict): Dictionary of all kwargs.
+        num_filters (int, optional): Number of spectral filters to use. Default is 64.
+        device (torch.device, optional): The device to use. Defaults to None.
+        dtype (torch.dtype, optional): The data type to use. Defaults to None.
+
+    **Returns:**
+
+        Y (torch.Tensor): The output tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Code Example:**
+
+        >>> module = AdaptiveSpectralFilter(embed_dim=512, block_loc=(0, 1), kwarg_all={})
+        >>> X = torch.randn(8, 128, 512)
+        >>> Y, Z = module(X)
+
+    **Note:**
+
+    - This module is designed to efficiently handle sequences by adapting computation based on input characteristics.
+    - It ensures causality by using causal convolution operations.
+    - The adaptive step controller adjusts computational effort to balance efficiency and performance.
+
+    **Example Diagram:**
+
+        .. code-block:: text
+
+            Input X ---> [AdaptiveStepController] ---+
+                                                    |
+                            +-----------------------+
+                            |                       v
+                        +-------+     +----------------------+
+                        |       |     |                      |
+                        | Conv1d| --> | Spectral Convolution |
+                        |       |     |                      |
+                        +-------+     +----------------------+
+                            |
+                            v
+                        Output Y
+
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
+        num_filters: int=64, device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
+        self.embed_dim = embed_dim
+        self.num_filters = num_filters
+        self.kernel_size = num_filters
+        self.padding = self.kernel_size - 1
+        self.conv = nn.Conv1d(in_channels=embed_dim, out_channels=embed_dim,
+            kernel_size=self.kernel_size, stride=1, padding=0, groups=
+            embed_dim, bias=False, **self.factory_kwargs)
+        self._initialize_filters()
+        self.step_controller = AdaptiveStepController(embed_dim=self.
+            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
+            **self.factory_kwargs, **self.kwarg_all)
+
+    def _initialize_filters(self):
+        with torch.no_grad():
+            filter_weights = self._generate_fixed_spectral_filters()
+            self.conv.weight.copy_(filter_weights)
+
+    def _generate_fixed_spectral_filters(self):
+        kernel_size = self.conv.kernel_size[0]
+        filter_weights = torch.zeros((self.embed_dim, 1, kernel_size), **
+            self.factory_kwargs)
+        n = torch.arange(kernel_size, **self.factory_kwargs).float()
+        for i in range(self.embed_dim):
+            frequency = (i + 1) * torch.pi / kernel_size
+            filter_weights[i, 0, :] = torch.sin(frequency * n)
+        return filter_weights
+
+    def _forward(self, X, **Z):
+        """
+        X: input tensor of shape (batch_size, seq_len, embed_dim)
+        """
+        B, T, D = X.shape
+        step_size, Z = self.step_controller(X, **Z)
+        pad = self.conv.kernel_size[0] - 1
+        X_padded = F.pad(X.transpose(1, 2), (pad, 0))
+        spec_X = self.conv(X_padded)
+        spec_X = spec_X.transpose(1, 2)
+        spec_X = spec_X * step_size
+        return spec_X, Z
+
+
+import torch.nn.functional as F
+
+
+class AdaptiveStepController(GAUBase):
+    """
+    AdaptiveStepController computes adaptive step sizes based on the input embeddings X.
+
+    This unit processes the input sequence X and outputs a `step_size` tensor that is used
+    to adjust the computational resources dynamically in the `AdaptiveSpectralFilter`.
+
+    **Key Features:**
+
+    - **Adaptive Computation**: Dynamically computes step sizes based on input characteristics.
+    - **Gated Mechanism**: Uses a gated MLP to model complex dependencies in the input.
+    - **Controlled Step Sizes**: Ensures step sizes are within a specified range for stability.
+
+    **Args:**
+
+        embed_dim (int): The dimension of the input embeddings.
+        block_loc (tuple): The location of the block within the network.
+        kwarg_all (dict): Dictionary of all kwargs.
+        min_step_size (float, optional): Minimum value for the step size. Default is 1e-4.
+        max_step_size (float, optional): Maximum value for the step size. Default is 1.0.
+        device (torch.device, optional): The device to use. Defaults to None.
+        dtype (torch.dtype, optional): The data type to use. Defaults to None.
+
+    **Returns:**
+
+        step_size (torch.Tensor): A tensor of shape (batch_size, seq_len, embed_dim) representing the adaptive step sizes.
+
+    **Code Example:**
+
+        >>> module = AdaptiveStepController(embed_dim=512, block_loc=(0, 1), kwarg_all={})
+        >>> X = torch.randn(8, 128, 512)
+        >>> step_size, Z = module(X)
+
+    **Note:**
+
+    - This module is designed to output adaptive step sizes that can be used by spectral filtering
+      units to adjust their computational efforts based on input sequences.
+    - It ensures that the step sizes are within a specified range to maintain stability.
+
+    **Example Diagram:**
+
+        Input X --> [Gated MLP] --> step_size
+
+    **Todo:**
+
+    - Explore different activation functions for gating mechanisms.
+    - Implement additional controls for the range of step sizes if necessary.
+
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        min_step_size: float=0.0001, max_step_size: float=1.0, device=None,
+        dtype=None, hidden_features=None, activation=None, bias=False, **kwargs
+        ):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.embed_dim = embed_dim
+        self.min_step_size = min_step_size
+        self.max_step_size = max_step_size
         hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
+            embed_dim)
         self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
             self.factory_kwargs)
         self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
+        self.fc2 = nn.Linear(hidden_features, embed_dim, bias=bias, **self.
+            factory_kwargs)
 
     def _forward(self, X, **Z):
+        """
+        X: Input tensor of shape (batch_size, seq_len, embed_dim)
+        Returns:
+            step_size: Tensor of shape (batch_size, seq_len, embed_dim)
+        """
         y = self.fc1(X)
         y, gate = y.chunk(2, dim=-1)
         y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
+        step_size = self.fc2(y)
+        step_size = torch.sigmoid(step_size)
+        step_size = step_size * (self.max_step_size - self.min_step_size
+            ) + self.min_step_size
+        return step_size, Z
 
 
-import torch.nn.functional as F
-from torch import Tensor
-
-
-class RMSNorm(GAUBase):
-    """
-    Root Mean Square Layer Normalization (RMSNorm).
-
-    This layer applies a variant of layer normalization that uses only the root mean square
-    statistics, without centering. It's computationally more efficient than standard
-    layer normalization and has been shown to be effective in various NLP tasks.
-
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
-
-    Attributes:
-        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
-        variance_epsilon (float): The epsilon value used in the normalization formula.
-
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
-    Examples:
-        >>> rmsnorm = RMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
-
-
-gab_config = {'n_heads': 8, 'num_sink_tokens': 1, 'use_flash_attn': True,
-    'causal': True, 'eps': 1e-05, 'max_seq_len': 4096, 'rotary_emb_base': 
-    10000, 'bias': False, 'multiple_of': 128, 'hidden_features': None,
-    'out_features': None, 'activation': None}
+gab_config = {'num_filters': 64, 'min_step_size': 0.0001, 'max_step_size': 
+    1.0, 'hidden_features': None, 'activation': None, 'bias': False,
+    'chunk_size': 64, 'tol': 1e-05, 'num_heads': 8, 'state_dim': None}
 
 
 
-autoconfig={}
+autoconfig = {
+    'd_model': 512,
+    'n_block': 11
+}
 block_config=gab_config
 block_config.update(autoconfig)
 

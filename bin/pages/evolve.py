@@ -223,28 +223,28 @@ class CommandCenter:
         cmd = _command[0]
         if cmd == 'verify':
             if len(_command) not in [1,3]:
-                st.error(f'Invalid command format: {command}. Please use `verify` followed by a design name or design id.')
+                st.toast(f'Invalid command format: {command}. Please use `verify` followed by a design name or design id.',icon='🚨')
                 return
             elif len(_command)==3:
                 design_id, scale = _command[1:]
                 models = self.evosys.ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
                 if design_id not in models:
-                    st.error(f'Design {design_id} not found.')
+                    st.toast(f'Design {design_id} not found.',icon='🚨')
                     return
                 if scale.upper() not in self.evosys.target_scales:
-                    st.error(f'Scale {scale} not in target scales: {self.evosys.target_scales}.')
+                    st.toast(f'Scale {scale} not in target scales: {self.evosys.target_scales}.',icon='🚨')
                     return
         elif cmd == 'design':
             if len(_command) != 1:
-                st.error(f'Invalid command format: {command}. Please use `design` without any arguments.')
+                st.toast(f'Invalid command format: {command}. Please use `design` without any arguments.',icon='🚨')
                 return
         else:
-            st.error(f'Unknown command: {command}')
+            st.toast(f'Unknown command: {command}',icon='🚨')
             return
         user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
         user_commands.append(command)
         self.doc_ref.set({'user_command_stack': user_commands},merge=True)
-        st.toast(f'Command {command} sent. Please refresh the page to see the latest command stack.')
+        st.toast(f'Command {command} sent. Please refresh the page to see the latest command stack.',icon='✅')
 
     def clear_user_command_stack(self):
         self.doc_ref.set({'user_command_stack': []},merge=True)

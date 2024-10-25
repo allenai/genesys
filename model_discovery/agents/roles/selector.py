@@ -1010,7 +1010,7 @@ class Selector:
         exclude_design=[]
         while True:
             acronyms,_ = self._random_explore_exploit(1,good_design_low_confidence,poor_design_low_confidence,explore_args,exclude_design)
-            if acronyms is None: # randomly select a design from the lowest scale
+            if acronyms is None or len(acronyms)==0: # randomly select a design from the lowest scale
                 break
             acronym = acronyms[0]
             scales = unverified_by_design[acronym]
