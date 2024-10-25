@@ -372,6 +372,7 @@ def network_status(evosys,benchmark_mode):
                     'Last Heartbeat': node_data['last_heartbeat'].strftime('%Y-%m-%d %H:%M:%S %Z'),
                     'Status': node_data['status'],
                     'MAC Address': node_data['mac_address'],
+                    'GPU': node_data.get('gpu',None)
                 }
             nodes_df = pd.DataFrame(_nodes).T
             st.dataframe(nodes_df,use_container_width=True)

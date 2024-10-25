@@ -11,6 +11,7 @@ from datetime import datetime, timedelta
 import pytz
 import psutil
 import getmac
+import torch
 sys.path.append('.')
 
 import model_discovery.utils as U
@@ -122,6 +123,7 @@ class Listener:
 
     
     def reset_doc(self, reset_commands=True):
+        gpu_str = f'{torch.cuda.device_count()}x{torch.cuda.get_device_name(0)}' if torch.cuda.is_available() else 'CPU'
         to_set = {
             'status': 'connected',
             'group_id': self.group_id,
@@ -129,7 +131,8 @@ class Listener:
             'last_heartbeat': firestore.SERVER_TIMESTAMP,
             'max_design_threads': self.max_design_threads,
             'accept_verify_job': self.accept_verify_job,
-            'cpu_only_checker': self.cpu_only
+            'cpu_only_checker': self.cpu_only,
+            'gpu': gpu_str
         }
         if reset_commands:
             to_set['commands'] = []
