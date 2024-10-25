@@ -50,6 +50,7 @@ DEFAULT_N_SEEDS_SETTINGS = {
     'warmup_rounds_scratch':20, # the number of implemented designs to warmup the scheduler, before that, only do mutation
 }
 
+
 DEFAULT_N_SEEDS_DIST = {
     '0': 0.01,
     '1': 0.9,
@@ -744,7 +745,7 @@ class Selector:
         if allow_tree:
             pool = self.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented'])
         else:
-            pool = self.ptree.filter_by_type(['DesignArtifactImplemented'])
+            pool = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
         seeds = self._sample_k_pool(pool,n_seeds,1,topk=False)
         seeds = [self.ptree.get_node(i) for i in seeds]
         return '',seeds,refs

@@ -18,7 +18,7 @@ import numpy as np
 import pandas as pd
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
-from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,DEFAULT_BENCHMARK_SETTINGS,BENCH_MODE_OPTIONS
+from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,DEFAULT_BENCHMARK_SETTINGS,BENCH_MODE_OPTIONS,DEFAULT_RANDOM_ALLOW_TREE
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
     DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
         SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
@@ -353,21 +353,12 @@ def select_config(evosys):
     seed_dist=select_cfg.get('seed_dist',DEFAULT_SEED_DIST)
     n_seeds_settings=select_cfg.get('n_seeds',DEFAULT_N_SEEDS_SETTINGS)
     n_seeds_dist=select_cfg.get('n_seeds_dist',DEFAULT_N_SEEDS_DIST)
+    random_allow_tree=select_cfg.get('random_allow_tree',DEFAULT_RANDOM_ALLOW_TREE)
 
     with st.expander(f"Seed Selector Configurations for ```{evosys.evoname}```",expanded=False,icon='🌱'):
         with st.form("Seed Selector Config"):
-            _col1,_col2=st.columns([3,2])
+            _col1,_col2=st.columns([2,3])
             with _col1:
-                st.write('###### Configure *Seed* Selection Distribution')
-                cols = st.columns(3)
-                with cols[0]:
-                    seed_dist['scheduler'] = st.selectbox('Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(seed_dist['scheduler']))
-                with cols[1]:
-                    seed_dist['restart_prob'] = st.slider('Restart Probability',min_value=0.0,max_value=1.0,step=0.01,value=DEFAULT_SEED_DIST['restart_prob'])
-                with cols[2]:
-                    seed_dist['warmup_rounds'] = st.number_input('Warmup (Restart)',min_value=0,value=seed_dist['warmup_rounds'],
-                        help="Number of verified designs are produced. In warmup rounds, at least one seed will be selected from the initial seeds. After warmup, the probability of selecting from initial seeds is determined by restart scheduler.")
-            with _col2:
                 st.write('###### Configure Selector')
                 cols=st.columns(2)
                 with cols[0]:
@@ -376,8 +367,17 @@ def select_config(evosys):
                 with cols[1]:
                     verify_strategy=DEFAULT_VERIFY_STRATEGY if verify_strategy not in VERIFY_STRATEGIES else verify_strategy
                     select_cfg['verify_strategy']=st.selectbox('Verify Strategy',options=VERIFY_STRATEGIES,index=VERIFY_STRATEGIES.index(verify_strategy))
-            
-            
+            with _col2:
+                st.write('###### Configure *Seed* Selection Distribution (non-random)')
+                cols = st.columns(3)
+                with cols[0]:
+                    seed_dist['scheduler'] = st.selectbox('Scheduler',options=SCHEDULER_OPTIONS,index=SCHEDULER_OPTIONS.index(seed_dist['scheduler']))
+                with cols[1]:
+                    seed_dist['restart_prob'] = st.slider('Restart Probability',min_value=0.0,max_value=1.0,step=0.01,value=DEFAULT_SEED_DIST['restart_prob'])
+                with cols[2]:
+                    seed_dist['warmup_rounds'] = st.number_input('Warmup (Restart)',min_value=0,value=seed_dist['warmup_rounds'],
+                        help="Number of verified designs are produced. In warmup rounds, at least one seed will be selected from the initial seeds. After warmup, the probability of selecting from initial seeds is determined by restart scheduler.")
+
             sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
         
             st.markdown("###### Configure the number of *references* from each source")
@@ -402,20 +402,29 @@ def select_config(evosys):
             select_cfg['seed_dist']=seed_dist
 
 
-            st.markdown('###### Configure the Number of Seeds Distribution')
-            cols=st.columns([1,1,2.5])
-            with cols[0]:
-                n_seeds_settings['warmup_rounds_crossover']=st.number_input('Warmup (Crossover)',min_value=0,value=n_seeds_settings['warmup_rounds_crossover'])
-            with cols[1]:
-                n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
-            with cols[2]:
-                n_seeds_dist = U.sort_dict_by_scale(n_seeds_dist)
-                n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['Weights'])
-                n_seeds_dist_df = st.data_editor(n_seeds_dist_df,use_container_width=True)
-                n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]
-                n_seeds_dist = {k:v for k,v in n_seeds_dist.items()}
-            select_cfg['n_seeds_dist']=n_seeds_dist
-            select_cfg['n_seeds_settings']=n_seeds_settings
+            Col1,Col2 = st.columns([5,1])
+            with Col1:
+                st.markdown('###### Configure the Number of Seeds Distribution')
+                cols=st.columns([1,1,2])
+                with cols[0]:
+                    n_seeds_settings['warmup_rounds_crossover']=st.number_input('Warmup (Crossover)',min_value=0,value=n_seeds_settings['warmup_rounds_crossover'])
+                with cols[1]:
+                    n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
+                with cols[2]:
+                    n_seeds_dist = U.sort_dict_by_scale(n_seeds_dist)
+                    n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['Weights'])
+                    n_seeds_dist_df = st.data_editor(n_seeds_dist_df,use_container_width=True)
+                    n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]
+                    n_seeds_dist = {k:v for k,v in n_seeds_dist.items()}
+                select_cfg['n_seeds_dist']=n_seeds_dist
+                select_cfg['n_seeds_settings']=n_seeds_settings
+            with Col2:
+                st.write('###### Random Selector')
+                # st.write('')
+                st.write('')
+                select_cfg['random_allow_tree']=st.checkbox('Allow select Evo Tree',value=random_allow_tree,help='If true, will allow the random selector to select from evo tree nodes.')
+
+
             st.form_submit_button("Save and Apply",on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
 
 

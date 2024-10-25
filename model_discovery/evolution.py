@@ -2430,6 +2430,8 @@ DEFAULT_N_SOURCES={
     'ReferenceWithCode':2,
 }
 
+DEFAULT_RANDOM_ALLOW_TREE = True
+
 
 BUDGET_TYPES = ['design_bound','verify_bound']
 
@@ -2588,18 +2590,26 @@ class EvolutionSystem(exec_utils.System):
 
     def should_stop(self):
         if self.CM.benchmark_mode:
-            if len(self.ptree.get_finished_designs())>=self.CM.max_designs:
+            if self.finished_designs>=self.CM.max_designs:
                 return True
         else:
             if self.selector.budget_type=='design_bound':
                 if self.selector.design_budget<=0:
                     return True
-                elif self.max_samples>0 and len(self.ptree.get_finished_designs())>=self.max_samples:
+                elif self.max_samples>0 and self.finished_designs>=self.max_samples:
                     return True
             elif self.selector.budget_type=='verify_bound':
-                if sum(self.selector.verify_budget.values())<=0:
+                if self.remaining_verify_budget<=0:
                     return True
         return False
+    
+    @property
+    def finished_designs(self):
+        return len(self.ptree.get_finished_designs())
+    
+    @property
+    def remaining_verify_budget(self):
+        return sum(self.selector.verify_budget.values())
     
     def conclude(self):
         # conclude results and report to db
@@ -2827,6 +2837,7 @@ class EvolutionSystem(exec_utils.System):
 
         selector_args={}
         selector_args['n_sources']=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
+        selector_args['allow_tree']=select_cfg.get('random_allow_tree',DEFAULT_RANDOM_ALLOW_TREE)
 
         manual_seed = self._process_manual_input(manual_seed)
         manual_refs = self._process_manual_input(manual_refs)

@@ -85,6 +85,13 @@ class CommandCenter:
     #     self.doc_ref.delete()  # Delete the connection document
 
     def assign_design_workloads(self,design_workloads,to_sleep):
+        if self.evosys.remaining_verify_budget<=0:
+            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No verify budget available, stopping design workload assignment')
+            return to_sleep,design_workloads
+        if self.evosys.max_samples>0 and self.evosys.finished_designs>=self.evosys.max_samples:
+            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Max design samples reached, stopping design workload assignment')
+            return to_sleep,design_workloads
+        
         if to_sleep<=0:
             return to_sleep,design_workloads
         # check if the design workloads are full
