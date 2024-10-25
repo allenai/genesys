@@ -500,7 +500,7 @@ class EffectiveChecker: # WORING IN PROGRESS
             self.errors.append('The model is diverging. The loss is NaN. ')
         if any(grad_norm>1e4 for grad_norm in grad_norms):
             self.errors.append('The model is diverging. The gradient norm is NaN. ')
-        if run_time>benchmark['run_time']*10:
+        if run_time>benchmark['run_time']*30: # very loose now, as its hard to measure sometimes
             self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         elif run_time>benchmark['run_time']*5:
             self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")

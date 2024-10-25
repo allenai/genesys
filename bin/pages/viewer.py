@@ -615,12 +615,20 @@ def export_leaderboards(evosys,design_vectors, baseline_vectors):
         leaderboards_unnormed_l[scale] = post_process_leaderboard(leaderboards_unnormed_l[scale])
     return leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l
 
-def leaderboard_relative(leaderboard,relative='random'):
+def leaderboard_relative(leaderboard,relative='random',filter_threshold=0):
     base_row = leaderboard.loc[relative]
-    leaderboard = leaderboard - base_row
+    # remove the columns where the base_row is 0
+    base_row = base_row[base_row != 0]
+    leaderboard = leaderboard[base_row.index]
+    leaderboard = (leaderboard - base_row) / base_row
+    leaderboard = leaderboard.dropna(axis=1)
     leaderboard = leaderboard*100
+    # filter out the columns where the max value is larger than the filter threshold
+    leaderboard = leaderboard.loc[:, leaderboard.max(axis=0) >= filter_threshold]
+    # add base_row back with all 0s
+    # _row = pd.DataFrame(0,index=[base_row.name],columns=leaderboard.columns)
+    # leaderboard = pd.concat([_row,leaderboard])
     return leaderboard.round(2)
-
 
 
 def leaderboard_filter(leaderboard,task_filter=[]):
@@ -642,7 +650,7 @@ def selector_lab(evosys,project_dir):
     st.subheader('Real-time Leaderboard')
     with st.status('Generating leaderboard...',expanded=True):
         leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l=export_leaderboards(evosys,design_vectors,baseline_vectors)
-        cols = st.columns([1,1,3])
+        cols = st.columns([1,1,3,1])
         with cols[0]:
             scale = st.selectbox('Select scale',options=list(sorted(leaderboards_normed.keys(),key=lambda x:U.letternum2num(x))))
         with cols[1]:
@@ -651,22 +659,89 @@ def selector_lab(evosys,project_dir):
         with cols[2]:
             input_task_filter = st.text_input('Task filter list (keywords matching, comma separated)',value=','.join(LEADERBOARD_1))
             input_task_filter=[i.strip() for i in input_task_filter.split(',')]
+        with cols[3]:
+            filter_threshold = st.number_input('Filter threshold (%)',min_value=0,max_value=100,step=1,value=0,
+                help='Leave the metrics where there is at least one design with relative rating higher than this threshold')
 
     cols = st.columns(2)
     with cols[0]:
         with st.expander('Normed metrics (0-1, higher is better)',expanded=True):
             if scale is not None:
                 _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale],input_task_filter)
-                st.dataframe(_leaderboards_normed)
+                leaderboards_normed = _leaderboards_normed.copy()
+                leaderboards_normed['avg.'] = leaderboards_normed.mean(axis=1)
+                st.dataframe(leaderboards_normed)
             else:
                 st.info('No results available at this moment.')
     with cols[1]:
         with st.expander(f'Relative to ```{relative}``` (Normed metrics, %)',expanded=True):
             if scale is not None:
-                relative = f'{relative} (baseline)' if relative != 'random' else 'random'
-                st.dataframe(leaderboard_relative(_leaderboards_normed,relative=relative))
+                _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+                leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=_relative,filter_threshold=filter_threshold)
+                leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
+                st.dataframe(leaderboards_relative)
             else:
                 st.info('No results available at this moment.')
+
+    # filter rows
+    filter_rows = st.text_input('Filter designs (exact match, comma separated)')
+    if filter_rows:
+        filter_rows = [i.strip() for i in filter_rows.split(',')]
+        for _baseline in baseline_vectors:
+            filter_rows.append(f'{_baseline} (baseline)')
+        filter_rows.append('random')
+    else:
+        filter_rows = None
+    
+    highlight_color = 'violet'
+    with st.expander(f'Combined leaderboard for ```{scale}``` (with relative (%) to ```{relative}```, max highlighted in :{highlight_color}[{highlight_color}])',expanded=True):
+        leaderboards_normed_combined = leaderboards_normed.copy()
+        leaderboards_normed_combined = leaderboards_normed_combined.loc[:,leaderboards_relative.columns]
+        
+        # Drop NA values from both DataFrames
+        leaderboards_normed_combined = leaderboards_normed_combined.dropna()
+        leaderboards_relative = leaderboards_relative.dropna()
+        
+        # Ensure both DataFrames have the same index after dropping NA
+        common_index = leaderboards_normed_combined.index.intersection(leaderboards_relative.index)
+        leaderboards_normed_combined = leaderboards_normed_combined.loc[common_index]
+        leaderboards_relative = leaderboards_relative.loc[common_index]
+        # recompute avg for both, remove the old avg
+        leaderboards_normed_combined = leaderboards_normed_combined.drop(columns=['avg.'])
+        leaderboards_relative = leaderboards_relative.drop(columns=['avg.'])
+        leaderboards_normed_combined['avg.'] = leaderboards_normed_combined.mean(axis=1)
+        _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+        relative_avg = leaderboards_normed_combined.loc[_relative,'avg.']
+        leaderboards_relative['avg.'] = 100*(leaderboards_normed_combined['avg.'] - relative_avg)/relative_avg
+        
+        # Combine the values of the two leaderboards as normed (relative) e.g., 3.2 (4.5%)
+        def combine_values(normed, relative):
+            return normed.applymap(lambda x: f'{x:.4f}') + ' (' + relative.applymap(lambda x: f'{x:.2f}%') + ')'
+
+        leaderboards_normed_combined = combine_values(leaderboards_normed_combined, leaderboards_relative)
+        if filter_rows:
+            # filter out the rows not in df from filter_rows first
+            filter_rows = [i for i in filter_rows if i in leaderboards_normed_combined.index]
+            leaderboards_normed_combined = leaderboards_normed_combined.loc[filter_rows]
+
+
+        baseline_rows = leaderboards_normed_combined[leaderboards_normed_combined.index.str.contains('(baseline)')]
+        random_row = leaderboards_normed_combined.loc['random']
+        remaining_rows = leaderboards_normed_combined[~leaderboards_normed_combined.index.isin(baseline_rows.index)]
+        remaining_rows = remaining_rows.drop(index='random')
+        remaining_rows = remaining_rows.sort_values(by='avg.',ascending=True)
+        leaderboards_normed_combined = pd.concat([random_row.to_frame().T,baseline_rows,remaining_rows])
+        st.dataframe(leaderboards_normed_combined.style.highlight_max(axis=0,color=highlight_color),use_container_width=True)
+
+        # 14M
+        # blimp,inverse_scaling,mathqa,qa4mre,mrpc,cola (5%)
+        # adaptivespectralgau,memory_augmented_multi_head_atte,adaptivesparselinearattention,hierarchicaladaptivesparserwkv,adarmsnorm
+
+        # 31M
+        # wnli,qa4mre_2011,mrpc,sst2,rte,mathqa,inverse
+        # sparsesink,ssmaugmentedmha,firelight_gpt_1,densehierarchicalrwkv_6,gpt_flash_ahsaqe,sparsesinkssmattn,sma_gatedmlp
+
+
 
     cols = st.columns(2)
     with cols[0]:
