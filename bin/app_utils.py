@@ -124,8 +124,8 @@ def _refresh_local_listener_status(st,ckpt_dir):
 
 
 
-def system_status(st,evosys,title):
-  with st.status(f"{title}",expanded=False,state='running'):
+def system_status(st,evosys,title,icon):
+  with st.expander(f"{title}",expanded=True,icon=icon):
       settings={}
       settings['Experiment Directory']=evosys.evo_dir
       if evosys.design_budget_limit>0:
@@ -151,10 +151,12 @@ def running_status(st,evosys):
 
   if st.session_state.evo_running:
     if evosys.benchmark_mode:
-      title='🪑 ***Running Benchmark***'
+      title='***Running Benchmark***'
+      icon='🪑'
     else:
-      title='🚀 ***Running Evolution***'
-    system_status(st,evosys,title)
+      title='***Running Evolution***'
+      icon='🚀'
+    system_status(st,evosys,title,icon)
  
   if evosys.CM is not None:
     evosys.CM.get_active_connections()

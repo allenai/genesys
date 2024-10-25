@@ -19,11 +19,11 @@ Utils and code for model discovery experiments.
 ```shell
 conda create -n modis python=3.12
 conda activate modis
-pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 # for cuda 11.8
+conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install -e .
 genesys setup
 ```
-Hint: use ```bash scripts/setup.sh -d``` to prepare datasets only
+Hint: use ```bash scripts/setup_env.sh -d``` to prepare datasets only
 
 Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
 

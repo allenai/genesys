@@ -86,12 +86,12 @@ class CommandCenter:
 
     def assign_design_workloads(self,design_workloads,to_sleep):
         if to_sleep<=0:
-            return to_sleep
+            return to_sleep,design_workloads
         # check if the design workloads are full
         if self.evosys.benchmark_mode: 
             if not self.evosys.ptree.acquire_design_lock():
                 print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design is full, stopping design workload assignment')
-                return to_sleep
+                return to_sleep,design_workloads
             
         total_design_workloads = sum(design_workloads.values())
         if total_design_workloads == self.max_designs_total or self.max_designs_total==0:
@@ -118,14 +118,14 @@ class CommandCenter:
                     #     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design availability for the most available node {node_id} is empty ({design_availability[node_id]})')
             else:
                 print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available: {design_availability}')
-        return to_sleep
+        return to_sleep,design_workloads
 
     def assign_verify_workloads(self,verify_workloads,to_sleep):
         # assigned_verify_workloads = False
         if to_sleep<=0:
-            return to_sleep
+            return to_sleep,verify_workloads
         if self.evosys.benchmark_mode:
-            return to_sleep
+            return to_sleep,verify_workloads    
         for node_id in verify_workloads:
             if verify_workloads[node_id] == 0 and self.evosys.CM.accept_verify_job[node_id]:
                 if self.evosys.CM.verify_command(node_id,resume=self.allow_resume):
@@ -133,10 +133,39 @@ class CommandCenter:
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
                     time.sleep(CC_COMMAND_DELAY)
                     to_sleep -= CC_COMMAND_DELAY
+                    verify_workloads[node_id] += 1
                     if to_sleep<=0:
                         break
-        return to_sleep
-
+        return to_sleep,verify_workloads
+    
+    def send_user_commands(self,design_workloads,verify_workloads,to_sleep):
+        if to_sleep<=0:
+            return to_sleep,design_workloads,verify_workloads
+        user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
+        processed_command_idx = []
+        for idx,command in enumerate(user_commands):
+            cmds = command.strip().split()
+            cmd = cmds[0]
+            args = cmds[1:]
+            if cmd == 'verify':
+                if len(args)==0:
+                    to_sleep,verify_workloads = self.assign_verify_workloads(verify_workloads,to_sleep)
+                elif len(args)==2:
+                    design_id, scale = args
+                    for node_id in verify_workloads:
+                        if verify_workloads[node_id] == 0 and self.evosys.CM.accept_verify_job[node_id]:
+                            if self.evosys.CM.verify_command(node_id,design_id,scale.upper(),resume=self.allow_resume):
+                                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning verify workload to node {node_id}')
+                                time.sleep(CC_COMMAND_DELAY)
+                                to_sleep -= CC_COMMAND_DELAY
+                                processed_command_idx.append(idx)
+                                verify_workloads[node_id] += 1
+                                break
+            elif cmd == 'design':
+                to_sleep,design_workloads = self.assign_design_workloads(design_workloads,to_sleep)
+        user_commands = [user_commands[i] for i in range(len(user_commands)) if i not in processed_command_idx]
+        self.doc_ref.set({'user_command_stack': user_commands},merge=True)
+        return to_sleep,verify_workloads,design_workloads
 
     def run(self):
         self.evosys.sync_to_db() # sync the config to the db
@@ -168,8 +197,9 @@ class CommandCenter:
                 else:
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}')
 
-                to_sleep = self.assign_design_workloads(design_workloads,to_sleep)
-                to_sleep = self.assign_verify_workloads(verify_workloads,to_sleep)
+                to_sleep,design_workloads,verify_workloads = self.send_user_commands(design_workloads,verify_workloads,to_sleep)
+                to_sleep,_ = self.assign_design_workloads(design_workloads,to_sleep)
+                to_sleep,_ = self.assign_verify_workloads(verify_workloads,to_sleep)
 
                 self.doc_ref.update({'last_heartbeat': firestore.SERVER_TIMESTAMP})
             
@@ -186,6 +216,45 @@ class CommandCenter:
             self.doc_ref.update({'status': 'stopped'})
         # self.cleanup()
 
+    def process_user_command(self,command):
+        _command = command.lower().strip().split()
+        if len(_command)==0:
+            return
+        cmd = _command[0]
+        if cmd == 'verify':
+            if len(_command) not in [1,3]:
+                st.error(f'Invalid command format: {command}. Please use `verify` followed by a design name or design id.')
+                return
+            elif len(_command)==3:
+                design_id, scale = _command[1:]
+                models = self.evosys.ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
+                if design_id not in models:
+                    st.error(f'Design {design_id} not found.')
+                    return
+                if scale.upper() not in self.evosys.target_scales:
+                    st.error(f'Scale {scale} not in target scales: {self.evosys.target_scales}.')
+                    return
+        elif cmd == 'design':
+            if len(_command) != 1:
+                st.error(f'Invalid command format: {command}. Please use `design` without any arguments.')
+                return
+        else:
+            st.error(f'Unknown command: {command}')
+            return
+        user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
+        user_commands.append(command)
+        self.doc_ref.set({'user_command_stack': user_commands},merge=True)
+        st.toast(f'Command {command} sent. Please refresh the page to see the latest command stack.')
+
+    def clear_user_command_stack(self):
+        self.doc_ref.set({'user_command_stack': []},merge=True)
+
+    def show_user_command_stack(self):
+        user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
+        if len(user_commands)==0:
+            st.info('No command stacks available at the moment.')
+        else:
+            st.write(user_commands)
 
 def x_evolve_passive(command_center,cli=False): # extereme evolution 
     thread = threading.Thread(target=command_center.run)
@@ -444,6 +513,42 @@ def evolution_launch_pad(evosys):
             if st.session_state.command_center:
                 with st.spinner('Stopping... Note, the nodes will keep working on the unfinished jobs'):
                     stop_evo(evosys)
+
+    st.subheader("Command Center Panel")
+    cols = st.columns([3,1,1,3])
+    with cols[0]:
+        user_command = st.text_input('Input a command',value='',disabled=not st.session_state.evo_running,help='''
+You can send command to the command center. Format example:
+```
+verify # verify a design by select 
+verify gpt 14M # verify a given design
+design # design a new model
+```
+''')
+    with cols[1]:
+        st.write('')
+        st.write('')
+        send_command_btn = st.button('Send Command',use_container_width=True,
+                disabled=not st.session_state.evo_running)
+    with cols[2]:
+        st.write('')
+        st.write('')
+        clear_command_btn = st.button('Clear Command',use_container_width=True,
+                disabled=not st.session_state.evo_running)
+    with cols[3]:
+        st.write('')
+        st.write('')
+        with st.expander('User command stacks',expanded=False):
+            if st.session_state.command_center:
+                st.session_state.command_center.show_user_command_stack()
+            else:
+                st.info('No command center running.')
+
+    if send_command_btn:
+        st.session_state.command_center.process_user_command(user_command)
+    if clear_command_btn:
+        st.session_state.command_center.clear_user_command_stack()
+
 
 
 def benchmark_launch_pad(evosys):

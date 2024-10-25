@@ -68,19 +68,19 @@ def _view_designs(evosys):
 
     
     with st.status('Loading design artifacts...'):
-        design_artifacts = evosys.ptree.get_design_artifacts()
+        design_artifacts = evosys.ptree.filter_by_type(['DesignArtifactImplemented','DesignArtifact'])
         acronyms= evosys.ptree.filter_by_type(['ReferenceCoreWithTree'])
-        corerefs_with_tree = {acronym:evosys.ptree.get_node(acronym) for acronym in acronyms}
+        # corerefs_with_tree = {acronym:evosys.ptree.get_node(acronym) for acronym in acronyms}
 
 
     with st.sidebar:
         category = st.selectbox('Select a category',['Design Artifacts','Seed Trees'])
         if category == 'Design Artifacts':
             # sort by alphabetical order
-            designs = sorted(list(design_artifacts.keys()))
+            designs = sorted(list(design_artifacts))
             selected_design = st.selectbox('Select a design',designs)
         else:
-            selected_coreref = st.selectbox('Select a core reference',list(corerefs_with_tree.keys()))
+            selected_coreref = st.selectbox('Select a core reference',list(acronyms))
 
     # # st.header('14M Training Results')
     # csv_res_dir=U.pjoin(evosys.evo_dir,'..','..','notebooks','all_acc_14M.csv')
@@ -98,11 +98,13 @@ def _view_designs(evosys):
 
     if category == 'Design Artifacts':
         if design_artifacts:
-            design=design_artifacts[selected_design]
+            design=evosys.ptree.get_node(selected_design)
+            sessdata = design.sess_snapshot
             with st.expander(f'Meta Data for {selected_design}',expanded=False):
                 metadata = {
                     'Design Session ID': design.sess_id,
                     'Seed IDs': design.seed_ids,
+                    'References': sessdata['ref_ids'],
                     'Agents': design.proposal.design_cfg['_agent_types'],
                 }
                 st.json(metadata)
@@ -141,8 +143,8 @@ def _view_designs(evosys):
         else:
             st.warning('No design artifacts found in the experiment directory')
     
-    elif corerefs_with_tree and category == 'Seed Trees':
-        coreref = corerefs_with_tree[selected_coreref]
+    elif acronyms and category == 'Seed Trees':
+        coreref = evosys.ptree.get_node(selected_coreref)
         with st.expander(f'Meta Data for {selected_coreref}',expanded=False):
             metadata = {
                 'Reference ID': coreref.acronym,
@@ -158,7 +160,24 @@ def _view_designs(evosys):
             st.json(metadata)
         st.subheader(f'GAU Tree for {selected_coreref}')
         _view_tree(coreref.tree)
-
+        if coreref.verifications:
+            st.subheader('Verification Results')
+            for scale in coreref.verifications:
+                with st.expander(f'{scale} Verification Results',expanded=True):
+                    for _mult in coreref.verifications[scale]:
+                        reports = coreref.verifications[scale][_mult].verification_report
+                        if 'wandb_ids.json' in reports:
+                            wandb_ids = reports['wandb_ids.json']
+                            if 'pretrain' in wandb_ids:
+                                wandb_id=wandb_ids['pretrain']['id']
+                                wandb_name=wandb_ids['pretrain']['name']
+                                project=wandb_ids['project']
+                                entity=wandb_ids['entity']
+                                url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                                st.write(f'WANDB URL: {url}')
+        else:
+            st.warning('No verification results found for this core reference.')
+    
 
 
 def _view_dialogs(evosys):

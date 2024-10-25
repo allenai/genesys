@@ -200,8 +200,8 @@ class Listener:
         elif comps[0] == 'verify':
             verify_workloads = self.evosys.CM.check_verification_workload(self.node_id)
             if len(verify_workloads) > 0:
-                for item in verify_workloads:
-                    if 'W&B Training Run' not in item:
+                for sess_id in verify_workloads:
+                    if 'W&B Training Run' not in verify_workloads[sess_id]:
                         ve_dir = U.pjoin(self.evosys.evo_dir, 've', sess_id)
                         if os.path.exists(ve_dir):
                             wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))

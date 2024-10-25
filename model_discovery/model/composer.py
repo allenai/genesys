@@ -516,13 +516,17 @@ class GAUTree:
         implemented=set(self.units.keys())
         unimplemented=all_children-implemented
         return implemented,unimplemented
+    
+    def tree_view(self):
+        pstr, _ = self._view(self.root, node=self.root_node)
+        return pstr
  
     def view(self, unit_code=True): # XXX: BUGGY! NEED TO CHECK! GOT WRONG TREE SOMETIMES
         """
         Returns a detailed view of the GAU tree, showing implemented and unimplemented units,
         along with their specifications and code if applicable.
         """
-        pstr, _ = self._view(self.root, node=self.root_node)
+        pstr=self.tree_view()
         pstr=f'#### {self.name} Tree Map\n\n```bash\n{pstr}'
         # Collect implemented and unimplemented units
         implemented,unimplemented = self.check_implemented()

@@ -27,12 +27,12 @@ class GPT2(GAUBase):
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = MemoryAugmentedMHA(embed_dim=self.embed_dim, block_loc=
-            self.block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs,
-            **self.kwarg_all)
-        self.mlp = GSSMEnhancedGatedMLP(embed_dim=self.embed_dim, block_loc
-            =self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
+        self.mha = SinkFlashMHA(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
         self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
@@ -48,6 +48,284 @@ class GPT2(GAUBase):
         X4, Z = self.mlp(X3, **Z)
         X = X + X4
         return X, Z
+
+
+import torch.nn.functional as F
+import math
+import warnings
+try:
+    from flash_attn.flash_attention import FlashAttention
+    FLASH_ATTENTION_AVAILABLE = True
+except ImportError:
+    FLASH_ATTENTION_AVAILABLE = False
+    warnings.warn(
+        'FlashAttention is not available. Falling back to standard attention.')
+
+
+class SinkFlashMHA(GAUBase):
+    """
+    Multi-Head Attention with Attention Sinks integration (SinkFlashMHA).
+
+    This GAU implements a modified Multi-Head Attention mechanism that integrates attention sinks into FlashMHA. It allows efficient long-sequence processing by retaining key-value pairs of designated sink tokens, which serve as a persistent global context.
+
+    **Key Features:**
+
+    - Integrates attention sinks into the attention mechanism.
+    - Retains key-value pairs of designated sink tokens to provide global context.
+    - Modifies the attention mask to allow all tokens to attend to sink tokens.
+    - Compatible with FlashAttention for efficient computation.
+
+    **Args:**
+
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of this block within the network.
+        kwarg_all (dict): Dictionary of all keyword arguments.
+        n_heads (int, optional): Number of attention heads. Default is 8.
+        causal (bool, optional): Whether to apply causal masking. Default is True.
+        use_flash_attn (bool, optional): Whether to use FlashAttention if available. Default is True.
+        num_sink_tokens (int, optional): Number of sink tokens to use. Default is 1.
+        **kwargs: Additional keyword arguments.
+
+    **Integration Details:**
+
+    - Initializes trainable sink token embeddings.
+    - Concatenates sink tokens to the input sequence during forward pass.
+    - Adjusts attention masks to allow all tokens to attend to sink tokens and enforce causality for local tokens.
+    - Uses FlashAttention if available; falls back to standard attention if necessary.
+
+    **Returns:**
+
+        Output tensor with the same shape as the input.
+
+    **Raises:**
+
+        AssertionError: If input dimensions are incorrect.
+
+    **Example:**
+
+        # Create an instance of SinkFlashMHA
+        sink_mha = SinkFlashMHA(embed_dim=768, block_loc=(0, 12), kwarg_all={}, n_heads=12, num_sink_tokens=2)
+        # Input tensor of shape (batch_size, seq_len, embed_dim)
+        X = torch.randn(2, 128, 768)
+        # Perform forward pass
+        Y, Z = sink_mha(X)
+        # Output tensor Y has the same shape as X
+        print(Y.shape)  # torch.Size([2, 128, 768])
+
+    **Note:**
+
+        For more info on attention sinks, see the paper:
+        "Efficient Streaming Language Models with Attention Sinks" by Xiao et al., 2023.
+
+    **Hardware Requirements:**
+
+        - NVIDIA GPUs with compute capability >= 7.5 (e.g., T4, V100, A100, RTX 20-series or newer)
+        - Sufficient GPU memory to accommodate large batch sizes and sequence lengths
+        - CUDA toolkit and compatible PyTorch version
+
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, n_heads: int=8, causal: bool=True,
+        use_flash_attn: bool=True, num_sink_tokens: int=1, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.embed_dim = embed_dim
+        self.num_heads = n_heads
+        self.causal = causal
+        self.use_flash_attn = use_flash_attn and FLASH_ATTENTION_AVAILABLE
+        self.num_sink_tokens = num_sink_tokens
+        assert self.embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_heads'
+        self.head_dim = self.embed_dim // self.num_heads
+        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.sink_tokens = nn.Parameter(torch.randn(1, self.num_sink_tokens,
+            embed_dim, **self.factory_kwargs))
+        kwarg_all['rotary_emb_dim'] = self.head_dim
+        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
+            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
+            **self.factory_kwargs, **self.kwarg_all)
+        if not FLASH_ATTENTION_AVAILABLE and use_flash_attn:
+            warnings.warn(
+                'FlashAttention is not available. Falling back to standard attention.'
+                )
+
+    def _forward(self, X, **Z):
+        X = X.to(**self.factory_kwargs)
+        B, L, _ = X.size()
+        num_sink_tokens = self.num_sink_tokens
+        sink_tokens = self.sink_tokens.expand(B, -1, -1)
+        X_combined = torch.cat([sink_tokens, X], dim=1)
+        q = self.q_proj(X)
+        q = q.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        k_combined = self.k_proj(X_combined)
+        v_combined = self.v_proj(X_combined)
+        k_combined = k_combined.view(B, num_sink_tokens + L, self.num_heads,
+            self.head_dim).transpose(1, 2)
+        v_combined = v_combined.view(B, num_sink_tokens + L, self.num_heads,
+            self.head_dim).transpose(1, 2)
+        Z['input_emb'] = q
+        Z['input_pos'] = None
+        _, Z = self.rotary_emb(X, **Z)
+        q = Z['output_emb']
+        Z['input_emb'] = k_combined
+        Z['input_pos'] = None
+        _, Z = self.rotary_emb(X, **Z)
+        k_combined = Z['output_emb']
+        q = q.reshape(B * self.num_heads, L, self.head_dim)
+        k_combined = k_combined.reshape(B * self.num_heads, num_sink_tokens +
+            L, self.head_dim)
+        v_combined = v_combined.reshape(B * self.num_heads, num_sink_tokens +
+            L, self.head_dim)
+        attn_mask = self._generate_attention_mask(L, num_sink_tokens,
+            device=X.device)
+        attn_mask = attn_mask.unsqueeze(0).expand(B * self.num_heads, -1, -1)
+        if self.use_flash_attn and num_sink_tokens == 0:
+            flash_attn = FlashAttention(causal=self.causal)
+            attn_output = flash_attn(q, k_combined, v_combined)
+        else:
+            attn_output = F.scaled_dot_product_attention(q, k_combined,
+                v_combined, attn_mask=attn_mask, dropout_p=0.0, is_causal=False
+                )
+        attn_output = attn_output.view(B, self.num_heads, L, self.head_dim)
+        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L,
+            self.embed_dim)
+        Y = self.out_proj(attn_output)
+        return Y, Z
+
+    def _generate_attention_mask(self, L: int, num_sink_tokens: int, device):
+        total_len = num_sink_tokens + L
+        mask = torch.zeros((L, total_len), device=device)
+        causal_mask = torch.triu(torch.full((L, L), float('-inf'), device=
+            device), diagonal=1)
+        mask[:, num_sink_tokens:] = causal_mask
+        return mask
+
+
+import torch.nn.functional as F
+from torch import Tensor
+from typing import Optional
+
+
+class RotaryPositionalEmbeddings(GAUBase):
+    """
+    This class implements Rotary Positional Embeddings (RoPE)
+    proposed in https://arxiv.org/abs/2104.09864.
+
+    Reference implementation (used for correctness verfication)
+    can be found here:
+    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80
+
+    In this implementation we cache the embeddings for each position upto
+    ``max_seq_len`` by computing this during init.
+
+    Args:
+        dim (int): Embedding dimension. This is usually set to the dim of each
+            head in the attention module computed as ````embed_dim`` // ``num_heads````
+        max_seq_len (int): Maximum expected sequence length for the
+            model, if exceeded the cached freqs will be recomputed
+        base (int): The base for the geometric progression used to compute
+            the rotation angles
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:
+        int=None, max_seq_len: int=4096, **kwargs) ->None:
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.dim = rotary_emb_dim
+        self.base = rotary_emb_base
+        self.max_seq_len = max_seq_len
+        self._rope_init()
+
+    def reset_parameters(self):
+        self._rope_init()
+
+    def _rope_init(self):
+        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.
+            factory_kwargs)[:self.dim // 2].float() / self.dim)
+        self.register_buffer('theta', theta, persistent=False)
+        self.build_rope_cache(self.max_seq_len)
+
+    def build_rope_cache(self, max_seq_len: int=4096) ->None:
+        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=
+            self.theta.device)
+        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()
+        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],
+            dim=-1)
+        self.register_buffer('cache', cache, persistent=False)
+
+    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[
+        Tensor]=None) ->Tensor:
+        """
+        Args:
+            x (Tensor): input tensor with shape
+                [b, s, n_h, h_d]
+            input_pos (Optional[Tensor]): Optional tensor which contains the position ids
+                of each token. During training, this is used to indicate the positions
+                of each token relative to its sample when packed, shape [b, s].
+                During inference, this indicates the position of the current token.
+                If none, assume the index of the token is its position id. Default is None.
+
+        Returns:
+            Tensor: output tensor with RoPE applied
+
+        Notation used for tensor shapes:
+            - b: batch size
+            - s: sequence length
+            - n_h: num heads
+            - h_d: head dim
+
+        TODO: The implementation below can be made more efficient
+        for inference.
+        """
+        seq_len = input_emb.size(1)
+        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[
+            input_pos]
+        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)
+        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2
+            )
+        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped
+            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,
+            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)
+        x_out = x_out.flatten(3)
+        output_emb = x_out.type_as(input_emb)
+        return X, {'output_emb': output_emb}
+
+
+import torch.nn.functional as F
+
+
+class GatedMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, hidden_features=None, out_features=None,
+        activation=None, bias=False, multiple_of=128, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        out_features = out_features if out_features is not None else embed_dim
+        hidden_features = (hidden_features if hidden_features is not None else
+            int(8 * embed_dim / 3))
+        hidden_features = (hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
+            self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
+            self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        y = self.fc2(y)
+        return y
 
 
 import torch.nn.functional as F
@@ -110,263 +388,10 @@ class RMSNorm(GAUBase):
         return self.weight * X.to(input_dtype)
 
 
-import torch.nn.functional as F
-import math
-
-
-class MemoryAugmentedMHA(GAUBase):
-    """
-    Memory-Augmented Multi-Head Attention (MAMHA)
-
-    This GAU implements the Memory-Augmented Multi-Head Attention mechanism. It enhances
-    the standard Multi-Head Attention (MHA) by integrating a gated memory mechanism with
-    learnable memory tokens. The memory tokens allow the model to retain long-term dependencies,
-    and the gating mechanism controls the influence of the memory tokens based on the current input.
-
-    **Mathematical Formulation:**
-
-    - Augmented keys and values:
-      \\[
-      	ilde{K} = egin{bmatrix} K \\ M \\end{bmatrix}, \\quad
-      	ilde{V} = egin{bmatrix} V \\ M \\end{bmatrix}
-      \\]
-      where \\( M \\in \\mathbb{R}^{N_m 	imes d_{	ext{head}}} \\) are the memory tokens.
-
-    - Gating mechanism:
-      \\[
-      G = \\sigma(Q W_g + b_g)
-      \\]
-      where \\( G \\in \\mathbb{R}^{B 	imes L 	imes N_m} \\).
-
-    - Apply gating to the attention scores corresponding to memory tokens:
-      \\[
-      	ext{AttnScores}_{	ext{mem}} = 	ext{AttnScores}_{	ext{mem}} 	imes G
-      \\]
-
-    **Causal Masking:**
-
-    - Apply causal masking to regular tokens to prevent attention to future positions.
-    - Memory tokens are always attendable and are not masked.
-
-    **Args:**
-        embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location of the block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
-        num_heads (int, optional): Number of attention heads. Default: 8.
-        num_memory_tokens (int, optional): Number of learnable memory tokens. Default: 4.
-        device (torch.device, optional): Device to place the module. Default: None.
-        dtype (torch.dtype, optional): Data type of the module. Default: None.
-
-    **Attributes:**
-
-        memory_tokens (nn.Parameter): Learnable memory tokens of shape (N_m, head_dim).
-        Q_proj, K_proj, V_proj (nn.Linear): Linear layers for query, key, and value projections.
-        gate_proj (nn.Linear): Linear layer for computing gating values.
-        out_proj (nn.Linear): Output linear layer.
-
-    **Example:**
-
-        mha = MemoryAugmentedMHA(embed_dim=768, block_loc=(0, 12), kwarg_all={})
-        X = torch.randn(8, 128, 768)  # Batch of 8, sequence length 128, embedding dim 768
-        Y, Z = mha(X)
-
-    **References:**
-        - *Memory-Augmented Multi-Head Attention*, see proposal for details.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        num_heads: int=8, num_memory_tokens: int=4, device=None, dtype=None,
-        **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        """Initialize the MemoryAugmentedMHA module."""
-        self.embed_dim = embed_dim
-        self.num_heads = num_heads
-        self.head_dim = embed_dim // num_heads
-        assert self.head_dim * num_heads == embed_dim, 'embed_dim must be divisible by num_heads'
-        self.num_memory_tokens = num_memory_tokens
-        self.memory_tokens = nn.Parameter(torch.randn(self.
-            num_memory_tokens, self.head_dim, **self.factory_kwargs) * 0.01)
-        self.Q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.K_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.V_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.gate_proj = nn.Linear(embed_dim, self.num_heads * self.
-            num_memory_tokens, **self.factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-
-    def _forward(self, X, **Z):
-        """
-        Forward pass of the MemoryAugmentedMHA.
-
-        Args:
-            X (torch.Tensor): Input tensor of shape (B, L, embed_dim).
-            **Z: Additional intermediate variables.
-
-        Returns:
-            output (torch.Tensor): Output tensor of shape (B, L, embed_dim).
-            Z (dict): Updated intermediate variables.
-        """
-        B, L, _ = X.size()
-        Q = self.Q_proj(X)
-        K = self.K_proj(X)
-        V = self.V_proj(X)
-        Q = Q.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        K = K.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        V = V.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        M = self.memory_tokens.unsqueeze(0).unsqueeze(0).expand(B, self.
-            num_heads, self.num_memory_tokens, self.head_dim)
-        K = torch.cat([K, M], dim=2)
-        V = torch.cat([V, M], dim=2)
-        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) / math.sqrt(self
-            .head_dim)
-        attn_scores_reg = attn_scores[:, :, :, :L]
-        attn_scores_mem = attn_scores[:, :, :, L:]
-        causal_mask = torch.tril(torch.ones(L, L, device=X.device, dtype=
-            torch.bool))
-        causal_mask = causal_mask.unsqueeze(0).unsqueeze(0)
-        attn_scores_reg = attn_scores_reg.masked_fill(~causal_mask, float(
-            '-inf'))
-        gate = torch.sigmoid(self.gate_proj(X))
-        gate = gate.view(B, L, self.num_heads, self.num_memory_tokens)
-        gate = gate.permute(0, 2, 1, 3)
-        attn_scores_mem = attn_scores_mem * gate
-        attn_scores = torch.cat([attn_scores_reg, attn_scores_mem], dim=-1)
-        attn_probs = F.softmax(attn_scores, dim=-1)
-        attn_output = torch.matmul(attn_probs, V)
-        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L,
-            self.embed_dim)
-        output = self.out_proj(attn_output)
-        return output, Z
-
-
-import torch.nn.functional as F
-
-
-class GSSMEnhancedGatedMLP(GAUBase):
-    """
-    GSSMEnhancedGatedMLP integrates Gated State Space Models (GSSMs), SwiGLU activation functions,
-    and Pre-RMSNorm normalization into a Gated MLP architecture. This enhances the model's ability
-    to capture long-range dependencies, improves training stability, and increases computational
-    efficiency.
-
-    **Mathematical Formulations:**
-
-    - **State Update**:
-      \\[
-      h_t = X_{	ext{norm}} B^	op + h_{t-1} A^	op
-      \\]
-    - **Output Calculation**:
-      \\[
-      y_t = X_{	ext{norm}} D^	op + h_t C^	op
-      \\]
-    - **SwiGLU Activation**:
-      \\[
-      egin{align*}
-      	ext{Gate} & = y_t W_{	ext{gate}}^	op \\
-      	ext{Context} & = y_t W_{	ext{context}}^	op + b \\
-      	ext{Activation} & = 	ext{Swish}(	ext{Context}) \\
-      y & = 	ext{Gate} \\odot 	ext{Activation}
-      \\end{align*}
-      \\]
-    - **Pre-RMSNorm**:
-      \\[
-      X_{	ext{norm}} = rac{X}{\\sqrt{rac{1}{d}\\sum_{i=1}^d X_i^2 + \\epsilon}}
-      \\]
-
-    **Args:**
-
-        embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location of the block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
-        device (torch.device, optional): Device to place the module.
-        dtype (torch.dtype, optional): Data type of the module.
-        hidden_dim (int, optional): Dimension of the hidden layer.
-
-    **Attributes:**
-
-        A, B, C, D (nn.Parameter): State matrices for the Gated State Space Model.
-        W_gate (nn.Linear): Linear layer for the gating mechanism in SwiGLU.
-        W_context (nn.Linear): Linear layer for the context computation in SwiGLU.
-        out_proj (nn.Linear): Output projection layer.
-        pre_norm (RMSNorm): Pre-normalization layer using RMSNorm.
-
-    **Example:**
-
-        gssm_mlp = GSSMEnhancedGatedMLP(embed_dim=768, block_loc=(0, 12), kwarg_all={})
-        X = torch.randn(8, 128, 768)  # Batch of 8, sequence length 128, embedding dim 768
-        Y, Z = gssm_mlp(X)
-
-    **References:**
-
-        - Shazeer, N. (2020). GLU Variants Improve Transformer Language Models.
-        - Mehta, H., et al. (2022). Long Range Language Modeling via Gated State Spaces.
-        - Jiang, Z., et al. (2023). Pre-RMSNorm and Pre-CRMSNorm Transformers.
-
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_dim=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        hidden_dim = hidden_dim or 4 * embed_dim
-        self.A = nn.Parameter(torch.empty(embed_dim, embed_dim, **self.
-            factory_kwargs))
-        self.B = nn.Parameter(torch.empty(embed_dim, embed_dim, **self.
-            factory_kwargs))
-        self.C = nn.Parameter(torch.empty(embed_dim, embed_dim, **self.
-            factory_kwargs))
-        self.D = nn.Parameter(torch.empty(embed_dim, embed_dim, **self.
-            factory_kwargs))
-        self.W_gate = nn.Linear(embed_dim, hidden_dim, bias=False, **self.
-            factory_kwargs)
-        self.W_context = nn.Linear(embed_dim, hidden_dim, bias=True, **self
-            .factory_kwargs)
-        self.out_proj = nn.Linear(hidden_dim, embed_dim, bias=False, **self
-            .factory_kwargs)
-        self.pre_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.reset_parameters()
-
-    def reset_parameters(self):
-        nn.init.xavier_uniform_(self.A)
-        nn.init.xavier_uniform_(self.B)
-        nn.init.xavier_uniform_(self.C)
-        nn.init.xavier_uniform_(self.D)
-        nn.init.xavier_uniform_(self.W_gate.weight)
-        nn.init.xavier_uniform_(self.W_context.weight)
-        nn.init.zeros_(self.W_context.bias)
-        nn.init.xavier_uniform_(self.out_proj.weight)
-
-    def _forward(self, X, **Z):
-        X_norm, Z = self.pre_norm(X, **Z)
-        if 'state' not in Z:
-            Z['state'] = torch.zeros(X.size(0), X.size(1), self.embed_dim,
-                **self.factory_kwargs)
-        h_t = torch.matmul(Z['state'], self.A.T) + torch.matmul(X_norm,
-            self.B.T)
-        y_t = torch.matmul(h_t, self.C.T) + torch.matmul(X_norm, self.D.T)
-        Z['state'] = h_t
-        gate = self.W_gate(y_t)
-        context = self.W_context(y_t)
-        activation = F.silu(context)
-        y = gate * activation
-        y = self.out_proj(y)
-        y = X + y
-        return y, Z
-
-    @staticmethod
-    def top_k_activation(tensor, k):
-        threshold = torch.topk(tensor, k, dim=-1)[0][..., -1, None]
-        return tensor * (tensor >= threshold).float()
-
-
-gab_config = {'num_memory_tokens': 4, 'num_heads': 8, 'eps': 1e-05,
-    'hidden_dim': None}
+gab_config = {'n_heads': 8, 'num_sink_tokens': 1, 'use_flash_attn': True,
+    'causal': True, 'eps': 1e-05, 'max_seq_len': 4096, 'rotary_emb_base': 
+    10000, 'bias': False, 'multiple_of': 128, 'hidden_features': None,
+    'out_features': None, 'activation': None}
 
 
 

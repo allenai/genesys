@@ -891,8 +891,11 @@ class LibraryReference(NodeObject):
         if self.url:
             mdtext += f'\n\n**[Link to Paper]({self.url})**'
 
+        if self.tree:
+            mdtext += f'\n\n**GAU Tree:**\n{self.tree.tree_view()}'
+
         if self.verifications:
-            mdtext += '\n\n**Verification:**\n'
+            mdtext += '\n**Verification:**\n'
             for scale, verification in self.verifications.items():
                 mdtext += f'{scale} avg. acc: '
                 for mult in verification:
@@ -1228,10 +1231,10 @@ class DesignArtifact(NodeObject):
             mdtext += f'\n**Seed IDs:** {self.seed_ids}'
         if self.implementation:
             mdtext += f'\n**Implementated:** {self.implementation.status}'
-            mdtext += f'\n**Units:** {list(self.implementation.implementation.units.keys())}'
+            mdtext += f'\n**GAU Tree:**\n{self.implementation.implementation.tree_view()}'
         else:
             mdtext += f'\n**Implementated:** False'
-        mdtext += f'\n\n**Verification:**\n'
+        mdtext += f'\n**Verification:**\n'
         if len(self.verifications)>0:
             for scale in self.verifications:
                 eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
@@ -2501,7 +2504,7 @@ class EvolutionSystem(exec_utils.System):
                 self._verify_budget[scale]=int(np.ceil(budget))
                 budget/=self.params['selection_ratio']
         self.target_scales=list(self._verify_budget.keys())
-        self.target_scales.sort(key=lambda x:int(x.replace('M','')))
+        self.target_scales.sort(key=lambda x:U.letternum2num(x))
 
         self.max_samples = self.params.get('max_samples',0)
 
