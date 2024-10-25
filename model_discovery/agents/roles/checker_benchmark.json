@@ -1,12 +1,24 @@
 {
     "training": {
         "14M_x86_64 NVIDIA RTX A6000 47.54 GB": {
-            "run_time": 0.9887,
-            "loss": 8.96875,
-            "gradient_of_losses": -0.61561,
-            "max_memory_allocated": 931.0205078125,
-            "total_flos": 145725849600.0,
-            "train_loss": 8.96875
+            "run_time": 19.4127,
+            "loss": 8.290625,
+            "gradient_of_losses": -0.235945,
+            "max_memory_allocated": 6957.35791015625,
+            "total_flos": 2331865251840.0,
+            "train_loss": 8.290625,
+            "grad_norms": [
+                26.25,
+                25.5,
+                13.3125,
+                10.75,
+                10.9375,
+                11.125,
+                10.9375,
+                11.1875,
+                11.0,
+                11.0
+            ]
         }
     }
 }

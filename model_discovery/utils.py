@@ -256,15 +256,15 @@ def sort_dict_by_scale(dict,ascending=True):
     return {k: dict[k] for k in sorted_keys}
 
 
-def read_local_doc():
+def read_local_doc(file='.node'):
     CKPT_DIR = os.environ.get("CKPT_DIR")
-    local_doc_path = f"{CKPT_DIR}/.node.json"
+    local_doc_path = f"{CKPT_DIR}/{file}.json"
     local_doc = load_json(local_doc_path)
     return local_doc
 
-def write_local_doc(local_doc):
+def write_local_doc(local_doc,file='.node'):
     CKPT_DIR = os.environ.get("CKPT_DIR")
-    local_doc_path = f"{CKPT_DIR}/.node.json"
+    local_doc_path = f"{CKPT_DIR}/{file}.json"
     save_json(local_doc,local_doc_path)
 
 def log_error_model(design_id,scale):

@@ -740,7 +740,7 @@ class Selector:
     def nodes2data(self,nodes): # convert the nodes to data: NodeObject
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
     
-    def _random_select_design(self,n_seeds,n_sources,select_cfg=None,allow_tree=True):
+    def _random_select_design(self,n_seeds,n_sources,select_cfg=None,allow_tree=True,**kwargs):
         refs=self._sample_from_sources(n_sources)
         if allow_tree:
             pool = self.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented'])
@@ -750,7 +750,7 @@ class Selector:
         seeds = [self.ptree.get_node(i) for i in seeds]
         return '',seeds,refs
 
-    def _quadrant_select_design(self,n_seeds, n_sources: Dict[str,int],select_cfg=None):
+    def _quadrant_select_design(self,n_seeds, n_sources: Dict[str,int],select_cfg=None,**kwargs):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         instruct=''
         refs=self._sample_from_sources(n_sources)

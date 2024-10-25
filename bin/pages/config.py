@@ -209,6 +209,8 @@ def evosys_config(evosys):
                 for scale,num in evosys.get_verify_budget(full=True).items():
                     remaining = evosys.selector.verify_budget.get(scale,0) 
                     settings['Verification Budge Usage'][scale]=f'{remaining}/{num}'
+                sorted_keys = sorted(list(settings['Verification Budge Usage'].keys()),key=lambda x: U.letternum2num(x))
+                settings['Verification Budge Usage'] = {k: settings['Verification Budge Usage'][k] for k in sorted_keys}
                 settings['Budget Type']=evosys.params['budget_type']
                 settings['Max Implementation Retries']=evosys.ptree.challenging_threshold
                 settings['Use Remote DB']=evosys.params['use_remote_db']

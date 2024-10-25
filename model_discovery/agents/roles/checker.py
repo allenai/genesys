@@ -435,7 +435,7 @@ class GAB(GABBase):
     def __init__(self,embed_dim: int, block_loc: tuple, n_heads, device=None,dtype=None,**kwargs):
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
         super().__init__(embed_dim, block_loc)
-        self.fn = MHA(embed_dim, n_heads, causal=True, **factory_kwargs)
+        self.fn = MHA(embed_dim, n_heads, causal=True, use_flash_attn=False, **factory_kwargs)
         self.fn2 = MLP(embed_dim, 4*embed_dim, embed_dim, **factory_kwargs)
         self.norm1 = nn.LayerNorm(embed_dim, **factory_kwargs)
         self.norm2 = nn.LayerNorm(embed_dim, **factory_kwargs)
@@ -463,12 +463,12 @@ class EffectiveChecker: # WORING IN PROGRESS
         )
         self.data_collator = DataCollatorForLanguageModeling(self.tokenizer, mlm=False)
 
-    def get_benchmark(self,config):
-        exec(BENCHMARK_MODEL,globals())
+    def get_benchmark(self,config): # vanilla Transformer 
+        exec(BENCHMARK_MODEL,globals()) 
         glm,_ = reload_gam(config,BENCHMARK_MODEL,'BENCHMARK_MODEL',**U.get_factory_kwargs()) # intentially use bfloat16 to check whether the model is correctly defined
-        runtime, loss, gradient_of_losses,max_memory_allocated,total_flos,train_loss=self.test_training(config,glm)
+        runtime, loss, gradient_of_losses,max_memory_allocated,total_flos,train_loss,grad_norms=self.test_training(config,glm)
         return {'run_time':runtime,'loss':loss,'gradient_of_losses':gradient_of_losses,'max_memory_allocated':max_memory_allocated,
-                'total_flos':total_flos,'train_loss':train_loss}
+                'total_flos':total_flos,'train_loss':train_loss,'grad_norms':grad_norms}
 
     def check_training(self, config, model, cpu_only=False) -> None:
         if cpu_only:
@@ -500,22 +500,22 @@ class EffectiveChecker: # WORING IN PROGRESS
             self.errors.append('The model is diverging. The loss is NaN. ')
         if any(grad_norm>1e4 for grad_norm in grad_norms):
             self.errors.append('The model is diverging. The gradient norm is NaN. ')
-        if run_time>benchmark['run_time']*30: # very loose now, as its hard to measure sometimes
+        if run_time>benchmark['run_time']*3: # very loose now, as its hard to measure sometimes
             self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
-        elif run_time>benchmark['run_time']*5:
+        elif run_time>benchmark['run_time']*1.5:
             self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
-        if max_memory_allocated>benchmark['max_memory_allocated']*5:
+        if max_memory_allocated>benchmark['max_memory_allocated']*3:
             self.errors.append(f"The model is not efficient. The memory usage is overly high. Its {max_memory_allocated/benchmark['max_memory_allocated']:.2f} times of the benchmark.")
-        elif max_memory_allocated>benchmark['max_memory_allocated']*2:
+        elif max_memory_allocated>benchmark['max_memory_allocated']*1.5:
             self.warnings.append(f"The model is not efficient. The memory usage is high. Its {max_memory_allocated/benchmark['max_memory_allocated']:.2f} times of the benchmark.")
-        if total_flos>benchmark['total_flos']*5:
+        if total_flos>benchmark['total_flos']*3:
             self.errors.append(f"The model is not efficient. The FLOPs is overly high. Its {total_flos/benchmark['total_flos']:.2f} times of the benchmark.")
-        elif total_flos>benchmark['total_flos']*2:
+        elif total_flos>benchmark['total_flos']*1.5:
             self.warnings.append(f"The model is not efficient. The FLOPs is high. Its {total_flos/benchmark['total_flos']:.2f} times of the benchmark.")
-        if train_loss>benchmark['train_loss']*5:
-            self.errors.append(f"The model is not efficient. The training loss is overly high. Its {train_loss/benchmark['train_loss']:.2f} times of the benchmark.")
-        elif train_loss>benchmark['train_loss']*2:
-            self.warnings.append(f"The model is not efficient. The training loss is high. Its {train_loss/benchmark['train_loss']:.2f} times of the benchmark.")
+        if train_loss>benchmark['train_loss']*3:
+            self.errors.append(f"The model is not effective. The training loss is overly high. Its {train_loss/benchmark['train_loss']:.2f} times of the benchmark.")
+        elif train_loss>benchmark['train_loss']*1.5:
+            self.warnings.append(f"The model is not effective. The training loss is high. Its {train_loss/benchmark['train_loss']:.2f} times of the benchmark.")
 
         self.results['run_time'] = run_time
         self.results['loss'] = loss
@@ -610,7 +610,7 @@ class EffectiveChecker: # WORING IN PROGRESS
         trainer.args._n_gpu = 1
         output=trainer.train()
         
-        run_time=output.metrics['train_runtime']
+        run_time=output.metrics['train_runtime'] # XXX: how to get the last run time only?
         loss=output.training_loss
         losses=[log['loss'] for log in trainer.state.log_history if 'loss' in log]
         grad_norms=[log['grad_norm'] for log in trainer.state.log_history if 'grad_norm' in log]
@@ -980,8 +980,8 @@ class Checker(exec_utils.BaseTool):
                     gab,
                     gam.d_model
                 )
-                checked3=True
                 checkpass3=self._check_differentiable(glm,config.vocab_size, cpu_only)
+                checked3=True
                 if eff:
                     checkpass4,effectiveness=self._check_effectiveness(glm,config)
                     assert checkpass2 and checkpass3 and checkpass4

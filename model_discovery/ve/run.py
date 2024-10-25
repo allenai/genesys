@@ -147,6 +147,12 @@ def _explore_setup(args,slow_threshold=3):
             local_doc['too_slow'] = {}
         local_doc['too_slow'][f'{args.design_id}'] = (time_elapsed,time_lower)
         U.write_local_doc(local_doc)
+    else:
+        local_record = U.read_local_doc('.record')
+        if 'speed_record' not in local_record:
+            local_record['speed_record'] = {}
+        local_record['speed_record'][f'{args.design_id}'] = time_elapsed
+        U.write_local_doc(local_record,'.record')
 
 
 # stable but slow

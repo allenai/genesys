@@ -665,7 +665,7 @@ def selector_lab(evosys,project_dir):
 
     cols = st.columns(2)
     with cols[0]:
-        with st.expander('Normed metrics (0-1, higher is better)',expanded=True):
+        with st.expander('Normed metrics (0-1, higher is better)',expanded=False):
             if scale is not None:
                 _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale],input_task_filter)
                 leaderboards_normed = _leaderboards_normed.copy()
@@ -674,7 +674,7 @@ def selector_lab(evosys,project_dir):
             else:
                 st.info('No results available at this moment.')
     with cols[1]:
-        with st.expander(f'Relative to ```{relative}``` (Normed metrics, %)',expanded=True):
+        with st.expander(f'Relative to ```{relative}``` (Normed metrics, %)',expanded=False):
             if scale is not None:
                 _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
                 leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=_relative,filter_threshold=filter_threshold)

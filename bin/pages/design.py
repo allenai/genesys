@@ -16,7 +16,7 @@ import time
 
 
 import model_discovery.utils as U
-from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,\
+from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,AGENT_OPTIONS,\
     END_REASONS_LABELS,DesignModes,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
 import bin.app_utils as AU
 
@@ -477,7 +477,7 @@ def _design_tuning(evosys,project_dir):
         st.warning("**NOTE:** Evolution system is running. Design engine is taken over by the system.")
 
     db_dir = evosys.ptree.db_dir
-    design_cfg = {}
+    design_cfg = evosys.design_cfg.copy()
     n_sources = {}
 
     with st.sidebar:
@@ -514,24 +514,9 @@ def _design_tuning(evosys,project_dir):
             cols = st.columns(len(agent_type_labels))
             for i,agent in enumerate(agent_type_labels):
                 with cols[i]:
-                    index=0 
-                    options=AGENT_TYPES
-                    if agent in ['IMPLEMENTATION_OBSERVER']:
-                        options=AGENT_TYPES+['o1_preview','o1_mini','None']
-                        index=len(options)-2
-                    elif agent in ['IMPLEMENTATION_CODER']:
-                        options=AGENT_TYPES+['o1_preview','o1_mini']
-                        index=len(options)-1
-                    elif agent in ['DESIGN_PROPOSER','PROPOSAL_REVIEWER','IMPLEMENTATION_PLANNER']: 
-                        options=AGENT_TYPES+['o1_preview','o1_mini']
-                        if agent in ['IMPLEMENTATION_CODER']:
-                            index=len(options)-1
-                        else:
-                            index=len(options)-1
-                    elif agent in ['SEARCH_ASSISTANT']:
-                        options=AGENT_TYPES+['None']
-                        index=len(options)-1
+                    options=AGENT_OPTIONS[agent].copy()
                     options+=['hybrid']
+                    index = options.index(design_cfg['agent_types'][agent]) if design_cfg['agent_types'][agent] in options else 0
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
             design_cfg['agent_types'] = agent_types
         if any(['hybrid' in design_cfg['agent_types'][i] for i in design_cfg['agent_types']]):
@@ -710,7 +695,8 @@ def _design_tuning(evosys,project_dir):
                 _mode = DesignModes(mode)
                 st.write(f"Design Mode:  {_mode}")
                 sess_id=None
-                select_cfg={'n_sources':n_sources}
+                select_cfg=evosys.select_cfg.copy()
+                select_cfg['n_sources']=n_sources
                 manual_seed = None if manual_seed == 'None' else manual_seed
                 manual_refs = None if manual_refs == 'None' else manual_refs.split(',')
                 evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume)

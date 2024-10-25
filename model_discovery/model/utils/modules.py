@@ -241,6 +241,7 @@ class MHA(nn.Module):
         rotary_emb_dim=0,
         rotary_emb_base=10000.0,
         rotary_emb_interleaved=False,
+        use_flash_attn=True,
         device=None,
         dtype=None,
     ) -> None:
@@ -258,6 +259,7 @@ class MHA(nn.Module):
         self.rotary_emb_dim = rotary_emb_dim
         self.softmax_scale = softmax_scale
         self.causal = causal
+        self.use_flash_attn = use_flash_attn
 
         self.num_heads = num_heads
         self.num_heads_kv = num_heads_kv if num_heads_kv is not None else num_heads
@@ -410,7 +412,7 @@ class MHA(nn.Module):
         if self.d_conv > 0:
             # The inference code for conv1d is pretty messy, should clean it up
             if (inference_params is None or inference_params.seqlen_offset == 0):
-                if causal_conv1d_fn is None:
+                if causal_conv1d_fn is None or not self.use_flash_attn:
                     qkv = rearrange(
                         self.conv1d(rearrange(qkv, "b s d -> b d s"))[..., :-(self.d_conv - 1)], "b d s -> b s d"
                     ).contiguous()
@@ -431,7 +433,7 @@ class MHA(nn.Module):
                 assert qkv.shape[1] == 1, "Only support decoding with 1 token at a time for now"
                 qkv = qkv.squeeze(1)
                 # Conv step
-                if causal_conv1d_update is None:
+                if causal_conv1d_update is None or not self.use_flash_attn:
                     conv_state.copy_(torch.roll(conv_state, shifts=-1, dims=-1))  # Update state (B D W)
                     conv_state[:, :, -1] = qkv
                     qkv = torch.sum(conv_state * rearrange(self.conv1d.weight, "d 1 w -> d w"), dim=-1)  # (B D)
@@ -452,12 +454,13 @@ class MHA(nn.Module):
             inference_params is None
             or inference_params.seqlen_offset == 0
             or (self.rotary_emb_dim == 0 or self.rotary_emb_dim % 16 != 0)
+            or not self.use_flash_attn
         ):
             if self.rotary_emb_dim > 0:
                 q, kv = self.rotary_emb(
                     q, kv, seqlen_offset=seqlen_offset, max_seqlen=rotary_max_seqlen
                 )
-            if inference_params is None:
+            if inference_params is None or not self.use_flash_attn:
                 k, v = kv.unbind(dim=-3)
                 k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads // self.num_heads_kv)
                 v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads // self.num_heads_kv)
