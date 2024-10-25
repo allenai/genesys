@@ -699,6 +699,7 @@ LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 FAILED_COLOR='#856d72'
 DESIGN_COLOR='#5698c3'
 DESIGN_IMPLEMENTED_COLOR='#1177b0'
+CHALLANGING_COLOR='#787878'
 
 NODE_COLOR_MAP={
     '14M':'#8B81C3',
@@ -715,6 +716,7 @@ ROOT_COLOR='#9eccab'
 FAILED_SIZE=12
 DESIGN_SIZE=15
 DESIGN_IMPLEMENTED_SIZE=20
+CHALLANGING_SIZE=18
 
 NODE_SIZE_MAP={
     '14M':22,
@@ -1259,7 +1261,7 @@ class DesignArtifact(NodeObject):
 
     def is_implemented(self):
         return self.implementation is not None and self.implementation.status=='implemented'
-
+    
     @property
     def costs(self):
         return self.get_cost()
@@ -2015,6 +2017,7 @@ class PhylogeneticTree:
             'Proposed\n(Unverified)': DESIGN_SIZE,
             'Implemented\n(Unverified)': DESIGN_IMPLEMENTED_SIZE,
             'Failed Proposals': FAILED_SIZE,
+            'Challenging (Given up)': CHALLANGING_SIZE,
             'Scratch Design\n(Unverified)': 15,
         }
         legend_colors = {
@@ -2024,6 +2027,7 @@ class PhylogeneticTree:
             'Proposed\n(Unverified)': DESIGN_COLOR,
             'Implemented\n(Unverified)': DESIGN_IMPLEMENTED_COLOR,
             'Failed Proposals': FAILED_COLOR,
+            'Challenging (Given up)': CHALLANGING_COLOR,
             'Scratch Design\n(Unverified)': ROOT_COLOR,
         }
         legend_labels=list(legend_colors.keys())
@@ -2114,6 +2118,9 @@ class PhylogeneticTree:
                 if not data.proposal.passed:
                     color=FAILED_COLOR
                     size=FAILED_SIZE
+                if self.is_challenging(data.acronym):
+                    color=CHALLANGING_COLOR
+                    size=CHALLANGING_SIZE
                 for scale in list(NODE_COLOR_MAP.keys()):#[::-1]:
                     if scale in data.verifications:
                         color=NODE_COLOR_MAP[scale]
