@@ -272,6 +272,7 @@ def ln_fused_l2_bwd(x, l2_target, gamma, beta, eps=1e-6):
 
     return z
 
+
 class TTTLinear(nn.Module):
     def __init__(self, hidden_size, num_attention_heads, scan_checkpoint_group_size, conv_kernel, mini_batch_size,rope_theta,ttt_base_lr):
         super().__init__()
@@ -618,10 +619,8 @@ class GAB(GABBase):
         Output:       Y: (batch, seqlen, embed_dim)
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
-    def __init__(self,embed_dim: int, device=None,dtype=None,
-                 scan_checkpoint_group_size=4,conv_kernel=4,
-                mini_batch_size=16,rope_theta=10000.0,rms_norm_eps=1e-6,ttt_base_lr=1.0,
-                 **kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
+    def __init__(self,embed_dim: int, device=None,dtype=None,scan_checkpoint_group_size=4,conv_kernel=4,
+                mini_batch_size=16,rope_theta=10000.0,rms_norm_eps=1e-6,ttt_base_lr=1.0,**kwargs): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
         # argv: list of hyperparameters
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
         super().__init__(embed_dim) # DO NOT CHANGE THIS LINE #

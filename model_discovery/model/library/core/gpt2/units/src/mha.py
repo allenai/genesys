@@ -13,7 +13,7 @@ from einops import rearrange, repeat
 
 
 
-class MHA(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
+class MHA(GAUBase): 
     """Multi-head self-attention and cross-attention"""
 
     def __init__(

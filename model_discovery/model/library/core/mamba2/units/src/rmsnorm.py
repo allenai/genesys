@@ -10,7 +10,7 @@ from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO N
 
 
 
-class RMSNorm(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
+class RMSNorm(GAUBase): 
     """
     Root Mean Square Layer Normalization (RMSNorm).
 

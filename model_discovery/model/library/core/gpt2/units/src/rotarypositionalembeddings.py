@@ -13,7 +13,7 @@ from typing import Optional
 
 
 
-class RotaryPositionalEmbeddings(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
+class RotaryPositionalEmbeddings(GAUBase): 
     """
     This class implements Rotary Positional Embeddings (RoPE)
     proposed in https://arxiv.org/abs/2104.09864.

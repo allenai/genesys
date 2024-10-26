@@ -9,7 +9,7 @@ from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO N
 
 
 
-class GPT2(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
+class GPT2(GAUBase): 
     def __init__(self,embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None,dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)

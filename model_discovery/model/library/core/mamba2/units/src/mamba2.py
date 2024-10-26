@@ -8,7 +8,7 @@ from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO N
 
 
 
-class Mamba2(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
+class Mamba2(GAUBase): 
     """
     Mamba2: A Generalized Autoregressive Unit (GAU) implementing a double-layer Mamba architecture.
 

@@ -504,9 +504,9 @@ class EffectiveChecker: # WORING IN PROGRESS
             self.errors.append(f"The model is not efficient. The training time is overly long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
         elif run_time>benchmark['run_time']*1.5:
             self.warnings.append(f"The model is not efficient. The training time is long. Its {run_time/benchmark['run_time']:.2f} times of the benchmark.")
-        if max_memory_allocated>benchmark['max_memory_allocated']*3:
+        if max_memory_allocated>benchmark['max_memory_allocated']*4:
             self.errors.append(f"The model is not efficient. The memory usage is overly high. Its {max_memory_allocated/benchmark['max_memory_allocated']:.2f} times of the benchmark.")
-        elif max_memory_allocated>benchmark['max_memory_allocated']*1.5:
+        elif max_memory_allocated>benchmark['max_memory_allocated']*2:
             self.warnings.append(f"The model is not efficient. The memory usage is high. Its {max_memory_allocated/benchmark['max_memory_allocated']:.2f} times of the benchmark.")
         if total_flos>benchmark['total_flos']*3:
             self.errors.append(f"The model is not efficient. The FLOPs is overly high. Its {total_flos/benchmark['total_flos']:.2f} times of the benchmark.")

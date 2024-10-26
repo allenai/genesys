@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase,gau_test,UnitDecl # DO NOT CHANGE THIS IMPORT STATEMENT #
 
 
-class GatedMLP(GAUBase): # DO NOT CHANGE THIS CLASS NAME #
+class GatedMLP(GAUBase): 
     def __init__(self,embed_dim: int, block_loc: tuple, kwarg_all: dict, device=None,dtype=None,
             hidden_features=None,out_features=None,activation=None,bias=False,multiple_of=128,**kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
