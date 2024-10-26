@@ -671,7 +671,6 @@ def main(args,log_fn=None):
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
 
-    
     check_too_slow(args.design_id,log_fn) # check before starting
     
     start = time.perf_counter()

@@ -107,13 +107,14 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 if __name__ == "__main__":
     model_name = 'rwkv6' 
     path = None
+    tree_dir = None
     tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
     path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
     scale = '14M' 
     args = ve_parser.parse_args()
 
     if args.mode=='check':
-        if U.pexists(tree_dir):
+        if tree_dir is not None and U.pexists(tree_dir):
             tree=GAUTree.load_from_base(tree_dir)
             U.mkdir(path)
             with open(U.pjoin(path,model_name+'.py'),'w') as f:

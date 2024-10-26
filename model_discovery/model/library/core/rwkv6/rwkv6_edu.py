@@ -2,6 +2,7 @@
 
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 from model_discovery.model.utils.modules import GABBase # DO NOT CHANGE THIS IMPORT STATEMENT #
 
@@ -15,33 +16,47 @@ from typing import TYPE_CHECKING, Optional, Tuple
 # YOU CAN DEFINE MORE CLASSES OR FUNCTIONS HERE #
 
 
-def naive_recurrent_rwkv6(
+def naive_chunk_rwkv6(
     q: torch.Tensor,
     k: torch.Tensor,
     v: torch.Tensor,
     w: torch.Tensor,
     u: torch.Tensor,
-    scale: Optional[float] = None,
+    chunk_size: int = 32
 ):
+    assert q.shape[-2] % chunk_size == 0
     orig_dtype = q.dtype
-    B, H, T, K, V = *q.shape, v.shape[-1]
-    q, k, v, w, u = map(lambda x: x.float(), (q, k, v, w, u))
-    h = torch.zeros(B, H, K, V, dtype=torch.float32, device=q.device)
-    o = torch.zeros_like(v)
+    num_chunk = q.shape[-2] // chunk_size
+    u = u.unsqueeze(0)
 
-    if scale is None:
-        scale = K ** -0.5
+    q, k, v, w = map(lambda x: rearrange(x, 'b h (n c) d -> b h n c d', c=chunk_size).float(), (q, k, v, w))
 
-    for i in range(T):
-        q_i = q[:, :, i, :] * scale
-        k_i = k[:, :, i]
-        v_i = v[:, :, i, :]
-        w_i = w[:, :, i].exp()
-        kv_i = k_i[..., None] * v_i[..., None, :]
-        o_i = (h + u[None, ..., None] * kv_i) * q_i[..., None]
-        o[:, :, i] = o_i.sum(-2)
-        h = h * w_i[..., None] + kv_i
-    return o.to(orig_dtype)
+    w_cumsum = w.cumsum(-2)
+
+    kw = k * (w_cumsum[..., -1, None, :] - w_cumsum).exp()
+    wkv = kw.transpose(-1, -2) @ v
+
+    wkv_new = torch.zeros_like(wkv)
+
+    for i in range(num_chunk - 1):
+        # wkv_new[:, :, i+1] = (wkv_new[:, :, i] * w_cumsum[:, :, i, -1, :, None].exp()) + wkv[:, :, i]
+        wkv_new[:, :, i+1] = (wkv_new[:, :, i].clone() * w_cumsum[:, :, i, -1, :, None].exp()) + wkv[:, :, i]
+
+
+    o_inter = torch.einsum('b h n d p, b h n c d -> b h n c p', wkv_new, (q * (w_cumsum - w).exp()))
+
+    o_intra = torch.zeros_like(o_inter)
+    for i in range(chunk_size):
+        attn = (q[:, :, :, i, None] * k * (w_cumsum[:, :, :, i, None] - w[:, :, :, i, None] - w_cumsum).exp()).sum(-1)
+        mask = (torch.arange(0, chunk_size) < i).to(attn.device)
+        attn.masked_fill_(~mask, 0)
+        intra_inter_o = (attn.unsqueeze(-1) * v).sum(-2)
+        intra_intra_o = (q[:, :, :, i] * u.unsqueeze(2) * k[:, :, :, i]).sum(-1).unsqueeze(-1) * v[:, :, :, i]
+        o_intra[:, :, :, i] = intra_inter_o + intra_intra_o
+    o = o_inter + o_intra
+    return rearrange(o, 'b h n c d -> b h (n c) d').to(orig_dtype)
+
+
 
 class RWKV6Attention(nn.Module):
 
@@ -54,6 +69,7 @@ class RWKV6Attention(nn.Module):
         gate_low_rank_dim: int = 64,
         elementwise_affine: Optional[bool] = True,
         norm_eps: float = 1e-5,
+        chunk_size: int = 32,
         device=None,
         dtype=None,
         **kwargs
@@ -64,6 +80,7 @@ class RWKV6Attention(nn.Module):
         self.num_heads = num_heads
         self.proj_low_rank_dim = proj_low_rank_dim
         self.gate_low_rank_dim = gate_low_rank_dim
+        self.chunk_size = chunk_size
 
         self.key_dim = hidden_size // 2
         self.value_dim = hidden_size
@@ -107,11 +124,17 @@ class RWKV6Attention(nn.Module):
             nn.init.xavier_uniform_(module, gain=2 ** -2.5)
         module._is_hf_initialized = True
 
+    def pad_input(self,X):
+        _seq_len=X.shape[-2]
+        pad_len = ((X.shape[-2]+self.chunk_size-1)//self.chunk_size)*self.chunk_size-X.shape[-2]
+        return F.pad(X, (0, 0, 0, pad_len)),_seq_len
+
     def forward(
         self,
         hidden_states: torch.Tensor,
         **kwargs
     ) -> Tuple[torch.Tensor]:
+        hidden_states,_seq_len=self.pad_input(hidden_states)
         batch_size, seq_len, hidden_size = hidden_states.shape
         # launching the triton kernel for just one token will actually be slower
         last_state = None
@@ -138,14 +161,15 @@ class RWKV6Attention(nn.Module):
         w = -torch.exp(w)
         u = self.bonus
 
-        o = naive_recurrent_rwkv6(r, k, v, w, u, scale=1.0)
+        # o = naive_recurrent_rwkv6(r, k, v, w, u, scale=1.0)
+        o = naive_chunk_rwkv6(r, k, v, w, u, chunk_size=self.chunk_size)
 
         o = rearrange(o, 'b h l d -> b l (h d)')
         o = self.g_norm(o)
         o = o * self.gate_fn(g)
         o = self.o_proj(o)
 
-        # o = o[:, :_seqlen]
+        o = o[:, :_seq_len]
         return o
 
     def init_state(self, batch_size: int) -> Tuple[torch.Tensor]:
@@ -321,6 +345,7 @@ class GAB(GABBase):
     def __init__(
             self,
             embed_dim: int, 
+            block_loc: tuple,
             device=None,
             dtype=None,
             num_heads: int = 4,
@@ -331,7 +356,7 @@ class GAB(GABBase):
         ): # YOU CAN ADD MORE ARGUMENTS, BUT YOU HAVE TO HAVE embed_dim, device, dtype AS THE ARGUTMENTS #
         # argv: list of hyperparameters
         factory_kwargs = {"device": device, "dtype": dtype} # remember to pass it to nn layers
-        super().__init__(embed_dim) # DO NOT CHANGE THIS LINE #
+        super().__init__(embed_dim, block_loc) # DO NOT CHANGE THIS LINE #
         
         # COMPLETING THE CODE HERE #
         self.hidden_size = embed_dim
@@ -353,7 +378,6 @@ class GAB(GABBase):
 
 
     # YOU CAN ADD MORE FUNCTIONS HERE #
-
 
     def _forward(self,X,**kwargs): # type hints are optional but recommended
         # THE CODE HERE MUST BE COMPLETED #

@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 from model_discovery.model.utils.modules import GABBase
 from einops import rearrange
 from transformers.activations import ACT2FN
@@ -27,17 +28,49 @@ def naive_recurrent_rwkv6(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
     return o.to(orig_dtype)
 
 
+def naive_chunk_rwkv6(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, w:
+    torch.Tensor, u: torch.Tensor, chunk_size: int=32):
+    assert q.shape[-2] % chunk_size == 0
+    orig_dtype = q.dtype
+    num_chunk = q.shape[-2] // chunk_size
+    u = u.unsqueeze(0)
+    q, k, v, w = map(lambda x: rearrange(x, 'b h (n c) d -> b h n c d', c=
+        chunk_size).float(), (q, k, v, w))
+    w_cumsum = w.cumsum(-2)
+    kw = k * (w_cumsum[..., -1, None, :] - w_cumsum).exp()
+    wkv = kw.transpose(-1, -2) @ v
+    wkv_new = torch.zeros_like(wkv)
+    for i in range(num_chunk - 1):
+        wkv_new[:, :, i + 1] = wkv_new[:, :, i].clone() * w_cumsum[:, :, i,
+            -1, :, None].exp() + wkv[:, :, i]
+    o_inter = torch.einsum('b h n d p, b h n c d -> b h n c p', wkv_new, q *
+        (w_cumsum - w).exp())
+    o_intra = torch.zeros_like(o_inter)
+    for i in range(chunk_size):
+        attn = (q[:, :, :, i, None] * k * (w_cumsum[:, :, :, i, None] - w[:,
+            :, :, i, None] - w_cumsum).exp()).sum(-1)
+        mask = (torch.arange(0, chunk_size) < i).to(attn.device)
+        attn.masked_fill_(~mask, 0)
+        intra_inter_o = (attn.unsqueeze(-1) * v).sum(-2)
+        intra_intra_o = (q[:, :, :, i] * u.unsqueeze(2) * k[:, :, :, i]).sum(-1
+            ).unsqueeze(-1) * v[:, :, :, i]
+        o_intra[:, :, :, i] = intra_inter_o + intra_intra_o
+    o = o_inter + o_intra
+    return rearrange(o, 'b h n c d -> b h (n c) d').to(orig_dtype)
+
+
 class RWKV6Attention(nn.Module):
 
     def __init__(self, hidden_size: int=1024, num_heads: int=4, gate_fn:
         str='swish', proj_low_rank_dim: int=32, gate_low_rank_dim: int=64,
         elementwise_affine: Optional[bool]=True, norm_eps: float=1e-05,
-        device=None, dtype=None, **kwargs):
+        chunk_size: int=32, device=None, dtype=None, **kwargs):
         super().__init__()
         self.hidden_size = hidden_size
         self.num_heads = num_heads
         self.proj_low_rank_dim = proj_low_rank_dim
         self.gate_low_rank_dim = gate_low_rank_dim
+        self.chunk_size = chunk_size
         self.key_dim = hidden_size // 2
         self.value_dim = hidden_size
         assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'
@@ -81,8 +114,15 @@ class RWKV6Attention(nn.Module):
             nn.init.xavier_uniform_(module, gain=2 ** -2.5)
         module._is_hf_initialized = True
 
+    def pad_input(self, X):
+        _seq_len = X.shape[-2]
+        pad_len = (X.shape[-2] + self.chunk_size - 1
+            ) // self.chunk_size * self.chunk_size - X.shape[-2]
+        return F.pad(X, (0, 0, 0, pad_len)), _seq_len
+
     def forward(self, hidden_states: torch.Tensor, **kwargs) ->Tuple[torch.
         Tensor]:
+        hidden_states, _seq_len = self.pad_input(hidden_states)
         batch_size, seq_len, hidden_size = hidden_states.shape
         last_state = None
         if hidden_states.shape[1] == 1 and last_state is not None:
@@ -106,11 +146,12 @@ class RWKV6Attention(nn.Module):
             self.num_heads), (r, w, k, v))
         w = -torch.exp(w)
         u = self.bonus
-        o = naive_recurrent_rwkv6(r, k, v, w, u, scale=1.0)
+        o = naive_chunk_rwkv6(r, k, v, w, u, chunk_size=self.chunk_size)
         o = rearrange(o, 'b h l d -> b l (h d)')
         o = self.g_norm(o)
         o = o * self.gate_fn(g)
         o = self.o_proj(o)
+        o = o[:, :_seq_len]
         return o
 
     def init_state(self, batch_size: int) ->Tuple[torch.Tensor]:
@@ -257,9 +298,9 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
-        num_heads: int=4, proj_low_rank_dim: int=32, gate_low_rank_dim: int
-        =64, norm_eps: float=1e-05, **kwargs):
+    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
+        =None, num_heads: int=4, proj_low_rank_dim: int=32,
+        gate_low_rank_dim: int=64, norm_eps: float=1e-05, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
         self.hidden_size = embed_dim
@@ -274,17 +315,14 @@ class GAB(GABBase):
         self.ffn = RWKV6FeedForward(hidden_size=self.hidden_size, **
             factory_kwargs)
 
-    def _forward(self, X, **Z):
+    def _forward(self, X, **kwargs):
         hidden_states = self.attn_norm(X)
         X = self.attn(hidden_states) + X
         hidden_states = self.ffn_norm(X)
         X = self.ffn(hidden_states) + X
-        return X, Z
+        return X
 
 
-""" The dictionary of hyperparameters for constructing a GAB layer
-    embed_dim, device, dtype should NOT be included in gab_config
-"""
 gab_config = {'num_heads': 4, 'proj_low_rank_dim': 32, 'gate_low_rank_dim':
     64, 'norm_eps': 1e-05}
 
