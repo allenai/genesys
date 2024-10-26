@@ -742,11 +742,21 @@ class Selector:
     
     def _random_select_design(self,n_seeds,n_sources,select_cfg=None,allow_tree=True,**kwargs):
         refs=self._sample_from_sources(n_sources)
+        poolr = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
         if allow_tree:
-            pool = self.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented'])
-        else:
-            pool = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
-        seeds = self._sample_k_pool(pool,n_seeds,1,topk=False)
+            poold = self.ptree.filter_by_type(['DesignArtifactImplemented'])
+            pd = len(poold)/(len(poold)+len(poolr))
+        seeds = []
+        for _ in range(n_seeds):
+            sampler = self._sample_init_seeds(1,list(set(poolr)-set(seeds)))
+            if allow_tree:
+                sampled += self._sample_k_pool(list(set(poold)-set(seeds)),1,1,topk=False)
+                if random.random()<pd:
+                    seeds.append(sampled[0])
+                else:
+                    seeds.append(sampler[0])
+            else:
+                seeds.append(sampler[0])
         seeds = [self.ptree.get_node(i) for i in seeds]
         return '',seeds,refs
 
@@ -766,7 +776,8 @@ class Selector:
             while n_seeds-len(seed_ids)>0:
                 _init_seeds = list(set(init_seeds)-set(seed_ids))
                 if len(_init_seeds)>0 and random.random()<restart_prob:
-                    seed_ids.append(random.choice(_init_seeds))
+                    _sample = self._sample_init_seeds(1,_init_seeds)
+                    seed_ids.append(_sample[0])
                 else:
                     _seed_ids=self._quadrant_design_seeds(n_seeds,select_cfg)
                     if _seed_ids is None:
@@ -774,7 +785,7 @@ class Selector:
                         if len(_all_designs)>0:
                             _seed_ids = self._sample_k_pool(_all_designs,n_seeds,1,topk=False)
                         else:
-                            _seed_ids = self._sample_k_pool(_init_seeds,n_seeds,1,topk=False)
+                            _seed_ids = self._sample_init_seeds(n_seeds,_init_seeds)
                     seed_ids+=_seed_ids
                     break
             
@@ -787,6 +798,16 @@ class Selector:
             seeds = [self.ptree.get_node(i) for i in seed_ids]
             refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
+    
+    def _sample_init_seeds(self,n_seeds,init_seeds=None):
+        if init_seeds is None:
+            init_seeds = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
+        seed_design_dist = self.select_cfg.get('seed_design_dist',{})
+        for seed_design in init_seeds:
+            seed_design_dist[seed_design] = seed_design_dist.get(seed_design,1/len(init_seeds))
+        weights = [seed_design_dist[i] for i in init_seeds]
+        weights = weights / np.sum(weights)
+        return list(np.random.choice(init_seeds, size=n_seeds, replace=False, p=weights))
 
     def _sample_k_pool(self,pool,k,background_noise,topk=True):
         candidates = list(pool)

@@ -382,50 +382,69 @@ def select_config(evosys):
 
             sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
         
-            st.markdown("###### Configure the number of *references* from each source")
-            cols = st.columns(len(sources))
-            for i,source in enumerate(sources):
-                with cols[i]:
-                    if source in ['DesignArtifact','DesignArtifactImplemented']:
-                        if source == 'DesignArtifactImplemented':
-                            label = 'DesignArtImpl.'
+            Col1,Col2 = st.columns([4.5,1])
+            with Col1:
+                st.markdown("###### Configure the number of *references* from each source")
+                cols = st.columns(len(sources))
+                count = 0
+                for i,source in enumerate(sources):
+                    # if source =='ReferenceCore': 
+                    #     n_sources[source] = 0
+                    #     continue
+                    with cols[count]:
+                        count += 1
+                        if source in ['DesignArtifact','DesignArtifactImplemented']:
+                            if source == 'DesignArtifactImplemented':
+                                label = 'DesignArtImpl.'
+                            else:
+                                label = 'DesignArtifact'
+                            n_sources[source] = st.number_input(label=label,min_value=0,value=n_sources[source])#,disabled=True)
                         else:
-                            label = 'DesignArtifact'
-                        n_sources[source] = st.number_input(label=label,min_value=0,value=n_sources[source])#,disabled=True)
-                    else:
-                        if source == 'ReferenceCoreWithTree':
-                            label = 'RefCoreWithTree'
-                        elif source == 'ReferenceWithCode':
-                            label = 'RefWithCode'
-                        else:
-                            label = source
-                        n_sources[source] = st.number_input(label=f'{label} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
-            select_cfg['n_sources']=n_sources
-            select_cfg['seed_dist']=seed_dist
+                            if source == 'ReferenceCoreWithTree':
+                                label = 'RefCoreWithTree'
+                            elif source == 'ReferenceWithCode':
+                                label = 'RefWithCode'
+                            else:
+                                label = source
+                            n_sources[source] = st.number_input(label=f'{label} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
+                select_cfg['n_sources']=n_sources
+                select_cfg['seed_dist']=seed_dist
+            with Col2:
+                st.write('###### Random Selector')
+                # st.write('')
+                st.write('')
+                select_cfg['random_allow_tree']=st.checkbox('Allow Select Tree',value=random_allow_tree,help='If true, will allow the random selector to select from evo tree nodes.')
 
 
-            Col1,Col2 = st.columns([5,1])
+
+
+            Col1,Col2 = st.columns([5,2.8])
             with Col1:
                 st.markdown('###### Configure the Number of Seeds Distribution')
-                cols=st.columns([1,1,2])
+                cols=st.columns([1,1,2.7])
                 with cols[0]:
                     n_seeds_settings['warmup_rounds_crossover']=st.number_input('Warmup (Crossover)',min_value=0,value=n_seeds_settings['warmup_rounds_crossover'])
                 with cols[1]:
                     n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
                 with cols[2]:
                     n_seeds_dist = U.sort_dict_by_scale(n_seeds_dist)
-                    n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['Weights'])
+                    n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['p'])
                     n_seeds_dist_df = st.data_editor(n_seeds_dist_df,use_container_width=True)
                     n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]
                     n_seeds_dist = {k:v for k,v in n_seeds_dist.items()}
                 select_cfg['n_seeds_dist']=n_seeds_dist
                 select_cfg['n_seeds_settings']=n_seeds_settings
             with Col2:
-                st.write('###### Random Selector')
-                # st.write('')
-                st.write('')
-                select_cfg['random_allow_tree']=st.checkbox('Allow select Evo Tree',value=random_allow_tree,help='If true, will allow the random selector to select from evo tree nodes.')
-
+                st.markdown('###### Distribution of Seed Designs')
+                seed_designs = evosys.ptree.filter_by_type('ReferenceCoreWithTree')
+                seed_design_dist = select_cfg.get('seed_design_dist',{})
+                for seed_design in seed_designs:
+                    seed_design_dist[seed_design] = seed_design_dist.get(seed_design,1/len(seed_designs))
+                seed_design_dist_df = pd.DataFrame(seed_design_dist,index=['Weights'])
+                seed_design_dist_df = st.data_editor(seed_design_dist_df,hide_index=True,use_container_width=True)
+                seed_design_dist = seed_design_dist_df.to_dict(orient='records')[0]
+                seed_design_dist = {k:v for k,v in seed_design_dist.items()}
+                select_cfg['seed_design_dist'] = seed_design_dist
 
             st.form_submit_button("Save and Apply",on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
 
