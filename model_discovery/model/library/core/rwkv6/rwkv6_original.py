@@ -55,6 +55,7 @@ def pad_seq(X, chunk_size):
         X = torch.cat([X, padding], dim=1)
     return X
 
+# https://github.com/sustcsonglin/flash-linear-attention/blob/main/fla/ops/rwkv6/chunk_naive.py 
 def naive_chunk_rwkv6(
     q,
     k,
