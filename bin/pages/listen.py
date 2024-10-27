@@ -97,16 +97,23 @@ class Listener:
             U.save_json(local_doc,self.local_dir)
         self.doc_ref = self.collection.document(self.node_id)
     
-    def _assign_node_id(self,node_id=None):
+    def _assign_node_id(self,node_id=None,autofix=False):
         if not node_id:
-            node_id = str(uuid.uuid4())[:6]
+            node_id = U.load_json(self.local_dir).get('node_id',None) # try to recover from previous runs
+            if not node_id:
+                node_id = str(uuid.uuid4())[:6]
         count=0
         while True:
             tail='_'+str(count) if count>0 else ''
             doc_ref=self.collection.document(node_id+tail)
             if not doc_ref.get().exists:
+                self.evosys.link_node(node_id+tail)
                 return node_id+tail
-            count+=1
+            else:
+                if autofix:
+                    count+=1
+                else:
+                    raise ValueError(f'Node ID {node_id+tail} is already in use.')
 
     def build_connection(self):
         # check if the node_id is already in the collection

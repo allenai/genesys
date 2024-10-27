@@ -18,7 +18,8 @@ import numpy as np
 import pandas as pd
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
-from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,DEFAULT_BENCHMARK_SETTINGS,BENCH_MODE_OPTIONS,DEFAULT_RANDOM_ALLOW_TREE
+from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,DEFAULT_BENCHMARK_SETTINGS,\
+    BENCH_MODE_OPTIONS,DEFAULT_RANDOM_ALLOW_TREE,NODE_MANAGE_TYPES
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
     DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
         SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
@@ -174,14 +175,18 @@ def evosys_config(evosys):
                         help='The scale to start the ladder training from.')
                 
 
-                cols = st.columns([1,1.2,1.5])
+                cols = st.columns([1.5,1.2,1])
+                with cols[0]:
+                    _params['node_manage_type']=st.selectbox('Node Management',options=NODE_MANAGE_TYPES,index=NODE_MANAGE_TYPES.index(evosys.params['node_manage_type']),
+                        help='**by_node_id:** only load designs from the node with the same ID; \n\n'
+                        '**by_machine:** load designs sessions from the machine.')
+      
                 with cols[1]:
                     _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
-      
-                with cols[2]:
                     _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
 
-                with cols[0]:
+                with cols[2]:
+                    st.write('')
                     apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running)
 
                 if apply_btn:
@@ -212,10 +217,14 @@ def evosys_config(evosys):
                 settings['Verification Budge Usage'] = {k: settings['Verification Budge Usage'][k] for k in sorted_keys}
                 settings['Budget Type']=evosys.params['budget_type']
                 settings['Max Implementation Retries']=evosys.ptree.challenging_threshold
+                n_sampled = len(os.listdir(U.pjoin(evosys.evo_dir,'db','designs')))
+                max_samples = evosys.params['max_samples'] if evosys.params['max_samples']>0 else '♾️'
+                settings['Max Samples']=f'{n_sampled}/{max_samples}'
                 settings['Use Remote DB']=evosys.params['use_remote_db']
                 if evosys.CM:
                     settings['Network Group ID']=evosys.CM.group_id
-                settings['Benchmark Mode']=evosys.benchmark_mode
+                # settings['Benchmark Mode']=evosys.benchmark_mode
+                settings['Node Management']=evosys.params['node_manage_type']
                 st.write(settings)
                 st.form_submit_button("Refresh")
 
