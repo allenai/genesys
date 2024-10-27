@@ -402,6 +402,7 @@ DEFAULT_NUM_SAMPLES={
 DEFAULT_UNITTEST_PASS_REQUIRED=False
 DEFAULT_CROSSOVER_NO_REF=True
 DEFAULT_MUTATION_NO_TREE=True
+DEFAULT_SCRATCH_NO_TREE=False
 DEFAULT_USE_UNLIMITED_PROMPT=False
 
 @exec_utils.Registry(
@@ -577,6 +578,7 @@ class ModelDiscoverySystem(exec_utils.System):
         design_cfg['agent_weights']=U.safe_get_cfg_dict(design_cfg,'agent_weights',DEFAULT_AGENT_WEIGHTS)
         design_cfg['crossover_no_ref'] = design_cfg.get('crossover_no_ref',DEFAULT_CROSSOVER_NO_REF)
         design_cfg['mutation_no_tree'] = design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
+        design_cfg['scratch_no_tree'] = design_cfg.get('scratch_no_tree',DEFAULT_SCRATCH_NO_TREE)
         design_cfg['use_unlimited_prompt'] = design_cfg.get('use_unlimited_prompt',DEFAULT_USE_UNLIMITED_PROMPT)
 
         self.sss.reconfig(search_cfg,stream)

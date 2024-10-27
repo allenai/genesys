@@ -543,11 +543,13 @@ def _design_tuning(evosys,project_dir):
                         display_name = f'RefWithCode ({sources[source]})'
                     n_sources[source] = st.number_input(label=display_name,min_value=0,value=value)#,max_value=1,disabled=True)
         with _scol2:
-            st.markdown("##### Input Settings")
+            # st.markdown("##### Input Settings")
             design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=True,
                 help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
             design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=True,
                 help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
+            design_cfg['scratch_no_tree'] = st.checkbox("Scratch no tree",value=False,
+                help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in scratch mode, it is recommended as context length can be over long.')
 
         col1,col2=st.columns([3,2])
         termination={}
@@ -699,7 +701,8 @@ def _design_tuning(evosys,project_dir):
                 select_cfg['n_sources']=n_sources
                 manual_seed = None if manual_seed == 'None' else manual_seed
                 manual_refs = None if manual_refs == 'None' else manual_refs.split(',')
-                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume)
+                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume,
+                              manual_seed=manual_seed,manual_refs=manual_refs)
     
     elif view_log_btn:
         show_log(load_log(selected_design_log_path))

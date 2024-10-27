@@ -785,7 +785,7 @@ def verify_budget_tool(evosys,project_dir):
             _verify_budget[scale]=int(np.ceil(budget))
             budget/=selection_ratio
         verify_budget=_verify_budget.copy()
-        _verify_budget_df = pd.DataFrame(_verify_budget,index=['Training runs'])
+        _verify_budget_df = pd.DataFrame(_verify_budget,index=['Runs'])
         _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=False,use_container_width=True)
         _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
         _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
@@ -794,7 +794,7 @@ def verify_budget_tool(evosys,project_dir):
 
         st.caption('Training Token Multipliers for each Scale (Training tokens = #Params * Multiplier):')
         token_mults = copy.deepcopy(DEFAULT_TOKEN_MULTS)
-        token_mults_df = pd.DataFrame(token_mults,index=['Token Multiplier'])
+        token_mults_df = pd.DataFrame(token_mults,index=['Mult'])
         token_mults_df = st.data_editor(token_mults_df,use_container_width=True)
         token_mults = token_mults_df.to_dict(orient='records')[0]
 

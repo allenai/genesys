@@ -52,9 +52,9 @@ DEFAULT_N_SEEDS_SETTINGS = {
 
 
 DEFAULT_N_SEEDS_DIST = {
-    '0': 0.01,
-    '1': 0.9,
-    '2': 0.09,
+    '0': 0.05,
+    '1': 0.8,
+    '2': 0.15,
     '3': 0,
     '4': 0,
     '5': 0,
@@ -632,8 +632,8 @@ def get_ranked_quadrant(select_cfg,design_rank,confidence_rank):
 
 
 class Selector:
-    def __init__(self,ptree,select_cfg,_verify_budget,stream,
-            design_budget_limit,budget_type,token_mults,target_scales):
+    def __init__(self,ptree,select_cfg,_verify_budget,scale_stair_start,
+            design_budget_limit,budget_type,token_mults,target_scales,stream):
         self.ptree=ptree
         self.select_cfg=select_cfg
         self.budget_type=budget_type
@@ -642,6 +642,7 @@ class Selector:
         self.design_budget_limit=design_budget_limit
         self.token_mults=token_mults
         self.target_scales=target_scales
+        self.scale_stair_start = scale_stair_start
 
     @property
     def design_budget(self):
@@ -948,6 +949,7 @@ class Selector:
             if design is not None:
                 print(f'Select unverified baseline design: {design}_{scale}')
                 return design,scale
+        
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         if verify_strategy is None:
             verify_strategy = select_cfg.get('verify_strategy',DEFAULT_VERIFY_STRATEGY)
@@ -1048,7 +1050,7 @@ class Selector:
         # rank unverified lowest scale designs
         vectors = {i:self.design_vectors[i] for i in lowest_pool}
         design_rank = self._rank_designs(vectors)
-        if design_rank is None or design_rank.eZmpty or len(design_rank)==0: # unlikely happen, but for safety, randomly select a design from the lowest scale
+        if design_rank is None or design_rank.empty or len(design_rank)==0: # unlikely happen, but for safety, randomly select a design from the lowest scale
             acronym = random.choice(lowest_pool)
             self.stream.write(f"No design ranks available now, randomly select a design from the lowest scale: {lowest_scale}")
             return acronym,lowest_scale
@@ -1066,7 +1068,14 @@ class Selector:
     @property
     def available_verify_budget(self):
         budget=self.verify_budget
-        return {k:v for k,v in budget.items() if v>0}
+        non_zero_budget = {k:v for k,v in budget.items() if v>0}
+        sorted_scales = sorted(non_zero_budget.keys(),key=lambda x:U.letternum2num(x))
+        lowest_scale = sorted_scales[0] # lowest non zero scale
+        if U.letternum2num(lowest_scale)>=U.letternum2num(self.scale_stair_start):
+            available_scales = [s for s in sorted_scales if U.letternum2num(s)<=U.letternum2num(lowest_scale)]
+        else:
+            available_scales = [s for s in sorted_scales if U.letternum2num(s)<U.letternum2num(self.scale_stair_start)]
+        return {k:v for k,v in budget.items() if k in available_scales}
 
     def request_temporal_budget(self): # keep selection ratios
         _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)

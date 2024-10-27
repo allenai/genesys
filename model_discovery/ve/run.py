@@ -151,7 +151,7 @@ def _explore_setup(args,slow_threshold=5):
         local_record = U.read_local_doc('.record')
         if 'speed_record' not in local_record:
             local_record['speed_record'] = {}
-        local_record['speed_record'][f'{args.design_id}'] = time_elapsed
+        local_record['speed_record'][f'{args.design_id}'] = (time_elapsed,time_lower)
         U.write_local_doc(local_record,'.record')
 
 

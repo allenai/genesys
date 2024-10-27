@@ -237,7 +237,7 @@ class GUFlow(FlowCreator):
             self.design_mode=DesignModes(self.design_mode)
         
         self.stream.write(f'Number of seeds sampled: :green[{len(seeds)}].\tNumber of references: :orange[{len(refs)}].\tWorking in design mode: :violet[{self.design_mode}]')
-        self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode,mutation_no_tree=design_cfg['mutation_no_tree'])
+        self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode,mutation_no_tree=design_cfg['mutation_no_tree'],scratch_no_tree=design_cfg['scratch_no_tree'])
         if self.design_mode==DesignModes.MUTATION:
             self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
             self.seed = seeds[0].to_prompt()

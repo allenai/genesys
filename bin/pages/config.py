@@ -24,7 +24,7 @@ from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OP
         SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
 from model_discovery.system import DEFAULT_AGENTS,DEFAULT_MAX_ATTEMPTS,DEFAULT_TERMINATION,DEFAULT_USE_UNLIMITED_PROMPT,\
     DEFAULT_THRESHOLD,DEFAULT_SEARCH_SETTINGS,DEFAULT_NUM_SAMPLES,DEFAULT_MODE,DEFAULT_UNITTEST_PASS_REQUIRED,\
-    AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS,DEFAULT_CROSSOVER_NO_REF,DEFAULT_MUTATION_NO_TREE
+    AGENT_OPTIONS,DEFAULT_AGENT_WEIGHTS,DEFAULT_AGENT_WEIGHTS,DEFAULT_CROSSOVER_NO_REF,DEFAULT_MUTATION_NO_TREE,DEFAULT_SCRATCH_NO_TREE
 from model_discovery.agents.search_utils import EmbeddingDistance,DEFAULT_VS_INDEX_NAME,\
     OPENAI_EMBEDDING_MODELS,TOGETHER_EMBEDDING_MODELS,COHERE_EMBEDDING_MODELS
 from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKEN_MULTS,\
@@ -42,7 +42,7 @@ def apply_config(evosys,config):
     evosys.reload(config['params'])
     U.save_json(config,U.pjoin(evosys.evo_dir,'config.json'))
     st.toast(f"Applied and saved config in {evosys.evo_dir}")
-    st.rerun()
+    # st.rerun()
 
 
 def apply_env_vars(evosys,env_vars):
@@ -92,8 +92,6 @@ def apply_ve_config(evosys,ve_cfg):
         evosys.reconfig(ve_cfg=ve_cfg)
         st.toast("Applied and saved ve config")
         st.rerun()
-
-
 
 def evosys_settings(evosys):
     st.subheader("Evolution System Settings")
@@ -171,20 +169,21 @@ def evosys_config(evosys):
                 with _col2:
                     _params['challenging_threshold']=st.number_input('Max Impl. Retries',value=evosys.params['challenging_threshold'],min_value=0,step=1,
                         help='The number of failed *implementation retries* before a design is considered too challenging to give up.')
-                
                 with _col3:
-                    st.write('')
-                    st.write('')
-                    _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
+                    _params['scale_stair_start']=st.select_slider('Ladder Start Scale',options=TARGET_SCALES,value=evosys.params['scale_stair_start'],
+                        help='The scale to start the ladder training from.')
                 
 
-                cols = st.columns([1,2.7])
+                cols = st.columns([1,1.2,1.5])
                 with cols[1]:
                     _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
       
+                with cols[2]:
+                    _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
+
                 with cols[0]:
                     apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running)
-                    
+
                 if apply_btn:
                     with st.spinner("Applying and saving..."):
                         if _params['evoname']=='design_bound' and _params['design_budget']==0:
@@ -428,22 +427,22 @@ def select_config(evosys):
                     n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
                 with cols[2]:
                     n_seeds_dist = U.sort_dict_by_scale(n_seeds_dist)
-                    n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['p'])
-                    n_seeds_dist_df = st.data_editor(n_seeds_dist_df,use_container_width=True)
+                    n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['p (%)'])
+                    n_seeds_dist_df = st.data_editor(n_seeds_dist_df*100,use_container_width=True)
                     n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]
-                    n_seeds_dist = {k:v for k,v in n_seeds_dist.items()}
+                    n_seeds_dist = {k:v/100 for k,v in n_seeds_dist.items()}
                 select_cfg['n_seeds_dist']=n_seeds_dist
                 select_cfg['n_seeds_settings']=n_seeds_settings
             with Col2:
-                st.markdown('###### Distribution of Seed Designs')
+                st.markdown('###### Distribution of Seed Designs (%)')
                 seed_designs = evosys.ptree.filter_by_type('ReferenceCoreWithTree')
                 seed_design_dist = select_cfg.get('seed_design_dist',{})
                 for seed_design in seed_designs:
                     seed_design_dist[seed_design] = seed_design_dist.get(seed_design,1/len(seed_designs))
                 seed_design_dist_df = pd.DataFrame(seed_design_dist,index=['Weights'])
-                seed_design_dist_df = st.data_editor(seed_design_dist_df,hide_index=True,use_container_width=True)
+                seed_design_dist_df = st.data_editor(seed_design_dist_df*100,hide_index=True,use_container_width=True)
                 seed_design_dist = seed_design_dist_df.to_dict(orient='records')[0]
-                seed_design_dist = {k:v for k,v in seed_design_dist.items()}
+                seed_design_dist = {k:v/100 for k,v in seed_design_dist.items()}
                 select_cfg['seed_design_dist'] = seed_design_dist
 
             st.form_submit_button("Save and Apply",on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
@@ -463,6 +462,7 @@ def design_config(evosys):
     design_cfg['unittest_pass_required']=design_cfg.get('unittest_pass_required',DEFAULT_UNITTEST_PASS_REQUIRED)
     design_cfg['crossover_no_ref']=design_cfg.get('crossover_no_ref',DEFAULT_CROSSOVER_NO_REF)
     design_cfg['mutation_no_tree']=design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
+    design_cfg['scratch_no_tree']=design_cfg.get('scratch_no_tree',DEFAULT_SCRATCH_NO_TREE)
     design_cfg['use_unlimited_prompt']=design_cfg.get('use_unlimited_prompt',DEFAULT_USE_UNLIMITED_PROMPT)
 
     #### Configure design
@@ -517,11 +517,13 @@ def design_config(evosys):
             design_cfg['threshold'] = threshold 
 
             with col3:
-                st.markdown("###### Input Settings")
+                # st.markdown("###### Input Settings")
                 design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg['crossover_no_ref'],
                     help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
                 design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=design_cfg['mutation_no_tree'],
                     help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
+                design_cfg['scratch_no_tree'] = st.checkbox("Scratch no tree",value=design_cfg['scratch_no_tree'],
+                    help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in scratch mode, it is recommended as context length can be over long.')
             
 
 
@@ -705,12 +707,12 @@ def delete_exp_from_db(evosys,exp):
 def sync_exps_to_db(evosys):
     for exp in os.listdir(evosys.ckpt_dir):
         config=U.load_json(U.pjoin(evosys.ckpt_dir,exp,'config.json'))
-        evosys.FM.upload_experiment(exp,config)
+        evosys.ptree.FM.upload_experiment(exp,config)
     st.toast("Synced all experiments to remote DB")
 
 
 def download_exp_from_db(evosys,exp):
-    evosys.FM.download_experiment(evosys.ckpt_dir,exp)
+    evosys.ptree.FM.download_experiment(evosys.ckpt_dir,exp)
 
 def sync_exps_from_db(evosys):
     collection=evosys.ptree.remote_db.collection('experiments')
@@ -882,6 +884,7 @@ def env_vars_settings(evosys):
 
 def check_configs(evosys):
     st.write(f'### 🔧 Check Configurations for ```{evosys.evoname}```')
+    st.caption("***NOTE:** Please check the configurations carefully, you may need to click save button multiple times to really save them due to some unknown reasons.*")
     col1,col2=st.columns(2)
     with col1:
         with st.expander("Check Select Config",expanded=False):

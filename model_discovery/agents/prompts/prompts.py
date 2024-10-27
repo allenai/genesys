@@ -206,7 +206,7 @@ Please try to fix the code based on the information provided. Do not include any
 
 
 def build_GU_QUERY(seeds,refs=None,instruct=None,user_input=None,
-                     mode=DesignModes.MUTATION,mutation_no_tree=True):
+         mode=DesignModes.MUTATION,mutation_no_tree=True,scratch_no_tree=False):
    if mode==DesignModes.MUTATION:
       query = f"""
 # Seed Design
@@ -257,7 +257,7 @@ Here are the relevant references:
 ---
 '''
       for idx,reference in enumerate(refs):
-         if mode==DesignModes.MUTATION and mutation_no_tree:
+         if mode==DesignModes.MUTATION and mutation_no_tree or mode==DesignModes.SCRATCH and scratch_no_tree:
             if reference.type in ['DesignArtifactImplemented','ReferenceCoreWithTree']:
                ref_prompt = reference.to_prompt(full_tree=False)
             else:

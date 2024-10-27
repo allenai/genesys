@@ -21,7 +21,8 @@ getmodelsize = lambda model: sum(p.numel() for p in model.parameters())
 strmodelsize = lambda model: strscale(getmodelsize(model))
 
 def strscale(size):
-    if size>1e9: return f"{size/1e9:.2f}B"
+    if size>1e12: return f"{size/1e12:.2f}T"
+    elif size>1e9: return f"{size/1e9:.2f}B"
     elif size>1e6: return f"{size/1e6:.2f}M"
     elif size>1e3: return f"{size/1e3:.2f}K"
     else: return f"{int(size)}"
@@ -54,10 +55,14 @@ def letternum2num(s):
     num = float(s[:-1])
     unit = s[-1]
     
-    if unit == 'M':
+    if unit=='K':
+        return num * 1_000
+    elif unit == 'M':
         return num * 1_000_000
     elif unit == 'B':
         return num * 1_000_000_000
+    elif unit == 'T':
+        return num * 1_000_000_000_000
     else:
         raise ValueError("Unknown unit in string: " + s)
         

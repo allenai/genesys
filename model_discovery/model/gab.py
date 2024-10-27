@@ -1,439 +1,294 @@
 import torch
 import torch.nn as nn
-from model_discovery.model.utils.modules import GABBase
-from typing import Any, Dict, Optional, Tuple, Union
 import torch.nn.functional as F
-import torch.utils.checkpoint
-from torch.utils._pytree import tree_map
-from transformers.utils import logging
+from model_discovery.model.utils.modules import GABBase
+from einops import rearrange
 from transformers.activations import ACT2FN
-try:
-    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
-except:
-    causal_conv1d_update, causal_conv1d_fn = None, None
+from typing import TYPE_CHECKING, Optional, Tuple
 
 
-def rotate_half(x):
-    """Rotates half the hidden dims of the input."""
-    x1 = x[..., :x.shape[-1] // 2]
-    x2 = x[..., x.shape[-1] // 2:]
-    return torch.cat((-x2, x1), dim=-1)
+def naive_recurrent_rwkv6(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
+    w: torch.Tensor, u: torch.Tensor, scale: Optional[float]=None):
+    orig_dtype = q.dtype
+    B, H, T, K, V = *q.shape, v.shape[-1]
+    q, k, v, w, u = map(lambda x: x.float(), (q, k, v, w, u))
+    h = torch.zeros(B, H, K, V, dtype=torch.float32, device=q.device)
+    o = torch.zeros_like(v)
+    if scale is None:
+        scale = K ** -0.5
+    for i in range(T):
+        q_i = q[:, :, i, :] * scale
+        k_i = k[:, :, i]
+        v_i = v[:, :, i, :]
+        w_i = w[:, :, i].exp()
+        kv_i = k_i[..., None] * v_i[..., None, :]
+        o_i = (h + u[None, ..., None] * kv_i) * q_i[..., None]
+        o[:, :, i] = o_i.sum(-2)
+        h = h * w_i[..., None] + kv_i
+    return o.to(orig_dtype)
 
 
-def permute_qk(q, k):
-    bsz, num_head, seq_len, head_dim = q.shape
-    q = q.reshape(bsz, num_head, seq_len, head_dim // 2, 2).transpose(3, 4
-        ).reshape(bsz, num_head, seq_len, head_dim)
-    k = k.reshape(bsz, num_head, seq_len, head_dim // 2, 2).transpose(3, 4
-        ).reshape(bsz, num_head, seq_len, head_dim)
-    return q, k
+def naive_chunk_rwkv6(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, w:
+    torch.Tensor, u: torch.Tensor, chunk_size: int=32):
+    assert q.shape[-2] % chunk_size == 0
+    orig_dtype = q.dtype
+    num_chunk = q.shape[-2] // chunk_size
+    u = u.unsqueeze(0)
+    q, k, v, w = map(lambda x: rearrange(x, 'b h (n c) d -> b h n c d', c=
+        chunk_size).float(), (q, k, v, w))
+    w_cumsum = w.cumsum(-2)
+    kw = k * (w_cumsum[..., -1, None, :] - w_cumsum).exp()
+    wkv = kw.transpose(-1, -2) @ v
+    wkv_new = torch.zeros_like(wkv)
+    for i in range(num_chunk - 1):
+        wkv_new[:, :, i + 1] = wkv_new[:, :, i].clone() * w_cumsum[:, :, i,
+            -1, :, None].exp() + wkv[:, :, i]
+    o_inter = torch.einsum('b h n d p, b h n c d -> b h n c p', wkv_new, q *
+        (w_cumsum - w).exp())
+    o_intra = torch.zeros_like(o_inter)
+    for i in range(chunk_size):
+        attn = (q[:, :, :, i, None] * k * (w_cumsum[:, :, :, i, None] - w[:,
+            :, :, i, None] - w_cumsum).exp()).sum(-1)
+        mask = (torch.arange(0, chunk_size) < i).to(attn.device)
+        attn.masked_fill_(~mask, 0)
+        intra_inter_o = (attn.unsqueeze(-1) * v).sum(-2)
+        intra_intra_o = (q[:, :, :, i] * u.unsqueeze(2) * k[:, :, :, i]).sum(-1
+            ).unsqueeze(-1) * v[:, :, :, i]
+        o_intra[:, :, :, i] = intra_inter_o + intra_intra_o
+    o = o_inter + o_intra
+    return rearrange(o, 'b h n c d -> b h (n c) d').to(orig_dtype)
 
 
-def undo_permute_qk(q, k):
-    bsz, num_head, seq_len, head_dim = q.shape
-    q = q.reshape(bsz, num_head, seq_len, 2, head_dim // 2).transpose(3, 4
-        ).reshape(bsz, num_head, seq_len, head_dim)
-    k = k.reshape(bsz, num_head, seq_len, 2, head_dim // 2).transpose(3, 4
-        ).reshape(bsz, num_head, seq_len, head_dim)
-    return q, k
+class RWKV6Attention(nn.Module):
 
-
-def apply_rotary_pos_emb(q, k, cos, sin, unsqueeze_dim=1):
-    """Applies Rotary Position Embedding to the query and key tensors.
-
-    Args:
-        q (`torch.Tensor`): The query tensor.
-        k (`torch.Tensor`): The key tensor.
-        cos (`torch.Tensor`): The cosine part of the rotary embedding.
-        sin (`torch.Tensor`): The sine part of the rotary embedding.
-        position_ids (`torch.Tensor`, *optional*):
-            Deprecated and unused.
-        unsqueeze_dim (`int`, *optional*, defaults to 1):
-            The 'unsqueeze_dim' argument specifies the dimension along which to unsqueeze cos[position_ids] and
-            sin[position_ids] so that they can be properly broadcasted to the dimensions of q and k. For example, note
-            that cos[position_ids] and sin[position_ids] have the shape [batch_size, seq_len, head_dim]. Then, if q and
-            k have the shape [batch_size, heads, seq_len, head_dim], then setting unsqueeze_dim=1 makes
-            cos[position_ids] and sin[position_ids] broadcastable to the shapes of q and k. Similarly, if q and k have
-            the shape [batch_size, seq_len, heads, head_dim], then set unsqueeze_dim=2.
-    Returns:
-        `tuple(torch.Tensor)` comprising of the query and key tensors rotated using the Rotary Position Embedding.
-    """
-    cos = cos.unsqueeze(unsqueeze_dim)
-    sin = sin.unsqueeze(unsqueeze_dim)
-    q_embed = q * cos + rotate_half(q) * sin
-    k_embed = k * cos + rotate_half(k) * sin
-    return q_embed, k_embed
-
-
-class RMSNorm(nn.Module):
-
-    def __init__(self, hidden_size, eps=1e-06):
-        super().__init__()
-        self.weight = nn.Parameter(torch.ones(hidden_size))
-        self.variance_epsilon = eps
-
-    def forward(self, hidden_states):
-        input_dtype = hidden_states.dtype
-        hidden_states = hidden_states.to(torch.float32)
-        variance = hidden_states.pow(2).mean(-1, keepdim=True)
-        hidden_states = hidden_states * torch.rsqrt(variance + self.
-            variance_epsilon)
-        return self.weight * hidden_states.to(input_dtype)
-
-
-class SwiGluMLP(nn.Module):
-
-    def __init__(self, hidden_size, intermediate_size):
+    def __init__(self, hidden_size: int=1024, num_heads: int=4, gate_fn:
+        str='swish', proj_low_rank_dim: int=32, gate_low_rank_dim: int=64,
+        elementwise_affine: Optional[bool]=True, norm_eps: float=1e-05,
+        chunk_size: int=32, device=None, dtype=None, **kwargs):
         super().__init__()
         self.hidden_size = hidden_size
+        self.num_heads = num_heads
+        self.proj_low_rank_dim = proj_low_rank_dim
+        self.gate_low_rank_dim = gate_low_rank_dim
+        self.chunk_size = chunk_size
+        self.key_dim = hidden_size // 2
+        self.value_dim = hidden_size
+        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'
+        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'
+        self.head_qk_dim = self.key_dim // num_heads
+        self.head_v_dim = self.value_dim // num_heads
+        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
+        self.x_proj = nn.Sequential(LerpLinear(hidden_size, 
+            proj_low_rank_dim * 5, device=device, dtype=dtype), nn.Tanh(),
+            nn.Linear(proj_low_rank_dim * 5, hidden_size, bias=False,
+            device=device, dtype=dtype))
+        self.x_bias = nn.Parameter(torch.zeros(5, hidden_size, device=
+            device, dtype=dtype))
+        self.r_proj = DDLerpLinear(hidden_size, self.key_dim, device=device,
+            dtype=dtype)
+        self.w_proj = DDLerpLinear(hidden_size, self.key_dim, low_rank_dim=
+            gate_low_rank_dim, device=device, dtype=dtype)
+        self.k_proj = DDLerpLinear(hidden_size, self.key_dim, device=device,
+            dtype=dtype)
+        self.v_proj = DDLerpLinear(hidden_size, self.value_dim, device=
+            device, dtype=dtype)
+        self.g_proj = DDLerpLinear(hidden_size, self.value_dim,
+            low_rank_dim=gate_low_rank_dim, device=device, dtype=dtype)
+        self.bonus = nn.Parameter(torch.zeros(num_heads, self.head_qk_dim,
+            device=device, dtype=dtype))
+        self.g_norm = nn.LayerNorm(self.value_dim, elementwise_affine=
+            elementwise_affine, eps=norm_eps, device=device, dtype=dtype)
+        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,
+            device=device, dtype=dtype)
+        self.gate_fn = ACT2FN[gate_fn]
+        self.apply(self._initialize_weights)
+
+    def _initialize_weights(self, module: nn.Module):
+        if getattr(module, '_is_hf_initialized', False):
+            return
+        if isinstance(module, nn.Linear):
+            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)
+            if module.bias is not None:
+                nn.init.zeros_(module.bias)
+        if isinstance(module, nn.Parameter):
+            nn.init.xavier_uniform_(module, gain=2 ** -2.5)
+        module._is_hf_initialized = True
+
+    def pad_input(self, X):
+        _seq_len = X.shape[-2]
+        pad_len = (X.shape[-2] + self.chunk_size - 1
+            ) // self.chunk_size * self.chunk_size - X.shape[-2]
+        return F.pad(X, (0, 0, 0, pad_len)), _seq_len
+
+    def forward(self, hidden_states: torch.Tensor, **kwargs) ->Tuple[torch.
+        Tensor]:
+        hidden_states, _seq_len = self.pad_input(hidden_states)
+        batch_size, seq_len, hidden_size = hidden_states.shape
+        last_state = None
+        if hidden_states.shape[1] == 1 and last_state is not None:
+            shifted = last_state[0].unsqueeze(1)
+        else:
+            shifted = self.time_shift(hidden_states)
+            if last_state is not None:
+                shifted[:, 0] = last_state[0]
+        delta = shifted - hidden_states
+        x = self.x_proj[0](hidden_states, delta).view(batch_size, seq_len, 
+            -1, self.proj_low_rank_dim)
+        x = torch.einsum('b l n r, h n r-> b l n h', self.x_proj[1](x),
+            self.x_proj[2].weight.view(hidden_size, 5, -1))
+        r, w, k, v, g = x.add_(self.x_bias).unbind(-2)
+        r = self.r_proj(hidden_states, r, delta)
+        w = self.w_proj(hidden_states, w, delta)
+        k = self.k_proj(hidden_states, k, delta)
+        v = self.v_proj(hidden_states, v, delta)
+        g = self.g_proj(hidden_states, g, delta)
+        r, w, k, v = map(lambda x: rearrange(x, 'b l (h d) -> b h l d', h=
+            self.num_heads), (r, w, k, v))
+        w = -torch.exp(w)
+        u = self.bonus
+        o = naive_chunk_rwkv6(r, k, v, w, u, chunk_size=self.chunk_size)
+        o = rearrange(o, 'b h l d -> b l (h d)')
+        o = self.g_norm(o)
+        o = o * self.gate_fn(g)
+        o = self.o_proj(o)
+        o = o[:, :_seq_len]
+        return o
+
+    def init_state(self, batch_size: int) ->Tuple[torch.Tensor]:
+        param = next(self.parameters())
+        state = [param.new_zeros(batch_size, self.hidden_size), param.
+            new_zeros(batch_size, self.num_heads, self.head_qk_dim, self.
+            head_v_dim)]
+        return state
+
+    def state_size(self, **kwargs) ->int:
+        state_size = self.key_dim * self.head_v_dim
+        return state_size
+
+
+class LoRA(nn.Module):
+
+    def __init__(self, input_dim: int, output_dim: int, low_rank_dim: int,
+        bias: Optional[bool]=True, device=None, dtype=None):
+        super().__init__()
+        self.input_dim = input_dim
+        self.output_dim = output_dim
+        self.low_rank_dim = low_rank_dim
+        self.bias = bias
+        self.lora = nn.Sequential(nn.Linear(input_dim, low_rank_dim, bias=
+            False, device=device, dtype=dtype), nn.Tanh(), nn.Linear(
+            low_rank_dim, output_dim, bias=bias, device=device, dtype=dtype))
+
+    def __repr__(self) ->str:
+        s = f'{self.__class__.__name__}('
+        s += (
+            f'input_dim={self.input_dim}, low_rank_dim={self.low_rank_dim}, output_dim={self.output_dim}'
+            )
+        if not self.bias:
+            s += f', bias={self.bias}'
+        s += ')'
+        return s
+
+    def forward(self, x: torch.Tensor) ->torch.Tensor:
+        return self.lora(x)
+
+
+class LerpLinear(nn.Module):
+
+    def __init__(self, input_dim: int, output_dim: int, low_rank_dim:
+        Optional[int]=None, device=None, dtype=None):
+        super().__init__()
+        self.input_dim = input_dim
+        self.output_dim = output_dim
+        self.low_rank_dim = low_rank_dim
+        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
+        if low_rank_dim is None:
+            self.linear = nn.Linear(input_dim, output_dim, bias=False,
+                device=device, dtype=dtype)
+        else:
+            self.linear = LoRA(input_dim, output_dim, low_rank_dim, device=
+                device, dtype=dtype)
+        self.mu = nn.Parameter(torch.zeros(input_dim, device=device, dtype=
+            dtype))
+
+    def __repr__(self) ->str:
+        s = f'{self.__class__.__name__}({self.input_dim}, {self.output_dim}'
+        if self.low_rank_dim is not None:
+            s += f', low_rank_dim={self.low_rank_dim}'
+        s += ')'
+        return s
+
+    def forward(self, x: torch.Tensor, delta: Optional[torch.Tensor]=None
+        ) ->torch.Tensor:
+        if delta is None:
+            shifted = self.time_shift(x)
+            if len(shifted.shape) == 2:
+                shifted = shifted.unsqueeze(1)
+            delta = shifted - x
+        return self.linear(x + delta * self.mu)
+
+
+class DDLerpLinear(nn.Module):
+
+    def __init__(self, input_dim: int, output_dim: int, low_rank_dim:
+        Optional[int]=None, device=None, dtype=None):
+        super().__init__()
+        self.input_dim = input_dim
+        self.output_dim = output_dim
+        self.low_rank_dim = low_rank_dim
+        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
+        if low_rank_dim is None:
+            self.linear = nn.Linear(input_dim, output_dim, bias=False,
+                device=device, dtype=dtype)
+        else:
+            self.linear = LoRA(input_dim, output_dim, low_rank_dim, device=
+                device, dtype=dtype)
+
+    def __repr__(self) ->str:
+        s = f'{self.__class__.__name__}({self.input_dim}, {self.output_dim}'
+        if self.low_rank_dim is not None:
+            s += f', low_rank_dim={self.low_rank_dim}'
+        s += ')'
+        return s
+
+    def forward(self, x: torch.Tensor, mu: torch.Tensor, delta: Optional[
+        torch.Tensor]=None) ->torch.Tensor:
+        if delta is None:
+            shifted = self.time_shift(x)
+            if len(shifted.shape) == 2:
+                shifted = shifted.unsqueeze(1)
+            delta = shifted - x
+        return self.linear(x + delta * mu)
+
+
+class RWKV6FeedForward(nn.Module):
+
+    def __init__(self, hidden_size: int, device=None, dtype=None):
+        super().__init__()
+        self.hidden_size = hidden_size
+        hidden_ratio = 3.5
+        intermediate_size = int(hidden_size * hidden_ratio)
+        intermediate_size = 32 * ((intermediate_size + 32 - 1) // 32)
+        self.hidden_ratio = hidden_ratio
         self.intermediate_size = intermediate_size
-        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False)
-        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False)
-        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
-            bias=False)
-        self.act_fn = ACT2FN['silu']
+        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
+        self.key = LerpLinear(hidden_size, intermediate_size, device=device,
+            dtype=dtype)
+        self.value = nn.Linear(intermediate_size, hidden_size, bias=False,
+            device=device, dtype=dtype)
+        self.receptance = LerpLinear(hidden_size, hidden_size, device=
+            device, dtype=dtype)
+        self.relu = nn.ReLU()
 
-    def forward(self, x):
-        down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.
-            up_proj(x))
-        return down_proj
-
-
-class RotaryEmbedding(nn.Module):
-
-    def __init__(self, dim, max_position_embeddings=16, base=10000, device=
-        None, scaling_factor=1.0):
-        super().__init__()
-        self.scaling_factor = scaling_factor
-        self.dim = dim
-        self.max_position_embeddings = max_position_embeddings
-        self.base = base
-        inv_freq = 1.0 / self.base ** (torch.arange(0, self.dim, 2, dtype=
-            torch.int64).float().to(device) / self.dim)
-        self.register_buffer('inv_freq', inv_freq, persistent=False)
-
-    @torch.no_grad()
-    def forward(self, x, position_ids):
-        inv_freq_expanded = self.inv_freq[None, :, None].float().expand(
-            position_ids.shape[0], -1, 1)
-        position_ids_expanded = position_ids[:, None, :].float()
-        device_type = x.device.type
-        device_type = device_type if isinstance(device_type, str
-            ) and device_type != 'mps' else 'cpu'
-        with torch.autocast(device_type=device_type, enabled=False):
-            freqs = (inv_freq_expanded.float() @ position_ids_expanded.float()
-                ).transpose(1, 2)
-            emb = torch.cat((freqs, freqs), dim=-1)
-            cos = emb.cos()
-            sin = emb.sin()
-        return cos.to(dtype=x.dtype), sin.to(dtype=x.dtype)
-
-
-class Conv(nn.Module):
-
-    def __init__(self, hidden_size, conv_kernel, rms_norm_eps):
-        super().__init__()
-        self.norm = RMSNorm(hidden_size, eps=rms_norm_eps)
-        self.conv = nn.Conv1d(hidden_size, hidden_size, bias=True,
-            kernel_size=conv_kernel, groups=hidden_size, padding=
-            conv_kernel - 1)
-
-    def __call__(self, hidden_states):
-        seq_len = hidden_states.shape[1]
-        hidden_states = self.norm(hidden_states)
-        hidden_states = hidden_states.transpose(1, 2)
-        if causal_conv1d_fn is None:
-            hidden_states = self.conv(hidden_states)[..., :seq_len]
-        else:
-            conv_weights = self.conv.weight.view(self.conv.weight.size(0),
-                self.conv.weight.size(2))
-            hidden_states = causal_conv1d_fn(hidden_states, conv_weights,
-                self.conv.bias, activation=None)
-        hidden_states = hidden_states.transpose(1, 2)
-        return hidden_states
-
-
-def scan(f, init, xs, out, checkpoint_group=0):
-    """Minic jax.lax.scan function."""
-    carry = init
-    if isinstance(xs, dict):
-        num_items = len(next(iter(xs.values())))
-    else:
-        num_items = len(xs[0])
-
-    def scan_fn(carry, i_start, i_end):
-        for i in range(i_start, i_end):
-            if isinstance(xs, dict):
-                x = {key: tensor[i] for key, tensor in xs.items()}
-            else:
-                x = [x[i] for x in xs]
-            carry, y = f(carry, x)
-            out[i] = y
-        return carry
-    if checkpoint_group > 0:
-        ckpt_every_n = num_items // checkpoint_group
-        for k in range(0, num_items, ckpt_every_n):
-            carry = torch.utils.checkpoint.checkpoint(scan_fn, carry, k,
-                min(k + ckpt_every_n, num_items), use_reentrant=False)
-    else:
-        carry = scan_fn(carry, 0, num_items)
-    return carry, out
-
-
-def ln_fwd(x, gamma, beta, eps=1e-06):
-    """Batch forward for LayerNorm."""
-    mu = x.mean(dim=-1, keepdim=True)
-    var = x.var(dim=-1, keepdim=True, unbiased=False)
-    std = torch.sqrt(var + eps)
-    x_hat = (x - mu) / std
-    y = gamma * x_hat + beta
-    return y
-
-
-def ln_fused_l2_bwd(x, l2_target, gamma, beta, eps=1e-06):
-    """Batch backward for LayerNorm fused with L2 loss."""
-    D = x.shape[-1]
-    mu = x.mean(dim=-1, keepdim=True)
-    var = x.var(dim=-1, keepdim=True, unbiased=False)
-    std = torch.sqrt(var + eps)
-    x_hat = (x - mu) / std
-    y = gamma * x_hat + beta
-    grad_output = y - l2_target
-    grad_x_hat = grad_output * gamma
-    z = 1.0 / D * (D * grad_x_hat - grad_x_hat.sum(dim=-1, keepdim=True) - 
-        x_hat * (grad_x_hat * x_hat).sum(dim=-1, keepdim=True)) / std
-    return z
-
-
-class TTTLinear(nn.Module):
-
-    def __init__(self, hidden_size, num_attention_heads,
-        scan_checkpoint_group_size, conv_kernel, mini_batch_size,
-        rope_theta, ttt_base_lr):
-        super().__init__()
-        self.num_heads = num_attention_heads
-        self.width = hidden_size
-        self.hidden_size = hidden_size
-        self.head_dim = self.width // self.num_heads
-        self.mini_batch_size = mini_batch_size
-        self.rope_theta = rope_theta
-        self.ttt_base_lr = ttt_base_lr
-        token_idx = 1.0 / torch.arange(1, self.mini_batch_size + 1)
-        self.register_buffer('token_idx', token_idx, persistent=False)
-        self.learnable_token_idx = nn.Parameter(torch.zeros((self.
-            mini_batch_size,)))
-        self.conv_kernel = conv_kernel
-        self._init_qkvo_proj()
-        self._init_rope()
-        self._init_ttt_lr_gate()
-        self._init_ttt_ln()
-        self.post_norm = nn.LayerNorm(self.width, eps=1e-06)
-        self.scan_checkpoint_group_size = scan_checkpoint_group_size
-        self.W1 = nn.Parameter(torch.normal(0, 0.02, size=(self.num_heads,
-            self.head_dim, self.head_dim)))
-        self.b1 = nn.Parameter(torch.zeros(self.num_heads, 1, self.head_dim))
-
-    def _init_qkvo_proj(self):
-        self.q_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
-            bias=False)
-        self.k_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
-            bias=False)
-        self.v_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
-            bias=False)
-        self.o_proj = nn.Linear(self.width, self.num_heads * self.head_dim,
-            bias=False)
-
-    def _init_rope(self):
-        self.rope_theta = self.rope_theta
-        self.rotary_emb = RotaryEmbedding(self.head_dim,
-            max_position_embeddings=self.mini_batch_size, base=self.rope_theta)
-
-    def _init_ttt_lr_gate(self):
-        linear_weight_data = nn.Linear(self.width, 1, bias=True).weight.data
-        self.learnable_ttt_lr_weight = nn.Parameter(torch.stack([torch.
-            normal(0, 0.02, size=linear_weight_data.shape) for _ in range(
-            self.num_heads)], dim=0))
-        linear_bias_data = nn.Linear(self.width, 1, bias=True).bias.data
-        self.learnable_ttt_lr_bias = nn.Parameter(torch.stack([torch.
-            zeros_like(linear_bias_data) for _ in range(self.num_heads)],
-            dim=0))
-
-    def _init_ttt_ln(self):
-        ln_weight_data = nn.LayerNorm(self.head_dim).weight.data
-        self.ttt_norm_weight = nn.Parameter(torch.tile(ln_weight_data.
-            unsqueeze(0), (self.num_heads, 1)))
-        ln_bias_data = nn.LayerNorm(self.head_dim).bias.data
-        self.ttt_norm_bias = nn.Parameter(torch.tile(ln_bias_data.unsqueeze
-            (0), (self.num_heads, 1)))
-
-    def get_qkv_projections(self, hidden_states):
-        XQ, XK, XV = self.q_proj(hidden_states), self.k_proj(hidden_states
-            ), self.v_proj(hidden_states)
-        return XQ, XK, XV
-
-    def _split_heads(self, hidden_states):
-        return hidden_states.reshape(hidden_states.shape[:2] + (self.
-            num_heads, self.head_dim))
-
-    def get_eta(self, X, mini_batch_size):
-        ttt_lr = torch.einsum('bnkc,hdc->bhnkd', X, self.
-            learnable_ttt_lr_weight) + self.learnable_ttt_lr_bias.reshape(1,
-            -1, 1, 1, 1)
-        ttt_lr = F.sigmoid(ttt_lr)
-        ttt_lr = ttt_lr.permute(0, 1, 2, 4, 3)
-        ttt_lr_eta = self.ttt_base_lr * ttt_lr / self.head_dim
-        token_idx = self.token_idx + self.learnable_token_idx
-        token_idx = token_idx[0:mini_batch_size]
-        token_idx = torch.clamp_min(token_idx, 0.0)
-        token_eta = torch.broadcast_to(token_idx.reshape(1, 1, 1,
-            mini_batch_size, 1), (X.shape[0], self.num_heads, X.shape[1],
-            mini_batch_size, 1))
-        return token_eta, ttt_lr_eta
-
-    def get_ttt_inputs(self, inputs, mini_batch_size):
-        XQ = inputs['XQ']
-        XK = inputs['XK']
-        XV = inputs['XV']
-        X = inputs['X']
-        B, L, C = X.shape
-        num_mini_batch = L // mini_batch_size
-        X = X.reshape(B, num_mini_batch, mini_batch_size, self.width)
-        XQ = XQ.reshape(B, self.num_heads, L // mini_batch_size,
-            mini_batch_size, self.head_dim)
-        XK = XK.reshape(B, self.num_heads, L // mini_batch_size,
-            mini_batch_size, self.head_dim)
-        XV = XV.reshape(B, self.num_heads, L // mini_batch_size,
-            mini_batch_size, self.head_dim)
-        token_eta, ttt_lr_eta = self.get_eta(X, mini_batch_size)
-        eta = token_eta * ttt_lr_eta
-        inputs = {'XQ': XQ, 'XK': XK, 'XV': XV, 'eta': eta, 'token_eta':
-            token_eta, 'ttt_lr_eta': ttt_lr_eta}
-        return inputs
-
-    def ttt(self, inputs, mini_batch_size, last_mini_batch_params_dict):
-        if mini_batch_size is None:
-            mini_batch_size = self.mini_batch_size
-        B = inputs['XV'].shape[0]
-        num_mini_batch = inputs['XV'].shape[2]
-        L = inputs['XV'].shape[2] * inputs['XV'].shape[3]
-        device = inputs['XV'].device
-        dtype = inputs['XV'].dtype
-        use_dual_form = True
-
-        def compute_mini_batch(params_dict, inputs):
-            W1_init = params_dict['W1_states']
-            b1_init = params_dict['b1_states']
-            XQ_mini_batch = inputs['XQ']
-            XV_mini_batch = inputs['XV']
-            XK_mini_batch = inputs['XK']
-            eta_mini_batch = inputs['eta']
-            token_eta_mini_batch = inputs['token_eta']
-            ttt_lr_eta_mini_batch = inputs['ttt_lr_eta']
-            X1 = XK_mini_batch
-            Z1 = X1 @ W1_init + b1_init
-            reconstruction_target = XV_mini_batch - XK_mini_batch
-            ln_weight = self.ttt_norm_weight.reshape(self.num_heads, 1,
-                self.head_dim)
-            ln_bias = self.ttt_norm_bias.reshape(self.num_heads, 1, self.
-                head_dim)
-            grad_l_wrt_Z1 = ln_fused_l2_bwd(Z1, reconstruction_target,
-                ln_weight, ln_bias)
-            if use_dual_form:
-                Attn1 = torch.tril(XQ_mini_batch @ X1.transpose(-2, -1))
-                b1_bar = b1_init - torch.tril(eta_mini_batch) @ grad_l_wrt_Z1
-                Z1_bar = (XQ_mini_batch @ W1_init - eta_mini_batch * Attn1 @
-                    grad_l_wrt_Z1 + b1_bar)
-                last_eta_mini_batch = eta_mini_batch[:, :, -1, :, None]
-                W1_last = W1_init - (last_eta_mini_batch * X1).transpose(-1, -2
-                    ) @ grad_l_wrt_Z1
-                b1_last = b1_init - torch.sum(last_eta_mini_batch *
-                    grad_l_wrt_Z1, dim=-2, keepdim=True)
-                grad_W1_last = torch.zeros_like(W1_last)
-                grad_b1_last = torch.zeros_like(b1_last)
-            else:
-                ttt_lr_eta_mini_batch = torch.broadcast_to(
-                    ttt_lr_eta_mini_batch, (*ttt_lr_eta_mini_batch.shape[:2
-                    ], mini_batch_size, mini_batch_size))
-                grad_W1 = torch.einsum('bhki,bhkj->bhkij', X1, grad_l_wrt_Z1)
-                grad_W1 = torch.einsum('bhnk,bhkij->bhnij', torch.tril(
-                    ttt_lr_eta_mini_batch), grad_W1)
-                grad_W1 = grad_W1 + params_dict['W1_grad'].unsqueeze(2)
-                grad_b1 = torch.einsum('bhnk,bhki->bhni', torch.tril(
-                    ttt_lr_eta_mini_batch), grad_l_wrt_Z1)
-                grad_b1 = grad_b1 + params_dict['b1_grad']
-                W1_bar = W1_init.unsqueeze(2
-                    ) - grad_W1 * token_eta_mini_batch.unsqueeze(-1)
-                b1_bar = b1_init - grad_b1 * token_eta_mini_batch
-                Z1_bar = (XQ_mini_batch.unsqueeze(3) @ W1_bar).squeeze(3
-                    ) + b1_bar
-                W1_last = W1_bar[:, :, -1]
-                b1_last = b1_bar[:, :, -1:]
-                grad_W1_last = grad_W1[:, :, -1]
-                grad_b1_last = grad_b1[:, :, -1:]
-            Z1_bar = ln_fwd(Z1_bar, ln_weight, ln_bias)
-            XQW_mini_batch = XQ_mini_batch + Z1_bar
-            last_param_dict = {'W1_states': W1_last, 'b1_states': b1_last,
-                'W1_grad': grad_W1_last, 'b1_grad': grad_b1_last}
-            return last_param_dict, XQW_mini_batch
-        if last_mini_batch_params_dict is not None:
-            init_params_dict = last_mini_batch_params_dict
-        else:
-            init_params_dict = {'W1_states': torch.tile(self.W1.unsqueeze(0
-                ), dims=(B, 1, 1, 1)), 'b1_states': torch.tile(self.b1.
-                unsqueeze(0), dims=(B, 1, 1, 1))}
-            init_params_dict.update(W1_grad=torch.zeros_like(
-                init_params_dict['W1_states']))
-            init_params_dict.update(b1_grad=torch.zeros_like(
-                init_params_dict['b1_states']))
-        inputs = tree_map(lambda x: x.permute(2, 0, 1, 3, 4), inputs)
-        XQW_batch = torch.empty((num_mini_batch, B, self.num_heads,
-            mini_batch_size, self.head_dim), device=device, dtype=dtype)
-        batch_params_dict, XQW_batch = scan(compute_mini_batch,
-            init_params_dict, inputs, XQW_batch, self.
-            scan_checkpoint_group_size if self.training else 0)
-        XQW_batch = XQW_batch.permute(1, 0, 3, 2, 4)
-        XQW_batch = XQW_batch.reshape(B, L, self.width)
-        return XQW_batch, batch_params_dict
-
-    def forward(self, hidden_states: torch.Tensor, position_ids: Optional[
-        torch.LongTensor]=None):
-        B, L = hidden_states.shape[:2]
-        reminder_len = L % self.mini_batch_size
-        num_mini_batch = L // self.mini_batch_size
-        last_mini_batch_params_dict = None
-        XQ, XK, XV = self.get_qkv_projections(hidden_states)
-        XQ = XQ.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        XK = XK.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        XV = XV.reshape(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        cos, sin = self.rotary_emb(XV, position_ids % self.mini_batch_size)
-        XQ, XK = permute_qk(XQ, XK)
-        XQ, XK = apply_rotary_pos_emb(XQ, XK, cos, sin)
-        XQ, XK = undo_permute_qk(XQ, XK)
-        output_hidden_states = []
-        if num_mini_batch > 0:
-            inputs = {'XQ': XQ[:, :, :num_mini_batch * self.mini_batch_size
-                ], 'XK': XK[:, :, :num_mini_batch * self.mini_batch_size],
-                'XV': XV[:, :, :num_mini_batch * self.mini_batch_size], 'X':
-                hidden_states[:, :num_mini_batch * self.mini_batch_size]}
-            output_mod, last_mini_batch_params_dict = self.ttt(self.
-                get_ttt_inputs(inputs, self.mini_batch_size),
-                mini_batch_size=self.mini_batch_size,
-                last_mini_batch_params_dict=last_mini_batch_params_dict)
-            output_hidden_states.append(output_mod)
-        if reminder_len > 0:
-            inputs = {'XQ': XQ[:, :, -reminder_len:], 'XK': XK[:, :, -
-                reminder_len:], 'XV': XV[:, :, -reminder_len:], 'X':
-                hidden_states[:, -reminder_len:]}
-            output_reminder, _ = self.ttt(self.get_ttt_inputs(inputs,
-                reminder_len), mini_batch_size=reminder_len,
-                last_mini_batch_params_dict=last_mini_batch_params_dict)
-            output_hidden_states.append(output_reminder)
-        output_hidden_states = torch.cat(output_hidden_states, dim=1)
-        output_hidden_states = self.post_norm(output_hidden_states)
-        output_hidden_states = self.o_proj(output_hidden_states)
-        return output_hidden_states
+    def forward(self, x: torch.Tensor) ->torch.Tensor:
+        shifted = self.time_shift(x)
+        delta = shifted - x
+        _key = self.key(x, delta)
+        r = self.relu(_key)
+        key = r * r
+        value = self.value(key)
+        receptance = self.receptance(x, delta)
+        return receptance.sigmoid() * value
 
 
 class GAB(GABBase):
@@ -443,50 +298,33 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
-        scan_checkpoint_group_size=4, conv_kernel=4, mini_batch_size=16,
-        rope_theta=10000.0, rms_norm_eps=1e-06, ttt_base_lr=1.0, **kwargs):
+    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
+        =None, num_heads: int=4, proj_low_rank_dim: int=32,
+        gate_low_rank_dim: int=64, norm_eps: float=1e-05, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
         self.hidden_size = embed_dim
-        num_attention_heads = max(4, embed_dim // 64)
-        self.seq_modeling_block = TTTLinear(hidden_size=embed_dim,
-            num_attention_heads=num_attention_heads,
-            scan_checkpoint_group_size=scan_checkpoint_group_size,
-            conv_kernel=conv_kernel, mini_batch_size=mini_batch_size,
-            rope_theta=rope_theta, ttt_base_lr=ttt_base_lr)
-        self.mlp = SwiGluMLP(embed_dim, int(embed_dim * 2.5))
-        self.conv = Conv(embed_dim, conv_kernel, rms_norm_eps)
-        self.seq_norm = RMSNorm(embed_dim, eps=rms_norm_eps)
-        self.ffn_norm = RMSNorm(embed_dim, eps=rms_norm_eps)
-        self.seq_modeling_block = self.seq_modeling_block.to(device=device,
-            dtype=dtype)
-        self.mlp = self.mlp.to(device=device, dtype=dtype)
-        self.conv = self.conv.to(device=device, dtype=dtype)
-        self.seq_norm = self.seq_norm.to(device=device, dtype=dtype)
-        self.ffn_norm = self.ffn_norm.to(device=device, dtype=dtype)
+        self.attn_norm = nn.LayerNorm(self.hidden_size, bias=True, eps=
+            norm_eps, **factory_kwargs)
+        self.attn = RWKV6Attention(hidden_size=self.hidden_size, num_heads=
+            num_heads, proj_low_rank_dim=proj_low_rank_dim,
+            gate_low_rank_dim=gate_low_rank_dim, norm_eps=norm_eps, **
+            factory_kwargs)
+        self.ffn_norm = nn.LayerNorm(self.hidden_size, bias=True, eps=
+            norm_eps, **factory_kwargs)
+        self.ffn = RWKV6FeedForward(hidden_size=self.hidden_size, **
+            factory_kwargs)
 
-    def _forward(self, X, *Z, **intermediate_vars):
-        hidden_states = X
-        position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
-            =X.device).unsqueeze(0)
-        residual = hidden_states
-        hidden_states = self.conv(hidden_states)
-        hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states = self.seq_norm(hidden_states)
-        hidden_states = self.seq_modeling_block(hidden_states, position_ids)
-        hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states = self.ffn_norm(hidden_states)
-        hidden_states = self.mlp(hidden_states)
-        hidden_states = residual + hidden_states
-        return hidden_states
+    def _forward(self, X, **kwargs):
+        hidden_states = self.attn_norm(X)
+        X = self.attn(hidden_states) + X
+        hidden_states = self.ffn_norm(X)
+        X = self.ffn(hidden_states) + X
+        return X
 
 
-gab_config = {'scan_checkpoint_group_size': 0, 'conv_kernel': 4,
-    'mini_batch_size': 16, 'rope_theta': 10000.0, 'rms_norm_eps': 1e-06,
-    'ttt_base_lr': 1.0}
+gab_config = {'num_heads': 4, 'proj_low_rank_dim': 32, 'gate_low_rank_dim':
+    64, 'norm_eps': 1e-05}
 
 
 

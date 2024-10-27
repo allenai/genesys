@@ -2422,6 +2422,7 @@ DEFAULT_PARAMS = {
     'n_target': 1,
     'challenging_threshold': 3,
     'benchmark_mode': False,
+    'scale_stair_start': '350M',
 }
 
 
@@ -2553,10 +2554,15 @@ class EvolutionSystem(exec_utils.System):
                 report=U.load_json(report_dir)
                 self.ptree.verify(node.acronym,scale,report)
 
-        self.selector = Selector(self.ptree,self.select_cfg,self._verify_budget,
-            self.stream,self.design_budget_limit,self.params['budget_type'],
+        self.selector = Selector(
+            self.ptree,self.select_cfg,self._verify_budget,
+            scale_stair_start=self.params['scale_stair_start'],
+            design_budget_limit=self.design_budget_limit,
+            budget_type=self.params['budget_type'],
             token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS),
-            target_scales=self.target_scales)
+            target_scales=self.target_scales,
+            stream=self.stream
+        )
 
         if self.params['no_agent']:
             self.agents = None
@@ -2747,6 +2753,7 @@ class EvolutionSystem(exec_utils.System):
         config['search_cfg'] = self.search_cfg
         config['select_cfg'] = self.select_cfg
         config['ve_cfg'] = self.ve_cfg
+        config['params'] = self.params
         config['benchmark_settings'] = self.benchmark_settings
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
         if self.ptree.FM:
