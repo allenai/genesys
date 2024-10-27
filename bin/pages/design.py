@@ -702,7 +702,7 @@ def _design_tuning(evosys,project_dir):
                 manual_seed = None if manual_seed == 'None' else manual_seed
                 manual_refs = None if manual_refs == 'None' else manual_refs.split(',')
                 evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume,
-                              manual_seed=manual_seed,manual_refs=manual_refs)
+                              )
     
     elif view_log_btn:
         show_log(load_log(selected_design_log_path))
