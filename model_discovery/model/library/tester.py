@@ -43,7 +43,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
             _path = U.pjoin(path, f'{model_name}.py')
             code=U.read_file(_path) # assert model_name is a path
 
-    checkpass,report,code,results = checker.check(cfg,code,model_name,True, cpu_only=cpu_only, reformat_only=reformat_only)
+    checkpass,report,code,results = checker.check(code,model_name,True, cpu_only=cpu_only, reformat_only=reformat_only)
     if skip_tune:
         return code
     if not checkpass:
