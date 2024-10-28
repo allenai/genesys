@@ -15,7 +15,6 @@ from .gau_utils import check_and_reformat_gau_code
 # from model_discovery.system import ModelDiscoverySystem
 import model_discovery.agents.prompts.prompts as P
 from model_discovery.model.composer import GAUBase, GAUTree, GABComposer
-from model_discovery.configs.gam_config import GAMConfig_14M
 from model_discovery.model.utils.modules import GABBase, UnitDecl,DesignModes
 import model_discovery.utils as U
 
@@ -1778,7 +1777,7 @@ class GUFlow(FlowCreator):
 
                         gabcode = self.tree.compose()
                         self.log_fn(f'Checking the implementation of {selection}...','IMPLEMENTATION')
-                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(GAMConfig_14M(),gabcode,selection,cpu_only=self.cpu_only)
+                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(gabcode,selection,cpu_only=self.cpu_only)
                         self.log_fn(f'Checker checks result: {checkpass}','IMPLEMENTATION')
                         _func_checkpass = checkpass
 
