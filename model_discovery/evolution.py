@@ -208,8 +208,7 @@ class FirestoreManager:
         max_num = 0 if len(max_nums)==1 else int(max_nums[1])
         for i in range(max_num+1):
             index_name = 'index' if i==0 else f'index_{i}'
-            index_ref = self.collection.document('index').collection('design_sessions').document(index_name)
-            index.update(index_ref.get().to_dict())
+            index.update(self.collection.document(index_name).get().to_dict())
         return index
 
     def get_index(self,is_baseline=False):
