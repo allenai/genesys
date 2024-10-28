@@ -45,7 +45,13 @@ from model_discovery.agents.agent_utils import OPENAI_COSTS_DICT, ANTHROPIC_COST
 
 def do_log(log_ref,log):
     timestamp = time.time()
-    log_ref.set({str(timestamp): log}, merge=True)
+    backup_ref = log_ref.collection('backup')
+    try:
+        log_ref.set({str(timestamp): log}, merge=True)
+    except Exception as e:
+        backup_doc_ref = backup_ref.document(str(timestamp))
+        backup_doc_ref.set(log_ref.get())
+        log_ref.set({str(timestamp): log}) # overwrite the original log
     real_time_utc = datetime.utcfromtimestamp(timestamp)
     print(f'[{real_time_utc}] {log}')
 
