@@ -29,6 +29,7 @@ from transformers import TrainingArguments, DataCollatorForLanguageModeling
 from model_discovery.configs.gam_config import DEFAULT_CONTEXT_LENGTH,DEFAULT_TOKENIZER
 from model_discovery.ve.data_loader import load_datasets_args
 from model_discovery.ve.modis_trainer import ModisTrainer
+from model_discovery.configs.gam_config import GAMConfig_14M,GAMConfig_31M
 import model_discovery.utils as U
 
 
@@ -857,7 +858,7 @@ class Checker(exec_utils.BaseTool):
         return True
     
 
-    def check(self, config, gab_code: str, name: str, eff=True, cpu_only=False, reformat_only=False) -> bool:
+    def check(self, gab_code: str, name: str, eff=True, cpu_only=False, reformat_only=False) -> bool:
         """Runs through a bunch of checks for the new module at path 
 
         :param path: 
@@ -866,6 +867,7 @@ class Checker(exec_utils.BaseTool):
             Whether check effectiveness or not
         """
         # torch.cuda.empty_cache()
+        config = GAMConfig_14M()
         time_start=time.time()
         self.reset()
         with U.CodeTimer("Format checking"):
@@ -881,9 +883,9 @@ class Checker(exec_utils.BaseTool):
                 return False,check_report,gab_code,{'hints': self.hints}
 
         captured_output=''
+        checkpass0=True
         with U.CodeTimer("Model initialization"): # NOTE: very time consuming for the first time, but luckily only happens for the very first run, maybe reduce the time of first run>
             try: 
-                
                 # Prepare to capture output
                 _test_output = io.StringIO()
 
@@ -901,43 +903,48 @@ class Checker(exec_utils.BaseTool):
                         exec(gab_code,namespace)
 
                     # Get the captured output
-                    captured_output = _test_output.getvalue()
+                    captured_output += _test_output.getvalue()
                 except Exception as e:
-                    captured_output = f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
-                    
-                self.rprint('Reloading the model...')
-                _test_output = io.StringIO()
-                with redirect_stdout(_test_output), redirect_stderr(_test_output):
-                    glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs(cpu_only))
-                captured = _test_output.getvalue()
-                if captured != '':
-                    captured_output += f' - Captured outputs during the loading and initialization of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
-                else:
-                    captured_output += ' - No captured output during the loading and initialization of the model.\n\n'
+                    captured_output += f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
+                    checkpass0=False
+                
+                for _config in [GAMConfig_31M(),config]:
+                    self.rprint(f'Checking model in multiple scales... Reloading the model with config on {_config.scale}...')
+                    _test_output = io.StringIO()
+                    with redirect_stdout(_test_output), redirect_stderr(_test_output):
+                        glm,_ = reload_gam(config,gab_code,name,**U.get_factory_kwargs(cpu_only))
+                    captured = _test_output.getvalue()
+                    if captured != '':
+                        captured_output += f' - Captured outputs during the loading and initialization of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    else:
+                        captured_output += ' - No captured output during the loading and initialization of the model.\n\n'
 
-                mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
-                mock_input = mock_input.to(glm.device)
-                t0=time.time()
+                    mock_input=torch.randint(0, config.vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
+                    mock_input = mock_input.to(glm.device)
+                    t0=time.time()
 
-                self.rprint(f'Testing forward pass... Mock input shape: {mock_input.shape}.')
-                _test_output = io.StringIO()
-                with redirect_stdout(_test_output), redirect_stderr(_test_output):
-                    try:
-                        glm(mock_input)
-                    except Exception as e:
-                        self.rprint(f"An exception occurred during the forward pass:\n\n")
-                        self.rprint(f"Error type: {type(e).__name__}")
-                        self.rprint(f"Error message: {str(e)}")
-                        self.rprint("\nTraceback:\n"+traceback.format_exc())
+                    self.rprint(f'Testing forward pass... Mock input shape: {mock_input.shape}.')
+                    _test_output = io.StringIO()
+                    with redirect_stdout(_test_output), redirect_stderr(_test_output):
+                        try:
+                            glm(mock_input)
+                        except Exception as e:
+                            self.rprint(f"An exception occurred during the forward pass:\n\n")
+                            self.rprint(f"Error type: {type(e).__name__}")
+                            self.rprint(f"Error message: {str(e)}")
+                            self.rprint("\nTraceback:\n"+traceback.format_exc())
+                            checkpass0=False
+                    captured = _test_output.getvalue()
+                    if captured:
+                        captured_output += f' - Captured output or error during forward pass of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
+                    else:
+                        captured_output += ' - No captured output or error during the forward pass of the model.\n\n'
 
-                captured = _test_output.getvalue()
-                if captured:
-                    captured_output += f' - Captured output or error during forward pass of the model:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured}\n\nEND OF CAPTURED OUTPUT.\n\n'
-                else:
-                    captured_output += ' - No captured output or error during the forward pass of the model.\n\n'
+                    self.rprint(f'Forward check finished. Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n')
+                    print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
 
-                self.rprint(f'Forward check finished. Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n{captured_output}\n\nEND OF CAPTURED OUTPUT.\n\n')
-                print(f'Time for the first forward pass: {time.time()-t0:.2f}s')
+                if not checkpass0:
+                    raise ValueError('Model initialization test failed.')
         
             except Exception as e:
                 error_trace = traceback.format_exc()
