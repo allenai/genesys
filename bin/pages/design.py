@@ -29,7 +29,7 @@ def do_log(log_ref,log):
         log_ref.set({str(timestamp): log}, merge=True)
     except Exception as e:
         backup_doc_ref = backup_ref.document(str(timestamp))
-        backup_doc_ref.set(log_ref.get())
+        backup_doc_ref.set(log_ref.get().to_dict())
         log_ref.set({str(timestamp): log}) # overwrite the original log
     real_time_utc = datetime.datetime.fromtimestamp(timestamp)
     print(f'[{real_time_utc}] {log}')
