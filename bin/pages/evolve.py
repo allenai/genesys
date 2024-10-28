@@ -104,7 +104,8 @@ class CommandCenter:
         if total_design_workloads == self.max_designs_total or self.max_designs_total==0:
             print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads are full ({total_design_workloads}/{self.max_designs_total}), skipping design workload assignment')
         else:
-            design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items() if v<self.max_designs_per_node or self.max_designs_per_node==0}
+            _design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items() if v<self.max_designs_per_node or self.max_designs_per_node==0}
+            design_availability = {k:v for k,v in _design_availability.items() if v>0}
             if sum(design_availability.values())>0:
                 available_design_threads = self.max_designs_total-sum(design_workloads.values())
                 for _ in range(max(0,available_design_threads)):
@@ -124,7 +125,7 @@ class CommandCenter:
                     # else:
                     #     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design availability for the most available node {node_id} is empty ({design_availability[node_id]})')
             else:
-                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available: {design_availability}')
+                print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] No design workload available: {_design_availability}')
         return to_sleep,design_workloads
 
     def assign_verify_workloads(self,verify_workloads,to_sleep):

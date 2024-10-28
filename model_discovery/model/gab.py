@@ -53,7 +53,7 @@ TTT-MLP shows potential for even better performance in long-context scenarios bu
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.hidden_size = embed_dim
         kwarg_all['num_attention_heads'] = max(4, embed_dim // 64)
-        self.seq_modeling_block = GatedTTTLinear(embed_dim=self.embed_dim,
+        self.seq_modeling_block = FastTTTLinear(embed_dim=self.embed_dim,
             block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
             factory_kwargs, **self.kwarg_all)
         kwarg_all['intermediate_size'] = int(embed_dim * 2.5)
@@ -86,178 +86,6 @@ TTT-MLP shows potential for even better performance in long-context scenarios bu
         hidden_states = self.mlp(hidden_states, **Z)[0]
         hidden_states = residual + hidden_states
         return hidden_states
-
-
-import torch.nn.functional as F
-from typing import Tuple, Dict
-
-
-class GatedTTTLinear(GAUBase):
-    """
-    GatedTTTLinear GAU.
-
-    This GAU enhances the existing TTTLinear GAU by integrating gating mechanisms and 
-    graph-inspired convolutional operations. It allows the model to dynamically adapt 
-    during test-time training by capturing both local and global dependencies efficiently.
-
-    **Code Example:**
-
-    ```python
-        from gatedtttlinear import GatedTTTLinear
-
-    embed_dim = 128
-    block_loc = (0, 0)
-    gau = GatedTTTLinear(embed_dim=embed_dim, block_loc=block_loc, kwarg_all={})
-
-    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50
-    Z = {}
-    Y, Z = gau(X, **Z)
-    print(Y.shape)  # Should output: torch.Size([2, 50, 128])
-    ```
-
-    **Todo:**
-        * Implement dynamic adjacency matrix computation based on input embeddings.
-        * Ensure computational efficiency for scalability.
-
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this GAU within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
-        device (torch.device, optional): Device to allocate the GAU's parameters.
-        dtype (torch.dtype, optional): Data type of the GAU's parameters.
-
-    Returns:
-        Output embeddings Y and updated intermediate variables Z.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.gate_proj = nn.Linear(embed_dim, embed_dim, bias=True, **self.
-            factory_kwargs)
-        self.activation = nn.Sigmoid()
-        self.linear_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
-            self.factory_kwargs)
-        self.graph_conv = GraphConvolution(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-
-    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, Dict]:
-        """
-        Forward pass of GatedTTTLinear GAU.
-
-        Args:
-            X (torch.Tensor): Input embeddings of shape (B, L, D).
-            **Z: Intermediate variables.
-
-        Returns:
-            Tuple containing output embeddings Y and updated intermediate variables Z.
-        """
-        G = self.activation(self.gate_proj(X))
-        Y_gated = G * self.linear_proj(X)
-        Y_graph, Z = self.graph_conv(Y_gated, **Z)
-        return Y_graph, Z
-
-
-import torch.nn.functional as F
-from typing import Tuple, Dict
-
-
-class GraphConvolution(GAUBase):
-    """
-    Graph Convolutional GAU.
-
-    This GAU performs graph convolution to capture global dependencies within the input sequence.
-    It leverages multi-head attention to compute a dynamic adjacency matrix based on input embeddings
-    and applies attention-based transformations to integrate global contextual information.
-
-    Args:
-        embed_dim (int): The size of the input and output feature dimensions.
-        block_loc (tuple): The location of this GAU within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments for initializing child GAUs.
-        device (torch.device, optional): Device to allocate the GAU's parameters.
-        dtype (torch.dtype, optional): Data type of the GAU's parameters.
-        num_heads (int, optional): Number of attention heads. Defaults to 4.
-        dropout (float, optional): Dropout probability on attention weights. Defaults to 0.1.
-
-    Returns:
-        Output embeddings Y and updated intermediate variables Z.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_heads: int=4, dropout: float=0.1, **kwargs
-        ):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.num_heads = num_heads
-        self.head_dim = embed_dim // num_heads
-        if embed_dim % num_heads != 0:
-            raise ValueError(
-                f'embed_dim {embed_dim} must be divisible by num_heads {num_heads}'
-                )
-        self.scale = self.head_dim ** -0.5
-        self.attn = nn.MultiheadAttention(embed_dim=embed_dim, num_heads=
-            num_heads, dropout=dropout, batch_first=True, **self.factory_kwargs
-            )
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.dropout_layer = nn.Dropout(dropout)
-        self.layer_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.
-            factory_kwargs)
-
-    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, Dict]:
-        """
-        Forward pass of GraphConvolution GAU.
-
-        Args:
-            X (torch.Tensor): Input embeddings of shape (B, L, D).
-            **Z: Intermediate variables.
-
-        Returns:
-            Tuple containing output embeddings Y and updated intermediate variables Z.
-        """
-        residual = X
-        X = self.layer_norm(X)
-        B, L, _ = X.shape
-        causal_mask = torch.triu(torch.ones(L, L, device=X.device, dtype=
-            torch.bool), diagonal=1)
-        attn_output, _ = self.attn(X, X, X, need_weights=False, attn_mask=
-            causal_mask)
-        attn_output = self.dropout_layer(attn_output)
-        Y = self.out_proj(attn_output)
-        Y = Y + residual
-        return Y, Z
-
-
-import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
-from transformers.utils import logging
-from transformers.activations import ACT2FN
-
-
-class SwiGluMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, intermediate_size=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        self.intermediate_size = (intermediate_size if intermediate_size is not
-            None else int(embed_dim * 2.5))
-        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
-            bias=False, **self.factory_kwargs)
-        self.act_fn = ACT2FN['silu']
-
-    def _forward(self, X, **Z):
-        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
-            up_proj(X))
-        return down_proj
 
 
 import torch.nn.functional as F
@@ -363,9 +191,158 @@ class RMSNorm(GAUBase):
         return self.weight * X.to(input_dtype)
 
 
-gab_config = {'conv_kernel': 4, 'rms_norm_eps': 1e-06, 'scaling_factor': 
-    1.0, 'dim': None, 'base': 10000, 'max_position_embeddings': 16, 'eps': 
-    1e-05, 'dropout': 0.1, 'num_heads': 4, 'intermediate_size': None}
+import torch.nn.functional as F
+
+
+class FastTTTLinear(GAUBase):
+    """
+    **FastTTTLinear**
+
+    FastTTTLinear is a modified version of TTTLinear that integrates Gated Linear Attention (GLA)
+    and concepts from the RWKV architecture to enhance computational efficiency for long sequences.
+    This implementation addresses inefficiency concerns by vectorizing operations, eliminating
+    Python-level for-loops, and optimizing tensor computations.
+
+    **Key Features:**
+
+    - **Gated Linear Attention**: Uses data-dependent gates to modulate queries and keys, enabling linear attention computation.
+    - **Vectorized Computations**: Eliminates Python for-loops by using efficient tensor operations.
+    - **Normalization**: Applies LayerNorm to queries and keys to stabilize computations.
+    - **Adjustments for Numerical Stability**: Uses appropriate scaling, activation functions, and safeguards.
+    - **Local Convolutional Augmentation**: Applies causal convolution to prevent information leakage and enhance local context.
+
+    **Args:**
+        embed_dim (int): Embedding dimension.
+        block_loc (tuple): Location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): Device on which to allocate tensors.
+        dtype (torch.dtype, optional): Data type of the tensors.
+        num_attention_heads (int, optional): Number of attention heads. Default: 4.
+
+    **Inputs:**
+        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Outputs:**
+        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Example:**
+
+        >>> fast_ttt_linear = FastTTTLinear(embed_dim=512, block_loc=(0, 0), kwarg_all={})
+        >>> X = torch.randn(2, 1024, 512)
+        >>> Y, Z = fast_ttt_linear(X)
+
+    **References:**
+
+    - Yang, S., et al. (2023). *Gated Linear Attention Transformers with Hardware-Efficient Training*.
+    - Peng, B., et al. (2023). *RWKV: Reinventing RNNs for the Transformer Era*.
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, num_attention_heads=4, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.num_heads = num_attention_heads
+        assert embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_attention_heads'
+        self.head_dim = embed_dim // self.num_heads
+        self.embed_dim = embed_dim
+        self.W_Q = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.W_K = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.W_V = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.gate_Q = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+            factory_kwargs)
+        self.gate_K = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+            factory_kwargs)
+        self.output_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
+            self.factory_kwargs)
+        self.local_conv = nn.Conv1d(in_channels=embed_dim, out_channels=
+            embed_dim, kernel_size=3, padding=2, bias=True, **self.
+            factory_kwargs)
+        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.q_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
+        self.k_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
+        nn.init.xavier_uniform_(self.W_Q.weight)
+        nn.init.xavier_uniform_(self.W_K.weight)
+        nn.init.xavier_uniform_(self.W_V.weight)
+        nn.init.xavier_uniform_(self.output_proj.weight)
+        nn.init.xavier_uniform_(self.gate_Q.weight)
+        nn.init.zeros_(self.gate_Q.bias)
+        nn.init.xavier_uniform_(self.gate_K.weight)
+        nn.init.zeros_(self.gate_K.bias)
+        nn.init.xavier_uniform_(self.local_conv.weight)
+        nn.init.zeros_(self.local_conv.bias)
+
+    def _forward(self, X, **Z):
+        B, L, D = X.size()
+        H = self.num_heads
+        D_H = self.head_dim
+        X_conv = self.local_conv(X.transpose(1, 2))
+        X_conv = X_conv.transpose(1, 2)[:, :L, :]
+        X = X + X_conv
+        Q = self.W_Q(X)
+        K = self.W_K(X)
+        V = self.W_V(X)
+        Q = self.q_norm(Q)
+        K = self.k_norm(K)
+        G_Q = torch.sigmoid(self.gate_Q(X))
+        G_K = torch.sigmoid(self.gate_K(X))
+        Q = Q * G_Q
+        K = K * G_K
+        Q = Q.view(B, L, H, D_H).transpose(1, 2)
+        K = K.view(B, L, H, D_H).transpose(1, 2)
+        V = V.view(B, L, H, D_H).transpose(1, 2)
+        Q_prime = F.elu(Q) + 1
+        K_prime = F.elu(K) + 1
+        K_cumsum = K_prime.cumsum(dim=2)
+        KV_cumsum = (K_prime * V).cumsum(dim=2)
+        epsilon = 1e-06
+        denominator = torch.sum(Q_prime * K_cumsum, dim=-1, keepdim=True
+            ) + epsilon
+        numerator = Q_prime * KV_cumsum
+        attn_output = numerator / denominator
+        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)
+        attn_output = self.output_proj(attn_output)
+        output = X + attn_output
+        output, Z = self.norm(output, **Z)
+        return output, Z
+
+
+import torch.nn.functional as F
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
+from transformers.activations import ACT2FN
+
+
+class SwiGluMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, intermediate_size=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.hidden_size = embed_dim
+        self.intermediate_size = (intermediate_size if intermediate_size is not
+            None else int(embed_dim * 2.5))
+        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
+            bias=False, **self.factory_kwargs)
+        self.act_fn = ACT2FN['silu']
+
+    def _forward(self, X, **Z):
+        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
+            up_proj(X))
+        return down_proj
+
+
+gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
+    'rms_norm_eps': 1e-06, 'intermediate_size': None}
 
 
 
