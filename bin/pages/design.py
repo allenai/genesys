@@ -93,7 +93,6 @@ def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=F
         evosys.switch_ckpt(evoname) 
     exp_log_ref = evosys.CM.get_log_ref()
     if resume:
-        # TODO: add lock here
         unfinished_designs = set(evosys.ptree.get_unfinished_designs())
         unfinished_designs -= set(running_sessions)
         if len(unfinished_designs) > 0:
