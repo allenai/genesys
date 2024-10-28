@@ -520,14 +520,13 @@ class FirestoreManager:
         return f'{proposed}, {reranked}'
 
     def get_design_sessions_index(self):
-        print(self.log_doc_ref,self.evoname)
         return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
 
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
         log_ref.set(sessdata,merge=True)
-        index_ref = self.get_design_sessions_index()
+        index_ref,_ = self.get_design_sessions_index()
         index_ref.set({sess_id:{
             'progress':self.to_session_progress(sessdata),
             'mode': sessdata.get('mode','')
@@ -535,11 +534,10 @@ class FirestoreManager:
         print(f'Uploaded session {sess_id} to DB')
 
     def download_design_session(self,node_id): # download all sessions by node id
-        index_ref = self.get_design_sessions_index()
-        index = index_ref.get().to_dict()
+        _,all_index = self.get_design_sessions_index()
         sess_dir = U.pjoin(self.db_dir,'sessions')
-        for sess_id in index:
-            if index[sess_id].get('node_id','')==node_id:
+        for sess_id in all_index:
+            if all_index[sess_id].get('node_id','')==node_id:
                 sessdata=self.get_design_session(sess_id)
                 if sessdata:
                     U.save_json(sessdata,U.pjoin(sess_dir,sess_id,'metadata.json'))
@@ -589,17 +587,14 @@ class FirestoreManager:
             
     
     def sync_sessions_to_db(self,overwrite=False,verbose=False):
-        index_ref = self.get_design_sessions_index()
-        index = index_ref.get().to_dict()
-        if index is None:
-            return
+        _,all_index = self.get_design_sessions_index()
         sessions_dir=U.pjoin(self.db_dir,'sessions')
         sessions=os.listdir(sessions_dir)
         for sess_id in sessions:
             sessdata = U.load_json(U.pjoin(sessions_dir,sess_id, 'metadata.json'))
             if sessdata:
-                if sess_id in index:
-                    if index[sess_id].get('progress','')==self.to_session_progress(sessdata):
+                if sess_id in all_index:
+                    if all_index[sess_id].get('progress','')==self.to_session_progress(sessdata):
                         continue
                 self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
 
@@ -2220,6 +2215,18 @@ class PhylogeneticTree:
 
 
 
+def read_index(latest_index,index_collection_ref):
+    n_chunks = latest_index.split('_')
+    n_chunks = 1 if len(n_chunks)==1 else int(n_chunks[-1])+1
+    index={}
+    for i in range(n_chunks):
+        chunk_name = f'index_{i}' if i>0 else 'index'
+        chunk_ref = index_collection_ref.document(chunk_name)
+        chunk_doc = chunk_ref.get()
+        if chunk_doc.exists:
+            index.update(chunk_doc.to_dict())
+    return index
+
 def index_chunk_tool(index_log_ref,index_collection_ref,key,chunk_size=500):
     # index_log_ref: a doc where the latest_index is stored
     # index_collection_ref: a collection where the indices are stored
@@ -2234,15 +2241,15 @@ def index_chunk_tool(index_log_ref,index_collection_ref,key,chunk_size=500):
     index_doc = index_ref.get()
     if not index_doc.exists:
         index_ref.set({})
-        return index_ref
+        return index_ref,{}
     index = index_doc.to_dict()
-    if len(index) > chunk_size: # index or index_1, index_2, ...
+    if len(index) >= chunk_size: # index or index_1, index_2, ...
         index_nums = latest_index.split('_')
         index_num = '1' if len(index_nums)==1 else str(int(index_nums[-1])+1)
         latest_index = f'index_{index_num}'
         index_ref = index_collection_ref.document(latest_index)
         index_log_ref.set({f'{key}_latest_index':latest_index},merge=True)
-    return index_ref
+    return index_ref,read_index(latest_index,index_collection_ref)
 
 
 
@@ -2358,13 +2365,9 @@ class ConnectionManager:
 
     def get_active_design_sessions(self):
         active_design_sessions = {}
-        index_ref = self.get_design_sessions_index()
-        index_term = index_ref.get()
-        if not index_term.exists:
-            return {}
-        index_term = index_term.to_dict()
-        for sess_id in index_term:
-            index_item = index_term[sess_id]
+        _,all_index = self.get_design_sessions_index()
+        for sess_id in all_index:
+            index_item = all_index[sess_id]
             if index_item.get('status',None) in DESIGN_ACTIVE_STATES:
                 # check if it is zombie, if it is, update the status and skip
                 _,status,heartbeat = self.get_session_log(sess_id)
@@ -2376,13 +2379,9 @@ class ConnectionManager:
     
     def get_running_verifications(self):
         running_verifications = {}
-        index_ref = self.get_verifications_index()
-        index_term = index_ref.get()
-        if not index_term.exists:
-            return {}
-        index_term = index_term.to_dict()
-        for sess_id in index_term:
-            index_item = index_term[sess_id]
+        _,all_index = self.get_verifications_index()
+        for sess_id in all_index:
+            index_item = all_index[sess_id]
             if index_item.get('status',None) in VERIFY_ACTIVE_STATES:
                 _,status,heartbeat = self.get_verification_log(sess_id)
                 if status != 'ZOMBIE':
@@ -3060,7 +3059,7 @@ class EvolutionSystem(exec_utils.System):
             latest_log = str(time.time())
             sess_id = f'{design_id}_{scale}'
             log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
-            index_ref = self.CM.get_verifications_index()
+            index_ref,all_index = self.CM.get_verifications_index()
             def log_fn(msg,status='RUNNING'):
                 ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
                 url='N/A'

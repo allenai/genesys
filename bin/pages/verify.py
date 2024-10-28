@@ -153,7 +153,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
         finally:
             # create index term
             sess_id = f'{design_id}_{scale}'
-            index_ref = evosys.CM.get_verifications_index()
+            index_ref,_ = evosys.CM.get_verifications_index()
             index_ref.set({sess_id:{
                 'timestamp':str(time.time()),
                 'status':'RUNNING',
@@ -174,7 +174,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
 
 def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
     exp_log_ref = evosys.CM.get_log_ref()
-    index_ref = evosys.CM.get_verifications_index()
+    index_ref,_ = evosys.CM.get_verifications_index()
     index_ref.set({sess_id:{'node_id':node_id,'pid':pid}},merge=True)
 
     # Start heartbeat

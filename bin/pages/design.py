@@ -85,7 +85,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
     if evosys.evoname != evoname: # FIXME: initialize evosys inside
         evosys.switch_ckpt(evoname)
     exp_log_ref = evosys.CM.get_log_ref()
-    index_ref = evosys.CM.get_design_sessions_index()
+    index_ref,_ = evosys.CM.get_design_sessions_index()
     index_ref.set({sess_id:{'node_id':node_id,'pid':pid}},merge=True)
     # Start heartbeat
     try:

@@ -223,7 +223,7 @@ class Listener:
                             project=wandb_ids['project']
                             entity=wandb_ids['entity']
                             url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                            index_ref = self.evosys.CM.get_verifications_index()
+                            index_ref,_ = self.evosys.CM.get_verifications_index()
                             index_ref.set({sess_id:{'W&B Training Run':url}},merge=True)
                 print(f"There is already a verification job running. Please wait for it to finish.")
                 return None,None
