@@ -2304,7 +2304,7 @@ class ConnectionManager:
         index_term = index_term.to_dict()
         for sess_id in index_term:
             index_item = index_term[sess_id]
-            if index_item['status'] in DESIGN_ACTIVE_STATES:
+            if index_item.get('status',None) in DESIGN_ACTIVE_STATES:
                 # check if it is zombie, if it is, update the status and skip
                 _,status,heartbeat = self.get_session_log(sess_id)
                 if status != 'ZOMBIE':
@@ -2322,7 +2322,7 @@ class ConnectionManager:
         index_term = index_term.to_dict()
         for sess_id in index_term:
             index_item = index_term[sess_id]
-            if index_item['status'] in VERIFY_ACTIVE_STATES:
+            if index_item.get('status',None) in VERIFY_ACTIVE_STATES:
                 _,status,heartbeat = self.get_verification_log(sess_id)
                 if status != 'ZOMBIE':
                     if status:

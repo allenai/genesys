@@ -1,294 +1,147 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
 from model_discovery.model.utils.modules import GABBase
-from einops import rearrange
-from transformers.activations import ACT2FN
-from typing import TYPE_CHECKING, Optional, Tuple
+import math
+import torch.nn.functional as F
+from einops import rearrange, repeat
+from torchtune.modules import RMSNorm
 
 
-def naive_recurrent_rwkv6(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor,
-    w: torch.Tensor, u: torch.Tensor, scale: Optional[float]=None):
-    orig_dtype = q.dtype
-    B, H, T, K, V = *q.shape, v.shape[-1]
-    q, k, v, w, u = map(lambda x: x.float(), (q, k, v, w, u))
-    h = torch.zeros(B, H, K, V, dtype=torch.float32, device=q.device)
-    o = torch.zeros_like(v)
-    if scale is None:
-        scale = K ** -0.5
-    for i in range(T):
-        q_i = q[:, :, i, :] * scale
-        k_i = k[:, :, i]
-        v_i = v[:, :, i, :]
-        w_i = w[:, :, i].exp()
-        kv_i = k_i[..., None] * v_i[..., None, :]
-        o_i = (h + u[None, ..., None] * kv_i) * q_i[..., None]
-        o[:, :, i] = o_i.sum(-2)
-        h = h * w_i[..., None] + kv_i
-    return o.to(orig_dtype)
+def segsum_unstable(x):
+    """Naive segment sum calculation."""
+    T = x.size(-1)
+    x_cumsum = torch.cumsum(x, dim=-1)
+    x_segsum = x_cumsum[..., :, None] - x_cumsum[..., None, :]
+    mask = torch.tril(torch.ones(T, T, device=x.device, dtype=bool), diagonal=0
+        )
+    x_segsum = x_segsum.masked_fill(~mask, -torch.inf)
+    return x_segsum
 
 
-def naive_chunk_rwkv6(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, w:
-    torch.Tensor, u: torch.Tensor, chunk_size: int=32):
-    assert q.shape[-2] % chunk_size == 0
-    orig_dtype = q.dtype
-    num_chunk = q.shape[-2] // chunk_size
-    u = u.unsqueeze(0)
-    q, k, v, w = map(lambda x: rearrange(x, 'b h (n c) d -> b h n c d', c=
-        chunk_size).float(), (q, k, v, w))
-    w_cumsum = w.cumsum(-2)
-    kw = k * (w_cumsum[..., -1, None, :] - w_cumsum).exp()
-    wkv = kw.transpose(-1, -2) @ v
-    wkv_new = torch.zeros_like(wkv)
-    for i in range(num_chunk - 1):
-        wkv_new[:, :, i + 1] = wkv_new[:, :, i].clone() * w_cumsum[:, :, i,
-            -1, :, None].exp() + wkv[:, :, i]
-    o_inter = torch.einsum('b h n d p, b h n c d -> b h n c p', wkv_new, q *
-        (w_cumsum - w).exp())
-    o_intra = torch.zeros_like(o_inter)
-    for i in range(chunk_size):
-        attn = (q[:, :, :, i, None] * k * (w_cumsum[:, :, :, i, None] - w[:,
-            :, :, i, None] - w_cumsum).exp()).sum(-1)
-        mask = (torch.arange(0, chunk_size) < i).to(attn.device)
-        attn.masked_fill_(~mask, 0)
-        intra_inter_o = (attn.unsqueeze(-1) * v).sum(-2)
-        intra_intra_o = (q[:, :, :, i] * u.unsqueeze(2) * k[:, :, :, i]).sum(-1
-            ).unsqueeze(-1) * v[:, :, :, i]
-        o_intra[:, :, :, i] = intra_inter_o + intra_intra_o
-    o = o_inter + o_intra
-    return rearrange(o, 'b h n c d -> b h (n c) d').to(orig_dtype)
+def segsum(x):
+    """More stable segment sum calculation."""
+    T = x.size(-1)
+    x = repeat(x, '... d -> ... d e', e=T)
+    mask = torch.tril(torch.ones(T, T, device=x.device, dtype=bool),
+        diagonal=-1)
+    x = x.masked_fill(~mask, 0)
+    x_segsum = torch.cumsum(x, dim=-2)
+    mask = torch.tril(torch.ones(T, T, device=x.device, dtype=bool), diagonal=0
+        )
+    x_segsum = x_segsum.masked_fill(~mask, -torch.inf)
+    return x_segsum
 
 
-class RWKV6Attention(nn.Module):
+def pad_to_block_length(X, block_len):
+    pad_len = (block_len - X.shape[1] % block_len) % block_len
+    if pad_len > 0:
+        padding = torch.zeros(X.shape[0], pad_len, *X.shape[2:], dtype=X.
+            dtype, device=X.device)
+        X = torch.cat([X, padding], dim=1)
+    return X
 
-    def __init__(self, hidden_size: int=1024, num_heads: int=4, gate_fn:
-        str='swish', proj_low_rank_dim: int=32, gate_low_rank_dim: int=64,
-        elementwise_affine: Optional[bool]=True, norm_eps: float=1e-05,
-        chunk_size: int=32, device=None, dtype=None, **kwargs):
+
+def ssd_minimal_discrete(X, A, B, C, block_len, initial_states=None):
+    """
+    Arguments:
+        X: (batch, length, n_heads, d_head)
+        A: (batch, length, n_heads)
+        B: (batch, length, n_heads, d_state)
+        C: (batch, length, n_heads, d_state)
+    Return:
+        Y: (batch, length, n_heads, d_head)
+    """
+    assert X.dtype == A.dtype == B.dtype == C.dtype
+    X, A, B, C = [rearrange(x, 'b (c l) ... -> b c l ...', l=block_len) for
+        x in (X, A, B, C)]
+    A = rearrange(A, 'b c l h -> b h c l')
+    A_cumsum = torch.cumsum(A, dim=-1)
+    L = torch.exp(segsum(A))
+    Y_diag = torch.einsum('bclhn,bcshn,bhcls,bcshp->bclhp', C, B, L, X)
+    decay_states = torch.exp(A_cumsum[:, :, :, -1:] - A_cumsum)
+    states = torch.einsum('bclhn,bhcl,bclhp->bchpn', B, decay_states, X)
+    if initial_states is None:
+        initial_states = torch.zeros_like(states[:, :1])
+    states = torch.cat([initial_states, states], dim=1)
+    decay_chunk = torch.exp(segsum(F.pad(A_cumsum[:, :, :, -1], (1, 0))))
+    new_states = torch.einsum('bhzc,bchpn->bzhpn', decay_chunk, states)
+    states, final_state = new_states[:, :-1], new_states[:, -1]
+    state_decay_out = torch.exp(A_cumsum)
+    Y_off = torch.einsum('bclhn,bchpn,bhcl->bclhp', C, states, state_decay_out)
+    Y = rearrange(Y_diag + Y_off, 'b c l h p -> b (c l) h p')
+    return Y, final_state
+
+
+class Mamba2Simple(nn.Module):
+
+    def __init__(self, d_model, d_state=64, d_conv=4, expand=2, headdim=128,
+        ngroups=1, A_init_range=(1, 16), dt_min=0.001, dt_max=0.1,
+        dt_init_floor=0.0001, chunk_size=256, device=None, dtype=None):
+        factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__()
-        self.hidden_size = hidden_size
-        self.num_heads = num_heads
-        self.proj_low_rank_dim = proj_low_rank_dim
-        self.gate_low_rank_dim = gate_low_rank_dim
+        self.d_model = d_model
+        self.d_state = d_state
+        self.d_conv = d_conv
+        self.expand = expand
+        self.d_inner = self.expand * self.d_model
+        self.headdim = headdim
+        self.ngroups = ngroups
+        assert self.d_inner % self.headdim == 0
+        self.nheads = self.d_inner // self.headdim
         self.chunk_size = chunk_size
-        self.key_dim = hidden_size // 2
-        self.value_dim = hidden_size
-        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'
-        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'
-        self.head_qk_dim = self.key_dim // num_heads
-        self.head_v_dim = self.value_dim // num_heads
-        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
-        self.x_proj = nn.Sequential(LerpLinear(hidden_size, 
-            proj_low_rank_dim * 5, device=device, dtype=dtype), nn.Tanh(),
-            nn.Linear(proj_low_rank_dim * 5, hidden_size, bias=False,
-            device=device, dtype=dtype))
-        self.x_bias = nn.Parameter(torch.zeros(5, hidden_size, device=
-            device, dtype=dtype))
-        self.r_proj = DDLerpLinear(hidden_size, self.key_dim, device=device,
-            dtype=dtype)
-        self.w_proj = DDLerpLinear(hidden_size, self.key_dim, low_rank_dim=
-            gate_low_rank_dim, device=device, dtype=dtype)
-        self.k_proj = DDLerpLinear(hidden_size, self.key_dim, device=device,
-            dtype=dtype)
-        self.v_proj = DDLerpLinear(hidden_size, self.value_dim, device=
-            device, dtype=dtype)
-        self.g_proj = DDLerpLinear(hidden_size, self.value_dim,
-            low_rank_dim=gate_low_rank_dim, device=device, dtype=dtype)
-        self.bonus = nn.Parameter(torch.zeros(num_heads, self.head_qk_dim,
-            device=device, dtype=dtype))
-        self.g_norm = nn.LayerNorm(self.value_dim, elementwise_affine=
-            elementwise_affine, eps=norm_eps, device=device, dtype=dtype)
-        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,
-            device=device, dtype=dtype)
-        self.gate_fn = ACT2FN[gate_fn]
-        self.apply(self._initialize_weights)
+        d_in_proj = (2 * self.d_inner + 2 * self.ngroups * self.d_state +
+            self.nheads)
+        self.in_proj = nn.Linear(self.d_model, d_in_proj, bias=True, **
+            factory_kwargs)
+        conv_dim = self.d_inner + 2 * self.ngroups * self.d_state
+        self.conv1d = nn.Conv1d(in_channels=conv_dim, out_channels=conv_dim,
+            bias=True, kernel_size=d_conv, groups=conv_dim, padding=d_conv -
+            1, **factory_kwargs)
+        self.act = nn.SiLU()
+        dt = torch.exp(torch.rand(self.nheads, **factory_kwargs) * (math.
+            log(dt_max) - math.log(dt_min)) + math.log(dt_min))
+        dt = torch.clamp(dt, min=dt_init_floor)
+        inv_dt = dt + torch.log(-torch.expm1(-dt))
+        self.dt_bias = nn.Parameter(inv_dt)
+        self.dt_bias._no_weight_decay = True
+        assert A_init_range[0] > 0 and A_init_range[1] >= A_init_range[0]
+        A = torch.empty(self.nheads, dtype=torch.float32, device=device
+            ).uniform_(*A_init_range)
+        A_log = torch.log(A).to(dtype=dtype)
+        self.A_log = nn.Parameter(A_log)
+        self.A_log._no_weight_decay = True
+        self.norm = nn.LayerNorm(self.d_inner, eps=1e-05, **factory_kwargs)
+        self.silu = nn.SiLU()
+        self.out_proj = nn.Linear(self.d_inner, self.d_model, bias=True, **
+            factory_kwargs)
 
-    def _initialize_weights(self, module: nn.Module):
-        if getattr(module, '_is_hf_initialized', False):
-            return
-        if isinstance(module, nn.Linear):
-            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)
-            if module.bias is not None:
-                nn.init.zeros_(module.bias)
-        if isinstance(module, nn.Parameter):
-            nn.init.xavier_uniform_(module, gain=2 ** -2.5)
-        module._is_hf_initialized = True
-
-    def pad_input(self, X):
-        _seq_len = X.shape[-2]
-        pad_len = (X.shape[-2] + self.chunk_size - 1
-            ) // self.chunk_size * self.chunk_size - X.shape[-2]
-        return F.pad(X, (0, 0, 0, pad_len)), _seq_len
-
-    def forward(self, hidden_states: torch.Tensor, **kwargs) ->Tuple[torch.
-        Tensor]:
-        hidden_states, _seq_len = self.pad_input(hidden_states)
-        batch_size, seq_len, hidden_size = hidden_states.shape
-        last_state = None
-        if hidden_states.shape[1] == 1 and last_state is not None:
-            shifted = last_state[0].unsqueeze(1)
-        else:
-            shifted = self.time_shift(hidden_states)
-            if last_state is not None:
-                shifted[:, 0] = last_state[0]
-        delta = shifted - hidden_states
-        x = self.x_proj[0](hidden_states, delta).view(batch_size, seq_len, 
-            -1, self.proj_low_rank_dim)
-        x = torch.einsum('b l n r, h n r-> b l n h', self.x_proj[1](x),
-            self.x_proj[2].weight.view(hidden_size, 5, -1))
-        r, w, k, v, g = x.add_(self.x_bias).unbind(-2)
-        r = self.r_proj(hidden_states, r, delta)
-        w = self.w_proj(hidden_states, w, delta)
-        k = self.k_proj(hidden_states, k, delta)
-        v = self.v_proj(hidden_states, v, delta)
-        g = self.g_proj(hidden_states, g, delta)
-        r, w, k, v = map(lambda x: rearrange(x, 'b l (h d) -> b h l d', h=
-            self.num_heads), (r, w, k, v))
-        w = -torch.exp(w)
-        u = self.bonus
-        o = naive_chunk_rwkv6(r, k, v, w, u, chunk_size=self.chunk_size)
-        o = rearrange(o, 'b h l d -> b l (h d)')
-        o = self.g_norm(o)
-        o = o * self.gate_fn(g)
-        o = self.o_proj(o)
-        o = o[:, :_seq_len]
-        return o
-
-    def init_state(self, batch_size: int) ->Tuple[torch.Tensor]:
-        param = next(self.parameters())
-        state = [param.new_zeros(batch_size, self.hidden_size), param.
-            new_zeros(batch_size, self.num_heads, self.head_qk_dim, self.
-            head_v_dim)]
-        return state
-
-    def state_size(self, **kwargs) ->int:
-        state_size = self.key_dim * self.head_v_dim
-        return state_size
-
-
-class LoRA(nn.Module):
-
-    def __init__(self, input_dim: int, output_dim: int, low_rank_dim: int,
-        bias: Optional[bool]=True, device=None, dtype=None):
-        super().__init__()
-        self.input_dim = input_dim
-        self.output_dim = output_dim
-        self.low_rank_dim = low_rank_dim
-        self.bias = bias
-        self.lora = nn.Sequential(nn.Linear(input_dim, low_rank_dim, bias=
-            False, device=device, dtype=dtype), nn.Tanh(), nn.Linear(
-            low_rank_dim, output_dim, bias=bias, device=device, dtype=dtype))
-
-    def __repr__(self) ->str:
-        s = f'{self.__class__.__name__}('
-        s += (
-            f'input_dim={self.input_dim}, low_rank_dim={self.low_rank_dim}, output_dim={self.output_dim}'
-            )
-        if not self.bias:
-            s += f', bias={self.bias}'
-        s += ')'
-        return s
-
-    def forward(self, x: torch.Tensor) ->torch.Tensor:
-        return self.lora(x)
-
-
-class LerpLinear(nn.Module):
-
-    def __init__(self, input_dim: int, output_dim: int, low_rank_dim:
-        Optional[int]=None, device=None, dtype=None):
-        super().__init__()
-        self.input_dim = input_dim
-        self.output_dim = output_dim
-        self.low_rank_dim = low_rank_dim
-        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
-        if low_rank_dim is None:
-            self.linear = nn.Linear(input_dim, output_dim, bias=False,
-                device=device, dtype=dtype)
-        else:
-            self.linear = LoRA(input_dim, output_dim, low_rank_dim, device=
-                device, dtype=dtype)
-        self.mu = nn.Parameter(torch.zeros(input_dim, device=device, dtype=
-            dtype))
-
-    def __repr__(self) ->str:
-        s = f'{self.__class__.__name__}({self.input_dim}, {self.output_dim}'
-        if self.low_rank_dim is not None:
-            s += f', low_rank_dim={self.low_rank_dim}'
-        s += ')'
-        return s
-
-    def forward(self, x: torch.Tensor, delta: Optional[torch.Tensor]=None
-        ) ->torch.Tensor:
-        if delta is None:
-            shifted = self.time_shift(x)
-            if len(shifted.shape) == 2:
-                shifted = shifted.unsqueeze(1)
-            delta = shifted - x
-        return self.linear(x + delta * self.mu)
-
-
-class DDLerpLinear(nn.Module):
-
-    def __init__(self, input_dim: int, output_dim: int, low_rank_dim:
-        Optional[int]=None, device=None, dtype=None):
-        super().__init__()
-        self.input_dim = input_dim
-        self.output_dim = output_dim
-        self.low_rank_dim = low_rank_dim
-        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
-        if low_rank_dim is None:
-            self.linear = nn.Linear(input_dim, output_dim, bias=False,
-                device=device, dtype=dtype)
-        else:
-            self.linear = LoRA(input_dim, output_dim, low_rank_dim, device=
-                device, dtype=dtype)
-
-    def __repr__(self) ->str:
-        s = f'{self.__class__.__name__}({self.input_dim}, {self.output_dim}'
-        if self.low_rank_dim is not None:
-            s += f', low_rank_dim={self.low_rank_dim}'
-        s += ')'
-        return s
-
-    def forward(self, x: torch.Tensor, mu: torch.Tensor, delta: Optional[
-        torch.Tensor]=None) ->torch.Tensor:
-        if delta is None:
-            shifted = self.time_shift(x)
-            if len(shifted.shape) == 2:
-                shifted = shifted.unsqueeze(1)
-            delta = shifted - x
-        return self.linear(x + delta * mu)
-
-
-class RWKV6FeedForward(nn.Module):
-
-    def __init__(self, hidden_size: int, device=None, dtype=None):
-        super().__init__()
-        self.hidden_size = hidden_size
-        hidden_ratio = 3.5
-        intermediate_size = int(hidden_size * hidden_ratio)
-        intermediate_size = 32 * ((intermediate_size + 32 - 1) // 32)
-        self.hidden_ratio = hidden_ratio
-        self.intermediate_size = intermediate_size
-        self.time_shift = nn.ZeroPad2d((0, 0, 1, -1))
-        self.key = LerpLinear(hidden_size, intermediate_size, device=device,
-            dtype=dtype)
-        self.value = nn.Linear(intermediate_size, hidden_size, bias=False,
-            device=device, dtype=dtype)
-        self.receptance = LerpLinear(hidden_size, hidden_size, device=
-            device, dtype=dtype)
-        self.relu = nn.ReLU()
-
-    def forward(self, x: torch.Tensor) ->torch.Tensor:
-        shifted = self.time_shift(x)
-        delta = shifted - x
-        _key = self.key(x, delta)
-        r = self.relu(_key)
-        key = r * r
-        value = self.value(key)
-        receptance = self.receptance(x, delta)
-        return receptance.sigmoid() * value
+    def forward(self, u):
+        """
+        u: (B, L, D)
+        Returns: same shape as u
+        """
+        batch, _seqlen, dim = u.shape
+        u = pad_to_block_length(u, self.chunk_size)
+        seqlen = u.shape[1]
+        zxbcdt = self.in_proj(u)
+        A = -torch.exp(self.A_log)
+        z, xBC, dt = torch.split(zxbcdt, [self.d_inner, self.d_inner + 2 *
+            self.ngroups * self.d_state, self.nheads], dim=-1)
+        dt = F.softplus(dt + self.dt_bias)
+        xBC = self.act(self.conv1d(xBC.transpose(1, 2)).transpose(1, 2))
+        xBC = xBC[:, :seqlen, :]
+        x, B, C = torch.split(xBC, [self.d_inner, self.ngroups * self.
+            d_state, self.ngroups * self.d_state], dim=-1)
+        x = rearrange(x, 'b l (h p) -> b l h p', p=self.headdim)
+        B = rearrange(B, 'b l (g n) -> b l g n', g=self.ngroups)
+        C = rearrange(C, 'b l (g n) -> b l g n', g=self.ngroups)
+        y, _ = ssd_minimal_discrete(x * dt.unsqueeze(-1), A * dt, B, C,
+            self.chunk_size)
+        y = rearrange(y, 'b l h p -> b l (h p)')
+        y = self.norm(y * self.silu(z))
+        out = self.out_proj(y)
+        out = out[:, :_seqlen, :]
+        return out
 
 
 class GAB(GABBase):
@@ -298,33 +151,30 @@ class GAB(GABBase):
         Constraints:  Causal, differentiable, parameter number, complexity, parallelizable
     """
 
-    def __init__(self, embed_dim: int, block_loc: tuple, device=None, dtype
-        =None, num_heads: int=4, proj_low_rank_dim: int=32,
-        gate_low_rank_dim: int=64, norm_eps: float=1e-05, **kwargs):
+    def __init__(self, embed_dim: int, block_loc, device=None, dtype=None,
+        d_state=64, d_conv=4, expand=2, headdim=128, ngroups=1,
+        A_init_range=(1, 16), dt_min=0.001, dt_max=0.1, dt_init_floor=
+        0.0001, chunk_size=256, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.hidden_size = embed_dim
-        self.attn_norm = nn.LayerNorm(self.hidden_size, bias=True, eps=
-            norm_eps, **factory_kwargs)
-        self.attn = RWKV6Attention(hidden_size=self.hidden_size, num_heads=
-            num_heads, proj_low_rank_dim=proj_low_rank_dim,
-            gate_low_rank_dim=gate_low_rank_dim, norm_eps=norm_eps, **
-            factory_kwargs)
-        self.ffn_norm = nn.LayerNorm(self.hidden_size, bias=True, eps=
-            norm_eps, **factory_kwargs)
-        self.ffn = RWKV6FeedForward(hidden_size=self.hidden_size, **
-            factory_kwargs)
+        self.mamba1 = Mamba2Simple(embed_dim, d_state, d_conv, expand,
+            headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor,
+            chunk_size, **factory_kwargs)
+        self.mamba2 = Mamba2Simple(embed_dim, d_state, d_conv, expand,
+            headdim, ngroups, A_init_range, dt_min, dt_max, dt_init_floor,
+            chunk_size, **factory_kwargs)
+        self.norm1 = RMSNorm(embed_dim, eps=1e-05).to(**factory_kwargs)
+        self.norm2 = RMSNorm(embed_dim, eps=1e-05).to(**factory_kwargs)
 
     def _forward(self, X, **kwargs):
-        hidden_states = self.attn_norm(X)
-        X = self.attn(hidden_states) + X
-        hidden_states = self.ffn_norm(X)
-        X = self.ffn(hidden_states) + X
+        X = self.mamba1(self.norm1(X)) + X
+        X = self.mamba2(self.norm2(X)) + X
         return X
 
 
-gab_config = {'num_heads': 4, 'proj_low_rank_dim': 32, 'gate_low_rank_dim':
-    64, 'norm_eps': 1e-05}
+gab_config = {'d_state': 64, 'd_conv': 4, 'expand': 2, 'headdim': 128,
+    'ngroups': 1, 'A_init_range': (1, 16), 'dt_min': 0.001, 'dt_max': 0.1,
+    'dt_init_floor': 0.0001, 'chunk_size': 256}
 
 
 
