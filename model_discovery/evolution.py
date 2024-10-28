@@ -1899,12 +1899,12 @@ class PhylogeneticTree:
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
         self.GD.new_term(acronym,tree)
-        # Tune in all target scales
+        # Tune in all target scales, XXX: seems no need for now
         if status=='implemented':
             codes = {}
-            _code = tree.compose()
-            for scale in self.target_scales:
-                codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
+            # _code = tree.compose()
+            # for scale in self.target_scales:
+            #     codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
             U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()
