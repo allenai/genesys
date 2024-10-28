@@ -9,42 +9,53 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = TTT(embed_dim=embed_dim, block_loc=block_loc, kwarg_all
-            =kwargs, **factory_kwargs, **kwargs)
+        self.root = EventVQ(embed_dim=embed_dim, block_loc=block_loc,
+            kwarg_all=kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
         X, Z = self.root(X, **Z)
         return X, Z
 
 
-import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
-from typing import Any, Dict, Optional, Tuple, Union
 import torch.nn.functional as F
-from transformers.utils import logging
 
 
-class TTT(GAUBase):
+class EventVQ(GAUBase):
     """
-    Problem Statement
-This paper addresses the challenge of long context in recurrent neural networks (RNNs). While RNNs offer linear computational complexity, their performance suffers in long sequences due to the limited expressive power of their fixed-size hidden states. This limitation contrasts with Transformers, which excel in long-context scenarios but have quadratic complexity.
+    EventVQ Block: Event-Driven Vector Quantized Language Model Block
 
-Main Claims
-The paper proposes a new class of sequence modeling layers called Test-Time Training (TTT) layers that offer both linear complexity and expressive hidden states.
-The key idea is to make the hidden state a machine learning model itself, where the update rule is a step of self-supervised learning. This allows for continuous training of the hidden state even on test sequences.
-The paper introduces two instantiations of TTT layers: TTT-Linear, with a linear model as the hidden state, and TTT-MLP, with a two-layer multi-layer perceptron (MLP) as the hidden state.
-Both TTT-Linear and TTT-MLP demonstrate competitive performance compared to strong Transformer and Mamba (a modern RNN) baselines across various model sizes.
-Unlike Mamba, both TTT layers show a continuous decrease in perplexity as they condition on more tokens in long sequences.
-TTT-Linear, with preliminary systems optimization, is faster than Transformers at 8k context and matches Mamba in wall-clock time.
-Methodology
-The paper introduces TTT layers, which use a self-supervised learning approach to update the hidden state. The update rule is effectively a gradient step on a self-supervised loss function, allowing for "training" of the hidden state at test time. Two implementations are explored: TTT-Linear, where the hidden state is a linear model, and TTT-MLP, where the hidden state is a two-layer MLP. The paper also proposes mini-batch TTT and a dual form to improve hardware efficiency and speed up computations.
+    This block orchestrates the main components of the EventVQ design,
+    integrating event detection, vector quantization, and attention mechanisms
+    to create an efficient and adaptive language model block.
 
-Key Results
-In short-context (2k and 8k tokens) experiments on the Pile dataset, both TTT-Linear and TTT-MLP demonstrate performance comparable to or exceeding Mamba and Transformer baselines.
-In long-context (1k to 32k tokens) experiments on the Books3 subset of the Pile, both TTT-Linear and TTT-MLP outperform Mamba, especially at longer context lengths.
-TTT-Linear with the Mamba backbone outperforms both Mamba and Transformers with the Transformer backbone across various model sizes.
-With preliminary systems optimization, TTT-Linear is already faster than Transformers at 8k context and matches Mamba in wall-clock time.
-TTT-MLP shows potential for even better performance in long-context scenarios but currently faces challenges in memory I/O.
+    **Core Components:**
+    - **Event Detection and Quantization Module**: Prepares inputs for attention based on detected events.
+    - **Hierarchical State Manager**: Manages state compression and updates.
+    - **Selective Attention Computer**: Computes attention using quantized keys and values.
+
+    **Inputs:**
+        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Outputs:**
+        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+        - **Z**: Dictionary of intermediate variables.
+
+    **Args:**
+        embed_dim (int): Embedding dimension.
+        block_loc (tuple): Location of the block within the network.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): Device to place the model on.
+        dtype (torch.dtype, optional): Data type of the model parameters.
+
+    **Example Usage:**
+
+        >>> eventvq_block = EventVQ(embed_dim=512, block_loc=(0, 1), kwarg_all={})
+        >>> X = torch.randn(2, 1024, 512)
+        >>> Y, Z = eventvq_block(X)
+
+    **Note:**
+    - This block is designed to operate within a stack of blocks in an autoregressive language model.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
@@ -52,87 +63,33 @@ TTT-MLP shows potential for even better performance in long-context scenarios bu
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.hidden_size = embed_dim
-        kwarg_all['num_attention_heads'] = max(4, embed_dim // 64)
-        self.seq_modeling_block = FastTTTLinear(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        kwarg_all['intermediate_size'] = int(embed_dim * 2.5)
-        self.mlp = SwiGluMLP(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.conv = Conv(embed_dim=self.embed_dim, block_loc=self.block_loc,
-            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
         self.seq_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
         self.ffn_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
+        self.attention = EDVQAttention(embed_dim=self.embed_dim, block_loc=
+            self.block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs,
+            **self.kwarg_all)
+        self.mlp = SwiGluMLP(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
 
     def _forward(self, X, **Z):
         hidden_states = X
-        position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
-            =X.device).unsqueeze(0)
         residual = hidden_states
-        hidden_states = self.conv(hidden_states, **Z)[0]
+        hidden_states, _ = self.seq_norm(hidden_states, **Z)
+        hidden_states, Z = self.attention(hidden_states, **Z)
         hidden_states = residual + hidden_states
         residual = hidden_states
-        hidden_states = self.seq_norm(hidden_states, **Z)[0]
-        Z['position_ids'] = position_ids
-        hidden_states = self.seq_modeling_block(hidden_states, **Z)[0]
+        hidden_states, _ = self.ffn_norm(hidden_states, **Z)
+        hidden_states, _ = self.mlp(hidden_states, **Z)
         hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states = self.ffn_norm(hidden_states, **Z)[0]
-        hidden_states = self.mlp(hidden_states, **Z)[0]
-        hidden_states = residual + hidden_states
-        return hidden_states
+        return hidden_states, Z
 
 
 import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
-import torch.utils.checkpoint
-from torch.utils._pytree import tree_map
-from transformers.utils import logging
-from transformers.activations import ACT2FN
-try:
-    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
-except:
-    causal_conv1d_update, causal_conv1d_fn = None, None
-
-
-class Conv(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, conv_kernel=4, rms_norm_eps=1e-06, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        kwarg_all['eps'] = rms_norm_eps
-        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.conv = nn.Conv1d(embed_dim, embed_dim, bias=True, kernel_size=
-            conv_kernel, groups=embed_dim, padding=conv_kernel - 1, **self.
-            factory_kwargs)
-
-    def __call__(self, X, **Z):
-        hidden_states = X
-        seq_len = hidden_states.shape[1]
-        hidden_states = self.norm(hidden_states, **Z)[0]
-        hidden_states = hidden_states.transpose(1, 2)
-        if causal_conv1d_fn is None:
-            hidden_states = self.conv(hidden_states)[..., :seq_len]
-        else:
-            conv_weights = self.conv.weight.view(self.conv.weight.size(0),
-                self.conv.weight.size(2))
-            hidden_states = causal_conv1d_fn(hidden_states, conv_weights,
-                self.conv.bias, activation=None)
-        hidden_states = hidden_states.transpose(1, 2)
-        return hidden_states
-
-
-import torch.nn.functional as F
-from torch import Tensor
 
 
 class RMSNorm(GAUBase):
@@ -143,7 +100,7 @@ class RMSNorm(GAUBase):
     statistics, without centering. It's computationally more efficient than standard
     layer normalization and has been shown to be effective in various NLP tasks.
 
-    Args:
+    **Args:**
         embed_dim (int): The size of the input feature dimension.
         block_loc (tuple): The location of this block in the model architecture.
         kwarg_all (dict): Additional keyword arguments passed to the parent class.
@@ -152,33 +109,35 @@ class RMSNorm(GAUBase):
         eps (float, optional): A small constant added to the denominator for numerical stability.
             Default: 1e-5.
 
-    Attributes:
+    **Attributes:**
         weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
         variance_epsilon (float): The epsilon value used in the normalization formula.
 
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
+    **Inputs:**
+        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
 
-    Examples:
+    **Outputs:**
+        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Example Usage:**
+
         >>> rmsnorm = RMSNorm(128, (0, 6), {})
         >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
+        >>> output, _ = rmsnorm(x)
         >>> print(output.shape)
         torch.Size([1, 100, 128])
 
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
+    **References:**
+
+    - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
+      https://arxiv.org/abs/1910.07467
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
+        """Initialize RMSNorm module."""
         self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
             )
         self.variance_epsilon = eps
@@ -188,140 +147,191 @@ class RMSNorm(GAUBase):
         X = X.to(torch.float32)
         variance = X.pow(2).mean(-1, keepdim=True)
         X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
+        Y = self.weight * X.to(input_dtype)
+        return Y
 
 
 import torch.nn.functional as F
 
 
-class FastTTTLinear(GAUBase):
+class EDVQAttention(GAUBase):
     """
-    **FastTTTLinear**
+    EDVQAttention: Event-Driven Vector Quantized Attention Unit
 
-    FastTTTLinear is a modified version of TTTLinear that integrates Gated Linear Attention (GLA)
-    and concepts from the RWKV architecture to enhance computational efficiency for long sequences.
-    This implementation addresses inefficiency concerns by vectorizing operations, eliminating
-    Python-level for-loops, and optimizing tensor computations.
+    This unit integrates event detection, vector quantization, and attention computation
+    to create an efficient and adaptive attention mechanism.
 
-    **Key Features:**
+    **Core Components:**
+    - **Event Detection**: Identifies important events in the input sequence.
+    - **Vector Quantization**: Compresses inputs based on importance.
+    - **Attention Mechanism**: Computes attention using quantized and original inputs with causal masking.
 
-    - **Gated Linear Attention**: Uses data-dependent gates to modulate queries and keys, enabling linear attention computation.
-    - **Vectorized Computations**: Eliminates Python for-loops by using efficient tensor operations.
-    - **Normalization**: Applies LayerNorm to queries and keys to stabilize computations.
-    - **Adjustments for Numerical Stability**: Uses appropriate scaling, activation functions, and safeguards.
-    - **Local Convolutional Augmentation**: Applies causal convolution to prevent information leakage and enhance local context.
+    **Mathematical Formulation:**
+    1. Event Detection:
+       \\[ e(x) = \\sigma(W_e x + b_e) \\]
+       \\[ 	ext{importance} = e(x) \\]
+
+    2. Vector Quantization:
+       \\[ x_{q} = 	ext{VQ}(x) \\]
+
+    3. Attention Computation:
+       \\[ y = 	ext{Attention}(Q, K', V') \\]
+       where \\( K' = 	ext{importance} \\cdot K + (1 - 	ext{importance}) \\cdot x_{q} \\)
 
     **Args:**
         embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location of this block in the model architecture.
+        block_loc (tuple): Location within the network.
         kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): Device on which to allocate tensors.
-        dtype (torch.dtype, optional): Data type of the tensors.
-        num_attention_heads (int, optional): Number of attention heads. Default: 4.
+        num_heads (int, optional): Number of attention heads. Default is 8.
+        device (optional): Device to place the model on.
+        dtype (optional): Data type of the model parameters.
 
     **Inputs:**
         - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
 
     **Outputs:**
         - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+        - **Z'**: Dictionary containing intermediate variables, e.g., 'importance'.
 
-    **Example:**
+    **Example Usage:**
 
-        >>> fast_ttt_linear = FastTTTLinear(embed_dim=512, block_loc=(0, 0), kwarg_all={})
-        >>> X = torch.randn(2, 1024, 512)
-        >>> Y, Z = fast_ttt_linear(X)
+        >>> edvq_attn = EDVQAttention(embed_dim=512, block_loc=(0, 1), kwarg_all={})
+        >>> X = torch.randn(2, 128, 512)
+        >>> Y, Z = edvq_attn(X)
 
-    **References:**
-
-    - Yang, S., et al. (2023). *Gated Linear Attention Transformers with Hardware-Efficient Training*.
-    - Peng, B., et al. (2023). *RWKV: Reinventing RNNs for the Transformer Era*.
+    **Note:**
+        - This unit is designed to be used within a stack of blocks in an autoregressive language model.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_attention_heads=4, **kwargs):
+        device=None, dtype=None, num_heads=8, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.num_heads = num_attention_heads
-        assert embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_attention_heads'
-        self.head_dim = embed_dim // self.num_heads
         self.embed_dim = embed_dim
-        self.W_Q = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+        self.num_heads = num_heads
+        self.head_dim = embed_dim // num_heads
+        assert self.head_dim * num_heads == embed_dim, 'embed_dim must be divisible by num_heads'
+        self.event_linear = nn.Linear(embed_dim, 1, **self.factory_kwargs)
+        self.codebook = nn.Parameter(torch.randn(256, self.head_dim, **self
+            .factory_kwargs) / self.head_dim ** 0.5)
+        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
-        self.W_K = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
-        self.W_V = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
-        self.gate_Q = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
-        self.gate_K = nn.Linear(embed_dim, embed_dim, bias=True, **self.
-            factory_kwargs)
-        self.output_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
-            self.factory_kwargs)
-        self.local_conv = nn.Conv1d(in_channels=embed_dim, out_channels=
-            embed_dim, kernel_size=3, padding=2, bias=True, **self.
-            factory_kwargs)
-        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.q_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
-        self.k_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
-        nn.init.xavier_uniform_(self.W_Q.weight)
-        nn.init.xavier_uniform_(self.W_K.weight)
-        nn.init.xavier_uniform_(self.W_V.weight)
-        nn.init.xavier_uniform_(self.output_proj.weight)
-        nn.init.xavier_uniform_(self.gate_Q.weight)
-        nn.init.zeros_(self.gate_Q.bias)
-        nn.init.xavier_uniform_(self.gate_K.weight)
-        nn.init.zeros_(self.gate_K.bias)
-        nn.init.xavier_uniform_(self.local_conv.weight)
-        nn.init.zeros_(self.local_conv.bias)
+
+    def _quantize(self, x):
+        BNH, L, D = x.shape
+        x_flat = x.view(-1, D)
+        distances = torch.cdist(x_flat, self.codebook)
+        indices = distances.argmin(dim=1)
+        x_q = self.codebook[indices]
+        x_q = x_q + (x_flat - x_q).detach()
+        x_q = x_q.view(BNH, L, D)
+        return x_q
 
     def _forward(self, X, **Z):
-        B, L, D = X.size()
-        H = self.num_heads
-        D_H = self.head_dim
-        X_conv = self.local_conv(X.transpose(1, 2))
-        X_conv = X_conv.transpose(1, 2)[:, :L, :]
-        X = X + X_conv
-        Q = self.W_Q(X)
-        K = self.W_K(X)
-        V = self.W_V(X)
-        Q = self.q_norm(Q)
-        K = self.k_norm(K)
-        G_Q = torch.sigmoid(self.gate_Q(X))
-        G_K = torch.sigmoid(self.gate_K(X))
-        Q = Q * G_Q
-        K = K * G_K
-        Q = Q.view(B, L, H, D_H).transpose(1, 2)
-        K = K.view(B, L, H, D_H).transpose(1, 2)
-        V = V.view(B, L, H, D_H).transpose(1, 2)
-        Q_prime = F.elu(Q) + 1
-        K_prime = F.elu(K) + 1
-        K_cumsum = K_prime.cumsum(dim=2)
-        KV_cumsum = (K_prime * V).cumsum(dim=2)
-        epsilon = 1e-06
-        denominator = torch.sum(Q_prime * K_cumsum, dim=-1, keepdim=True
-            ) + epsilon
-        numerator = Q_prime * KV_cumsum
-        attn_output = numerator / denominator
+        B, L, D = X.shape
+        importance = torch.sigmoid(self.event_linear(X))
+        Z_ = {'importance': importance.squeeze(-1)}
+        Q = self.q_proj(X)
+        K = self.k_proj(X)
+        V = self.v_proj(X)
+        Q = Q.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        K = K.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        V = V.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
+        B_heads = B * self.num_heads
+        K_reshaped = K.contiguous().view(B_heads, L, self.head_dim)
+        V_reshaped = V.contiguous().view(B_heads, L, self.head_dim)
+        K_quantized = self._quantize(K_reshaped).view(B, self.num_heads, L,
+            self.head_dim)
+        V_quantized = self._quantize(V_reshaped).view(B, self.num_heads, L,
+            self.head_dim)
+        importance_expanded = importance.unsqueeze(1)
+        importance_expanded = importance_expanded.expand(-1, self.num_heads,
+            -1, self.head_dim)
+        K_q = importance_expanded * K + (1 - importance_expanded) * K_quantized
+        V_q = importance_expanded * V + (1 - importance_expanded) * V_quantized
+        attn_scores = torch.matmul(Q, K_q.transpose(-2, -1)
+            ) / self.head_dim ** 0.5
+        seq_len = L
+        causal_mask = torch.triu(torch.ones(seq_len, seq_len, device=X.
+            device, dtype=torch.bool), diagonal=1)
+        causal_mask = causal_mask.unsqueeze(0).unsqueeze(0)
+        attn_scores = attn_scores.masked_fill(causal_mask, float('-inf'))
+        attn_weights = F.softmax(attn_scores, dim=-1)
+        attn_output = torch.matmul(attn_weights, V_q)
         attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)
-        attn_output = self.output_proj(attn_output)
-        output = X + attn_output
-        output, Z = self.norm(output, **Z)
-        return output, Z
+        Y = self.out_proj(attn_output)
+        assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'
+        return Y, Z_
 
 
 import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
-from transformers.utils import logging
+from typing import Optional
 from transformers.activations import ACT2FN
 
 
 class SwiGluMLP(GAUBase):
+    """
+    SwiGluMLP: Feed-Forward Network with SwiGLU activation function.
+
+    This unit implements a feed-forward neural network using the SwiGLU activation function,
+    as described in the paper "GLU Variants Improve Transformer" by Shazeer (2020).
+
+    **Mathematical Formulation:**
+
+    .. math::
+
+        Y = 	ext{DownProj}(	ext{SwiGLU}(	ext{GateProj}(X)) \\odot 	ext{UpProj}(X))
+
+    where:
+
+    - \\( X \\) is the input tensor of shape (batch, seq\\_len, embed\\_dim).
+    - \\( 	ext{GateProj} \\), \\( 	ext{UpProj} \\), and \\( 	ext{DownProj} \\) are linear projections.
+    - \\( \\odot \\) denotes element-wise multiplication.
+    - \\( 	ext{SwiGLU}(x) = 	ext{SiLU}(x) \\).
+
+    **Args:**
+
+        embed_dim (int): Embedding dimension of the input and output.
+        block_loc (tuple): Location of the block within the network.
+        kwarg_all (dict): Dictionary of all keyword arguments.
+        intermediate_size (int, optional): Dimension of the intermediate projection.
+            If None, defaults to int(embed_dim * 2.5).
+        device (optional): Device to place the model on.
+        dtype (optional): Data type of the model parameters.
+
+    **Inputs:**
+
+        - **X**: Input tensor of shape (batch, seq\\_len, embed\\_dim).
+
+    **Outputs:**
+
+        - **Y**: Output tensor of the same shape as input X.
+
+    **Example:**
+
+        >>> swiglu_mlp = SwiGluMLP(embed_dim=512, block_loc=(0, 0), kwarg_all={})
+        >>> X = torch.randn(2, 1024, 512)
+        >>> Y, Z = swiglu_mlp(X)
+
+    **References:**
+
+    - Shazeer, N. (2020). "GLU Variants Improve Transformer". arXiv preprint arXiv:2002.05202.
+
+    **Note:**
+
+    - The activation function used is 'silu', which is also known as the SiLU or Swish function.
+
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, intermediate_size=None, **kwargs):
+        device=None, dtype=None, intermediate_size: Optional[int]=None, **
+        kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.hidden_size = embed_dim
@@ -336,13 +346,14 @@ class SwiGluMLP(GAUBase):
         self.act_fn = ACT2FN['silu']
 
     def _forward(self, X, **Z):
-        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
-            up_proj(X))
-        return down_proj
+        gate_output = self.act_fn(self.gate_proj(X))
+        up_output = self.up_proj(X)
+        hidden = gate_output * up_output
+        Y = self.down_proj(hidden)
+        return Y, {}
 
 
-gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
-    'rms_norm_eps': 1e-06, 'intermediate_size': None}
+gab_config = {'num_heads': 8, 'eps': 1e-05, 'intermediate_size': None}
 
 
 

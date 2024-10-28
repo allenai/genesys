@@ -613,7 +613,32 @@ def export_leaderboards(evosys,design_vectors, baseline_vectors):
         leaderboards_normed[scale] = post_process_leaderboard(leaderboards_normed[scale])
         leaderboards_unnormed_h[scale] = post_process_leaderboard(leaderboards_unnormed_h[scale])
         leaderboards_unnormed_l[scale] = post_process_leaderboard(leaderboards_unnormed_l[scale])
-    return leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l
+
+    leaderboards_normed['all'] = pd.DataFrame()
+    leaderboards_unnormed_h['all'] = pd.DataFrame()
+    leaderboards_unnormed_l['all'] = pd.DataFrame()
+    baseline_keys = list(baseline_vectors.keys())
+    baselines={}
+    for scale in leaderboards_normed:
+        baselines[scale]=[f'{i} (baseline)' for i in baseline_keys if f'{i} (baseline)' in leaderboards_normed[scale].index]
+        _leaderboards_normed = leaderboards_normed[scale].copy()
+        _leaderboards_unnormed_h = leaderboards_unnormed_h[scale].copy()
+        _leaderboards_unnormed_l = leaderboards_unnormed_l[scale].copy()
+        _leaderboards_normed.index = _leaderboards_normed.index.map(lambda x: f'{x} ({scale})' if x != 'random' else 'random')
+        _leaderboards_unnormed_h.index = _leaderboards_unnormed_h.index.map(lambda x: f'{x} ({scale})' if x != 'random' else 'random')
+        _leaderboards_unnormed_l.index = _leaderboards_unnormed_l.index.map(lambda x: f'{x} ({scale})' if x != 'random' else 'random')
+        leaderboards_normed['all'] = pd.concat([leaderboards_normed['all'],_leaderboards_normed])
+        leaderboards_unnormed_h['all'] = pd.concat([leaderboards_unnormed_h['all'],_leaderboards_unnormed_h])
+        leaderboards_unnormed_l['all'] = pd.concat([leaderboards_unnormed_l['all'],_leaderboards_unnormed_l])
+    # leave only one random row
+    baselines_all = []
+    for scale in baselines:
+        baselines_all.extend([f'{i} ({scale})' for i in baselines[scale]])
+    baselines['all'] = baselines_all
+    leaderboards_normed['all'] = leaderboards_normed['all'].drop_duplicates()
+    leaderboards_unnormed_h['all'] = leaderboards_unnormed_h['all'].drop_duplicates()
+    leaderboards_unnormed_l['all'] = leaderboards_unnormed_l['all'].drop_duplicates()
+    return leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines
 
 def leaderboard_relative(leaderboard,relative='random',filter_threshold=0):
     base_row = leaderboard.loc[relative]
@@ -649,18 +674,18 @@ def selector_lab(evosys,project_dir):
 
     st.subheader('Real-time Leaderboard')
     with st.status('Generating leaderboard...',expanded=True):
-        leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l=export_leaderboards(evosys,design_vectors,baseline_vectors)
+        leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
         cols = st.columns([1,1,3,1])
         with cols[0]:
-            scale = st.selectbox('Select scale',options=list(sorted(leaderboards_normed.keys(),key=lambda x:U.letternum2num(x))))
+            scale = st.selectbox('Select scale',options=list(sorted(leaderboards_normed.keys(),key=lambda x:U.letternum2num(x) if x != 'all' else 1e10)))
         with cols[1]:
-            _options = ['random']+list(baseline_vectors.keys())
+            _options = ['random']+baselines[scale]
             relative = st.selectbox('Relative to',options=_options)
         with cols[2]:
-            input_task_filter = st.text_input('Task filter list (keywords matching, comma separated)',value=','.join(LEADERBOARD_1))
+            input_task_filter = st.text_input('Task filter list (keywords matching, comma separated)',value='')#','.join(LEADERBOARD_1))
             input_task_filter=[i.strip() for i in input_task_filter.split(',')]
         with cols[3]:
-            filter_threshold = st.number_input('Filter threshold (%)',min_value=0,max_value=100,step=1,value=0,
+            filter_threshold = st.number_input('Filter threshold (%)',min_value=0,max_value=100,step=1,value=5,
                 help='Leave the metrics where there is at least one design with relative rating higher than this threshold')
 
     cols = st.columns(2)
@@ -676,8 +701,8 @@ def selector_lab(evosys,project_dir):
     with cols[1]:
         with st.expander(f'Relative to ```{relative}``` (Normed metrics, %)',expanded=False):
             if scale is not None:
-                _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
-                leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=_relative,filter_threshold=filter_threshold)
+                # _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+                leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,filter_threshold=filter_threshold)
                 leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
                 st.dataframe(leaderboards_relative)
             else:
@@ -710,8 +735,8 @@ def selector_lab(evosys,project_dir):
         leaderboards_normed_combined = leaderboards_normed_combined.drop(columns=['avg.'])
         leaderboards_relative = leaderboards_relative.drop(columns=['avg.'])
         leaderboards_normed_combined['avg.'] = leaderboards_normed_combined.mean(axis=1)
-        _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
-        relative_avg = leaderboards_normed_combined.loc[_relative,'avg.']
+        # _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+        relative_avg = leaderboards_normed_combined.loc[relative,'avg.']
         leaderboards_relative['avg.'] = 100*(leaderboards_normed_combined['avg.'] - relative_avg)/relative_avg
         
         # Combine the values of the two leaderboards as normed (relative) e.g., 3.2 (4.5%)

@@ -1463,7 +1463,7 @@ class PhylogeneticTree:
 
     def budget_status(self,budgets,ret_verified=False):
         budgets=copy.deepcopy(budgets)
-        self.update_design_tree()
+        # self.update_design_tree()
         verified={}
         designs=self.filter_by_type(['DesignArtifactImplemented'])
         for design in designs:
