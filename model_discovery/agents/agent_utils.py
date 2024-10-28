@@ -134,6 +134,7 @@ ANTHROPIC_OUTPUT_BUFFER={
     "claude-3-5-sonnet-20241022":8192*2,
 }
 
+SAFE_BUFFER=4096
 
 
 def get_token_limit(model_name):
@@ -170,76 +171,44 @@ def decode_text(tokens,model_name):
         raise ValueError(f'Unsupported model: {model_name}')
     
 def count_tokens(text,model_name):
+    if text is None or text=='':
+        return 0
     return len(_encode_text(text,model_name))
 
-def truncate_text(text,token_limit,model_name,buffer=128):
-    tokens=_encode_text(text,model_name,truncate=token_limit-buffer)
+def truncate_text(text,token_limit,model_name):
+    tokens=_encode_text(text,model_name,truncate=token_limit)
     text=decode_text(tokens,model_name)+'\n\n... (truncated)'
     return text
 
-def truncate_history(history,token_limit,model_name,buffer=128):
-    if len(history)==0:
-        return history
-    truncated_history=[]
-    for content,role in history[::-1]: # add latest messages first
-        num_tokens=count_tokens(content,model_name)
-        if num_tokens > token_limit:
-            content = truncate_text(content,token_limit,model_name,buffer)
-            truncated_history.append((content,role))
-            break
-        truncated_history.append((content,role))
-        token_limit-=num_tokens
-    truncated_history=truncated_history[::-1] # revert to original order
-    return truncated_history
-
-
-def context_safe_guard(history, model_name, prompt=None, system=None, buffer=128):
+def context_safe_guard(history, model_name, prompt, system):
     history = copy.deepcopy(list(history))
     total_limit = get_token_limit(model_name)
-    remaining_tokens = total_limit - buffer
-    
-    # Handle system prompt
-    system_tokens = count_tokens(system, model_name) if system else 0
-    if system_tokens > remaining_tokens:
-        raise ValueError(f'Token limit exceeded by system prompt: {system_tokens} > {remaining_tokens}')
-    remaining_tokens -= system_tokens
+    system_tokens = count_tokens(system, model_name)
+    prompt_tokens = count_tokens(prompt, model_name)
+    history_tokens = [count_tokens(content, model_name) for content, _ in history]
 
-    # Handle user prompt
-    prompt_tokens = count_tokens(prompt, model_name) if prompt else 0
-    if prompt_tokens > remaining_tokens:
-        prompt = truncate_text(prompt, remaining_tokens, model_name, buffer=0)
-        prompt_tokens = count_tokens(prompt, model_name)
-    remaining_tokens -= prompt_tokens
-
-    # Truncate history
-    history = truncate_history(history, remaining_tokens, model_name, buffer=0)
-
-    # Final check
-    total_tokens = system_tokens + prompt_tokens + sum(count_tokens(content, model_name) for content, _ in history)
-    # if total_tokens > total_limit - buffer:
-    #     raise ValueError(f'Failed to fit context within token limit: {total_tokens} > {total_limit - buffer}')
-    
-    while total_tokens > total_limit - buffer:
+    while True:
+        total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
+        if total_tokens < total_limit - SAFE_BUFFER:
+            break
         if history:
             # Remove the oldest message from history
-            history.pop(0)
+            if len(history)==1:
+                last = truncate_text(history[0][0],total_limit - SAFE_BUFFER - system_tokens - prompt_tokens,model_name)
+                history=[last]
+                history_tokens=[count_tokens(last,model_name)]
+            else:
+                history.pop(0)
+                history_tokens.pop(0)
         elif prompt:
-            # If no history left, truncate the prompt further
-            prompt = truncate_text(prompt, len(_encode_text(prompt, model_name)) - 1, model_name, buffer=0)
+            prompt = truncate_text(prompt, total_limit - SAFE_BUFFER - system_tokens, model_name)
+            prompt_tokens = count_tokens(prompt, model_name)
         elif system:
-            # If no prompt left, truncate the system message
-            system = truncate_text(system, len(_encode_text(system, model_name)) - 1, model_name, buffer=0)
+            system = truncate_text(system, total_limit - SAFE_BUFFER, model_name)
+            system_tokens = count_tokens(system, model_name)
         else:
-            # If we can't truncate anything else, raise an error
-            # raise ValueError("Unable to fit context within token limit even after maximum truncation")
-            break # just try
-        
-        # Recalculate total tokens
-        total_tokens = (count_tokens(system, model_name) if system else 0) + \
-                        (count_tokens(prompt, model_name) if prompt else 0) + \
-                       sum(count_tokens(content, model_name) for content, _ in history)
+            break # just try whatever, seems impossible 
 
-    
     return tuple(history), prompt, system
 
 
@@ -299,7 +268,8 @@ def structured__call__(
         The optional model state at the point of querying 
     
     """
-    history,prompt,_=context_safe_guard(history,model._config.model_name,prompt,system)
+    history,prompt,_system=context_safe_guard(history,model._config.model_name,prompt,system)
+    model_state.static_message[0]['content'] = _system
     if model_state is None:
         return _prompt_model_structured(
             model,
@@ -318,7 +288,8 @@ def structured__call__(
         query=prompt,
         manual_history=history
     )
-    return _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
+    model_state.static_message[0]['content'] = system
+    RET = _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
 
 
 

@@ -99,8 +99,11 @@ class Listener:
     
     def _assign_node_id(self,node_id=None,autofix=False):
         if not node_id:
-            node_id = U.load_json(self.local_dir).get('node_id',None) # try to recover from previous runs
-            if not node_id:
+            if self.evosys.by_node_id: # if by node_id, then need to use a fixed node_id to avoid lossing progress
+                node_id = U.load_json(self.local_dir).get('node_id',None) # try to recover from previous runs
+                if not node_id:
+                    node_id = str(uuid.uuid4())[:6]
+            else:
                 node_id = str(uuid.uuid4())[:6]
         count=0
         while True:

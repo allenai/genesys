@@ -928,6 +928,12 @@ class Selector:
         exclude_inv=self._get_exclude_inv(exclude_list)
         unverified_design_scales=self.ptree.get_unverified_scales(exclude_inv=exclude_inv)
         return unverified_design_scales
+    
+    def stream_write(self,msg):
+        if self.stream:
+            self.stream.write(msg)
+        else:
+            print(msg)
 
     def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False, free_verifier=False):
         local_doc = U.read_local_doc()
@@ -957,7 +963,7 @@ class Selector:
         available_verify_budget=self.available_verify_budget
         if len(available_verify_budget)<=0:
             if self.budget_type=='verify_bound':
-                self.stream.write(f"No available verify budget found.")
+                self.stream_write(f"No available verify budget found.")
                 return None,None
             elif self.budget_type=='design_bound':
                 available_verify_budget=self.request_temporal_budget()
@@ -1052,7 +1058,7 @@ class Selector:
         design_rank = self._rank_designs(vectors)
         if design_rank is None or design_rank.empty or len(design_rank)==0: # unlikely happen, but for safety, randomly select a design from the lowest scale
             acronym = random.choice(lowest_pool)
-            self.stream.write(f"No design ranks available now, randomly select a design from the lowest scale: {lowest_scale}")
+            self.stream_write(f"No design ranks available now, randomly select a design from the lowest scale: {lowest_scale}")
             return acronym,lowest_scale
         acronym = design_rank.iloc[0]['name']
         return acronym,lowest_scale

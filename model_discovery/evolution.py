@@ -2304,7 +2304,7 @@ class ConnectionManager:
         index_term = index_term.to_dict()
         for sess_id in index_term:
             index_item = index_term[sess_id]
-            if index_item['status'] in DESIGN_ACTIVE_STATES:
+            if index_item.get('status',None) in DESIGN_ACTIVE_STATES:
                 # check if it is zombie, if it is, update the status and skip
                 _,status,heartbeat = self.get_session_log(sess_id)
                 if status != 'ZOMBIE':
@@ -2322,7 +2322,7 @@ class ConnectionManager:
         index_term = index_term.to_dict()
         for sess_id in index_term:
             index_item = index_term[sess_id]
-            if index_item['status'] in VERIFY_ACTIVE_STATES:
+            if index_item.get('status',None) in VERIFY_ACTIVE_STATES:
                 _,status,heartbeat = self.get_verification_log(sess_id)
                 if status != 'ZOMBIE':
                     if status:
@@ -2340,12 +2340,12 @@ class ConnectionManager:
             node_id = index_item['node_id']
             index_item['sess_id'] = sess_id
             if node_id not in workloads:
-                workloads[node_id] = []
-            workloads[node_id].append(index_item)
+                workloads[node_id] = {}
+            workloads[node_id][sess_id] = index_item
         self.get_active_connections()
         for node_id in self.connections:
             if node_id not in workloads:
-                workloads[node_id] = []
+                workloads[node_id] = {}
         return workloads
     
 
@@ -2364,11 +2364,11 @@ class ConnectionManager:
     
     def check_design_workload(self,node_id):
         design_workload = self.get_design_workloads()
-        return design_workload.get(node_id,[])
+        return design_workload.get(node_id,{})
     
     def check_verification_workload(self,node_id):
         verify_workload = self.get_verification_workloads()
-        return verify_workload.get(node_id,[])
+        return verify_workload.get(node_id,{})
     
     def check_workload(self,node_id):
         design_workload = self.check_design_workload(node_id)

@@ -143,18 +143,18 @@ def system_status(st,evosys,title,icon):
 
 
 def running_status(st,evosys):
-  db_status = f'📶 (```{evosys.CM.group_id}```)' if evosys.ptree.remote_db else '📴'
-  st.write(f'🏠 **Namespace\n```{evosys.evoname}``` {db_status}**')
+  db_status = f'📶' if evosys.ptree.remote_db else '📴'
+  st.write(f'🏠 **Namespace\n```{evosys.evoname}```{db_status}**')
   # if evosys.remote_db:
   #   URL='https://console.firebase.google.com/u/0/project/model-discovery/firestore/databases/-default-/data'
   #   st.write(f'⛅ [**Cloud Status**]({URL})')
 
   if st.session_state.evo_running:
     if evosys.benchmark_mode:
-      title='***Running Benchmark***'
+      title='***Bench Running***'
       icon='🪑'
     else:
-      title='***Running Evolution***'
+      title='***Evo Running***'
       icon='🚀'
     system_status(st,evosys,title,icon)
  
@@ -162,17 +162,19 @@ def running_status(st,evosys):
     evosys.CM.get_active_connections()
     active_connections = evosys.CM.connections
     with st.expander(f"🌐 Connections: ```{len(active_connections)}```",expanded=False):
+      st.write(f'***Group ID:***\n```{evosys.CM.group_id}```')
       if len(active_connections)!=0:
-        st.write(f'***Group ID:***\n```{evosys.CM.group_id}```')
         for node_id in active_connections:
           _running_designs, _running_verifies = evosys.CM.check_workload(node_id)
           _max_designs = evosys.CM.max_design_threads[node_id]
           _max_verifies = 1 if evosys.CM.accept_verify_job[node_id] else 0
-          _design_status = f'{len(_running_designs)}/{_max_designs} 🐎' if _max_designs>0 else 'N/A 🐎'
-          _verify_status = f'{len(_running_verifies)}/{_max_verifies} 🥏' if _max_verifies>0 else 'N/A 🥏'
-          st.write(f'```{node_id}``` {_design_status} {_verify_status}')
+          _design_status = f'{len(_running_designs)}/{_max_designs}🐎' if _max_designs>0 else '0/0🐎'
+          _verify_status = f'{len(_running_verifies)}/{_max_verifies}🥏' if _max_verifies>0 else '0/0🥏'
+          st.write(f'```{node_id}```{_design_status}{_verify_status}')
       else:
         st.info('No active connections')
+      st.write(f'*Node Management:* ```{evosys.params["node_manage_type"]}```')
+
 
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]
   
