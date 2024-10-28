@@ -520,7 +520,8 @@ class FirestoreManager:
         return f'{proposed}, {reranked}'
 
     def get_design_sessions_index(self):
-        return self.index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
+        print(self.log_doc_ref,self.evoname)
+        return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
 
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         log_collection=self.log_doc_ref.collection('design_sessions')
@@ -2223,9 +2224,18 @@ def index_chunk_tool(index_log_ref,index_collection_ref,key,chunk_size=500):
     # index_log_ref: a doc where the latest_index is stored
     # index_collection_ref: a collection where the indices are stored
     # key: the key in the index_log_ref to store the latest_index
-    latest_index = index_log_ref.get().to_dict().get(f'{key}_latest_index','index')
+    index_log_doc = index_log_ref.get()
+    if not index_log_doc.exists:
+        index_log_ref.set({f'{key}_latest_index':'index'})
+        latest_index = 'index'
+    else:
+        latest_index = index_log_doc.to_dict().get(f'{key}_latest_index','index')
     index_ref = index_collection_ref.document(latest_index)
-    index = index_ref.get().to_dict()
+    index_doc = index_ref.get()
+    if not index_doc.exists:
+        index_ref.set({})
+        return index_ref
+    index = index_doc.to_dict()
     if len(index) > chunk_size: # index or index_1, index_2, ...
         index_nums = latest_index.split('_')
         index_num = '1' if len(index_nums)==1 else str(int(index_nums[-1])+1)
@@ -2233,7 +2243,7 @@ def index_chunk_tool(index_log_ref,index_collection_ref,key,chunk_size=500):
         index_ref = index_collection_ref.document(latest_index)
         index_log_ref.set({f'{key}_latest_index':latest_index},merge=True)
     return index_ref
-    
+
 
 
 class ConnectionManager:
@@ -2340,10 +2350,10 @@ class ConnectionManager:
         return self._get_log(sess_id,'verifications',VERIFY_ZOMBIE_THRESHOLD)
 
     def get_design_sessions_index(self):
-        return self.index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
+        return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
 
     def get_verifications_index(self):
-        return self.index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('verifications'),'verifications')
+        return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('verifications'),'verifications')
 
 
     def get_active_design_sessions(self):
