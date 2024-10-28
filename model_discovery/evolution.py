@@ -194,8 +194,15 @@ class FirestoreManager:
         if is_baseline:
             return self.baseline_collection.document('index').get().to_dict()
         metadata_ref = self.collection.document('metadata')
-        metadata=metadata_ref.get().to_dict()
-        latest_index = metadata.get('latest_index','index')
+        metadata_doc = metadata_ref.get()
+        if metadata_doc.exists:
+            metadata=metadata_doc.to_dict()
+            latest_index = metadata.get('latest_index','index')
+        else:
+            metadata_ref.set({
+                'latest_index':'index'
+            },merge=True)
+            latest_index='index'
         index = {}
         max_nums = latest_index.split('_')
         max_num = 0 if len(max_nums)==1 else int(max_nums[1])
