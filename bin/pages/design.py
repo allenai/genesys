@@ -65,6 +65,7 @@ def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=F
         evosys.switch_ckpt(evoname) 
     exp_log_ref = evosys.CM.get_log_ref()
     if resume:
+        # TODO: add lock here
         unfinished_designs = set(evosys.ptree.get_unfinished_designs())
         unfinished_designs -= set(running_sessions)
         if len(unfinished_designs) > 0:
@@ -84,7 +85,7 @@ def design_daemon(evosys, evoname, sess_id, node_id, pid):
     if evosys.evoname != evoname: # FIXME: initialize evosys inside
         evosys.switch_ckpt(evoname)
     exp_log_ref = evosys.CM.get_log_ref()
-    index_ref = evosys.CM.log_doc_ref.collection('design_sessions').document('index')
+    index_ref = evosys.CM.get_design_sessions_index()
     index_ref.set({sess_id:{'node_id':node_id,'pid':pid}},merge=True)
     # Start heartbeat
     try:

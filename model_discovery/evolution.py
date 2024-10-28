@@ -190,9 +190,23 @@ class FirestoreManager:
             if config:
                 U.save_json(config,U.pjoin(ckpt_dir,doc_id,'config.json'))
 
+    def fetch_index(self,is_baseline=False):
+        if is_baseline:
+            return self.baseline_collection.document('index').get().to_dict()
+        metadata_ref = self.collection.document('metadata')
+        metadata=metadata_ref.get().to_dict()
+        latest_index = metadata.get('latest_index','index')
+        index = {}
+        max_nums = latest_index.split('_')
+        max_num = 0 if len(max_nums)==1 else int(max_nums[1])
+        for i in range(max_num+1):
+            index_name = 'index' if i==0 else f'index_{i}'
+            index_ref = self.collection.document('index').collection('design_sessions').document(index_name)
+            index.update(index_ref.get().to_dict())
+        return index
+
     def get_index(self,is_baseline=False):
-        collection = self.baseline_collection if is_baseline else self.collection
-        index=collection.document('index').get().to_dict()
+        index=self.fetch_index(is_baseline)
         if index is None:
             index={}
         _index=self.decompress_index(index)
@@ -218,11 +232,18 @@ class FirestoreManager:
         self.get_index(is_baseline=True)
         return self.baseline_index
 
-    def update_index(self,merge=True,is_baseline=False):
-        collection = self.baseline_collection if is_baseline else self.collection
-        Index = self.baseline_index if is_baseline else self.index
-        self.safe_upload(collection.document('index'),self.compress_index(Index),merge=merge)
-
+    def update_index(self,merge=True,is_baseline=False,chunk_size=500):
+        if is_baseline:
+            self.safe_upload(self.baseline_collection.document('index'),self.compress_index(self.baseline_index),merge=merge)
+        else:
+            n_chunks = int(math.ceil(len(self.index)/chunk_size))
+            for i in range(n_chunks):
+                index_name = f'index_{i}' if i>0 else 'index'
+                chunk_items = list(self.index.items())[i*chunk_size:(i+1)*chunk_size]
+                chunk_index = {k:v for k,v in chunk_items}
+                self.safe_upload(self.collection.document(index_name),self.compress_index(chunk_index),merge=merge)
+            self.collection.document('metadata').update({'latest_index':index_name})
+    
     def doc_to_design(self,doc):
         design_data = doc.to_dict()
         proposal_traces = self.get_subcollection(doc.reference, 'proposal_traces')
@@ -492,11 +513,14 @@ class FirestoreManager:
         reranked=sessdata['reranked']
         return f'{proposed}, {reranked}'
 
+    def get_design_sessions_index(self):
+        return self.index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
+
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
         log_ref.set(sessdata,merge=True)
-        index_ref = log_collection.document('index')
+        index_ref = self.get_design_sessions_index()
         index_ref.set({sess_id:{
             'progress':self.to_session_progress(sessdata),
             'mode': sessdata.get('mode','')
@@ -504,8 +528,7 @@ class FirestoreManager:
         print(f'Uploaded session {sess_id} to DB')
 
     def download_design_session(self,node_id): # download all sessions by node id
-        log_collection=self.log_doc_ref.collection('design_sessions')
-        index_ref = log_collection.document('index')
+        index_ref = self.get_design_sessions_index()
         index = index_ref.get().to_dict()
         sess_dir = U.pjoin(self.db_dir,'sessions')
         for sess_id in index:
@@ -559,8 +582,7 @@ class FirestoreManager:
             
     
     def sync_sessions_to_db(self,overwrite=False,verbose=False):
-        log_collection=self.log_doc_ref.collection('design_sessions')
-        index_ref = log_collection.document('index')
+        index_ref = self.get_design_sessions_index()
         index = index_ref.get().to_dict()
         if index is None:
             return
@@ -1766,7 +1788,7 @@ class PhylogeneticTree:
         if self.FM:
             self.FM.updated_terms=[]
 
-    def get_unfinished_designs(self,return_finished=False):
+    def get_unfinished_designs(self,return_finished=False): # MARK: read all unfinished designs in all nodes
         self.load_design_sessions()
         self.update_design_tree()
         unfinished_designs = []
@@ -2191,6 +2213,22 @@ class PhylogeneticTree:
 
 
 
+def index_chunk_tool(index_log_ref,index_collection_ref,key,chunk_size=500):
+    # index_log_ref: a doc where the latest_index is stored
+    # index_collection_ref: a collection where the indices are stored
+    # key: the key in the index_log_ref to store the latest_index
+    latest_index = index_log_ref.get().to_dict().get(f'{key}_latest_index','index')
+    index_ref = index_collection_ref.document(latest_index)
+    index = index_ref.get().to_dict()
+    if len(index) > chunk_size: # index or index_1, index_2, ...
+        index_nums = latest_index.split('_')
+        index_num = '1' if len(index_nums)==1 else str(int(index_nums[-1])+1)
+        latest_index = f'index_{index_num}'
+        index_ref = index_collection_ref.document(latest_index)
+        index_log_ref.set({f'{key}_latest_index':latest_index},merge=True)
+    return index_ref
+    
+
 
 class ConnectionManager:
     def __init__(self, evoname, group_id, remote_db, stream):
@@ -2294,12 +2332,18 @@ class ConnectionManager:
     
     def get_verification_log(self,sess_id):
         return self._get_log(sess_id,'verifications',VERIFY_ZOMBIE_THRESHOLD)
-    
+
+    def get_design_sessions_index(self):
+        return self.index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
+
+    def get_verifications_index(self):
+        return self.index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('verifications'),'verifications')
+
+
     def get_active_design_sessions(self):
         active_design_sessions = {}
-        log_collection = self.log_doc_ref.collection('design_sessions')
-        index_term = log_collection.document('index').get()
-        index_ref = self.log_doc_ref.collection('design_sessions').document('index')
+        index_ref = self.get_design_sessions_index()
+        index_term = index_ref.get()
         if not index_term.exists:
             return {}
         index_term = index_term.to_dict()
@@ -2316,8 +2360,8 @@ class ConnectionManager:
     
     def get_running_verifications(self):
         running_verifications = {}
-        log_collection = self.log_doc_ref.collection('verifications')
-        index_term = log_collection.document('index').get()
+        index_ref = self.get_verifications_index()
+        index_term = index_ref.get()
         if not index_term.exists:
             return {}
         index_term = index_term.to_dict()
@@ -3000,7 +3044,7 @@ class EvolutionSystem(exec_utils.System):
             latest_log = str(time.time())
             sess_id = f'{design_id}_{scale}'
             log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
-            index_ref = log_collection.document('index')
+            index_ref = self.CM.get_verifications_index()
             def log_fn(msg,status='RUNNING'):
                 ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
                 url='N/A'
