@@ -9,7 +9,7 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = EventVQ(embed_dim=embed_dim, block_loc=block_loc,
+        self.root = GPT2(embed_dim=embed_dim, block_loc=block_loc,
             kwarg_all=kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
@@ -17,79 +17,70 @@ class GAB(GABBase):
         return X, Z
 
 
-from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
 import torch.nn.functional as F
+from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
 
 
-class EventVQ(GAUBase):
-    """
-    EventVQ Block: Event-Driven Vector Quantized Language Model Block
-
-    This block orchestrates the main components of the EventVQ design,
-    integrating event detection, vector quantization, and attention mechanisms
-    to create an efficient and adaptive language model block.
-
-    **Core Components:**
-    - **Event Detection and Quantization Module**: Prepares inputs for attention based on detected events.
-    - **Hierarchical State Manager**: Manages state compression and updates.
-    - **Selective Attention Computer**: Computes attention using quantized keys and values.
-
-    **Inputs:**
-        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
-
-    **Outputs:**
-        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
-        - **Z**: Dictionary of intermediate variables.
-
-    **Args:**
-        embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location of the block within the network.
-        kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): Device to place the model on.
-        dtype (torch.dtype, optional): Data type of the model parameters.
-
-    **Example Usage:**
-
-        >>> eventvq_block = EventVQ(embed_dim=512, block_loc=(0, 1), kwarg_all={})
-        >>> X = torch.randn(2, 1024, 512)
-        >>> Y, Z = eventvq_block(X)
-
-    **Note:**
-    - This block is designed to operate within a stack of blocks in an autoregressive language model.
-    """
+class GPT2(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        self.seq_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.ffn_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.attention = EDVQAttention(embed_dim=self.embed_dim, block_loc=
+        self.mha = SelectiveGatedMHA(embed_dim=self.embed_dim, block_loc=
             self.block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs,
             **self.kwarg_all)
-        self.mlp = SwiGluMLP(embed_dim=self.embed_dim, block_loc=self.
+        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
 
     def _forward(self, X, **Z):
-        hidden_states = X
-        residual = hidden_states
-        hidden_states, _ = self.seq_norm(hidden_states, **Z)
-        hidden_states, Z = self.attention(hidden_states, **Z)
-        hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states, _ = self.ffn_norm(hidden_states, **Z)
-        hidden_states, _ = self.mlp(hidden_states, **Z)
-        hidden_states = residual + hidden_states
-        return hidden_states, Z
+        X1, Z = self.norm1(X, **Z)
+        X2, Z = self.mha(X1, **Z)
+        X = X + X2
+        X3, Z = self.norm2(X, **Z)
+        X4, Z = self.mlp(X3, **Z)
+        X = X + X4
+        return X, Z
 
 
 import torch.nn.functional as F
+
+
+class GatedMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, hidden_features=None, out_features=None,
+        activation=None, bias=False, multiple_of=128, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        out_features = out_features if out_features is not None else embed_dim
+        hidden_features = (hidden_features if hidden_features is not None else
+            int(8 * embed_dim / 3))
+        hidden_features = (hidden_features + multiple_of - 1
+            ) // multiple_of * multiple_of
+        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
+            self.factory_kwargs)
+        self.activation = activation if activation is not None else F.silu
+        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
+            self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        y = self.fc1(X)
+        y, gate = y.chunk(2, dim=-1)
+        y = y * self.activation(gate)
+        y = self.fc2(y)
+        return y
+
+
+import torch.nn.functional as F
+from torch import Tensor
 
 
 class RMSNorm(GAUBase):
@@ -100,7 +91,7 @@ class RMSNorm(GAUBase):
     statistics, without centering. It's computationally more efficient than standard
     layer normalization and has been shown to be effective in various NLP tasks.
 
-    **Args:**
+    Args:
         embed_dim (int): The size of the input feature dimension.
         block_loc (tuple): The location of this block in the model architecture.
         kwarg_all (dict): Additional keyword arguments passed to the parent class.
@@ -109,35 +100,33 @@ class RMSNorm(GAUBase):
         eps (float, optional): A small constant added to the denominator for numerical stability.
             Default: 1e-5.
 
-    **Attributes:**
+    Attributes:
         weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
         variance_epsilon (float): The epsilon value used in the normalization formula.
 
-    **Inputs:**
-        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
+    Shape:
+        - Input: (*, embed_dim)
+        - Output: (*, embed_dim) (same shape as input)
 
-    **Outputs:**
-        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
-
-    **Example Usage:**
-
+    Examples:
         >>> rmsnorm = RMSNorm(128, (0, 6), {})
         >>> x = torch.randn(1, 100, 128)
-        >>> output, _ = rmsnorm(x)
+        >>> output = rmsnorm(x)
         >>> print(output.shape)
         torch.Size([1, 100, 128])
 
-    **References:**
-
-    - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-      https://arxiv.org/abs/1910.07467
+    References:
+        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
+          https://arxiv.org/abs/1910.07467
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        """Initialize RMSNorm module."""
         self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
             )
         self.variance_epsilon = eps
@@ -147,213 +136,268 @@ class RMSNorm(GAUBase):
         X = X.to(torch.float32)
         variance = X.pow(2).mean(-1, keepdim=True)
         X = X * torch.rsqrt(variance + self.variance_epsilon)
-        Y = self.weight * X.to(input_dtype)
-        return Y
+        return self.weight * X.to(input_dtype)
 
 
 import torch.nn.functional as F
+import math
 
 
-class EDVQAttention(GAUBase):
+class SelectiveGatedMHA(GAUBase):
     """
-    EDVQAttention: Event-Driven Vector Quantized Attention Unit
+    SelectiveGatedMHA: Hierarchical Selective Attention with Dynamic Parameter Generation
 
-    This unit integrates event detection, vector quantization, and attention computation
-    to create an efficient and adaptive attention mechanism.
+    This module implements a Multi-Head Attention mechanism with selective gating and dynamic parameter generation.
+    It introduces content-dependent gating to selectively focus computation on important inputs and dynamically generates
+    parameters based on the input content. It also incorporates hierarchical memory management for efficient processing
+    of long sequences.
 
-    **Core Components:**
-    - **Event Detection**: Identifies important events in the input sequence.
-    - **Vector Quantization**: Compresses inputs based on importance.
-    - **Attention Mechanism**: Computes attention using quantized and original inputs with causal masking.
-
-    **Mathematical Formulation:**
-    1. Event Detection:
-       \\[ e(x) = \\sigma(W_e x + b_e) \\]
-       \\[ 	ext{importance} = e(x) \\]
-
-    2. Vector Quantization:
-       \\[ x_{q} = 	ext{VQ}(x) \\]
-
-    3. Attention Computation:
-       \\[ y = 	ext{Attention}(Q, K', V') \\]
-       where \\( K' = 	ext{importance} \\cdot K + (1 - 	ext{importance}) \\cdot x_{q} \\)
+    **Key Components:**
+    - **SelectiveGate**: Computes importance scores and generates binary gates to select important inputs.
+    - **DynamicParamGen**: Generates dynamic parameters conditioned on the input content.
+    - **HierMemManager**: Manages memory efficiently by processing inputs in blocks.
 
     **Args:**
-        embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location within the network.
-        kwarg_all (dict): Additional keyword arguments.
-        num_heads (int, optional): Number of attention heads. Default is 8.
-        device (optional): Device to place the model on.
-        dtype (optional): Data type of the model parameters.
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the module.
+        device (torch.device, optional): The device to allocate parameters to.
+        dtype (torch.dtype, optional): The data type of parameters.
+        num_heads (int, optional): Number of attention heads. Default: 8.
+        head_dim (int, optional): Dimension of each attention head. If None, calculated as embed_dim // num_heads.
+        block_size (int, optional): Size of blocks for hierarchical memory management. Default: 64.
 
     **Inputs:**
-        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
+        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
 
     **Outputs:**
-        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
-        - **Z'**: Dictionary containing intermediate variables, e.g., 'importance'.
-
-    **Example Usage:**
-
-        >>> edvq_attn = EDVQAttention(embed_dim=512, block_loc=(0, 1), kwarg_all={})
-        >>> X = torch.randn(2, 128, 512)
-        >>> Y, Z = edvq_attn(X)
-
-    **Note:**
-        - This unit is designed to be used within a stack of blocks in an autoregressive language model.
+        Y (Tensor): Output tensor of shape (batch_size, seq_length, embed_dim).
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_heads=8, **kwargs):
+        device=None, dtype=None, num_heads: int=8, head_dim: int=None,
+        block_size: int=64, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.embed_dim = embed_dim
         self.num_heads = num_heads
-        self.head_dim = embed_dim // num_heads
-        assert self.head_dim * num_heads == embed_dim, 'embed_dim must be divisible by num_heads'
-        self.event_linear = nn.Linear(embed_dim, 1, **self.factory_kwargs)
-        self.codebook = nn.Parameter(torch.randn(256, self.head_dim, **self
-            .factory_kwargs) / self.head_dim ** 0.5)
-        self.q_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+        self.head_dim = head_dim or embed_dim // num_heads
+        self.block_size = block_size
+        self.selective_gate = SelectiveGate(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.param_gen = DynamicParamGen(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.mem_manager = HierMemManager(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        self.to_qkv = nn.Linear(self.embed_dim, 3 * self.embed_dim, **self.
             factory_kwargs)
-        self.k_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+        self.to_out = nn.Linear(self.embed_dim, self.embed_dim, **self.
             factory_kwargs)
-        self.v_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.out_proj = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-
-    def _quantize(self, x):
-        BNH, L, D = x.shape
-        x_flat = x.view(-1, D)
-        distances = torch.cdist(x_flat, self.codebook)
-        indices = distances.argmin(dim=1)
-        x_q = self.codebook[indices]
-        x_q = x_q + (x_flat - x_q).detach()
-        x_q = x_q.view(BNH, L, D)
-        return x_q
 
     def _forward(self, X, **Z):
         B, L, D = X.shape
-        importance = torch.sigmoid(self.event_linear(X))
-        Z_ = {'importance': importance.squeeze(-1)}
-        Q = self.q_proj(X)
-        K = self.k_proj(X)
-        V = self.v_proj(X)
-        Q = Q.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        K = K.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        V = V.view(B, L, self.num_heads, self.head_dim).transpose(1, 2)
-        B_heads = B * self.num_heads
-        K_reshaped = K.contiguous().view(B_heads, L, self.head_dim)
-        V_reshaped = V.contiguous().view(B_heads, L, self.head_dim)
-        K_quantized = self._quantize(K_reshaped).view(B, self.num_heads, L,
-            self.head_dim)
-        V_quantized = self._quantize(V_reshaped).view(B, self.num_heads, L,
-            self.head_dim)
-        importance_expanded = importance.unsqueeze(1)
-        importance_expanded = importance_expanded.expand(-1, self.num_heads,
-            -1, self.head_dim)
-        K_q = importance_expanded * K + (1 - importance_expanded) * K_quantized
-        V_q = importance_expanded * V + (1 - importance_expanded) * V_quantized
-        attn_scores = torch.matmul(Q, K_q.transpose(-2, -1)
-            ) / self.head_dim ** 0.5
-        seq_len = L
-        causal_mask = torch.triu(torch.ones(seq_len, seq_len, device=X.
-            device, dtype=torch.bool), diagonal=1)
-        causal_mask = causal_mask.unsqueeze(0).unsqueeze(0)
-        attn_scores = attn_scores.masked_fill(causal_mask, float('-inf'))
-        attn_weights = F.softmax(attn_scores, dim=-1)
-        attn_output = torch.matmul(attn_weights, V_q)
-        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)
-        Y = self.out_proj(attn_output)
-        assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'
-        return Y, Z_
+        input_dtype = X.dtype
+        X = X.to(**self.factory_kwargs)
+        _, Z_ = self.selective_gate(X, **Z)
+        Z.update(Z_)
+        gates = Z_['gates'].to(**self.factory_kwargs)
+        _, Z_ = self.param_gen(X, **Z)
+        Z.update(Z_)
+        params = Z_['params'].to(**self.factory_kwargs)
+        _, Z_ = self.mem_manager(X, **Z)
+        Z.update(Z_)
+        X_blocks = Z_['X_blocks']
+        L_orig = Z_['L_orig']
+        block_size = Z_['block_size']
+        num_blocks = X_blocks.size(1)
+        outputs = []
+        past_k = []
+        past_v = []
+        cumulative_len = 0
+        for block_idx in range(num_blocks):
+            X_block = X_blocks[:, block_idx, :, :]
+            block_seq_len = X_block.size(1)
+            block_start = block_idx * block_size
+            block_end = min(block_start + block_seq_len, L_orig)
+            seq_in_block = block_end - block_start
+            qkv = self.to_qkv(X_block[:, :seq_in_block])
+            qkv = qkv.chunk(3, dim=-1)
+            q, k, v = [t.view(B, seq_in_block, self.num_heads, self.
+                head_dim) for t in qkv]
+            block_gates = gates[:, block_start:block_end, :, :]
+            block_params = params[:, block_start:block_end, :, :]
+            q = q.transpose(1, 2)
+            k = k.transpose(1, 2)
+            v = v.transpose(1, 2)
+            block_gates = block_gates.transpose(1, 2)
+            block_params = block_params.transpose(1, 2)
+            k = k * block_gates
+            v = v * block_params * block_gates
+            all_k = torch.cat(past_k + [k], dim=2)
+            all_v = torch.cat(past_v + [v], dim=2)
+            attn_scores = torch.matmul(q, all_k.transpose(-2, -1)) / math.sqrt(
+                self.head_dim)
+            total_len = cumulative_len + seq_in_block
+            causal_mask = torch.tril(torch.ones(seq_in_block, total_len,
+                device=X.device, dtype=torch.bool))
+            attn_scores = attn_scores.masked_fill(~causal_mask.unsqueeze(0)
+                .unsqueeze(0), float('-inf'))
+            attn = F.softmax(attn_scores, dim=-1)
+            out = torch.matmul(attn, all_v)
+            out = out.transpose(1, 2).contiguous().view(B, seq_in_block,
+                self.embed_dim)
+            outputs.append(out)
+            past_k.append(k)
+            past_v.append(v)
+            cumulative_len += seq_in_block
+        Y = torch.cat(outputs, dim=1)[:, :L_orig, :]
+        Y = self.to_out(Y)
+        Y = Y.to(dtype=input_dtype)
+        return Y, Z
 
 
 import torch.nn.functional as F
-from typing import Optional
-from transformers.activations import ACT2FN
 
 
-class SwiGluMLP(GAUBase):
+class HierMemManager(GAUBase):
     """
-    SwiGluMLP: Feed-Forward Network with SwiGLU activation function.
+    HierMemManager Module
 
-    This unit implements a feed-forward neural network using the SwiGLU activation function,
-    as described in the paper "GLU Variants Improve Transformer" by Shazeer (2020).
-
-    **Mathematical Formulation:**
-
-    .. math::
-
-        Y = 	ext{DownProj}(	ext{SwiGLU}(	ext{GateProj}(X)) \\odot 	ext{UpProj}(X))
-
-    where:
-
-    - \\( X \\) is the input tensor of shape (batch, seq\\_len, embed\\_dim).
-    - \\( 	ext{GateProj} \\), \\( 	ext{UpProj} \\), and \\( 	ext{DownProj} \\) are linear projections.
-    - \\( \\odot \\) denotes element-wise multiplication.
-    - \\( 	ext{SwiGLU}(x) = 	ext{SiLU}(x) \\).
+    Processes input X in blocks for efficient memory management, particularly useful for handling long sequences.
 
     **Args:**
-
-        embed_dim (int): Embedding dimension of the input and output.
-        block_loc (tuple): Location of the block within the network.
-        kwarg_all (dict): Dictionary of all keyword arguments.
-        intermediate_size (int, optional): Dimension of the intermediate projection.
-            If None, defaults to int(embed_dim * 2.5).
-        device (optional): Device to place the model on.
-        dtype (optional): Data type of the model parameters.
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the module.
+        device (torch.device, optional): The device to allocate parameters to.
+        dtype (torch.dtype, optional): The data type of parameters.
+        block_size (int, optional): Size of blocks for hierarchical memory management.
 
     **Inputs:**
-
-        - **X**: Input tensor of shape (batch, seq\\_len, embed\\_dim).
+        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
 
     **Outputs:**
-
-        - **Y**: Output tensor of the same shape as input X.
-
-    **Example:**
-
-        >>> swiglu_mlp = SwiGluMLP(embed_dim=512, block_loc=(0, 0), kwarg_all={})
-        >>> X = torch.randn(2, 1024, 512)
-        >>> Y, Z = swiglu_mlp(X)
-
-    **References:**
-
-    - Shazeer, N. (2020). "GLU Variants Improve Transformer". arXiv preprint arXiv:2002.05202.
-
-    **Note:**
-
-    - The activation function used is 'silu', which is also known as the SiLU or Swish function.
-
+        X_blocks (Tensor): Blocked input tensor of shape (batch_size, num_blocks, block_size, embed_dim).
+        L_orig (int): Original sequence length before padding.
+        block_size (int): Block size used for blocking.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, intermediate_size: Optional[int]=None, **
-        kwargs):
+        device=None, dtype=None, block_size: int=64, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        self.intermediate_size = (intermediate_size if intermediate_size is not
-            None else int(embed_dim * 2.5))
-        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
-            bias=False, **self.factory_kwargs)
-        self.act_fn = ACT2FN['silu']
+        self.block_size = block_size
 
     def _forward(self, X, **Z):
-        gate_output = self.act_fn(self.gate_proj(X))
-        up_output = self.up_proj(X)
-        hidden = gate_output * up_output
-        Y = self.down_proj(hidden)
-        return Y, {}
+        B, L, D = X.shape
+        X = X.to(**self.factory_kwargs)
+        pad_len = (self.block_size - L % self.block_size) % self.block_size
+        if pad_len > 0:
+            X_padded = F.pad(X, (0, 0, 0, pad_len))
+        else:
+            X_padded = X
+        L_padded = X_padded.size(1)
+        num_blocks = L_padded // self.block_size
+        X_blocks = X_padded.view(B, num_blocks, self.block_size, D)
+        return X, {'X_blocks': X_blocks, 'L_orig': L, 'block_size': self.
+            block_size}
 
 
-gab_config = {'num_heads': 8, 'eps': 1e-05, 'intermediate_size': None}
+class DynamicParamGen(GAUBase):
+    """
+    DynamicParamGen Module
+
+    Generates dynamic parameters based on input X, enabling content-dependent parameter generation for the attention mechanism.
+
+    **Args:**
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the module.
+        device (torch.device, optional): The device to allocate parameters to.
+        dtype (torch.dtype, optional): The data type of parameters.
+        num_heads (int, optional): Number of attention heads. Default: 8.
+        head_dim (int, optional): Dimension of each attention head.
+
+    **Inputs:**
+        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
+
+    **Outputs:**
+        params (Tensor): Dynamic parameters tensor of shape (batch_size, seq_length, num_heads, head_dim).
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, num_heads: int=8, head_dim: int=None, **kwargs
+        ):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.num_heads = num_heads
+        self.head_dim = head_dim or embed_dim // num_heads
+        self.param_proj = nn.Linear(embed_dim, self.num_heads * self.
+            head_dim, **self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        X = X.to(**self.factory_kwargs)
+        params = self.param_proj(X)
+        params = params.view(X.size(0), X.size(1), self.num_heads, self.
+            head_dim)
+        return X, {'params': params.to(**self.factory_kwargs)}
+
+
+import torch.nn.functional as F
+
+
+class SelectiveGate(GAUBase):
+    """
+    SelectiveGate Module
+
+    Computes importance scores and generates binary gates based on input X, allowing the model to selectively focus
+    computation on important inputs.
+
+    **Args:**
+        embed_dim (int): The embedding dimension of the input.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the module.
+        device (torch.device, optional): The device to allocate parameters to.
+        dtype (torch.dtype, optional): The data type of parameters.
+        num_heads (int, optional): Number of attention heads. Default: 8.
+
+    **Inputs:**
+        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
+
+    **Outputs:**
+        gates (Tensor): Binary gate tensor of shape (batch_size, seq_length, num_heads, 1).
+        scores (Tensor): Importance scores tensor of shape (batch_size, seq_length, num_heads).
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, num_heads: int=8, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.num_heads = num_heads
+        self.gate_proj = nn.Linear(embed_dim, num_heads, **self.factory_kwargs)
+        self.threshold = nn.Parameter(torch.zeros(1, **self.factory_kwargs))
+
+    def _forward(self, X, **Z):
+        B, L, _ = X.shape
+        X = X.to(**self.factory_kwargs)
+        scores = torch.sigmoid(self.gate_proj(X))
+        temperature = 1.1
+        hard_gates = (scores > self.threshold).float()
+        soft_gates = torch.sigmoid((scores - self.threshold) / temperature)
+        gates = hard_gates.detach() + soft_gates - soft_gates.detach()
+        gates = gates.view(B, L, self.num_heads, 1)
+        return X, {'gates': gates.to(**self.factory_kwargs), 'scores':
+            scores.to(**self.factory_kwargs)}
+
+
+gab_config = {'num_heads': 8, 'softmax_scale': None, 'out_proj_bias': True,
+    'n_heads': 8, 'num_heads_kv': None, 'd_conv': 0, 'mlp_dim': 0,
+    'head_dim': None, 'causal': True, 'qkv_proj_bias': True,
+    'rotary_emb_base': 10000, 'max_seq_len': 4096, 'block_size': 64, 'eps':
+    1e-05, 'bias': False, 'multiple_of': 128, 'hidden_features': None,
+    'out_features': None, 'activation': None}
 
 
 

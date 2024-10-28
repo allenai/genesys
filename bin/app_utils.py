@@ -173,7 +173,6 @@ def running_status(st,evosys):
           st.write(f'```{node_id}```{_design_status}{_verify_status}')
       else:
         st.info('No active connections')
-      st.write(f'*Node Management:* ```{evosys.params["node_manage_type"]}```')
 
 
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]

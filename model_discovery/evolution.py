@@ -534,16 +534,6 @@ class FirestoreManager:
         }},merge=True)
         print(f'Uploaded session {sess_id} to DB')
 
-    def download_design_session(self,node_id): # download all sessions by node id
-        index_ref = self.get_design_sessions_index()
-        index = index_ref.get().to_dict()
-        sess_dir = U.pjoin(self.db_dir,'sessions')
-        for sess_id in index:
-            if index[sess_id].get('node_id','')==node_id:
-                sessdata=self.get_design_session(sess_id)
-                if sessdata:
-                    U.save_json(sessdata,U.pjoin(sess_dir,sess_id,'metadata.json'))
-
     def get_design_session(self,sess_id):
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id).get()
@@ -713,14 +703,24 @@ class FirestoreManager:
                 U.save_json(codes,codes_path)
                 print(f'Downloaded codes for design {design_id}')
 
-    def sync_from_db(self,overwrite=False,node_id=None): # download all designs from db if out of date
+    def download_design_sessions(self):
+        sess_index = self.get_design_sessions_index()
+        for sess_id in sess_index:
+            if sess_id not in self.ptree.design_sessions:
+                self.ptree.get_design_session(sess_id)
+            else:
+                index_term = sess_index[sess_id]
+                sess_data = self.ptree.design_sessions[sess_id]
+                if index_term['progress']!=self.to_session_progress(sess_data):
+                    self.ptree.get_design_session(sess_id)
+
+    def sync_from_db(self,overwrite=False): # download all designs from db if out of date
         self.get_index()
         self.get_baseline_index()
         for design_id in self.index:
             self.download_design(design_id,overwrite=overwrite)
         self.download_baselines(overwrite=overwrite)
-        if node_id:
-            self.download_design_session(node_id)
+        self.download_design_sessions()
         print('Local designs synced from remote DB')
 
     def delete_design(self,design_id):
@@ -1386,8 +1386,6 @@ class PhylogeneticTree:
         self.FM = None
         self.GD = None
         self.CM = CM
-        self.node_id = None
-        self.by_node_id = False
         self.use_remote_db=use_remote_db
         self.remote_db = remote_db
         self.token_mults = token_mults
@@ -1415,11 +1413,6 @@ class PhylogeneticTree:
             if design.verifications:
                 n+=1
         return n
-    
-    def link_node(self,node_id,by_node_id=False):
-        self.node_id = node_id
-        self.by_node_id = by_node_id
-        self.load_design_sessions()
 
     def get_nodes(self,acronyms):
         if isinstance(acronyms,str):
@@ -1475,8 +1468,6 @@ class PhylogeneticTree:
                 metadata['mode']=DesignModes(metadata['mode'])
             if not metadata:
                 to_delete.append(sess_id) # delete empty sessions
-                continue
-            if self.by_node_id and metadata.get('node_id','') != self.node_id:
                 continue
             self.design_sessions[sess_id] = metadata
         for sess_id in to_delete:
@@ -1593,7 +1584,6 @@ class PhylogeneticTree:
             'proposed': [],
             'reranked': {},
             'num_samples': num_samples,
-            'node_id': self.node_id,
         }
         self.design_sessions[sess_id] = sessdata
         sess_dir=self.session_dir(sess_id)
@@ -1800,7 +1790,10 @@ class PhylogeneticTree:
         self.update_design_tree()
         unfinished_designs = []
         finished_designs = []
+        running_designs = list(self.CM.get_active_design_sessions().keys())
         for sess_id in self.design_sessions:
+            if sess_id in running_designs:
+                continue
             sessdata=self.design_sessions[sess_id]
             num_samples=sessdata['num_samples']
             passed,implemented,challenging,_=self.get_session_state(sess_id)
@@ -2277,6 +2270,9 @@ class ConnectionManager:
         if latest_log:
             return self.log_doc_ref.collection('logs').document(latest_log)
         return None
+    
+    def get_design_lock_ref(self):
+        return self.log_doc_ref.collection('locks').document('design_lock')
 
     def start_log(self):
         timestamp = str(time.time())
@@ -2507,7 +2503,6 @@ DEFAULT_PARAMS = {
     'challenging_threshold': 3,
     'benchmark_mode': False,
     'scale_stair_start': '350M',
-    'node_manage_type': 'by_machine',
 }
 
 
@@ -2524,8 +2519,6 @@ DEFAULT_RANDOM_ALLOW_TREE = True
 
 
 BUDGET_TYPES = ['design_bound','verify_bound']
-
-NODE_MANAGE_TYPES = ['by_node_id','by_machine']
 
 BENCH_MODE_OPTIONS = ['Mutation-only','Crossover-only','Scratch-only','Mixed']
 
@@ -2559,7 +2552,6 @@ class EvolutionSystem(exec_utils.System):
         self._config = config
         self.params=config.params
         self.stream = None # PrintSystem(config,silent=silent)
-        self.node_id = None
         self.design_cfg = {}
         self.search_cfg = {}
         self.select_cfg = {}
@@ -2615,8 +2607,6 @@ class EvolutionSystem(exec_utils.System):
 
         self.max_samples = self.params.get('max_samples',0)
 
-        self.by_node_id = self.params['node_manage_type']=='by_node_id'
-
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.target_scales]
 
         if self.stream:
@@ -2668,10 +2658,6 @@ class EvolutionSystem(exec_utils.System):
             )
             self.agents.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
-
-    def link_node(self,node_id):
-        self.node_id = node_id
-        self.ptree.link_node(node_id,self.by_node_id)
 
     def get_verify_budget(self,full=False):
         if full:
