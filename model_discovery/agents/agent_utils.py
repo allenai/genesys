@@ -289,8 +289,7 @@ def structured__call__(
         manual_history=history
     )
     model_state.static_message[0]['content'] = system
-    RET = _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
-
+    return _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
 
 
 def _prompt_model_structured(model,message,response_format,logprobs=False,**kwargs) -> str:
