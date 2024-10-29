@@ -1020,6 +1020,9 @@ class Selector:
             if acronyms is None or len(acronyms)==0: # randomly select a design from the lowest scale
                 break
             acronym = acronyms[0]
+            if acronym not in unverified_by_design:
+                exclude_design.append(acronym)
+                continue
             scales = unverified_by_design[acronym]
             if len(scales)==0:
                 exclude_design.append(acronym)
