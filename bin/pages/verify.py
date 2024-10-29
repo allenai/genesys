@@ -86,7 +86,9 @@ def check_local_availability(evosys):
             to_pop.append(sess_id)
     for sess_id in to_pop:
         running_verifies.pop(sess_id)
-    U.save_json(local_doc, local_doc_dir)
+    if to_pop:
+        local_doc['running_verifies'] = running_verifies
+        U.save_json(local_doc, local_doc_dir)
     return len(running_verifies)==0
 
 def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False, accept_baselines=False, free_verifier=False):

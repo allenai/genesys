@@ -78,17 +78,17 @@ class Listener:
         self.doc_ref = self.collection.document(self.node_id)
 
     def initialize(self,node_id=None):
-        local_doc = U.load_json(self.local_dir)
         running_node_id = AU._listener_running(self.evosys.ckpt_dir,self.zombie_threshold)
         if running_node_id:
             self.node_id = running_node_id
-            self.group_id = local_doc['group_id']
+            self.group_id = U.load_json(self.local_dir)['group_id']
             print(f'There is already a listener running in this machine/userspace, Node ID: {self.node_id}, will run in passive mode. Please check in GUI.')
             self.active_mode = False
         else:
             self.node_id = self._assign_node_id(node_id)
             if node_id and node_id != self.node_id:
                 print(f'Node ID {node_id} is in use. Automatically assigned to {self.node_id} instead.')
+            local_doc = U.load_json(self.local_dir)
             local_doc['node_id'] = self.node_id
             local_doc['group_id'] = self.group_id
             local_doc['max_design_threads'] = self.max_design_threads
@@ -115,12 +115,12 @@ class Listener:
     def build_connection(self):
         # check if the node_id is already in the collection
         doc = self.doc_ref.get()
-        local_doc = U.load_json(self.local_dir)
         if doc.exists and doc.to_dict().get('status','n/a') == 'connected':
             self.active_mode = False
         else:
             self.reset_doc()
             self.active_mode = True
+            local_doc = U.load_json(self.local_dir)
             local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
             local_doc['status'] = 'running'
             U.save_json(local_doc,self.local_dir)
