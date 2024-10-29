@@ -961,10 +961,7 @@ class LibraryReference(NodeObject):
         prompt = self.to_desc(reformat=False)
         
         if self.tree:
-            if full_tree:
-                prompt += f'\n\n{self.tree.to_prompt()}\n\n'
-            else:
-                prompt += f'\n\n## Reference Document\n\n{self.tree.root_node.spec.document}\n\n'
+            prompt += f'\n\n{self.tree.to_prompt(unit_only=full_tree)}\n\n'
         elif self.code:
             if self.type == 'ReferenceCore':
                 prompt += (
@@ -1236,17 +1233,10 @@ class DesignArtifact(NodeObject):
 {self.proposal.suggestions}
 """
         if self.is_implemented():
-            if full_tree:
-                prompt+=f"""
+            prompt+=f"""
 # Implementation
 
-{self.implementation.implementation.to_prompt()}
-            """
-            else:
-                prompt+=f"""
-# Reference Document
-
-{self.implementation.implementation.root_node.spec.document}
+{self.implementation.implementation.to_prompt(unit_code=full_tree)}
             """
         prompt += self.verify_summary(include_wandb=False)
         return prompt

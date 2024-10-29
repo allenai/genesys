@@ -391,7 +391,7 @@ def select_config(evosys):
 
             sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
         
-            Col1,Col2 = st.columns([4.5,1])
+            Col1,Col2 = st.columns([4.5,1.1])
             with Col1:
                 st.markdown("###### Configure the number of *references* from each source")
                 cols = st.columns(len(sources))
@@ -419,12 +419,11 @@ def select_config(evosys):
                 select_cfg['n_sources']=n_sources
                 select_cfg['seed_dist']=seed_dist
             with Col2:
-                st.write('###### Random Selector')
+                st.write('###### Other Settings')
                 # st.write('')
-                st.write('')
-                select_cfg['random_allow_tree']=st.checkbox('Allow Select Tree',value=random_allow_tree,help='If true, will allow the random selector to select from evo tree nodes.')
-
-
+                # st.write('')
+                select_cfg['random_allow_tree']=st.checkbox('Random Allow Tree',value=random_allow_tree,help='If true, will allow the random selector to select from evo tree nodes.')
+                select_cfg['verify_all']=st.checkbox('Verify All Designs',value=select_cfg.get('verify_all',False),help='If true, will verify all designs at the lowest scale.')
 
 
             Col1,Col2 = st.columns([5,2.8])
