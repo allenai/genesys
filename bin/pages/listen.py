@@ -144,7 +144,6 @@ class Listener:
 
     def listen_for_commands(self):
         self.running = True
-        local_doc = U.load_json(self.local_dir)
         while self.running:
             to_sleep = self.poll_freq
             if self.active_mode:
@@ -173,6 +172,7 @@ class Listener:
                                 to_sleep -= self.execution_delay
                                 self.command_queue.put((command,sess_id,pid))
 
+                    local_doc = U.load_json(self.local_dir)
                     local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
                     U.save_json(local_doc,self.local_dir)
 
