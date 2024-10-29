@@ -1,76 +1,88 @@
-Requirement already satisfied: paperswithcode-client in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (0.3.1)
-Requirement already satisfied: tea-client==0.0.7 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from paperswithcode-client) (0.0.7)
-Requirement already satisfied: tea-console==0.0.6 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from paperswithcode-client) (0.0.6)
+Collecting paperswithcode-client
+  Using cached paperswithcode_client-0.3.1-py3-none-any.whl.metadata (7.2 kB)
+Collecting tea-client==0.0.7 (from paperswithcode-client)
+  Using cached tea_client-0.0.7-py3-none-any.whl.metadata (750 bytes)
+Collecting tea-console==0.0.6 (from paperswithcode-client)
+  Using cached tea_console-0.0.6-py3-none-any.whl.metadata (816 bytes)
 Collecting typer==0.3.2 (from paperswithcode-client)
   Using cached typer-0.3.2-py3-none-any.whl.metadata (12 kB)
 Collecting httpx~=0.14.2 (from httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
   Using cached httpx-0.14.3-py3-none-any.whl.metadata (33 kB)
 Collecting pydantic~=1.6.1 (from tea-client==0.0.7->paperswithcode-client)
   Using cached pydantic-1.6.2-py36.py37.py38-none-any.whl.metadata (73 kB)
-Requirement already satisfied: tea~=0.1.2 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from tea-client==0.0.7->paperswithcode-client) (0.1.4)
-Requirement already satisfied: pytz~=2021.1 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from tea-console==0.0.6->paperswithcode-client) (2021.3)
+Collecting tea~=0.1.2 (from tea-client==0.0.7->paperswithcode-client)
+  Using cached tea-0.1.7-py3-none-any.whl.metadata (1.6 kB)
+Collecting pytz~=2021.1 (from tea-console==0.0.6->paperswithcode-client)
+  Using cached pytz-2021.3-py2.py3-none-any.whl.metadata (21 kB)
 Collecting rich~=9.11.0 (from tea-console==0.0.6->paperswithcode-client)
   Using cached rich-9.11.1-py3-none-any.whl.metadata (16 kB)
-Requirement already satisfied: tzlocal~=2.1 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from tea-console==0.0.6->paperswithcode-client) (2.1)
+Collecting tzlocal~=2.1 (from tea-console==0.0.6->paperswithcode-client)
+  Using cached tzlocal-2.1-py2.py3-none-any.whl.metadata (8.2 kB)
 Collecting click<7.2.0,>=7.1.1 (from typer==0.3.2->paperswithcode-client)
   Using cached click-7.1.2-py2.py3-none-any.whl.metadata (2.9 kB)
-Requirement already satisfied: certifi in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (2024.8.30)
-Requirement already satisfied: sniffio in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (1.3.1)
-Requirement already satisfied: chardet==3.* in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (3.0.4)
-Requirement already satisfied: rfc3986<2,>=1.3 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (1.5.0)
+Requirement already satisfied: certifi in /home/junyanc/.conda/envs/genesys/lib/python3.12/site-packages (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (2024.8.30)
+Collecting sniffio (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting chardet==3.* (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached chardet-3.0.4-py2.py3-none-any.whl.metadata (3.2 kB)
+Collecting rfc3986<2,>=1.3 (from rfc3986[idna2008]<2,>=1.3->httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached rfc3986-1.5.0-py2.py3-none-any.whl.metadata (6.5 kB)
 Collecting httpcore==0.10.* (from httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
   Using cached httpcore-0.10.2-py3-none-any.whl.metadata (6.3 kB)
 Collecting h11<0.10,>=0.8 (from httpcore==0.10.*->httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
   Using cached h11-0.9.0-py2.py3-none-any.whl.metadata (8.1 kB)
-Requirement already satisfied: h2==3.* in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (3.2.0)
-Requirement already satisfied: hyperframe<6,>=5.2.0 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from h2==3.*->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (5.2.0)
-Requirement already satisfied: hpack<4,>=3.0 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from h2==3.*->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (3.0.0)
-Requirement already satisfied: colorama<0.5.0,>=0.4.0 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client) (0.4.6)
-Requirement already satisfied: commonmark<0.10.0,>=0.9.0 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client) (0.9.1)
-Requirement already satisfied: pygments<3.0.0,>=2.6.0 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client) (2.18.0)
+Collecting h2==3.* (from httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached h2-3.2.0-py2.py3-none-any.whl.metadata (32 kB)
+Collecting hyperframe<6,>=5.2.0 (from h2==3.*->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached hyperframe-5.2.0-py2.py3-none-any.whl.metadata (7.2 kB)
+Collecting hpack<4,>=3.0 (from h2==3.*->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached hpack-3.0.0-py2.py3-none-any.whl.metadata (7.0 kB)
+Collecting colorama<0.5.0,>=0.4.0 (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client)
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting commonmark<0.10.0,>=0.9.0 (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client)
+  Using cached commonmark-0.9.1-py2.py3-none-any.whl.metadata (5.7 kB)
+Collecting pygments<3.0.0,>=2.6.0 (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client)
+  Using cached pygments-2.18.0-py3-none-any.whl.metadata (2.5 kB)
 Collecting typing-extensions<4.0.0,>=3.7.4 (from rich~=9.11.0->tea-console==0.0.6->paperswithcode-client)
   Using cached typing_extensions-3.10.0.2-py3-none-any.whl.metadata (2.1 kB)
-Requirement already satisfied: psutil~=5.8.0 in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from tea~=0.1.2->tea-client==0.0.7->paperswithcode-client) (5.8.0)
-Requirement already satisfied: idna in /home/junyanc/.conda/envs/modis/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (3.10)
+Collecting psutil~=5.8.0 (from tea~=0.1.2->tea-client==0.0.7->paperswithcode-client)
+  Using cached psutil-5.8.0-cp312-cp312-linux_x86_64.whl
+INFO: pip is looking at multiple versions of tea to determine which version is compatible with other requirements. This could take a while.
+Collecting tea~=0.1.2 (from tea-client==0.0.7->paperswithcode-client)
+  Using cached tea-0.1.6-py3-none-any.whl.metadata (1.6 kB)
+  Using cached tea-0.1.5-py3-none-any.whl.metadata (1.6 kB)
+  Using cached tea-0.1.4-py3-none-any.whl.metadata (1.6 kB)
+Requirement already satisfied: idna in /home/junyanc/.conda/envs/genesys/lib/python3.12/site-packages (from rfc3986[idna2008]<2,>=1.3->httpx~=0.14.2->httpx[http2]~=0.14.2->tea-client==0.0.7->paperswithcode-client) (3.7)
+Using cached paperswithcode_client-0.3.1-py3-none-any.whl (24 kB)
+Using cached tea_client-0.0.7-py3-none-any.whl (11 kB)
+Using cached tea_console-0.0.6-py3-none-any.whl (12 kB)
 Using cached typer-0.3.2-py3-none-any.whl (21 kB)
 Using cached click-7.1.2-py2.py3-none-any.whl (82 kB)
 Using cached httpx-0.14.3-py3-none-any.whl (62 kB)
+Using cached chardet-3.0.4-py2.py3-none-any.whl (133 kB)
 Using cached httpcore-0.10.2-py3-none-any.whl (48 kB)
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Using cached h2-3.2.0-py2.py3-none-any.whl (65 kB)
 Using cached pydantic-1.6.2-py36.py37.py38-none-any.whl (99 kB)
+Using cached pytz-2021.3-py2.py3-none-any.whl (503 kB)
 Using cached rich-9.11.1-py3-none-any.whl (195 kB)
+Using cached tea-0.1.4-py3-none-any.whl (41 kB)
+Using cached tzlocal-2.1-py2.py3-none-any.whl (16 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Using cached commonmark-0.9.1-py2.py3-none-any.whl (51 kB)
+Using cached pygments-2.18.0-py3-none-any.whl (1.2 MB)
+Using cached rfc3986-1.5.0-py2.py3-none-any.whl (31 kB)
 Using cached typing_extensions-3.10.0.2-py3-none-any.whl (26 kB)
 Using cached h11-0.9.0-py2.py3-none-any.whl (53 kB)
-Installing collected packages: typing-extensions, h11, rich, pydantic, httpcore, click, typer, httpx
+Using cached hpack-3.0.0-py2.py3-none-any.whl (38 kB)
+Using cached hyperframe-5.2.0-py2.py3-none-any.whl (12 kB)
+Installing collected packages: typing-extensions, rfc3986, pytz, hyperframe, hpack, h11, commonmark, chardet, tzlocal, sniffio, pygments, pydantic, psutil, h2, colorama, click, typer, tea, rich, httpcore, tea-console, httpx, tea-client, paperswithcode-client
   Attempting uninstall: typing-extensions
-    Found existing installation: typing_extensions 4.12.2
-    Uninstalling typing_extensions-4.12.2:
-      Successfully uninstalled typing_extensions-4.12.2
-  Attempting uninstall: h11
-    Found existing installation: h11 0.14.0
-    Uninstalling h11-0.14.0:
-      Successfully uninstalled h11-0.14.0
-  Attempting uninstall: rich
-    Found existing installation: rich 13.8.1
-    Uninstalling rich-13.8.1:
-      Successfully uninstalled rich-13.8.1
-  Attempting uninstall: pydantic
-    Found existing installation: pydantic 2.9.2
-    Uninstalling pydantic-2.9.2:
-      Successfully uninstalled pydantic-2.9.2
-  Attempting uninstall: httpcore
-    Found existing installation: httpcore 1.0.5
-    Uninstalling httpcore-1.0.5:
-      Successfully uninstalled httpcore-1.0.5
+    Found existing installation: typing_extensions 4.11.0
+    Uninstalling typing_extensions-4.11.0:
+      Successfully uninstalled typing_extensions-4.11.0
   Attempting uninstall: click
     Found existing installation: click 8.1.7
     Uninstalling click-8.1.7:
       Successfully uninstalled click-8.1.7
-  Attempting uninstall: typer
-    Found existing installation: typer 0.12.5
-    Uninstalling typer-0.12.5:
-      Successfully uninstalled typer-0.12.5
-  Attempting uninstall: httpx
-    Found existing installation: httpx 0.27.2
-    Uninstalling httpx-0.27.2:
-      Successfully uninstalled httpx-0.27.2
-Successfully installed click-7.1.2 h11-0.9.0 httpcore-0.10.2 httpx-0.14.3 pydantic-1.6.2 rich-9.11.1 typer-0.3.2 typing-extensions-3.10.0.2
+Successfully installed chardet-3.0.4 click-7.1.2 colorama-0.4.6 commonmark-0.9.1 h11-0.9.0 h2-3.2.0 hpack-3.0.0 httpcore-0.10.2 httpx-0.14.3 hyperframe-5.2.0 paperswithcode-client-0.3.1 psutil-5.8.0 pydantic-1.6.2 pygments-2.18.0 pytz-2021.3 rfc3986-1.5.0 rich-9.11.1 sniffio-1.3.1 tea-0.1.4 tea-client-0.0.7 tea-console-0.0.6 typer-0.3.2 typing-extensions-3.10.0.2 tzlocal-2.1
