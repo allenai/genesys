@@ -426,6 +426,8 @@ def network_status(evosys,benchmark_mode):
                     del running_verifications_df['latest_log']
                 if 'timestamp' in running_verifications_df.columns:
                     del running_verifications_df['timestamp']
+                if 'W&B Training Run' in running_verifications_df.columns: # ad hoc for some errors in log
+                    del running_verifications_df['W&B Training Run']
                 if 'wandb_url' in running_verifications_df.columns:
                     running_verifications_df.rename(columns={'wandb_url':'W&B Training Run'},inplace=True)
                 if 'W&B Training Run' not in running_verifications_df.columns:

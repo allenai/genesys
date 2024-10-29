@@ -61,7 +61,31 @@ def do_log(log_ref,log):
     real_time_utc = datetime.utcfromtimestamp(timestamp)
     print(f'[{real_time_utc}] {log}')
 
+
+def update_local_doc(evosys, sess_id, status, delete=False):
+    local_doc_dir = U.pjoin(evosys.ckpt_dir, '.node.json')
+    local_doc = U.load_json(local_doc_dir)
+    if 'running_verifies' not in local_doc:
+        local_doc['running_verifies'] = {}
+    if sess_id not in local_doc['running_verifies']:
+        local_doc['running_verifies'][sess_id] = {}
+    if delete:
+        local_doc['running_verifies'].pop(sess_id)
+    else:
+        local_doc['running_verifies'][sess_id]['status'] = status
+    U.save_json(local_doc, local_doc_dir)
+
+def check_local_availability(evosys):
+    local_doc_dir = U.pjoin(evosys.ckpt_dir, '.node.json')
+    local_doc = U.load_json(local_doc_dir)
+    running_verifies = local_doc.get('running_verifies',{})
+    return len(running_verifies)==0
+
 def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False, accept_baselines=False, free_verifier=False):
+    if not check_local_availability(evosys):
+        st.error('There is already a verification job running. Please wait for it to finish.')
+        return None, None
+    
     sess_id, pid, _design_id, _scale = _verify_command(node_id, evosys, evoname, design_id, scale, resume, cli, 
         ret_id=True, RANDOM_TESTING=RANDOM_TESTING, accept_baselines=accept_baselines, free_verifier=free_verifier)
     exp_log_ref = evosys.CM.get_log_ref()
@@ -172,6 +196,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
     else:
         return sess_id, pid
 
+
 def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
     exp_log_ref = evosys.CM.get_log_ref()
     index_ref,_ = evosys.CM.get_verifications_index()
@@ -189,6 +214,7 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
                 continue
             if status in VERIFY_TERMINAL_STATES:
                 do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} terminated with status {status}')
+                update_local_doc(evosys, sess_id, status, delete=True)
                 break
             elif time.time()-float(heartbeat)>VERIFY_ZOMBIE_THRESHOLD:
                     log = f'Daemon: Node {node_id} detected zombie process {pid} for {sess_id}'
@@ -197,23 +223,28 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
                         'status':'ZOMBIE',
                         'timestamp':str(time.time())
                     }},merge=True)
+                    update_local_doc(evosys, sess_id, 'ZOMBIE', delete=True)
                     break
             else:
                 do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is running with status {status}')
+                update_local_doc(evosys, sess_id, status)
             time.sleep(60)  # Check every minute for active processes
 
         # Check if the process completed successfully
         try: 
             process=psutil.Process(pid)
             process.kill()
+            update_local_doc(evosys, sess_id, 'TERMINATED', delete=True)
             do_log(exp_log_ref,f'Daemon: Node {node_id} forcefully killed verification process {pid} for {sess_id}')
         except Exception as e:
+            update_local_doc(evosys, sess_id, 'TERMINATED', delete=True)
             do_log(exp_log_ref,f'Daemon: Node {node_id} failed to forcefully kill verification process {pid} for {sess_id}')
             print(f'Error killing process {pid}: {e}')
 
     except Exception as e:
         log = f'Daemon: Node {node_id} encountered an error during verification process {pid} on {design_id}_{scale}: {str(e)}'
         do_log(exp_log_ref,log)
+        update_local_doc(evosys, sess_id, 'TERMINATED', delete=True)
     
     finally:
         # Ensure verification is marked as complete even if an exception occurred
@@ -221,6 +252,7 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
             'status':'TERMINATED',
             'timestamp':str(time.time())
         }},merge=True)
+        update_local_doc(evosys, sess_id, 'TERMINATED', delete=True)
 
     return sess_id, pid
 
