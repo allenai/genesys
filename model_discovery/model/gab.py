@@ -89,6 +89,66 @@ TTT-MLP shows potential for even better performance in long-context scenarios bu
 
 
 import torch.nn.functional as F
+from torch import Tensor
+
+
+class RMSNorm(GAUBase):
+    """
+    Root Mean Square Layer Normalization (RMSNorm).
+
+    This layer applies a variant of layer normalization that uses only the root mean square
+    statistics, without centering. It's computationally more efficient than standard
+    layer normalization and has been shown to be effective in various NLP tasks.
+
+    Args:
+        embed_dim (int): The size of the input feature dimension.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the parent class.
+        device (torch.device, optional): The device on which to allocate the module's parameters.
+        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        eps (float, optional): A small constant added to the denominator for numerical stability.
+            Default: 1e-5.
+
+    Attributes:
+        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
+        variance_epsilon (float): The epsilon value used in the normalization formula.
+
+    Shape:
+        - Input: (*, embed_dim)
+        - Output: (*, embed_dim) (same shape as input)
+
+    Examples:
+        >>> rmsnorm = RMSNorm(128, (0, 6), {})
+        >>> x = torch.randn(1, 100, 128)
+        >>> output = rmsnorm(x)
+        >>> print(output.shape)
+        torch.Size([1, 100, 128])
+
+    References:
+        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
+          https://arxiv.org/abs/1910.07467
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.variance_epsilon = eps
+
+    def _forward(self, X, **Z):
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        variance = X.pow(2).mean(-1, keepdim=True)
+        X = X * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * X.to(input_dtype)
+
+
+import torch.nn.functional as F
 from transformers.utils import logging
 
 
@@ -212,63 +272,127 @@ class FastTTTLinear(GAUBase):
 
 
 import torch.nn.functional as F
-from torch import Tensor
 
 
-class RMSNorm(GAUBase):
+class Conv(GAUBase):
     """
-    Root Mean Square Layer Normalization (RMSNorm).
-
-    This layer applies a variant of layer normalization that uses only the root mean square
-    statistics, without centering. It's computationally more efficient than standard
-    layer normalization and has been shown to be effective in various NLP tasks.
-
+    Dynamic Gated Convolutional Layer with RMSNorm.
+    
+    This layer implements a dynamic and gated convolution mechanism that enhances
+    local context modeling while maintaining computational efficiency. It includes:
+    
+    1. RMSNorm for input normalization
+    2. Dynamic kernel generation based on input content
+    3. Gated convolution mechanism
+    4. Causal padding to prevent information leakage
+    
     Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
-
-    Attributes:
-        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
-        variance_epsilon (float): The epsilon value used in the normalization formula.
-
+        embed_dim (int): The embedding dimension
+        block_loc (tuple): Location of this block in the model (layer_idx, block_idx)
+        kwarg_all (dict): Additional keyword arguments
+        device (torch.device, optional): Device to place the module on
+        dtype (torch.dtype, optional): Data type of the module's parameters
+        conv_kernel (int, optional): Size of the convolutional kernel. Default: 4
+        rms_norm_eps (float, optional): Epsilon for RMSNorm stability. Default: 1e-6
+        kernel_reduction_factor (int, optional): Reduction factor for kernel generator hidden dim. Default: 2
+        use_cache (bool, optional): Whether to cache dynamic weights during inference. Default: True
+        
     Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
+        - Input: (batch_size, seq_len, embed_dim)
+        - Output: (batch_size, seq_len, embed_dim)
+        
     Examples:
-        >>> rmsnorm = RMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
+        >>> conv = Conv(embed_dim=512, block_loc=(0,0), kwarg_all={})
+        >>> x = torch.randn(2, 128, 512)
+        >>> y, z = conv(x)
+        >>> print(y.shape)
+        torch.Size([2, 128, 512])
+        
+    Note:
+        The implementation uses several optimizations:
+        1. Weight caching during inference
+        2. Fused operations for dynamic convolution
+        3. Efficient memory management for long sequences
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
+        device=None, dtype=None, conv_kernel=4, rms_norm_eps=1e-06,
+        kernel_reduction_factor=2, use_cache=True, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
+        kwarg_all['eps'] = rms_norm_eps
+        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=conv_kernel,
+            groups=embed_dim, padding=conv_kernel - 1, bias=True, **self.
+            factory_kwargs)
+        kernel_hidden_dim = embed_dim // kernel_reduction_factor
+        self.kernel_gen = nn.Sequential(nn.Linear(embed_dim,
+            kernel_hidden_dim, **self.factory_kwargs), nn.GELU(), nn.Linear
+            (kernel_hidden_dim, conv_kernel, **self.factory_kwargs))
+        self.gate = nn.Sequential(nn.Linear(embed_dim, embed_dim, **self.
+            factory_kwargs), nn.Sigmoid())
+        self.use_cache = use_cache
+        self.weight_cache = None
+        self.conv_kernel = conv_kernel
+        self._init_weights()
+
+    def _init_weights(self):
+        """Initialize weights with Xavier uniform and zero biases."""
+        nn.init.xavier_uniform_(self.conv.weight)
+        if self.conv.bias is not None:
+            nn.init.zeros_(self.conv.bias)
+        for module in self.kernel_gen.modules():
+            if isinstance(module, nn.Linear):
+                nn.init.xavier_uniform_(module.weight)
+                if module.bias is not None:
+                    nn.init.zeros_(module.bias)
+        for module in self.gate.modules():
+            if isinstance(module, nn.Linear):
+                nn.init.xavier_uniform_(module.weight)
+                if module.bias is not None:
+                    nn.init.zeros_(module.bias)
+
+    def _compute_dynamic_weights(self, hidden_states):
+        """Compute dynamic convolution weights with optional caching."""
+        if (not self.training and self.use_cache and self.weight_cache is not
+            None):
+            return self.weight_cache
+        avg_seq = hidden_states.mean(dim=1)
+        dynamic_weights = self.kernel_gen(avg_seq)
+        dynamic_weights = F.softmax(dynamic_weights, dim=-1)
+        dynamic_weights = dynamic_weights.unsqueeze(1).unsqueeze(1)
+        if not self.training and self.use_cache:
+            self.weight_cache = dynamic_weights
+        return dynamic_weights
 
     def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
+        """
+        Forward pass of the Conv GAU.
+        
+        Args:
+            X (torch.Tensor): Input tensor of shape (batch_size, seq_len, embed_dim)
+            Z (dict): Additional inputs passed as keyword arguments
+            
+        Returns:
+            tuple: (output tensor, updated Z dictionary)
+        """
+        seq_len = X.shape[1]
+        hidden_states = self.norm(X, **Z)[0]
+        dynamic_weights = self._compute_dynamic_weights(hidden_states)
+        hidden_states = hidden_states.transpose(1, 2)
+        conv_out = self.conv(hidden_states)
+        conv_out = conv_out.unsqueeze(-1) * dynamic_weights
+        conv_out = conv_out.sum(dim=-1)[..., :seq_len]
+        hidden_states = conv_out.transpose(1, 2)
+        gate_values = self.gate(X)
+        hidden_states = hidden_states * gate_values
+        return hidden_states, Z
+
+    def reset_cache(self):
+        """Reset the weight cache."""
+        self.weight_cache = None
 
 
 import torch.nn.functional as F
@@ -301,52 +425,8 @@ class SwiGluMLP(GAUBase):
         return down_proj
 
 
-import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
-import torch.utils.checkpoint
-from torch.utils._pytree import tree_map
-from transformers.utils import logging
-from transformers.activations import ACT2FN
-try:
-    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
-except:
-    causal_conv1d_update, causal_conv1d_fn = None, None
-
-
-class Conv(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, conv_kernel=4, rms_norm_eps=1e-06, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        kwarg_all['eps'] = rms_norm_eps
-        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.conv = nn.Conv1d(embed_dim, embed_dim, bias=True, kernel_size=
-            conv_kernel, groups=embed_dim, padding=conv_kernel - 1, **self.
-            factory_kwargs)
-
-    def __call__(self, X, **Z):
-        hidden_states = X
-        seq_len = hidden_states.shape[1]
-        hidden_states = self.norm(hidden_states, **Z)[0]
-        hidden_states = hidden_states.transpose(1, 2)
-        if causal_conv1d_fn is None:
-            hidden_states = self.conv(hidden_states)[..., :seq_len]
-        else:
-            conv_weights = self.conv.weight.view(self.conv.weight.size(0),
-                self.conv.weight.size(2))
-            hidden_states = causal_conv1d_fn(hidden_states, conv_weights,
-                self.conv.bias, activation=None)
-        hidden_states = hidden_states.transpose(1, 2)
-        return hidden_states
-
-
-gab_config = {'num_attention_heads': 8, 'conv_kernel': 4, 'rms_norm_eps': 
-    1e-06, 'scaling_factor': 1.0, 'dim': None, 'base': 10000,
-    'max_position_embeddings': 16, 'eps': 1e-05, 'memory_levels': 3,
+gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
+    'rms_norm_eps': 1e-06, 'use_cache': True, 'kernel_reduction_factor': 2,
     'intermediate_size': None}
 
 

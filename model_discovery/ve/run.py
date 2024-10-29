@@ -279,6 +279,7 @@ def before_train(args,log_fn):
         scale=args.design_id.split('_')[-1]
         design=args.design_id[:-len(scale)-1]
         U.log_error_model(design,scale)
+        log_fn(f'Evaluation failed with error...','ERROR')
         raise e
     log_fn('Auto tuning the gradient accumulation steps done.')
     return args,gab,gab_config
@@ -574,9 +575,18 @@ def run_eval(args,log_fn):
 def evalu(args,log_fn=None):
     log_fn = log_fn if log_fn else lambda x,y=None: None
     if args.PERF_PROF_MODE: return
+    check_problem(args.design_id,log_fn)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
-    run_eval(args,log_fn)
+    try:
+        run_eval(args,log_fn)
+    except Exception as e:
+        util_logger.error(f"Error during evaluation: {e}")
+        scale=args.design_id.split('_')[-1]
+        design=args.design_id[:-len(scale)-1]
+        U.log_error_model(design,scale)
+        log_fn(f'Evaluation failed with error...','ERROR')
+        raise e
     util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
     log_fn(f'Evaluation done. Total time: {(time.perf_counter() - start):.1f} s')
 
@@ -633,6 +643,7 @@ def report(args,log_fn=None) -> dict:
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
     if args.PERF_PROF_MODE: return
+    check_problem(args.design_id,log_fn)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
