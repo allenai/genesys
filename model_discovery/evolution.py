@@ -584,7 +584,7 @@ class FirestoreManager:
         for sess_id in sessions:
             sessdata = U.load_json(U.pjoin(sessions_dir,sess_id, 'metadata.json'))
             if sessdata:
-                if eval(all_index.get(sess_id,{}).get('progress','N/A'))!=eval(self.to_session_progress(sessdata)):
+                if eval(all_index.get(sess_id,{}).get('progress',''))!=eval(self.to_session_progress(sessdata)):
                     self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
 
     def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db
