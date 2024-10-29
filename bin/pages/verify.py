@@ -73,7 +73,7 @@ def update_local_doc(evosys, sess_id, status, delete=False):
         local_doc['running_verifies'].pop(sess_id)
     else:
         local_doc['running_verifies'][sess_id]['status'] = status
-        local_doc['running_verifies'][sess_id]['last_heartbeat'] = str(datetime.now())
+        local_doc['running_verifies'][sess_id]['last_heartbeat'] = str(time.time())
     U.save_json(local_doc, local_doc_dir)
 
 def check_local_availability(evosys):
@@ -82,8 +82,7 @@ def check_local_availability(evosys):
     running_verifies = local_doc.get('running_verifies',{})
     to_pop = []
     for sess_id in running_verifies:
-        last_heartbeat = datetime.strptime(running_verifies[sess_id]['last_heartbeat'], '%Y-%m-%d %H:%M:%S.%f%z')
-        if (datetime.now() - last_heartbeat).total_seconds() > VERIFY_ZOMBIE_THRESHOLD:
+        if time.time()-float(running_verifies[sess_id]['last_heartbeat']) > VERIFY_ZOMBIE_THRESHOLD:
             to_pop.append(sess_id)
     for sess_id in to_pop:
         running_verifies.pop(sess_id)

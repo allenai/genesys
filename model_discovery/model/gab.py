@@ -9,425 +9,474 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = TTT(embed_dim=embed_dim, block_loc=block_loc, kwarg_all
-            =kwargs, **factory_kwargs, **kwargs)
+        self.root = HierTTT(embed_dim=embed_dim, block_loc=block_loc,
+            kwarg_all=kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
         X, Z = self.root(X, **Z)
         return X, Z
 
 
-import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
-from typing import Any, Dict, Optional, Tuple, Union
 import torch.nn.functional as F
-from transformers.utils import logging
+from typing import List
 
 
-class TTT(GAUBase):
+class HierTTT(GAUBase):
     """
-    Problem Statement
-This paper addresses the challenge of long context in recurrent neural networks (RNNs). While RNNs offer linear computational complexity, their performance suffers in long sequences due to the limited expressive power of their fixed-size hidden states. This limitation contrasts with Transformers, which excel in long-context scenarios but have quadratic complexity.
+    HierTTT: Hierarchical Test-Time Training with Multi-Scale Linear Attention
 
-Main Claims
-The paper proposes a new class of sequence modeling layers called Test-Time Training (TTT) layers that offer both linear complexity and expressive hidden states.
-The key idea is to make the hidden state a machine learning model itself, where the update rule is a step of self-supervised learning. This allows for continuous training of the hidden state even on test sequences.
-The paper introduces two instantiations of TTT layers: TTT-Linear, with a linear model as the hidden state, and TTT-MLP, with a two-layer multi-layer perceptron (MLP) as the hidden state.
-Both TTT-Linear and TTT-MLP demonstrate competitive performance compared to strong Transformer and Mamba (a modern RNN) baselines across various model sizes.
-Unlike Mamba, both TTT layers show a continuous decrease in perplexity as they condition on more tokens in long sequences.
-TTT-Linear, with preliminary systems optimization, is faster than Transformers at 8k context and matches Mamba in wall-clock time.
-Methodology
-The paper introduces TTT layers, which use a self-supervised learning approach to update the hidden state. The update rule is effectively a gradient step on a self-supervised loss function, allowing for "training" of the hidden state at test time. Two implementations are explored: TTT-Linear, where the hidden state is a linear model, and TTT-MLP, where the hidden state is a two-layer MLP. The paper also proposes mini-batch TTT and a dual form to improve hardware efficiency and speed up computations.
+    **Overview:**
 
-Key Results
-In short-context (2k and 8k tokens) experiments on the Pile dataset, both TTT-Linear and TTT-MLP demonstrate performance comparable to or exceeding Mamba and Transformer baselines.
-In long-context (1k to 32k tokens) experiments on the Books3 subset of the Pile, both TTT-Linear and TTT-MLP outperform Mamba, especially at longer context lengths.
-TTT-Linear with the Mamba backbone outperforms both Mamba and Transformers with the Transformer backbone across various model sizes.
-With preliminary systems optimization, TTT-Linear is already faster than Transformers at 8k context and matches Mamba in wall-clock time.
-TTT-MLP shows potential for even better performance in long-context scenarios but currently faces challenges in memory I/O.
+    HierTTT introduces a hierarchical test-time training architecture that:
+    - Processes features at multiple scales efficiently
+    - Uses sparse attention patterns for linear complexity
+    - Maintains test-time adaptability at each scale
+    - Integrates features through adaptive normalization
+
+    **Key Components:**
+    - **SparseLinearAttention**: Applies sparse linear attention at multiple scales.
+    - **ScaleIntegration**: Integrates outputs from different scales.
+    - **HierarchicalRMSNorm**: Applies hierarchical normalization.
+
+    **Args:**
+        embed_dim (int): The embedding dimension.
+        block_loc (tuple): The location of the block in the network.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): The device to run on.
+        dtype (torch.dtype, optional): The data type.
+
+    **Inputs:**
+        - **X**: Input tensor of shape (batch_size, seq_length, embed_dim)
+
+    **Outputs:**
+        - **Y**: Output tensor of the same shape as X.
+
+    **Example:**
+        hier_ttt = HierTTT(embed_dim=512, block_loc=(0,0), kwarg_all={})
+        X = torch.randn(8, 128, 512)
+        Y, Z = hier_ttt(X)
+
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        kwarg_all['num_attention_heads'] = max(4, embed_dim // 64)
-        self.seq_modeling_block = FastTTTLinear(embed_dim=self.embed_dim,
+        self.scales = [1, 2, 4]
+        self.sparse_attention_s1 = RotaryPositionalEmbeddings(embed_dim=
+            self.embed_dim, block_loc=self.block_loc, kwarg_all=self.
+            kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.sparse_attention_s2 = RotaryPositionalEmbeddings(embed_dim=
+            self.embed_dim, block_loc=self.block_loc, kwarg_all=self.
+            kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.sparse_attention_s4 = RotaryPositionalEmbeddings(embed_dim=
+            self.embed_dim, block_loc=self.block_loc, kwarg_all=self.
+            kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.scale_integration = ScaleIntegration(embed_dim=self.embed_dim,
             block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
             factory_kwargs, **self.kwarg_all)
-        kwarg_all['intermediate_size'] = int(embed_dim * 2.5)
-        self.mlp = SwiGluMLP(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.conv = Conv(embed_dim=self.embed_dim, block_loc=self.block_loc,
-            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
-        self.seq_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.ffn_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
+        self.norm = HierarchicalRMSNorm(embed_dim=self.embed_dim, block_loc
+            =self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
 
     def _forward(self, X, **Z):
-        hidden_states = X
-        position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
-            =X.device).unsqueeze(0)
-        residual = hidden_states
-        hidden_states = self.conv(hidden_states, **Z)[0]
-        hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states = self.seq_norm(hidden_states, **Z)[0]
-        Z['position_ids'] = position_ids
-        hidden_states = self.seq_modeling_block(hidden_states, **Z)[0]
-        hidden_states = residual + hidden_states
-        residual = hidden_states
-        hidden_states = self.ffn_norm(hidden_states, **Z)[0]
-        hidden_states = self.mlp(hidden_states, **Z)[0]
-        hidden_states = residual + hidden_states
-        return hidden_states
+        scale_outputs = []
+        for s in self.scales:
+            x_s = self._downsample(X, s)
+            Z[f'x_s_{s}'] = x_s
+            if s == 1:
+                y_s, Z = self.sparse_attention_s1(x_s, **Z)
+            elif s == 2:
+                y_s, Z = self.sparse_attention_s2(x_s, **Z)
+            elif s == 4:
+                y_s, Z = self.sparse_attention_s4(x_s, **Z)
+            else:
+                raise ValueError(f'Unsupported scale: {s}')
+            y_s_upsampled = self._upsample(y_s, target_length=X.shape[1],
+                scale=s)
+            scale_outputs.append(y_s_upsampled)
+        Z['scale_outputs'] = scale_outputs
+        Y, Z = self.scale_integration(X, **Z)
+        Y, Z = self.norm(Y, **Z)
+        return Y, Z
+
+    def _downsample(self, X, scale):
+        if scale == 1:
+            return X
+        else:
+            batch_size, seq_len, embed_dim = X.size()
+            pad = scale - 1, 0
+            X_padded = F.pad(X.transpose(1, 2), pad)
+            weight = X.new_ones((embed_dim, 1, scale)) / scale
+            x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim
+                ).transpose(1, 2)
+            return x_s
+
+    def _upsample(self, X, target_length, scale):
+        if scale == 1:
+            return X
+        else:
+            X_upsampled = X.repeat_interleave(scale, dim=1)
+            X_upsampled = X_upsampled[:, :target_length, :]
+            return X_upsampled
 
 
 import torch.nn.functional as F
-from torch import Tensor
 
 
-class RMSNorm(GAUBase):
+class HierarchicalRMSNorm(GAUBase):
     """
-    Root Mean Square Layer Normalization (RMSNorm).
+    Hierarchical Root Mean Square Layer Normalization (HierarchicalRMSNorm).
 
-    This layer applies a variant of layer normalization that uses only the root mean square
-    statistics, without centering. It's computationally more efficient than standard
-    layer normalization and has been shown to be effective in various NLP tasks.
+    This layer extends RMSNorm by incorporating multi-scale normalization.
+    It processes input embeddings at multiple scales and integrates them
+    to produce the normalized output while ensuring causality.
 
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
+    **Core Idea:**
 
-    Attributes:
-        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
-        variance_epsilon (float): The epsilon value used in the normalization formula.
+    - The input embeddings are downsampled to multiple scales using causal operations.
+    - Each scale has its own normalization parameters.
+    - The normalized embeddings at each scale are upsampled causally and combined.
 
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
+    **Mathematical Formulation:**
 
-    Examples:
-        >>> rmsnorm = RMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
+        For each scale s:
 
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
-    """
+        x_s = causal_downsample(x, scale=s)
 
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
+        rms_s(x) = sqrt(mean(x_s^2) + eps)
 
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
+        y_s = x_s / rms_s(x) * gamma_s
 
-
-import torch.nn.functional as F
-from transformers.utils import logging
-
-
-class FastTTTLinear(GAUBase):
-    """
-    **FastTTTLinear**
-
-    FastTTTLinear is a modified version of TTTLinear that integrates Gated Linear Attention (GLA)
-    and concepts from the RWKV architecture to enhance computational efficiency for long sequences.
-    This implementation addresses inefficiency concerns by vectorizing operations, eliminating
-    Python-level for-loops, and optimizing tensor computations.
-
-    **Key Features:**
-
-    - **Gated Linear Attention**: Uses data-dependent gates to modulate queries and keys, enabling linear attention computation.
-    - **Vectorized Computations**: Eliminates Python for-loops by using efficient tensor operations.
-    - **Normalization**: Applies LayerNorm to queries and keys to stabilize computations.
-    - **Adjustments for Numerical Stability**: Uses appropriate scaling, activation functions, and safeguards.
-    - **Local Convolutional Augmentation**: Applies causal convolution to prevent information leakage and enhance local context.
+        y = sum(causal_upsample(y_s) * w_s for s in scales)
 
     **Args:**
-        embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location of this block in the model architecture.
+        embed_dim (int): Dimensionality of the input embeddings.
+        block_loc (tuple): Location of the block within the network.
         kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): Device on which to allocate tensors.
-        dtype (torch.dtype, optional): Data type of the tensors.
-        num_attention_heads (int, optional): Number of attention heads. Default: 4.
+        device (torch.device, optional): Device to use.
+        dtype (torch.dtype, optional): Data type to use.
 
     **Inputs:**
-        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
+        - **X**: Input tensor of shape (batch_size, sequence_length, embed_dim)
 
     **Outputs:**
-        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+        - **Y**: Output tensor of the same shape as X.
 
     **Example:**
 
-        >>> fast_ttt_linear = FastTTTLinear(embed_dim=512, block_loc=(0, 0), kwarg_all={})
-        >>> X = torch.randn(2, 1024, 512)
-        >>> Y, Z = fast_ttt_linear(X)
+        >>> norm = HierarchicalRMSNorm(embed_dim=512, block_loc=(0, 0), kwarg_all={'scales': [1, 2, 4]})
+        >>> x = torch.randn(32, 128, 512)
+        >>> y, _ = norm(x)
 
     **References:**
 
-    - Yang, S., et al. (2023). *Gated Linear Attention Transformers with Hardware-Efficient Training*.
-    - Peng, B., et al. (2023). *RWKV: Reinventing RNNs for the Transformer Era*.
-
+        - Proposal for HierarchicalRMSNorm.
+    
+    **Note:**
+        This implementation ensures causality by using causal downsampling and upsampling operations.
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_attention_heads=4, **kwargs):
+        device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.num_heads = num_attention_heads
-        assert embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_attention_heads'
-        self.head_dim = embed_dim // self.num_heads
         self.embed_dim = embed_dim
-        self.W_Q = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.W_K = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.W_V = nn.Linear(embed_dim, embed_dim, bias=False, **self.
-            factory_kwargs)
-        self.gate_Q = nn.Linear(embed_dim, embed_dim, bias=True, **self.
-            factory_kwargs)
-        self.gate_K = nn.Linear(embed_dim, embed_dim, bias=True, **self.
-            factory_kwargs)
-        self.output_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
-            self.factory_kwargs)
-        self.local_conv = nn.Conv1d(in_channels=embed_dim, out_channels=
-            embed_dim, kernel_size=3, padding=2, bias=True, **self.
-            factory_kwargs)
-        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.q_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
-        self.k_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
-        nn.init.xavier_uniform_(self.W_Q.weight)
-        nn.init.xavier_uniform_(self.W_K.weight)
-        nn.init.xavier_uniform_(self.W_V.weight)
-        nn.init.xavier_uniform_(self.output_proj.weight)
-        nn.init.xavier_uniform_(self.gate_Q.weight)
-        nn.init.zeros_(self.gate_Q.bias)
-        nn.init.xavier_uniform_(self.gate_K.weight)
-        nn.init.zeros_(self.gate_K.bias)
-        nn.init.xavier_uniform_(self.local_conv.weight)
-        nn.init.zeros_(self.local_conv.bias)
+        self.scales = kwargs.pop('scales', kwarg_all.get('scales', [1, 2, 4]))
+        self.eps = kwargs.pop('eps', kwarg_all.get('eps', 1e-05))
+        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(
+            embed_dim, **self.factory_kwargs)) for s in self.scales})
+        self.scale_weights = nn.Parameter(torch.ones(len(self.scales), **
+            self.factory_kwargs))
 
-    def _forward(self, X, **Z):
-        B, L, D = X.size()
-        H = self.num_heads
-        D_H = self.head_dim
-        X_conv = self.local_conv(X.transpose(1, 2))
-        X_conv = X_conv.transpose(1, 2)[:, :L, :]
-        X = X + X_conv
-        Q = self.W_Q(X)
-        K = self.W_K(X)
-        V = self.W_V(X)
-        Q = self.q_norm(Q)
-        K = self.k_norm(K)
-        G_Q = torch.sigmoid(self.gate_Q(X))
-        G_K = torch.sigmoid(self.gate_K(X))
-        Q = Q * G_Q
-        K = K * G_K
-        Q = Q.view(B, L, H, D_H).transpose(1, 2)
-        K = K.view(B, L, H, D_H).transpose(1, 2)
-        V = V.view(B, L, H, D_H).transpose(1, 2)
-        Q_prime = F.elu(Q) + 1
-        K_prime = F.elu(K) + 1
-        QV = Q_prime * V
-        K_cumsum = K_prime.cumsum(dim=2)
-        QV_cumsum = (K_prime * V).cumsum(dim=2)
-        denominator = torch.einsum('bhlf,bhlf->bhl', Q_prime, K_cumsum)
-        numerator = torch.einsum('bhlf,bhlf->bhlf', Q_prime, QV_cumsum)
-        epsilon = 1e-06
-        denominator = denominator.unsqueeze(-1) + epsilon
-        output = numerator / denominator
-        output = output.transpose(1, 2).contiguous().view(B, L, D)
-        output = self.output_proj(output)
-        output = X + output
-        output, Z = self.norm(output, **Z)
-        return output, Z
-
-
-import torch.nn.functional as F
-
-
-class Conv(GAUBase):
-    """
-    Dynamic Gated Convolutional Layer with RMSNorm.
-    
-    This layer implements a dynamic and gated convolution mechanism that enhances
-    local context modeling while maintaining computational efficiency. It includes:
-    
-    1. RMSNorm for input normalization
-    2. Dynamic kernel generation based on input content
-    3. Gated convolution mechanism
-    4. Causal padding to prevent information leakage
-    
-    Args:
-        embed_dim (int): The embedding dimension
-        block_loc (tuple): Location of this block in the model (layer_idx, block_idx)
-        kwarg_all (dict): Additional keyword arguments
-        device (torch.device, optional): Device to place the module on
-        dtype (torch.dtype, optional): Data type of the module's parameters
-        conv_kernel (int, optional): Size of the convolutional kernel. Default: 4
-        rms_norm_eps (float, optional): Epsilon for RMSNorm stability. Default: 1e-6
-        kernel_reduction_factor (int, optional): Reduction factor for kernel generator hidden dim. Default: 2
-        use_cache (bool, optional): Whether to cache dynamic weights during inference. Default: True
-        
-    Shape:
-        - Input: (batch_size, seq_len, embed_dim)
-        - Output: (batch_size, seq_len, embed_dim)
-        
-    Examples:
-        >>> conv = Conv(embed_dim=512, block_loc=(0,0), kwarg_all={})
-        >>> x = torch.randn(2, 128, 512)
-        >>> y, z = conv(x)
-        >>> print(y.shape)
-        torch.Size([2, 128, 512])
-        
-    Note:
-        The implementation uses several optimizations:
-        1. Weight caching during inference
-        2. Fused operations for dynamic convolution
-        3. Efficient memory management for long sequences
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, conv_kernel=4, rms_norm_eps=1e-06,
-        kernel_reduction_factor=2, use_cache=True, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        kwarg_all['eps'] = rms_norm_eps
-        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
-            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
-            self.kwarg_all)
-        self.conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=conv_kernel,
-            groups=embed_dim, padding=conv_kernel - 1, bias=True, **self.
-            factory_kwargs)
-        kernel_hidden_dim = embed_dim // kernel_reduction_factor
-        self.kernel_gen = nn.Sequential(nn.Linear(embed_dim,
-            kernel_hidden_dim, **self.factory_kwargs), nn.GELU(), nn.Linear
-            (kernel_hidden_dim, conv_kernel, **self.factory_kwargs))
-        self.gate = nn.Sequential(nn.Linear(embed_dim, embed_dim, **self.
-            factory_kwargs), nn.Sigmoid())
-        self.use_cache = use_cache
-        self.weight_cache = None
-        self.conv_kernel = conv_kernel
-        self._init_weights()
-
-    def _init_weights(self):
-        """Initialize weights with Xavier uniform and zero biases."""
-        nn.init.xavier_uniform_(self.conv.weight)
-        if self.conv.bias is not None:
-            nn.init.zeros_(self.conv.bias)
-        for module in self.kernel_gen.modules():
-            if isinstance(module, nn.Linear):
-                nn.init.xavier_uniform_(module.weight)
-                if module.bias is not None:
-                    nn.init.zeros_(module.bias)
-        for module in self.gate.modules():
-            if isinstance(module, nn.Linear):
-                nn.init.xavier_uniform_(module.weight)
-                if module.bias is not None:
-                    nn.init.zeros_(module.bias)
-
-    def _compute_dynamic_weights(self, hidden_states):
-        """Compute dynamic convolution weights with optional caching."""
-        if (not self.training and self.use_cache and self.weight_cache is not
-            None):
-            return self.weight_cache
-        avg_seq = hidden_states.mean(dim=1)
-        dynamic_weights = self.kernel_gen(avg_seq)
-        dynamic_weights = F.softmax(dynamic_weights, dim=-1)
-        dynamic_weights = dynamic_weights.unsqueeze(1).unsqueeze(1)
-        if not self.training and self.use_cache:
-            self.weight_cache = dynamic_weights
-        return dynamic_weights
-
-    def _forward(self, X, **Z):
+    def _decompose_scales(self, X: torch.Tensor) ->dict:
         """
-        Forward pass of the Conv GAU.
-        
+        Decompose the input tensor into multiple scales.
+
         Args:
-            X (torch.Tensor): Input tensor of shape (batch_size, seq_len, embed_dim)
-            Z (dict): Additional inputs passed as keyword arguments
-            
+            X (torch.Tensor): Input tensor of shape (B, L, D)
+
         Returns:
-            tuple: (output tensor, updated Z dictionary)
+            dict: Dictionary mapping scale to downsampled tensor
         """
-        seq_len = X.shape[1]
-        hidden_states = self.norm(X, **Z)[0]
-        dynamic_weights = self._compute_dynamic_weights(hidden_states)
-        hidden_states = hidden_states.transpose(1, 2)
-        conv_out = self.conv(hidden_states)
-        conv_out = conv_out.unsqueeze(-1) * dynamic_weights
-        conv_out = conv_out.sum(dim=-1)[..., :seq_len]
-        hidden_states = conv_out.transpose(1, 2)
-        gate_values = self.gate(X)
-        hidden_states = hidden_states * gate_values
-        return hidden_states, Z
+        x_scales = {}
+        for s in self.scales:
+            if s == 1:
+                x_scales[s] = X
+            else:
+                x_s = self._causal_downsample(X, s)
+                x_scales[s] = x_s
+        return x_scales
 
-    def reset_cache(self):
-        """Reset the weight cache."""
-        self.weight_cache = None
+    def _causal_downsample(self, X: torch.Tensor, scale: int) ->torch.Tensor:
+        """
+        Perform causal downsampling on the input tensor.
 
+        Args:
+            X (torch.Tensor): Input tensor of shape (B, L, D)
+            scale (int): Downsampling scale factor
 
-import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
-from transformers.utils import logging
-from transformers.activations import ACT2FN
+        Returns:
+            torch.Tensor: Downsampled tensor of shape (B, L//scale, D)
+        """
+        batch_size, seq_length, embed_dim = X.size()
+        padding = scale - 1, 0
+        X_padded = F.pad(X.transpose(1, 2), padding)
+        weight = X.new_ones((embed_dim, 1, scale)) / scale
+        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim
+            ).transpose(1, 2)
+        return x_s
 
+    def _causal_upsample(self, y_s: torch.Tensor, scale: int, target_length:
+        int) ->torch.Tensor:
+        """
+        Perform causal upsampling on the downsampled tensor.
 
-class SwiGluMLP(GAUBase):
+        Args:
+            y_s (torch.Tensor): Downsampled tensor of shape (B, L//scale, D)
+            scale (int): Upsampling scale factor
+            target_length (int): The target sequence length after upsampling
 
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, intermediate_size=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        self.intermediate_size = (intermediate_size if intermediate_size is not
-            None else int(embed_dim * 2.5))
-        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
-            bias=False, **self.factory_kwargs)
-        self.act_fn = ACT2FN['silu']
+        Returns:
+            torch.Tensor: Upsampled tensor of shape (B, target_length, D)
+        """
+        upsampled_y_s = y_s.repeat_interleave(scale, dim=1)
+        upsampled_y_s = upsampled_y_s[:, :target_length, :]
+        return upsampled_y_s
+
+    def _integrate_scales(self, y_scales: dict) ->torch.Tensor:
+        """
+        Integrate the outputs from different scales.
+
+        Args:
+            y_scales (dict): Dictionary mapping scale to upsampled tensor
+
+        Returns:
+            torch.Tensor: Integrated tensor of shape (B, L, D)
+        """
+        weights = F.softmax(self.scale_weights, dim=0)
+        Y = 0
+        target_length = y_scales[1].size(1)
+        for i, (s, y_s) in enumerate(y_scales.items()):
+            if s == 1:
+                upsampled_y_s = y_s
+            else:
+                upsampled_y_s = self._causal_upsample(y_s, scale=s,
+                    target_length=target_length)
+            Y = Y + upsampled_y_s * weights[i]
+        return Y
 
     def _forward(self, X, **Z):
-        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
-            up_proj(X))
-        return down_proj
+        """
+        Forward pass of HierarchicalRMSNorm.
+
+        Args:
+            X (torch.Tensor): Input tensor of shape (B, L, D)
+            **Z: Additional keyword arguments
+
+        Returns:
+            tuple: (Normalized tensor Y, Updated intermediate variables Z)
+        """
+        X = X.to(**self.factory_kwargs)
+        x_scales = self._decompose_scales(X)
+        y_scales = {}
+        for s, x_s in x_scales.items():
+            rms_s = torch.sqrt(torch.mean(x_s.pow(2), dim=-1, keepdim=True) +
+                self.eps)
+            gamma_s = self.gammas[f's{s}']
+            y_s = x_s / rms_s * gamma_s
+            y_scales[s] = y_s
+        Y = self._integrate_scales(y_scales)
+        return Y, Z
 
 
-gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
-    'rms_norm_eps': 1e-06, 'use_cache': True, 'kernel_reduction_factor': 2,
-    'intermediate_size': None}
+import torch.nn.functional as F
+import math
+
+
+class RotaryPositionalEmbeddings(GAUBase):
+    """
+    Rotary Positional Embeddings (RoPE) for transformers.
+    
+    This unit implements rotary position embeddings that:
+    - Injects relative positional information through rotation matrices
+    - Enables attention to consider token positions efficiently
+    - Maintains linear complexity and causal properties
+    
+    **Key Features:**
+    - Position-dependent rotation of token embeddings
+    - Efficient cached computation of rotation matrices
+    - Support for variable sequence lengths
+    - Maintains gradients for end-to-end training
+    
+    **Args:**
+        embed_dim (int): The embedding dimension
+        block_loc (tuple): Location of this block in the network
+        kwarg_all (dict): Additional keyword arguments
+        device (torch.device, optional): Device to use
+        dtype (torch.dtype, optional): Data type to use
+        rotary_emb_dim (int, optional): Dimension for rotary embeddings. Default: embed_dim//4
+        max_position_embeddings (int, optional): Maximum sequence length. Default: 4096
+        base (int, optional): Base for the angle computation. Default: 10000
+        
+    **Shape:**
+        - Input: (batch_size, seq_length, embed_dim)
+        - Output: Rotated embeddings with same shape as input
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.dim = kwargs.pop('rotary_emb_dim', embed_dim // 4)
+        self.max_seq_len = kwargs.pop('max_position_embeddings', 4096)
+        self.base = kwargs.pop('base', 10000)
+        inv_freq = 1.0 / self.base ** (torch.arange(0, self.dim, 2).float()
+            .to(device) / self.dim)
+        self.register_buffer('inv_freq', inv_freq, persistent=False)
+        self.build_cache()
+
+    def build_cache(self):
+        """Precompute rotation matrices for all possible positions."""
+        seq_idx = torch.arange(self.max_seq_len, device=self.inv_freq.device)
+        freqs = torch.einsum('i,j->ij', seq_idx.float(), self.inv_freq)
+        emb = torch.cat((freqs, freqs), dim=-1)
+        cos = emb.cos()
+        sin = emb.sin()
+        self.register_buffer('cos_cached', cos, persistent=False)
+        self.register_buffer('sin_cached', sin, persistent=False)
+
+    def _rotate_half(self, x: torch.Tensor) ->torch.Tensor:
+        """Rotate half the hidden dims of the input."""
+        x1, x2 = x.chunk(2, dim=-1)
+        return torch.cat((-x2, x1), dim=-1)
+
+    def _forward(self, X: torch.Tensor, **Z) ->tuple:
+        """Apply rotary embeddings to input tensor."""
+        input_emb = Z.get('input_emb')
+        if input_emb is None:
+            return X, Z
+        position_ids = Z.get('position_ids')
+        if position_ids is None:
+            position_ids = torch.arange(input_emb.size(1), device=input_emb
+                .device)
+            position_ids = position_ids.unsqueeze(0).expand(input_emb.size(
+                0), -1)
+        if position_ids.max() >= self.max_seq_len:
+            raise ValueError(
+                f'Position IDs must be less than max_seq_len ({self.max_seq_len})'
+                )
+        cos = self.cos_cached[position_ids].unsqueeze(1)
+        sin = self.sin_cached[position_ids].unsqueeze(1)
+        input_rot = self._rotate_half(input_emb)
+        output_emb = input_emb * cos + input_rot * sin
+        Z['output_emb'] = output_emb.to(dtype=input_emb.dtype)
+        return X, Z
+
+
+import torch.nn.functional as F
+
+
+class ScaleIntegration(GAUBase):
+    """
+    ScaleIntegration
+
+    **Overview:**
+
+    ScaleIntegration integrates outputs from multiple scales into a single output.
+    It takes a list of scale outputs provided in `Z['scale_outputs']`, applies
+    learnable weights to each scale output via softmax-normalized weights, concatenates
+    the weighted outputs, and projects them back to the embedding dimension.
+
+    **Key Features:**
+
+    - Accepts multiple inputs corresponding to outputs from different scales.
+    - Applies learnable weights to each scale output.
+    - Combines the weighted outputs via concatenation and linear projection.
+    - Ensures output shape is consistent with input shape.
+    - Handles edge cases where scale outputs have varying sequence lengths.
+
+    **Inputs:**
+
+    - `X`: Tensor of shape `(batch_size, seq_length, embed_dim)`
+    - `Z`: A dictionary containing:
+        - `'scale_outputs'`: Optional list of tensors, each of shape `(batch_size, seq_length, embed_dim)`
+
+    **Outputs:**
+
+    - `Y`: Tensor of shape `(batch_size, seq_length, embed_dim)`
+
+    **Example:**
+
+        scale_integration = ScaleIntegration(embed_dim=512, block_loc=(0, 0), kwarg_all={'scales': [1, 2, 4]})
+        X = torch.randn(8, 128, 512)
+        Z = {'scale_outputs': [torch.randn(8, 128, 512) for _ in range(3)]}
+        Y, Z = scale_integration(X, **Z)
+
+    **Args:**
+
+    - `embed_dim` (int): Embedding dimension.
+    - `block_loc` (tuple): Location of the block within the network.
+    - `kwarg_all` (dict): Additional keyword arguments.
+    - `device` (torch.device, optional): Device to use.
+    - `dtype` (torch.dtype, optional): Data type to use.
+
+    **Note:**
+
+    This unit ensures that the output `Y` has the same shape as the input `X`.
+    If `scale_outputs` is not provided in `Z`, it defaults to using `X` for all scales.
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.scales = kwargs.pop('scales', kwarg_all.get('scales', [1, 2, 4]))
+        if not isinstance(self.scales, (list, tuple)):
+            raise ValueError('scales must be a list or tuple')
+        if not all(isinstance(s, int) and s > 0 for s in self.scales):
+            raise ValueError('all scales must be positive integers')
+        self.num_scales = len(self.scales)
+        self.scale_weights = nn.Parameter(torch.ones(self.num_scales, **
+            self.factory_kwargs))
+        self.proj = nn.Linear(embed_dim * self.num_scales, embed_dim, bias=
+            False, **self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        scale_outputs = Z.get('scale_outputs', None)
+        if not scale_outputs:
+            scale_outputs = [X for _ in range(self.num_scales)]
+        if not isinstance(scale_outputs, list) or len(scale_outputs
+            ) != self.num_scales:
+            raise ValueError(
+                f"'scale_outputs' must be a list of length {self.num_scales}")
+        target_length = X.shape[1]
+        aligned_outputs = []
+        for out in scale_outputs:
+            if out.shape[1] != target_length:
+                out = self._align_sequence_length(out, target_length)
+            aligned_outputs.append(out.to(**self.factory_kwargs))
+        weights = F.softmax(self.scale_weights, dim=0)
+        weighted_outputs = [(out * w.view(1, 1, 1)) for out, w in zip(
+            aligned_outputs, weights)]
+        combined = torch.cat(weighted_outputs, dim=-1)
+        Y = self.proj(combined)
+        return Y, Z
+
+    def _align_sequence_length(self, out, target_length):
+        curr_length = out.shape[1]
+        if curr_length > target_length:
+            out = out[:, :target_length, :]
+        elif curr_length < target_length:
+            pad_size = target_length - curr_length
+            pad = torch.zeros(out.shape[0], pad_size, out.shape[2], device=
+                out.device, dtype=out.dtype)
+            out = torch.cat([out, pad], dim=1)
+        return out
+
+
+gab_config = {}
 
 
 
