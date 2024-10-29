@@ -61,6 +61,7 @@ def design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=Fa
     return sess_id,pid
 
 def acquire_design_lock(evosys, node_id):
+    exp_log_ref = evosys.CM.get_log_ref()
     lock_ref = evosys.CM.get_design_lock_ref()
     while True:
         lock_doc = lock_ref.get()
@@ -77,13 +78,13 @@ def acquire_design_lock(evosys, node_id):
                     if time.time()-float(lock_data['timestamp'])>DESIGN_LOCK_TIMEOUT:
                         break
         time.sleep(1)
-    lock_ref.set({'timestamp':str(time.time()),'locked':True,'node_id':node_id},merge=True)
-    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Acquired design lock for node {node_id}')
+    do_log(exp_log_ref,f'Node {node_id} acquired design lock')
 
-def release_design_lock(evosys):
+def release_design_lock(evosys,node_id):
+    exp_log_ref = evosys.CM.get_log_ref()
     lock_ref = evosys.CM.get_design_lock_ref()
     lock_ref.set({'timestamp':str(time.time()),'locked':False,'node_id':None},merge=True)
-    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Released design lock for node {node_id}')
+    do_log(exp_log_ref,f'Node {node_id} released design lock')
 
 def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=False, silent=False, running_sessions=[],sess_id=None):
     acquire_design_lock(evosys, node_id)
@@ -105,7 +106,7 @@ def _design_command(node_id, evosys, evoname, resume=True, cli=False, cpu_only=F
         log=f'Node {node_id} failed to run design thread with error: {pid}'
         do_log(exp_log_ref,log)
     time.sleep(3)
-    release_design_lock(evosys)
+    release_design_lock(evosys,node_id)
     return sess_id,pid
 
 

@@ -531,7 +531,7 @@ class FirestoreManager:
             'progress':self.to_session_progress(sessdata),
             'mode': sessdata.get('mode','')
         }},merge=True)
-        print(f'Uploaded session {sess_id} to DB')
+        print(f'Uploaded session {sess_id} to DB for {self.ptree.evoname}')
 
     def get_design_session(self,sess_id):
         log_collection=self.log_doc_ref.collection('design_sessions')
@@ -584,10 +584,8 @@ class FirestoreManager:
         for sess_id in sessions:
             sessdata = U.load_json(U.pjoin(sessions_dir,sess_id, 'metadata.json'))
             if sessdata:
-                if sess_id in all_index:
-                    if all_index[sess_id].get('progress','')==self.to_session_progress(sessdata):
-                        continue
-                self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
+                if eval(all_index.get(sess_id,{}).get('progress','N/A'))!=eval(self.to_session_progress(sessdata)):
+                    self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
 
     def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db
         self.get_index()
@@ -699,15 +697,15 @@ class FirestoreManager:
                 U.save_json(codes,codes_path)
                 print(f'Downloaded codes for design {design_id}')
 
-    def download_design_sessions(self):
-        sess_index = self.get_design_sessions_index()
+    def sync_sessions_from_db(self):
+        _,sess_index = self.get_design_sessions_index()
         for sess_id in sess_index:
             if sess_id not in self.ptree.design_sessions:
                 self.ptree.get_design_session(sess_id)
             else:
                 index_term = sess_index[sess_id]
                 sess_data = self.ptree.design_sessions[sess_id]
-                if index_term['progress']!=self.to_session_progress(sess_data):
+                if eval(index_term['progress'])!=eval(self.to_session_progress(sess_data)):
                     self.ptree.get_design_session(sess_id)
 
     def sync_from_db(self,overwrite=False): # download all designs from db if out of date
@@ -716,7 +714,6 @@ class FirestoreManager:
         for design_id in self.index:
             self.download_design(design_id,overwrite=overwrite)
         self.download_baselines(overwrite=overwrite)
-        self.download_design_sessions()
         print('Local designs synced from remote DB')
 
     def delete_design(self,design_id):
@@ -1454,12 +1451,7 @@ class PhylogeneticTree:
         self.design_sessions={}
         to_delete=[]
         for sess_id in os.listdir(U.pjoin(self.db_dir,'sessions')):
-            if self.FM:
-                metadata = self.FM.get_design_session(sess_id)
-                if not metadata:
-                    metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
-            else:
-                metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
+            metadata = U.load_json(U.pjoin(self.session_dir(sess_id), 'metadata.json'))
             if 'mode' in metadata:
                 metadata['mode']=DesignModes(metadata['mode'])
             if not metadata:
@@ -1468,6 +1460,8 @@ class PhylogeneticTree:
             self.design_sessions[sess_id] = metadata
         for sess_id in to_delete:
             shutil.rmtree(self.session_dir(sess_id))
+        if self.FM:
+            self.FM.sync_sessions_from_db()
 
     @property
     def design_cost(self):

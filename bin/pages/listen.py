@@ -105,7 +105,6 @@ class Listener:
             tail='_'+str(count) if count>0 else ''
             doc_ref=self.collection.document(node_id+tail)
             if not doc_ref.get().exists:
-                self.evosys.link_node(node_id+tail)
                 return node_id+tail
             else:
                 if autofix:
