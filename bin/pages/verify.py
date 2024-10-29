@@ -73,12 +73,21 @@ def update_local_doc(evosys, sess_id, status, delete=False):
         local_doc['running_verifies'].pop(sess_id)
     else:
         local_doc['running_verifies'][sess_id]['status'] = status
+        local_doc['running_verifies'][sess_id]['last_heartbeat'] = str(datetime.now())
     U.save_json(local_doc, local_doc_dir)
 
 def check_local_availability(evosys):
     local_doc_dir = U.pjoin(evosys.ckpt_dir, '.node.json')
     local_doc = U.load_json(local_doc_dir)
     running_verifies = local_doc.get('running_verifies',{})
+    to_pop = []
+    for sess_id in running_verifies:
+        last_heartbeat = datetime.strptime(running_verifies[sess_id]['last_heartbeat'], '%Y-%m-%d %H:%M:%S.%f%z')
+        if (datetime.now() - last_heartbeat).total_seconds() > VERIFY_ZOMBIE_THRESHOLD:
+            to_pop.append(sess_id)
+    for sess_id in to_pop:
+        running_verifies.pop(sess_id)
+    U.save_json(local_doc, local_doc_dir)
     return len(running_verifies)==0
 
 def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=True, cli=False, RANDOM_TESTING=False, accept_baselines=False, free_verifier=False):
