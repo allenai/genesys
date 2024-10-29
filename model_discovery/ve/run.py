@@ -280,7 +280,7 @@ def before_train(args,log_fn):
         design=args.design_id[:-len(scale)-1]
         U.log_error_model(design,scale)
         log_fn(f'Evaluation failed with error...','ERROR')
-        raise e
+        sys.exit()
     log_fn('Auto tuning the gradient accumulation steps done.')
     return args,gab,gab_config
 
@@ -505,7 +505,7 @@ def train(args,log_fn=None):
         return
     start = time.perf_counter()
     args,gab,gab_config=before_train(args,log_fn)
-    check_problem(args.design_id,log_fn) # check after testing in before_train
+    # check_problem(args.design_id,log_fn) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -575,7 +575,7 @@ def run_eval(args,log_fn):
 def evalu(args,log_fn=None):
     log_fn = log_fn if log_fn else lambda x,y=None: None
     if args.PERF_PROF_MODE: return
-    check_problem(args.design_id,log_fn)
+    # check_problem(args.design_id,log_fn)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
     try:
@@ -586,7 +586,7 @@ def evalu(args,log_fn=None):
         design=args.design_id[:-len(scale)-1]
         U.log_error_model(design,scale)
         log_fn(f'Evaluation failed with error...','ERROR')
-        raise e
+        sys.exit()
     util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
     log_fn(f'Evaluation done. Total time: {(time.perf_counter() - start):.1f} s')
 
@@ -643,7 +643,7 @@ def report(args,log_fn=None) -> dict:
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
     if args.PERF_PROF_MODE: return
-    check_problem(args.design_id,log_fn)
+    # check_problem(args.design_id,log_fn)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")

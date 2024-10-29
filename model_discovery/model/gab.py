@@ -125,6 +125,191 @@ class HierTTT(GAUBase):
 import torch.nn.functional as F
 
 
+class ScaleIntegration(GAUBase):
+    """
+    ScaleIntegration
+
+    **Overview:**
+
+    ScaleIntegration integrates outputs from multiple scales into a single output.
+    It takes a list of scale outputs provided in `Z['scale_outputs']`, applies
+    learnable weights to each scale output via softmax-normalized weights, concatenates
+    the weighted outputs, and projects them back to the embedding dimension.
+
+    **Key Features:**
+
+    - Accepts multiple inputs corresponding to outputs from different scales.
+    - Applies learnable weights to each scale output.
+    - Combines the weighted outputs via concatenation and linear projection.
+    - Ensures output shape is consistent with input shape.
+    - Handles edge cases where scale outputs have varying sequence lengths.
+
+    **Inputs:**
+
+    - `X`: Tensor of shape `(batch_size, seq_length, embed_dim)`
+    - `Z`: A dictionary containing:
+        - `'scale_outputs'`: Optional list of tensors, each of shape `(batch_size, seq_length, embed_dim)`
+
+    **Outputs:**
+
+    - `Y`: Tensor of shape `(batch_size, seq_length, embed_dim)`
+
+    **Example:**
+
+        scale_integration = ScaleIntegration(embed_dim=512, block_loc=(0, 0), kwarg_all={'scales': [1, 2, 4]})
+        X = torch.randn(8, 128, 512)
+        Z = {'scale_outputs': [torch.randn(8, 128, 512) for _ in range(3)]}
+        Y, Z = scale_integration(X, **Z)
+
+    **Args:**
+
+    - `embed_dim` (int): Embedding dimension.
+    - `block_loc` (tuple): Location of the block within the network.
+    - `kwarg_all` (dict): Additional keyword arguments.
+    - `device` (torch.device, optional): Device to use.
+    - `dtype` (torch.dtype, optional): Data type to use.
+
+    **Note:**
+
+    This unit ensures that the output `Y` has the same shape as the input `X`.
+    If `scale_outputs` is not provided in `Z`, it defaults to using `X` for all scales.
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.scales = kwargs.pop('scales', kwarg_all.get('scales', [1, 2, 4]))
+        if not isinstance(self.scales, (list, tuple)):
+            raise ValueError('scales must be a list or tuple')
+        if not all(isinstance(s, int) and s > 0 for s in self.scales):
+            raise ValueError('all scales must be positive integers')
+        self.num_scales = len(self.scales)
+        self.scale_weights = nn.Parameter(torch.ones(self.num_scales, **
+            self.factory_kwargs))
+        self.proj = nn.Linear(embed_dim * self.num_scales, embed_dim, bias=
+            False, **self.factory_kwargs)
+
+    def _forward(self, X, **Z):
+        scale_outputs = Z.get('scale_outputs', None)
+        if not scale_outputs:
+            scale_outputs = [X for _ in range(self.num_scales)]
+        if not isinstance(scale_outputs, list) or len(scale_outputs
+            ) != self.num_scales:
+            raise ValueError(
+                f"'scale_outputs' must be a list of length {self.num_scales}")
+        target_length = X.shape[1]
+        aligned_outputs = []
+        for out in scale_outputs:
+            if out.shape[1] != target_length:
+                out = self._align_sequence_length(out, target_length)
+            aligned_outputs.append(out.to(**self.factory_kwargs))
+        weights = F.softmax(self.scale_weights, dim=0)
+        weighted_outputs = [(out * w.view(1, 1, 1)) for out, w in zip(
+            aligned_outputs, weights)]
+        combined = torch.cat(weighted_outputs, dim=-1)
+        Y = self.proj(combined)
+        return Y, Z
+
+    def _align_sequence_length(self, out, target_length):
+        curr_length = out.shape[1]
+        if curr_length > target_length:
+            out = out[:, :target_length, :]
+        elif curr_length < target_length:
+            pad_size = target_length - curr_length
+            pad = torch.zeros(out.shape[0], pad_size, out.shape[2], device=
+                out.device, dtype=out.dtype)
+            out = torch.cat([out, pad], dim=1)
+        return out
+
+
+import torch.nn.functional as F
+import math
+
+
+class RotaryPositionalEmbeddings(GAUBase):
+    """
+    Rotary Positional Embeddings (RoPE) for transformers.
+    
+    This unit implements rotary position embeddings that:
+    - Injects relative positional information through rotation matrices
+    - Enables attention to consider token positions efficiently
+    - Maintains linear complexity and causal properties
+    
+    **Key Features:**
+    - Position-dependent rotation of token embeddings
+    - Efficient cached computation of rotation matrices
+    - Support for variable sequence lengths
+    - Maintains gradients for end-to-end training
+    
+    **Args:**
+        embed_dim (int): The embedding dimension
+        block_loc (tuple): Location of this block in the network
+        kwarg_all (dict): Additional keyword arguments
+        device (torch.device, optional): Device to use
+        dtype (torch.dtype, optional): Data type to use
+        rotary_emb_dim (int, optional): Dimension for rotary embeddings. Default: embed_dim//4
+        max_position_embeddings (int, optional): Maximum sequence length. Default: 4096
+        base (int, optional): Base for the angle computation. Default: 10000
+        
+    **Shape:**
+        - Input: (batch_size, seq_length, embed_dim)
+        - Output: Rotated embeddings with same shape as input
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.dim = kwargs.pop('rotary_emb_dim', embed_dim // 4)
+        self.max_seq_len = kwargs.pop('max_position_embeddings', 4096)
+        self.base = kwargs.pop('base', 10000)
+        inv_freq = 1.0 / self.base ** (torch.arange(0, self.dim, 2).float()
+            .to(device) / self.dim)
+        self.register_buffer('inv_freq', inv_freq, persistent=False)
+        self.build_cache()
+
+    def build_cache(self):
+        """Precompute rotation matrices for all possible positions."""
+        seq_idx = torch.arange(self.max_seq_len, device=self.inv_freq.device)
+        freqs = torch.einsum('i,j->ij', seq_idx.float(), self.inv_freq)
+        emb = torch.cat((freqs, freqs), dim=-1)
+        cos = emb.cos()
+        sin = emb.sin()
+        self.register_buffer('cos_cached', cos, persistent=False)
+        self.register_buffer('sin_cached', sin, persistent=False)
+
+    def _rotate_half(self, x: torch.Tensor) ->torch.Tensor:
+        """Rotate half the hidden dims of the input."""
+        x1, x2 = x.chunk(2, dim=-1)
+        return torch.cat((-x2, x1), dim=-1)
+
+    def _forward(self, X: torch.Tensor, **Z) ->tuple:
+        """Apply rotary embeddings to input tensor."""
+        input_emb = Z.get('input_emb')
+        if input_emb is None:
+            return X, Z
+        position_ids = Z.get('position_ids')
+        if position_ids is None:
+            position_ids = torch.arange(input_emb.size(1), device=input_emb
+                .device)
+            position_ids = position_ids.unsqueeze(0).expand(input_emb.size(
+                0), -1)
+        if position_ids.max() >= self.max_seq_len:
+            raise ValueError(
+                f'Position IDs must be less than max_seq_len ({self.max_seq_len})'
+                )
+        cos = self.cos_cached[position_ids].unsqueeze(1)
+        sin = self.sin_cached[position_ids].unsqueeze(1)
+        input_rot = self._rotate_half(input_emb)
+        output_emb = input_emb * cos + input_rot * sin
+        Z['output_emb'] = output_emb.to(dtype=input_emb.dtype)
+        return X, Z
+
+
+import torch.nn.functional as F
+
+
 class HierarchicalRMSNorm(GAUBase):
     """
     Hierarchical Root Mean Square Layer Normalization (HierarchicalRMSNorm).
@@ -291,196 +476,14 @@ class HierarchicalRMSNorm(GAUBase):
         return Y, Z
 
 
-import torch.nn.functional as F
-import math
-
-
-class RotaryPositionalEmbeddings(GAUBase):
-    """
-    Rotary Positional Embeddings (RoPE) for transformers.
-    
-    This unit implements rotary position embeddings that:
-    - Injects relative positional information through rotation matrices
-    - Enables attention to consider token positions efficiently
-    - Maintains linear complexity and causal properties
-    
-    **Key Features:**
-    - Position-dependent rotation of token embeddings
-    - Efficient cached computation of rotation matrices
-    - Support for variable sequence lengths
-    - Maintains gradients for end-to-end training
-    
-    **Args:**
-        embed_dim (int): The embedding dimension
-        block_loc (tuple): Location of this block in the network
-        kwarg_all (dict): Additional keyword arguments
-        device (torch.device, optional): Device to use
-        dtype (torch.dtype, optional): Data type to use
-        rotary_emb_dim (int, optional): Dimension for rotary embeddings. Default: embed_dim//4
-        max_position_embeddings (int, optional): Maximum sequence length. Default: 4096
-        base (int, optional): Base for the angle computation. Default: 10000
-        
-    **Shape:**
-        - Input: (batch_size, seq_length, embed_dim)
-        - Output: Rotated embeddings with same shape as input
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.dim = kwargs.pop('rotary_emb_dim', embed_dim // 4)
-        self.max_seq_len = kwargs.pop('max_position_embeddings', 4096)
-        self.base = kwargs.pop('base', 10000)
-        inv_freq = 1.0 / self.base ** (torch.arange(0, self.dim, 2).float()
-            .to(device) / self.dim)
-        self.register_buffer('inv_freq', inv_freq, persistent=False)
-        self.build_cache()
-
-    def build_cache(self):
-        """Precompute rotation matrices for all possible positions."""
-        seq_idx = torch.arange(self.max_seq_len, device=self.inv_freq.device)
-        freqs = torch.einsum('i,j->ij', seq_idx.float(), self.inv_freq)
-        emb = torch.cat((freqs, freqs), dim=-1)
-        cos = emb.cos()
-        sin = emb.sin()
-        self.register_buffer('cos_cached', cos, persistent=False)
-        self.register_buffer('sin_cached', sin, persistent=False)
-
-    def _rotate_half(self, x: torch.Tensor) ->torch.Tensor:
-        """Rotate half the hidden dims of the input."""
-        x1, x2 = x.chunk(2, dim=-1)
-        return torch.cat((-x2, x1), dim=-1)
-
-    def _forward(self, X: torch.Tensor, **Z) ->tuple:
-        """Apply rotary embeddings to input tensor."""
-        input_emb = Z.get('input_emb')
-        if input_emb is None:
-            return X, Z
-        position_ids = Z.get('position_ids')
-        if position_ids is None:
-            position_ids = torch.arange(input_emb.size(1), device=input_emb
-                .device)
-            position_ids = position_ids.unsqueeze(0).expand(input_emb.size(
-                0), -1)
-        if position_ids.max() >= self.max_seq_len:
-            raise ValueError(
-                f'Position IDs must be less than max_seq_len ({self.max_seq_len})'
-                )
-        cos = self.cos_cached[position_ids].unsqueeze(1)
-        sin = self.sin_cached[position_ids].unsqueeze(1)
-        input_rot = self._rotate_half(input_emb)
-        output_emb = input_emb * cos + input_rot * sin
-        Z['output_emb'] = output_emb.to(dtype=input_emb.dtype)
-        return X, Z
-
-
-import torch.nn.functional as F
-
-
-class ScaleIntegration(GAUBase):
-    """
-    ScaleIntegration
-
-    **Overview:**
-
-    ScaleIntegration integrates outputs from multiple scales into a single output.
-    It takes a list of scale outputs provided in `Z['scale_outputs']`, applies
-    learnable weights to each scale output via softmax-normalized weights, concatenates
-    the weighted outputs, and projects them back to the embedding dimension.
-
-    **Key Features:**
-
-    - Accepts multiple inputs corresponding to outputs from different scales.
-    - Applies learnable weights to each scale output.
-    - Combines the weighted outputs via concatenation and linear projection.
-    - Ensures output shape is consistent with input shape.
-    - Handles edge cases where scale outputs have varying sequence lengths.
-
-    **Inputs:**
-
-    - `X`: Tensor of shape `(batch_size, seq_length, embed_dim)`
-    - `Z`: A dictionary containing:
-        - `'scale_outputs'`: Optional list of tensors, each of shape `(batch_size, seq_length, embed_dim)`
-
-    **Outputs:**
-
-    - `Y`: Tensor of shape `(batch_size, seq_length, embed_dim)`
-
-    **Example:**
-
-        scale_integration = ScaleIntegration(embed_dim=512, block_loc=(0, 0), kwarg_all={'scales': [1, 2, 4]})
-        X = torch.randn(8, 128, 512)
-        Z = {'scale_outputs': [torch.randn(8, 128, 512) for _ in range(3)]}
-        Y, Z = scale_integration(X, **Z)
-
-    **Args:**
-
-    - `embed_dim` (int): Embedding dimension.
-    - `block_loc` (tuple): Location of the block within the network.
-    - `kwarg_all` (dict): Additional keyword arguments.
-    - `device` (torch.device, optional): Device to use.
-    - `dtype` (torch.dtype, optional): Data type to use.
-
-    **Note:**
-
-    This unit ensures that the output `Y` has the same shape as the input `X`.
-    If `scale_outputs` is not provided in `Z`, it defaults to using `X` for all scales.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.scales = kwargs.pop('scales', kwarg_all.get('scales', [1, 2, 4]))
-        if not isinstance(self.scales, (list, tuple)):
-            raise ValueError('scales must be a list or tuple')
-        if not all(isinstance(s, int) and s > 0 for s in self.scales):
-            raise ValueError('all scales must be positive integers')
-        self.num_scales = len(self.scales)
-        self.scale_weights = nn.Parameter(torch.ones(self.num_scales, **
-            self.factory_kwargs))
-        self.proj = nn.Linear(embed_dim * self.num_scales, embed_dim, bias=
-            False, **self.factory_kwargs)
-
-    def _forward(self, X, **Z):
-        scale_outputs = Z.get('scale_outputs', None)
-        if not scale_outputs:
-            scale_outputs = [X for _ in range(self.num_scales)]
-        if not isinstance(scale_outputs, list) or len(scale_outputs
-            ) != self.num_scales:
-            raise ValueError(
-                f"'scale_outputs' must be a list of length {self.num_scales}")
-        target_length = X.shape[1]
-        aligned_outputs = []
-        for out in scale_outputs:
-            if out.shape[1] != target_length:
-                out = self._align_sequence_length(out, target_length)
-            aligned_outputs.append(out.to(**self.factory_kwargs))
-        weights = F.softmax(self.scale_weights, dim=0)
-        weighted_outputs = [(out * w.view(1, 1, 1)) for out, w in zip(
-            aligned_outputs, weights)]
-        combined = torch.cat(weighted_outputs, dim=-1)
-        Y = self.proj(combined)
-        return Y, Z
-
-    def _align_sequence_length(self, out, target_length):
-        curr_length = out.shape[1]
-        if curr_length > target_length:
-            out = out[:, :target_length, :]
-        elif curr_length < target_length:
-            pad_size = target_length - curr_length
-            pad = torch.zeros(out.shape[0], pad_size, out.shape[2], device=
-                out.device, dtype=out.dtype)
-            out = torch.cat([out, pad], dim=1)
-        return out
-
-
 gab_config = {}
 
 
 
-autoconfig={}
+autoconfig = {
+    'd_model': 256,
+    'n_block': 11
+}
 block_config=gab_config
 block_config.update(autoconfig)
 

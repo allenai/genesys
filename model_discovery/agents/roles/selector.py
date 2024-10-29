@@ -901,34 +901,6 @@ class Selector:
 
     #########################  Select Verify  #########################
 
-    def _get_exclude(self,exclude_list):
-        exclude={}
-        for design_scale in exclude_list: # list of (design_id,scale) being verified by other nodes
-            design_id,scale = design_scale
-            if scale not in exclude:
-                exclude[scale]=[]
-            exclude[scale].append(design_id)
-        return exclude
-
-    def _get_exclude_inv(self,exclude_list):
-        exclude_inv={}
-        for design_scale in exclude_list: # list of (design_id,scale) being verified by other nodes
-            design_id,scale = design_scale
-            if design_id not in exclude_inv:
-                exclude_inv[design_id]=[]
-            exclude_inv[design_id].append(scale)
-        return exclude_inv
-
-    def _get_unverified_scale_designs(self,exclude_list):
-        exclude=self._get_exclude(exclude_list)
-        unverified_scale_designs=self.ptree.get_unverified_designs(exclude=exclude)
-        return unverified_scale_designs
-
-    def _get_unverified_design_scales(self,exclude_list):
-        exclude_inv=self._get_exclude_inv(exclude_list)
-        unverified_design_scales=self.ptree.get_unverified_scales(exclude_inv=exclude_inv)
-        return unverified_design_scales
-    
     def stream_write(self,msg):
         if self.stream:
             self.stream.write(msg)
@@ -949,6 +921,8 @@ class Selector:
         for _design in error_models:
             for _scale in self.target_scales:
                 exclude_list.append((_design,_scale))
+        
+        # print(f'Excluding {len(exclude_list)} designs from verification: {exclude_list}')
         
         if accept_baselines:
             design,scale=self._verify_baselines(exclude_list)
@@ -997,7 +971,7 @@ class Selector:
             
 
     def _random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None):
-        unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+        unverified_by_scale=self.ptree.get_unverified_designs(exclude_list=exclude_list) # indexed by scale
 
         unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
         n_unverified=sum([len(v) for v in unverified_by_scale.values()])
@@ -1010,7 +984,7 @@ class Selector:
 
 
     def _quadrant_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
-        unverified_by_scale=self._get_unverified_scale_designs(exclude_list) # indexed by scale
+        unverified_by_scale=self.ptree.get_unverified_designs(exclude_list=exclude_list) # indexed by scale
         unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
         n_unverified=sum([len(v) for v in unverified_by_scale.values()])
         if n_unverified==0:
@@ -1022,7 +996,7 @@ class Selector:
                 design_id=random.choice(unverified_14M)
                 return design_id,'14M'
         # Now all the designs are at least verified at 14M
-        unverified_by_design=self._get_unverified_design_scales(exclude_list) # indexed by design_id
+        unverified_by_design=self.ptree.get_unverified_scales(exclude_list=exclude_list) # indexed by design_id
         ranked_quadrants = self._get_ranked_quadrants()
 
         unverified_scales=[i for i in unverified_by_scale.keys() if i in available_verify_budget]

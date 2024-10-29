@@ -183,6 +183,8 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                             return None, msg, None, None
                         else:
                             return None, msg
+                    else:
+                        print(f'$$$ Selected design: {design_id}_{scale}')
 
         finally:
             # create index term

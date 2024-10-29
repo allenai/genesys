@@ -1582,37 +1582,39 @@ class PhylogeneticTree:
         U.mkdir(U.pjoin(sess_dir, 'log'))
         return sess_id
     
-    def get_unverified_designs(self,scale=None,exclude={}): # exclude is a dict: {scale: [design_id, ...], ...}
+    def get_unverified_designs(self,scale=None,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes
         unverified=[] if scale else {s:[] for s in self.target_scales}
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
-            if acronym in exclude.get(scale,[]):
-                continue
             design=self.get_node(acronym)
             if scale:
                 if scale not in design.verifications:
-                    unverified.append(acronym)
+                    if (acronym,scale) not in exclude_list:
+                        unverified.append(acronym)
             else:
                 for _scale in self.target_scales:
                     if _scale not in design.verifications:
-                        unverified[_scale].append(acronym)
+                        if (acronym,_scale) not in exclude_list:
+                            unverified[_scale].append(acronym)
         return unverified
 
-    def get_unverified_scales(self,acronym=None,exclude_inv={}): # exclude_inv is a dict: {design_id: [scale, ...], ...}
+    def get_unverified_scales(self,acronym=None,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes
         if acronym:
-            return self._get_unverified_scales(acronym,exclude_inv.get(acronym,[]))
+            return self._get_unverified_scales(acronym,exclude_list)
         else:
             unverified={}
             for acronym in self.filter_by_type('DesignArtifactImplemented'):
-                unverified[acronym]=self._get_unverified_scales(acronym,exclude_inv.get(acronym,[]))
+                _unverified=self._get_unverified_scales(acronym,exclude_list)
+                if len(_unverified)>0:
+                    unverified[acronym]=_unverified
             return unverified
 
-    def _get_unverified_scales(self,acronym,exclude_scales=[]): # from low to high
+    def _get_unverified_scales(self,acronym,exclude_list=[]): # from low to high
         unverified=[]
-        design=self.get_node(acronym)
+        design = self.get_node(acronym)
         for scale in self.target_scales:
-            if scale not in design.verifications and scale not in exclude_scales:
-                unverified.append(scale)
-        unverified.sort(key=lambda x: int(x.replace('M','')))
+            if scale not in design.verifications:
+                if (acronym,scale) not in exclude_list:
+                    unverified.append(scale)
         return unverified
 
     def get_gau_tree(self,acronym:str):
