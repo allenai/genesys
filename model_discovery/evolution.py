@@ -3006,6 +3006,7 @@ class EvolutionSystem(exec_utils.System):
         args.seed=self.ve_cfg.get('seed',DEFAULT_RANDOM_SEED)
         args.save_steps=self.ve_cfg.get('save_steps',DEFAULT_SAVE_STEPS)
         args.logging_steps=self.ve_cfg.get('logging_steps',DEFAULT_LOG_STEPS)
+        args.ddp_find_unused_parameters=True # will auto-config later
             
         args.evoname=self.evoname
         args.design_id=design_id+f'_{scale}'

@@ -83,7 +83,7 @@ parser.add_argument("--PERF_PROF_MODE", action='store_true') # Performance profi
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
 # parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps, do not use it as it may change the behavior of training
 parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
-parser.add_argument("--ddp_find_unused_parameters",  type=bool, default=True) # whether use ddp find unused parameters feature in HF Trainer for safer but slower training
+parser.add_argument("--ddp_find_unused_parameters", action='store_true') # whether use ddp find unused parameters feature in HF Trainer for safer but slower training
 parser.add_argument("--RANDOM_TESTING", action='store_true') # whether use random testing
 
 parser.add_argument("--eval_tasks", type=str, default='None')
@@ -97,8 +97,6 @@ parser.add_argument("--params", type=str, default='')
 parser.add_argument("--sess_id", type=str, default='') 
 parser.add_argument("--cpu_only", action='store_true') 
 parser.add_argument("--silent", action='store_true')
-
-
 
 
 

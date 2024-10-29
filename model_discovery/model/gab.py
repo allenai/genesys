@@ -9,8 +9,8 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = GPT2(embed_dim=embed_dim, block_loc=block_loc,
-            kwarg_all=kwargs, **factory_kwargs, **kwargs)
+        self.root = TTT(embed_dim=embed_dim, block_loc=block_loc, kwarg_all
+            =kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
         X, Z = self.root(X, **Z)
@@ -19,288 +19,191 @@ class GAB(GABBase):
 
 import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
 
 
-class GPT2(GAUBase):
+class TTT(GAUBase):
+    """
+    Problem Statement
+This paper addresses the challenge of long context in recurrent neural networks (RNNs). While RNNs offer linear computational complexity, their performance suffers in long sequences due to the limited expressive power of their fixed-size hidden states. This limitation contrasts with Transformers, which excel in long-context scenarios but have quadratic complexity.
+
+Main Claims
+The paper proposes a new class of sequence modeling layers called Test-Time Training (TTT) layers that offer both linear complexity and expressive hidden states.
+The key idea is to make the hidden state a machine learning model itself, where the update rule is a step of self-supervised learning. This allows for continuous training of the hidden state even on test sequences.
+The paper introduces two instantiations of TTT layers: TTT-Linear, with a linear model as the hidden state, and TTT-MLP, with a two-layer multi-layer perceptron (MLP) as the hidden state.
+Both TTT-Linear and TTT-MLP demonstrate competitive performance compared to strong Transformer and Mamba (a modern RNN) baselines across various model sizes.
+Unlike Mamba, both TTT layers show a continuous decrease in perplexity as they condition on more tokens in long sequences.
+TTT-Linear, with preliminary systems optimization, is faster than Transformers at 8k context and matches Mamba in wall-clock time.
+Methodology
+The paper introduces TTT layers, which use a self-supervised learning approach to update the hidden state. The update rule is effectively a gradient step on a self-supervised loss function, allowing for "training" of the hidden state at test time. Two implementations are explored: TTT-Linear, where the hidden state is a linear model, and TTT-MLP, where the hidden state is a two-layer MLP. The paper also proposes mini-batch TTT and a dual form to improve hardware efficiency and speed up computations.
+
+Key Results
+In short-context (2k and 8k tokens) experiments on the Pile dataset, both TTT-Linear and TTT-MLP demonstrate performance comparable to or exceeding Mamba and Transformer baselines.
+In long-context (1k to 32k tokens) experiments on the Books3 subset of the Pile, both TTT-Linear and TTT-MLP outperform Mamba, especially at longer context lengths.
+TTT-Linear with the Mamba backbone outperforms both Mamba and Transformers with the Transformer backbone across various model sizes.
+With preliminary systems optimization, TTT-Linear is already faster than Transformers at 8k context and matches Mamba in wall-clock time.
+TTT-MLP shows potential for even better performance in long-context scenarios but currently faces challenges in memory I/O.
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = SelectiveGatedMHA(embed_dim=self.embed_dim, block_loc=
-            self.block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs,
-            **self.kwarg_all)
-        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
+        self.hidden_size = embed_dim
+        kwarg_all['num_attention_heads'] = max(4, embed_dim // 64)
+        self.seq_modeling_block = FastTTTLinear(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
+        kwarg_all['intermediate_size'] = int(embed_dim * 2.5)
+        self.mlp = SwiGluMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+        self.conv = Conv(embed_dim=self.embed_dim, block_loc=self.block_loc,
+            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.seq_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+        self.ffn_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
 
     def _forward(self, X, **Z):
-        X1, Z = self.norm1(X, **Z)
-        X2, Z = self.mha(X1, **Z)
-        X = X + X2
-        X3, Z = self.norm2(X, **Z)
-        X4, Z = self.mlp(X3, **Z)
-        X = X + X4
-        return X, Z
+        hidden_states = X
+        position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
+            =X.device).unsqueeze(0)
+        residual = hidden_states
+        hidden_states = self.conv(hidden_states, **Z)[0]
+        hidden_states = residual + hidden_states
+        residual = hidden_states
+        hidden_states = self.seq_norm(hidden_states, **Z)[0]
+        Z['position_ids'] = position_ids
+        hidden_states = self.seq_modeling_block(hidden_states, **Z)[0]
+        hidden_states = residual + hidden_states
+        residual = hidden_states
+        hidden_states = self.ffn_norm(hidden_states, **Z)[0]
+        hidden_states = self.mlp(hidden_states, **Z)[0]
+        hidden_states = residual + hidden_states
+        return hidden_states
 
 
 import torch.nn.functional as F
-import math
 
 
-class SelectiveGatedMHA(GAUBase):
+class FastTTTLinear(GAUBase):
     """
-    SelectiveGatedMHA: Hierarchical Selective Attention with Dynamic Parameter Generation
+    **FastTTTLinear**
 
-    This module implements a Multi-Head Attention mechanism with selective gating and dynamic parameter generation.
-    It introduces content-dependent gating to selectively focus computation on important inputs and dynamically generates
-    parameters based on the input content. It also incorporates hierarchical memory management for efficient processing
-    of long sequences.
+    FastTTTLinear is a modified version of TTTLinear that integrates Gated Linear Attention (GLA)
+    and concepts from the RWKV architecture to enhance computational efficiency for long sequences.
+    This implementation addresses inefficiency concerns by vectorizing operations, eliminating
+    Python-level for-loops, and optimizing tensor computations.
 
-    **Key Components:**
-    - **SelectiveGate**: Computes importance scores and generates binary gates to select important inputs.
-    - **DynamicParamGen**: Generates dynamic parameters conditioned on the input content.
-    - **HierMemManager**: Manages memory efficiently by processing inputs in blocks.
+    **Key Features:**
+
+    - **Gated Linear Attention**: Uses data-dependent gates to modulate queries and keys, enabling linear attention computation.
+    - **Vectorized Computations**: Eliminates Python for-loops by using efficient tensor operations.
+    - **Normalization**: Applies LayerNorm to queries and keys to stabilize computations.
+    - **Adjustments for Numerical Stability**: Uses appropriate scaling, activation functions, and safeguards.
+    - **Local Convolutional Augmentation**: Applies causal convolution to prevent information leakage and enhance local context.
 
     **Args:**
-        embed_dim (int): The embedding dimension of the input.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the module.
-        device (torch.device, optional): The device to allocate parameters to.
-        dtype (torch.dtype, optional): The data type of parameters.
-        num_heads (int, optional): Number of attention heads. Default: 8.
-        head_dim (int, optional): Dimension of each attention head. If None, calculated as embed_dim // num_heads.
-        block_size (int, optional): Size of blocks for hierarchical memory management. Default: 64.
+        embed_dim (int): Embedding dimension.
+        block_loc (tuple): Location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): Device on which to allocate tensors.
+        dtype (torch.dtype, optional): Data type of the tensors.
+        num_attention_heads (int, optional): Number of attention heads. Default: 4.
 
     **Inputs:**
-        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
+        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
 
     **Outputs:**
-        Y (Tensor): Output tensor of shape (batch_size, seq_length, embed_dim).
+        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Example:**
+
+        >>> fast_ttt_linear = FastTTTLinear(embed_dim=512, block_loc=(0, 0), kwarg_all={})
+        >>> X = torch.randn(2, 1024, 512)
+        >>> Y, Z = fast_ttt_linear(X)
+
+    **References:**
+
+    - Yang, S., et al. (2023). *Gated Linear Attention Transformers with Hardware-Efficient Training*.
+    - Peng, B., et al. (2023). *RWKV: Reinventing RNNs for the Transformer Era*.
+
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_heads: int=8, head_dim: int=None,
-        block_size: int=64, **kwargs):
+        device=None, dtype=None, num_attention_heads=4, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.num_heads = num_heads
-        self.head_dim = head_dim or embed_dim // num_heads
-        self.block_size = block_size
-        self.selective_gate = SelectiveGate(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.param_gen = DynamicParamGen(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.mem_manager = HierMemManager(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.to_qkv = nn.Linear(self.embed_dim, 3 * self.embed_dim, **self.
+        self.num_heads = num_attention_heads
+        assert embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_attention_heads'
+        self.head_dim = embed_dim // self.num_heads
+        self.embed_dim = embed_dim
+        self.W_Q = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
-        self.to_out = nn.Linear(self.embed_dim, self.embed_dim, **self.
+        self.W_K = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
+        self.W_V = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.gate_Q = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+            factory_kwargs)
+        self.gate_K = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+            factory_kwargs)
+        self.output_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
+            self.factory_kwargs)
+        self.local_conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3,
+            padding=2, bias=True, **self.factory_kwargs)
+        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.q_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
+        self.k_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
+        nn.init.xavier_uniform_(self.W_Q.weight)
+        nn.init.xavier_uniform_(self.W_K.weight)
+        nn.init.xavier_uniform_(self.W_V.weight)
+        nn.init.xavier_uniform_(self.output_proj.weight)
+        nn.init.xavier_uniform_(self.gate_Q.weight)
+        nn.init.zeros_(self.gate_Q.bias)
+        nn.init.xavier_uniform_(self.gate_K.weight)
+        nn.init.zeros_(self.gate_K.bias)
+        nn.init.xavier_uniform_(self.local_conv.weight)
+        nn.init.zeros_(self.local_conv.bias)
 
     def _forward(self, X, **Z):
-        B, L, D = X.shape
-        input_dtype = X.dtype
-        X = X.to(**self.factory_kwargs)
-        _, Z_ = self.selective_gate(X, **Z)
-        Z.update(Z_)
-        gates = Z_['gates'].to(**self.factory_kwargs)
-        _, Z_ = self.param_gen(X, **Z)
-        Z.update(Z_)
-        params = Z_['params'].to(**self.factory_kwargs)
-        _, Z_ = self.mem_manager(X, **Z)
-        Z.update(Z_)
-        X_blocks = Z_['X_blocks']
-        L_orig = Z_['L_orig']
-        block_size = Z_['block_size']
-        num_blocks = X_blocks.size(1)
-        outputs = []
-        past_k = []
-        past_v = []
-        cumulative_len = 0
-        for block_idx in range(num_blocks):
-            X_block = X_blocks[:, block_idx, :, :]
-            block_seq_len = X_block.size(1)
-            block_start = block_idx * block_size
-            block_end = min(block_start + block_seq_len, L_orig)
-            seq_in_block = block_end - block_start
-            qkv = self.to_qkv(X_block[:, :seq_in_block])
-            qkv = qkv.chunk(3, dim=-1)
-            q, k, v = [t.view(B, seq_in_block, self.num_heads, self.
-                head_dim) for t in qkv]
-            block_gates = gates[:, block_start:block_end, :, :]
-            block_params = params[:, block_start:block_end, :, :]
-            q = q.transpose(1, 2)
-            k = k.transpose(1, 2)
-            v = v.transpose(1, 2)
-            block_gates = block_gates.transpose(1, 2)
-            block_params = block_params.transpose(1, 2)
-            k = k * block_gates
-            v = v * block_params * block_gates
-            all_k = torch.cat(past_k + [k], dim=2)
-            all_v = torch.cat(past_v + [v], dim=2)
-            attn_scores = torch.matmul(q, all_k.transpose(-2, -1)) / math.sqrt(
-                self.head_dim)
-            total_len = cumulative_len + seq_in_block
-            causal_mask = torch.tril(torch.ones(seq_in_block, total_len,
-                device=X.device, dtype=torch.bool))
-            attn_scores = attn_scores.masked_fill(~causal_mask.unsqueeze(0)
-                .unsqueeze(0), float('-inf'))
-            attn = F.softmax(attn_scores, dim=-1)
-            out = torch.matmul(attn, all_v)
-            out = out.transpose(1, 2).contiguous().view(B, seq_in_block,
-                self.embed_dim)
-            outputs.append(out)
-            past_k.append(k)
-            past_v.append(v)
-            cumulative_len += seq_in_block
-        Y = torch.cat(outputs, dim=1)[:, :L_orig, :]
-        Y = self.to_out(Y)
-        Y = Y.to(dtype=input_dtype)
-        return Y, Z
-
-
-import torch.nn.functional as F
-
-
-class SelectiveGate(GAUBase):
-    """
-    SelectiveGate Module
-
-    Computes importance scores and generates binary gates based on input X, allowing the model to selectively focus
-    computation on important inputs.
-
-    **Args:**
-        embed_dim (int): The embedding dimension of the input.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the module.
-        device (torch.device, optional): The device to allocate parameters to.
-        dtype (torch.dtype, optional): The data type of parameters.
-        num_heads (int, optional): Number of attention heads. Default: 8.
-
-    **Inputs:**
-        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
-
-    **Outputs:**
-        gates (Tensor): Binary gate tensor of shape (batch_size, seq_length, num_heads, 1).
-        scores (Tensor): Importance scores tensor of shape (batch_size, seq_length, num_heads).
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_heads: int=8, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.num_heads = num_heads
-        self.gate_proj = nn.Linear(embed_dim, num_heads, **self.factory_kwargs)
-        self.threshold = nn.Parameter(torch.zeros(1, **self.factory_kwargs))
-
-    def _forward(self, X, **Z):
-        B, L, _ = X.shape
-        X = X.to(**self.factory_kwargs)
-        scores = torch.sigmoid(self.gate_proj(X))
-        temperature = 1.1
-        hard_gates = (scores > self.threshold).float()
-        soft_gates = torch.sigmoid((scores - self.threshold) / temperature)
-        gates = hard_gates.detach() + soft_gates - soft_gates.detach()
-        gates = gates.view(B, L, self.num_heads, 1)
-        return X, {'gates': gates.to(**self.factory_kwargs), 'scores':
-            scores.to(**self.factory_kwargs)}
-
-
-import torch.nn.functional as F
-
-
-class HierMemManager(GAUBase):
-    """
-    HierMemManager Module
-
-    Processes input X in blocks for efficient memory management, particularly useful for handling long sequences.
-
-    **Args:**
-        embed_dim (int): The embedding dimension of the input.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the module.
-        device (torch.device, optional): The device to allocate parameters to.
-        dtype (torch.dtype, optional): The data type of parameters.
-        block_size (int, optional): Size of blocks for hierarchical memory management.
-
-    **Inputs:**
-        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
-
-    **Outputs:**
-        X_blocks (Tensor): Blocked input tensor of shape (batch_size, num_blocks, block_size, embed_dim).
-        L_orig (int): Original sequence length before padding.
-        block_size (int): Block size used for blocking.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, block_size: int=64, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.block_size = block_size
-
-    def _forward(self, X, **Z):
-        B, L, D = X.shape
-        X = X.to(**self.factory_kwargs)
-        pad_len = (self.block_size - L % self.block_size) % self.block_size
-        if pad_len > 0:
-            X_padded = F.pad(X, (0, 0, 0, pad_len))
-        else:
-            X_padded = X
-        L_padded = X_padded.size(1)
-        num_blocks = L_padded // self.block_size
-        X_blocks = X_padded.view(B, num_blocks, self.block_size, D)
-        return X, {'X_blocks': X_blocks, 'L_orig': L, 'block_size': self.
-            block_size}
-
-
-class DynamicParamGen(GAUBase):
-    """
-    DynamicParamGen Module
-
-    Generates dynamic parameters based on input X, enabling content-dependent parameter generation for the attention mechanism.
-
-    **Args:**
-        embed_dim (int): The embedding dimension of the input.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the module.
-        device (torch.device, optional): The device to allocate parameters to.
-        dtype (torch.dtype, optional): The data type of parameters.
-        num_heads (int, optional): Number of attention heads. Default: 8.
-        head_dim (int, optional): Dimension of each attention head.
-
-    **Inputs:**
-        X (Tensor): Input tensor of shape (batch_size, seq_length, embed_dim).
-
-    **Outputs:**
-        params (Tensor): Dynamic parameters tensor of shape (batch_size, seq_length, num_heads, head_dim).
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_heads: int=8, head_dim: int=None, **kwargs
-        ):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.num_heads = num_heads
-        self.head_dim = head_dim or embed_dim // num_heads
-        self.param_proj = nn.Linear(embed_dim, self.num_heads * self.
-            head_dim, **self.factory_kwargs)
-
-    def _forward(self, X, **Z):
-        X = X.to(**self.factory_kwargs)
-        params = self.param_proj(X)
-        params = params.view(X.size(0), X.size(1), self.num_heads, self.
-            head_dim)
-        return X, {'params': params.to(**self.factory_kwargs)}
+        B, L, D = X.size()
+        H = self.num_heads
+        D_H = self.head_dim
+        X_conv = self.local_conv(X.transpose(1, 2))
+        X_conv = X_conv.transpose(1, 2)[:, :L, :]
+        X = X + X_conv
+        Q = self.W_Q(X)
+        K = self.W_K(X)
+        V = self.W_V(X)
+        Q = self.q_norm(Q)
+        K = self.k_norm(K)
+        G_Q = torch.sigmoid(self.gate_Q(X))
+        G_K = torch.sigmoid(self.gate_K(X))
+        Q = Q * G_Q
+        K = K * G_K
+        Q = Q.view(B, L, H, D_H).transpose(1, 2)
+        K = K.view(B, L, H, D_H).transpose(1, 2)
+        V = V.view(B, L, H, D_H).transpose(1, 2)
+        Q_prime = F.elu(Q) + 1
+        K_prime = F.elu(K) + 1
+        K_cumsum = K_prime.cumsum(dim=2)
+        KV_cumsum = (K_prime * V).cumsum(dim=2)
+        denominator = (Q_prime * K_cumsum).sum(dim=-1) + 1e-06
+        numerator = Q_prime * KV_cumsum
+        output = numerator / denominator.unsqueeze(-1)
+        output = output.transpose(1, 2).contiguous().view(B, L, D)
+        output = self.output_proj(output)
+        output = X + output
+        output, Z = self.norm(output, **Z)
+        return output, Z
 
 
 import torch.nn.functional as F
@@ -364,37 +267,80 @@ class RMSNorm(GAUBase):
 
 
 import torch.nn.functional as F
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
+from transformers.activations import ACT2FN
 
 
-class GatedMLP(GAUBase):
+class SwiGluMLP(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
+        device=None, dtype=None, intermediate_size=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
+        self.hidden_size = embed_dim
+        self.intermediate_size = (intermediate_size if intermediate_size is not
+            None else int(embed_dim * 2.5))
+        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
+            bias=False, **self.factory_kwargs)
+        self.act_fn = ACT2FN['silu']
 
     def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
+        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
+            up_proj(X))
+        return down_proj
 
 
-gab_config = {'eps': 1e-05, 'hidden_features': None, 'out_features': None,
-    'activation': None, 'bias': False, 'multiple_of': 128, 'num_heads': 8,
-    'head_dim': None, 'block_size': 64}
+import torch.nn.functional as F
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+import torch.utils.checkpoint
+from torch.utils._pytree import tree_map
+from transformers.utils import logging
+from transformers.activations import ACT2FN
+try:
+    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
+except:
+    causal_conv1d_update, causal_conv1d_fn = None, None
+
+
+class Conv(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, conv_kernel=4, rms_norm_eps=1e-06, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        kwarg_all['eps'] = rms_norm_eps
+        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.conv = nn.Conv1d(embed_dim, embed_dim, bias=True, kernel_size=
+            conv_kernel, groups=embed_dim, padding=conv_kernel - 1, **self.
+            factory_kwargs)
+
+    def __call__(self, X, **Z):
+        hidden_states = X
+        seq_len = hidden_states.shape[1]
+        hidden_states = self.norm(hidden_states, **Z)[0]
+        hidden_states = hidden_states.transpose(1, 2)
+        if causal_conv1d_fn is None:
+            hidden_states = self.conv(hidden_states)[..., :seq_len]
+        else:
+            conv_weights = self.conv.weight.view(self.conv.weight.size(0),
+                self.conv.weight.size(2))
+            hidden_states = causal_conv1d_fn(hidden_states, conv_weights,
+                self.conv.bias, activation=None)
+        hidden_states = hidden_states.transpose(1, 2)
+        return hidden_states
+
+
+gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
+    'rms_norm_eps': 1e-06, 'intermediate_size': None}
 
 
 
