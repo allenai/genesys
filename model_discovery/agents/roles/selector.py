@@ -986,8 +986,8 @@ class Selector:
     def _quadrant_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None): # exclude_list is a list of (design_id,scale) being verified by other nodes        
         unverified_by_scale=self.ptree.get_unverified_designs(exclude_list=exclude_list) # indexed by scale
         unverified_by_scale={k:v for k,v in unverified_by_scale.items() if len(v)>0}
-        for scale in unverified_by_scale:
-            print(f'Unverified {scale}: {unverified_by_scale[scale]}')
+        # for scale in unverified_by_scale:
+        #     print(f'Unverified {scale}: {unverified_by_scale[scale]}')
         n_unverified=sum([len(v) for v in unverified_by_scale.values()])
         if n_unverified==0:
             return None,None
