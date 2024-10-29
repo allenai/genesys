@@ -89,6 +89,97 @@ TTT-MLP shows potential for even better performance in long-context scenarios bu
 
 
 import torch.nn.functional as F
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
+from transformers.activations import ACT2FN
+
+
+class SwiGluMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, intermediate_size=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.hidden_size = embed_dim
+        self.intermediate_size = (intermediate_size if intermediate_size is not
+            None else int(embed_dim * 2.5))
+        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
+            bias=False, **self.factory_kwargs)
+        self.act_fn = ACT2FN['silu']
+
+    def _forward(self, X, **Z):
+        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
+            up_proj(X))
+        return down_proj
+
+
+import torch.nn.functional as F
+from torch import Tensor
+
+
+class RMSNorm(GAUBase):
+    """
+    Root Mean Square Layer Normalization (RMSNorm).
+
+    This layer applies a variant of layer normalization that uses only the root mean square
+    statistics, without centering. It's computationally more efficient than standard
+    layer normalization and has been shown to be effective in various NLP tasks.
+
+    Args:
+        embed_dim (int): The size of the input feature dimension.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the parent class.
+        device (torch.device, optional): The device on which to allocate the module's parameters.
+        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        eps (float, optional): A small constant added to the denominator for numerical stability.
+            Default: 1e-5.
+
+    Attributes:
+        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
+        variance_epsilon (float): The epsilon value used in the normalization formula.
+
+    Shape:
+        - Input: (*, embed_dim)
+        - Output: (*, embed_dim) (same shape as input)
+
+    Examples:
+        >>> rmsnorm = RMSNorm(128, (0, 6), {})
+        >>> x = torch.randn(1, 100, 128)
+        >>> output = rmsnorm(x)
+        >>> print(output.shape)
+        torch.Size([1, 100, 128])
+
+    References:
+        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
+          https://arxiv.org/abs/1910.07467
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, eps=1e-05, **kwargs):
+        """If group_size is not None, we do GroupNorm with each group having group_size elements.
+        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
+        """
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
+            )
+        self.variance_epsilon = eps
+
+    def _forward(self, X, **Z):
+        input_dtype = X.dtype
+        X = X.to(torch.float32)
+        variance = X.pow(2).mean(-1, keepdim=True)
+        X = X * torch.rsqrt(variance + self.variance_epsilon)
+        return self.weight * X.to(input_dtype)
+
+
+import torch.nn.functional as F
+from transformers.utils import logging
 
 
 class FastTTTLinear(GAUBase):
@@ -195,77 +286,19 @@ class FastTTTLinear(GAUBase):
         V = V.view(B, L, H, D_H).transpose(1, 2)
         Q_prime = F.elu(Q) + 1
         K_prime = F.elu(K) + 1
+        QV = Q_prime * V
         K_cumsum = K_prime.cumsum(dim=2)
-        KV_cumsum = (K_prime * V).cumsum(dim=2)
-        denominator = (Q_prime * K_cumsum).sum(dim=-1, keepdim=True) + 1e-06
-        numerator = Q_prime * KV_cumsum
-        attention_output = numerator / denominator
-        attention_output = attention_output.transpose(1, 2).contiguous().view(B
-            , L, D)
-        attention_output = self.output_proj(attention_output)
-        output = X + attention_output
+        QV_cumsum = (K_prime * V).cumsum(dim=2)
+        denominator = torch.einsum('bhlf,bhlf->bhl', Q_prime, K_cumsum)
+        numerator = torch.einsum('bhlf,bhlf->bhlf', Q_prime, QV_cumsum)
+        epsilon = 1e-06
+        denominator = denominator.unsqueeze(-1) + epsilon
+        output = numerator / denominator
+        output = output.transpose(1, 2).contiguous().view(B, L, D)
+        output = self.output_proj(output)
+        output = X + output
         output, Z = self.norm(output, **Z)
         return output, Z
-
-
-import torch.nn.functional as F
-from torch import Tensor
-
-
-class RMSNorm(GAUBase):
-    """
-    Root Mean Square Layer Normalization (RMSNorm).
-
-    This layer applies a variant of layer normalization that uses only the root mean square
-    statistics, without centering. It's computationally more efficient than standard
-    layer normalization and has been shown to be effective in various NLP tasks.
-
-    Args:
-        embed_dim (int): The size of the input feature dimension.
-        block_loc (tuple): The location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments passed to the parent class.
-        device (torch.device, optional): The device on which to allocate the module's parameters.
-        dtype (torch.dtype, optional): The dtype of the module's parameters.
-        eps (float, optional): A small constant added to the denominator for numerical stability.
-            Default: 1e-5.
-
-    Attributes:
-        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).
-        variance_epsilon (float): The epsilon value used in the normalization formula.
-
-    Shape:
-        - Input: (*, embed_dim)
-        - Output: (*, embed_dim) (same shape as input)
-
-    Examples:
-        >>> rmsnorm = RMSNorm(128, (0, 6), {})
-        >>> x = torch.randn(1, 100, 128)
-        >>> output = rmsnorm(x)
-        >>> print(output.shape)
-        torch.Size([1, 100, 128])
-
-    References:
-        - Paper: "Root Mean Square Layer Normalization" by Biao Zhang and Rico Sennrich
-          https://arxiv.org/abs/1910.07467
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, eps=1e-05, **kwargs):
-        """If group_size is not None, we do GroupNorm with each group having group_size elements.
-        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).
-        """
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-            )
-        self.variance_epsilon = eps
-
-    def _forward(self, X, **Z):
-        input_dtype = X.dtype
-        X = X.to(torch.float32)
-        variance = X.pow(2).mean(-1, keepdim=True)
-        X = X * torch.rsqrt(variance + self.variance_epsilon)
-        return self.weight * X.to(input_dtype)
 
 
 import torch.nn.functional as F
@@ -311,40 +344,10 @@ class Conv(GAUBase):
         return hidden_states
 
 
-import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
-from transformers.utils import logging
-from transformers.activations import ACT2FN
-
-
-class SwiGluMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, intermediate_size=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        self.intermediate_size = (intermediate_size if intermediate_size is not
-            None else int(embed_dim * 2.5))
-        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
-            bias=False, **self.factory_kwargs)
-        self.act_fn = ACT2FN['silu']
-
-    def _forward(self, X, **Z):
-        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
-            up_proj(X))
-        return down_proj
-
-
-gab_config = {'num_attention_heads': 4, 'conv_kernel': 4, 'rms_norm_eps': 
+gab_config = {'num_attention_heads': 8, 'conv_kernel': 4, 'rms_norm_eps': 
     1e-06, 'scaling_factor': 1.0, 'dim': None, 'base': 10000,
-    'max_position_embeddings': 16, 'eps': 1e-05, 'rope_theta': 10000.0,
-    'mini_batch_size': 16, 'ttt_base_lr': 1.0, 'intermediate_size': None}
+    'max_position_embeddings': 16, 'eps': 1e-05, 'memory_levels': 3,
+    'intermediate_size': None}
 
 
 

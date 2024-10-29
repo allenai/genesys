@@ -179,6 +179,11 @@ def _auto_tune_setup(args,log_fn=None): # Need to be called before training afte
             log_fn(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
             util_logger.error(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
             gradient_accumulation_steps *= 2
+        elif process.returncode != 0:  # Any other error occurred
+            error_msg = process.stderr.strip()
+            log_fn(f"Error occurred during setup with gradient_accumulation_steps={gradient_accumulation_steps}:\n{error_msg}")
+            util_logger.error(f"Error during setup with gradient_accumulation_steps={gradient_accumulation_steps}:\n{error_msg}")
+            raise RuntimeError(f"Setup failed with error:\n{error_msg}")
         else:
             log_fn(f"Test training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
             util_logger.info(f"Test training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
@@ -266,7 +271,14 @@ def before_train(args,log_fn):
     
     # if not args.auto_find_batch_size_hf:    
     log_fn('Auto tuning the gradient accumulation steps...')
-    args.gradient_accumulation_steps = _auto_tune_setup(args,log_fn) # always use it for safety
+    try:
+        args.gradient_accumulation_steps = _auto_tune_setup(args,log_fn) # always use it for safety
+    except Exception as e:
+        util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
+        scale=args.design_id.split('_')[-1]
+        design=args.design_id[:-len(scale)-1]
+        U.log_error_model(design,scale)
+        raise e
     log_fn('Auto tuning the gradient accumulation steps done.')
     return args,gab,gab_config
 
@@ -491,7 +503,7 @@ def train(args,log_fn=None):
         return
     start = time.perf_counter()
     args,gab,gab_config=before_train(args,log_fn)
-    check_too_slow(args.design_id,log_fn) # check after testing in before_train
+    check_problem(args.design_id,log_fn) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -656,11 +668,16 @@ def report(args,log_fn=None) -> dict:
     return report
 
 
-def check_too_slow(design_id,log_fn):
+def check_problem(design_id,log_fn):
     local_doc = U.read_local_doc()
     if f'{design_id}' in local_doc.get('too_slow',{}):
         time_elapsed,time_lower = local_doc['too_slow'][f'{design_id}']
         log_fn(f'{design_id} is too slow in this machine: {time_elapsed:.1f} s, lower bound: {time_lower:.1f} s x 5, skipping...','EXIT')
+        sys.exit()
+    scale=design_id.split('_')[-1]
+    design=design_id[:-len(scale)-1]
+    if design in local_doc.get('error_models',{}):
+        log_fn(f'{design_id} is too slow in this machine: {local_doc["error_models"][design]} x 5, skipping...','EXIT')
         sys.exit()
 
 def main(args,log_fn=None):
@@ -671,7 +688,7 @@ def main(args,log_fn=None):
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
 
-    check_too_slow(args.design_id,log_fn) # check before starting
+    check_problem(args.design_id,log_fn) # check before starting
     
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
