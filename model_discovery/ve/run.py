@@ -83,7 +83,7 @@ parser.add_argument("--PERF_PROF_MODE", action='store_true') # Performance profi
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
 # parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps, do not use it as it may change the behavior of training
 parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
-parser.add_argument("--ddp_find_unused_parameters", action='store_true') # whether use ddp find unused parameters feature in HF Trainer for safer but slower training
+parser.add_argument("--ddp_find_unused_parameters",  type=bool, default=True) # whether use ddp find unused parameters feature in HF Trainer for safer but slower training
 parser.add_argument("--RANDOM_TESTING", action='store_true') # whether use random testing
 
 parser.add_argument("--eval_tasks", type=str, default='None')
@@ -176,6 +176,10 @@ def _auto_tune_setup(args,log_fn=None): # Need to be called before training afte
 
         process = subprocess.run(cmd, shell=True, capture_output=True, text=True)
         
+        ddp_find_unused_parameters = args.ddp_find_unused_parameters
+        if 'Warning: find_unused_parameters=True was specified in DDP constructor, but did not find any unused parameters in the forward pass.' in process.stderr:
+            ddp_find_unused_parameters = False
+
         if "CUDA out of memory" in process.stderr:
             log_fn(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
             util_logger.error(f"CUDA out of memory error occurred with gradient_accumulation_steps: {gradient_accumulation_steps}")
@@ -189,7 +193,7 @@ def _auto_tune_setup(args,log_fn=None): # Need to be called before training afte
             log_fn(f"Test training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
             util_logger.info(f"Test training completed successfully with gradient_accumulation_steps: {gradient_accumulation_steps}")
             break
-    return gradient_accumulation_steps
+    return gradient_accumulation_steps,ddp_find_unused_parameters
 
 
 
@@ -273,7 +277,7 @@ def before_train(args,log_fn):
     # if not args.auto_find_batch_size_hf:    
     log_fn('Auto tuning the gradient accumulation steps...')
     try:
-        args.gradient_accumulation_steps = _auto_tune_setup(args,log_fn) # always use it for safety
+        args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
     except Exception as e:
         util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
         scale=args.design_id.split('_')[-1]

@@ -285,7 +285,7 @@ def ve_config(evosys):
         with st.form("Verification Engine Config"):
             _ve_cfg=copy.deepcopy(evosys.ve_cfg)
             
-            cols = st.columns([1,1,1,1.5,1.5,1.5])
+            cols = st.columns([1,1,1,1,1])
             with cols[0]:
                 _ve_cfg['seed'] = st.number_input('Random Seed',min_value=0,value=_ve_cfg.get('seed',DEFAULT_RANDOM_SEED))
             with cols[1]:
@@ -296,12 +296,7 @@ def ve_config(evosys):
                 _ve_cfg['wandb_project'] = st.text_input('Weights & Biases Project',value=_ve_cfg.get('wandb_project',DEFAULT_WANDB_PROJECT))
             with cols[4]:
                 _ve_cfg['wandb_entity'] = st.text_input('Weights & Biases Entity',value=_ve_cfg.get('wandb_entity',DEFAULT_WANDB_ENTITY))
-            with cols[5]:
-                st.write('')
-                st.write('')
-                _ve_cfg['find_unused_params'] = st.checkbox('Find Unused Params',value=_ve_cfg.get('find_unused_params',False),
-                    help='Whether turn on the ddp find unused parameters feature in HF Trainer for safer but slower training.')
-            
+
             cols=st.columns([4,1.55,1,1])
             with cols[0]:
                 training_token_multipliers = _ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS)
