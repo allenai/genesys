@@ -104,7 +104,7 @@ parser.add_argument("--silent", action='store_true')
 ########################################### Tools ###########################################
 
 
-TIME_LOWER={
+TIME_LOWER={ # from COSTS_LOWER, considered Median case
     '14M':174,
     '31M':437,
     '70M':22.3*60,
@@ -114,8 +114,18 @@ TIME_LOWER={
     '1300M':137.5*3600,
 }
 
+SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
+    '14M':3,
+    '31M':3,
+    '70M':2,
+    '125M':2,
+    '350M':1.5,
+    '760M':1.5,
+    '1300M':1.5,
+}
 
-def _explore_setup(args,slow_threshold=5):
+
+def _explore_setup(args,slow_threshold=3):
     setup(args)
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
@@ -132,6 +142,7 @@ def _explore_setup(args,slow_threshold=5):
     time_elapsed = time.perf_counter() - time_start
     scale = args.scale
     n_gpus = args.n_gpus
+    slow_threshold = SLOW_TOLERANCE[scale]
 
     config = eval(f"GAMConfig_{args.scale}()")
     time_lower = TIME_LOWER[scale] * 8/n_gpus

@@ -498,7 +498,7 @@ def verify_engine(evosys,project_dir):
     ##################################################################################
 
     st.header("Verify Designs")
-    col1,_,col2,_,col3,_,col4,col5,col6=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.5,0.4])
+    col1,_,col2,_,col3,_,col4,col5,col6=st.columns([1,0.05,0.9,0.05,1.3,0.05,0.6,0.6,0.4])
     with col1:
         node_type=st.selectbox("Select Type",options=['Agent Designs (Implemented)','Human Baselines (Seed Tree)','Random Baselines'])
         if node_type=='Agent Designs (Implemented)':
@@ -539,19 +539,18 @@ def verify_engine(evosys,project_dir):
                 already_verified=False
             else:
                 already_verified=selected_scale in verified[selected_design]
-            txt='Run Verification'
-            #  if not already_verified else 'Re-Run Verification'
+            txt='Run Verify' if not already_verified else 'Re-run Verify'
             run_btn= st.button(txt,use_container_width=True,disabled=DISABLE_VERIFICATION or st.session_state.evo_running or already_verified)
         else:
-            run_btn= st.button('Run Verification',use_container_width=True,disabled=True)
+            run_btn= st.button('Run Verify',use_container_width=True,disabled=True)
     
     with col5:
         st.write('')
         st.write('')
         if selected_design is not None:
-            resume=st.checkbox("Resume",value=not already_verified)
+            resume=st.checkbox("Resume",value=not already_verified,help='Resume from the last training checkpoint if available.')
         else:
-            resume=st.checkbox("Resume",value=False,disabled=True)
+            resume=st.checkbox("Resume",value=False,disabled=True,help='Resume from the last training checkpoint if available.')
         
     with col6:
         st.write('')
@@ -786,12 +785,14 @@ COSTS_UPPER={
 
 # A6000
 COSTS_2K_OPT={}
+COSTS_2K_MED={}
 COSTS_2K_PAS={}
 for scale in COSTS_LOWER:
     fast_2k=COSTS_UPPER[scale][1]
     med_2k=COSTS_LOWER[scale][1]
     slow_2k=med_2k*2-fast_2k
     COSTS_2K_OPT[scale]=fast_2k*8
+    COSTS_2K_MED[scale]=med_2k*8
     COSTS_2K_PAS[scale]=slow_2k*8
 
 SPEEDUP = {
@@ -823,13 +824,17 @@ def verify_budget_tool(evosys,project_dir):
         _use_manual_cost=st.checkbox('Use manual cost input below *(will overwrite the above)*')
 
         linear_cost = {}
+        _ratio_to_opt = {}
+        _ratio_to_med = {}
         for scale in COSTS_2K_OPT:
             opt_cost = COSTS_2K_OPT[scale]
             pas_cost = COSTS_2K_PAS[scale]
             time_2k_a6000_single = optimistic_level*opt_cost + (1-optimistic_level)*pas_cost
             linear_cost[f'{scale}M'] = time_2k_a6000_single/speedup/n_gpus/n_nodes
+            _ratio_to_opt[f'{scale}M'] = time_2k_a6000_single/opt_cost
+            _ratio_to_med[f'{scale}M'] = time_2k_a6000_single/COSTS_2K_MED[scale]
 
-        st.caption('Estimated Training Time for models with 2K token context and 20x tokens on each scale (in seconds):')
+        st.caption('Estimated Training Time for models with 2K token context and 20x tokens on each scale:')
         linear_cost_df = pd.DataFrame(linear_cost,index=['Train (s)']).round(0)
         _cost_est_mat = st.data_editor(linear_cost_df,use_container_width=True)
         if _use_manual_cost:
@@ -872,7 +877,22 @@ def verify_budget_tool(evosys,project_dir):
         token_mults_df = st.data_editor(token_mults_df,use_container_width=True)
         token_mults = token_mults_df.to_dict(orient='records')[0]
 
-    st.info(f'**Note:** The budget estimated is based on simple linear scaling assumption, based on the data from training on 8 x A6000 GPUs, and the actual cost might be different.')
+
+    # time compare to optimistically estimated time
+    with st.expander('Time Comparisons'):
+        col1,col2=st.columns(2)
+        with col1:
+            st.write('Ratio to Optimistic Estimate:')
+            ratio_to_opt_df = pd.DataFrame(_ratio_to_opt,index=['Ratio']).round(2)
+            st.dataframe(ratio_to_opt_df,use_container_width=True)
+        with col2:
+            st.write('Ratio to Median Estimate:')
+            ratio_to_med_df = pd.DataFrame(_ratio_to_med,index=['Ratio']).round(2)
+            st.dataframe(ratio_to_med_df,use_container_width=True)
+
+    
+
+    st.info(f'**Note:** The budget estimated is based on simple linear scaling assumption, based on the training time on 8 x A6000 GPUs, and the actual cost might be different.')
 
     st.write('#### Estimated Training Time')
 
