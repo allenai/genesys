@@ -1,6 +1,5 @@
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 
-ARG GITHUB
 
 # # Install base tools.
 RUN apt-get update && apt-get install -y \
@@ -30,12 +29,14 @@ ENTRYPOINT ["bash", "-l"]
 
 
 # Clone the GitHub repository to home directory
-ARG GIT_REPO_URL=https://$GITHUB_TOKEN@github.com/allenai/model_discovery.git
-RUN git clone ${GIT_REPO_URL} /home/model_discovery
+ARG GITHUB_TOKEN
+# Use command substitution with shell form of RUN
+RUN GITHUB_TOKEN=$(beaker secret read GITHUB_TOKEN) && \
+    git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /home/model_discovery
 WORKDIR /home/model_discovery
 
-# Setup
 
+# Setup
 RUN conda create -n genesys python=3.12
 RUN conda activate genesys
 RUN conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
@@ -47,10 +48,10 @@ ENV CKPT_DIR=~/model_discovery/ckpt
 ENV DB_KEY_PATH=~/model_discovery/secrets/db_key.json
 ENV HF_DATASETS_TRUST_REMOTE_CODE=1
 
-# Setup secrets
-RUN mkdir ~/model_discovery/secrets
-RUN touch ${DB_KEY_PATH}
-RUN echo ${DB_KEY_JSON} > ${DB_KEY_PATH}
+# # Setup secrets
+# RUN mkdir ~/model_discovery/secrets
+# RUN touch ${DB_KEY_PATH}
+# RUN echo ${DB_KEY_JSON} > ${DB_KEY_PATH}
 
 # Install the package
 RUN pip install -e .
@@ -66,6 +67,8 @@ RUN pip install -r requirements_optional.txt
 # #### old setups
 
 # WORKDIR /stage/allennlp
+
+# ARG GITHUB
 
 # ### SPECIFIC TO MY SETTING 
 # COPY requirements_linux.txt .

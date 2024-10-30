@@ -7,6 +7,7 @@ import sys
 try: # a stupid patch for windows
     from .secrets import *
     os.environ['MY_OPENAI_KEY']=MY_OPENAI_KEY
+    os.environ['TOGETHER_API_KEY']=TOGETHER_API_KEY
     os.environ['ANTHROPIC_API_KEY']=ANTHROPIC_API_KEY
     os.environ['HF_KEY']=HF_KEY
     os.environ['HF_HUB_KEY']=HF_HUB_KEY
@@ -23,7 +24,7 @@ try: # a stupid patch for windows
     os.environ['DATA_DIR']=DATA_DIR
     os.environ['CKPT_DIR']=CKPT_DIR
     os.environ['DB_KEY_PATH']=DB_KEY_PATH
-    os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'    
+    os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'  
 except:
     pass
 

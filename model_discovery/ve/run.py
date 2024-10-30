@@ -373,12 +373,12 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
         output_dir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}",
         logging_steps=args.logging_steps,
         save_steps=args.save_steps,
+        save_total_limit=5,
         dataloader_num_workers=16,
         dataloader_pin_memory=True,
         tf32=True,
         ddp_find_unused_parameters=args.ddp_find_unused_parameters,  # Set this to False
         # torch_compile=True, # TODO: debug this
-        save_total_limit=5,
         lr_scheduler_type="cosine_with_min_lr",
         lr_scheduler_kwargs={
             "min_lr_rate": 0.1, 
@@ -435,17 +435,7 @@ def exec_train(args,training_args, trainer,log_fn):
     log_fn('Starting training...')
     # Automatically resume from the latest checkpoint if it exists
     if args.training_token_multiplier > 0:
-        last_checkpoint = U.get_last_checkpoint(training_args.output_dir)
-        if args.resume and last_checkpoint:
-            util_logger.info(
-                f"Resuming training from checkpoint: {last_checkpoint}"
-            )
-            trainer.train(resume_from_checkpoint=last_checkpoint)
-        else:
-            util_logger.info(
-                "No checkpoint found, starting training from scratch"
-            )
-            trainer.train()
+        trainer.train(resume_from_checkpoint=args.resume)
     else:
         util_logger.info(
             "Training token multiplier is set to 0, skipping training."

@@ -45,7 +45,7 @@ def _is_running(evosys):
     return None, None
 
 class CommandCenter:
-    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream,allow_resume=False):
+    def __init__(self,evosys,max_designs_per_node,max_designs_total,stream,allow_resume=True):
         self.evosys=evosys
         self.evoname=evosys.evoname
         self.max_designs_per_node=max_designs_per_node
@@ -301,7 +301,7 @@ def x_evolve(command_center):
     return process.pid
 
 
-def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,allow_resume=False):
+def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,allow_resume=True):
     if len(evosys.CM.get_active_connections())==0 and active_mode:
         st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
     command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st,allow_resume=allow_resume) # launch a passive command center first
@@ -497,8 +497,8 @@ def evolution_launch_pad(evosys):
     with col6:
         st.write('')
         st.write('')
-        input_allow_resume=st.checkbox("Allow Resume",value=False,disabled=st.session_state.evo_running,
-            help='Whether allow resume training, hugging face trainer sometimes cannot resume well.'
+        input_allow_resume=st.checkbox("Allow Resume",value=True,disabled=True,
+            help='Whether allow resume training.'
         )
 
     with col5:
