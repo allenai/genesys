@@ -513,12 +513,34 @@ class ModelDiscoverySystem(exec_utils.System):
             index_ref = log_collection.document('index')
             def log_fn(msg,status='RUNNING'):
                 timestamp = str(time.time())
-                log_ref.set({
-                    timestamp:{
-                        'status':status,
-                        'message':msg
-                    }
-                },merge=True)
+                try:
+                    log_ref.set({
+                        timestamp:{
+                            'status':status,
+                            'message':msg
+                        }
+                    },merge=True)
+                except Exception as e:
+                    log = log_ref.get().to_dict()
+                    ind = 1
+                    while True:
+                        backup_ref = log_collection.document(sess_id).collection('logs').document(f'{latest_log}_{ind}')
+                        if not backup_ref.get().exists:
+                            break
+                        ind += 1
+                    while True:
+                        try:
+                            backup_ref.set(log)
+                            break
+                        except Exception as e:
+                            log.pop(list(log.keys())[0])
+                    log_ref.set({
+                        timestamp:{
+                            'status':status,
+                            'message':msg
+                        }
+                    }) # restart the log
+
                 # if status in DESIGN_TERMINAL_STATES+['BEGIN']: # only update the index at begining and ends
                 index_ref.set({
                     sess_id:{
