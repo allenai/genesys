@@ -238,8 +238,24 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
                     update_local_doc(evosys, sess_id, 'ZOMBIE', delete=True)
                     break
             else:
-                do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is running with status {status}')
-                update_local_doc(evosys, sess_id, status)
+                if status == 'TRAINING':
+                    # detect if cuda has any process running
+                    is_training = False
+                    for i in range(3):
+                        gpu_info = torch.cuda.get_device_properties(0)
+                        # BETA
+                        if gpu_info.memory_used < 0.5 * 1024 ** 3: # 0.5GB, if less than 0.5GB, then it may not training actively
+                            do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, checking times {i+1}...')
+                            time.sleep(10)
+                        else:
+                            is_training = True
+                            break
+                    if not is_training:
+                        do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, terminating...')
+                        break
+                else:
+                    do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is running with status {status}')
+                    update_local_doc(evosys, sess_id, status)
             time.sleep(60)  # Check every minute for active processes
 
         # Check if the process completed successfully
