@@ -43,7 +43,7 @@ NODE_EXECUTION_DELAY = 2
 
 class Listener:
     def __init__(self, evosys, node_id=None, group_id='default', max_design_threads=5, accept_verify_job=True, 
-                 accept_baselines=False, cpu_only=False, silent=False, cli=False, free_verifier=False):
+                 accept_baselines=False, cpu_only=False, silent=True, cli=False, free_verifier=False):
         self.evosys = evosys
         remote_db = evosys.ptree.remote_db
         self.evoname = evosys.evoname
@@ -443,9 +443,11 @@ if __name__ == "__main__":
     parser.add_argument('-m','--max_design_threads', type=int, default=5, help='Max number of design threads can accept')
     parser.add_argument('-g','--group_id', type=str, default='default', help='Group ID, if you want to run multiple experiments')
     parser.add_argument('-c','--cpu_only', action='store_true', help='Run design threads in CPU only mode')
-    parser.add_argument('-s','--silent', action='store_true', help='Run in silent mode')
+    parser.add_argument('-vb','--verbose', action='store_true', help='Print logs to screen')
     parser.add_argument('-f','--free_verifier', action='store_true', help='Free verifier can ignore the requirement of verifying all models in at least one scale.')
     args = parser.parse_args()
+
+    silent = not args.verbose
 
     node_id = None
     if args.node_id == 'None':
@@ -495,7 +497,7 @@ if __name__ == "__main__":
             # cache_type='diskcache',
         )
         listener = Listener(evosys, node_id, args.group_id, max_design_threads=args.max_design_threads, accept_baselines=args.accept_baselines,
-                            accept_verify_job=not args.no_verify, cpu_only=args.cpu_only, silent=args.silent, cli=True, free_verifier=args.free_verifier)
+                            accept_verify_job=not args.no_verify, cpu_only=args.cpu_only, silent=silent, cli=True, free_verifier=args.free_verifier)
         listener.build_connection()
         listener_thread = start_listener_thread(listener,add_ctx=False)
 
@@ -506,7 +508,7 @@ if __name__ == "__main__":
               f"Accept verify job: {listener.accept_verify_job} \n"
               f"Accept baseline verifications: {listener.accept_baselines} \n"
               f"Free verifier: {listener.free_verifier}")
-        if args.silent:
+        if silent:
             print('🙊 Running in silent mode. The design threads will not print in screen, please check logs.')
         if args.no_verify:
             print('🙉 Running in no-verify mode. The node will not accept verify jobs.')

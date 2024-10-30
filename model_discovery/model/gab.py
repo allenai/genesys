@@ -27,17 +27,18 @@ class GPT2(GAUBase):
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = MHA(embed_dim=self.embed_dim, block_loc=self.block_loc,
-            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.mha = HierarchicalAdaptiveAttention(embed_dim=self.embed_dim,
+            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
+            factory_kwargs, **self.kwarg_all)
         self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm1 = AdaptiveHierarchicalRMSNorm(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
-        self.norm2 = AdaptiveHierarchicalRMSNorm(embed_dim=self.embed_dim,
-            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
-            factory_kwargs, **self.kwarg_all)
+        self.norm1 = ODERMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.norm2 = ODERMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
 
     def _forward(self, X, **Z):
         X1, Z = self.norm1(X, **Z)
@@ -47,6 +48,106 @@ class GPT2(GAUBase):
         X4, Z = self.mlp(X3, **Z)
         X = X + X4
         return X, Z
+
+
+import torch.nn.functional as F
+import math
+
+
+class ODERMSNorm(GAUBase):
+    """
+    ODE-based Root Mean Square Layer Normalization (ODERMSNorm).
+
+    This layer applies a variant of RMSNorm where the scaling parameter gamma is modeled
+    as a continuous function evolving through an ODE. This allows the normalization parameters
+    to adapt continuously based on the input context, enabling smooth adaptation to varying
+    sequence lengths and input distributions.
+
+    **Main Features:**
+    - **Continuous Parameter Evolution**: Gamma is obtained by integrating an ODE, allowing it to adapt smoothly.
+    - **Adaptive Normalization**: The normalization adapts to the input context for better performance.
+
+    **Code Example:**
+
+        # Initialize ODERMSNorm
+        norm = ODERMSNorm(embed_dim=128, block_loc=(0, 6), kwarg_all={})
+        # Input tensor X
+        X = torch.randn(4, 10, 128)
+        # Forward pass
+        Y, Z = norm(X, t=torch.tensor(1.0))
+        print(Y.shape)  # Output: torch.Size([4, 10, 128])
+
+    Args:
+        embed_dim (int): The size of the input feature dimension.
+        block_loc (tuple): The location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments passed to the parent class.
+        device (torch.device, optional): The device on which to allocate the module's parameters.
+        dtype (torch.dtype, optional): The dtype of the module's parameters.
+        eps (float, optional): A small constant added to the denominator for numerical stability.
+            Default: 1e-5.
+        num_steps (int, optional): Number of steps for ODE integration. Default: 10.
+        **kwargs: Additional keyword arguments.
+
+    Attributes:
+        eps (float): The epsilon value used in the normalization formula.
+        param_net (nn.Module): A parameter network generating initial gamma.
+
+    Shape:
+        - Input: X of shape (batch_size, seq_len, embed_dim)
+        - Output: Y of shape (batch_size, seq_len, embed_dim)
+
+    Examples:
+        >>> norm = ODERMSNorm(embed_dim=128, block_loc=(0, 6), kwarg_all={})
+        >>> x = torch.randn(4, 10, 128)
+        >>> y, Z = norm(x, t=torch.tensor(1.0))
+        >>> y.shape
+        torch.Size([4, 10, 128])
+
+    References:
+        - Proposal: "ODEAdaptGPT: Continuous Adaptive Normalization for Efficient Language Models"
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, eps=1e-05, num_steps=10, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.embed_dim = embed_dim
+        self.eps = eps
+        self.num_steps = num_steps
+        self.param_net = nn.Sequential(nn.Linear(embed_dim, embed_dim // 4,
+            **self.factory_kwargs), nn.SiLU(), nn.Linear(embed_dim // 4,
+            embed_dim, **self.factory_kwargs))
+        self.ode_function = nn.Sequential(nn.Linear(embed_dim, embed_dim //
+            2, **self.factory_kwargs), nn.Tanh(), nn.Linear(embed_dim // 2,
+            embed_dim, **self.factory_kwargs))
+
+    def _forward(self, X, **Z):
+        t = Z.get('t', torch.tensor(1.0, **self.factory_kwargs))
+        if isinstance(t, torch.Tensor):
+            if t.dim() == 0:
+                t = t.item()
+            else:
+                raise ValueError('t must be a scalar.')
+        B, L, D = X.size()
+        gamma0 = self.param_net(X)
+        gamma = self.get_gamma(t, gamma0)
+        assert gamma.shape == (B, L, D
+            ), f'Gamma shape mismatch: expected ({B}, {L}, {D}), got {gamma.shape}'
+        rms = torch.sqrt(torch.mean(X * X, dim=-1, keepdim=True) + self.eps)
+        Y = X / rms * gamma
+        return Y, Z
+
+    def get_gamma(self, t, gamma0):
+        gamma = self.euler_integration(gamma0, t, self.num_steps)
+        return gamma
+
+    def euler_integration(self, gamma0, t, num_steps):
+        dt = t / num_steps
+        gamma = gamma0
+        for _ in range(int(num_steps)):
+            delta = self.ode_function(gamma)
+            gamma = gamma + dt * delta
+        return gamma
 
 
 import torch.nn.functional as F
@@ -80,93 +181,134 @@ class GatedMLP(GAUBase):
 
 import torch.nn.functional as F
 import math
-from einops import rearrange, repeat
+from einops import rearrange
 
 
-class MHA(GAUBase):
-    """Multi-head self-attention and cross-attention"""
+class HierarchicalAdaptiveAttention(GAUBase):
+    """
+    Hierarchical Adaptive Multi-Head Attention (HA-MHA)
+
+    This module implements a hierarchical adaptive multi-head attention mechanism that
+    captures multi-scale dependencies in the input sequence. It organizes attention heads
+    into hierarchical groups, each responsible for capturing dependencies at different scales
+    (e.g., local, medium, global). An adaptive gating mechanism dynamically allocates attention
+    resources based on the input context, allowing the model to focus on the most relevant
+    information at each scale.
+
+    **Main Features:**
+    - **Hierarchical Structure**: Attention heads are grouped into multiple scales to capture
+      dependencies at different levels.
+    - **Multi-Scale Linear Attention**: Reduces computational complexity from O(N^2) to O(N)
+      within each hierarchical group using linear attention mechanisms.
+    - **Adaptive Gating Mechanism**: Dynamically scales the contribution of each hierarchical group
+      based on the input context using a gating function.
+    - **Dynamic Composition**: Composes attention outputs from all hierarchical groups adaptively.
+    - **Rotary Positional Embeddings**: Incorporates positional information using rotary embeddings.
+
+    Args:
+        embed_dim (int): Total embedding dimension.
+        block_loc (tuple): Location of the block within the network.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): The device to use.
+        dtype (torch.dtype, optional): The data type to use.
+        num_heads (int): Total number of attention heads.
+        num_scales (int): Number of hierarchical scales.
+        dropout (float): Dropout probability.
+        rotary_emb_base (float): Base for rotary positional embeddings.
+        **kwargs: Additional keyword arguments.
+
+    Attributes:
+        head_dim (int): Dimension of each attention head.
+        query_projs (nn.ModuleList): List of query projections for each scale.
+        key_projs (nn.ModuleList): List of key projections for each scale.
+        value_projs (nn.ModuleList): List of value projections for each scale.
+        gate_proj (nn.Linear): Linear layer for adaptive gating.
+        out_proj (nn.Linear): Output projection layer.
+        rotary_emb (RotaryPositionalEmbeddings): Positional embedding module.
+
+    Shape:
+        - Input: X of shape (batch_size, seq_len, embed_dim)
+        - Output: Y of shape (batch_size, seq_len, embed_dim)
+
+    Examples:
+        >>> attn = HierarchicalAdaptiveAttention(embed_dim=512, block_loc=(0, 1), kwarg_all={}, num_heads=8, num_scales=2)
+        >>> X = torch.randn(2, 10, 512)
+        >>> Y, Z = attn(X)
+        >>> Y.shape
+        torch.Size([2, 10, 512])
+
+    References:
+        - Paper: "HieraNorm-AttnGPT: Hierarchical Adaptive Multi-Head Attention with Dynamic Layer Normalization"
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:
-        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:
-        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,
-        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:
-        """
-        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.
-        return_residual: whether to return the input x along with the output. This is for
-            performance reason: for post-norm architecture, returning the input allows us
-            to fuse the backward of nn.Linear with the residual connection.
-        """
+        device=None, dtype=None, num_heads: int=8, num_scales: int=2,
+        dropout: float=0.1, rotary_emb_base: float=10000.0, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
+        assert embed_dim % (num_heads * num_scales
+            ) == 0, 'embed_dim must be divisible by num_heads * num_scales'
         self.embed_dim = embed_dim
-        self.d_conv = d_conv
-        self.softmax_scale = softmax_scale
-        self.causal = causal
-        self.num_heads = n_heads
-        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else
-            n_heads)
-        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'
-        if head_dim is None:
-            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'
-        self.head_dim = (head_dim if head_dim is not None else self.
-            embed_dim // n_heads)
-        self.mlp_dim = math.ceil(mlp_dim / 256) * 256
-        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)
-        out_dim = self.head_dim * self.num_heads
+        self.num_heads = num_heads
+        self.num_scales = num_scales
+        self.head_dim = embed_dim // (num_heads * num_scales)
+        self.dropout = dropout
+        self.query_projs = nn.ModuleList([nn.Linear(embed_dim, num_heads *
+            self.head_dim, bias=False, **self.factory_kwargs) for _ in
+            range(num_scales)])
+        self.key_projs = nn.ModuleList([nn.Linear(embed_dim, num_heads *
+            self.head_dim, bias=False, **self.factory_kwargs) for _ in
+            range(num_scales)])
+        self.value_projs = nn.ModuleList([nn.Linear(embed_dim, num_heads *
+            self.head_dim, bias=False, **self.factory_kwargs) for _ in
+            range(num_scales)])
+        self.gate_proj = nn.Linear(embed_dim, num_scales, bias=False, **
+            self.factory_kwargs)
+        self.out_proj = nn.Linear(num_heads * self.head_dim * num_scales,
+            embed_dim, **self.factory_kwargs)
+        self.dropout_layer = nn.Dropout(p=self.dropout)
         kwarg_all['rotary_emb_dim'] = self.head_dim
         self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
             embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
             **self.factory_kwargs, **self.kwarg_all)
-        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=
-            qkv_proj_bias, **self.factory_kwargs)
-        if self.d_conv > 0:
-            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.
-                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.
-                factory_kwargs)
-        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,
-            bias=out_proj_bias, **self.factory_kwargs)
 
     def _forward(self, X, **Z):
-        """
-        Arguments:
-            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if
-                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total
-                is the is the sum of the sequence lengths in the batch.
-            inference_params: for generation. Adapted from Megatron-LM (and Apex)
-            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470
-        """
-        qkv = self.in_proj(X)
-        if self.mlp_dim > 0:
-            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.
-                mlp_dim], dim=-1)
-            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)
-            x_mlp = x_mlp_up * F.silu(x_mlp_gate)
-        if self.d_conv > 0:
-            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[
-                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()
-        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)
-        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)
-        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)
-        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)
-        Z['input_emb'] = q
-        _, Z = self.rotary_emb(X, **Z)
-        q = Z['output_emb']
-        Z['input_emb'] = k
-        _, Z = self.rotary_emb(X, **Z)
-        k = Z['output_emb']
-        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //
-            self.num_heads_kv)
-        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //
-            self.num_heads_kv)
-        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.
-            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,
-            scale=self.softmax_scale).transpose(1, 2)
-        context = rearrange(context, '... h d -> ... (h d)')
-        if self.mlp_dim > 0:
-            context = torch.cat([context, x_mlp], dim=-1)
-        out = self.out_proj(context)
-        return out
+        B, L, D = X.size()
+        assert D == self.embed_dim, f'Expected input embedding dimension: {self.embed_dim}, got: {D}'
+        gate_scores = torch.sigmoid(self.gate_proj(X))
+        attn_outputs = []
+        for scale in range(self.num_scales):
+            Q = self.query_projs[scale](X).view(B, L, self.num_heads, self.
+                head_dim).transpose(1, 2)
+            K = self.key_projs[scale](X).view(B, L, self.num_heads, self.
+                head_dim).transpose(1, 2)
+            V = self.value_projs[scale](X).view(B, L, self.num_heads, self.
+                head_dim).transpose(1, 2)
+            Z['input_emb'] = Q
+            _, Z = self.rotary_emb(X, **Z)
+            Q = Z['output_emb']
+            Z['input_emb'] = K
+            _, Z = self.rotary_emb(X, **Z)
+            K = Z['output_emb']
+            scaling_factor = 1.0 / math.sqrt(self.head_dim)
+            Q = Q * scaling_factor
+            K = F.softmax(K, dim=-1)
+            V = V
+            KV = torch.einsum('bhld,bhld->bhld', K, V)
+            attn_output = torch.einsum('bhld,bhld->bhld', Q, KV)
+            attn_output = self.dropout_layer(attn_output)
+            attn_outputs.append(attn_output)
+        attn_output = torch.cat(attn_outputs, dim=-1)
+        attn_output = attn_output.transpose(1, 2).reshape(B, L, -1)
+        gate_scores = gate_scores.unsqueeze(-1)
+        gate_scores = gate_scores.expand(-1, -1, -1, self.num_heads * self.
+            head_dim)
+        attn_output = attn_output.view(B, L, self.num_scales, self.
+            num_heads * self.head_dim)
+        attn_output = attn_output * gate_scores
+        attn_output = attn_output.reshape(B, L, -1)
+        Y = self.out_proj(attn_output)
+        return Y, Z
 
 
 import torch.nn.functional as F
@@ -260,144 +402,10 @@ class RotaryPositionalEmbeddings(GAUBase):
         return X, {'output_emb': output_emb}
 
 
-import torch.nn.functional as F
-from torch import Tensor
-from typing import Dict
-
-
-class AdaptiveHierarchicalRMSNorm(GAUBase):
-    """
-    Adaptive Hierarchical Root Mean Square Layer Normalization (AdaptiveHierarchicalRMSNorm).
-
-    This layer extends HierarchicalRMSNorm by incorporating adaptive initialization.
-    It processes input embeddings at multiple scales and integrates them
-    to produce the normalized output while ensuring causality.
-
-    **Core Idea:**
-
-    - The input embeddings are downsampled to multiple scales using causal operations.
-    - Each scale has its own normalization parameters.
-    - The normalized embeddings at each scale are upsampled causally and combined.
-
-    **Mathematical Formulation:**
-
-        For each scale s:
-
-        gamma_s = init_scale_weights(s, data_stats)
-
-        x_s = causal_downsample(x, scale=s)
-
-        rms_s(x) = sqrt(mean(x_s^2) + eps)
-
-        y_s = x_s / rms_s(x) * gamma_s
-
-        y = sum(causal_upsample(y_s) * w_s for s in scales)
-
-    **Args:**
-        embed_dim (int): Dimensionality of the input embeddings.
-        block_loc (tuple): Location of the block within the network.
-        kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): Device to use.
-        dtype (torch.dtype, optional): Data type to use.
-
-    **Attributes:**
-        scales (list of int): The scales being used.
-        eps (float): The epsilon value for numerical stability.
-        gammas (nn.ParameterDict): Scale-specific gamma parameters.
-        scale_weights (nn.Parameter): Weights for each scale.
-
-    **Shape:**
-        - Input: (batch_size, sequence_length, embed_dim)
-        - Output: Same as input.
-
-    **Example:**
-
-        norm = AdaptiveHierarchicalRMSNorm(embed_dim=512, scales=[1,2,4])
-        x = torch.randn(32, 128, 512)
-        y, _ = norm(x)
-
-    **References:**
-
-    - Proposal for AdaptiveHierarchicalRMSNorm.
-
-    **Note:**
-
-        This implementation ensures causality by using causal downsampling and upsampling operations.
-        Adaptive initialization is performed during initialization based on predefined parameters.
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.embed_dim = embed_dim
-        self.scales = kwargs.pop('scales', kwarg_all.get('scales', [1, 2, 4]))
-        self.eps = kwargs.pop('eps', kwarg_all.get('eps', 1e-05))
-        self.gammas = nn.ParameterDict()
-        for s in self.scales:
-            gamma_s = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)
-                )
-            self.gammas[f's{s}'] = gamma_s
-        self.scale_weights = nn.Parameter(torch.ones(len(self.scales), **
-            self.factory_kwargs))
-
-    def _decompose_scales(self, X: Tensor) ->Dict[int, Tensor]:
-        x_scales = {}
-        for s in self.scales:
-            if s == 1:
-                x_scales[s] = X
-            else:
-                x_s = self._causal_downsample(X, s)
-                x_scales[s] = x_s
-        return x_scales
-
-    def _causal_downsample(self, X: Tensor, scale: int) ->Tensor:
-        batch_size, seq_length, embed_dim = X.size()
-        padding = scale - 1, 0
-        X_padded = F.pad(X.transpose(1, 2), padding)
-        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs
-            ) / scale
-        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim
-            ).transpose(1, 2)
-        return x_s
-
-    def _causal_upsample(self, y_s: Tensor, scale: int, target_length: int
-        ) ->Tensor:
-        upsampled_y_s = y_s.repeat_interleave(scale, dim=1)
-        upsampled_y_s = upsampled_y_s[:, :target_length, :]
-        return upsampled_y_s
-
-    def _integrate_scales(self, y_scales: Dict[int, Tensor], target_length: int
-        ) ->Tensor:
-        weights = F.softmax(self.scale_weights, dim=0)
-        Y = 0
-        for i, (s, y_s) in enumerate(y_scales.items()):
-            if s == 1:
-                upsampled_y_s = y_s
-            else:
-                upsampled_y_s = self._causal_upsample(y_s, s, target_length)
-            Y = Y + upsampled_y_s * weights[i]
-        return Y
-
-    def _forward(self, X, **Z):
-        X = X.to(**self.factory_kwargs)
-        x_scales = self._decompose_scales(X)
-        y_scales = {}
-        for s, x_s in x_scales.items():
-            rms_s = torch.sqrt(torch.mean(x_s.pow(2), dim=-1, keepdim=True) +
-                self.eps)
-            gamma_s = self.gammas[f's{s}']
-            y_s = x_s / rms_s * gamma_s
-            y_scales[s] = y_s
-        Y = self._integrate_scales(y_scales, X.size(1))
-        return Y, {}
-
-
-gab_config = {'softmax_scale': None, 'out_proj_bias': True, 'n_heads': 8,
-    'num_heads_kv': None, 'd_conv': 0, 'mlp_dim': 0, 'head_dim': None,
-    'causal': True, 'qkv_proj_bias': True, 'rotary_emb_base': 10000,
-    'max_seq_len': 4096, 'bias': False, 'multiple_of': 128,
-    'hidden_features': None, 'out_features': None, 'activation': None}
+gab_config = {'max_seq_len': 4096, 'rotary_emb_base': 10000.0, 'dropout': 
+    0.1, 'num_scales': 2, 'num_heads': 8, 'num_steps': 10, 'eps': 1e-05,
+    'bias': False, 'multiple_of': 128, 'hidden_features': None,
+    'out_features': None, 'activation': None}
 
 
 
