@@ -449,7 +449,7 @@ def network_status(evosys,benchmark_mode):
                 if 'heartbeat' in running_verifications_df.columns:
                     running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
                 running_verifications_df.rename(columns={'status':'Status','pid':'PID','heartbeat':'Last Heartbeat','node_id':'Node ID'},inplace=True)
-                st.dataframe(running_verifications_df,use_container_width=True)
+                st.dataframe(running_verifications_df,use_container_width=True,column_config={'W&B Training Run': st.column_config.LinkColumn('W&B Training Run')})
             else:
                 st.info('No running verifications')
 
