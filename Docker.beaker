@@ -29,10 +29,8 @@ ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ENTRYPOINT ["bash", "-l"]
 
 
-
-
 # Clone the GitHub repository to home directory
-ARG GIT_REPO_URL=https://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@github.com/allenai/model_discovery.git
+ARG GIT_REPO_URL=https://$GITHUB_TOKEN@github.com/allenai/model_discovery.git
 RUN git clone ${GIT_REPO_URL} /home/model_discovery
 WORKDIR /home/model_discovery
 
@@ -49,19 +47,20 @@ ENV CKPT_DIR=~/model_discovery/ckpt
 ENV DB_KEY_PATH=~/model_discovery/secrets/db_key.json
 ENV HF_DATASETS_TRUST_REMOTE_CODE=1
 
+# Setup secrets
+RUN mkdir ~/model_discovery/secrets
+RUN touch ${DB_KEY_PATH}
+RUN echo ${DB_KEY_JSON} > ${DB_KEY_PATH}
+
 # Install the package
 RUN pip install -e .
 RUN genesys setup
 
 
-# Setup secrets
-RUN mkdir ~/model_discovery/secrets
-RUN touch $DB_KEY_PATH
-RUN echo $DB_KEY_JSON > $DB_KEY_PATH
-
-
 # Install optional dependencies
 RUN pip install -r requirements_optional.txt
+
+
 
 
 # #### old setups
