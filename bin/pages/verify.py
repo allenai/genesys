@@ -242,9 +242,11 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
                     # detect if cuda has any process running
                     is_training = False
                     for i in range(3):
-                        gpu_info = torch.cuda.get_device_properties(0)
-                        # BETA
-                        if gpu_info.memory_used < 0.5 * 1024 ** 3: # 0.5GB, if less than 0.5GB, then it may not training actively
+                        memory_allocated = torch.cuda.memory_allocated(0)
+                        memory_reserved = torch.cuda.memory_reserved(0)
+                        total_memory = memory_allocated + memory_reserved
+                        
+                        if total_memory < 0.5 * 1024 ** 3:  # if less than 0.5GB, then it may not training actively
                             do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, checking times {i+1}...')
                             time.sleep(10)
                         else:

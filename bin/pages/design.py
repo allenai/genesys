@@ -238,7 +238,8 @@ def _design_engine(evosys,project_dir):
                     # challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
                     st.write(f'Implementation succeed: ```{len(implemented)+len(challenging)}({len(challenging)})/{sessdata["num_samples"]["implementation"]}``` {state}')
                 with cols[4]:
-                    if st.button('View Log',key=f'btn_{sess_id}_view_log'):
+                    log_dir = U.pjoin(evosys.ptree.db_dir,'sessions',sess_id,'log')
+                    if st.button('View Log',key=f'btn_{sess_id}_view_log',disabled=not os.path.exists(log_dir)):
                         st.session_state['viewing_log'] = sess_id
         else:
             st.info('No finished design sessions.')
@@ -259,7 +260,8 @@ def _design_engine(evosys,project_dir):
                     # challenging_state=f'({len(challenging)})' if len(challenging)>0 else ''
                     st.write(f'Implementation succeed: ```{len(implemented)+len(challenging)}({len(challenging)})/{sessdata["num_samples"]["implementation"]}``` {state}')
                 with cols[3]:
-                    if st.button('View Log',key=f'btn_{sess_id}_view_log'):
+                    log_dir = U.pjoin(evosys.ptree.db_dir,'sessions',sess_id,'log')
+                    if st.button('View Log',key=f'btn_{sess_id}_view_log',disabled=not os.path.exists(log_dir)):
                         st.session_state['viewing_log'] = sess_id
                 with cols[4]:
                     if st.button('Resume',key=f'btn_{sess_id}_resume',disabled=st.session_state.evo_running):
@@ -647,7 +649,7 @@ def _design_tuning(evosys,project_dir):
                 selected_ckpt = st.selectbox(label="Select folder",options=ckpts,index=ckpts.index(current_ckpt))
                 db_dir = U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
             with cols[1]:
-                folders=['']
+                folders=[]
                 if os.path.exists(U.pjoin(db_dir,'sessions')):
                     for i in os.listdir(U.pjoin(db_dir,'sessions')):
                         if os.path.isdir(U.pjoin(db_dir,'sessions',i,'log')):

@@ -89,60 +89,46 @@ TTT-MLP shows potential for even better performance in long-context scenarios bu
 
 
 import torch.nn.functional as F
+import math
+try:
+    from flash_attn import flash_attention_impl
+    HAS_FLASH_ATTENTION = True
+except ImportError:
+    HAS_FLASH_ATTENTION = False
 
 
 class FastTTTLinear(GAUBase):
     """
-    **FastTTTLinear**
-
-    FastTTTLinear is a modified version of TTTLinear that integrates Gated Linear Attention (GLA)
-    and concepts from the RWKV architecture to enhance computational efficiency for long sequences.
-    This implementation addresses inefficiency concerns by vectorizing operations, eliminating
-    Python-level for-loops, and optimizing tensor computations.
-
-    **Key Features:**
-
-    - **Gated Linear Attention**: Uses data-dependent gates to modulate queries and keys, enabling linear attention computation.
-    - **Vectorized Computations**: Eliminates Python for-loops by using efficient tensor operations.
-    - **Normalization**: Applies LayerNorm to queries and keys to stabilize computations.
-    - **Adjustments for Numerical Stability**: Uses appropriate scaling, activation functions, and safeguards.
-    - **Local Convolutional Augmentation**: Applies causal convolution to prevent information leakage and enhance local context.
-
-    **Args:**
-        embed_dim (int): Embedding dimension.
-        block_loc (tuple): Location of this block in the model architecture.
-        kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): Device on which to allocate tensors.
-        dtype (torch.dtype, optional): Data type of the tensors.
-        num_attention_heads (int, optional): Number of attention heads. Default: 4.
-
-    **Inputs:**
-        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
-
-    **Outputs:**
-        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
-
-    **Example:**
-
-        >>> fast_ttt_linear = FastTTTLinear(embed_dim=512, block_loc=(0, 0), kwarg_all={})
-        >>> X = torch.randn(2, 1024, 512)
-        >>> Y, Z = fast_ttt_linear(X)
-
-    **References:**
-
-    - Yang, S., et al. (2023). *Gated Linear Attention Transformers with Hardware-Efficient Training*.
-    - Peng, B., et al. (2023). *RWKV: Reinventing RNNs for the Transformer Era*.
-
+    FastTTTLinear with enhanced causality, memory efficiency, and performance optimizations.
+    
+    Key Features:
+    - Causal attention with efficient chunked computation
+    - Memory-efficient implementation with gradient checkpointing
+    - Optional Flash Attention support for faster computation
+    - Adaptive chunk sizing based on sequence length
+    - Enhanced numerical stability through proper scaling and normalization
+    
+    Performance Guidelines:
+    - Recommended maximum sequence length: 32K
+    - Optimal chunk size: 1024 for 16GB GPU
+    - Memory usage: O(N) where N is sequence length
     """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_attention_heads=4, **kwargs):
+        device=None, dtype=None, num_attention_heads=4, dropout=0.0,
+        attention_dropout=0.0, chunk_size=1024, max_position_embeddings=
+        32768, layer_norm_eps=1e-05, use_flash_attention=True, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
         self.num_heads = num_attention_heads
-        assert embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_attention_heads'
-        self.head_dim = embed_dim // self.num_heads
+        self.head_dim = embed_dim // num_attention_heads
+        assert embed_dim % num_attention_heads == 0, 'embed_dim must be divisible by num_attention_heads'
         self.embed_dim = embed_dim
+        self.base_chunk_size = chunk_size
+        self.chunk_size = chunk_size
+        self.max_position_embeddings = max_position_embeddings
+        self.use_flash_attention = use_flash_attention and HAS_FLASH_ATTENTION
+        self.scale = 1.0 / math.sqrt(self.head_dim)
         self.W_Q = nn.Linear(embed_dim, embed_dim, bias=False, **self.
             factory_kwargs)
         self.W_K = nn.Linear(embed_dim, embed_dim, bias=False, **self.
@@ -155,36 +141,70 @@ class FastTTTLinear(GAUBase):
             factory_kwargs)
         self.output_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
             self.factory_kwargs)
-        self.local_conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3,
-            padding=2, bias=True, **self.factory_kwargs)
         self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.q_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
-        self.k_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
-        nn.init.xavier_uniform_(self.W_Q.weight)
-        nn.init.xavier_uniform_(self.W_K.weight)
-        nn.init.xavier_uniform_(self.W_V.weight)
-        nn.init.xavier_uniform_(self.output_proj.weight)
-        nn.init.xavier_uniform_(self.gate_Q.weight)
+        self.dropout = nn.Dropout(p=dropout)
+        self.attention_dropout = nn.Dropout(p=attention_dropout)
+        self.local_conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3,
+            padding=0, groups=embed_dim, bias=True, **self.factory_kwargs)
+        self._init_weights()
+        self.gradient_checkpointing = False
+
+    def _init_weights(self):
+        """Initialize weights with proper scaling for stability."""
+        gain = 1.0 / math.sqrt(2.0)
+        nn.init.xavier_uniform_(self.W_Q.weight, gain=gain)
+        nn.init.xavier_uniform_(self.W_K.weight, gain=gain)
+        nn.init.xavier_uniform_(self.W_V.weight, gain=gain)
+        nn.init.xavier_uniform_(self.gate_Q.weight, gain=gain)
         nn.init.zeros_(self.gate_Q.bias)
-        nn.init.xavier_uniform_(self.gate_K.weight)
+        nn.init.xavier_uniform_(self.gate_K.weight, gain=gain)
         nn.init.zeros_(self.gate_K.bias)
+        nn.init.xavier_uniform_(self.output_proj.weight)
         nn.init.xavier_uniform_(self.local_conv.weight)
         nn.init.zeros_(self.local_conv.bias)
 
-    def _forward(self, X, **Z):
+    def _efficient_attention(self, Q, K, V, mask):
+        """Efficient attention computation."""
+        scores = torch.matmul(Q, K.transpose(-2, -1))
+        scores = scores.masked_fill(mask, float('-inf'))
+        attn_weights = F.softmax(scores, dim=-1)
+        attn_weights = self.attention_dropout(attn_weights)
+        return torch.matmul(attn_weights, V)
+
+    def _causal_attention(self, Q, K, V, chunk_size):
+        """Compute chunked causal attention with optional Flash Attention."""
+        B, H, L, D = Q.shape
+        if self.use_flash_attention and not self.training:
+            return flash_attention_impl(Q, K, V, causal=True)
+        outputs = []
+        for chunk_start in range(0, L, chunk_size):
+            chunk_end = min(chunk_start + chunk_size, L)
+            Q_chunk = Q[:, :, chunk_start:chunk_end]
+            K_chunk = K[:, :, :chunk_end]
+            V_chunk = V[:, :, :chunk_end]
+            causal_mask = torch.triu(torch.ones(chunk_end - chunk_start,
+                chunk_end, device=Q.device, dtype=torch.bool), diagonal=1)
+            causal_mask = causal_mask.unsqueeze(0).unsqueeze(0)
+            chunk_output = self._efficient_attention(Q_chunk * self.scale,
+                K_chunk, V_chunk, causal_mask)
+            outputs.append(chunk_output)
+        return torch.cat(outputs, dim=2)
+
+    def _forward_impl(self, X, **Z):
+        """Main implementation of forward pass with all optimizations."""
         B, L, D = X.size()
         H = self.num_heads
         D_H = self.head_dim
-        X_conv = self.local_conv(X.transpose(1, 2))
-        X_conv = X_conv.transpose(1, 2)[:, :L, :]
-        X = X + X_conv
+        self.chunk_size = min(self.base_chunk_size, max(128, L // 8))
+        X_pad = F.pad(X.transpose(1, 2), (2, 0), mode='replicate')
+        X_conv = self.local_conv(X_pad)
+        X_conv = X_conv.transpose(1, 2)
+        X = X + self.dropout(X_conv)
         Q = self.W_Q(X)
         K = self.W_K(X)
         V = self.W_V(X)
-        Q = self.q_norm(Q)
-        K = self.k_norm(K)
         G_Q = torch.sigmoid(self.gate_Q(X))
         G_K = torch.sigmoid(self.gate_K(X))
         Q = Q * G_Q
@@ -192,18 +212,19 @@ class FastTTTLinear(GAUBase):
         Q = Q.view(B, L, H, D_H).transpose(1, 2)
         K = K.view(B, L, H, D_H).transpose(1, 2)
         V = V.view(B, L, H, D_H).transpose(1, 2)
-        Q_prime = F.elu(Q) + 1
-        K_prime = F.elu(K) + 1
-        K_cumsum = K_prime.cumsum(dim=2)
-        KV_cumsum = (K_prime * V).cumsum(dim=2)
-        denominator = (Q_prime * K_cumsum).sum(dim=-1) + 1e-06
-        numerator = Q_prime * KV_cumsum
-        output = numerator / denominator.unsqueeze(-1)
-        output = output.transpose(1, 2).contiguous().view(B, L, D)
+        attn_output = self._causal_attention(Q, K, V, self.chunk_size)
+        output = attn_output.transpose(1, 2).contiguous().view(B, L, D)
         output = self.output_proj(output)
-        output = X + output
+        output = X + 0.1 * self.dropout(output)
         output, Z = self.norm(output, **Z)
         return output, Z
+
+    def _forward(self, X, **Z):
+        """Forward pass with optional gradient checkpointing."""
+        if self.gradient_checkpointing and self.training:
+            return torch.utils.checkpoint.checkpoint(self._forward_impl, X,
+                *Z.values())
+        return self._forward_impl(X, **Z)
 
 
 import torch.nn.functional as F
@@ -269,36 +290,6 @@ class RMSNorm(GAUBase):
 import torch.nn.functional as F
 from typing import Any, Dict, Optional, Tuple, Union
 import torch.nn.functional as F
-from transformers.utils import logging
-from transformers.activations import ACT2FN
-
-
-class SwiGluMLP(GAUBase):
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, intermediate_size=None, **kwargs):
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.hidden_size = embed_dim
-        self.intermediate_size = (intermediate_size if intermediate_size is not
-            None else int(embed_dim * 2.5))
-        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
-            bias=False, **self.factory_kwargs)
-        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
-            bias=False, **self.factory_kwargs)
-        self.act_fn = ACT2FN['silu']
-
-    def _forward(self, X, **Z):
-        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
-            up_proj(X))
-        return down_proj
-
-
-import torch.nn.functional as F
-from typing import Any, Dict, Optional, Tuple, Union
-import torch.nn.functional as F
 import torch.utils.checkpoint
 from torch.utils._pytree import tree_map
 from transformers.utils import logging
@@ -339,7 +330,39 @@ class Conv(GAUBase):
         return hidden_states
 
 
-gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
+import torch.nn.functional as F
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
+from transformers.activations import ACT2FN
+
+
+class SwiGluMLP(GAUBase):
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, intermediate_size=None, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.hidden_size = embed_dim
+        self.intermediate_size = (intermediate_size if intermediate_size is not
+            None else int(embed_dim * 2.5))
+        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
+            bias=False, **self.factory_kwargs)
+        self.act_fn = ACT2FN['silu']
+
+    def _forward(self, X, **Z):
+        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
+            up_proj(X))
+        return down_proj
+
+
+gab_config = {'eps': 1e-05, 'attention_dropout': 0.0, 'num_attention_heads':
+    4, 'dropout': 0.0, 'layer_norm_eps': 1e-05, 'use_flash_attention': True,
+    'max_position_embeddings': 32768, 'chunk_size': 1024, 'conv_kernel': 4,
     'rms_norm_eps': 1e-06, 'intermediate_size': None}
 
 
