@@ -28,16 +28,54 @@ ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 ENTRYPOINT ["bash", "-l"]
 
-WORKDIR /stage/allennlp
+
+
+
+# Clone the GitHub repository to home directory
+ARG GIT_REPO_URL=https://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@github.com/allenai/model_discovery.git
+RUN git clone ${GIT_REPO_URL} /home/model_discovery
+WORKDIR /home/model_discovery
+
+# Setup
+
+RUN conda create -n genesys python=3.12
+RUN conda activate genesys
+RUN conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
+
+# Setup ENV variables
+
+ENV DATA_DIR=~/model_discovery/data
+ENV CKPT_DIR=~/model_discovery/ckpt
+ENV DB_KEY_PATH=~/model_discovery/secrets/db_key.json
+ENV HF_DATASETS_TRUST_REMOTE_CODE=1
+
+# Install the package
+RUN pip install -e .
+RUN genesys setup
+
+
+# Setup secrets
+RUN mkdir ~/model_discovery/secrets
+RUN touch $DB_KEY_PATH
+RUN echo $DB_KEY_JSON > $DB_KEY_PATH
+
+
+# Install optional dependencies
+RUN pip install -r requirements_optional.txt
+
+
+# #### old setups
+
+# WORKDIR /stage/allennlp
 
 # ### SPECIFIC TO MY SETTING 
-COPY requirements_linux.txt .
-COPY etc/ etc/
-COPY model_discovery/ model_discovery/
-COPY _runs/ _runs/
-COPY data/ data/
-COPY run.sh run.sh
+# COPY requirements_linux.txt .
+# COPY etc/ etc/
+# COPY model_discovery/ model_discovery/
+# COPY _runs/ _runs/
+# COPY data/ data/
+# COPY run.sh run.sh
 
-RUN pip install setuptools==69.5.1
-RUN pip install git+https://$GITHUB@github.com/allenai/exec_utils
-RUN pip install -r requirements_linux.txt
+# RUN pip install setuptools==69.5.1
+# RUN pip install git+https://$GITHUB@github.com/allenai/exec_utils
+# RUN pip install -r requirements_linux.txt

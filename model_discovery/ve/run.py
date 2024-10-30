@@ -125,7 +125,9 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
 }
 
 
-def _explore_setup(args,slow_threshold=3):
+
+
+def _explore_setup(args):
     setup(args)
     gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
@@ -145,12 +147,12 @@ def _explore_setup(args,slow_threshold=3):
     slow_threshold = SLOW_TOLERANCE[scale]
 
     config = eval(f"GAMConfig_{args.scale}()")
-    time_lower = TIME_LOWER[scale] * 8/n_gpus
-    training_tokens = config.reference_size * 20
-    num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
-    time_lower = time_lower * 10 / num_steps 
+    time_lower = TIME_LOWER[scale] * 8/n_gpus # TODO: not consider the gpu type yet
+    training_tokens = config.reference_size * 20 # the data is based on 20 tokens per param
+    num_steps = int(np.ceil(training_tokens / (config.batch_tokens))) # actually the data is based on max batch size, so its a bit overestimated
+    time_lower = slow_threshold * time_lower * 10 / num_steps # the time may be underestimated due to the batch size, so need to adjust it in SLOW_TOLERANCE a bit
 
-    if time_elapsed > time_lower*slow_threshold: # X times slower than the lower bound
+    if time_elapsed > time_lower: # X times slower than the lower bound
         util_logger.warning(f"Training time is too long: {time_elapsed:.1f} s, expected: {time_lower:.1f} s")
         local_doc = U.read_local_doc()
         if 'too_slow' not in local_doc:
