@@ -1212,9 +1212,15 @@ class SuperScholarSearcher:
         if self.pc is not None:
             sources['Internal Library']=self.search_lib_primary(query,self.result_limits['lib'])
             if self.result_limits['lib2']>0:
-                sources['References of Library']=self.search_lib_secondary(query,self.result_limits['lib2'])
+                try: # in case problems from the index
+                    sources['References of Library']=self.search_lib_secondary(query,self.result_limits['lib2'])
+                except Exception as e:
+                    print(f'Error searching references of library: {e}')
             if self.result_limits['libp']>0:
-                sources['Recommended Papers of Library']=self.search_lib_plus(query,self.result_limits['libp'])
+                try: # in case problems from the index
+                    sources['Recommended Papers of Library']=self.search_lib_plus(query,self.result_limits['libp'])
+                except Exception as e:
+                    print(f'Error searching recommended papers of library: {e}')
 
         total_chunks=0
         for source in sources:
