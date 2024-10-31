@@ -120,11 +120,12 @@ def _view_designs(evosys):
                 st.subheader(f'GAU Tree for {selected_design}')
                 itree=design.implementation.implementation
                 _view_tree(itree)
-                gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
-                st.subheader('Exported GAB Code')
-                with st.expander('Click to expand'):
-                    st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')
-                    st.code(gab_code,language='python')
+                # gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
+                # gab_code = itree.compose()
+                # st.subheader('Exported GAB Code')
+                # with st.expander('Click to expand'):
+                #     st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')
+                #     st.code(gab_code,language='python')
             else:
                 st.warning('The design has not been implemented yet.')
             if design.verifications:
@@ -136,11 +137,12 @@ def _view_designs(evosys):
                             wandb_ids = reports['wandb_ids.json']
                             if 'pretrain' in wandb_ids:
                                 wandb_id=wandb_ids['pretrain']['id']
-                                wandb_name=wandb_ids['pretrain']['name']
+                                # wandb_name=wandb_ids['pretrain']['name']
                                 project=wandb_ids['project']
                                 entity=wandb_ids['entity']
                                 url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
                                 st.write(f'WANDB URL: {url}')
+                        # eval_results = reports.get('eval_results.json',{}).get('results',{})
             else:
                 st.warning('No verification results found for this design.')
         else:

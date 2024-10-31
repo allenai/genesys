@@ -3057,14 +3057,16 @@ class EvolutionSystem(exec_utils.System):
             index_ref,_ = self.CM.get_verifications_index()
             def log_fn(msg,status='RUNNING'):
                 ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
-                url='N/A'
-                if os.path.exists(ve_dir):
-                    wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
-                    if 'pretrain' in wandb_ids:
-                        wandb_id=wandb_ids['pretrain']['id']
-                        project=wandb_ids['project']
-                        entity=wandb_ids['entity']
-                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                try:
+                    if U.pexists(ve_dir):
+                        wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
+                        if 'pretrain' in wandb_ids:
+                            wandb_id=wandb_ids['pretrain']['id']
+                            project=wandb_ids['project']
+                            entity=wandb_ids['entity']
+                            url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                except Exception as e:
+                    url='N/A'
                 timestamp = str(time.time())
                 try:
                     log_ref.set({
