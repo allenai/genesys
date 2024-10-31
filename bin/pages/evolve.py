@@ -826,9 +826,9 @@ if __name__ == '__main__':
 
     
     if evosys.benchmark_mode:
-        print(f'Launching benchmark for namespace {args.evoname} with group id {args.group_id}')
+        print(f'🪑 Launching benchmark for namespace {args.evoname} with group id {args.group_id}')
     else:
-        print(f'Launching evolution for namespace {args.evoname} with group id {args.group_id}')
+        print(f'🚀 Launching evolution for namespace {args.evoname} with group id {args.group_id}')
 
     command_center = CommandCenter(evosys,args.max_designs_per_node,args.max_designs_total,st,allow_resume=not args.no_resume)
     command_center.build_connection()
