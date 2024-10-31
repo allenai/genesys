@@ -301,15 +301,17 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
     
     """
     for i in range(model._config.num_calls):
-        # try:
-        return call_model_structured(model,message,response_format,logprobs=logprobs)
-        # except Exception as e:
-        #     model.logging.warning(
-        #         f'Issue encountered while running running, msg={e}, retrying',
-        #         exc_info=True
-        #     )
-            
-        #     time.sleep(2**(i+1))
+        try:
+            return call_model_structured(model,message,response_format,logprobs=logprobs)
+        except Exception as e:
+            model.logging.warning(
+                f'Issue encountered while running running, msg={e}, retrying',
+                exc_info=True
+            )
+            if 'timeout' in str(e):
+                time.sleep(2**(i+1))
+            else:
+                raise e
 
     # raise ModelRuntimeError(
     #     f'Error encountered when running model, msg={e}'
@@ -533,8 +535,10 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,use
                 f'Issue encountered while running running, msg={e}, retrying',
                 exc_info=True
             )
-            
-            time.sleep(2**(i+1))
+            if 'timeout' in str(e):
+                time.sleep(2**(i+1))
+            else:
+                raise e
             ERROR.append(f'Attempt {i+1} error: {e}')
 
     if len(ERROR)>0:
