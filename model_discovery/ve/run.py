@@ -91,6 +91,7 @@ parser.add_argument("--eval_tasks", type=str, default='None')
 parser.add_argument("--training_data", type=str, default='None')
 parser.add_argument("--tokenizer", type=str, default='None')
 parser.add_argument("--context_length", type=str, default='None') # need convert to int
+parser.add_argument("--step_slow_tolerance", type=float, default=2.5) # how much slower than the lower bound is considered slow
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -304,7 +305,7 @@ def before_train(args,log_fn):
 
 
 class LogFnCallback(TrainerCallback):
-    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=1.5):
+    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=2):
         self.log_fn = log_fn
         self.n_gpus = n_gpus
         self.design_id = design_id
@@ -428,7 +429,8 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
             tokenizer=tokenizer,
             args=training_args,
             data_collator=data_collator,
-            callbacks=[LogFnCallback(log_fn,_design_id,_scale,args.logging_steps,args.n_gpus)],
+            callbacks=[LogFnCallback(log_fn,_design_id,_scale,args.logging_steps,
+                                     args.n_gpus,args.step_slow_tolerance)],
             # tune_lr_in_auto_bs=args.tune_lr_in_auto_bs, # tune lr or tune grad accumulation steps
         )
         
