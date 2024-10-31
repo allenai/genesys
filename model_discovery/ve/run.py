@@ -9,6 +9,7 @@ import numpy as np
 import argparse
 import wandb
 import time
+import traceback
 import logging
 from datetime import datetime
 import uuid
@@ -518,12 +519,22 @@ def train(args,log_fn=None):
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
-    notebook_launcher(
-        run_train, 
-        args=(vars(args),gab,gab_config,None,log_fn), 
-        num_processes=args.n_gpus, 
-        use_port=free_port,
-    )
+    try:
+        notebook_launcher(
+            run_train, 
+            args=(vars(args),gab,gab_config,None,log_fn), 
+            num_processes=args.n_gpus, 
+            use_port=free_port,
+        )
+    except Exception as e:
+        util_logger.error(f"Error during training: {e}")
+        print(traceback.format_exc())
+        # if 'torch.OutOfMemoryError' in str(e): # NOTE: just capture all for now
+        scale=args.design_id.split('_')[-1]
+        design=args.design_id[:-len(scale)-1]
+        U.log_error_model(design,scale)
+        log_fn(f'Training failed with error...','ERROR')
+        sys.exit()
     after_train(args,log_fn)
     util_logger.info(f'Training time: {(time.perf_counter() - start):.1f} s')
     log_fn(f'Training done. Total time: {(time.perf_counter() - start):.1f} s')
