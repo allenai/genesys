@@ -378,7 +378,7 @@ block_config=gab_config
 block_config.update(autoconfig)
 
 
-from .block_registry import BlockRegister
+from model_discovery.model.block_registry import BlockRegister
 
 BlockRegister(
     name="default",

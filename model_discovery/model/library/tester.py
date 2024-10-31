@@ -56,7 +56,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     # autocfg = "autoconfig = { }"
     print('Tuning complete, saving the code with autocfg.')
     code=code+f'\n\n\n{autocfg}\nblock_config=gab_config\nblock_config.update(autoconfig)'
-    code+='\n\n\nfrom .block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
+    code+='\n\n\nfrom model_discovery.model.block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
     if check_only:
         return code
     with open(U.pjoin(path,'gab.py'),'w') as f:

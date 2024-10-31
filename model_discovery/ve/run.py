@@ -435,7 +435,11 @@ def exec_train(args,training_args, trainer,log_fn):
     log_fn('Starting training...')
     # Automatically resume from the latest checkpoint if it exists
     if args.training_token_multiplier > 0:
-        trainer.train(resume_from_checkpoint=args.resume)
+        # check if there is any checkpoint in the output_dir: any folder starts with 'checkpoint'
+        if any(f.startswith('checkpoint') for f in os.listdir(training_args.output_dir)):
+            trainer.train(resume_from_checkpoint=args.resume)
+        else: # no checkpoint found, start from scratch
+            trainer.train()
     else:
         util_logger.info(
             "Training token multiplier is set to 0, skipping training."

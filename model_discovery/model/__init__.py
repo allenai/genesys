@@ -1,11 +1,15 @@
 # from .gab import *
 from .gab_random import *
-
 import os
-import importlib
 
-# import * from GAB_PATH
-GAB_PATH = os.environ.get('GAB_PATH')
+GAB_PATH = os.path.join(os.environ.get('CKPT_DIR'),'gab.py')
+GAB_PATH = os.path.expanduser(GAB_PATH)
 
-gab_module = importlib.import_module(GAB_PATH)
-globals().update(vars(gab_module))
+if not os.path.exists(GAB_PATH):
+    with open(GAB_PATH,'w', encoding='utf-8') as f:
+        f.write('')
+
+with open(GAB_PATH) as f:
+    code = compile(f.read(), GAB_PATH, 'exec')
+    exec(code, globals())
+
