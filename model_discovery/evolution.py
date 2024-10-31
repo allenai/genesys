@@ -759,27 +759,28 @@ NODE_COLOR_MAP={
     '1300M':'#4A225D',
 }
 
-ROOT_COLOR='#9eccab'
+ROOT_COLOR='#81C7D4'
 
 FAILED_SIZE=12
 DESIGN_SIZE=15
 DESIGN_IMPLEMENTED_SIZE=20
 CHALLANGING_SIZE=18
 
+BASE_NODE_SIZE=20
 NODE_SIZE_MAP={
-    '14M':22,
-    '31M':24,
-    '70M':26,
-    '125M':28,
-    '350M':30,
-    '760M':32,
-    '1300M':34,
+    '14M':BASE_NODE_SIZE+2,
+    '31M':BASE_NODE_SIZE+4,
+    '70M':BASE_NODE_SIZE+6,
+    '125M':BASE_NODE_SIZE+8,
+    '350M':BASE_NODE_SIZE+10,
+    '760M':BASE_NODE_SIZE+12,
+    '1300M':BASE_NODE_SIZE+14,
 }
 
-CORE_COLOR = '#f0a1a8' # core reference
-REFERENCE_COLOR = '#AF47D2'
-RWC_COLOR = '#FB773C' # reference with code
-EXT_COLOR_1HOC = '#ed556a' # extended 1-hop reference
+CORE_COLOR = '#A8D8B9' # core reference
+REFERENCE_COLOR = '#E98B2A' # orange
+RWC_COLOR = '#F9BF45' # reference with code, yellow
+EXT_COLOR_1HOC = '#FAD689' # extended 1-hop reference, shallow yellow
 
 # # from low to high
 # TARGET_SCALES = ['14M','31M','70M','125M','350M']#,'760M','1300M']
@@ -2139,6 +2140,19 @@ class PhylogeneticTree:
         if max_nodes: fname+=f'_{max_nodes}'
         nt.show(U.pjoin(self.db_dir, '..', fname+'.html'))
 
+    
+    def get_design_children(self):
+        children = {}
+        designs = self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
+        for design in designs:
+            node = self.G.nodes[design]['data']
+            seeds = node.seed_ids
+            for seed in seeds:
+                if seed not in children:
+                    children[seed] = []
+                children[seed].append(design)
+        return children
+
 
     def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee",
                legend_x=-300,legend_y=-250,legend_step=100,legend_font_size=20,legend_width_constraint=100): #,with_ext=False
@@ -2147,6 +2161,8 @@ class PhylogeneticTree:
             _G=self.G.copy()
         else:
             _G=self.load_graph(max_nodes)
+
+        design_children = self.get_design_children()
         for idx,node in enumerate(_G.nodes):
             if max_nodes and idx>max_nodes:
                 break
@@ -2166,6 +2182,8 @@ class PhylogeneticTree:
                     if scale in data.verifications:
                         color=NODE_COLOR_MAP[scale]
                         size=NODE_SIZE_MAP[scale]
+                n_children = len(design_children.get(data.acronym,[]))
+                size+=max(0,int(math.log(n_children,2)))*3 if n_children else 0
             elif data.type=='Reference':
                 color=REFERENCE_COLOR
                 citations=data.citationCount

@@ -1194,7 +1194,7 @@ class SuperScholarSearcher:
         # the papers that are cited by the primary library, where their ideas come from  
         if result_limit<=0:
             return {},{}
-        self.stream.write('*Searching secondary library...*')
+        self.stream.write('*Searching references of library...*')
         grouped_docs,metainfo=self._query_index(query,'secondary',result_limit)
         return grouped_docs,metainfo
 
@@ -1202,7 +1202,7 @@ class SuperScholarSearcher:
         # the papers recommended by S2 for the primary library  
         if result_limit<=0:
             return {},{}
-        self.stream.write('*Searching library plus...*')
+        self.stream.write('*Searching recommended papers of library...*')
         grouped_docs,metainfo=self._query_index(query,'plus',result_limit)
         return grouped_docs,metainfo
 
@@ -1211,9 +1211,10 @@ class SuperScholarSearcher:
         sources={}
         if self.pc is not None:
             sources['Internal Library']=self.search_lib_primary(query,self.result_limits['lib'])
-        # only primary now, testing
-        # sources['Referencces of Library']=self.search_lib_secondary(query,self.result_limits['lib2'])
-        # sources['Recommanded Papers of Library']=self.search_lib_plus(query,self.result_limits['libp'])
+            if self.result_limits['lib2']>0:
+                sources['References of Library']=self.search_lib_secondary(query,self.result_limits['lib2'])
+            if self.result_limits['libp']>0:
+                sources['Recommended Papers of Library']=self.search_lib_plus(query,self.result_limits['libp'])
 
         total_chunks=0
         for source in sources:

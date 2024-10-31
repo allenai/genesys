@@ -31,10 +31,10 @@ def paper_search(evosys,project_dir):
             search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1,
                 help='The core library with 300+ state-of-the-art language model architecture related papers.')
         with cols[1]:
-            search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,disabled=True,
+            search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,
                 help='The secondary library of the papers that are cited by the primary library.')
         with cols[2]:
-            search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,disabled=True,
+            search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,
                 help='The library of the papers that are recommended by Semantic Scholar for core library papers.')
         with cols[3]:
             search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means disable)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
