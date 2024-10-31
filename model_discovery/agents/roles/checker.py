@@ -495,8 +495,8 @@ class EffectiveChecker: # WORING IN PROGRESS
         print('Test training done.')
         if gradient_of_losses>0:
             self.errors.append('The model is not training correctly. The loss is not decreasing. ')
-        if loss>1e4: # its already abnormal
-            self.errors.append('The model is diverging. The loss is NaN. ')
+        if loss>1e4 or loss<=0: # its already abnormal
+            self.errors.append(f'The model is diverging. The loss is {loss}. ')
         if any(grad_norm>1e4 for grad_norm in grad_norms):
             self.errors.append('The model is diverging. The gradient norm is NaN. ')
         if run_time>benchmark['run_time']*3: # very loose now, as its hard to measure sometimes

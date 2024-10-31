@@ -127,6 +127,18 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
 
 
 
+def get_step_time_lower(scale,n_gpus):
+    slow_threshold = SLOW_TOLERANCE[scale]
+
+    # FIXME: sometimes not estimated correctly
+    config = eval(f"GAMConfig_{scale}()")
+    time_lower = TIME_LOWER[scale] * 8/n_gpus # TODO: not consider the gpu type yet
+    training_tokens = config.reference_size * 20 # the data is based on 20 tokens per param
+    num_steps = int(np.ceil(training_tokens / (config.batch_tokens))) # actually the data is based on max batch size, so its a bit overestimated
+    time_lower = slow_threshold * time_lower / num_steps # the time may be underestimated due to the batch size, so need to adjust it in SLOW_TOLERANCE a bit
+
+    return time_lower
+
 
 def _explore_setup(args):
     setup(args)
@@ -145,21 +157,11 @@ def _explore_setup(args):
     time_elapsed = time.perf_counter() - time_start
     scale = args.scale
     n_gpus = args.n_gpus
-    slow_threshold = SLOW_TOLERANCE[scale]
-
-    config = eval(f"GAMConfig_{args.scale}()")
-    time_lower = TIME_LOWER[scale] * 8/n_gpus # TODO: not consider the gpu type yet
-    training_tokens = config.reference_size * 20 # the data is based on 20 tokens per param
-    num_steps = int(np.ceil(training_tokens / (config.batch_tokens))) # actually the data is based on max batch size, so its a bit overestimated
-    time_lower = slow_threshold * time_lower * 10 / num_steps # the time may be underestimated due to the batch size, so need to adjust it in SLOW_TOLERANCE a bit
+    time_lower = get_step_time_lower(scale,n_gpus) * num_steps
 
     if time_elapsed > time_lower: # X times slower than the lower bound
         util_logger.warning(f"Training time is too long: {time_elapsed:.1f} s, expected: {time_lower:.1f} s")
-        local_doc = U.read_local_doc()
-        if 'too_slow' not in local_doc:
-            local_doc['too_slow'] = {}
-        local_doc['too_slow'][f'{args.design_id}'] = (time_elapsed,time_lower)
-        U.write_local_doc(local_doc)
+        U.log_slow_model(args.design_id,time_elapsed,time_lower)
     else:
         local_record = U.read_local_doc('.record')
         if 'speed_record' not in local_record:
@@ -302,15 +304,43 @@ def before_train(args,log_fn):
 
 
 class LogFnCallback(TrainerCallback):
-    def __init__(self, log_fn):
+    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=1.5):
         self.log_fn = log_fn
+        self.n_gpus = n_gpus
+        self.design_id = design_id
+        self.scale = scale
+        self.log_steps = log_steps
+        self.last_log_time = time.time()
+        self.is_main_process = int(os.environ.get("LOCAL_RANK", -1)) in [0, -1]
+        self.time_lower = get_step_time_lower(self.scale,self.n_gpus) * self.log_steps
+        self.tolerance = tolerance
 
     def on_log(self, args, state, control, logs=None, **kwargs):
         loss = logs.get('loss','N/A')
-        step = logs.get('step','N/A')
+        grad_norm = logs.get('grad_norm','N/A')
         epoch = logs.get('epoch','N/A')
-        lr = logs.get('lr','N/A')
-        self.log_fn(f"Training in progress: loss={loss}, step={step}, epoch={epoch}, lr={lr}",'TRAINING')
+        lr = logs.get('learning_rate','N/A')
+
+        if grad_norm != 'N/A':
+            if float(grad_norm) > 1e4:
+                util_logger.warning(f"Gradient norm is exploding: {grad_norm}")
+                U.log_error_model(self.design_id,self.scale)
+        
+        if loss != 'N/A':
+            if float(loss) > 1e4 or float(loss) <= 0:
+                util_logger.warning(f"Loss is incorrect: {loss}")
+                U.log_error_model(self.design_id,self.scale)
+            
+        time_elapsed = time.time() - self.last_log_time
+        if time_elapsed > self.time_lower * self.tolerance:
+            util_logger.warning(f"Training is too slow: {time_elapsed:.2f}s/global_step, expected: {self.time_lower:.2f}s/global_step")
+            U.log_slow_model(self.design_id,time_elapsed,self.time_lower)
+        self.last_log_time = time.time()
+        
+        self.log_fn(
+            f"loss={loss}, grad_norm={grad_norm}, epoch={epoch}, lr={lr}, time/it={time_elapsed/self.log_steps:.2f}s",
+            'TRAINING'
+        )
 
 def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None: 
     """Runs the full training pipeline 
@@ -390,6 +420,7 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
     U.mkdir(training_args.output_dir)
     
     with U.CodeTimer("setting up trainer"):
+        _design_id, _scale = U.parse_verify_id(args.design_id)
         trainer = ModisTrainer(
             model=model,
             train_dataset=tokenized_datasets["train"],
@@ -397,9 +428,10 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
             tokenizer=tokenizer,
             args=training_args,
             data_collator=data_collator,
-            callbacks=[LogFnCallback(log_fn)],
+            callbacks=[LogFnCallback(log_fn,_design_id,_scale,args.logging_steps,args.n_gpus)],
             # tune_lr_in_auto_bs=args.tune_lr_in_auto_bs, # tune lr or tune grad accumulation steps
         )
+        
     print(f'Time elapsed for setting up trainer: {(time.perf_counter() - start):.1f} s')
     
     # class PrintBatchSizeCallback(TrainerCallback):

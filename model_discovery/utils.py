@@ -278,6 +278,13 @@ def log_error_model(design_id,scale):
     local_doc['error_models'][design_id] = scale
     write_local_doc(local_doc)
 
+def log_slow_model(design_id,time_elapsed,time_lower):
+    local_doc = read_local_doc()
+    if 'too_slow' not in local_doc:
+        local_doc['too_slow'] = {}
+    local_doc['too_slow'][f'{design_id}'] = (time_elapsed,time_lower)
+    write_local_doc(local_doc)
+    
 def check_error_model(design_id):
     local_doc = read_local_doc()
     return design_id in local_doc.get('error_models',{})
