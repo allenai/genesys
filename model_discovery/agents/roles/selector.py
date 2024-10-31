@@ -911,8 +911,8 @@ class Selector:
         local_doc = U.read_local_doc()
         too_slow = local_doc.get('too_slow',{})
         error_models = local_doc.get('error_models',{})
-        print(f'Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
-        print(f'Found {len(error_models)} models that are error in this node, skipping: {error_models.keys()}')
+        print(f'*** Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
+        print(f'*** Found {len(error_models)} models that are error in this node, skipping: {error_models.keys()}')
         for _design_scale in too_slow:
             _s=_design_scale.split('_')[-1]
             _design=_design_scale[:-len(_s)-1]
