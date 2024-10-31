@@ -3057,6 +3057,7 @@ class EvolutionSystem(exec_utils.System):
             index_ref,_ = self.CM.get_verifications_index()
             def log_fn(msg,status='RUNNING'):
                 ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
+                url='N/A'
                 try:
                     if U.pexists(ve_dir):
                         wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
