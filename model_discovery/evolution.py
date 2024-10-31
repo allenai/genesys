@@ -17,7 +17,7 @@ try: # a stupid patch for windows
     os.environ['AWS_SECRET_ACCESS_KEY']=AWS_SECRET_ACCESS_KEY
     os.environ['AWS_ACCESS_KEY_ID']=AWS_ACCESS_KEY_ID
     os.environ['MATHPIX_API_ID']=MATHPIX_API_ID
-    os.environ['UNSTRUCTURED_API_ID']=UNSTRUCTURED_API_ID
+    os.environ['GAB_PATH']=GAB_PATH
     os.environ['PINECONE_API_KEY']=PINECONE_API_KEY
     os.environ['COHERE_API_KEY']=COHERE_API_KEY
     os.environ['PERPLEXITY_API_KEY']=PERPLEXITY_API_KEY
@@ -3114,7 +3114,8 @@ class EvolutionSystem(exec_utils.System):
         if code is None:
             U.log_error_model(design_id,scale)
             return None
-        with open('./model_discovery/model/gab.py','w', encoding='utf-8') as f:
+        GAB_PATH = os.environ.get('GAB_PATH')
+        with open(GAB_PATH,'w', encoding='utf-8') as f:
             f.write(code)
 
         CKPT_DIR = os.environ.get('CKPT_DIR')
