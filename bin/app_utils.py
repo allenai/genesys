@@ -104,6 +104,8 @@ def _listener_running(ckpt_dir,zombie_threshold=NODE_ZOMBIE_THRESHOLD):
     local_dir = U.pjoin(ckpt_dir,'.node.json')
     local_doc = U.load_json(local_dir)
     if local_doc:
+        if local_doc.get('status',None) == 'stopped':
+            return None
         last_heartbeat = datetime.fromisoformat(local_doc['last_heartbeat'])
         threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=zombie_threshold)
         if last_heartbeat > threshold_time:
