@@ -347,7 +347,7 @@ def _run_verification(params, design_id, scale, resume, cli=False, prep_only=Fal
         if prep_only:
             return process
         
-        while not U.load_json(local_doc_dir)['model_ready']:
+        while not U.load_json(local_doc_dir).get('model_ready',False):
             time.sleep(1)
 
     # FIXME: should wait until the model is ready
