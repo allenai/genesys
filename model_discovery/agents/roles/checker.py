@@ -56,10 +56,6 @@ def analyze_complexity(sequence_lengths, runtimes, memory_usages):
     return popt_runtime, popt_memory
 
 
-MODULE_DIR = os.path.dirname(os.path.realpath(__file__))
-CACHEPATH = f"{MODULE_DIR}"
-
-
 #### TODO: Multi-GPU checker
 
 
@@ -451,6 +447,7 @@ gab_config = {'n_heads':8}
 
 
 
+
 class EffectiveChecker: # WORING IN PROGRESS
     def __init__(self):
         self.errors = []
@@ -474,14 +471,15 @@ class EffectiveChecker: # WORING IN PROGRESS
     def check_training(self, config, model, cpu_only=False) -> None:
         if cpu_only:
             return
-        benchmarks=U.load_json(f'{CACHEPATH}/checker_benchmark.json')
+        CKPT_DIR = os.environ.get('CKPT_DIR')
+        benchmarks=U.load_json(f'{CKPT_DIR}/checker_benchmark.json')
         if 'training' not in benchmarks:
             benchmarks['training']={}
         cache_key=f'{config.scale}_{get_system_info_str(cpu_only)}'
         if cache_key not in benchmarks['training']:
             benchmark=self.get_benchmark(config)
             benchmarks['training'][cache_key]=benchmark
-            U.save_json(benchmarks,f'{CACHEPATH}/checker_benchmark.json')
+            U.save_json(benchmarks,f'{CKPT_DIR}/checker_benchmark.json')
         else:
             benchmark=benchmarks['training'][cache_key]
 

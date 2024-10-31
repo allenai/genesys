@@ -43,10 +43,11 @@ RUN conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-
 
 # Setup ENV variables
 
-ENV DATA_DIR=~/model_discovery/data
-ENV CKPT_DIR=~/model_discovery/ckpt
-ENV DB_KEY_PATH=~/model_discovery/secrets/db_key.json
-ENV HF_DATASETS_TRUST_REMOTE_CODE=1
+# ENV DATA_DIR=~/model_discovery/data
+# ENV CKPT_DIR=~/model_discovery/ckpt
+# ENV GAB_PATH=~/model_discovery/model/gab.py
+# ENV DB_KEY_PATH=~/model_discovery/secrets/db_key.json
+# ENV HF_DATASETS_TRUST_REMOTE_CODE=1
 
 # # Setup secrets
 # RUN mkdir ~/model_discovery/secrets

@@ -1,0 +1,62 @@
+version: v2
+description: This is an example mixing experiment configuration file.
+tasks:
+  - name: genesys-node-v
+    image:
+      beaker: xxx
+    command: [genesys, node, -V]
+    arguments: []
+    envVars:
+      - name: MY_OPENAI_KEY
+        secret: MY_OPENAI_KEY 
+      - name: TOGETHER_API_KEY
+        secret: TOGETHER_API_KEY
+      - name: ANTHROPIC_API_KEY
+        secret: ANTHROPIC_API_KEY
+      - name: HF_KEY
+        secret: HF_KEY
+      - name: HF_HUB_KEY
+        secret: HF_HUB_KEY
+      - name: GITHUB_TOKEN
+        secret: GITHUB_TOKEN
+      - name: WANDB_API_KEY
+        secret: WANDB_API_KEY
+      - name: AWS_SECRET_ACCESS_KEY
+        secret: AWS_SECRET_ACCESS_KEY
+      - name: AWS_ACCESS_KEY_ID
+        secret: AWS_ACCESS_KEY_ID
+      - name: S2_API_KEY
+        secret: S2_API_KEY
+      - name: HF_DATASETS_TRUST_REMOTE_CODE
+        value: 1
+      - name: PINECONE_API_KEY
+        secret: PINECONE_API_KEY
+      - name: COHERE_API_KEY
+        secret: COHERE_API_KEY
+      - name: PERPLEXITY_API_KEY
+        secret: PERPLEXITY_API_KEY
+      - name: MATHPIX_API_ID
+        secret: MATHPIX_API_ID
+      - name: DATA_DIR
+        value: ~/data
+      - name: CKPT_DIR
+        value: ~/ckpt
+      - name: GAB_PATH
+        value: ~/gab.py
+      - name: DB_KEY_PATH
+        value: ~/model_discovery/secrets/db_key.json
+    datasets:
+      - mountPath: /olmo-core
+        source:
+          beaker: xxx
+    result:
+      path: /unused
+    resources:
+      gpuCount: 4
+      sharedMemory: 10 GiB
+    context:
+      priority: normal
+      preemptible: true
+    constraints:
+      cluster:
+        - ai2/s2-cirrascale-l40

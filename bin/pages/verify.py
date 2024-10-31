@@ -16,6 +16,7 @@ import select
 import pandas as pd
 import multiprocessing
 import random
+import traceback
 from datetime import datetime, timedelta
 import uuid
 import subprocess
@@ -185,6 +186,10 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                             return None, msg
                     else:
                         print(f'$$$ Selected design: {design_id}_{scale}')
+        except Exception as e:
+            traceback.print_exc()
+            print(f'Error selecting verify design: {e}')
+            raise e
 
         finally:
             # create index term
