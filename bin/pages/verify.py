@@ -166,15 +166,30 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
             if design_id is None or scale is None:
                 doc = verify_ref.get().to_dict()
 
+                exclude_list = []
+                for key in verifying_dict:
+                    design_id, scale = U.parse_verify_id(key)
+                    exclude_list.append((design_id,scale))  
+                local_doc = U.read_local_doc()
+                too_slow = local_doc.get('too_slow',{})
+                error_models = local_doc.get('error_models',{})
+                print(f'*** Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
+                print(f'*** Found {len(error_models)} models that are error in this node, skipping: {error_models.keys()}')
+                for _design_scale in too_slow:
+                    _s=_design_scale.split('_')[-1]
+                    _design=_design_scale[:-len(_s)-1]
+                    for _scale in evosys.selector.target_scales:
+                        exclude_list.append((_design,_scale))
+                for _design in error_models:
+                    for _scale in evosys.selector.target_scales:
+                        exclude_list.append((_design,_scale))
+
+                print(f'Selecting with exclude_list: {exclude_list}')
                 if resume and available_resumes:
+                    available_resumes = [v for v in available_resumes if (tuple(U.parse_verify_id(v)) not in exclude_list)]
                     exp = random.choice(available_resumes)
                     design_id, scale = U.parse_verify_id(exp)
                 else:
-                    exclude_list = []
-                    for key in verifying_dict:
-                        design_id, scale = U.parse_verify_id(key)
-                        exclude_list.append((design_id,scale))  
-                    print(f'Selecting with exclude_list: {exclude_list}')
                     design_id, scale = evosys.selector.select_verify(exclude_list=exclude_list, accept_baselines=accept_baselines, free_verifier=free_verifier)
                     if design_id is None:
                         msg = "No unverified design found at any scale."

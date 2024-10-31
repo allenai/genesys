@@ -907,23 +907,7 @@ class Selector:
         else:
             print(msg)
 
-    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False, free_verifier=False):
-        local_doc = U.read_local_doc()
-        too_slow = local_doc.get('too_slow',{})
-        error_models = local_doc.get('error_models',{})
-        print(f'*** Found {len(too_slow)} sessions that are too slow in this node, skipping: {too_slow.keys()}')
-        print(f'*** Found {len(error_models)} models that are error in this node, skipping: {error_models.keys()}')
-        for _design_scale in too_slow:
-            _s=_design_scale.split('_')[-1]
-            _design=_design_scale[:-len(_s)-1]
-            for _scale in self.target_scales:
-                exclude_list.append((_design,_scale))
-        for _design in error_models:
-            for _scale in self.target_scales:
-                exclude_list.append((_design,_scale))
-        
-        # print(f'Excluding {len(exclude_list)} designs from verification: {exclude_list}')
-        
+    def select_verify(self,verify_strategy=None,exclude_list=[],select_cfg=None, accept_baselines=False, free_verifier=False):        
         if accept_baselines:
             design,scale=self._verify_baselines(exclude_list)
             if design is not None:
