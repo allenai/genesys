@@ -186,7 +186,7 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
 
                 available_resumes = [v for v in available_resumes if (tuple(U.parse_verify_id(v)) not in exclude_list)]
 
-                print(f'Selecting with exclude_list: {exclude_list}')
+                print(f'Selecting with exclude_list: {set([i[0] for i in exclude_list])}')
                 if resume and available_resumes:
                     exp = random.choice(available_resumes)
                     design_id, scale = U.parse_verify_id(exp)
