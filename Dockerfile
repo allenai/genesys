@@ -62,6 +62,7 @@ RUN genesys setup
 # Install optional dependencies
 RUN pip install -r requirements_optional.txt
 
+RUN mkdir -p /temp/data /temp/ckpt
 
 
 

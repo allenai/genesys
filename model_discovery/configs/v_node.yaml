@@ -38,11 +38,9 @@ tasks:
       - name: MATHPIX_API_ID
         secret: MATHPIX_API_ID
       - name: DATA_DIR
-        value: ~/data
+        value: /temp/data
       - name: CKPT_DIR
-        value: ~/ckpt
-      - name: GAB_PATH
-        value: ~/gab.py
+        value: /temp/ckpt
       - name: DB_KEY_PATH
         value: ~/model_discovery/secrets/db_key.json
     datasets:
@@ -50,9 +48,9 @@ tasks:
         source:
           beaker: xxx
     result:
-      path: /unused
+      path: /temp
     resources:
-      gpuCount: 4
+      gpuCount: 8
       sharedMemory: 10 GiB
     context:
       priority: normal
