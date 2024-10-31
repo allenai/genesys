@@ -525,17 +525,22 @@ class FirestoreManager:
         return f'{proposed}, {reranked}'
 
     def get_design_sessions_index(self):
-        return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
+        self.sess_index_ref,self.sess_index = index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
+        return self.sess_index_ref,self.sess_index
 
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
+        if not sessdata:
+            return
+        if eval(self.sess_index.get(sess_id,{}).get('progress','[]'))==eval(self.to_session_progress(sessdata)):
+            return
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
         log_ref.set(sessdata,merge=True)
-        index_ref,_ = self.get_design_sessions_index()
-        index_ref.set({sess_id:{
+        self.sess_index[sess_id] = {
             'progress':self.to_session_progress(sessdata),
-            'mode': sessdata.get('mode','')
-        }},merge=True)
+            'mode': sessdata.get('mode','') 
+        }
+        self.sess_index_ref.set(self.sess_index[sess_id],merge=True)
         print(f'Uploaded session {sess_id} to DB for {self.ptree.evoname}')
 
     def get_design_session(self,sess_id):
@@ -583,14 +588,12 @@ class FirestoreManager:
             
     
     def sync_sessions_to_db(self,overwrite=False,verbose=False):
-        _,all_index = self.get_design_sessions_index()
         sessions_dir=U.pjoin(self.db_dir,'sessions')
         sessions=os.listdir(sessions_dir)
+        self.get_design_sessions_index()
         for sess_id in sessions:
             sessdata = U.load_json(U.pjoin(sessions_dir,sess_id, 'metadata.json'))
-            if sessdata:
-                if eval(all_index.get(sess_id,{}).get('progress','[]'))!=eval(self.to_session_progress(sessdata)):
-                    self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
+            self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
 
     def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db
         self.get_index()
@@ -1887,6 +1890,7 @@ class PhylogeneticTree:
         sessdata['mode']=sessdata['mode'].value
         U.save_json(sessdata, U.pjoin(self.session_dir(sess_id), 'metadata.json'))
         if self.FM: # keep firestore always up to date
+            self.FM.get_design_sessions_index()
             self.FM.upload_design_session(sess_id,sessdata)
         sessdata['mode']=DesignModes(sessdata['mode'])
 
