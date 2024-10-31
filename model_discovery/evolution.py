@@ -2351,7 +2351,7 @@ class ConnectionManager:
     def get_design_sessions_index(self):
         return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
 
-    def get_verifications_index(self):
+    def get_verifications_index(self): # as running verifications monitor, not real index
         index_ref,all_index = index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('verifications'),'verifications')
         # remove the zombie ones
         new_index = {}
@@ -3054,7 +3054,7 @@ class EvolutionSystem(exec_utils.System):
             latest_log = str(time.time())
             sess_id = f'{design_id}_{scale}'
             log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
-            index_ref,all_index = self.CM.get_verifications_index()
+            index_ref,_ = self.CM.get_verifications_index()
             def log_fn(msg,status='RUNNING'):
                 ve_dir = U.pjoin(self.evo_dir, 've', sess_id)
                 url='N/A'
