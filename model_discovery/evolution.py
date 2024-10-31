@@ -2183,7 +2183,7 @@ class PhylogeneticTree:
                         color=NODE_COLOR_MAP[scale]
                         size=NODE_SIZE_MAP[scale]
                 n_children = len(design_children.get(data.acronym,[]))
-                size+=max(0,int(math.log(n_children,2)))*3 if n_children else 0
+                size+=max(0,int(math.log(n_children,2)))*2 if n_children else 0
             elif data.type=='Reference':
                 color=REFERENCE_COLOR
                 citations=data.citationCount
