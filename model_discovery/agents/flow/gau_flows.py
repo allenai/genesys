@@ -1740,9 +1740,9 @@ class GUFlow(FlowCreator):
                         # )
 
         
-                    if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and not INITIAL_PASS:
+                    if self.design_mode in [DesignModes.SCRATCH,DesignModes.CROSSOVER] and (not INITIAL_PASS or selection == 'root'):
                         if len(self.tree.root_node.children)==0:
-                            no_children_error=f'FETAL ERROR: No child units declared or detected under this root node, which is not allowed. You cannot have only one unit in your implementation, root node must have children.'  
+                            no_children_error=f'FETAL ERROR: No children units declared or detected under this root node, which is not allowed. You cannot have only one unit in your implementation, root node must have children.'  
                             format_errors.append(no_children_error)
                             self.stream.write(f':red[{no_children_error}]')
 

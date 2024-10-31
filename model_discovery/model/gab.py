@@ -9,8 +9,8 @@ class GAB(GABBase):
         =None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc)
-        self.root = GPT2(embed_dim=embed_dim, block_loc=block_loc,
-            kwarg_all=kwargs, **factory_kwargs, **kwargs)
+        self.root = TTT(embed_dim=embed_dim, block_loc=block_loc, kwarg_all
+            =kwargs, **factory_kwargs, **kwargs)
 
     def _forward(self, X, **Z):
         X, Z = self.root(X, **Z)
@@ -19,35 +19,191 @@ class GAB(GABBase):
 
 import torch.nn.functional as F
 from model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
 
 
-class GPT2(GAUBase):
+class TTT(GAUBase):
+    """
+    Problem Statement
+This paper addresses the challenge of long context in recurrent neural networks (RNNs). While RNNs offer linear computational complexity, their performance suffers in long sequences due to the limited expressive power of their fixed-size hidden states. This limitation contrasts with Transformers, which excel in long-context scenarios but have quadratic complexity.
+
+Main Claims
+The paper proposes a new class of sequence modeling layers called Test-Time Training (TTT) layers that offer both linear complexity and expressive hidden states.
+The key idea is to make the hidden state a machine learning model itself, where the update rule is a step of self-supervised learning. This allows for continuous training of the hidden state even on test sequences.
+The paper introduces two instantiations of TTT layers: TTT-Linear, with a linear model as the hidden state, and TTT-MLP, with a two-layer multi-layer perceptron (MLP) as the hidden state.
+Both TTT-Linear and TTT-MLP demonstrate competitive performance compared to strong Transformer and Mamba (a modern RNN) baselines across various model sizes.
+Unlike Mamba, both TTT layers show a continuous decrease in perplexity as they condition on more tokens in long sequences.
+TTT-Linear, with preliminary systems optimization, is faster than Transformers at 8k context and matches Mamba in wall-clock time.
+Methodology
+The paper introduces TTT layers, which use a self-supervised learning approach to update the hidden state. The update rule is effectively a gradient step on a self-supervised loss function, allowing for "training" of the hidden state at test time. Two implementations are explored: TTT-Linear, where the hidden state is a linear model, and TTT-MLP, where the hidden state is a two-layer MLP. The paper also proposes mini-batch TTT and a dual form to improve hardware efficiency and speed up computations.
+
+Key Results
+In short-context (2k and 8k tokens) experiments on the Pile dataset, both TTT-Linear and TTT-MLP demonstrate performance comparable to or exceeding Mamba and Transformer baselines.
+In long-context (1k to 32k tokens) experiments on the Books3 subset of the Pile, both TTT-Linear and TTT-MLP outperform Mamba, especially at longer context lengths.
+TTT-Linear with the Mamba backbone outperforms both Mamba and Transformers with the Transformer backbone across various model sizes.
+With preliminary systems optimization, TTT-Linear is already faster than Transformers at 8k context and matches Mamba in wall-clock time.
+TTT-MLP shows potential for even better performance in long-context scenarios but currently faces challenges in memory I/O.
+    """
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
         device=None, dtype=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        self.mha = HierarchicalAdaptiveAttention(embed_dim=self.embed_dim,
+        self.hidden_size = embed_dim
+        kwarg_all['num_attention_heads'] = max(4, embed_dim // 64)
+        self.seq_modeling_block = FastTTTLinear(embed_dim=self.embed_dim,
             block_loc=self.block_loc, kwarg_all=self.kwarg_all, **self.
             factory_kwargs, **self.kwarg_all)
-        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.
+        kwarg_all['intermediate_size'] = int(embed_dim * 2.5)
+        self.mlp = SwiGluMLP(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+        self.conv = Conv(embed_dim=self.embed_dim, block_loc=self.block_loc,
+            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)
+        self.seq_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
-        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+        self.ffn_norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
             block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
             self.kwarg_all)
 
     def _forward(self, X, **Z):
-        X1, Z = self.norm1(X, **Z)
-        X2, Z = self.mha(X1, **Z)
-        X = X + X2
-        X3, Z = self.norm2(X, **Z)
-        X4, Z = self.mlp(X3, **Z)
-        X = X + X4
-        return X, Z
+        hidden_states = X
+        position_ids = torch.arange(0, X.shape[1], dtype=torch.long, device
+            =X.device).unsqueeze(0)
+        residual = hidden_states
+        hidden_states = self.conv(hidden_states, **Z)[0]
+        hidden_states = residual + hidden_states
+        residual = hidden_states
+        hidden_states = self.seq_norm(hidden_states, **Z)[0]
+        Z['position_ids'] = position_ids
+        hidden_states = self.seq_modeling_block(hidden_states, **Z)[0]
+        hidden_states = residual + hidden_states
+        residual = hidden_states
+        hidden_states = self.ffn_norm(hidden_states, **Z)[0]
+        hidden_states = self.mlp(hidden_states, **Z)[0]
+        hidden_states = residual + hidden_states
+        return hidden_states
+
+
+import torch.nn.functional as F
+
+
+class FastTTTLinear(GAUBase):
+    """
+    **FastTTTLinear**
+
+    FastTTTLinear is a modified version of TTTLinear that integrates Gated Linear Attention (GLA)
+    and concepts from the RWKV architecture to enhance computational efficiency for long sequences.
+    This implementation addresses inefficiency concerns by vectorizing operations, eliminating
+    Python-level for-loops, and optimizing tensor computations.
+
+    **Key Features:**
+
+    - **Gated Linear Attention**: Uses data-dependent gates to modulate queries and keys, enabling linear attention computation.
+    - **Vectorized Computations**: Eliminates Python for-loops by using efficient tensor operations.
+    - **Normalization**: Applies LayerNorm to queries and keys to stabilize computations.
+    - **Adjustments for Numerical Stability**: Uses appropriate scaling, activation functions, and safeguards.
+    - **Local Convolutional Augmentation**: Applies causal convolution to prevent information leakage and enhance local context.
+
+    **Args:**
+        embed_dim (int): Embedding dimension.
+        block_loc (tuple): Location of this block in the model architecture.
+        kwarg_all (dict): Additional keyword arguments.
+        device (torch.device, optional): Device on which to allocate tensors.
+        dtype (torch.dtype, optional): Data type of the tensors.
+        num_attention_heads (int, optional): Number of attention heads. Default: 4.
+
+    **Inputs:**
+        - **X**: Input tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Outputs:**
+        - **Y**: Output tensor of shape (batch_size, seq_len, embed_dim).
+
+    **Example:**
+
+        >>> fast_ttt_linear = FastTTTLinear(embed_dim=512, block_loc=(0, 0), kwarg_all={})
+        >>> X = torch.randn(2, 1024, 512)
+        >>> Y, Z = fast_ttt_linear(X)
+
+    **References:**
+
+    - Yang, S., et al. (2023). *Gated Linear Attention Transformers with Hardware-Efficient Training*.
+    - Peng, B., et al. (2023). *RWKV: Reinventing RNNs for the Transformer Era*.
+
+    """
+
+    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
+        device=None, dtype=None, num_attention_heads=4, **kwargs):
+        self.factory_kwargs = {'device': device, 'dtype': dtype}
+        super().__init__(embed_dim, block_loc, kwarg_all)
+        self.num_heads = num_attention_heads
+        assert embed_dim % self.num_heads == 0, 'embed_dim must be divisible by num_attention_heads'
+        self.head_dim = embed_dim // self.num_heads
+        self.embed_dim = embed_dim
+        self.W_Q = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.W_K = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.W_V = nn.Linear(embed_dim, embed_dim, bias=False, **self.
+            factory_kwargs)
+        self.gate_Q = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+            factory_kwargs)
+        self.gate_K = nn.Linear(embed_dim, embed_dim, bias=True, **self.
+            factory_kwargs)
+        self.output_proj = nn.Linear(embed_dim, embed_dim, bias=False, **
+            self.factory_kwargs)
+        self.local_conv = nn.Conv1d(embed_dim, embed_dim, kernel_size=3,
+            padding=2, bias=True, **self.factory_kwargs)
+        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.q_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
+        self.k_norm = nn.LayerNorm(embed_dim, eps=1e-05, **self.factory_kwargs)
+        nn.init.xavier_uniform_(self.W_Q.weight)
+        nn.init.xavier_uniform_(self.W_K.weight)
+        nn.init.xavier_uniform_(self.W_V.weight)
+        nn.init.xavier_uniform_(self.output_proj.weight)
+        nn.init.xavier_uniform_(self.gate_Q.weight)
+        nn.init.zeros_(self.gate_Q.bias)
+        nn.init.xavier_uniform_(self.gate_K.weight)
+        nn.init.zeros_(self.gate_K.bias)
+        nn.init.xavier_uniform_(self.local_conv.weight)
+        nn.init.zeros_(self.local_conv.bias)
+
+    def _forward(self, X, **Z):
+        B, L, D = X.size()
+        H = self.num_heads
+        D_H = self.head_dim
+        X_conv = self.local_conv(X.transpose(1, 2))
+        X_conv = X_conv.transpose(1, 2)[:, :L, :]
+        X = X + X_conv
+        Q = self.W_Q(X)
+        K = self.W_K(X)
+        V = self.W_V(X)
+        Q = self.q_norm(Q)
+        K = self.k_norm(K)
+        G_Q = torch.sigmoid(self.gate_Q(X))
+        G_K = torch.sigmoid(self.gate_K(X))
+        Q = Q * G_Q
+        K = K * G_K
+        Q = Q.view(B, L, H, D_H).transpose(1, 2)
+        K = K.view(B, L, H, D_H).transpose(1, 2)
+        V = V.view(B, L, H, D_H).transpose(1, 2)
+        Q_prime = F.elu(Q) + 1
+        K_prime = F.elu(K) + 1
+        K_cumsum = K_prime.cumsum(dim=2)
+        KV_cumsum = (K_prime * V).cumsum(dim=2)
+        denominator = (Q_prime * K_cumsum).sum(dim=-1) + 1e-06
+        numerator = Q_prime * KV_cumsum
+        output = numerator / denominator.unsqueeze(-1)
+        output = output.transpose(1, 2).contiguous().view(B, L, D)
+        output = self.output_proj(output)
+        output = X + output
+        output, Z = self.norm(output, **Z)
+        return output, Z
 
 
 import torch.nn.functional as F
@@ -111,251 +267,80 @@ class RMSNorm(GAUBase):
 
 
 import torch.nn.functional as F
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+import torch.utils.checkpoint
+from torch.utils._pytree import tree_map
+from transformers.utils import logging
+from transformers.activations import ACT2FN
+try:
+    from causal_conv1d import causal_conv1d_fn, causal_conv1d_update
+except:
+    causal_conv1d_update, causal_conv1d_fn = None, None
 
 
-class GatedMLP(GAUBase):
+class Conv(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, hidden_features=None, out_features=None,
-        activation=None, bias=False, multiple_of=128, **kwargs):
+        device=None, dtype=None, conv_kernel=4, rms_norm_eps=1e-06, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        out_features = out_features if out_features is not None else embed_dim
-        hidden_features = (hidden_features if hidden_features is not None else
-            int(8 * embed_dim / 3))
-        hidden_features = (hidden_features + multiple_of - 1
-            ) // multiple_of * multiple_of
-        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **
-            self.factory_kwargs)
-        self.activation = activation if activation is not None else F.silu
-        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **
-            self.factory_kwargs)
+        kwarg_all['eps'] = rms_norm_eps
+        self.norm = RMSNorm(embed_dim=self.embed_dim, block_loc=self.
+            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **
+            self.kwarg_all)
+        self.conv = nn.Conv1d(embed_dim, embed_dim, bias=True, kernel_size=
+            conv_kernel, groups=embed_dim, padding=conv_kernel - 1, **self.
+            factory_kwargs)
 
-    def _forward(self, X, **Z):
-        y = self.fc1(X)
-        y, gate = y.chunk(2, dim=-1)
-        y = y * self.activation(gate)
-        y = self.fc2(y)
-        return y
+    def __call__(self, X, **Z):
+        hidden_states = X
+        seq_len = hidden_states.shape[1]
+        hidden_states = self.norm(hidden_states, **Z)[0]
+        hidden_states = hidden_states.transpose(1, 2)
+        if causal_conv1d_fn is None:
+            hidden_states = self.conv(hidden_states)[..., :seq_len]
+        else:
+            conv_weights = self.conv.weight.view(self.conv.weight.size(0),
+                self.conv.weight.size(2))
+            hidden_states = causal_conv1d_fn(hidden_states, conv_weights,
+                self.conv.bias, activation=None)
+        hidden_states = hidden_states.transpose(1, 2)
+        return hidden_states
 
 
 import torch.nn.functional as F
-import math
+from typing import Any, Dict, Optional, Tuple, Union
+import torch.nn.functional as F
+from transformers.utils import logging
+from transformers.activations import ACT2FN
 
 
-class HierarchicalAdaptiveAttention(GAUBase):
-    """
-    Hierarchical Adaptive Multi-Head Attention (HA-MHA)
-
-    This module implements a hierarchical adaptive multi-head attention mechanism that
-    captures multi-scale dependencies in the input sequence. It organizes attention heads
-    into hierarchical groups, each responsible for capturing dependencies at different scales
-    (e.g., local, medium, global). An adaptive gating mechanism dynamically allocates attention
-    resources based on the input context, allowing the model to focus on the most relevant
-    information at each scale.
-
-    **Main Features:**
-    - **Hierarchical Structure**: Attention heads are grouped into multiple scales to capture
-      dependencies at different levels.
-    - **Multi-Scale Linear Attention**: Reduces computational complexity from O(N^2) to O(N)
-      within each hierarchical group using linear attention mechanisms.
-    - **Adaptive Gating Mechanism**: Dynamically scales the contribution of each hierarchical group
-      based on the input context using a gating function.
-    - **Dynamic Composition**: Composes attention outputs from all hierarchical groups adaptively.
-    - **Rotary Positional Embeddings**: Incorporates positional information using rotary embeddings.
-    - **Causal Attention**: Ensures autoregressive property by masking future positions.
-
-    Args:
-        embed_dim (int): Total embedding dimension.
-        block_loc (tuple): Location of the block within the network.
-        kwarg_all (dict): Additional keyword arguments.
-        device (torch.device, optional): The device to use.
-        dtype (torch.dtype, optional): The data type to use.
-        num_heads (int): Total number of attention heads.
-        num_scales (int): Number of hierarchical scales.
-        dropout (float): Dropout probability.
-        rotary_emb_base (float): Base for rotary positional embeddings.
-        **kwargs: Additional keyword arguments.
-
-    Shape:
-        - Input: X of shape (batch_size, seq_len, embed_dim)
-        - Output: Y of shape (batch_size, seq_len, embed_dim)
-    """
+class SwiGluMLP(GAUBase):
 
     def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, num_heads: int=8, num_scales: int=2,
-        dropout: float=0.1, rotary_emb_base: float=10000.0, **kwargs):
+        device=None, dtype=None, intermediate_size=None, **kwargs):
         self.factory_kwargs = {'device': device, 'dtype': dtype}
         super().__init__(embed_dim, block_loc, kwarg_all)
-        assert embed_dim % (num_heads * num_scales
-            ) == 0, f'embed_dim ({embed_dim}) must be divisible by num_heads ({num_heads}) * num_scales ({num_scales})'
-        assert num_heads > 0, f'num_heads must be positive, got {num_heads}'
-        assert num_scales > 0, f'num_scales must be positive, got {num_scales}'
-        assert 0 <= dropout < 1, f'dropout must be in [0,1), got {dropout}'
-        self.embed_dim = embed_dim
-        self.num_heads = num_heads
-        self.num_scales = num_scales
-        self.head_dim = embed_dim // (num_heads * num_scales)
-        self.dropout = dropout
-        self.scaling_factor = 1.0 / math.sqrt(self.head_dim)
-        self.query_projs = nn.ModuleList([nn.Linear(embed_dim, num_heads *
-            self.head_dim, bias=False, **self.factory_kwargs) for _ in
-            range(num_scales)])
-        self.key_projs = nn.ModuleList([nn.Linear(embed_dim, num_heads *
-            self.head_dim, bias=False, **self.factory_kwargs) for _ in
-            range(num_scales)])
-        self.value_projs = nn.ModuleList([nn.Linear(embed_dim, num_heads *
-            self.head_dim, bias=False, **self.factory_kwargs) for _ in
-            range(num_scales)])
-        self.gate_proj = nn.Linear(embed_dim, num_scales, bias=False, **
-            self.factory_kwargs)
-        self.out_proj = nn.Linear(num_heads * self.head_dim * num_scales,
-            embed_dim, **self.factory_kwargs)
-        self.dropout_layer = nn.Dropout(p=self.dropout)
-        kwarg_all['rotary_emb_dim'] = self.head_dim
-        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.
-            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,
-            **self.factory_kwargs, **self.kwarg_all)
+        self.hidden_size = embed_dim
+        self.intermediate_size = (intermediate_size if intermediate_size is not
+            None else int(embed_dim * 2.5))
+        self.gate_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.up_proj = nn.Linear(self.hidden_size, self.intermediate_size,
+            bias=False, **self.factory_kwargs)
+        self.down_proj = nn.Linear(self.intermediate_size, self.hidden_size,
+            bias=False, **self.factory_kwargs)
+        self.act_fn = ACT2FN['silu']
 
     def _forward(self, X, **Z):
-        if X.size(1) == 0:
-            return X, Z
-        B, L, D = X.size()
-        assert D == self.embed_dim, f'Expected input embedding dimension: {self.embed_dim}, got: {D}'
-        causal_mask = torch.triu(torch.ones(L, L, device=X.device), diagonal=1
-            ).bool()
-        causal_mask = causal_mask.unsqueeze(0).unsqueeze(0)
-        gate_scores = torch.sigmoid(self.gate_proj(X))
-        attn_outputs = []
-        for scale in range(self.num_scales):
-            Q = self.query_projs[scale](X).view(B, L, self.num_heads, self.
-                head_dim)
-            K = self.key_projs[scale](X).view(B, L, self.num_heads, self.
-                head_dim)
-            V = self.value_projs[scale](X).view(B, L, self.num_heads, self.
-                head_dim)
-            Q = Q.transpose(1, 2)
-            K = K.transpose(1, 2)
-            V = V.transpose(1, 2)
-            Z['input_emb'] = Q
-            _, Z = self.rotary_emb(X, **Z)
-            Q = Z['output_emb']
-            Z['input_emb'] = K
-            _, Z = self.rotary_emb(X, **Z)
-            K = Z['output_emb']
-            Q = Q * self.scaling_factor
-            attn_weights = torch.matmul(Q, K.transpose(-2, -1))
-            attn_weights = attn_weights.masked_fill(causal_mask, float('-inf'))
-            attn_weights = F.softmax(attn_weights, dim=-1)
-            attn_weights = self.dropout_layer(attn_weights)
-            attn_output = torch.matmul(attn_weights, V)
-            attn_outputs.append(attn_output)
-        attn_output = torch.cat(attn_outputs, dim=-1)
-        attn_output = attn_output.transpose(1, 2).reshape(B, L, -1)
-        gate_scores = gate_scores.unsqueeze(-1).expand(-1, -1, -1, self.
-            num_heads * self.head_dim)
-        attn_output = attn_output.view(B, L, self.num_scales, -1)
-        attn_output = attn_output * gate_scores
-        attn_output = attn_output.reshape(B, L, -1)
-        Y = self.out_proj(attn_output)
-        return Y, Z
+        down_proj = self.down_proj(self.act_fn(self.gate_proj(X)) * self.
+            up_proj(X))
+        return down_proj
 
 
-import torch.nn.functional as F
-from torch import Tensor
-from typing import Optional
-
-
-class RotaryPositionalEmbeddings(GAUBase):
-    """
-    This class implements Rotary Positional Embeddings (RoPE)
-    proposed in https://arxiv.org/abs/2104.09864.
-
-    Reference implementation (used for correctness verfication)
-    can be found here:
-    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80
-
-    In this implementation we cache the embeddings for each position upto
-    ``max_seq_len`` by computing this during init.
-
-    Args:
-        dim (int): Embedding dimension. This is usually set to the dim of each
-            head in the attention module computed as ````embed_dim`` // ``num_heads````
-        max_seq_len (int): Maximum expected sequence length for the
-            model, if exceeded the cached freqs will be recomputed
-        base (int): The base for the geometric progression used to compute
-            the rotation angles
-    """
-
-    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,
-        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:
-        int=None, max_seq_len: int=4096, **kwargs) ->None:
-        self.factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim, block_loc, kwarg_all)
-        self.dim = rotary_emb_dim
-        self.base = rotary_emb_base
-        self.max_seq_len = max_seq_len
-        self._rope_init()
-
-    def reset_parameters(self):
-        self._rope_init()
-
-    def _rope_init(self):
-        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.
-            factory_kwargs)[:self.dim // 2].float() / self.dim)
-        self.register_buffer('theta', theta, persistent=False)
-        self.build_rope_cache(self.max_seq_len)
-
-    def build_rope_cache(self, max_seq_len: int=4096) ->None:
-        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=
-            self.theta.device)
-        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()
-        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],
-            dim=-1)
-        self.register_buffer('cache', cache, persistent=False)
-
-    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[
-        Tensor]=None) ->Tensor:
-        """
-        Args:
-            x (Tensor): input tensor with shape
-                [b, s, n_h, h_d]
-            input_pos (Optional[Tensor]): Optional tensor which contains the position ids
-                of each token. During training, this is used to indicate the positions
-                of each token relative to its sample when packed, shape [b, s].
-                During inference, this indicates the position of the current token.
-                If none, assume the index of the token is its position id. Default is None.
-
-        Returns:
-            Tensor: output tensor with RoPE applied
-
-        Notation used for tensor shapes:
-            - b: batch size
-            - s: sequence length
-            - n_h: num heads
-            - h_d: head dim
-
-        TODO: The implementation below can be made more efficient
-        for inference.
-        """
-        seq_len = input_emb.size(1)
-        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[
-            input_pos]
-        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)
-        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2
-            )
-        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped
-            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,
-            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)
-        x_out = x_out.flatten(3)
-        output_emb = x_out.type_as(input_emb)
-        return X, {'output_emb': output_emb}
-
-
-gab_config = {'dropout': 0.1, 'num_scales': 2, 'num_heads': 8,
-    'rotary_emb_base': 10000.0, 'eps': 1e-05, 'max_seq_len': 4096, 'bias': 
-    False, 'multiple_of': 128, 'hidden_features': None, 'out_features':
-    None, 'activation': None}
+gab_config = {'eps': 1e-05, 'num_attention_heads': 4, 'conv_kernel': 4,
+    'rms_norm_eps': 1e-06, 'intermediate_size': None}
 
 
 
