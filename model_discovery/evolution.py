@@ -531,16 +531,17 @@ class FirestoreManager:
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         if not sessdata:
             return
-        if eval(self.sess_index.get(sess_id,{}).get('progress','[]'))==eval(self.to_session_progress(sessdata)):
+        progress = self.to_session_progress(sessdata)
+        if eval(self.sess_index.get(sess_id,{}).get('progress','[]'))==eval(progress):
             return
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
         log_ref.set(sessdata,merge=True)
         self.sess_index[sess_id] = {
-            'progress':self.to_session_progress(sessdata),
+            'progress':progress,
             'mode': sessdata.get('mode','') 
         }
-        self.sess_index_ref.set(self.sess_index[sess_id],merge=True)
+        self.sess_index_ref.set({sess_id:self.sess_index[sess_id]},merge=True)
         print(f'Uploaded session {sess_id} to DB for {self.ptree.evoname}')
 
     def get_design_session(self,sess_id):
@@ -2355,6 +2356,8 @@ class ConnectionManager:
         # remove the zombie ones
         new_index = {}
         for sess_id in all_index:
+            if not isinstance(all_index[sess_id],dict):
+                continue # XXX: this is due to a bug previously
             timestamp = all_index[sess_id].get('timestamp',None)
             if timestamp and time.time()-float(timestamp)<VERIFY_ZOMBIE_THRESHOLD:
                 new_index[sess_id] = all_index[sess_id]
@@ -2367,6 +2370,8 @@ class ConnectionManager:
         _,all_index = self.get_design_sessions_index()
         for sess_id in all_index:
             index_item = all_index[sess_id]
+            if not isinstance(index_item,dict):
+                continue # XXX: this is due to a bug previously
             if index_item.get('status',None) in DESIGN_ACTIVE_STATES:
                 # check if it is zombie, if it is, update the status and skip
                 _,status,heartbeat = self.get_session_log(sess_id)
