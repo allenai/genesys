@@ -2347,7 +2347,15 @@ class ConnectionManager:
         return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
 
     def get_verifications_index(self):
-        return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('verifications'),'verifications')
+        index_ref,all_index = index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('verifications'),'verifications')
+        # remove the zombie ones
+        new_index = {}
+        for sess_id in all_index:
+            timestamp = all_index[sess_id].get('timestamp',None)
+            if timestamp and time.time()-float(timestamp)<VERIFY_ZOMBIE_THRESHOLD:
+                new_index[sess_id] = all_index[sess_id]
+        index_ref.set(new_index)
+        return index_ref,new_index
 
 
     def get_active_design_sessions(self):
