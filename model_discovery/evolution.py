@@ -527,12 +527,22 @@ class FirestoreManager:
     def get_design_sessions_index(self):
         self.sess_index_ref,self.sess_index = index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
         return self.sess_index_ref,self.sess_index
+    
+    def progress_eq(self,index_term,sessdata):
+        if 'progress' not in index_term:
+            return False
+        _progress=eval(index_term['progress'])
+        _proposed=_progress[0]
+        _reranked=_progress[1]
+        proposed=sessdata['proposed']
+        reranked=sessdata['reranked']
+        return _proposed==proposed and _reranked==reranked
 
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         if not sessdata:
             return
         progress = self.to_session_progress(sessdata)
-        if eval(self.sess_index.get(sess_id,{}).get('progress','[]'))==eval(progress):
+        if self.progress_eq(self.sess_index.get(sess_id,{}),sessdata):
             return
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
@@ -714,7 +724,7 @@ class FirestoreManager:
             else:
                 index_term = sess_index[sess_id]
                 sess_data = self.ptree.design_sessions[sess_id]
-                if eval(index_term['progress'])!=eval(self.to_session_progress(sess_data)):
+                if not self.progress_eq(index_term,sess_data):
                     self.ptree.get_design_session(sess_id)
 
     def sync_from_db(self,overwrite=False): # download all designs from db if out of date

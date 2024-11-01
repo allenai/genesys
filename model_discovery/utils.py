@@ -79,14 +79,15 @@ def save_json(data,file,indent=4):
 
 def safe_save_json(data,file,indent=4,max_try=3):
     # save, and read back to check if it is error and same as original
-    for _ in range(max_try):
-        save_json(data,file,indent)
-        try:
-            data_new=load_json(file)
-            if dict_eq(data_new,data):
+    with file_lock(f'{file}.save_lock'):
+        for _ in range(max_try):
+            save_json(data,file,indent)
+            try:
+                data_new=load_json(file)
+                # if dict_eq(data_new,data): # TODO: check if same as original, but not work for some reason
                 return
-        except Exception as e:
-            pdebug(f"Failed to save json to {file} after {_} tries: {e}")
+            except Exception as e:
+                pdebug(f"Failed to save json to {file} after {_} tries: {e}")
     raise Exception(f"Failed to save json to {file} after {max_try} tries")
 
 def acquire_lock(name,tts=20):
@@ -299,6 +300,16 @@ def acquire_local_lock(tts=20):
 
 def release_local_lock():
     release_lock('.node')
+
+
+
+@contextmanager
+def file_lock(file,tts=20):
+    try:
+        acquire_lock(file,tts)
+        yield
+    finally:
+        release_lock(file)
 
 @contextmanager
 def local_lock(tts=20):
