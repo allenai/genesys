@@ -536,7 +536,7 @@ class FirestoreManager:
         _reranked=_progress[1]
         proposed=sessdata['proposed']
         reranked=sessdata['reranked']
-        return _proposed==proposed and _reranked==reranked
+        return _proposed==proposed and U.dict_eq(_reranked,reranked)
 
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         if not sessdata:
