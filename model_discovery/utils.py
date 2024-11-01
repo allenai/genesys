@@ -8,6 +8,7 @@ import textwrap
 import torch
 import yaml
 import zipfile
+from contextlib import contextmanager
 
 pjoin=os.path.join
 psplit=os.path.split
@@ -75,6 +76,36 @@ def load_json(file,default={}):
 def save_json(data,file,indent=4): 
     with open(file, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=indent)
+
+def safe_save_json(data,file,indent=4,max_try=3):
+    # save, and read back to check if it is error and same as original
+    for _ in range(max_try):
+        save_json(data,file,indent)
+        try:
+            data_new=load_json(file)
+            if data_new==data:
+                return
+        except Exception as e:
+            pdebug(f"Failed to save json to {file} after {_} tries: {e}")
+    raise Exception(f"Failed to save json to {file} after {max_try} tries")
+
+def acquire_lock(name,tts=20):
+    lock_dir=pjoin(os.environ.get('CKPT_DIR','.lock'))
+    mkdir(lock_dir)
+    lock_file=pjoin(lock_dir,f'{name}.lock')
+    if pexists(lock_file):
+        lock_time,tts=read_file(lock_file).split('\n')
+        if time.time()-float(lock_time)<=float(tts):
+            return False
+    with open(lock_file,'w') as f:
+        f.write(f'{time.time()}\n{tts}')
+    return True
+
+def release_lock(name):
+    lock_dir=pjoin(os.environ.get('CKPT_DIR','.lock'))
+    lock_file=pjoin(lock_dir,f'{name}.lock')
+    if pexists(lock_file):
+        os.remove(lock_file)
 
 def read_file(file,lines=False):
     if not pexists(file):
@@ -261,6 +292,22 @@ def sort_dict_by_scale(dict,ascending=True):
     return {k: dict[k] for k in sorted_keys}
 
 
+def acquire_local_lock(tts=20):
+    while not acquire_lock('.node',tts):
+        time.sleep(1)
+    return True
+
+def release_local_lock():
+    release_lock('.node')
+
+@contextmanager
+def local_lock(tts=20):
+    try:
+        acquire_local_lock(tts)
+        yield
+    finally:
+        release_local_lock()
+
 def read_local_doc(file='.node'):
     CKPT_DIR = os.environ.get("CKPT_DIR")
     local_doc_path = f"{CKPT_DIR}/{file}.json"
@@ -270,7 +317,7 @@ def read_local_doc(file='.node'):
 def write_local_doc(local_doc,file='.node'):
     CKPT_DIR = os.environ.get("CKPT_DIR")
     local_doc_path = f"{CKPT_DIR}/{file}.json"
-    save_json(local_doc,local_doc_path)
+    safe_save_json(local_doc,local_doc_path)
 
 def log_error_model(design_id,scale):
     local_doc = read_local_doc()
@@ -288,3 +335,4 @@ def log_slow_model(design_id,time_elapsed,time_lower):
 def check_error_model(design_id):
     local_doc = read_local_doc()
     return design_id in local_doc.get('error_models',{})
+

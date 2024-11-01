@@ -122,9 +122,8 @@ if 'exec_commands' not in st.session_state:
     st.session_state.exec_commands = {}
 
 def _check_local_listener(st):
-    ckpt_dir = os.environ.get('CKPT_DIR')
-    _node_id = AU._listener_running(ckpt_dir)
-    _local_doc = U.load_json(U.pjoin(ckpt_dir,'.node.json'))
+    _node_id = AU._listener_running()
+    _local_doc = U.read_local_doc() 
     if _node_id:
         _group_id = _local_doc['group_id']
         _max_design_threads = _local_doc['max_design_threads']

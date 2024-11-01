@@ -55,7 +55,6 @@ class Listener:
         self.active_mode = True
         self.zombie_threshold = NODE_ZOMBIE_THRESHOLD  # seconds
         self.execution_delay = NODE_EXECUTION_DELAY # seconds
-        self.local_dir = U.pjoin(evosys.ckpt_dir,'.node.json')
         self.max_design_threads = max_design_threads
         self.accept_verify_job = accept_verify_job # XXX: if accepting verify jobs, may not allow design jobs to use GPUs?
         self.accept_baselines = accept_baselines
@@ -78,23 +77,24 @@ class Listener:
         self.doc_ref = self.collection.document(self.node_id)
 
     def initialize(self,node_id=None):
-        running_node_id = AU._listener_running(self.evosys.ckpt_dir,self.zombie_threshold)
+        running_node_id = AU._listener_running(self.zombie_threshold)
         if running_node_id:
             self.node_id = running_node_id
-            self.group_id = U.load_json(self.local_dir)['group_id']
+            self.group_id = U.read_local_doc()['group_id']
             print(f'There is already a listener running in this machine/userspace, Node ID: {self.node_id}, will run in passive mode. Please check in GUI.')
             self.active_mode = False
         else:
             self.node_id = self._assign_node_id(node_id)
             if node_id and node_id != self.node_id:
                 print(f'Node ID {node_id} is in use. Automatically assigned to {self.node_id} instead.')
-            local_doc = U.load_json(self.local_dir)
-            local_doc['node_id'] = self.node_id
-            local_doc['group_id'] = self.group_id
-            local_doc['max_design_threads'] = self.max_design_threads
-            local_doc['accept_verify_job'] = self.accept_verify_job
-            local_doc['cpu_only_checker'] = self.cpu_only
-            U.save_json(local_doc,self.local_dir)
+            with U.local_lock():
+                local_doc = U.read_local_doc()
+                local_doc['node_id'] = self.node_id
+                local_doc['group_id'] = self.group_id
+                local_doc['max_design_threads'] = self.max_design_threads
+                local_doc['accept_verify_job'] = self.accept_verify_job
+                local_doc['cpu_only_checker'] = self.cpu_only
+                U.write_local_doc(local_doc)
         self.doc_ref = self.collection.document(self.node_id)
     
     def _assign_node_id(self,node_id=None,autofix=False):
@@ -120,10 +120,11 @@ class Listener:
         else:
             self.reset_doc()
             self.active_mode = True
-            local_doc = U.load_json(self.local_dir)
-            local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
-            local_doc['status'] = 'running'
-            U.save_json(local_doc,self.local_dir)
+            with U.local_lock():    
+                local_doc = U.read_local_doc()
+                local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
+                local_doc['status'] = 'running'
+                U.write_local_doc(local_doc)
 
     
     def reset_doc(self, reset_commands=True):
@@ -172,9 +173,10 @@ class Listener:
                                 to_sleep -= self.execution_delay
                                 self.command_queue.put((command,sess_id,pid))
 
-                    local_doc = U.load_json(self.local_dir)
-                    local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
-                    U.save_json(local_doc,self.local_dir)
+                    with U.local_lock():
+                        local_doc = U.read_local_doc()
+                        local_doc['last_heartbeat'] = str(datetime.now(pytz.UTC))
+                        U.write_local_doc(local_doc)
 
                 self.reset_doc()
 
@@ -237,9 +239,10 @@ class Listener:
     def cleanup(self):
         # st.info("Cleaning up and disconnecting...")
         self.doc_ref.delete()  # Delete the connection document
-        local_doc = U.load_json(self.local_dir)
-        local_doc['status'] = 'stopped'
-        U.save_json(local_doc,self.local_dir)
+        with U.local_lock():
+            local_doc = U.read_local_doc()
+            local_doc['status'] = 'stopped'
+            U.write_local_doc(local_doc)
 
 def start_listener_thread(listener,add_ctx=True):
     thread = threading.Thread(target=listener.listen_for_commands)
@@ -265,10 +268,10 @@ def stop_listening():
         st.session_state.listener = None
         st.session_state.listener_thread = None
         st.session_state.listening_mode = False
-        ckpt_dir = os.environ.get("CKPT_DIR")
-        local_doc = U.load_json(U.pjoin(ckpt_dir,'.node.json'))
-        local_doc['status'] = 'stopped'
-        U.save_json(local_doc,U.pjoin(ckpt_dir,'.node.json'))
+        with U.local_lock():
+            local_doc = U.read_local_doc()
+            local_doc['status'] = 'stopped'
+            U.write_local_doc(local_doc)
         st.success("Listening stopped.")
         st.rerun() # Add this section to process commands in the main Streamlit thread
 
@@ -280,8 +283,8 @@ def listen(evosys, project_dir):
         st.warning('**NOTE:** It is recommended to run a node by `run_node.sh` for production use. Run node here for demonstration only.')
 
 
-    _node_id = AU._listener_running(evosys.ckpt_dir)
-    _local_doc = U.load_json(U.pjoin(evosys.ckpt_dir,'.node.json'))
+    _node_id = AU._listener_running()
+    _local_doc = U.read_local_doc()
     if not _node_id:
         if st.session_state.listener and _local_doc and _local_doc['status'] == 'stopped' and _local_doc['node_id'] == st.session_state.listener.node_id:
             stop_listening()
@@ -471,9 +474,9 @@ if __name__ == "__main__":
     # run in CLI mode
 
         
-    _node_id = AU._listener_running(os.environ.get("CKPT_DIR"))
+    _node_id = AU._listener_running()
     if _node_id:
-        local_doc = U.load_json(U.pjoin(os.environ.get("CKPT_DIR"),'.node.json'))
+        local_doc = U.read_local_doc()
         _group_id = local_doc['group_id']
         _max_design_threads = local_doc['max_design_threads']
         _accept_verify_job = local_doc['accept_verify_job'] 

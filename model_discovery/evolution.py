@@ -3159,11 +3159,10 @@ class EvolutionSystem(exec_utils.System):
         with open(U.pjoin(self.ckpt_dir,'gab.py'),'w', encoding='utf-8') as f:
             f.write(code)
 
-        CKPT_DIR = os.environ.get('CKPT_DIR')
-        local_doc_dir = U.pjoin(CKPT_DIR, '.node.json')
-        local_doc = U.load_json(local_doc_dir)
-        local_doc['model_ready'] = True
-        U.save_json(local_doc, local_doc_dir)
+        with U.local_lock():
+            local_doc = U.read_local_doc()
+            local_doc['model_ready'] = True
+            U.write_local_doc(local_doc)
 
     @classmethod
     def from_config(cls,config,silent=False,**kwargs):

@@ -100,23 +100,23 @@ def grid_view(st,item_dict:dict,per_row=3,spacing=0.05):
                 st.write(value)
 
 
-def _listener_running(ckpt_dir,zombie_threshold=NODE_ZOMBIE_THRESHOLD):
-    local_dir = U.pjoin(ckpt_dir,'.node.json')
-    local_doc = U.load_json(local_dir)
-    if local_doc:
-        if local_doc.get('status',None) == 'stopped':
-            return None
-        last_heartbeat = datetime.fromisoformat(local_doc['last_heartbeat'])
-        threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=zombie_threshold)
-        if last_heartbeat > threshold_time:
-            return local_doc['node_id']
-        else:
-            local_doc['status'] = 'stopped'
-            U.save_json(local_doc,local_dir)
+def _listener_running(zombie_threshold=NODE_ZOMBIE_THRESHOLD):
+    with U.local_lock(5):
+      local_doc = U.read_local_doc()
+      if local_doc:
+          if local_doc.get('status',None) == 'stopped':
+              return None
+          last_heartbeat = datetime.fromisoformat(local_doc['last_heartbeat'])
+          threshold_time = datetime.now(pytz.UTC) - timedelta(seconds=zombie_threshold)
+          if last_heartbeat > threshold_time:
+              return local_doc['node_id']
+          else:
+              local_doc['status'] = 'stopped'
+              U.write_local_doc(local_doc)
     return None
 
-def _refresh_local_listener_status(st,ckpt_dir):
-  _node_id = _listener_running(ckpt_dir)
+def _refresh_local_listener_status(st):
+  _node_id = _listener_running()
   if st.session_state.listener:
     if _node_id:
       st.session_state.listener.wake_up(_node_id)
@@ -182,7 +182,7 @@ def running_status(st,evosys):
   if st.session_state.listening_mode and st.session_state.listener.node_id:
     st.divider()
 
-    _refresh_local_listener_status(st,evosys.ckpt_dir)
+    _refresh_local_listener_status(st)
 
   if st.session_state.listening_mode and st.session_state.listener.node_id:
     st.status(f'👂```{st.session_state.listener.node_id}```*listening*\n')
