@@ -233,7 +233,7 @@ class FirestoreManager:
                     else:
                         _term=_index[id]
                         term=self.index[id]
-                        if U.dict_diff(term,_term):
+                        if not U.dict_eq(term,_term):
                             self.updated_terms.append(id)
                 self.index=_index
             self.fix_index()

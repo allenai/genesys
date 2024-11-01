@@ -29,17 +29,17 @@ def strscale(size):
     else: return f"{int(size)}"
 
 
-def dict_diff(dict1,dict2):
-    same=True
+def dict_eq(dict1,dict2):
+    equal=True
     for k,v in dict1.items():
         if k not in dict2:
-            same=False
+            equal=False
         else:
             if isinstance(v,dict) and isinstance(dict2[k],dict):
-                same=dict_diff(v,dict2[k])
+                equal=dict_eq(v,dict2[k])
             elif v!=dict2[k]:
-                same=False
-    return same
+                equal=False
+    return equal
 
 def letternum2num(s):
     """
@@ -83,7 +83,7 @@ def safe_save_json(data,file,indent=4,max_try=3):
         save_json(data,file,indent)
         try:
             data_new=load_json(file)
-            if data_new==data:
+            if dict_eq(data_new,data):
                 return
         except Exception as e:
             pdebug(f"Failed to save json to {file} after {_} tries: {e}")
