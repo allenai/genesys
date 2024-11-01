@@ -528,21 +528,29 @@ class FirestoreManager:
         self.sess_index_ref,self.sess_index = index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
         return self.sess_index_ref,self.sess_index
     
-    def progress_eq(self,index_term,sessdata):
-        if 'progress' not in index_term:
-            return False
+    def _compare_progress(self,index_term,sessdata): # newer than index: >0, same: 0, older than index: <0
+        if 'progress' not in index_term: # index is older
+            return 1,1
         _progress=eval(index_term['progress'])
         _proposed=_progress[0]
         _reranked=_progress[1]
         proposed=sessdata['proposed']
         reranked=sessdata['reranked']
-        return _proposed==proposed and U.dict_eq(_reranked,reranked)
+        return len(proposed)-len(_proposed),len(reranked)-len(_reranked)
 
+    def progress_eq(self,index_term,sessdata):
+        _proposed,_reranked=self._compare_progress(index_term,sessdata)
+        return _proposed==0 and _reranked==0
+    
+    def progress_leq(self,index_term,sessdata): # leq than index
+        _proposed,_reranked=self._compare_progress(index_term,sessdata)
+        return _proposed<=0 or _reranked<=0
+    
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
         if not sessdata:
             return
         progress = self.to_session_progress(sessdata)
-        if self.progress_eq(self.sess_index.get(sess_id,{}),sessdata):
+        if self.progress_leq(self.sess_index.get(sess_id,{}),sessdata):
             return
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
@@ -724,8 +732,9 @@ class FirestoreManager:
             else:
                 index_term = sess_index[sess_id]
                 sess_data = self.ptree.design_sessions[sess_id]
-                if not self.progress_eq(index_term,sess_data):
+                if not self.progress_leq(index_term,sess_data): # index is older
                     self.ptree.get_design_session(sess_id)
+
 
     def sync_from_db(self,overwrite=False): # download all designs from db if out of date
         self.get_index()
@@ -1452,6 +1461,7 @@ class PhylogeneticTree:
                 sessdata['mode']=DesignModes(sessdata['mode'])
                 self.design_sessions[sess_id] = sessdata
                 self.save_session(sess_id)
+                print(f'Downloaded session {sess_id}')
         if sess_id not in self.design_sessions:
             return None
         return self.design_sessions[sess_id]

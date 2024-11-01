@@ -84,8 +84,10 @@ def safe_save_json(data,file,indent=4,max_try=3):
             save_json(data,file,indent)
             try:
                 data_new=load_json(file)
-                # if dict_eq(data_new,data): # TODO: check if same as original, but not work for some reason
-                return
+                if dict_eq(data_new,data): 
+                    return
+                else:
+                    raise Exception(f"Saved json is not the same as original: {data_new} and {data}")
             except Exception as e:
                 pdebug(f"Failed to save json to {file} after {_} tries: {e}")
     raise Exception(f"Failed to save json to {file} after {max_try} tries")
