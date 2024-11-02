@@ -559,7 +559,10 @@ class GAUTree:
         if unimplemented:
             pstr += '\n\n##### Declarations for Unimplemented Units:\n'
             for unit in unimplemented:
-                pstr += self.declares[unit].to_prompt() + '\n---\n'
+                if unit in self.declares:
+                    pstr += self.declares[unit].to_prompt() + '\n---\n'
+                else:
+                    pstr += f'\n{unit}: declaration not found (Unimplemented)'
 
         unused=self.get_disconnected()
         if unused:
