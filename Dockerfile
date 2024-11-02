@@ -33,22 +33,22 @@ RUN mkdir -p /home/data /home/ckpt /home/secrets
 ENV DATA_DIR=/home/data
 ENV CKPT_DIR=/home/ckpt
 ENV DB_KEY_PATH=/home/secrets/db_key.json
+COPY secrets/db_key.json ${DB_KEY_PATH}
 
 # write the secret to the path
 # ARG FIREBASE_KEY
 # RUN echo "${FIREBASE_KEY}" > ${DB_KEY_PATH}
 
-COPY secrets/db_key.json ${DB_KEY_PATH}
+# Setup
+RUN conda create -n genesys python=3.12 -y
+SHELL ["conda", "run", "-n", "genesys", "/bin/bash", "-c"]
+RUN conda install pytorch==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
+
+
 
 ARG GITHUB_TOKEN
 RUN git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /home/model_discovery
-
-
-# Setup
-RUN conda create -n genesys python=3.12
-RUN conda activate genesys
-RUN conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
-
+WORKDIR /home/model_discovery
 
 # Install the package
 RUN pip install -e .
@@ -62,6 +62,8 @@ RUN pip install -r requirements_optional.txt
 
 
 # docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN -t genesys-i1 .
+# docker run -it --gpus all -it genesys-i1 genesys node -D
+# docker run -it --gpus all -it genesys-i1 ls
 
 
 # #### old setups

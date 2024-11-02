@@ -5,18 +5,18 @@ show_help() {
     echo "Usage: $0 [options]"
     echo ""
     echo "Options:"
-    echo "  --skip-vars-prep, -d         Skip setting environment variables"
+    echo "  --skip-deps-prep, -d         Skip setting dependencies"
     echo "  --skip-data-prep, -s         Skip downloading the pre-training datasets"
     echo "  -h, --help                   Show this help message"
 }
 
 # Parse arguments
-SKIP_VARS_PREP=false
+SKIP_DEPS_PREP=false
 SKIP_DATA_PREP=false
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        --skip-vars-prep|-d) SKIP_VARS_PREP=true ;;
+        --skip-deps-prep|-d) SKIP_DEPS_PREP=true ;;
         --skip-data-prep|-s) SKIP_DATA_PREP=true ;;
         -h|--help) show_help; exit 0 ;;
         *) echo "Unknown parameter passed: $1"; show_help; exit 1 ;;
@@ -24,7 +24,7 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-if [ "$SKIP_VARS_PREP" = false ]; then
+if [ "$SKIP_DEPS_PREP" = false ]; then
     # Set environment variables, export by yourself
 
     # export MY_OPENAI_KEY=YOUR-KEY
