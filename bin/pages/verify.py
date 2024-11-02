@@ -608,6 +608,7 @@ def verify_engine(evosys,project_dir):
                     for scale in unfinished_runs[design_id]:
                         wandb_ids=unfinished_runs[design_id][scale]
                         url=None
+                        wandb_id='N/A'
                         if 'pretrain' in wandb_ids:
                             wandb_id=wandb_ids['pretrain']['id']
                             wandb_name=wandb_ids['pretrain']['name']
@@ -623,6 +624,8 @@ def verify_engine(evosys,project_dir):
                         with col3:
                             if url:
                                 st.write(f"W&B run: [{wandb_name.replace(f'{evosys.evoname}_','')[:10]}]({url})")
+                            else:
+                                st.write('W&B run: N/A')
                         with col4:
                             resume_btn = st.button(f'Resume',key=f'btn_{design_id}_{scale}',disabled=DISABLE_VERIFICATION or st.session_state.evo_running) #,use_container_width=True):
                         with col5:
