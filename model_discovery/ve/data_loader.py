@@ -153,6 +153,7 @@ def load_wikitext2(tokenizer_name, context_length):
     return load_dataset('wikitext','wikitext-2-v1', num_proc=DEFAULT_NUM_PROC_LOAD)
 
 
+# optional for now, as python-edu in smollm-12.5-corpus is pre-downloaded
 try:
     session = boto3.Session(
         aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID",None),

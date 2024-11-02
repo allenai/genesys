@@ -39,12 +39,12 @@ if [ "$PREPARE_DATA_ONLY" = false ]; then
     # export PERPLEXITY_API_KEY=YOUR-KEY
 
     # Create directories
-    mkdir -p ~/model_discovery/data
-    mkdir -p ~/model_discovery/ckpt
+    mkdir -p $DATA_DIR
+    mkdir -p $CKPT_DIR
 
     # Set directory environment variables, feel free to change these to your desired directories
-    export DATA_DIR=~/model_discovery/data
-    export CKPT_DIR=~/model_discovery/ckpt
+    # export DATA_DIR=~/model_discovery/data
+    # export CKPT_DIR=~/model_discovery/ckpt
 
     export HF_DATASETS_TRUST_REMOTE_CODE=1
 

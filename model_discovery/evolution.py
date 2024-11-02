@@ -4,7 +4,8 @@ from __future__ import annotations
 
 import os
 import sys
-try: # a stupid patch for windows
+import pathlib
+try: # a stupid patch 
     from .secrets import *
     os.environ['MY_OPENAI_KEY']=MY_OPENAI_KEY
     os.environ['TOGETHER_API_KEY']=TOGETHER_API_KEY
@@ -35,7 +36,6 @@ os.environ['DB_KEY_PATH'] = os.path.expanduser(os.environ['DB_KEY_PATH'])
 import sys
 import re
 import exec_utils
-import pathlib
 from datetime import datetime, timedelta, timezone
 import json
 import copy

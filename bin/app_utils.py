@@ -170,8 +170,8 @@ def running_status(st,evosys):
           _running_designs, _running_verifies = evosys.CM.check_workload(node_id)
           _max_designs = evosys.CM.max_design_threads[node_id]
           _max_verifies = 1 if evosys.CM.accept_verify_job[node_id] else 0
-          _design_status = f'{len(_running_designs)}/{_max_designs}🐎' if _max_designs>0 else '0/0🐎'
-          _verify_status = f'{len(_running_verifies)}/{_max_verifies}🥏' if _max_verifies>0 else '0/0🥏'
+          _design_status = f'{len(_running_designs)}/{_max_designs}🐎' if _max_designs>0 else 'N/A🐎'
+          _verify_status = f'{len(_running_verifies)}/{_max_verifies}🥏' if _max_verifies>0 else 'N/A🥏'
           st.write(f'```{node_id}```{_design_status}{_verify_status}')
       else:
         st.info('No active connections')

@@ -1,7 +1,7 @@
 version: v2
 description: This is an example mixing experiment configuration file.
 tasks:
-  - name: genesys-v-node
+  - name: genesys-d-node
     image:
       beaker: xxx
     command: [genesys, node, -V]
@@ -13,10 +13,22 @@ tasks:
         secret: TOGETHER_API_KEY
       - name: ANTHROPIC_API_KEY
         secret: ANTHROPIC_API_KEY
+      - name: HF_KEY
+        secret: HF_KEY
+      - name: HF_HUB_KEY
+        secret: HF_HUB_KEY
+      - name: GITHUB_TOKEN
+        secret: GITHUB_TOKEN
       - name: WANDB_API_KEY
         secret: WANDB_API_KEY
+      - name: AWS_SECRET_ACCESS_KEY
+        secret: AWS_SECRET_ACCESS_KEY
+      - name: AWS_ACCESS_KEY_ID
+        secret: AWS_ACCESS_KEY_ID
       - name: S2_API_KEY
         secret: S2_API_KEY
+      - name: HF_DATASETS_TRUST_REMOTE_CODE
+        value: 1
       - name: PINECONE_API_KEY
         secret: PINECONE_API_KEY
       - name: COHERE_API_KEY
@@ -25,28 +37,18 @@ tasks:
         secret: PERPLEXITY_API_KEY
       - name: MATHPIX_API_ID
         secret: MATHPIX_API_ID
-      - name: FIREBASE_KEY
-        secret: FIREBASE_KEY
-      - name: HF_KEY
-        secret: HF_KEY
-      - name: HF_HUB_KEY
-        secret: HF_HUB_KEY
-      - name: GITHUB_TOKEN
-        secret: GITHUB_TOKEN
-      - name: HF_DATASETS_TRUST_REMOTE_CODE
-        value: 1
       - name: DATA_DIR
-        value: /home/data
+        value: /data
       - name: CKPT_DIR
-        value: /home/ckpt
+        value: /ckpt
       - name: DB_KEY_PATH
-        value: /home/secrets/db_key.json
+        value: ~/model_discovery/secrets/db_key.json
     datasets:
-      - mountPath: /home/data
+      - mountPath: /data
         source:
-          beaker: genesys-corpus
+          beaker: xxx
     result:
-      path: /home/ckpt
+      path: /ckpt
     resources:
       gpuCount: 1
       sharedMemory: 10 GiB

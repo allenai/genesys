@@ -28,12 +28,20 @@ ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 ENTRYPOINT ["bash", "-l"]
 
 
-# Clone the GitHub repository to home directory
+# Setup ENV variables
+RUN mkdir -p /home/data /home/ckpt /home/secrets
+ENV DATA_DIR=/home/data
+ENV CKPT_DIR=/home/ckpt
+ENV DB_KEY_PATH=/home/secrets/db_key.json
+
+# write the secret to the path
+# ARG FIREBASE_KEY
+# RUN echo "${FIREBASE_KEY}" > ${DB_KEY_PATH}
+
+COPY secrets/db_key.json ${DB_KEY_PATH}
+
 ARG GITHUB_TOKEN
-# Use command substitution with shell form of RUN
-RUN GITHUB_TOKEN=$(beaker secret read GITHUB_TOKEN) && \
-    git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /home/model_discovery
-WORKDIR /home/model_discovery
+RUN git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /home/model_discovery
 
 
 # Setup
@@ -41,18 +49,6 @@ RUN conda create -n genesys python=3.12
 RUN conda activate genesys
 RUN conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
 
-# Setup ENV variables
-
-# ENV DATA_DIR=~/model_discovery/data
-# ENV CKPT_DIR=~/model_discovery/ckpt
-# ENV GAB_PATH=~/model_discovery/model/gab.py
-# ENV DB_KEY_PATH=~/model_discovery/secrets/db_key.json
-# ENV HF_DATASETS_TRUST_REMOTE_CODE=1
-
-# # Setup secrets
-# RUN mkdir ~/model_discovery/secrets
-# RUN touch ${DB_KEY_PATH}
-# RUN echo ${DB_KEY_JSON} > ${DB_KEY_PATH}
 
 # Install the package
 RUN pip install -e .
@@ -62,8 +58,9 @@ RUN genesys setup
 # Install optional dependencies
 RUN pip install -r requirements_optional.txt
 
-RUN mkdir -p /temp/data /temp/ckpt
 
+
+# docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN -t genesys-i1 .
 
 
 # #### old setups

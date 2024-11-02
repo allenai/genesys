@@ -1,4 +1,4 @@
-# Model Disovery 
+# Genesys
 
 Utils and code for model discovery experiments. 
 
