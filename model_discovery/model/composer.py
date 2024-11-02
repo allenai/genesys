@@ -349,7 +349,9 @@ class GAUTree:
         self.dict.register(self.units[name])
 
     def descendants(self,name): # recursively get decendants of a unit
-        assert name in self.units or name in self.declares, f"Unit {name} is neither in the tree nor declared"
+        if name not in self.units and name not in self.declares:
+            # raise ValueError(f"Unit {name} is neither in the tree nor declared")
+            return set()
         if name in self.units:
             node=self.units[name]
             descendants=set(node.children)
@@ -557,7 +559,10 @@ class GAUTree:
         if unimplemented:
             pstr += '\n\n##### Declarations for Unimplemented Units:\n'
             for unit in unimplemented:
-                pstr += self.declares[unit].to_prompt() + '\n---\n'
+                if unit in self.declares:
+                    pstr += self.declares[unit].to_prompt() + '\n---\n'
+                else:
+                    pstr += f'\n{unit}: declaration not found (Unimplemented)'
 
         unused=self.get_disconnected()
         if unused:

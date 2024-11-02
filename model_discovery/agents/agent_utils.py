@@ -180,6 +180,7 @@ def truncate_text(text,token_limit,model_name):
     text=decode_text(tokens,model_name)+'\n\n... (truncated)'
     return text
 
+# XXX: seems still not guaranteed to be safe, why??
 def context_safe_guard(history, model_name, prompt, system):
     history = copy.deepcopy(list(history))
     total_limit = get_token_limit(model_name)
@@ -187,27 +188,31 @@ def context_safe_guard(history, model_name, prompt, system):
     prompt_tokens = count_tokens(prompt, model_name)
     history_tokens = [count_tokens(content, model_name) for content, _ in history]
 
+    # Add buffer for potential special tokens/formatting
+    format_buffer = 100  # Adjust based on model's message formatting overhead
+    effective_limit = total_limit - SAFE_BUFFER - format_buffer
+
     while True:
         total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
-        if total_tokens < total_limit - SAFE_BUFFER:
+        if total_tokens < effective_limit:
             break
         if history:
-            # Remove the oldest message from history
-            if len(history)==1:
-                last = truncate_text(history[0][0],total_limit - SAFE_BUFFER - system_tokens - prompt_tokens,model_name)
-                history=[last]
-                history_tokens=[count_tokens(last,model_name)]
+            if len(history) == 1:
+                content, role = history[0]
+                last = truncate_text(content, effective_limit - system_tokens - prompt_tokens, model_name)
+                history = [(last, role)]  # Preserve the role information
+                history_tokens = [count_tokens(last, model_name)]
             else:
                 history.pop(0)
                 history_tokens.pop(0)
         elif prompt:
-            prompt = truncate_text(prompt, total_limit - SAFE_BUFFER - system_tokens, model_name)
+            prompt = truncate_text(prompt, effective_limit - system_tokens, model_name)
             prompt_tokens = count_tokens(prompt, model_name)
         elif system:
-            system = truncate_text(system, total_limit - SAFE_BUFFER, model_name)
+            system = truncate_text(system, effective_limit, model_name)
             system_tokens = count_tokens(system, model_name)
         else:
-            break # just try whatever, seems impossible 
+            break
 
     return tuple(history), prompt, system
 
