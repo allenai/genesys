@@ -5,17 +5,18 @@ show_help() {
     echo "Usage: $0 [options]"
     echo ""
     echo "Options:"
-    echo "  --prepare-data-only, -d    Only prepare the pre-training datasets"
+    echo "  --skip-vars-prep, -d         Skip setting environment variables"
+    echo "  --skip-data-prep, -s         Skip downloading the pre-training datasets"
     echo "  -h, --help                   Show this help message"
 }
 
 # Parse arguments
-PREPARE_DATA_ONLY=false
+SKIP_VARS_PREP=false
 SKIP_DATA_PREP=false
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
-        --prepare-data-only|-d) PREPARE_DATA_ONLY=true ;;
+        --skip-vars-prep|-d) SKIP_VARS_PREP=true ;;
         --skip-data-prep|-s) SKIP_DATA_PREP=true ;;
         -h|--help) show_help; exit 0 ;;
         *) echo "Unknown parameter passed: $1"; show_help; exit 1 ;;
@@ -23,7 +24,7 @@ while [[ "$#" -gt 0 ]]; do
     shift
 done
 
-if [ "$PREPARE_DATA_ONLY" = false ]; then
+if [ "$SKIP_VARS_PREP" = false ]; then
     # Set environment variables, export by yourself
 
     # export MY_OPENAI_KEY=YOUR-KEY
@@ -104,5 +105,5 @@ if [ "$SKIP_DATA_PREP" = false ]; then
     "
 fi
 
-pip install -e .
+# pip install -e .
 
