@@ -1602,6 +1602,7 @@ class PhylogeneticTree:
         return sess_id
     
     def get_unverified_designs(self,scale=None,exclude_list=[]): # exclude_list is a list of (design_id,scale) being verified by other nodes
+        self.update_design_tree()
         unverified=[] if scale else {s:[] for s in self.target_scales}
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
             design=self.get_node(acronym)
