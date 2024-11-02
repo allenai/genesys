@@ -774,7 +774,7 @@ def evolve(evosys,project_dir):
 
     _bg_color=AU.theme_aware_options(st,"#fafafa","#f0f0f0","#fafafa")
     
-    export_height = 950
+    export_height = 900
     evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height=f'{export_height}px',bgcolor=_bg_color)
     ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{st.session_state.ptree_max_nodes}.html')
 
