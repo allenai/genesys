@@ -313,7 +313,7 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
                 f'Issue encountered while running running, msg={e}, retrying',
                 exc_info=True
             )
-            if 'timeout' in str(e):
+            if 'timeout' in str(e) or 'timed out' in str(e):
                 time.sleep(2**(i+1))
             else:
                 raise e
