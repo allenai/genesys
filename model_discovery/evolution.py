@@ -3172,7 +3172,10 @@ class EvolutionSystem(exec_utils.System):
             if U.pexists(code_dir):
                 _code = U.read_file(code_dir)
             else:
-                raise FileNotFoundError(f"Code file not found for design {design_id}")
+                # raise FileNotFoundError(f"Code file not found for design {design_id}")
+                print(f"Code file not found for design {design_id}")
+                U.log_error_model(design_id,scale)
+                return None
         code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
         if code is None:
             U.log_error_model(design_id,scale)
