@@ -52,7 +52,8 @@ RUN conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-
 
 # Install the package
 RUN pip install -e .
-RUN genesys setup
+# skip data prep, mount from beaker
+RUN genesys setup --skip-data-prep 
 
 
 # Install optional dependencies

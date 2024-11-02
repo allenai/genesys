@@ -11,10 +11,12 @@ show_help() {
 
 # Parse arguments
 PREPARE_DATA_ONLY=false
+SKIP_DATA_PREP=false
 
 while [[ "$#" -gt 0 ]]; do
     case $1 in
         --prepare-data-only|-d) PREPARE_DATA_ONLY=true ;;
+        --skip-data-prep|-s) SKIP_DATA_PREP=true ;;
         -h|--help) show_help; exit 0 ;;
         *) echo "Unknown parameter passed: $1"; show_help; exit 1 ;;
     esac
@@ -77,28 +79,30 @@ if [ "$PREPARE_DATA_ONLY" = false ]; then
 
 fi
 
-# Download BabyLM evaluation data
-echo "Preparing the BabyLM evaluation data"
-if [ -d "$DATA_DIR/blimp_filtered" ] && [ -d "$DATA_DIR/supplement_filtered" ]; then
-    echo "BabyLM Dataset already downloaded"
-else
-    cd $DATA_DIR
-    wget https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
-    unzip 'index.html?zip=evaluation_data'
-    rm 'index.html?zip=evaluation_data'
+if [ "$SKIP_DATA_PREP" = false ]; then
+    # Download BabyLM evaluation data
+    echo "Preparing the BabyLM evaluation data"
+    if [ -d "$DATA_DIR/blimp_filtered" ] && [ -d "$DATA_DIR/supplement_filtered" ]; then
+        echo "BabyLM Dataset already downloaded"
+    else
+        cd $DATA_DIR
+        wget https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
+        unzip 'index.html?zip=evaluation_data'
+        rm 'index.html?zip=evaluation_data'
+    fi
+
+    # Prepare Datasets
+    echo "Preparing the pre-training datasets"
+    python -c "
+    import sys
+    sys.path.append('..')
+    from model_discovery.ve.data_loader import load_datasets
+    from model_discovery.configs.gam_config import GAMConfig_14M
+
+    config = GAMConfig_14M() # dataset setting should be the same across all model scales, so just use the 14M setting to initialize the datasets
+    load_datasets(config)
+    "
 fi
-
-# Prepare Datasets
-echo "Preparing the pre-training datasets"
-python -c "
-import sys
-sys.path.append('..')
-from model_discovery.ve.data_loader import load_datasets
-from model_discovery.configs.gam_config import GAMConfig_14M
-
-config = GAMConfig_14M() # dataset setting should be the same across all model scales, so just use the 14M setting to initialize the datasets
-load_datasets(config)
-"
 
 pip install -e .
 
