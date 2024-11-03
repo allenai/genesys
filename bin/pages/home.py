@@ -92,10 +92,8 @@ def howtouse():
 The Genesys Genetic Programming Model Discovery System is a system aimed at using large language model
 agents to discover novel and human-level autoregressive language model designs by genetic programming.
 This is a graphical user interface (GUI) for Genesys. You can
-use it to run experiments, view results, and tune the agents. We use this GUI as
-the main interface to the system instead of the common command-line interface
-(CLI).
-
+use it to run experiments, view results, and tune the agents. 
+We use this GUI to monitor and manage the evolution process. While CLI to launch the nodes.
 * ***Why not just CLI?*** CLI is *insufficient* to provide necessary
   **observability** and **manageability** with such a complicated system. In a
   CLI, it is hard to manage the experiment states (e.g., launching multiple
@@ -103,7 +101,7 @@ the main interface to the system instead of the common command-line interface
   to observe the agent behaviors and design artifacts (e.g., long markdown or
   python outputs from multiple agents).
 
-* ***Can I use a CLI instead?*** Yes, you can always use the CLI to run the
+* ***Can I use CLI only?*** Yes, you can always use the CLI to run the
   system. The GUI essentially integrated experiment monitors and runners to
   create a subprocess to run the low-level CLI instructions. You can install the
   CLI by `pip install -e .` and run it by `genesys <command> [args]`. See details below.

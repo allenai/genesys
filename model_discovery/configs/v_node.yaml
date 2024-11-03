@@ -1,15 +1,16 @@
 version: v2
+budget: ai2/aristo
 description: This is an example mixing experiment configuration file.
 tasks:
   - name: genesys-v-node
     image:
-      beaker: xxx
+      beaker: junyanc/genesys-i1
     command: [genesys, node, -V]
     arguments: []
     envVars:
       - name: MY_OPENAI_KEY
         secret: MY_OPENAI_KEY 
-      - name: TOGETHER_API_KEY
+      - name: TOGETHER_API_KEYz
         secret: TOGETHER_API_KEY
       - name: ANTHROPIC_API_KEY
         secret: ANTHROPIC_API_KEY
@@ -44,15 +45,21 @@ tasks:
     datasets:
       - mountPath: /home/data
         source:
-          beaker: genesys-corpus
+          beaker: junyanc/genesys-corpus
     result:
       path: /home/ckpt
     resources:
-      gpuCount: 1
+      gpuCount: 4
       sharedMemory: 10 GiB
     context:
       priority: normal
       preemptible: true
     constraints:
       cluster:
-        - ai2/s2-cirrascale-l40
+        - ai2/aristo-cirrascale
+        - ai2/neptune-cirrascale
+
+
+
+# beaker experiment create model_discovery/configs/v_node.yaml 
+
