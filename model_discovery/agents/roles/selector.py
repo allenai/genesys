@@ -986,6 +986,8 @@ class Selector:
         ranked_quadrants = self._get_ranked_quadrants()
 
         unverified_scales=[i for i in unverified_by_scale.keys() if i in available_verify_budget]
+        if len(unverified_scales)==0:
+            return None,None
         unverified_scales.sort(key=lambda x:int(x.replace('M','')))
         lowest_scale=unverified_scales[0]
         lowest_pool = unverified_by_scale[lowest_scale]
