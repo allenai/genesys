@@ -134,7 +134,7 @@ ANTHROPIC_OUTPUT_BUFFER={
     "claude-3-5-sonnet-20241022":8192*2,
 }
 
-SAFE_BUFFER=4096
+SAFE_BUFFER=1024
 
 
 def get_token_limit(model_name):
@@ -182,37 +182,47 @@ def truncate_text(text,token_limit,model_name):
 
 # XXX: seems still not guaranteed to be safe, why??
 def context_safe_guard(history, model_name, prompt, system):
+    # DEBUG_CKPT={
+    #     'history':history,
+    #     'prompt':prompt,
+    #     'system':system,
+    # }
+    # CKPT_DIR = os.environ['CKPT_DIR']
+    # time_str = time.time()
+    # dir = os.path.join(CKPT_DIR,'debug_ckpts')
+    # os.makedirs(dir,exist_ok=True)
+    # with open(os.path.join(dir,f'{time_str}.json'),'w') as f:
+    #     json.dump(DEBUG_CKPT,f)
+
     history = copy.deepcopy(list(history))
     total_limit = get_token_limit(model_name)
-    system_tokens = count_tokens(system, model_name)
-    prompt_tokens = count_tokens(prompt, model_name)
-    history_tokens = [count_tokens(content, model_name) for content, _ in history]
-
-    # Add buffer for potential special tokens/formatting
     format_buffer = 100  # Adjust based on model's message formatting overhead
-    effective_limit = total_limit - SAFE_BUFFER - format_buffer
+    effective_limit = total_limit - SAFE_BUFFER
+
+    system_tokens = count_tokens(system, model_name)
+    if system_tokens > effective_limit:
+        system = truncate_text(system, effective_limit-format_buffer, model_name)
+        return [], '', system
+    prompt_tokens = count_tokens(prompt, model_name)
+    if prompt_tokens+system_tokens > effective_limit:
+        prompt = truncate_text(prompt, effective_limit-system_tokens-format_buffer, model_name)
+        return [], prompt, system
+    history_tokens = [count_tokens(content, model_name) for content, _ in history]
 
     while True:
         total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
         if total_tokens < effective_limit:
             break
-        if history:
-            if len(history) == 1:
-                content, role = history[0]
-                last = truncate_text(content, effective_limit - system_tokens - prompt_tokens, model_name)
-                history = [(last, role)]  # Preserve the role information
-                history_tokens = [count_tokens(last, model_name)]
-            else:
-                history.pop(0)
-                history_tokens.pop(0)
-        elif prompt:
-            prompt = truncate_text(prompt, effective_limit - system_tokens, model_name)
-            prompt_tokens = count_tokens(prompt, model_name)
-        elif system:
-            system = truncate_text(system, effective_limit, model_name)
-            system_tokens = count_tokens(system, model_name)
+        non_last_tokens = sum(history_tokens[1::]) if len(history_tokens) > 1 else 0
+        if non_last_tokens + system_tokens + prompt_tokens <= effective_limit: # can be solved by truncating the first message
+            content, role = history[0]
+            last_limit = effective_limit - system_tokens - prompt_tokens - format_buffer - non_last_tokens
+            last = truncate_text(content, last_limit, model_name)
+            history[0] = (last, role)
+            history_tokens[0] = count_tokens(last, model_name)
         else:
-            break
+            history.pop(0)
+            history_tokens.pop(0)
 
     return tuple(history), prompt, system
 

@@ -655,7 +655,10 @@ def _design_tuning(evosys,project_dir):
                         if os.path.isdir(U.pjoin(db_dir,'sessions',i,'log')):
                             folders.append(i)
                 selected_folder = st.selectbox(label="Select session",options=folders)
-                selected_folder_dir = U.pjoin(db_dir,'sessions',selected_folder,'log')
+                if selected_folder:
+                    selected_folder_dir = U.pjoin(db_dir,'sessions',selected_folder,'log')
+                else:
+                    selected_folder_dir = None
             with cols[2]:
                 design_logs=['']
                 if selected_folder and os.path.exists(selected_folder_dir):

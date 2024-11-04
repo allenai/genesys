@@ -1030,7 +1030,7 @@ class Checker(exec_utils.BaseTool):
         return check_report
 
 
-    def tune(self, config, gab_code, name, cpu_only=False,max_tries=1000) -> str:
+    def tune(self, config, gab_code, name, cpu_only=False,max_tries=500) -> str:
         print('Tuning the model scale...')
         d_model = config.d_model
         n_block = config.n_block

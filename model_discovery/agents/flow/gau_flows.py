@@ -19,7 +19,7 @@ from model_discovery.model.utils.modules import GABBase, UnitDecl,DesignModes
 import model_discovery.utils as U
 
 
-DESIGN_ZOMBIE_THRESHOLD = 300 # O1 is really really slow
+DESIGN_ZOMBIE_THRESHOLD = 200 # O1 is really really slow
 
 LOG_STATES={
     'BEGIN':'Begin',

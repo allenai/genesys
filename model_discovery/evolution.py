@@ -3178,6 +3178,7 @@ class EvolutionSystem(exec_utils.System):
                 return None
         code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
         if code is None:
+            print(f'Check tune failed for design {design_id} at scale {scale}')
             U.log_error_model(design_id,scale)
             return None
         with open(U.pjoin(self.ckpt_dir,'gab.py'),'w', encoding='utf-8') as f:
