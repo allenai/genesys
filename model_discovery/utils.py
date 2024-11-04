@@ -119,7 +119,10 @@ def release_lock(name):
     lock_dir=pjoin(os.environ.get('CKPT_DIR','.lock'))
     lock_file=pjoin(lock_dir,f'{name}.lock')
     if pexists(lock_file):
-        os.remove(lock_file)
+        try:
+            os.remove(lock_file)
+        except Exception as e:
+            pdebug(f"Failed to release lock {lock_file}: {e}")
 
 def read_file(file,lines=False):
     if not pexists(file):
