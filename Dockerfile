@@ -26,8 +26,7 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 # ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 
-ENTRYPOINT ["conda", "run", "-n", "genesys"]
-CMD ["/bin/bash", "-l"]
+# ENTRYPOINT ["conda", "run", "-n", "genesys"]
 
 
 # Setup ENV variables
@@ -60,12 +59,24 @@ RUN genesys setup --skip-data-prep
 RUN pip install -r requirements_optional.txt
 
 
+RUN echo '#!/bin/bash\n\
+source /opt/miniconda3/etc/profile.d/conda.sh\n\
+conda activate genesys\n\
+exec "$@"' > /entrypoint.sh && \
+    chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/bin/bash", "-l"]
+
+
 
 # docker build --build-arg GITHUB_TOKEN=$GITHUB_TOKEN -t genesys-i1 .
 # docker run -it --gpus all -it genesys-i1 genesys node -D
 
 
 # beaker image create --name genesys-i1 genesys-i1
+
+# beaker experiment create model_discovery/configs/v_node.yaml
 
 
 

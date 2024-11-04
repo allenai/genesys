@@ -742,7 +742,7 @@ class Selector:
         return [self.ptree.G.nodes[node]['data'] for node in nodes]
     
     def _random_select_design(self,n_seeds,n_sources,select_cfg=None,allow_tree=True,**kwargs):
-        refs=self._sample_from_sources(n_sources)
+        refs=self._sample_from_sources(n_sources) if sum(n_sources.values())>0 else []
         poolr = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
         if allow_tree:
             poold = self.ptree.filter_by_type(['DesignArtifactImplemented'])
@@ -764,7 +764,7 @@ class Selector:
     def _quadrant_select_design(self,n_seeds, n_sources: Dict[str,int],select_cfg=None,**kwargs):
         select_cfg = self.select_cfg if select_cfg is None else select_cfg
         instruct=''
-        refs=self._sample_from_sources(n_sources)
+        refs=self._sample_from_sources(n_sources) if sum(n_sources.values())>0 else []
 
         seed_dist = U.safe_get_cfg_dict(select_cfg,'seed_dist',DEFAULT_SEED_DIST)
         restart_prob = self._get_restart_prob(seed_dist)

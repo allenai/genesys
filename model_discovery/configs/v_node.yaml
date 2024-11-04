@@ -49,7 +49,7 @@ tasks:
     result:
       path: /home/ckpt
     resources:
-      gpuCount: 4
+      gpuCount: 2
       sharedMemory: 10 GiB
     context:
       priority: normal

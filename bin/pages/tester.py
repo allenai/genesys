@@ -102,3 +102,13 @@ def tester(evosys,project_dir):
         st.subheader(f'Evaluation scores under `14M`')
         st.dataframe(df.style.highlight_max(axis=0,color='violet'),use_container_width=True)
 
+
+    # da = evosys.ptree.filter_by_type('DesignArtifact')
+    # st.write(da)
+    # node = evosys.ptree.get_node('hybridstatespacetransformer')
+    # st.write(node)
+
+    unfinished = evosys.ptree.get_unfinished_designs()
+    st.write(unfinished)
+
+    
