@@ -169,6 +169,8 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                 exclude_list = []
                 for key in verifying_dict:
                     design_id, scale = U.parse_verify_id(key)
+                    if not design_id:
+                        continue
                     exclude_list.append((design_id,scale))  
                 local_doc = U.read_local_doc()
                 too_slow = local_doc.get('too_slow',{})
@@ -178,9 +180,13 @@ def _verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume
                 for _design_scale in too_slow:
                     _s=_design_scale.split('_')[-1]
                     _design=_design_scale[:-len(_s)-1]
+                    if not _design: 
+                        continue
                     for _scale in evosys.selector.target_scales:
                         exclude_list.append((_design,_scale))
                 for _design in error_models:
+                    if not _design:
+                        continue
                     for _scale in evosys.selector.target_scales:
                         exclude_list.append((_design,_scale))
 
