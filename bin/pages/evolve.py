@@ -748,8 +748,6 @@ def _evolve(evosys,mode):
     if 'ptree_max_nodes' not in st.session_state:
         st.session_state.ptree_max_nodes=100
 
-    n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
-    n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
 
     _bg_color=AU.theme_aware_options(st,"#fafafa","#f0f0f0","#fafafa")
     
@@ -770,6 +768,9 @@ def _evolve(evosys,mode):
                 legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100)
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             st.session_state.ptree_max_nodes=_max_nodes
+            
+    n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
+    n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
     
     st.write(f'**First {st.session_state.ptree_max_nodes} nodes under the namespace ```{evosys.evoname}```**, :red[{n_designs}] designs, :blue[{n_implemented}] implemented. *(Node Size by # of citations or children)*.')
             # 'Legend: :red[Seed Designs (*Displayed Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code] *(Size by # of citations)*')
