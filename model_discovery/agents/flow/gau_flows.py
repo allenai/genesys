@@ -558,7 +558,7 @@ class GUFlow(FlowCreator):
                     self.print_raw_output(out,'DESIGN_PROPOSER')
 
                 _MIN_ROUNDS=max(2-attempt,0)
-                _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS)
+                _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS) if self.max_attemps['max_search_rounds']>0 else 0
                 for i in range(_MAX_ROUNDS):
                     # TODO: perplexity context maintainance
                     with self.status_handler(f'Searching... round {i+1}...'):
@@ -837,7 +837,7 @@ class GUFlow(FlowCreator):
                     self.print_raw_output(out,'PROPOSAL_REVIEWER')
                 
                 _MIN_ROUNDS=2
-                _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS)
+                _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS) if self.max_attemps['max_search_rounds']>0 else 0
                 for i in range(_MAX_ROUNDS):
                     with self.status_handler(f'Searching... round {i+1}...'):
                         if UNSTRUCT_REVIEWER:
