@@ -95,13 +95,13 @@ if [ "$SKIP_DATA_PREP" = false ]; then
     # Prepare Datasets
     echo "Preparing the pre-training datasets"
     python -c "
-    import sys
-    sys.path.append('..')
-    from model_discovery.ve.data_loader import load_datasets
-    from model_discovery.configs.gam_config import GAMConfig_14M
+import sys
+sys.path.append('..')
+from model_discovery.ve.data_loader import load_datasets
+from model_discovery.configs.gam_config import GAMConfig_14M
 
-    config = GAMConfig_14M() # dataset setting should be the same across all model scales, so just use the 14M setting to initialize the datasets
-    load_datasets(config)
+config = GAMConfig_14M() # dataset setting should be the same across all model scales, so just use the 14M setting to initialize the datasets
+load_datasets(config)
     "
 fi
 
