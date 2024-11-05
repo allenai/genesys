@@ -614,27 +614,30 @@ class GUFlow(FlowCreator):
                 variantname,changes,reflection,abstract,selection=None,None,None,None,None
                 with self.status_handler('Finishing design proposal...'):
                     # final search, so at least two searches, first, and second in first ready
-                    if UNSTRUCT_PROPOSER:
-                        detail=thoughts if description==[] else '\n'.join(description)
-                        self.log_fn(f'Searching for {keywords}...','PROPOSAL')
-                        search_ret=self.sss(keywords,detail,instruct=thoughts)
-                        self.log_fn(f'Search finished.','PROPOSAL')
-                        analysis=thoughts
-                        if not keywords:
-                            search_ret+='\n\nWarning: No keywords detected, external search skipped, please wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response next time.'
-                        if description==[]:
-                            search_ret+='\n\nWarning: No description detected, will use full response to search internal library, please wrap your description in a quoted block like this: ```description {{Your description}}``` in your response next time.'
+                    if self.max_attemps['max_search_rounds']>0:
+                        if UNSTRUCT_PROPOSER:
+                            detail=thoughts if description==[] else '\n'.join(description)
+                            self.log_fn(f'Searching for {keywords}...','PROPOSAL')
+                            search_ret=self.sss(keywords,detail,instruct=thoughts)
+                            self.log_fn(f'Search finished.','PROPOSAL')
+                            analysis=thoughts
+                            if not keywords:
+                                search_ret+='\n\nWarning: No keywords detected, external search skipped, please wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response next time.'
+                            if description==[]:
+                                search_ret+='\n\nWarning: No description detected, will use full response to search internal library, please wrap your description in a quoted block like this: ```description {{Your description}}``` in your response next time.'
+                        else:
+                            self.log_fn(f'Searching for {keywords}...','PROPOSAL')
+                            search_ret=self.sss(keywords,detail,analysis=analysis)
+                            self.log_fn(f'Search finished.','PROPOSAL')
+                        search_stack.append({
+                            'analysis':analysis,
+                            'query':keywords,
+                            'detail':detail,
+                            'ready':ready,
+                            'search_ret':search_ret,
+                        })
                     else:
-                        self.log_fn(f'Searching for {keywords}...','PROPOSAL')
-                        search_ret=self.sss(keywords,detail,analysis=analysis)
-                        self.log_fn(f'Search finished.','PROPOSAL')
-                    search_stack.append({
-                        'analysis':analysis,
-                        'query':keywords,
-                        'detail':detail,
-                        'ready':ready,
-                        'search_ret':search_ret,
-                    })
+                        search_ret = 'Search engine is disenabled.'
                     if UNSTRUCT_PROPOSER:
                         if self.design_mode==DesignModes.MUTATION:
                             o1_finish_prompt=P.O1M_PROPOSAL_FINISH(SELECTIONS=SELECTIONS,SEARCH_RESULTS=search_ret)
@@ -885,27 +888,30 @@ class GUFlow(FlowCreator):
                 
                 suggestions=None
                 with self.status_handler('Finishing proposal review...'):
-                    if UNSTRUCT_REVIEWER:
-                        detail=thoughts if description==[] else '\n'.join(description)
-                        self.log_fn(f'Searching for {keywords}...','PROPOSAL')
-                        search_ret=self.sss(keywords,detail,instruct=thoughts)
-                        self.log_fn(f'Search finished.','PROPOSAL')
-                        analysis=thoughts
-                        if not keywords:
-                            search_ret+='\n\nWarning: No keywords detected, external search skipped, please wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response next time.'
-                        if description==[]:
-                            search_ret+='\n\nWarning: No description detected, will use full response to search internal library, please wrap your description in a quoted block like this: ```description {{Your description}}``` in your response next time.'
+                    if self.max_attemps['max_search_rounds']>0:
+                        if UNSTRUCT_REVIEWER:
+                            detail=thoughts if description==[] else '\n'.join(description)
+                            self.log_fn(f'Searching for {keywords}...','PROPOSAL')
+                            search_ret=self.sss(keywords,detail,instruct=thoughts)
+                            self.log_fn(f'Search finished.','PROPOSAL')
+                            analysis=thoughts
+                            if not keywords:
+                                search_ret+='\n\nWarning: No keywords detected, external search skipped, please wrap your keywords in a quoted block like this: ```keywords {{Your keywods}} ``` in your response next time.'
+                            if description==[]:
+                                search_ret+='\n\nWarning: No description detected, will use full response to search internal library, please wrap your description in a quoted block like this: ```description {{Your description}}``` in your response next time.'
+                        else:
+                            self.log_fn(f'Searching for {keywords}...','PROPOSAL')
+                            search_ret=self.sss(keywords,detail,analysis=analysis)
+                            self.log_fn(f'Search finished.','PROPOSAL')
+                        search_stack.append({
+                            'analysis':analysis,
+                            'query':keywords,
+                            'detail':detail,
+                            'ready':ready,
+                            'search_ret':search_ret,
+                        })
                     else:
-                        self.log_fn(f'Searching for {keywords}...','PROPOSAL')
-                        search_ret=self.sss(keywords,detail,analysis=analysis)
-                        self.log_fn(f'Search finished.','PROPOSAL')
-                    search_stack.append({
-                        'analysis':analysis,
-                        'query':keywords,
-                        'detail':detail,
-                        'ready':ready,
-                        'search_ret':search_ret,
-                    })
+                        search_ret = 'Search engine is disabled.'
                     if UNSTRUCT_REVIEWER:
                         o1m_finish_prompt=P.O1M_PROPOSAL_REVIEW_FINISH(SEARCH_RESULTS=search_ret)
                         self.print_details(PROPOSAL_REVIEWER.obj,context_proposal_reviewer,o1m_finish_prompt)

@@ -541,7 +541,7 @@ def design_config(evosys):
                     max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=5)
                 with cols[2]:
                     max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0)
-            design_cfg['max_attempts'] = max_attempts
+            design_cfg['max_attemps'] = max_attempts
             with col2:
                 num_samples={}
                 st.markdown("##### Configure number of samples")
