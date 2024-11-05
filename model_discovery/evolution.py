@@ -1537,8 +1537,7 @@ class PhylogeneticTree:
         design_vectors = dict(zip(designs, results))
 
         return design_vectors
-
-
+    
     def get_design_vector(self,node_dict,is_baseline=False, unit_info=False,load_wandb=False):
         vector = {}
         node = node_dict

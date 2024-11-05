@@ -283,8 +283,9 @@ def structured__call__(
         The optional model state at the point of querying 
     
     """
-    history,prompt,_system=context_safe_guard(history,model._config.model_name,prompt,system)
-    model_state.static_message[0]['content'] = _system
+    system_bkup = system
+    history,prompt,system=context_safe_guard(history,model._config.model_name,prompt,system)
+    model_state.static_message[0]['content'] = system
     if model_state is None:
         return _prompt_model_structured(
             model,
@@ -303,9 +304,9 @@ def structured__call__(
         query=prompt,
         manual_history=history
     )
-    model_state.static_message[0]['content'] = system
-    return _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
-
+    RET = _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
+    model_state.static_message[0]['content'] = system_bkup
+    return RET
 
 def _prompt_model_structured(model,message,response_format,logprobs=False,**kwargs) -> str:
     """Main method for calling the underlying LM. 
@@ -512,7 +513,9 @@ def claude__call__(
         The optional model state at the point of querying 
     
     """
+    system_bkup = system
     history,prompt,system=context_safe_guard(history,model._config.model_name,prompt,system)
+    model_state.static_message[0]['content'] = system
     messages=ConversationHistory(history,prompt).get_turns(use_cache)
     model._config.model_name=model_name
     if use_cache:
@@ -529,7 +532,9 @@ def claude__call__(
             **kwargs
         )
     
-    return _prompt_model_claude(model,messages,system,response_format,logprobs,use_cache,**kwargs)
+    RET = _prompt_model_claude(model,messages,system,response_format,logprobs,use_cache,**kwargs)
+    model_state.static_message[0]['content'] = system_bkup
+    return RET
 
 
 

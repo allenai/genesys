@@ -3,6 +3,7 @@ import time
 import pathlib
 import streamlit as st
 import sys,os
+from enum import Enum
 from subprocess import check_output
 import pytz
 import streamlit.components.v1 as components
@@ -20,6 +21,7 @@ import model_discovery.utils as U
 import bin.app_utils as AU
 from bin.pages.listen import DESIGN_ACTIVE_STATES,VERIFY_ACTIVE_STATES
 from model_discovery.evolution import BENCH_MODE_OPTIONS
+from bin.pages.viewer import export_leaderboards,leaderboard_filter,leaderboard_relative
 
 
 CC_POLL_FREQ = 30 # seconds
@@ -354,8 +356,9 @@ def stop_evo(evosys):
         st.rerun()
 
 
-def network_status(evosys,benchmark_mode):
+def network_status(evosys):
     group_id = evosys.CM.group_id
+    benchmark_mode = evosys.benchmark_mode
     st.write(f'#### *Network Group ```{group_id}``` Status*')
 
     with st.expander('Nodes Running Status',expanded=True):
@@ -683,47 +686,13 @@ def session_statistics(evosys):
     with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         st.info('No design session statistics available at the moment.')
 
-def evolve(evosys,project_dir):
+
+
+
+
+
+def _evolve(evosys,mode):
     
-    if 'command_center' not in st.session_state:
-        st.session_state.command_center = None
-    if 'evo_process_pid' not in st.session_state:
-        st.session_state.evo_process_pid = None
-    if 'evo_passive_thread' not in st.session_state:
-        st.session_state.evo_passive_thread = None
-
-
-    with st.sidebar:
-        AU.running_status(st,evosys)
-
-        benchmark_mode = st.checkbox("***Agent Benchmark 🪑***",
-            value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
-
-        st.button('🔄 Refresh',use_container_width=True)
-        
-        if st.session_state.command_center:
-            st.download_button(
-                label="📩 Download Logs",
-                data=json.dumps(st.session_state.command_center.read_logs(),indent=4),
-                file_name=f"{evosys.evoname}_logs.json",
-                mime="text/json",
-                use_container_width=True
-            )
-
-
-        
-    if benchmark_mode:
-        st.title("Evolution System *Agent Benchmark* 🪑")
-        if not evosys.benchmark_mode:
-            st.warning(f'The namespace ```{evosys.evoname}``` is set to evolution mode. Please do not run benchmark in this namespace.')
-    else:
-        st.title("Evolution System")
-        if evosys.benchmark_mode:
-            st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
-
-    assert evosys.remote_db, "You must connect to a remote database to run the evolution."
-
-
     running_evoname,running_group_id = _is_running(evosys)
     if running_evoname:
         if not st.session_state.evo_running:
@@ -739,13 +708,19 @@ def evolve(evosys,project_dir):
 
 
 
-    if benchmark_mode:
-        benchmark_launch_pad(evosys)
-    else:
-        evolution_launch_pad(evosys)
+    if mode == EvoModes.BENCH:
+        if evosys.benchmark_mode:
+            benchmark_launch_pad(evosys)
+        else:
+            st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
+    elif mode == EvoModes.EVOLVE:
+        if evosys.benchmark_mode:
+            st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
+        else:
+            evolution_launch_pad(evosys)
 
 
-    network_status(evosys,benchmark_mode)
+    network_status(evosys)
 
     view_latest_K=30
     if st.session_state.evo_running:
@@ -801,6 +776,145 @@ def evolve(evosys,project_dir):
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = export_height)
+
+
+
+def _is_eureka(node,baseline,threshold=0.05):
+    # given population, node, decide if it is an eureka node
+    # 1. fixed baseline, whether a node has any highlight (any scale any metric) over the baseline
+    # 2. dynamic baseline, the baseline is not fixed, but relative to the last population
+
+    pass
+
+
+BASIC_BASELINES = [
+    'gpt2 (baseline)',
+    'rwkv6 (baseline)',
+    'mamba2 (baseline)',
+    'ttt (baseline)',
+    'retnet (baseline)',
+    'random',
+]
+
+def _eureka(evosys):
+    with st.status('Loading latest data...'):
+        design_vectors = evosys.ptree.get_design_vectors()
+        baseline_vectors = evosys.ptree.get_baseline_vectors()
+        leaderboards_normed,_,_,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
+        leaderboards_normed.pop('all')
+
+    default_baseline = 'random'
+    cols = st.columns(4)
+    with cols[0]:
+        baseline = st.selectbox('Baseline',options=BASIC_BASELINES,index=0)
+    with cols[1]:
+        eureka_threshold_single = st.number_input('Eureka Threshold (Single)',min_value=0,max_value=100,value=15,step=1)
+    with cols[2]:
+        eureka_threshold_overall = st.number_input('Eureka Threshold (Overall)',min_value=0,max_value=100,value=1,step=1)
+    with cols[3]:
+        st.write('')
+        st.write('')
+        absolute = st.checkbox('Absolute',value=True)
+
+    combined_eureka = pd.DataFrame()
+
+    st.subheader('Raw Data for Computing Fixed-baseline Eureka')
+    for scale in leaderboards_normed:
+        relative = baseline if baseline in baselines[scale] else default_baseline
+        _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale])
+        cols = st.columns(2)
+        with cols[0]:
+            with st.expander(f'{scale} Normed metrics (0-1, higher is better)',expanded=False):
+                leaderboards_normed_ = _leaderboards_normed.copy()
+                leaderboards_normed_['avg.'] = leaderboards_normed_.mean(axis=1)
+                leaderboards_normed_['max.'] = leaderboards_normed_.max(axis=1)
+                st.dataframe(leaderboards_normed_)
+        with cols[1]:
+            with st.expander(f'{scale} Relative to ```{relative}``` (Normed metrics, %, {"relative" if absolute else "absolute"})',expanded=False):
+                leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,absolute=absolute)
+                leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
+                leaderboards_relative['max.'] = leaderboards_relative.max(axis=1)
+                leaderboards_relative['eureka'] = (
+                    (leaderboards_relative['avg.'] >= eureka_threshold_overall) 
+                    | (leaderboards_relative['max.'] >= eureka_threshold_single)
+                )
+                st.dataframe(leaderboards_relative)
+                combined_eureka[scale] = leaderboards_relative['eureka']
+
+    st.subheader('Combined Eureka Moments')
+    # fill the missing rows with False
+    combined_eureka = combined_eureka.fillna(False)
+    combined_eureka = combined_eureka.drop(BASIC_BASELINES, errors='ignore')
+    combined_eureka['eureka'] = combined_eureka.any(axis=1)
+    # add time stamp column by 
+    def get_timestamp(x):
+        return evosys.ptree.get_node(x).timestamp
+    combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
+    st.dataframe(combined_eureka)
+
+    
+    
+
+
+
+
+class EvoModes(Enum):
+    EVOLVE = 'Evolution System'
+    BENCH = 'Agent Benchmark'
+    EUREKA = 'Eureka Moments'
+
+
+def evolve(evosys,project_dir):
+    
+    if 'command_center' not in st.session_state:
+        st.session_state.command_center = None
+    if 'evo_process_pid' not in st.session_state:
+        st.session_state.evo_process_pid = None
+    if 'evo_passive_thread' not in st.session_state:
+        st.session_state.evo_passive_thread = None
+
+
+    with st.sidebar:
+        AU.running_status(st,evosys)
+
+        # benchmark_mode = st.checkbox("***Agent Benchmark 🪑***",
+        #     value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
+        mode = st.selectbox("Mode",options=[i.value for i in EvoModes],index=0,
+            help='Choose the mode to view the evolution system or the agent benchmark.'
+        )
+        mode = EvoModes(mode)
+
+        st.button('🔄 Refresh',use_container_width=True)
+        
+        if st.session_state.command_center:
+            st.download_button(
+                label="📩 Download Logs",
+                data=json.dumps(st.session_state.command_center.read_logs(),indent=4),
+                file_name=f"{evosys.evoname}_logs.json",
+                mime="text/json",
+                use_container_width=True
+            )
+
+
+        
+    if mode == EvoModes.EVOLVE:
+        st.title("Evolution System")
+        if not evosys.benchmark_mode:
+            st.warning(f'The namespace ```{evosys.evoname}``` is set to evolution mode. Please do not run benchmark in this namespace.')
+    elif mode == EvoModes.BENCH:
+        st.title("Agent Benchmark")
+        if evosys.benchmark_mode:
+            st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
+    elif mode == EvoModes.EUREKA:
+        st.title("Eureka Moments")
+
+
+    assert evosys.remote_db, "You must connect to a remote database to run the evolution."
+
+    if mode in [EvoModes.EVOLVE,EvoModes.BENCH]:
+        _evolve(evosys,mode)
+    elif mode == EvoModes.EUREKA:
+        _eureka(evosys)
 
 
 

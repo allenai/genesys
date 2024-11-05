@@ -156,20 +156,20 @@ def tester(evosys,project_dir):
         return history, prompt, system
                     
         
-    for debug_record in debug_records:
-        st.write('---')
-        history = debug_record['history']
-        prompt = debug_record['prompt']
-        system = debug_record['system']  
-        system_tokens = count_tokens(system, model_name)
-        prompt_tokens = count_tokens(prompt, model_name)
-        history_tokens = [count_tokens(content, model_name) for content, _ in history]
-        total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
-        st.write('before',total_tokens,system_tokens,prompt_tokens,sum(history_tokens),len(history))
-        history, prompt, system = truncate_history(history,prompt,system)
-        system_tokens = count_tokens(system, model_name)
-        prompt_tokens = count_tokens(prompt, model_name)
-        history_tokens = [count_tokens(content, model_name) for content, _ in history]
-        total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
-        st.write('after',total_tokens,system_tokens,prompt_tokens,sum(history_tokens),len(history))
-        # break
+    # for debug_record in debug_records:
+    #     st.write('---')
+    #     history = debug_record['history']
+    #     prompt = debug_record['prompt']
+    #     system = debug_record['system']  
+    #     system_tokens = count_tokens(system, model_name)
+    #     prompt_tokens = count_tokens(prompt, model_name)
+    #     history_tokens = [count_tokens(content, model_name) for content, _ in history]
+    #     total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
+    #     st.write('before',total_tokens,system_tokens,prompt_tokens,sum(history_tokens),len(history))
+    #     history, prompt, system = truncate_history(history,prompt,system)
+    #     system_tokens = count_tokens(system, model_name)
+    #     prompt_tokens = count_tokens(prompt, model_name)
+    #     history_tokens = [count_tokens(content, model_name) for content, _ in history]
+    #     total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
+    #     st.write('after',total_tokens,system_tokens,prompt_tokens,sum(history_tokens),len(history))
+    #     # break

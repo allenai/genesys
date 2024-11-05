@@ -939,7 +939,7 @@ class Selector:
     def _verify_baselines(self,exclude_list=[]):
         self.ptree.update_baselines()
         baselines = self.ptree.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
-        for scale in self.target_scales:
+        for scale in self.unlocked_scales:
             mult=self.token_mults[scale]
             for acronym in baselines:
                 if (acronym,scale) in exclude_list:
@@ -1038,6 +1038,10 @@ class Selector:
 
     @property
     def available_verify_budget(self):
+        return {k:v for k,v in self.verify_budget.items() if k in self.unlocked_scales}
+
+    @property
+    def unlocked_scales(self):
         budget=self.verify_budget
         non_zero_budget = {k:v for k,v in budget.items() if v>0}
         sorted_scales = sorted(non_zero_budget.keys(),key=lambda x:U.letternum2num(x))
@@ -1046,7 +1050,7 @@ class Selector:
             available_scales = [s for s in sorted_scales if U.letternum2num(s)<=U.letternum2num(lowest_scale)]
         else:
             available_scales = [s for s in sorted_scales if U.letternum2num(s)<U.letternum2num(self.scale_stair_start)]
-        return {k:v for k,v in budget.items() if k in available_scales}
+        return available_scales
 
     def request_temporal_budget(self): # keep selection ratios
         _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)

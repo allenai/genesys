@@ -642,12 +642,15 @@ def export_leaderboards(evosys,design_vectors, baseline_vectors):
     leaderboards_unnormed_l['all'] = leaderboards_unnormed_l['all'].drop_duplicates()
     return leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines
 
-def leaderboard_relative(leaderboard,relative='random',filter_threshold=0):
+def leaderboard_relative(leaderboard,relative='random',filter_threshold=0,absolute=False):
     base_row = leaderboard.loc[relative]
     # remove the columns where the base_row is 0
     base_row = base_row[base_row != 0]
     leaderboard = leaderboard[base_row.index]
-    leaderboard = (leaderboard - base_row) / base_row
+    if not absolute:
+        leaderboard = (leaderboard - base_row) / base_row
+    else:
+        leaderboard = leaderboard - base_row
     leaderboard = leaderboard.dropna(axis=1)
     leaderboard = leaderboard*100
     # filter out the columns where the max value is larger than the filter threshold
