@@ -17,11 +17,11 @@ Utils and code for model discovery experiments.
 2. Make the virtual env and install the requirements 
 
 ```shell
-conda create -n modis python=3.12
-conda activate modis
-conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
-pip install -e .
-genesys setup
+conda create -n genesys python=3.12 -y \
+&& conda activate genesys \
+&& conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia -y \
+&& pip install -e . \
+&& genesys setup
 ```
 Hint: use ```bash scripts/setup_env.sh -d``` to prepare datasets only
 
