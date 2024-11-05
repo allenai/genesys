@@ -251,6 +251,7 @@ class FirestoreManager:
             self.safe_upload(self.baseline_collection.document('index'),self.compress_index(self.baseline_index),merge=merge)
         else:
             n_chunks = int(math.ceil(len(self.index)/chunk_size))
+            index_name = 'index'
             for i in range(n_chunks):
                 index_name = f'index_{i}' if i>0 else 'index'
                 chunk_items = list(self.index.items())[i*chunk_size:(i+1)*chunk_size]
