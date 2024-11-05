@@ -215,7 +215,7 @@ def evosys_config(evosys):
                 settings['Budget Type']=evosys.params['budget_type']
                 settings['Max Implementation Retries']=evosys.ptree.challenging_threshold
                 n_sampled = len(os.listdir(U.pjoin(evosys.evo_dir,'db','designs')))
-                max_samples = evosys.params['max_samples'] if evosys.params['max_samples']>0 else '♾️'
+                max_samples = evosys.params['max_samples'] if evosys.params.get('max_samples',0)>0 else '♾️'
                 settings['Max Samples']=f'{n_sampled}/{max_samples}'
                 settings['Use Remote DB']=evosys.params['use_remote_db']
                 if evosys.CM:

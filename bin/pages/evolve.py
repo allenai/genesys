@@ -106,15 +106,16 @@ class CommandCenter:
         if total_design_workloads == self.max_designs_total or self.max_designs_total==0:
             print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads are full ({total_design_workloads}/{self.max_designs_total}), skipping design workload assignment')
         else:
-            _design_availability = {k:self.evosys.CM.max_design_threads[k] - v for k,v in design_workloads.items() if v<self.max_designs_per_node or self.max_designs_per_node==0}
+            _design_availability = {k:self.evosys.CM.connections[k]['max_design_threads'] - v for k,v in design_workloads.items() if v<self.max_designs_per_node or self.max_designs_per_node==0}
             design_availability = {k:v for k,v in _design_availability.items() if v>0}
+            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Design workloads: {design_workloads}, Design availability: {design_availability}')
             if sum(design_availability.values())>0:
                 available_design_threads = self.max_designs_total-sum(design_workloads.values())
                 for _ in range(max(0,available_design_threads)):
                     node_id = max(design_availability, key=design_availability.get)
                     if design_availability[node_id]>0:
-                        if design_workloads[node_id]<self.max_designs_per_node or self.max_designs_per_node==0:
-                            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning design workload to the most available node {node_id}')
+                        if design_workloads[node_id]<self.max_designs_per_node or self.max_designs_per_node==0 :
+                            print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Assigning design workload to the most available node {node_id}: {design_availability[node_id]}')
                             self.evosys.CM.design_command(node_id)
                             design_availability[node_id] -= 1
                             design_workloads[node_id] += 1
@@ -152,6 +153,8 @@ class CommandCenter:
         if to_sleep<=0:
             return to_sleep,design_workloads,verify_workloads
         user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
+        if len(user_commands)==0:
+            return to_sleep,design_workloads,verify_workloads
         processed_command_idx = []
         for idx,command in enumerate(user_commands):
             cmds = command.strip().split()
@@ -469,8 +472,6 @@ def network_status(evosys):
 
 
 def evolution_launch_pad(evosys):
-
-
     passive_mode=False
     if st.session_state.command_center and st.session_state.command_center.running and not st.session_state.command_center.active_mode:
         passive_mode=True
