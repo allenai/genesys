@@ -674,7 +674,7 @@ def search_config(evosys):
             st.write("##### Unit Code Search Configurations")
             cols = st.columns([1,1.5,1,1.5,1])
             with cols[0]:
-                _unit_search_cfg['top_k']=st.number_input("Top K",value=_unit_search_cfg['top_k'],min_value=1,step=1)
+                _unit_search_cfg['top_k']=st.number_input("Top K",value=_unit_search_cfg['top_k'],min_value=0,step=1)
             with cols[1]:
                 _unit_search_cfg['cutoff']=st.slider("Cutoff",key='unit_cutoff',
                     min_value=0.0,max_value=1.0,value=_unit_search_cfg['cutoff'],step=0.01)
