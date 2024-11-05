@@ -14,21 +14,8 @@ Utils and code for model discovery experiments.
 # Setting up 
 
 1. Clone the repo (clone with token for internal) and cd into it
-2. Make the virtual env and install the requirements 
 
-```shell
-conda create -n genesys python=3.12 -y \
-&& conda activate genesys \
-&& cd model_discovery \
-&& conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia -y \
-&& pip install -e . \
-&& genesys setup
-```
-Hint: use ```bash scripts/setup_env.sh -d``` to prepare datasets only
-
-Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
-
-3. Export the environment variables and API keys
+2. Export the environment variables and API keys
 
 ```shell
 export MY_OPENAI_KEY=YOURKEY
@@ -50,6 +37,21 @@ export COHERE_API_KEY=YOURKEY
 export PERPLEXITY_API_KEY=YOURKEY
 export MATHPIX_API_ID=YOURKEY # optional
 ```
+
+3. Make the virtual env and install the requirements 
+
+```shell
+conda create -n genesys python=3.12 -y \
+&& conda activate genesys \
+&& cd ~/model_discovery \
+&& conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia -y \
+&& pip install -e . \
+&& genesys setup \
+&& pip install -r requirements_optional.txt # optional
+```
+Hint: use ```bash scripts/setup_env.sh -d``` to prepare datasets only
+
+Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
 
 4. Test with the gui
 ```
