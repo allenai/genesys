@@ -906,7 +906,7 @@ def _stats(evosys):
                 state_counts = _data_to_freq(states)
                 st.pyplot(_draw_pie(state_counts))
             with col2:
-                st.subheader('Design attempt distribution')
+                st.subheader('Implementation attempt distribution')
                 # st.pyplot(_draw_pie(attempt_counts,startangle=30))
                 attempt_counts = _data_to_freq(attempts)
                 chart_data = pd.DataFrame(list(attempt_counts.items()),columns=['attempts','frequency'])
