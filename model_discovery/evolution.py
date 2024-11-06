@@ -1326,21 +1326,26 @@ class DesignArtifact(NodeObject):
     def costs(self):
         return self.get_cost()
     
+    def get_score(self,scale):
+        if scale not in self.verifications:
+            return 0
+        eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
+        avg_acc = 0
+        cnt = 0
+        for k,v in eval_results.items():
+            if 'acc,none' in v:
+                if v['acc,none'] is not None:
+                    avg_acc += v['acc,none']
+                    cnt += 1
+        avg_acc /= cnt
+        return avg_acc
+    
     @property
     def score(self): # XXX: need to improve a lot
         avg_acc_all = 0
         if len(self.verifications)>0:
             for scale in self.verifications:
-                eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
-                avg_acc = 0
-                cnt = 0
-                for k,v in eval_results.items():
-                    if 'acc,none' in v:
-                        if v['acc,none'] is not None:
-                            avg_acc += v['acc,none']
-                            cnt += 1
-                avg_acc /= cnt
-                avg_acc_all += avg_acc
+                avg_acc_all += self.get_score(scale)
             avg_acc_all /= len(self.verifications)
         return avg_acc_all
     

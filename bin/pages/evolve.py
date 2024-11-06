@@ -10,6 +10,7 @@ import streamlit.components.v1 as components
 from google.cloud import firestore
 from datetime import datetime, timedelta
 import threading
+import numpy as np
 import pandas as pd
 import psutil
 import matplotlib.pyplot as plt
@@ -846,6 +847,28 @@ def _draw_pie(data,startangle=90):
     ax.axis('equal')  
     return fig
 
+def _data_to_freq(data,unit=None,outlier=None,precision=2):
+    freq = {}
+    outliers = 0
+    if isinstance(data,dict):
+        values = list(data.values())
+    else:
+        values = data
+    for v in values:
+        if unit:
+            v = (v//unit)*unit
+            v = round(v,precision)
+        if outlier:
+            if v>outlier:
+                outliers += 1
+                continue
+        freq[v] = freq.get(v,0) + 1
+    if outlier:
+        return freq,outliers
+    return freq
+
+def _data_filter(data,filter_func):
+    return {k:v for k,v in data.items() if filter_func(v)}
 
 def _stats(evosys):
     st.subheader("Session Statistics Monitor")
@@ -858,11 +881,9 @@ def _stats(evosys):
 
         states = {}
         costs = {}
-        scores = {}
+        scores_14m = {}
         ratings = {}
-        state_counts = {}
         attempts = {}
-        attempt_counts = {}
         for design in designs+implemented:
             node = evosys.ptree.get_node(design)
             state = node.state
@@ -871,27 +892,102 @@ def _stats(evosys):
             else:
                 attempt = 0
             states[design] = state
-            state_counts[state] = state_counts.get(state,0) + 1
             costs[design] = node.cost
-            scores[design] = node.score
+            scores_14m[design] = node.get_score('14M')
             ratings[design] = node.proposal.rating
             attempts[design] = attempt
-            attempt_counts[f'attempt {attempt}'] = attempt_counts.get(f'attempt {attempt}',0) + 1
 
         if len(designs)+len(implemented)+len(sessions) == 0:
             st.info('No design session statistics available at the moment.')
         else:
-            st.write(f'Total designs: {len(designs)}, implemented: {len(implemented)}')
-            st.write(f'Total sessions: {len(sessions)}')
+            col1, col2 = st.columns(2)
+            with col1:
+                st.subheader('Design state distribution')  
+                state_counts = _data_to_freq(states)
+                st.pyplot(_draw_pie(state_counts))
+            with col2:
+                st.subheader('Design attempt distribution')
+                # st.pyplot(_draw_pie(attempt_counts,startangle=30))
+                attempt_counts = _data_to_freq(attempts)
+                chart_data = pd.DataFrame(list(attempt_counts.items()),columns=['attempts','frequency'])
+                st.bar_chart(chart_data,x='attempts',y='frequency')
+
+            st.subheader('Design cost distribution')
+            mean_cost = np.mean(list(costs.values()))
+            std_cost = np.std(list(costs.values()))
+            outlier=25
+            costs_counts,outliers = _data_to_freq(costs,unit=0.5,outlier=outlier,precision=1)
+            st.write(f'Mean: ```{mean_cost:.2f}```, Std: ```{std_cost:.2f}```, Outliers (```{outlier}+```): ```{outliers}```')
+            chart_data = pd.DataFrame(list(costs_counts.items()),columns=['costs','frequency'])
+            st.bar_chart(chart_data,x='costs',y='frequency')
 
             col1, col2 = st.columns(2)
             with col1:
-                st.subheader('Design state counts')  
-                st.pyplot(_draw_pie(state_counts))
-            with col2:
-                st.subheader('Design attempt counts')
-                st.pyplot(_draw_pie(attempt_counts,startangle=30))
+                st.subheader('Avg. accuracy (14M) Distribution')
+                scores_filtered = _data_filter(scores_14m,lambda x: x is not None and 0<x<1)
+                _scores = np.array(list(scores_filtered.values())).astype(float)
+                mean_score_14m = np.mean(_scores)
+                std_score_14m = np.std(_scores)
+                scores_counts = _data_to_freq(_scores,unit=0.01)
+                st.write(f'Mean: ```{mean_score_14m:.2f}```, Std: ```{std_score_14m:.2f}```')
+                chart_data = pd.DataFrame(list(scores_counts.items()),columns=['scores','frequency'])
+                st.bar_chart(chart_data,x='scores',y='frequency')
 
+            with col2:
+                st.subheader('Accuracy-Cost Correlation')
+                cost_filtered = {k:float(v) for k,v in costs.items() if k in scores_filtered}
+                _costs = np.array(list(cost_filtered.values())).astype(float)
+                _data = np.array([_costs,_scores,_scores]).T
+                chart_data = pd.DataFrame(
+                    _data, columns=["cost", "accuracy", "Accuracy"]
+                )
+                chart_data["accuracy_level"] = np.array([
+                    'low' if x < 0.6 else 
+                    'medium' if x < 0.65 else 
+                    'high' if x < 0.7 else 
+                    'very high' for x in _scores
+                ])
+                
+                st.scatter_chart(
+                    chart_data,
+                    x="cost",
+                    y="accuracy",
+                    color="accuracy_level",
+                    size="Accuracy",
+                )
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                st.subheader('Proposal rating Distribution')
+                _ratings = list(ratings.values()) 
+                mean_rating = np.mean(_ratings)
+                std_rating = np.std(_ratings)
+                ratings_counts = _data_to_freq(_ratings,unit=0.1)
+                st.write(f'Mean: ```{mean_rating:.2f}```, Std: ```{std_rating:.2f}```')
+                chart_data = pd.DataFrame(list(ratings_counts.items()),columns=['ratings','frequency'])
+                st.bar_chart(chart_data,x='ratings',y='frequency')
+
+            with col2:
+                st.subheader('Proposal rating-Accuracy Correlation')
+                ratings_filtered =  {k:float(v) for k,v in ratings.items() if k in scores_filtered}
+                _ratings = np.array(list(ratings_filtered.values())).astype(float)
+                _data = np.array([_ratings,_scores,_scores]).T
+                chart_data = pd.DataFrame(
+                    _data, columns=["rating", "accuracy", "Accuracy"]
+                )
+                chart_data["accuracy_level"] = np.array([
+                    'low' if x < 0.6 else 
+                    'medium' if x < 0.65 else 
+                    'high' if x < 0.7 else 
+                    'very high' for x in _scores
+                ])
+                st.scatter_chart(
+                    chart_data,
+                    x="rating",
+                    y="accuracy",
+                    color="accuracy_level",
+                    size="Accuracy",
+                )
 
 
 
@@ -932,8 +1028,6 @@ def evolve(evosys,project_dir):
                 mime="text/json",
                 use_container_width=True
             )
-
-
         
     if mode == EvoModes.EVOLVE:
         st.title("Evolution System")
