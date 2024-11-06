@@ -254,7 +254,7 @@ class FirestoreManager:
             index = index_doc.to_dict()
             if design_id in index:
                 index.pop(design_id)
-                index_ref.set({design_id:DELETE_FIELD})
+                index_ref.set({design_id:DELETE_FIELD},merge=True)
                 break
         
     def get_baseline_index(self):
@@ -633,7 +633,7 @@ class FirestoreManager:
             sessdata = U.load_json(U.pjoin(sessions_dir,sess_id, 'metadata.json'))
             self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
 
-    def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db
+    def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db, TODO: maybe need check self-consistency before upload
         self.get_index()
         designs=os.listdir(U.pjoin(self.db_dir,'designs'))
         for design_id in designs:
@@ -655,7 +655,11 @@ class FirestoreManager:
             metadata_path=U.pjoin(design_dir,'metadata.json')
             if not U.pexists(metadata_path) or overwrite:
                 print(f'Downloading metadata for design {design_id}')
-                Doc=self.collection.document(design_id).get().to_dict()
+                Doc_ref=self.collection.document(design_id)
+                if not Doc_ref.get().exists:
+                    shutil.rmtree(design_dir)
+                    return
+                Doc=Doc_ref.get().to_dict()
                 metadata=Doc['metadata']
                 U.save_json(metadata,metadata_path)
                 print(f'Downloaded metadata for design {design_id}')
@@ -1511,21 +1515,24 @@ class PhylogeneticTree:
         return siblings
     
     def del_design(self,design_id):
+        # children = self.get_design_children()
         self.FM.delete_design(design_id)
         self.G.remove_node(design_id)
         shutil.rmtree(self.design_dir(design_id))
         # TODO: update metadata, may cause trouble
-        # for acronym in self.filter_by_type(['DesignArtifactImplemented','DesignArtifact']):
+        # for acronym in children[design_id]:
         #     node=self.get_node(acronym)
         #     if design_id in node.seed_ids:
         #         node.seed_ids.remove(design_id)
         #         node.sess_snapshot['seed_ids'].remove(design_id)
-        #         node.save()
         #         seeds = node.seed_ids
         #         title = node.title
         #         sess_data = node.sess_snapshot
         #         metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title, 'sess_snapshot': sessdata} # sess_snapshot is the status of the session when this sampling happens
         #         self.FM.upload_metadata(acronym,metadata,overwrite=True)
+        #         metadata_dir = U.pjoin(self.design_dir(acronym),'metadata.json')
+        #         U.save_json(metadata_dir,metadata)
+
 
 
     def get_design_session(self,sess_id:str):

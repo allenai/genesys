@@ -111,20 +111,37 @@ def tester(evosys,project_dir):
     # unfinished = evosys.ptree.get_unfinished_designs()
     # st.write(unfinished)
 
+
+    # failed = []
+    # designs = evosys.ptree.filter_by_type(['DesignArtifact'])
+    # for design in designs:
+    #     node = evosys.ptree.get_node(design)
+    #     if node.state == 'failed':
+    #         failed.append(design)
+    # st.write(failed)
+
+
+
+
+
+
     ##################### Debugging C Guard #####################
 
     from model_discovery.agents.agent_utils import context_safe_guard,count_tokens
     
     CKPT_DIR = os.environ['CKPT_DIR']
     debug_dir = os.path.join(CKPT_DIR,'debug_ckpts')
-    debug_records = []
-    for file in os.listdir(debug_dir):
-        debug_records.append(U.load_json(os.path.join(debug_dir,file)))
-    st.write(len(debug_records))
-    model_name = "o1-preview"
-    total_limit = 20000 # get_token_limit(model_name)
-    format_buffer = 100  # Adjust based on model's message formatting overhead
-    SAFE_BUFFER = 1024
+    if not os.path.exists(debug_dir):
+        st.write('No debug records found')
+    else:
+        debug_records = []
+        for file in os.listdir(debug_dir):
+            debug_records.append(U.load_json(os.path.join(debug_dir,file)))
+        st.write(len(debug_records))
+        model_name = "o1-preview"
+        total_limit = 20000 # get_token_limit(model_name)
+        format_buffer = 100  # Adjust based on model's message formatting overhead
+        SAFE_BUFFER = 1024
 
     def truncate_history(history,prompt,system):
         effective_limit = total_limit - SAFE_BUFFER
