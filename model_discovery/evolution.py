@@ -656,7 +656,7 @@ class FirestoreManager:
             if not U.pexists(metadata_path) or overwrite:
                 print(f'Downloading metadata for design {design_id}')
                 Doc_ref=self.collection.document(design_id)
-                if not Doc_ref.get().exists:
+                if not Doc_ref.get().exists and U.pexists(design_dir):
                     shutil.rmtree(design_dir)
                     return
                 Doc=Doc_ref.get().to_dict()
