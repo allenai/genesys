@@ -9,6 +9,11 @@ import inspect
 import tiktoken 
 import copy
 
+import anthropic
+from langchain_anthropic import ChatAnthropic
+from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
+
+
 from exec_utils.models.model import ModelState,OpenAIModel,ModelRuntimeError,UtilityModel
 from exec_utils.models.utils import openai_costs
 
@@ -136,6 +141,11 @@ ANTHROPIC_OUTPUT_BUFFER={
 
 SAFE_BUFFER=1024
 
+try:
+    ANTHROPIC_CLIENT = anthropic.Client()
+except:
+    ANTHROPIC_CLIENT = None
+
 
 def get_token_limit(model_name):
     if 'gpt' in model_name or 'o1' in model_name:
@@ -150,9 +160,12 @@ def _encode_text(text,model_name,truncate=None):
         enc=tiktoken.encoding_for_model(model_name)
         tokens = enc.encode(text)
     elif 'claude' in model_name:
-        client = anthropic.Client()
-        tokenizer =  client.get_tokenizer()
-        tokens = tokenizer.encode(text).ids
+        if ANTHROPIC_CLIENT is None:
+            enc = tiktoken.get_encoding("o200k_base")
+            tokens = enc.encode(text)
+        else:
+            tokenizer =  ANTHROPIC_CLIENT.get_tokenizer()
+            tokens = tokenizer.encode(text).ids
     else:
         raise ValueError(f'Unsupported model: {model_name}')
     if truncate is not None:
@@ -164,9 +177,12 @@ def decode_text(tokens,model_name):
         enc=tiktoken.encoding_for_model(model_name)
         return enc.decode(tokens)
     elif 'claude' in model_name:
-        client = anthropic.Client()
-        tokenizer =  client.get_tokenizer()
-        return tokenizer.decode(tokens)
+        if ANTHROPIC_CLIENT is None:
+            enc = tiktoken.get_encoding("o200k_base")
+            return enc.decode(tokens)
+        else:
+            tokenizer =  ANTHROPIC_CLIENT.get_tokenizer()
+            return tokenizer.decode(tokens)
     else:
         raise ValueError(f'Unsupported model: {model_name}')
     
@@ -421,10 +437,6 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
 ## https://python.langchain.com/v0.1/docs/modules/model_io/chat/structured_output/#anthropic 
 #################################################################################################################################
 '''
-
-import anthropic
-from langchain_anthropic import ChatAnthropic
-from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
 
 
 class ConversationHistory:
