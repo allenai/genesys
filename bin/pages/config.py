@@ -209,7 +209,7 @@ def evosys_config(evosys):
                 settings['Verification Budge Usage']={}
                 for scale,num in evosys.get_verify_budget(full=True).items():
                     remaining = evosys.selector.verify_budget.get(scale,0) 
-                    settings['Verification Budge Usage'][scale]=f'{remaining}/{num}'
+                    settings['Verification Budge Usage'][scale]=f'{num-remaining}/{num}'
                 sorted_keys = sorted(list(settings['Verification Budge Usage'].keys()),key=lambda x: U.letternum2num(x))
                 settings['Verification Budge Usage'] = {k: settings['Verification Budge Usage'][k] for k in sorted_keys}
                 settings['Budget Type']=evosys.params['budget_type']

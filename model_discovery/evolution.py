@@ -1041,7 +1041,7 @@ class Proposal:
     variantname:str
     proposal:str
     review:str
-    rating:int
+    rating:float
     passed:bool
     suggestions:str
     reflection:str
@@ -1139,13 +1139,12 @@ class Implementation:
     def from_dict(cls, _dict: Dict):
         # _dict['history']=_patch__try_fix_history(_dict['history'])
         for i in range(len(_dict['history'])):
-            if 'design_cfg' in _dict['history'][i]:
-                _dict['history'][i]['design_cfg']['running_mode']=RunningModes(_dict['history'][i]['design_cfg']['running_mode'])
-        _dict['history'] = []
-        for attempt in _dict['history']:
+            attempt = _dict['history'][i]
+            if 'design_cfg' in attempt:
+                attempt['design_cfg']['running_mode']=RunningModes(attempt['design_cfg']['running_mode'])
             if 'rounds' not in attempt:
-                attempt['rounds']=[]
-            _dict['history'].append(ImplementationAttempt.from_dict(attempt))
+                attempt['rounds'] = []
+            _dict['history'][i] = ImplementationAttempt.from_dict(attempt)
         _dict['implementation']=GAUTree.from_dict(_dict['implementation'])
         return cls(**_dict)
 
@@ -1327,6 +1326,24 @@ class DesignArtifact(NodeObject):
     def costs(self):
         return self.get_cost()
     
+    @property
+    def score(self): # XXX: need to improve a lot
+        avg_acc_all = 0
+        if len(self.verifications)>0:
+            for scale in self.verifications:
+                eval_results = self.verifications[scale].verification_report['eval_results.json']['results']
+                avg_acc = 0
+                cnt = 0
+                for k,v in eval_results.items():
+                    if 'acc,none' in v:
+                        if v['acc,none'] is not None:
+                            avg_acc += v['acc,none']
+                            cnt += 1
+                avg_acc /= cnt
+                avg_acc_all += avg_acc
+            avg_acc_all /= len(self.verifications)
+        return avg_acc_all
+    
     def get_cost(self):
         costs = self.proposal.costs.copy()  # Create a copy of the proposal costs
         if self.implementation:
@@ -1338,7 +1355,27 @@ class DesignArtifact(NodeObject):
                     costs[k] = v
         # TODO: maybe cost of rerank, selection, etc. also considered, now only agents 
         return costs
-
+    
+    @property
+    def cost(self):
+        return sum(self.get_cost().values())
+    
+    @property
+    def state(self):
+        if not self.proposal.passed:
+            return 'failed'
+        else:
+            if not self.implementation:
+                return 'proposed (unimplemented)'
+            else:
+                n_tries = len(self.implementation.history)
+                if self.implementation.status=='implemented':
+                    if len(self.verifications)>0:
+                        return f'implemented (verified):{n_tries}'
+                    else:
+                        return f'implemented (unverified):{n_tries}'
+                else:
+                    return f'unfinished ({self.implementation.status}):{n_tries}'
 
 # def write_dot(G, path):
 #     """Write NetworkX graph G to Graphviz dot format on path.
@@ -1491,7 +1528,7 @@ class PhylogeneticTree:
         cost=0
         designs=self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
         for design in designs:
-            cost+=sum(self.get_node(design).costs.values())
+            cost+=self.get_node(design).cost
         return cost
 
     def budget_status(self,budgets,ret_verified=False):

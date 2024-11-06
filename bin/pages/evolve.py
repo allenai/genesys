@@ -12,6 +12,7 @@ from datetime import datetime, timedelta
 import threading
 import pandas as pd
 import psutil
+import matplotlib.pyplot as plt
 import subprocess
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 
@@ -680,16 +681,7 @@ def benchmark_launch_pad(evosys):
             if st.session_state.command_center:
                 with st.spinner('Stopping... Note, the nodes will keep working on the unfinished jobs'):
                     stop_evo(evosys)
-
-    
-def session_statistics(evosys):
-    st.subheader("Session Statistics Monitor")
-    with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
-        st.info('No design session statistics available at the moment.')
-
-
-
-
+        
 
 
 def _evolve(evosys,mode):
@@ -737,9 +729,6 @@ def _evolve(evosys,mode):
                 st.info("No logs available at the moment.")
 
 
-    session_statistics(evosys)
-    
-
     st.subheader("Phylogenetic Tree Monitor")
 
     col1, col2, col3 = st.columns([6,0.1,2])
@@ -779,14 +768,6 @@ def _evolve(evosys,mode):
     source_code = HtmlFile.read() 
     components.html(source_code, height = export_height)
 
-
-
-def _is_eureka(node,baseline,threshold=0.05):
-    # given population, node, decide if it is an eureka node
-    # 1. fixed baseline, whether a node has any highlight (any scale any metric) over the baseline
-    # 2. dynamic baseline, the baseline is not fixed, but relative to the last population
-
-    pass
 
 
 BASIC_BASELINES = [
@@ -854,8 +835,62 @@ def _eureka(evosys):
     combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
     st.dataframe(combined_eureka)
 
-    
-    
+
+def _draw_pie(data,startangle=90):
+    labels = [f'{k}: {v}' for k,v in data.items()]
+    sizes = list(data.values())
+    explode = tuple([0]*len(labels))
+    fig, ax = plt.subplots()
+    ax.pie(sizes, explode=explode, labels=labels, autopct='%1.2f%%',
+        shadow=True, startangle=startangle)
+    ax.axis('equal')  
+    return fig
+
+
+def _stats(evosys):
+    st.subheader("Session Statistics Monitor")
+    with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
+        # evosys.ptree.update_design_tree()
+
+        designs = evosys.ptree.filter_by_type('DesignArtifact')
+        implemented = evosys.ptree.filter_by_type('DesignArtifactImplemented')
+        sessions = evosys.ptree.design_sessions
+
+        states = {}
+        costs = {}
+        scores = {}
+        ratings = {}
+        state_counts = {}
+        attempts = {}
+        attempt_counts = {}
+        for design in designs+implemented:
+            node = evosys.ptree.get_node(design)
+            state = node.state
+            if ':' in state:
+                state, attempt = state.split(':')
+            else:
+                attempt = 0
+            states[design] = state
+            state_counts[state] = state_counts.get(state,0) + 1
+            costs[design] = node.cost
+            scores[design] = node.score
+            ratings[design] = node.proposal.rating
+            attempts[design] = attempt
+            attempt_counts[f'attempt {attempt}'] = attempt_counts.get(f'attempt {attempt}',0) + 1
+
+        if len(designs)+len(implemented)+len(sessions) == 0:
+            st.info('No design session statistics available at the moment.')
+        else:
+            st.write(f'Total designs: {len(designs)}, implemented: {len(implemented)}')
+            st.write(f'Total sessions: {len(sessions)}')
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.subheader('Design state counts')  
+                st.pyplot(_draw_pie(state_counts))
+            with col2:
+                st.subheader('Design attempt counts')
+                st.pyplot(_draw_pie(attempt_counts,startangle=30))
 
 
 
@@ -864,6 +899,7 @@ class EvoModes(Enum):
     EVOLVE = 'Evolution System'
     BENCH = 'Agent Benchmark'
     EUREKA = 'Eureka Moments'
+    STATS = 'Experiment Statistics'
 
 
 def evolve(evosys,project_dir):
@@ -909,7 +945,8 @@ def evolve(evosys,project_dir):
             st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
     elif mode == EvoModes.EUREKA:
         st.title("Eureka Moments")
-
+    elif mode == EvoModes.STATS:
+        st.title("Experiment Statistics")
 
     assert evosys.remote_db, "You must connect to a remote database to run the evolution."
 
@@ -917,6 +954,8 @@ def evolve(evosys,project_dir):
         _evolve(evosys,mode)
     elif mode == EvoModes.EUREKA:
         _eureka(evosys)
+    elif mode == EvoModes.STATS:
+        _stats(evosys)
 
 
 
