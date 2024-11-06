@@ -139,7 +139,7 @@ ANTHROPIC_OUTPUT_BUFFER={
     "claude-3-5-sonnet-20241022":8192*2,
 }
 
-SAFE_BUFFER=1024
+SAFE_BUFFER=4096
 
 try:
     ANTHROPIC_CLIENT = anthropic.Client()
@@ -149,9 +149,9 @@ except:
 
 
 def get_token_limit(model_name):
-    if 'gpt' in model_name or 'o1' in model_name:
+    if model_name in OPENAI_TOKEN_LIMITS:
         return OPENAI_TOKEN_LIMITS[model_name] - OPENAI_OUTPUT_BUFFER[model_name]
-    elif 'claude' in model_name:
+    elif model_name in ANTHROPIC_TOKEN_LIMITS:
         return ANTHROPIC_TOKEN_LIMITS[model_name] - ANTHROPIC_OUTPUT_BUFFER[model_name]
     else:
         raise ValueError(f'Unsupported model: {model_name}')
@@ -225,7 +225,7 @@ CTX_ERROR_LOG_DIR = os.path.join(CKPT_DIR,'ctx_error_logs')
 os.makedirs(CTX_ERROR_LOG_DIR,exist_ok=True)
 
 # XXX: seems still not guaranteed to be safe, why??
-def context_safe_guard(message,model_name,system=None): # message: list of dicts [{ 'role':str , 'content':str }]
+def context_safe_guard(message,model_name,system_tokens=None): # message: list of dicts [{ 'role':str , 'content':str }]
     # Get system and prompt messages without modifying original list
     total_limit = get_token_limit(model_name)
     format_buffer = 100  # Adjust based on model's message formatting overhead
@@ -241,8 +241,9 @@ def context_safe_guard(message,model_name,system=None): # message: list of dicts
 
     prompt = message[-1]
     is_claude=False
-    if system is None:
-        system = message[0]
+    if system_tokens is None:
+        system=message[0]
+        system_tokens = count_msg(system, model_name)
         history = message[1:-1] if len(message)>2 else []  # Get remaining messages if any
     else:
         is_claude=True
@@ -250,17 +251,12 @@ def context_safe_guard(message,model_name,system=None): # message: list of dicts
 
     history = copy.deepcopy(list(history))
 
-    system_tokens = count_msg(system, model_name)
     if system_tokens > effective_limit: # should not happen at all! Not make sense to query anymore
-        # system['content'] = truncate_text(system['content'], effective_limit-format_buffer, model_name)
-        # return compose_message(system=system)
         with open(os.path.join(CTX_ERROR_LOG_DIR,f'system_{time.time()}.json'),'w') as f:
             json.dump(message,f)
         raise ValueError(f'Context Error: System message is too long: {system_tokens} tokens')
     prompt_tokens = count_msg(prompt, model_name)
     if prompt_tokens+system_tokens > effective_limit: # should not happen at all! Not make sense to query anymore
-        # prompt['content'] = truncate_text(prompt['content'], effective_limit-system_tokens-format_buffer, model_name)
-        # return compose_message(system=system,prompt=prompt)
         with open(os.path.join(CTX_ERROR_LOG_DIR,f'prompt_{time.time()}.json'),'w') as f:
             json.dump(message,f)
         raise ValueError(f'Context Error: Prompt message is too long: {prompt_tokens} tokens')
@@ -381,6 +377,9 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
             if 'timeout' in str(e) or 'timed out' in str(e):
                 time.sleep(2**(i+1))
             else:
+                if 'context_length_exceeded' in str(e):
+                    with open(os.path.join(CTX_ERROR_LOG_DIR,f'message_{time.time()}.json'),'w') as f:
+                        json.dump(message,f)
                 raise e
 
     # raise ModelRuntimeError(
@@ -594,7 +593,8 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,use
     
     """
     ERROR=[]
-    message=context_safe_guard(message,model._config.model_name,system)
+    system_tokens=count_tokens(system[0]['text'],model._config.model_name)
+    message=context_safe_guard(message,model._config.model_name,system_tokens)
     for i in range(model._config.num_calls):
         try:
             return call_model_claude(model,message,system,response_format,logprobs,use_cache)
