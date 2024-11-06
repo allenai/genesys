@@ -143,8 +143,9 @@ SAFE_BUFFER=1024
 
 try:
     ANTHROPIC_CLIENT = anthropic.Client()
+    ANTHROPIC_TOKENIZER =  ANTHROPIC_CLIENT.get_tokenizer()
 except:
-    ANTHROPIC_CLIENT = None
+    ANTHROPIC_TOKENIZER = None
 
 
 def get_token_limit(model_name):
@@ -160,12 +161,11 @@ def _encode_text(text,model_name,truncate=None):
         enc=tiktoken.encoding_for_model(model_name)
         tokens = enc.encode(text)
     elif 'claude' in model_name:
-        if ANTHROPIC_CLIENT is None:
+        if ANTHROPIC_TOKENIZER is None:
             enc = tiktoken.get_encoding("o200k_base")
             tokens = enc.encode(text)
         else:
-            tokenizer =  ANTHROPIC_CLIENT.get_tokenizer()
-            tokens = tokenizer.encode(text).ids
+            tokens = ANTHROPIC_TOKENIZER.encode(text).ids
     else:
         raise ValueError(f'Unsupported model: {model_name}')
     if truncate is not None:
@@ -177,12 +177,11 @@ def decode_text(tokens,model_name):
         enc=tiktoken.encoding_for_model(model_name)
         return enc.decode(tokens)
     elif 'claude' in model_name:
-        if ANTHROPIC_CLIENT is None:
+        if ANTHROPIC_TOKENIZER is None:
             enc = tiktoken.get_encoding("o200k_base")
             return enc.decode(tokens)
         else:
-            tokenizer =  ANTHROPIC_CLIENT.get_tokenizer()
-            return tokenizer.decode(tokens)
+            return ANTHROPIC_TOKENIZER.decode(tokens)
     else:
         raise ValueError(f'Unsupported model: {model_name}')
     
