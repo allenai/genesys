@@ -241,6 +241,21 @@ class FirestoreManager:
                 self.index=_index
             self.fix_index()
         return self.index
+    
+    def del_index(self,design_id):
+        if design_id in self.index:
+            self.index.pop(design_id)
+        for i in range(10000):
+            index_name = 'index' if i==0 else f'index_{i}'
+            index_ref = self.collection.document(index_name)
+            index_doc = index_ref.get()
+            if not index_doc.exists:
+                break
+            index = index_doc.to_dict()
+            if design_id in index:
+                index.pop(design_id)
+                index_ref.set({design_id:DELETE_FIELD})
+                break
         
     def get_baseline_index(self):
         self.get_index(is_baseline=True)
@@ -739,7 +754,6 @@ class FirestoreManager:
                 if not self.progress_leq(index_term,sess_data): # index is older
                     self.ptree.get_design_session(sess_id)
 
-
     def sync_from_db(self,overwrite=False): # download all designs from db if out of date
         self.get_index()
         self.get_baseline_index()
@@ -748,12 +762,9 @@ class FirestoreManager:
         self.download_baselines(overwrite=overwrite)
         print('Local designs synced from remote DB')
 
-    def delete_design(self,design_id):
-        # should be used by human admin to fix error, not the agent
-        # 1. delete the design 
-        # 2. delete the index
-        # 3. delete from GAUDict
-        raise NotImplementedError("Not implemented yet")
+    def delete_design(self,design_id): # remove erroneous design from db
+        self.collection.document(design_id).delete()
+        self.del_index(design_id)
 
     def sync(self,overwrite=False,verbose=False):
         self.sync_to_db(overwrite=overwrite,verbose=verbose)
@@ -1271,7 +1282,6 @@ class DesignArtifact(NodeObject):
                 prompt+=f"\n# Implementation\n\n{self.implementation.implementation.view(unit_code=False)[0]}\n"
         prompt += self.verify_summary(include_wandb=False)
         return prompt
-    
 
     def verify_summary(self,include_wandb=True):
         mdtext = f'\n**Verification:**\n'
@@ -1500,6 +1510,24 @@ class PhylogeneticTree:
                 siblings.append(acronym)
         return siblings
     
+    def del_design(self,design_id):
+        self.FM.delete_design(design_id)
+        self.G.remove_node(design_id)
+        shutil.rmtree(self.design_dir(design_id))
+        # TODO: update metadata, may cause trouble
+        # for acronym in self.filter_by_type(['DesignArtifactImplemented','DesignArtifact']):
+        #     node=self.get_node(acronym)
+        #     if design_id in node.seed_ids:
+        #         node.seed_ids.remove(design_id)
+        #         node.sess_snapshot['seed_ids'].remove(design_id)
+        #         node.save()
+        #         seeds = node.seed_ids
+        #         title = node.title
+        #         sess_data = node.sess_snapshot
+        #         metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title, 'sess_snapshot': sessdata} # sess_snapshot is the status of the session when this sampling happens
+        #         self.FM.upload_metadata(acronym,metadata,overwrite=True)
+
+
     def get_design_session(self,sess_id:str):
         if sess_id not in self.design_sessions and self.FM:
             sessdata = self.FM.get_design_session(sess_id)
