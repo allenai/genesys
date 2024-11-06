@@ -1861,6 +1861,8 @@ class PhylogeneticTree:
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
             if id not in self.G.nodes:
                 artifact = DesignArtifact.load(self.design_dir(id))
+                if artifact is None:
+                    continue
                 self.G.add_node(id, data=artifact)
                 for seed_id in artifact.seed_ids:
                     edges_to_add.append((seed_id, id))
