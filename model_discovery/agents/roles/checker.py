@@ -1071,12 +1071,12 @@ class Checker(exec_utils.BaseTool):
                 else:
                     d_model //= 2
             
-            print(f'Attempt {n_tries}: Trying n_block={n_block}, d_model={d_model}')
             auto_cfg = {'d_model': d_model, 'n_block': n_block}
             
             del glm  # Clear previous model
             glm, _ = reload_gam(config, gab_code, name, auto_cfg, **factory_kwargs)
             size = sum(p.numel() for p in glm.parameters())
+            print(f'Attempt {n_tries}: Trying n_block={n_block}, d_model={d_model}, size={size}')
             diff = size - last_size
             if diff == 0:
                 return None
