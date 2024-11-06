@@ -190,39 +190,81 @@ def count_tokens(text,model_name):
         return 0
     return len(_encode_text(text,model_name))
 
+def count_msg(msg,model_name):
+    if 'claude' in model_name:
+        return count_tokens(msg['content'][0]['text'],model_name)
+    else:
+        return count_tokens(msg['content'],model_name)
+
 def truncate_text(text,token_limit,model_name):
     tokens=_encode_text(text,model_name,truncate=token_limit)
     text=decode_text(tokens,model_name)+'\n\n... (truncated)'
     return text
+    
+def truncate_msg(msg,token_limit,model_name):
+    if 'claude' in model_name:
+        msg['content'][0]['text']=truncate_text(msg['content'][0]['text'],token_limit,model_name)
+    else:
+        msg['content']=truncate_text(msg['content'],token_limit,model_name)
+    return msg
+
+
+def compose_message(system=None,prompt=None,history=None):
+    message=[]
+    if system is not None:
+        message.append(system)
+    if history is not None:
+        message+=history
+    if prompt is not None:
+        message.append(prompt)
+    return message
+
+
+CKPT_DIR = os.environ['CKPT_DIR']
+CTX_ERROR_LOG_DIR = os.path.join(CKPT_DIR,'ctx_error_logs')
+os.makedirs(CTX_ERROR_LOG_DIR,exist_ok=True)
 
 # XXX: seems still not guaranteed to be safe, why??
-def context_safe_guard(history, model_name, prompt, system):
-    # DEBUG_CKPT={
-    #     'history':history,
-    #     'prompt':prompt,
-    #     'system':system,
-    # }
-    # CKPT_DIR = os.environ['CKPT_DIR']
-    # time_str = time.time()
-    # dir = os.path.join(CKPT_DIR,'debug_ckpts')
-    # os.makedirs(dir,exist_ok=True)
-    # with open(os.path.join(dir,f'{time_str}.json'),'w') as f:
-    #     json.dump(DEBUG_CKPT,f)
-
-    history = copy.deepcopy(list(history))
+def context_safe_guard(message,model_name,system=None): # message: list of dicts [{ 'role':str , 'content':str }]
+    # Get system and prompt messages without modifying original list
     total_limit = get_token_limit(model_name)
     format_buffer = 100  # Adjust based on model's message formatting overhead
     effective_limit = total_limit - SAFE_BUFFER
 
-    system_tokens = count_tokens(system, model_name)
-    if system_tokens > effective_limit:
-        system = truncate_text(system, effective_limit-format_buffer, model_name)
-        return [], '', system
-    prompt_tokens = count_tokens(prompt, model_name)
-    if prompt_tokens+system_tokens > effective_limit:
-        prompt = truncate_text(prompt, effective_limit-system_tokens-format_buffer, model_name)
-        return [], prompt, system
-    history_tokens = [count_tokens(content, model_name) for content, _ in history]
+    if len(message)==1:
+        tokens = count_msg(message[0],model_name)
+        if tokens > total_limit:
+            with open(os.path.join(CTX_ERROR_LOG_DIR,f'prompt_{time.time()}.json'),'w') as f:
+                json.dump(message,f)
+            raise ValueError(f'Context Error: Prompt message is too long: {tokens} tokens')
+        return message
+
+    prompt = message[-1]
+    is_claude=False
+    if system is None:
+        system = message[0]
+        history = message[1:-1] if len(message)>2 else []  # Get remaining messages if any
+    else:
+        is_claude=True
+        history = message[:-1] if len(message)>1 else []
+
+    history = copy.deepcopy(list(history))
+
+    system_tokens = count_msg(system, model_name)
+    if system_tokens > effective_limit: # should not happen at all! Not make sense to query anymore
+        # system['content'] = truncate_text(system['content'], effective_limit-format_buffer, model_name)
+        # return compose_message(system=system)
+        with open(os.path.join(CTX_ERROR_LOG_DIR,f'system_{time.time()}.json'),'w') as f:
+            json.dump(message,f)
+        raise ValueError(f'Context Error: System message is too long: {system_tokens} tokens')
+    prompt_tokens = count_msg(prompt, model_name)
+    if prompt_tokens+system_tokens > effective_limit: # should not happen at all! Not make sense to query anymore
+        # prompt['content'] = truncate_text(prompt['content'], effective_limit-system_tokens-format_buffer, model_name)
+        # return compose_message(system=system,prompt=prompt)
+        with open(os.path.join(CTX_ERROR_LOG_DIR,f'prompt_{time.time()}.json'),'w') as f:
+            json.dump(message,f)
+        raise ValueError(f'Context Error: Prompt message is too long: {prompt_tokens} tokens')
+    history_tokens = [count_msg(msg, model_name) for msg in history]
 
     while True:
         total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
@@ -230,16 +272,17 @@ def context_safe_guard(history, model_name, prompt, system):
             break
         non_last_tokens = sum(history_tokens[1::]) if len(history_tokens) > 1 else 0
         if non_last_tokens + system_tokens + prompt_tokens <= effective_limit: # can be solved by truncating the first message
-            content, role = history[0]
             last_limit = effective_limit - system_tokens - prompt_tokens - format_buffer - non_last_tokens
-            last = truncate_text(content, last_limit, model_name)
-            history[0] = (last, role)
-            history_tokens[0] = count_tokens(last, model_name)
+            history[0] = truncate_msg(history[0], last_limit, model_name)  
+            history_tokens[0] = count_msg(history[0], model_name)
         else:
             history.pop(0)
             history_tokens.pop(0)
+    if is_claude:
+        return compose_message(history=history,prompt=prompt)
+    else:
+        return compose_message(history=history,prompt=prompt,system=system)
 
-    return tuple(history), prompt, system
 
 
 class ModelOutputPlus(UtilityModel):
@@ -298,9 +341,6 @@ def structured__call__(
         The optional model state at the point of querying 
     
     """
-    system_bkup = system
-    history,prompt,system=context_safe_guard(history,model._config.model_name,prompt,system)
-    model_state.static_message[0]['content'] = system
     if model_state is None:
         return _prompt_model_structured(
             model,
@@ -319,9 +359,7 @@ def structured__call__(
         query=prompt,
         manual_history=history
     )
-    RET = _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
-    model_state.static_message[0]['content'] = system_bkup
-    return RET
+    return _prompt_model_structured(model,message,response_format,logprobs=logprobs,**kwargs)
 
 def _prompt_model_structured(model,message,response_format,logprobs=False,**kwargs) -> str:
     """Main method for calling the underlying LM. 
@@ -331,6 +369,7 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
         The input prompt object to the model. 
     
     """
+    message = context_safe_guard(message,model._config.model_name)
     for i in range(model._config.num_calls):
         try:
             return call_model_structured(model,message,response_format,logprobs=logprobs)
@@ -357,6 +396,7 @@ def o1_beta_message_patch(message):
             'content':msg['content']
         })
     return msgs
+
 
 def call_model_structured(model,message,response_format, logprobs=False) -> ModelOutputPlus:
     """Calls the underlying model 
@@ -400,6 +440,7 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
         logprobs=logprobs,
         **fn_kwargs
     )
+
     msg=completions.choices[0].message
     if (response_format is not None and inspect.isclass(response_format)
         and issubclass(response_format,BaseModel)):
@@ -524,28 +565,23 @@ def claude__call__(
         The optional model state at the point of querying 
     
     """
-    system_bkup = system
-    history,prompt,system=context_safe_guard(history,model._config.model_name,prompt,system)
-    model_state.static_message[0]['content'] = system
     messages=ConversationHistory(history,prompt).get_turns(use_cache)
     model._config.model_name=model_name
     if use_cache:
         system=[{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
     else:
         system=[{"type": "text", "text": system}]
-    if model_state is None:
-        return _prompt_model_structured(
-            model,
-            messages,
-            response_format,
-            logprobs=logprobs,
-            system=system,
-            **kwargs
-        )
+    # if model_state is None:
+    #     return _prompt_model_structured(
+    #         model,
+    #         messages,
+    #         response_format,
+    #         logprobs=logprobs,
+    #         system=system,
+    #         **kwargs
+    #     )
     
-    RET = _prompt_model_claude(model,messages,system,response_format,logprobs,use_cache,**kwargs)
-    model_state.static_message[0]['content'] = system_bkup
-    return RET
+    return _prompt_model_claude(model,messages,system,response_format,logprobs,use_cache,**kwargs)
 
 
 
@@ -558,6 +594,7 @@ def _prompt_model_claude(model,message,system,response_format,logprobs=False,use
     
     """
     ERROR=[]
+    message=context_safe_guard(message,model._config.model_name,system)
     for i in range(model._config.num_calls):
         try:
             return call_model_claude(model,message,system,response_format,logprobs,use_cache)
@@ -628,6 +665,7 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     else:
         tools_args={}
         
+    # TODO: guard here 
     RET=anthropic.Anthropic().messages.create(
         model=model._config.model_name, # model in config is ignored
         max_tokens=model._config.max_output_tokens,
@@ -637,6 +675,7 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
         extra_headers=extra_headers,
         **tools_args
     )
+
     RET=RET.dict()
     if RET['type']=='error':
         raise Exception(RET['error'])
