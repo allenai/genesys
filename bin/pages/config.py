@@ -328,7 +328,7 @@ def ve_config(evosys):
 
             st.form_submit_button("Save and Apply",
                 on_click=apply_ve_config,args=(evosys,_ve_cfg),
-                disabled=st.session_state.evo_running,
+                # disabled=st.session_state.evo_running,
                 help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
             )   
 
@@ -449,7 +449,10 @@ def select_config(evosys):
                 seed_design_dist = {k:v/100 for k,v in seed_design_dist.items()}
                 select_cfg['seed_design_dist'] = seed_design_dist
 
-            st.form_submit_button("Save and Apply",on_click=apply_select_config,args=(evosys,select_cfg),disabled=st.session_state.evo_running)   
+            st.form_submit_button("Save and Apply",
+                on_click=apply_select_config,args=(evosys,select_cfg),
+                # disabled=st.session_state.evo_running,
+            )   
 
 
 def design_config(evosys):
@@ -562,7 +565,10 @@ def design_config(evosys):
                 design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg['use_unlimited_prompt'],
                     help='If true, will prompt the agent to not worry about the number of tokens in their reasoning and response, and use as many as needed to give the best response.')
 
-            st.form_submit_button("Save and Apply",on_click=apply_design_config,args=(evosys,design_cfg),disabled=st.session_state.evo_running)   
+            st.form_submit_button("Save and Apply",
+                on_click=apply_design_config,args=(evosys,design_cfg),
+                # disabled=st.session_state.evo_running,
+            )   
 
 
 EMBEDDING_MODELS = {
@@ -700,7 +706,10 @@ def search_config(evosys):
             search_cfg['embedding_models']['unitcode'] = _unit_embedding_model
             search_cfg['embedding_distances']['unitcode'] = _unit_embedding_distance
 
-            st.form_submit_button("Save and Apply",on_click=apply_search_config,args=(evosys,search_cfg),disabled=st.session_state.evo_running)
+            st.form_submit_button("Save and Apply",
+                on_click=apply_search_config,args=(evosys,search_cfg),
+                # disabled=st.session_state.evo_running,
+            )
 
 
 def delete_exp_from_db(evosys,exp):
@@ -762,7 +771,7 @@ def hybrid_agent_weights(evosys):
                     st.error(f'Weights exceeded: ```{remaining_weight:.2f}```')
         st.button("Save and Apply",key='save_agent_weights',
             on_click=apply_design_config,args=(evosys,design_cfg),
-            disabled=st.session_state.evo_running,
+            # disabled=st.session_state.evo_running,
             help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
         )   
         
@@ -848,7 +857,7 @@ def selector_ranking_exploration_config(evosys):
             select_cfg['verify_explore_args']=verify_explore_args
             st.form_submit_button("Save and Apply",
                 on_click=apply_select_config,args=(evosys,select_cfg),
-                disabled=st.session_state.evo_running,
+                # disabled=st.session_state.evo_running,
                 help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
             )   
 
@@ -916,11 +925,11 @@ def local_experiments(evosys):
         st.header(f"Local Experiments")
     with col2:
         st.write('')
-        if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.evo_running):
+        if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None):# or st.session_state.evo_running):
             sync_exps_to_db(evosys)
     with col3:
         st.write('')
-        if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None or st.session_state.evo_running):
+        if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None):# or st.session_state.evo_running):
             sync_exps_from_db(evosys)
     
     def delete_exp(dir,evoname):
@@ -982,7 +991,7 @@ def local_experiments(evosys):
         if ckpt==default_namespace:
             default_btn=('Default',None,True)
         else:
-            default_btn=('As Default',ft.partial(set_default,ckpt), st.session_state.evo_running)
+            default_btn=('As Default',ft.partial(set_default,ckpt), False)
         if exp_dir==evosys.evo_dir:
             experiment['ICON']='🏠'
             experiment['BUTTON']=[
@@ -992,8 +1001,8 @@ def local_experiments(evosys):
             experiments[ckpt+' (Current)']=experiment
         else:
             experiment['BUTTON']=[
-                ('Delete',ft.partial(delete_exp,exp_dir,ckpt), st.session_state.evo_running),
-                ('Switch',ft.partial(switch_dir,ckpt), st.session_state.evo_running),
+                ('Delete',ft.partial(delete_exp,exp_dir,ckpt), False),
+                ('Switch',ft.partial(switch_dir,ckpt), False),
                 default_btn
             ]
             if ckpt==default_namespace:
@@ -1019,8 +1028,8 @@ def config(evosys,project_dir):
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")
 
-    if st.session_state.evo_running:
-        st.warning("**NOTE:** Evolution system is running. You cannot modify the system configuration while the system is running.")
+    # if st.session_state.evo_running:
+    #     st.warning("**NOTE:** Evolution system is running. You cannot modify the system configuration while the system is running.")
 
 
     env_vars_settings(evosys)
