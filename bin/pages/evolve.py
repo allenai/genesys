@@ -706,9 +706,10 @@ def _evolve(evosys,mode):
         if evosys.benchmark_mode:
             benchmark_launch_pad(evosys)
         else:
-            st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
+            if not st.session_state.evo_running:
+                st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
     elif mode == EvoModes.EVOLVE:
-        if evosys.benchmark_mode:
+        if evosys.benchmark_mode and not st.session_state.evo_running:
             st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
         else:
             evolution_launch_pad(evosys)
@@ -1031,11 +1032,11 @@ def evolve(evosys,project_dir):
         
     if mode == EvoModes.EVOLVE:
         st.title("Evolution System")
-        if not evosys.benchmark_mode:
+        if not evosys.benchmark_mode and not st.session_state.evo_running:
             st.warning(f'The namespace ```{evosys.evoname}``` is set to evolution mode. Please do not run benchmark in this namespace.')
     elif mode == EvoModes.BENCH:
         st.title("Agent Benchmark")
-        if evosys.benchmark_mode:
+        if evosys.benchmark_mode and not st.session_state.evo_running:
             st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
     elif mode == EvoModes.EUREKA:
         st.title("Eureka Moments")
