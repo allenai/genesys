@@ -361,9 +361,8 @@ def stop_evo(evosys):
         st.rerun()
 
 
-def network_status(evosys):
+def network_status(evosys,benchmark_mode=False):
     group_id = evosys.CM.group_id
-    benchmark_mode = evosys.benchmark_mode
     st.write(f'#### *Network Group ```{group_id}``` Status*')
 
     with st.expander('Nodes Running Status',expanded=True):
@@ -684,39 +683,7 @@ def benchmark_launch_pad(evosys):
                     stop_evo(evosys)
         
 
-
-def _evolve(evosys,mode):
-    
-    running_evoname,running_group_id = _is_running(evosys)
-    if running_evoname:
-        if not st.session_state.evo_running:
-            if evosys.CM.group_id == running_group_id or evosys.evoname == running_evoname:
-                st.toast(f'Network group ```{running_group_id}``` is already running for evolution ```{running_evoname}```. Launching a command center in passive mode.')
-            else:
-                st.toast(f'Evolution ```{running_evoname}``` is already running in network group ```{running_group_id}```. Launching a command center in passive mode.')
-            launch_evo(evosys,0,0,active_mode=False)
-    # else:
-    #     if st.session_state.evo_running:
-    #         st.toast(f'The command center is not active anymore. You may stop listing to command center.')
-    #         # stop_evo(evosys)
-
-
-
-    if mode == EvoModes.BENCH:
-        if evosys.benchmark_mode:
-            benchmark_launch_pad(evosys)
-        else:
-            if not st.session_state.evo_running:
-                st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
-    elif mode == EvoModes.EVOLVE:
-        if evosys.benchmark_mode and not st.session_state.evo_running:
-            st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
-        else:
-            evolution_launch_pad(evosys)
-
-
-    network_status(evosys)
-
+def running_logs(evosys):
     view_latest_K=30
     if st.session_state.evo_running:
         with st.expander(f"📝 **Running Logs** *(Latest {view_latest_K} logs)*",expanded=True):
@@ -731,6 +698,7 @@ def _evolve(evosys,mode):
                 st.info("No logs available at the moment.")
 
 
+def ptree_monitor(evosys):
     st.subheader("Phylogenetic Tree Monitor")
 
     col1, col2, col3 = st.columns([6,0.1,2])
@@ -769,6 +737,33 @@ def _evolve(evosys,mode):
     HtmlFile = open(ptree_dir_small, 'r', encoding='utf-8')
     source_code = HtmlFile.read() 
     components.html(source_code, height = export_height)
+
+
+
+def _evolve(evosys):
+    # else:
+    #     if st.session_state.evo_running:
+    #         st.toast(f'The command center is not active anymore. You may stop listing to command center.')
+    #         # stop_evo(evosys)
+
+    if evosys.benchmark_mode:# and not st.session_state.evo_running:
+        st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
+    else:
+        evolution_launch_pad(evosys)
+
+    network_status(evosys)
+    running_logs(evosys)
+    ptree_monitor(evosys)
+
+
+def _bench(evosys):
+    if not evosys.benchmark_mode:# and not st.session_state.evo_running:
+        st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
+    else:
+        benchmark_launch_pad(evosys)
+
+    network_status(evosys,benchmark_mode=True)
+    running_logs(evosys)
 
 
 
@@ -1046,7 +1041,19 @@ def evolve(evosys,project_dir):
     assert evosys.remote_db, "You must connect to a remote database to run the evolution."
 
     if mode in [EvoModes.EVOLVE,EvoModes.BENCH]:
-        _evolve(evosys,mode)
+        running_evoname,running_group_id = _is_running(evosys)
+        if running_evoname:
+            if not st.session_state.evo_running:
+                if evosys.CM.group_id == running_group_id or evosys.evoname == running_evoname:
+                    st.toast(f'Network group ```{running_group_id}``` is already running for evolution ```{running_evoname}```. Launching a command center in passive mode.')
+                else:
+                    st.toast(f'Evolution ```{running_evoname}``` is already running in network group ```{running_group_id}```. Launching a command center in passive mode.')
+                launch_evo(evosys,0,0,active_mode=False)
+
+    if mode == EvoModes.EVOLVE:
+        _evolve(evosys)
+    elif mode == EvoModes.BENCH:
+        _bench(evosys)
     elif mode == EvoModes.EUREKA:
         _eureka(evosys)
     elif mode == EvoModes.STATS:
