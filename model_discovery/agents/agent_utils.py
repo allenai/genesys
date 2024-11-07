@@ -373,8 +373,8 @@ def _prompt_model_structured(model,message,response_format,logprobs=False,**kwar
                 f'Issue encountered while running running, msg={e}, retrying',
                 exc_info=True
             )
-            if 'timeout' in str(e) or 'timed out' in str(e):
-                time.sleep(2**(i+1))
+            if 'timeout' in str(e) or 'timed out' in str(e) or 'invalid content' in str(e):
+                time.sleep(2*(i+1))
             else:
                 if 'context_length_exceeded' in str(e):
                     with open(os.path.join(CTX_ERROR_LOG_DIR,f'message_{time.time()}.json'),'w') as f:
