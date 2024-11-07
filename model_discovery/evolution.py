@@ -1940,6 +1940,8 @@ class PhylogeneticTree:
         unfinished=[]
         for acronym in sessdata['proposed']:
             design=self.get_node(acronym)
+            if design is None:
+                continue
             if design.implementation:
                 if design.implementation.status=='implemented':
                     implemented.append(acronym) 
