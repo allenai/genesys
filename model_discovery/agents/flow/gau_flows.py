@@ -1048,6 +1048,8 @@ class GUFlow(FlowCreator):
             self.ptree.session_set(self.sess_id,'reranked',rerank)
         for acronym in rerank['rank']:
             design=self.ptree.get_node(acronym)
+            if design is None:
+                continue
             if not design.is_implemented():
                 proposals.append(design.proposal)
                 acronyms.append(acronym)
