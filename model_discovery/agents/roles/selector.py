@@ -749,15 +749,15 @@ class Selector:
             pd = len(poold)/(len(poold)+len(poolr))
         seeds = []
         for _ in range(n_seeds):
-            sampler = self._sample_init_seeds(1,list(set(poolr)-set(seeds)))
+            sampled = self._sample_init_seeds(1,list(set(poolr)-set(seeds)))
             if allow_tree:
                 sampled += self._sample_k_pool(list(set(poold)-set(seeds)),1,1,topk=False)
                 if random.random()<pd:
                     seeds.append(sampled[0])
                 else:
-                    seeds.append(sampler[0])
+                    seeds.append(sampled[0])
             else:
-                seeds.append(sampler[0])
+                seeds.append(sampled[0])
         seeds = [self.ptree.get_node(i) for i in seeds]
         return '',seeds,refs
 
