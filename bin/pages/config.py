@@ -506,20 +506,20 @@ def design_config(evosys):
                 st.markdown("##### Configure termination and budgets (0 is no limit)")
                 cols=st.columns(4)
                 with cols[0]:
-                    termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=3)
+                    termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=design_cfg['termination']['max_failed_rounds'])
                 with cols[1]:
-                    termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=0)
+                    termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=design_cfg['termination']['max_total_budget'])
                 with cols[2]:
-                    termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=0)
+                    termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=design_cfg['termination']['max_debug_budget'])
                 with cols[3]:
-                    max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
+                    max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=design_cfg['max_attemps']['max_search_rounds'])
             with col2:
                 st.markdown("##### Configure the threshold for ratings")
                 cols=st.columns(2)
                 with cols[0]:
-                    threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0.0,max_value=5.0,value=4.0,step=0.5)
+                    threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0.0,max_value=5.0,value=design_cfg['threshold']['proposal_rating'],step=0.5)
                 with cols[1]:
-                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0.0,max_value=5.0,value=3.0,step=0.5)
+                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0.0,max_value=5.0,value=design_cfg['threshold']['implementation_rating'],step=0.5)
             design_cfg['termination'] = termination
             design_cfg['threshold'] = threshold 
 
@@ -539,20 +539,20 @@ def design_config(evosys):
                 st.markdown("##### Configure max number of attempts")
                 cols=st.columns(3)
                 with cols[0]:
-                    max_attempts['design_proposal'] = st.number_input(label="Proposal attempts",min_value=3,value=5)
+                    max_attempts['design_proposal'] = st.number_input(label="Proposal attempts",min_value=3,value=design_cfg['max_attemps']['design_proposal'])
                 with cols[1]:
-                    max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=5)
+                    max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=design_cfg['max_attemps']['implementation_debug'])
                 with cols[2]:
-                    max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0)
+                    max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=design_cfg['max_attemps']['post_refinement'])
             design_cfg['max_attemps'] = max_attempts
             with col2:
                 num_samples={}
                 st.markdown("##### Configure number of samples")
                 cols=st.columns(3)
                 with cols[0]:
-                    num_samples['proposal']=st.number_input(label="Proposal Samples",min_value=1,value=1)
+                    num_samples['proposal']=st.number_input(label="Proposal Samples",min_value=1,value=design_cfg['num_samples']['proposal'])
                 with cols[1]:
-                    num_samples['implementation']=st.number_input(label="Impl. Samples",min_value=1,value=1)
+                    num_samples['implementation']=st.number_input(label="Impl. Samples",min_value=1,value=design_cfg['num_samples']['implementation'])
                 with cols[2]:
                     rerank_methods=['random','rating']
                     num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
@@ -589,7 +589,7 @@ def search_config(evosys):
                 st.write("##### Internal Library Search Configurations (0 is disable)")
                 cols=st.columns([2,2,2,3])
                 with cols[0]:
-                    search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1,
+                    search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=search_cfg['result_limits']['lib'],min_value=0,step=1,
                         help='The core library with 300+ state-of-the-art language model architecture related papers.')
                 with cols[1]:
                     search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,
@@ -598,7 +598,7 @@ def search_config(evosys):
                     search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,
                         help='The library of the papers that are recommended by Semantic Scholar for core library papers.')
                 with cols[3]:
-                    search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 is disable)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+                    search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 is disable)",min_value=0.0,max_value=1.0,value=search_cfg['rerank_ratio'],step=0.01)
                 
             with COL2:
                 st.write("##### Vector Store Embeddings")
@@ -626,15 +626,17 @@ def search_config(evosys):
                 st.write("##### External Search Configurations")
                 cols=st.columns([2,2,2,2,2])
                 with cols[0]:
-                    search_cfg['result_limits']['s2']=st.number_input("S2 Result Limit",value=5,min_value=0,step=1)
+                    search_cfg['result_limits']['s2']=st.number_input("S2 Result Limit",value=search_cfg['result_limits']['s2'],min_value=0,step=1)
                 with cols[1]:
-                    search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Result Limit",value=3,min_value=0,step=1)
+                    search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Result Limit",value=search_cfg['result_limits']['arxiv'],min_value=0,step=1)
                 with cols[2]:
-                    search_cfg['result_limits']['pwc']=st.number_input("PwC Result Limit",value=3,min_value=0,step=1)
+                    search_cfg['result_limits']['pwc']=st.number_input("PwC Result Limit",value=search_cfg['result_limits']['pwc'],min_value=0,step=1)
                 with cols[3]:
-                    search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
+                    _options=['none','small','large','huge']
+                    _index=_options.index(search_cfg['perplexity_settings']['model_size']) if search_cfg['perplexity_settings']['model_size'] in _options else 3
+                    search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=_options,index=_index)
                 with cols[4]:
-                    search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=4000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
+                    search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=search_cfg['perplexity_settings']['max_tokens'],min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
             
                 st.write("##### Proposal Search Configurations")
                 _proposal_search_cfg=search_cfg['proposal_search']
@@ -643,7 +645,7 @@ def search_config(evosys):
 
             with COL2:
                 st.write("##### Vector Store Index")
-                search_cfg['index_name']=st.text_input("Index Name",value=DEFAULT_VS_INDEX_NAME,disabled=True)
+                search_cfg['index_name']=st.text_input("Index Name",value=search_cfg['index_name'],disabled=True)
               
 
             cols = st.columns([1,1,1.5,1,1.3,1])
