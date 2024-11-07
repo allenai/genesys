@@ -1926,6 +1926,8 @@ class PhylogeneticTree:
         proposals=[]
         for acronym in sessdata['proposed']:
             design=self.get_node(acronym)
+            if design is None:
+                continue
             if passed_only and not design.proposal.passed:
                 continue
             proposals.append(design.proposal)
