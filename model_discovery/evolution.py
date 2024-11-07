@@ -662,6 +662,8 @@ class FirestoreManager:
                     shutil.rmtree(design_dir)
                     return
                 Doc=Doc_ref.get().to_dict()
+                if Doc is None:
+                    return
                 metadata=Doc['metadata']
                 U.save_json(metadata,metadata_path)
                 print(f'Downloaded metadata for design {design_id}')
