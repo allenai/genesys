@@ -136,10 +136,10 @@ ANTHROPIC_TOKEN_LIMITS={
 }
 
 ANTHROPIC_OUTPUT_BUFFER={
-    "claude-3-5-sonnet-20241022":8192*2,
+    "claude-3-5-sonnet-20241022":8192,
 }
 
-SAFE_BUFFER=4096
+SAFE_BUFFER=12000 # there might be api-side overhead
 
 try:
     ANTHROPIC_CLIENT = anthropic.Client()
@@ -150,9 +150,9 @@ except:
 
 def get_token_limit(model_name):
     if model_name in OPENAI_TOKEN_LIMITS:
-        return OPENAI_TOKEN_LIMITS[model_name] - OPENAI_OUTPUT_BUFFER[model_name]
+        return OPENAI_TOKEN_LIMITS[model_name] - OPENAI_OUTPUT_BUFFER[model_name] - SAFE_BUFFER
     elif model_name in ANTHROPIC_TOKEN_LIMITS:
-        return ANTHROPIC_TOKEN_LIMITS[model_name] - ANTHROPIC_OUTPUT_BUFFER[model_name]
+        return ANTHROPIC_TOKEN_LIMITS[model_name] - ANTHROPIC_OUTPUT_BUFFER[model_name] - SAFE_BUFFER
     else:
         raise ValueError(f'Unsupported model: {model_name}')
 
@@ -227,13 +227,12 @@ os.makedirs(CTX_ERROR_LOG_DIR,exist_ok=True)
 # XXX: seems still not guaranteed to be safe, why??
 def context_safe_guard(message,model_name,system_tokens=None): # message: list of dicts [{ 'role':str , 'content':str }]
     # Get system and prompt messages without modifying original list
-    total_limit = get_token_limit(model_name)
+    effective_limit = get_token_limit(model_name)
     format_buffer = 100  # Adjust based on model's message formatting overhead
-    effective_limit = total_limit - SAFE_BUFFER
 
     if len(message)==1:
         tokens = count_msg(message[0],model_name)
-        if tokens > total_limit:
+        if tokens > effective_limit:
             with open(os.path.join(CTX_ERROR_LOG_DIR,f'prompt_{time.time()}.json'),'w') as f:
                 json.dump(message,f)
             raise ValueError(f'Context Error: Prompt message is too long: {tokens} tokens')

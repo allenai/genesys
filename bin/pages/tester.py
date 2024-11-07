@@ -127,10 +127,13 @@ def tester(evosys,project_dir):
 
     ##################### Debugging C Guard #####################
 
-    from model_discovery.agents.agent_utils import context_safe_guard,count_tokens
+    from model_discovery.agents.agent_utils import context_safe_guard,count_msg
+
+    def count_message(message,model_name):
+        return sum([count_msg(msg,model_name) for msg in message])
     
     CKPT_DIR = os.environ['CKPT_DIR']
-    debug_dir = os.path.join(CKPT_DIR,'debug_ckpts')
+    debug_dir = os.path.join(CKPT_DIR,'ctx_error_logs')
     if not os.path.exists(debug_dir):
         st.write('No debug records found')
     else:
@@ -138,39 +141,20 @@ def tester(evosys,project_dir):
         for file in os.listdir(debug_dir):
             debug_records.append(U.load_json(os.path.join(debug_dir,file)))
         st.write(len(debug_records))
-        model_name = "o1-preview"
-        total_limit = 20000 # get_token_limit(model_name)
-        format_buffer = 100  # Adjust based on model's message formatting overhead
-        SAFE_BUFFER = 1024
+        message = debug_records[1]
+        model_name = 'o1-preview'
+        st.write(count_message(message,model_name))
+        st.write(len(message))
+        message=context_safe_guard(message,model_name)
+        st.write(count_message(message,model_name))
+        st.write(len(message))
+        # for msg in message:
+        #     st.code(msg['content'][-100:])
 
-    def truncate_history(history,prompt,system):
-        effective_limit = total_limit - SAFE_BUFFER
-        
-        system_tokens = count_tokens(system, model_name)
-        if system_tokens > effective_limit:
-            system = truncate_text(system, effective_limit-format_buffer, model_name)
-            return [], '', system
-        prompt_tokens = count_tokens(prompt, model_name)
-        if prompt_tokens+system_tokens > effective_limit:
-            prompt = truncate_text(prompt, effective_limit-system_tokens-format_buffer, model_name)
-            return [], prompt, system
-        history_tokens = [count_tokens(content, model_name) for content, _ in history]
 
-        while True:
-            total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
-            if total_tokens < effective_limit:
-                break
-            non_last_tokens = sum(history_tokens[1::]) if len(history_tokens) > 1 else 0
-            if non_last_tokens + system_tokens + prompt_tokens <= effective_limit: # can be solved by truncating the first message
-                content, role = history[0]
-                last_limit = effective_limit - system_tokens - prompt_tokens - format_buffer - non_last_tokens
-                last = truncate_text(content, last_limit, model_name)
-                history[0] = (last, role)
-                history_tokens[0] = count_tokens(last, model_name)
-            else:
-                history.pop(0)
-                history_tokens.pop(0)
-        return history, prompt, system
+
+
+
                     
         
     # for debug_record in debug_records:
