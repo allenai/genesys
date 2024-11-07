@@ -258,6 +258,8 @@ Here are the relevant references:
 '''
       for idx,reference in enumerate(refs):
          if mode==DesignModes.MUTATION and mutation_no_tree or mode==DesignModes.SCRATCH and scratch_no_tree:
+            if reference is None:
+               continue
             if reference.type in ['DesignArtifactImplemented','ReferenceCoreWithTree']:
                ref_prompt = reference.to_prompt(full_tree=False)
             else:
