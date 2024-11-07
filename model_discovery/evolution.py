@@ -638,6 +638,8 @@ class FirestoreManager:
         designs=os.listdir(U.pjoin(self.db_dir,'designs'))
         for design_id in designs:
             design=self.load_design_local(design_id)
+            if design is None:
+                continue
             self.upload_design(design_id,design,overwrite=overwrite,upload_index=False,verbose=verbose)
         self.sync_sessions_to_db(overwrite=overwrite,verbose=verbose)
         self.update_index()
