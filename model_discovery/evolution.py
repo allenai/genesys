@@ -2079,7 +2079,10 @@ class PhylogeneticTree:
             types=[types]
         nodes=[]
         for node in self.G.nodes:
-            if self.G.nodes[node]['data'].type in types:
+            design = self.get_node(node)
+            if design is None:
+                continue
+            if design.type in types:
                 nodes.append(node)
         return nodes
     
