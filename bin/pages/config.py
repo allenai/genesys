@@ -753,7 +753,7 @@ def hybrid_agent_weights(evosys):
                     cur_weight=float(design_cfg['agent_weights'][agent_type][idx])
                     design_cfg["agent_weights"][agent_type][idx]=st.number_input(option,min_value=0.0,max_value=1.0,value=cur_weight,step=0.05,
                             key=f'agent_weight_{agent_type}_{idx}')
-                remaining_weight=1.0-sum(design_cfg['agent_weights'][agent_type])
+                remaining_weight=round(1.0-sum(design_cfg['agent_weights'][agent_type]),2)
                 if remaining_weight==0:
                     st.success(f'Remaining weight: ```{remaining_weight:.2f}```')
                 elif remaining_weight>0:
