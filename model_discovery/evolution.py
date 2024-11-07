@@ -1483,6 +1483,8 @@ class PhylogeneticTree:
         n=0
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
             design=self.get_node(acronym)
+            if design is None:
+                continue
             if design.verifications:
                 n+=1
         return n
@@ -1490,14 +1492,23 @@ class PhylogeneticTree:
     def get_nodes(self,acronyms):
         if isinstance(acronyms,str):
             acronyms=[acronyms]
-        return [self.get_node(acronym) for acronym in acronyms]
+        nodes = []
+        for acronym in acronyms:
+            node = self.get_node(acronym)
+            if node is None:
+                continue
+            nodes.append(node)
+        return nodes
     
     def get_abstracts(self,acronyms):
         abstracts=[]
         reviews=[]
         ratings=[]
         for acronym in acronyms:
-            proposal=self.get_node(acronym).proposal
+            node = self.get_node(acronym)
+            if node is None:
+                continue
+            proposal=node.proposal
             if proposal.abstract:
                 abstracts.append(proposal.abstract)
             else:
@@ -1512,6 +1523,8 @@ class PhylogeneticTree:
         siblings=[]
         for acronym in self.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
             design=self.get_node(acronym)
+            if design is None:
+                continue
             if design.seed_ids == parents:
                 siblings.append(acronym)
         return siblings
@@ -1570,7 +1583,10 @@ class PhylogeneticTree:
         cost=0
         designs=self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
         for design in designs:
-            cost+=self.get_node(design).cost
+            node = self.get_node(design)
+            if node is None:
+                continue
+            cost+=node.cost
         return cost
 
     def budget_status(self,budgets,ret_verified=False):
@@ -1579,7 +1595,10 @@ class PhylogeneticTree:
         verified={}
         designs=self.filter_by_type(['DesignArtifactImplemented'])
         for design in designs:
-            for scale in self.get_node(design).verifications:
+            node = self.get_node(design)
+            if node is None:
+                continue
+            for scale in node.verifications:
                 if scale in budgets:
                     budgets[scale]-=1
                 if scale not in verified:
@@ -1607,7 +1626,12 @@ class PhylogeneticTree:
         # for design in designs:
         #     design_vectors[design] = self.get_design_vector(design,is_baseline)
 
-        node_dicts = [self.get_node(design).to_dict() for design in designs]
+        node_dicts = []
+        for design in designs:
+            node = self.get_node(design)
+            if node is None:
+                continue
+            node_dicts.append(node.to_dict())
         _is_baseline = [is_baseline]*len(node_dicts)
         # Use multiprocessing to parallelize the process
         # with multiprocessing.Pool() as pool:
@@ -1653,7 +1677,13 @@ class PhylogeneticTree:
     def get_design_artifacts(self):
         self.update_design_tree()
         acronyms= self.filter_by_type(['DesignArtifact','DesignArtifactImplemented'])
-        return {acronym:self.get_node(acronym) for acronym in acronyms}
+        nodes = {}
+        for acronym in acronyms:
+            node = self.get_node(acronym)
+            if node is None:
+                continue
+            nodes[acronym] = node
+        return nodes
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
     def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None): # new design session, a session explore the steps from a selected node
@@ -1688,6 +1718,8 @@ class PhylogeneticTree:
         unverified=[] if scale else {s:[] for s in self.target_scales}
         for acronym in self.filter_by_type('DesignArtifactImplemented'):
             design=self.get_node(acronym)
+            if design is None:
+                continue
             if scale:
                 if scale not in design.verifications:
                     if (acronym,scale) not in exclude_list:
@@ -1713,6 +1745,8 @@ class PhylogeneticTree:
     def _get_unverified_scales(self,acronym,exclude_list=[]): # from low to high
         unverified=[]
         design = self.get_node(acronym)
+        if design is None:
+            return []
         for scale in self.target_scales:
             if scale not in design.verifications:
                 if (acronym,scale) not in exclude_list:
@@ -1721,6 +1755,8 @@ class PhylogeneticTree:
 
     def get_gau_tree(self,acronym:str):
         node=self.get_node(acronym)
+        if node is None:
+            return None
         if node.type=='ReferenceCoreWithTree':
             tree=node.tree
             return tree
@@ -1740,8 +1776,8 @@ class PhylogeneticTree:
     
     def get_session_input(self,sess_id:str):
         sessdata=self.design_sessions[sess_id]
-        seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids']]
-        refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids']]
+        seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids'] if seed_id]
+        refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids'] if ref_id]
         mode=sessdata['mode']
         if isinstance(mode,str): # just in case
             mode=DesignModes(mode)
@@ -1805,7 +1841,7 @@ class PhylogeneticTree:
     def get_finished_designs(self):
         self.update_design_tree()
         designs = self.filter_by_type(['DesignArtifactImplemented','DesignArtifact'])
-        finished = [design for design in designs if self.get_node(design).is_finished(self.challenging_threshold)]
+        finished = [design for design in designs if self.get_node(design) and self.get_node(design).is_finished(self.challenging_threshold)]
         return finished
     
     def acquire_design_lock(self,sess_id=None): # no need to really lock, as CC is still sequential
@@ -1836,7 +1872,10 @@ class PhylogeneticTree:
         sessdata=self.design_sessions[sess_id]
         challenging={}
         for acronym in sessdata['proposed']:
-            impl=self.get_node(acronym).implementation  
+            design = self.get_node(acronym)
+            if design is None:
+                continue
+            impl=design.implementation  
             if impl:
                 if impl.status!='implemented':
                     if len(impl.history)>self.challenging_threshold:
@@ -1906,6 +1945,8 @@ class PhylogeneticTree:
 
     def is_challenging(self,acronym:str):
         design=self.get_node(acronym)
+        if design is None:
+            return False
         if design.implementation:
             impl=design.implementation
             if len(impl.history)>self.challenging_threshold:
@@ -1914,6 +1955,8 @@ class PhylogeneticTree:
 
     def get_implementation_checkpoint(self,acronym:str):
         design=self.get_node(acronym)
+        if design is None:
+            return None,None
         if design.implementation:
             impl=design.implementation
             return impl.implementation,impl.status
@@ -1953,6 +1996,8 @@ class PhylogeneticTree:
         implementations={}
         for acronym in acronyms:
             design=self.get_node(acronym)
+            if design is None:
+                continue
             implementations[acronym]=design.implementation
         return implementations
 
@@ -2766,6 +2811,8 @@ class EvolutionSystem(exec_utils.System):
             scale=design_scale.split('_')[-1]
             design_id=design_scale[:-len(scale)-1]
             node=self.ptree.get_node(design_id)
+            if node is None:
+                continue
             if scale not in node.verifications:
                 report_dir=U.pjoin(ve_dir,design_scale,'report.json')
                 report=U.load_json(report_dir)
@@ -3011,14 +3058,21 @@ class EvolutionSystem(exec_utils.System):
         if manual is None:
             return None
         if isinstance(manual,str):
-            return [self.ptree.get_node(manual)]
+            node = self.ptree.get_node(manual)
+            if node is None:
+                raise ValueError(f"Invalid manual input: {manual}")
+            return [node]
         elif isinstance(manual,NodeObject):
             return [manual]
         elif isinstance(manual,list):
             _nodes = []
             for i in manual:
                 if isinstance(i,str):
-                    _nodes.append(self.ptree.get_node(i))
+                    node = self.ptree.get_node(i)
+                    if node is None:
+                        print(f"Invalid manual input: {i}")
+                        continue
+                    _nodes.append(node)
                 elif isinstance(i,NodeObject):
                     _nodes.append(i)
                 else:
