@@ -517,9 +517,9 @@ def design_config(evosys):
                 st.markdown("##### Configure the threshold for ratings")
                 cols=st.columns(2)
                 with cols[0]:
-                    threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0.0,max_value=5.0,value=design_cfg['threshold']['proposal_rating'],step=0.5)
+                    threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0.0,max_value=5.0,value=float(design_cfg['threshold']['proposal_rating']),step=0.5)
                 with cols[1]:
-                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0.0,max_value=5.0,value=design_cfg['threshold']['implementation_rating'],step=0.5)
+                    threshold['implementation_rating'] = st.slider(label="Impl. observation",min_value=0.0,max_value=5.0,value=float(design_cfg['threshold']['implementation_rating']),step=0.5)
             design_cfg['termination'] = termination
             design_cfg['threshold'] = threshold 
 
