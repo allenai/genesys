@@ -758,7 +758,7 @@ class Selector:
                     seeds.append(sampled[0])
             else:
                 seeds.append(sampled[0])
-        seeds = [self.ptree.get_node(i) for i in seeds]
+        seeds = [self.ptree.get_node(i) for i in seeds if i is not None]
         return '',seeds,refs
 
     def _quadrant_select_design(self,n_seeds, n_sources: Dict[str,int],select_cfg=None,**kwargs):
@@ -796,7 +796,7 @@ class Selector:
                 _all_designs = set(init_seeds+self.ptree.filter_by_type(['DesignArtifactImplemented']))-set(seed_ids)
                 _seed_ids = self._sample_k_pool(_all_designs,left,1,topk=False)
                 seed_ids+=_seed_ids
-            seeds = [self.ptree.get_node(i) for i in seed_ids]
+            seeds = [self.ptree.get_node(i) for i in seed_ids if i is not None]
             refs=[ref for ref in refs if ref.acronym not in seed_ids]
         return instruct,seeds,refs
     

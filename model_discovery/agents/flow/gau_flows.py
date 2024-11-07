@@ -1200,6 +1200,8 @@ class GUFlow(FlowCreator):
         _items={}
         for seed_id in seed_ids:
             parent=self.ptree.get_node(seed_id)
+            if parent is None:
+                continue
             if parent.type=='DesignArtifactImplemented':
                 tree=parent.implementation.implementation
             elif parent.type=='ReferenceCoreWithTree':

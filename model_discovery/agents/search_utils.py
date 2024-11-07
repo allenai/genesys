@@ -239,6 +239,8 @@ class SuperScholarSearcher:
         for acronym in self.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
             if acronym not in self.design_proposals:
                 design=self.ptree.get_node(acronym)
+                if design is None:
+                    continue
                 self.design_proposals[acronym]=design.proposal.proposal
         
         for name in self.ptree.GD.terms:
