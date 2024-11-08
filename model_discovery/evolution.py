@@ -786,10 +786,10 @@ LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
 BENCHMARK_DIR = U.pjoin(os.path.dirname(__file__),'agents','bench_data')
 
 
-FAILED_COLOR='#856d72'
-DESIGN_COLOR='#5698c3'
-DESIGN_IMPLEMENTED_COLOR='#1177b0'
-CHALLANGING_COLOR='#787878'
+FAILED_COLOR='#856d72' # https://color-hex.org/color/856d72 dark pink-purple
+DESIGN_COLOR='#5698c3' # https://color-hex.org/color/5698c3 blue
+DESIGN_IMPLEMENTED_COLOR='#1177b0' # https://color-hex.org/color/1177b0 blue
+CHALLANGING_COLOR='#787878' # https://color-hex.org/color/787878 grey
 
 NODE_COLOR_MAP={
     '14M':'#8B81C3',
