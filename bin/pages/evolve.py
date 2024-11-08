@@ -934,6 +934,7 @@ def _stats(evosys):
         scores_14m = {}
         ratings = {}
         attempts = {}
+        timestamps = {}
         for design in designs+implemented:
             node = evosys.ptree.get_node(design)
             state = node.state
@@ -942,7 +943,8 @@ def _stats(evosys):
             else:
                 attempt = 0
             states[design] = state
-            costs[design] = sum(node.get_cost(with_history=False).values())
+            costs[design] = sum(node.get_cost(with_history=True).values())
+            timestamps[design] = node.timestamp
             scores_14m[design] = node.get_score('14M')
             ratings[design] = node.proposal.rating
             attempts[design] = attempt
@@ -1039,6 +1041,31 @@ def _stats(evosys):
                     color="accuracy_level",
                     size="Accuracy",
                 )
+
+            col1, col2 = st.columns(2)
+            with col1:
+                st.subheader('Accuracy-Time Correlation')
+                timestamp_filtered = {k:v for k,v in timestamps.items() if k in scores_filtered}
+                _timestamps = np.array(list(timestamp_filtered.values()))#.astype(float)
+                _data = np.array([_timestamps,_scores,_scores]).T
+                chart_data = pd.DataFrame(
+                    _data, columns=["timestamp", "accuracy", "Accuracy"]
+                )
+                chart_data["accuracy_level"] = np.array([
+                    'low' if x < 0.6 else 
+                    'medium' if x < 0.65 else 
+                    'high' if x < 0.7 else 
+                    'very high' for x in _scores
+                ])
+                
+                st.scatter_chart(
+                    chart_data,
+                    x="timestamp",
+                    y="accuracy",
+                    color="accuracy_level",
+                    size="Accuracy",
+                )
+                
 
 
 

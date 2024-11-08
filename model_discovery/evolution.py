@@ -1230,7 +1230,7 @@ class DesignArtifact(NodeObject):
         timestr=self.sess_id[:-len(tail)-1]
         timeformat='%Y-%m-%d-%H-%M-%S'
         return datetime.strptime(timestr, timeformat)
-    
+
     def is_finished(self,challenging_threshold):
         if self.implementation and self.implementation.status=='implemented':
             return True
