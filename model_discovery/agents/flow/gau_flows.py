@@ -1036,7 +1036,7 @@ class GUFlow(FlowCreator):
         proposals=[]
         acronyms=[] 
         rerank=self.ptree.get_reranked_proposals(self.sess_id)
-        if rerank is None:
+        if not rerank:
             _proposals,_acronyms=self.ptree.session_proposals(self.sess_id,passed_only=True)
             proposals=[]
             acronyms=[]
