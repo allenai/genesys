@@ -1178,9 +1178,10 @@ class Implementation:
     def cost(self):
         return self.get_cost()
     
-    def get_cost(self):
+    def get_cost(self,with_history=True):
         costs={}
-        for attempt in self.history:
+        _history = self.history if with_history else [self.history[-1]]
+        for attempt in _history:
             for k,v in attempt.costs.items():
                 if k not in costs:
                     costs[k]=0
@@ -1367,10 +1368,10 @@ class DesignArtifact(NodeObject):
             avg_acc_all /= len(self.verifications)
         return avg_acc_all
     
-    def get_cost(self):
+    def get_cost(self,with_history=True):
         costs = self.proposal.costs.copy()  # Create a copy of the proposal costs
         if self.implementation:
-            icosts = self.implementation.get_cost()
+            icosts = self.implementation.get_cost(with_history=with_history)
             for k, v in icosts.items():
                 if k in costs:
                     costs[k] += v

@@ -942,7 +942,7 @@ def _stats(evosys):
             else:
                 attempt = 0
             states[design] = state
-            costs[design] = node.cost
+            costs[design] = sum(node.get_cost(with_history=False).values())
             scores_14m[design] = node.get_score('14M')
             ratings[design] = node.proposal.rating
             attempts[design] = attempt
