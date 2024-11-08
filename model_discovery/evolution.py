@@ -784,6 +784,7 @@ class FirestoreManager:
 ############################################
 
 LIBRARY_DIR = U.pjoin(os.path.dirname(__file__),'model','library')
+BENCHMARK_DIR = U.pjoin(os.path.dirname(__file__),'agents','bench_data')
 
 
 FAILED_COLOR='#856d72'
@@ -1446,7 +1447,7 @@ class PhylogeneticTree:
     | ... # units, etc.
     """
     def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True,
-                 challenging_threshold=3,CM=None,token_mults=None): 
+                 challenging_threshold=3,CM=None,token_mults=None,benchmark_mode=False): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
@@ -1464,6 +1465,7 @@ class PhylogeneticTree:
         self.use_remote_db=use_remote_db
         self.remote_db = remote_db
         self.token_mults = token_mults
+        self.benchmark_mode = benchmark_mode
         if use_remote_db and self.remote_db is not None:
             self.FM = FirestoreManager(self,evoname,db_dir,self.remote_db)
             self.FM.sync_from_db()
@@ -1778,8 +1780,14 @@ class PhylogeneticTree:
     
     def get_session_input(self,sess_id:str): 
         sessdata=self.design_sessions[sess_id]
-        seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids'] if seed_id]
-        refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids'] if ref_id]
+        if self.benchmark_mode:
+            seeds_dir = U.pjoin(BENCHMARK_DIR,sess_id,'seeds')
+            seeds = [DesignArtifact.load(U.pjoin(seeds_dir,i)) for i in os.listdir(seeds_dir)]
+            refs_dir = U.pjoin(BENCHMARK_DIR,sess_id,'refs')
+            refs = [DesignArtifact.load(U.pjoin(refs_dir,i)) for i in os.listdir(refs_dir)]
+        else:
+            seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids'] if seed_id]
+            refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids'] if ref_id]
         mode=sessdata['mode']
         if isinstance(mode,str): # just in case
             mode=DesignModes(mode)
@@ -1847,7 +1855,7 @@ class PhylogeneticTree:
         return finished
     
     def acquire_design_lock(self,sess_id=None): # no need to really lock, as CC is still sequential
-        if not self.CM.benchmark_mode:
+        if not self.benchmark_mode:
             return True
         active_sessions = self.CM.get_active_design_sessions()
         active_sessions=list(active_sessions.keys())
@@ -2442,15 +2450,6 @@ class ConnectionManager:
         self.max_design_threads={}
         self.accept_verify_job={}
         self.last_refresh = 0
-        self.benchmark_mode = False
-
-    def set_benchmark_mode(self,max_designs):
-        self.benchmark_mode = True
-        self.max_designs = max_designs
-    
-    def unset_benchmark_mode(self):
-        self.benchmark_mode = False
-        self.max_designs = None
 
     def switch_ckpt(self,evoname):
         self.evoname = evoname
@@ -2779,11 +2778,6 @@ class EvolutionSystem(exec_utils.System):
 
         self.params=U.init_dict(self.params,DEFAULT_PARAMS)
 
-        if self.params['benchmark_mode']:
-            self.set_benchmark_mode(self.benchmark_settings)
-        else:
-            self.unset_benchmark_mode()
-
         if self.CM:
             print(f"Connecting to group id: {self.params['group_id']}")
             self.CM.set_group_id(self.params['group_id'])
@@ -2815,9 +2809,33 @@ class EvolutionSystem(exec_utils.System):
 
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],
                 self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],
-                CM=self.CM,token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS))
+                CM=self.CM,token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS),
+                benchmark_mode=self.params['benchmark_mode'])
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         
+        if self.params['benchmark_mode']:
+            self.set_benchmark_mode(self.benchmark_settings)
+        else:
+            self.unset_benchmark_mode()
+        
+        if self.benchmark_mode:
+            for acronym in os.listdir(BENCHMARK_DIR):
+                if acronym in self.ptree.design_sessions and acronym in self.ptree.G.nodes:
+                    continue
+                print(f'Initialize benchmark design: {acronym}')
+                sessdata = U.load_json(U.pjoin(BENCHMARK_DIR,acronym,'sess_snapshot.json'))
+                seed_ids = sessdata['seed_ids']
+                ref_ids = sessdata['ref_ids']
+                instruct = sessdata['instruct']
+                num_samples = sessdata['num_samples']
+                sess_id = self.ptree.new_design(seed_ids,ref_ids,instruct,num_samples,sess_id=acronym)
+                proposal = U.load_json(U.pjoin(BENCHMARK_DIR,acronym,'proposal.json'))
+                costs = proposal['costs']
+                design_cfg = proposal['design_cfg']
+                design_cfg['running_mode'] = RunningModes(design_cfg['running_mode'])
+                user_input = proposal['user_input']
+                self.ptree.propose(sess_id,proposal,{},costs,design_cfg,user_input)
+
         # Scan VE for missing verifications
         ve_dir=U.pjoin(self.evo_dir,'ve')
         for design_scale in os.listdir(ve_dir):
@@ -2869,15 +2887,15 @@ class EvolutionSystem(exec_utils.System):
     def set_benchmark_mode(self,benchmark_settings={}):
         self.benchmark_mode = True
         self.benchmark_settings = U.init_dict(benchmark_settings,DEFAULT_BENCHMARK_SETTINGS)
-        self.CM.set_benchmark_mode(benchmark_settings['n_trials'])
+        self.ptree.benchmark_mode = True
     
     def unset_benchmark_mode(self):
         self.benchmark_mode = False
-        self.CM.unset_benchmark_mode()
+        self.ptree.benchmark_mode = False
 
     def should_stop(self):
-        if self.CM.benchmark_mode:
-            if self.finished_designs>=self.CM.max_designs:
+        if self.benchmark_mode:
+            if self.unfinished_designs==0:
                 return True
         else:
             if self.selector.budget_type=='design_bound':
@@ -2893,6 +2911,10 @@ class EvolutionSystem(exec_utils.System):
     @property
     def finished_designs(self):
         return len(self.ptree.get_finished_designs())
+
+    @property
+    def unfinished_designs(self):
+        return len(self.ptree.get_unfinished_designs())
     
     @property
     def remaining_verify_budget(self):
@@ -3111,21 +3133,6 @@ class EvolutionSystem(exec_utils.System):
         if search_cfg is None:
             search_cfg = self.search_cfg
 
-        if self.benchmark_mode:
-            if self.benchmark_settings['design_mode']=='Mutation-only':
-                select_cfg['n_seeds_dist'] = {'0': 0, '1': 1.0, '2': 0, '3': 0, '4': 0, '5': 0}
-            elif self.benchmark_settings['design_mode']=='Crossover-only':
-                select_cfg['n_seeds_dist'] = {'0': 0, '1': 0, '2': 1.0, '3': 0, '4': 0, '5': 0}
-            elif self.benchmark_settings['design_mode']=='Scratch-only':
-                select_cfg['n_seeds_dist'] = {'0': 1.0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0}
-            else:
-                if self.benchmark_settings['overwrite_config']:
-                    select_cfg['n_seeds_dist'] = self.benchmark_settings['n_seeds_dist']
-                    select_cfg['n_seeds_settings'] = {'warmup_rounds_scratch': 0,'warmup_rounds_crossover': 0}
-            if self.benchmark_settings['max_retries'] is not None:
-                self.ptree.challenging_threshold = self.benchmark_settings['max_retries']
-
-
         unfinished_designs = self.ptree.get_unfinished_designs()
         if self.stream:
             self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
@@ -3139,9 +3146,7 @@ class EvolutionSystem(exec_utils.System):
 
         def _new_sample(selector_args,sess_id=None,_silent=False,_cpu_only=False):
             if self.benchmark_mode:
-                select_cfg['select_method'] = 'random'
-                selector_args['allow_tree'] = self.benchmark_settings['allow_tree']
-                instruct,seeds,refs=self.selector.select_design(selector_args,n_seeds=n_seeds,select_cfg=select_cfg) # use the seed_ids to record the phylogenetic tree
+                raise ValueError("You are not allowed to sample new designs in benchmark mode")
             else:
                 instruct,seeds,refs=self.selector.select_design(selector_args,n_seeds=n_seeds,select_cfg=select_cfg) # use the seed_ids to record the phylogenetic tree
             seeds = manual_seed if manual_seed is not None else seeds
@@ -3150,7 +3155,7 @@ class EvolutionSystem(exec_utils.System):
                 design_cfg=design_cfg,search_cfg=search_cfg,silent=_silent,cpu_only=_cpu_only)
 
         if sess_id is None:
-            if len(unfinished_designs)==0 or not resume:
+            if (len(unfinished_designs)==0 or not resume) and not self.benchmark_mode:
                 print('No unfinished designs, will start a new design session')
                 _new_sample(selector_args,_silent=silent,_cpu_only=cpu_only) # use the seed_ids to record the phylogenetic tree
             else:
@@ -3334,7 +3339,10 @@ class EvolutionSystem(exec_utils.System):
                 print(f"Code file not found for design {design_id}")
                 U.log_error_model(design_id,scale)
                 return None
-        code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
+        try:
+            code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
+        except Exception as e:
+            code = None
         if code is None:
             print(f'Check tune failed for design {design_id} at scale {scale}')
             U.log_error_model(design_id,scale)
