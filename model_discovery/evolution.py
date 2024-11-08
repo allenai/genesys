@@ -663,7 +663,6 @@ class FirestoreManager:
                 Doc=Doc_ref.get().to_dict()
                 if Doc is None:
                     return
-                print(f'Downloading metadata for design {design_id}')
                 metadata=Doc['metadata']
                 U.save_json(metadata,metadata_path)
                 print(f'Downloaded metadata for design {design_id}')
