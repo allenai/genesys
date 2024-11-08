@@ -1990,7 +1990,7 @@ class PhylogeneticTree:
     
     def get_reranked_proposals(self,sess_id:str):
         rerank=self.session_get(sess_id,'reranked')
-        for acronym in rerank['rank']:
+        for acronym in rerank.get('rank',[]):
             design=self.get_node(acronym)
             if design is None:
                 return None
