@@ -896,11 +896,12 @@ def _stats(evosys):
         if len(designs)+len(implemented)+len(sessions) == 0:
             st.info('No design session statistics available at the moment.')
         else:
+            # _angle=st.slider('Pie chart start angle',min_value=0,max_value=360,value=90,step=10)
             col1, col2 = st.columns(2)
             with col1:
                 st.subheader('Design state distribution')  
                 state_counts = _data_to_freq(states)
-                st.pyplot(_draw_pie(state_counts))
+                st.pyplot(_draw_pie(state_counts,startangle=150))
             with col2:
                 st.subheader('Implementation attempt distribution')
                 # st.pyplot(_draw_pie(attempt_counts,startangle=30))
