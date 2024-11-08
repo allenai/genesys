@@ -1618,7 +1618,7 @@ class PhylogeneticTree:
         for design in designs:
             self.G.nodes[design]['data'].reload_verifications()
 
-    def get_design_vectors(self,is_baseline=False): # a more numerical representation of a design, selector to use
+    def get_design_vectors(self,is_baseline=False,first_N=None): # a more numerical representation of a design, selector to use
         if is_baseline:
             self.FM.download_baselines()
             designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
@@ -1629,17 +1629,17 @@ class PhylogeneticTree:
         # for design in designs:
         #     design_vectors[design] = self.get_design_vector(design,is_baseline)
 
-        node_dicts = []
-        for design in designs:
-            node = self.get_node(design)
-            if node is None:
-                continue
-            node_dicts.append(node.to_dict())
+        nodes = [self.get_node(design) for design in designs]
+        nodes = [node for node in nodes if node is not None]
+        if first_N and not is_baseline:
+            timestamps = {idx:node.timestamp for idx,node in enumerate(nodes)}
+            timestamps = sorted(timestamps.items(), key=lambda x: x[1])
+            nodes = [nodes[idx] for idx, _ in timestamps[:first_N]]
+            designs = [designs[idx] for idx, _ in timestamps[:first_N]]
+
+        node_dicts = [node.to_dict() for node in nodes]
         _is_baseline = [is_baseline]*len(node_dicts)
-        # Use multiprocessing to parallelize the process
-        # with multiprocessing.Pool() as pool:
-        #     results = pool.starmap(self.get_design_vector, [(node_dict, is_baseline) for node_dict in node_dicts])
-        
+
         with ThreadPoolExecutor() as executor:
             results = list(executor.map(self.get_design_vector, node_dicts, _is_baseline))
     

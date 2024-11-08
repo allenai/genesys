@@ -780,14 +780,8 @@ BASIC_BASELINES = [
 
 def _eureka(evosys):
     st.title("Eureka Moments")
-    with st.status('Loading latest data...'):
-        design_vectors = evosys.ptree.get_design_vectors()
-        baseline_vectors = evosys.ptree.get_baseline_vectors()
-        leaderboards_normed,_,_,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
-        leaderboards_normed.pop('all')
-
     default_baseline = 'random'
-    cols = st.columns(4)
+    cols = st.columns(5)
     with cols[0]:
         baseline = st.selectbox('Baseline',options=BASIC_BASELINES,index=0)
     with cols[1]:
@@ -795,9 +789,19 @@ def _eureka(evosys):
     with cols[2]:
         eureka_threshold_overall = st.number_input('Eureka Threshold (Overall)',min_value=0,max_value=100,value=1,step=1)
     with cols[3]:
+        first_N = st.number_input('First N Designs',min_value=0,max_value=100,value=100,step=10)
+    with cols[4]:
         st.write('')
         st.write('')
-        absolute = st.checkbox('Absolute',value=True)
+        absolute = st.checkbox('Absolute',value=True,help='Whether to use absolute values or relative difference compared to the baseline.')
+
+        
+    with st.status('Loading latest data...'):
+        design_vectors = evosys.ptree.get_design_vectors(first_N=first_N)
+        baseline_vectors = evosys.ptree.get_baseline_vectors()
+        leaderboards_normed,_,_,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
+        leaderboards_normed.pop('all')
+
 
     combined_eureka = pd.DataFrame()
 
@@ -813,7 +817,7 @@ def _eureka(evosys):
                 leaderboards_normed_['max.'] = leaderboards_normed_.max(axis=1)
                 st.dataframe(leaderboards_normed_)
         with cols[1]:
-            with st.expander(f'{scale} Relative to ```{relative}``` (Normed metrics, %, {"relative" if absolute else "absolute"})',expanded=False):
+            with st.expander(f'{scale} Relative to ```{relative}``` (Normed metrics, %, {"absolute" if absolute else "relative"})',expanded=False):
                 leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,absolute=absolute)
                 leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
                 leaderboards_relative['max.'] = leaderboards_relative.max(axis=1)
@@ -834,6 +838,8 @@ def _eureka(evosys):
         return evosys.ptree.get_node(x).timestamp
     combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
     st.dataframe(combined_eureka)
+
+
 
 
 def _draw_pie(data,startangle=90):
