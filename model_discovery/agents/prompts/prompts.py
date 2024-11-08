@@ -215,14 +215,14 @@ You are tasked with improving the following seed design:
 
 ---
 
-{seeds[0].to_prompt() if seeds else ''}
+{seeds[0].to_prompt() if seeds else 'N/A'}
 
 ---
 """
    elif mode==DesignModes.CROSSOVER:
       seeds_prompt='\n\n'
       for idx,seed in enumerate(seeds):
-         seeds_prompt+=f'---\n\n<details><summary>Parent {idx+1}</summary>{seed.to_prompt() if seed else ''}</details>\n\n'
+         seeds_prompt+=f'---\n\n<details><summary>Parent {idx+1}</summary>{seed.to_prompt() if seed else 'N/A'}</details>\n\n'
       query = f"""
 # Seed Design
 
@@ -261,11 +261,11 @@ Here are the relevant references:
             if reference is None:
                continue
             if reference.type in ['DesignArtifactImplemented','ReferenceCoreWithTree']:
-               ref_prompt = reference.to_prompt(full_tree=False) if reference else ''
+               ref_prompt = reference.to_prompt(full_tree=False) if reference else 'N/A'
             else:
-               ref_prompt = reference.to_prompt() if reference else ''
+               ref_prompt = reference.to_prompt() if reference else 'N/A'
          else:
-            ref_prompt = reference.to_prompt() if reference else ''
+            ref_prompt = reference.to_prompt() if reference else 'N/A'
          query += f"\nReference {idx} from library {reference.type}:\n{ref_prompt}\n\n---\n"
    if instruct:
       query += f"\nHere are some additional instructions that may help you:\n{instruct}\n\n---\n"
