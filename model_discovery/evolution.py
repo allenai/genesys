@@ -1937,7 +1937,6 @@ class PhylogeneticTree:
             design=self.get_node(acronym)
             if design is None:
                 return True
-        return False
         if not self.benchmark_mode:
             seeds = sessdata['seed_ids']
             for acronym in seeds:
