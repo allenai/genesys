@@ -113,17 +113,17 @@ def evosys_config(evosys):
                 subcol1, subcol2, subcol3 = st.columns([1,1,0.3])
                 with subcol1:
                     target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
-                        help='The largest scale to train, will train `N Target` models at this scale.')
+                        help='The largest scale to train, will train `N Target` models at this scale.',disabled=evosys.benchmark_mode)
                     scales=[]
                     for s in TARGET_SCALES:
                         if int(target_scale.replace('M',''))>=int(s.replace('M','')):
                             scales.append(s)
                     _params['scales']=','.join(scales)
                 with subcol2:
-                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],
+                    _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],disabled=evosys.benchmark_mode,
                         help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
                 with subcol3:
-                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1)
+                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1,disabled=evosys.benchmark_mode)
                 
 
                 _verify_budget = evosys.get_verify_budget(full=True)
@@ -135,11 +135,11 @@ def evosys_config(evosys):
                     for scale in _params['scales'].split(',')[::-1]:
                         _verify_budget[scale]=int(np.ceil(budget))
                         budget/=_params['selection_ratio']
-                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will over write the above)*',value=_params_manual_set_budget)
+                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will over write the above)*',value=_params_manual_set_budget,disabled=evosys.benchmark_mode)
                 sorted_keys = sorted(list(_verify_budget.keys()),key=lambda x: int(x.replace('M','')))
                 _verify_budget = {k: _verify_budget[k] for k in sorted_keys}
                 _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
-                _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True)
+                _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True,disabled=evosys.benchmark_mode)
                 _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
                 _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
                 if _manual_set_budget:
@@ -149,13 +149,13 @@ def evosys_config(evosys):
 
                 subcol1, subcol2, subcol3 = st.columns([1.2,2,2])
                 with subcol1:
-                    _params['max_samples']=st.number_input('Max Samples',value=evosys.params.get('max_samples',0),min_value=0,step=1,
+                    _params['max_samples']=st.number_input('Max Samples',value=evosys.params.get('max_samples',0),min_value=0,step=1,disabled=evosys.benchmark_mode,
                         help='Design-bound by the number of designs in the population to generate in total. 0 means no limit.')
                 with subcol2:
-                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,
+                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,disabled=evosys.benchmark_mode,
                         help='The total budget for running model design agents, 0 means no budget limit.')
                 with subcol3:
-                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
+                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),disabled=evosys.benchmark_mode,
                         help=(
                             '**Design bound:** terminate the evolution after the design budget is used up, and will automatically promote verify budget; \n\n'
                             '**Verify bound:** terminate the evolution after the verify budget is used up, and will automatically promote design budget.\n\n'
@@ -171,14 +171,15 @@ def evosys_config(evosys):
                     _params['challenging_threshold']=st.number_input('Max Impl. Retries',value=evosys.params['challenging_threshold'],min_value=0,step=1,
                         help='The number of failed *implementation retries* before a design is considered too challenging to give up.')
                 with _col3:
-                    _params['scale_stair_start']=st.select_slider('Ladder Start Scale',options=TARGET_SCALES,value=evosys.params['scale_stair_start'],
+                    _params['scale_stair_start']=st.select_slider('Ladder Start Scale',options=TARGET_SCALES,value=evosys.params['scale_stair_start'],disabled=evosys.benchmark_mode,
                         help='The scale to start the ladder training from.')
                 
 
-                cols = st.columns([1,1.2,1.5])
+                cols = st.columns([1,1.4,1.3])
       
                 with cols[1]:
-                    _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
+                    _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,disabled=st.session_state.evo_running,
+                        help='Whether it is an agent benchmark experiment. If checked, you can ignore most of the settings above.')
                 
                 with cols[2]:
                     _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
