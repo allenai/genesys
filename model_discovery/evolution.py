@@ -1534,6 +1534,8 @@ class PhylogeneticTree:
     
     def del_design(self,design_id):
         # children = self.get_design_children()
+        if design_id not in self.G:
+            return
         self.FM.delete_design(design_id)
         self.G.remove_node(design_id)
         shutil.rmtree(self.design_dir(design_id))
