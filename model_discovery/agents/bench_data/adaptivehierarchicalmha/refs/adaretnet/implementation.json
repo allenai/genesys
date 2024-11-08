@@ -1,0 +1,434 @@
+{
+    "implementation": {
+        "review": null,
+        "root": "RetNet",
+        "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+        "units": {
+            "MultiScaleRetention": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "hidden_size": null,
+                    "norm_eps": 1e-05,
+                    "num_heads": 8
+                },
+                "design_traces": null
+            },
+            "AdaptiveLayer": {
+                "review": "# Comprehensive Feedback Report for AdaptiveLayer Implementation\n\n```rating 4.5```\n\n## Strengths\n\n1. **Innovative Design**\n   - Successfully implements adaptive computation with smooth transitions\n   - Elegant integration of complexity estimation and gating\n   - Smart use of sigmoid for smooth transitions with temperature parameter k\n\n2. **Technical Implementation**\n   - Clean and efficient code structure\n   - Proper handling of dtype consistency\n   - Good use of factory_kwargs pattern\n   - Effective parameter initialization\n\n3. **Numerical Stability**\n   - Smooth gating mechanism with temperature scaling\n   - Proper dtype handling throughout\n   - Well-designed residual connections\n\n4. **Integration**\n   - Seamless replacement for RetNetMLP\n   - Maintains interface compatibility\n   - Preserves the core functionality while adding adaptivity\n\n## Areas for Improvement\n\n1. **Memory Optimization**\n```python\ndef _forward(self, X, **Z):\n    # Add memory optimization\n    if torch.jit.is_scripting():\n        return self._forward_default(X, **Z)\n    return torch.utils.checkpoint.checkpoint(\n        self._forward_default,\n        X,\n        preserve_rng_state=False\n    )\n\ndef _forward_default(self, X, **Z):\n    with torch.cuda.amp.autocast(enabled=self.training):\n        complexity_scores = torch.sigmoid(self.complexity_estimator(X))\n        # ... rest of the implementation\n```\n\n2. **Performance Enhancements**\n```python\ndef __init__(self, *args, **kwargs):\n    super().__init__(*args, **kwargs)\n    self.register_buffer('temperature', torch.tensor(10.0))\n    self.register_buffer('eps', torch.tensor(1e-6))\n    \ndef _compute_mask(self, scores, threshold):\n    # Optimized mask computation\n    scores = scores.to(dtype=self.temperature.dtype)\n    return torch.sigmoid((scores - threshold) * self.temperature)\n```\n\n3. **Enhanced Configuration**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, temperature=10.0, min_active_ratio=0.1, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.temperature = temperature\n        self.min_active_ratio = min_active_ratio\n        \n    def _adjust_threshold(self, complexity_scores, base_threshold):\n        # Dynamic threshold adjustment\n        active_ratio = (complexity_scores >= base_threshold).float().mean()\n        if active_ratio < self.min_active_ratio:\n            return base_threshold * (active_ratio / self.min_active_ratio)\n        return base_threshold\n```\n\n## Innovation and Impact\n\n1. **Computational Efficiency**\n   - Dynamic computation allocation based on input complexity\n   - Potential for significant speed improvements\n   - Smooth transitions prevent sudden computation changes\n\n2. **Scalability Benefits**\n   - Adaptive resource utilization\n   - Potential for better handling of varying input complexities\n   - Natural load balancing\n\n3. **Training Dynamics**\n   - Smooth gradients through sigmoid gating\n   - Stable training with temperature scaling\n   - Good balance between adaptivity and stability\n\n## Recommendations\n\n1. **Performance Optimization**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.use_checkpointing = kwargs.get('use_checkpointing', True)\n        self.use_amp = kwargs.get('use_amp', True)\n        \n    @torch.jit.script_method\n    def _optimized_forward(self, X):\n        # JIT-optimized forward pass\n        return self._forward_impl(X)\n```\n\n2. **Enhanced Monitoring**\n```python\ndef _forward(self, X, **Z):\n    if self.training and hasattr(self, 'logger'):\n        with torch.no_grad():\n            complexity_dist = torch.sigmoid(self.complexity_estimator(X))\n            self.logger.update({\n                'complexity_mean': complexity_dist.mean().item(),\n                'complexity_std': complexity_dist.std().item(),\n                'active_ratio': (complexity_dist >= self.complexity_threshold).float().mean().item()\n            })\n    return self._forward_impl(X, **Z)\n```\n\n3. **Advanced Features**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.complexity_norm = nn.LayerNorm(self.hidden_size)\n        self.complexity_dropout = nn.Dropout(0.1)\n        \n    def estimate_complexity(self, X):\n        # Enhanced complexity estimation\n        X_normed = self.complexity_norm(X)\n        X_dropped = self.complexity_dropout(X_normed)\n        return torch.sigmoid(self.complexity_estimator(X_dropped))\n```\n\n4. **Documentation and Testing**\n```python\n@gau_test\ndef test_adaptive_layer_advanced(device=None, dtype=None):\n    \"\"\"Comprehensive test suite for AdaptiveLayer\"\"\"\n    # Test basic functionality\n    layer = AdaptiveLayer(embed_dim=64, block_loc=(0,1), kwarg_all={})\n    \n    # Test gradient flow\n    X = torch.randn(2, 16, 64, requires_grad=True)\n    Y = layer(X)[0]\n    loss = Y.sum()\n    loss.backward()\n    assert X.grad is not None\n    \n    # Test complexity distribution\n    scores = layer.estimate_complexity(X)\n    assert torch.all(scores >= 0) and torch.all(scores <= 1)\n```\n\n## Future Directions\n\n1. **Dynamic Temperature**\n   - Implement learnable temperature parameter\n   - Add temperature scheduling during training\n   - Consider per-layer temperature adaptation\n\n2. **Hierarchical Complexity**\n   - Add multi-scale complexity estimation\n   - Implement hierarchical gating mechanisms\n   - Consider cross-layer complexity propagation\n\n3. **Optimization Strategies**\n   - Explore sparse computation techniques\n   - Implement adaptive precision based on complexity\n   - Consider quantization-aware training\n\nThe implementation is excellent and shows great promise for improving transformer efficiency. The smooth gating mechanism and proper handling of numerical issues make it particularly robust. Focus on implementing the suggested optimizations to further improve performance and monitoring capabilities.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_adaptive_layer": "@gau_test\ndef test_AdaptiveLayer_test_adaptive_layer(device=None, dtype=None) ->None:\n    B, L, D = 2, 4, 8\n    X = torch.randn(B, L, D, requires_grad=True, device=device, dtype=dtype)\n    embed_dim = D\n    block_loc = 0, 1\n    kwarg_all = {'complexity_threshold': 0.5}\n    layer = AdaptiveLayer(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype)\n    Y, Z = layer(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, got {Y.shape}'\n    assert isinstance(Z, dict), 'Expected Z to be a dict'\n    Z_low = {'complexity_threshold': 0.0}\n    Y_full_compute, _ = layer(X, **Z_low)\n    Z_high = {'complexity_threshold': 1.0}\n    Y_no_compute, _ = layer(X, **Z_high)\n    max_diff = (Y_no_compute - X).abs().max().item()\n    assert max_diff < 0.01, f'Max difference is {max_diff}, expected less than 1e-2 when threshold is high'\n    diff = (Y_full_compute - X).abs().max().item()\n    assert diff > 0.01, f'Difference is {diff}, expected greater than 1e-2 when threshold is low'\n    loss = Y.mean()\n    loss.backward()\n    grad_norm = layer.complexity_estimator.weight.grad.abs().sum().item()\n    assert grad_norm > 0, 'Gradients did not flow back to the complexity_estimator parameters'\n    print('All tests passed for AdaptiveLayer')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass AdaptiveLayer(GAUBase):\n    \"\"\"\n    AdaptiveLayer implements an adaptive computation layer that adjusts its computation based on input complexity.\n\n    The layer consists of:\n    - A complexity estimator which predicts a complexity score for each token in the input sequence.\n    - A gating mechanism that decides whether to bypass computation or perform standard MLP computation based on the complexity score.\n    - Standard MLP computations applied selectively based on the gating decision.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Dictionary of all keyword arguments for flexible configuration.\n        device (torch.device, optional): Device to instantiate the parameters on.\n        dtype (torch.dtype, optional): Data type of the parameters.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, complexity_threshold=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = embed_dim\n        hidden_ratio = 2\n        intermediate_size = int(hidden_size * hidden_ratio * 2 / 3)\n        intermediate_size = 256 * ((intermediate_size + 256 - 1) // 256)\n        self.intermediate_size = intermediate_size\n        self.complexity_estimator = nn.Linear(hidden_size, 1, **self.\n            factory_kwargs)\n        self.gate_proj = nn.Linear(hidden_size, intermediate_size * 2, bias\n            =False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(intermediate_size, hidden_size, bias=\n            False, **self.factory_kwargs)\n        self.act_fn = nn.SiLU()\n        self.kwargs = kwargs\n        self.complexity_threshold = complexity_threshold\n\n    def _forward(self, X, **Z):\n        complexity_scores = torch.sigmoid(self.complexity_estimator(X))\n        complexity_scores = complexity_scores.to(dtype=X.dtype)\n        threshold = Z.get('complexity_threshold', self.complexity_threshold)\n        k = 10.0\n        compute_mask = torch.sigmoid((complexity_scores - threshold) * k)\n        y = self.gate_proj(X)\n        gate, y = y.chunk(2, dim=-1)\n        z = self.act_fn(gate) * y\n        mlp_output = self.down_proj(z)\n        Y = X * (1 - compute_mask) + mlp_output * compute_mask\n        Z_ = {}\n        return Y, Z_\n",
+                "rating": 4.5,
+                "spec": "{\"unitname\":\"AdaptiveLayer\",\"document\":\"AdaptiveLayer implements an adaptive computation layer that adjusts its computation based on input complexity.\\n\\nThe layer consists of:\\n- A complexity estimator which predicts a complexity score for each token in the input sequence.\\n- A gating mechanism that decides whether to bypass computation or perform standard MLP computation based on the complexity score.\\n- Standard MLP computations applied selectively based on the gating decision.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Dictionary of all keyword arguments for flexible configuration.\\n    device (torch.device, optional): Device to instantiate the parameters on.\\n    dtype (torch.dtype, optional): Data type of the parameters.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "complexity_threshold": 0.5
+                },
+                "design_traces": null
+            },
+            "RetNet": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = AdaptiveLayer(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "MultiScaleRetention",
+                    "AdaptiveLayer"
+                ],
+                "suggestions": null,
+                "args": {
+                    "norm_eps": 1e-06
+                },
+                "design_traces": null
+            }
+        },
+        "rating": null,
+        "declares": {
+            "AdaptiveLayer": "{\"unitname\":\"AdaptiveLayer\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+        },
+        "proposal_traces": [],
+        "suggestions": null,
+        "name": "adaretnet"
+    },
+    "status": "implemented",
+    "history": [
+        {
+            "tree": {
+                "review": null,
+                "root": "RetNet",
+                "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+                "units": {
+                    "MultiScaleRetention": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "hidden_size": null,
+                            "norm_eps": 1e-05,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "AdaptiveLayer": {
+                        "review": "# Comprehensive Feedback Report for AdaptiveLayer Implementation\n\n```rating 4.5```\n\n## Strengths\n\n1. **Innovative Design**\n   - Successfully implements adaptive computation with smooth transitions\n   - Elegant integration of complexity estimation and gating\n   - Smart use of sigmoid for smooth transitions with temperature parameter k\n\n2. **Technical Implementation**\n   - Clean and efficient code structure\n   - Proper handling of dtype consistency\n   - Good use of factory_kwargs pattern\n   - Effective parameter initialization\n\n3. **Numerical Stability**\n   - Smooth gating mechanism with temperature scaling\n   - Proper dtype handling throughout\n   - Well-designed residual connections\n\n4. **Integration**\n   - Seamless replacement for RetNetMLP\n   - Maintains interface compatibility\n   - Preserves the core functionality while adding adaptivity\n\n## Areas for Improvement\n\n1. **Memory Optimization**\n```python\ndef _forward(self, X, **Z):\n    # Add memory optimization\n    if torch.jit.is_scripting():\n        return self._forward_default(X, **Z)\n    return torch.utils.checkpoint.checkpoint(\n        self._forward_default,\n        X,\n        preserve_rng_state=False\n    )\n\ndef _forward_default(self, X, **Z):\n    with torch.cuda.amp.autocast(enabled=self.training):\n        complexity_scores = torch.sigmoid(self.complexity_estimator(X))\n        # ... rest of the implementation\n```\n\n2. **Performance Enhancements**\n```python\ndef __init__(self, *args, **kwargs):\n    super().__init__(*args, **kwargs)\n    self.register_buffer('temperature', torch.tensor(10.0))\n    self.register_buffer('eps', torch.tensor(1e-6))\n    \ndef _compute_mask(self, scores, threshold):\n    # Optimized mask computation\n    scores = scores.to(dtype=self.temperature.dtype)\n    return torch.sigmoid((scores - threshold) * self.temperature)\n```\n\n3. **Enhanced Configuration**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, temperature=10.0, min_active_ratio=0.1, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.temperature = temperature\n        self.min_active_ratio = min_active_ratio\n        \n    def _adjust_threshold(self, complexity_scores, base_threshold):\n        # Dynamic threshold adjustment\n        active_ratio = (complexity_scores >= base_threshold).float().mean()\n        if active_ratio < self.min_active_ratio:\n            return base_threshold * (active_ratio / self.min_active_ratio)\n        return base_threshold\n```\n\n## Innovation and Impact\n\n1. **Computational Efficiency**\n   - Dynamic computation allocation based on input complexity\n   - Potential for significant speed improvements\n   - Smooth transitions prevent sudden computation changes\n\n2. **Scalability Benefits**\n   - Adaptive resource utilization\n   - Potential for better handling of varying input complexities\n   - Natural load balancing\n\n3. **Training Dynamics**\n   - Smooth gradients through sigmoid gating\n   - Stable training with temperature scaling\n   - Good balance between adaptivity and stability\n\n## Recommendations\n\n1. **Performance Optimization**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.use_checkpointing = kwargs.get('use_checkpointing', True)\n        self.use_amp = kwargs.get('use_amp', True)\n        \n    @torch.jit.script_method\n    def _optimized_forward(self, X):\n        # JIT-optimized forward pass\n        return self._forward_impl(X)\n```\n\n2. **Enhanced Monitoring**\n```python\ndef _forward(self, X, **Z):\n    if self.training and hasattr(self, 'logger'):\n        with torch.no_grad():\n            complexity_dist = torch.sigmoid(self.complexity_estimator(X))\n            self.logger.update({\n                'complexity_mean': complexity_dist.mean().item(),\n                'complexity_std': complexity_dist.std().item(),\n                'active_ratio': (complexity_dist >= self.complexity_threshold).float().mean().item()\n            })\n    return self._forward_impl(X, **Z)\n```\n\n3. **Advanced Features**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.complexity_norm = nn.LayerNorm(self.hidden_size)\n        self.complexity_dropout = nn.Dropout(0.1)\n        \n    def estimate_complexity(self, X):\n        # Enhanced complexity estimation\n        X_normed = self.complexity_norm(X)\n        X_dropped = self.complexity_dropout(X_normed)\n        return torch.sigmoid(self.complexity_estimator(X_dropped))\n```\n\n4. **Documentation and Testing**\n```python\n@gau_test\ndef test_adaptive_layer_advanced(device=None, dtype=None):\n    \"\"\"Comprehensive test suite for AdaptiveLayer\"\"\"\n    # Test basic functionality\n    layer = AdaptiveLayer(embed_dim=64, block_loc=(0,1), kwarg_all={})\n    \n    # Test gradient flow\n    X = torch.randn(2, 16, 64, requires_grad=True)\n    Y = layer(X)[0]\n    loss = Y.sum()\n    loss.backward()\n    assert X.grad is not None\n    \n    # Test complexity distribution\n    scores = layer.estimate_complexity(X)\n    assert torch.all(scores >= 0) and torch.all(scores <= 1)\n```\n\n## Future Directions\n\n1. **Dynamic Temperature**\n   - Implement learnable temperature parameter\n   - Add temperature scheduling during training\n   - Consider per-layer temperature adaptation\n\n2. **Hierarchical Complexity**\n   - Add multi-scale complexity estimation\n   - Implement hierarchical gating mechanisms\n   - Consider cross-layer complexity propagation\n\n3. **Optimization Strategies**\n   - Explore sparse computation techniques\n   - Implement adaptive precision based on complexity\n   - Consider quantization-aware training\n\nThe implementation is excellent and shows great promise for improving transformer efficiency. The smooth gating mechanism and proper handling of numerical issues make it particularly robust. Focus on implementing the suggested optimizations to further improve performance and monitoring capabilities.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_adaptive_layer": "@gau_test\ndef test_AdaptiveLayer_test_adaptive_layer(device=None, dtype=None) ->None:\n    B, L, D = 2, 4, 8\n    X = torch.randn(B, L, D, requires_grad=True, device=device, dtype=dtype)\n    embed_dim = D\n    block_loc = 0, 1\n    kwarg_all = {'complexity_threshold': 0.5}\n    layer = AdaptiveLayer(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype)\n    Y, Z = layer(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, got {Y.shape}'\n    assert isinstance(Z, dict), 'Expected Z to be a dict'\n    Z_low = {'complexity_threshold': 0.0}\n    Y_full_compute, _ = layer(X, **Z_low)\n    Z_high = {'complexity_threshold': 1.0}\n    Y_no_compute, _ = layer(X, **Z_high)\n    max_diff = (Y_no_compute - X).abs().max().item()\n    assert max_diff < 0.01, f'Max difference is {max_diff}, expected less than 1e-2 when threshold is high'\n    diff = (Y_full_compute - X).abs().max().item()\n    assert diff > 0.01, f'Difference is {diff}, expected greater than 1e-2 when threshold is low'\n    loss = Y.mean()\n    loss.backward()\n    grad_norm = layer.complexity_estimator.weight.grad.abs().sum().item()\n    assert grad_norm > 0, 'Gradients did not flow back to the complexity_estimator parameters'\n    print('All tests passed for AdaptiveLayer')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass AdaptiveLayer(GAUBase):\n    \"\"\"\n    AdaptiveLayer implements an adaptive computation layer that adjusts its computation based on input complexity.\n\n    The layer consists of:\n    - A complexity estimator which predicts a complexity score for each token in the input sequence.\n    - A gating mechanism that decides whether to bypass computation or perform standard MLP computation based on the complexity score.\n    - Standard MLP computations applied selectively based on the gating decision.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Dictionary of all keyword arguments for flexible configuration.\n        device (torch.device, optional): Device to instantiate the parameters on.\n        dtype (torch.dtype, optional): Data type of the parameters.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, complexity_threshold=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = embed_dim\n        hidden_ratio = 2\n        intermediate_size = int(hidden_size * hidden_ratio * 2 / 3)\n        intermediate_size = 256 * ((intermediate_size + 256 - 1) // 256)\n        self.intermediate_size = intermediate_size\n        self.complexity_estimator = nn.Linear(hidden_size, 1, **self.\n            factory_kwargs)\n        self.gate_proj = nn.Linear(hidden_size, intermediate_size * 2, bias\n            =False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(intermediate_size, hidden_size, bias=\n            False, **self.factory_kwargs)\n        self.act_fn = nn.SiLU()\n        self.kwargs = kwargs\n        self.complexity_threshold = complexity_threshold\n\n    def _forward(self, X, **Z):\n        complexity_scores = torch.sigmoid(self.complexity_estimator(X))\n        complexity_scores = complexity_scores.to(dtype=X.dtype)\n        threshold = Z.get('complexity_threshold', self.complexity_threshold)\n        k = 10.0\n        compute_mask = torch.sigmoid((complexity_scores - threshold) * k)\n        y = self.gate_proj(X)\n        gate, y = y.chunk(2, dim=-1)\n        z = self.act_fn(gate) * y\n        mlp_output = self.down_proj(z)\n        Y = X * (1 - compute_mask) + mlp_output * compute_mask\n        Z_ = {}\n        return Y, Z_\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"AdaptiveLayer\",\"document\":\"AdaptiveLayer implements an adaptive computation layer that adjusts its computation based on input complexity.\\n\\nThe layer consists of:\\n- A complexity estimator which predicts a complexity score for each token in the input sequence.\\n- A gating mechanism that decides whether to bypass computation or perform standard MLP computation based on the complexity score.\\n- Standard MLP computations applied selectively based on the gating decision.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Dictionary of all keyword arguments for flexible configuration.\\n    device (torch.device, optional): Device to instantiate the parameters on.\\n    dtype (torch.dtype, optional): Data type of the parameters.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "complexity_threshold": 0.5
+                        },
+                        "design_traces": null
+                    },
+                    "RetNet": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = AdaptiveLayer(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "MultiScaleRetention",
+                            "AdaptiveLayer"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "norm_eps": 1e-06
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "AdaptiveLayer": "{\"unitname\":\"AdaptiveLayer\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "adaretnet"
+            },
+            "user_input": "",
+            "status": "unfinished",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "o1_preview",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "o1_preview",
+                    "IMPLEMENTATION_OBSERVER": "claude3.5_sonnet",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0,
+                "IMPLEMENTATION_PLANNER": 0.371985,
+                "IMPLEMENTATION_CODER": 2.94525,
+                "PROPOSAL_REVIEWER": 0,
+                "IMPLEMENTATION_OBSERVER": 0.542397,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": null,
+                "root": "RetNet",
+                "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+                "units": {
+                    "MultiScaleRetention": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "hidden_size": null,
+                            "norm_eps": 1e-05,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "AdaptiveLayer": {
+                        "review": "# Comprehensive Feedback Report for AdaptiveLayer Implementation\n\n```rating 4.5```\n\n## Strengths\n\n1. **Innovative Design**\n   - Successfully implements adaptive computation with smooth transitions\n   - Elegant integration of complexity estimation and gating\n   - Smart use of sigmoid for smooth transitions with temperature parameter k\n\n2. **Technical Implementation**\n   - Clean and efficient code structure\n   - Proper handling of dtype consistency\n   - Good use of factory_kwargs pattern\n   - Effective parameter initialization\n\n3. **Numerical Stability**\n   - Smooth gating mechanism with temperature scaling\n   - Proper dtype handling throughout\n   - Well-designed residual connections\n\n4. **Integration**\n   - Seamless replacement for RetNetMLP\n   - Maintains interface compatibility\n   - Preserves the core functionality while adding adaptivity\n\n## Areas for Improvement\n\n1. **Memory Optimization**\n```python\ndef _forward(self, X, **Z):\n    # Add memory optimization\n    if torch.jit.is_scripting():\n        return self._forward_default(X, **Z)\n    return torch.utils.checkpoint.checkpoint(\n        self._forward_default,\n        X,\n        preserve_rng_state=False\n    )\n\ndef _forward_default(self, X, **Z):\n    with torch.cuda.amp.autocast(enabled=self.training):\n        complexity_scores = torch.sigmoid(self.complexity_estimator(X))\n        # ... rest of the implementation\n```\n\n2. **Performance Enhancements**\n```python\ndef __init__(self, *args, **kwargs):\n    super().__init__(*args, **kwargs)\n    self.register_buffer('temperature', torch.tensor(10.0))\n    self.register_buffer('eps', torch.tensor(1e-6))\n    \ndef _compute_mask(self, scores, threshold):\n    # Optimized mask computation\n    scores = scores.to(dtype=self.temperature.dtype)\n    return torch.sigmoid((scores - threshold) * self.temperature)\n```\n\n3. **Enhanced Configuration**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, temperature=10.0, min_active_ratio=0.1, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.temperature = temperature\n        self.min_active_ratio = min_active_ratio\n        \n    def _adjust_threshold(self, complexity_scores, base_threshold):\n        # Dynamic threshold adjustment\n        active_ratio = (complexity_scores >= base_threshold).float().mean()\n        if active_ratio < self.min_active_ratio:\n            return base_threshold * (active_ratio / self.min_active_ratio)\n        return base_threshold\n```\n\n## Innovation and Impact\n\n1. **Computational Efficiency**\n   - Dynamic computation allocation based on input complexity\n   - Potential for significant speed improvements\n   - Smooth transitions prevent sudden computation changes\n\n2. **Scalability Benefits**\n   - Adaptive resource utilization\n   - Potential for better handling of varying input complexities\n   - Natural load balancing\n\n3. **Training Dynamics**\n   - Smooth gradients through sigmoid gating\n   - Stable training with temperature scaling\n   - Good balance between adaptivity and stability\n\n## Recommendations\n\n1. **Performance Optimization**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.use_checkpointing = kwargs.get('use_checkpointing', True)\n        self.use_amp = kwargs.get('use_amp', True)\n        \n    @torch.jit.script_method\n    def _optimized_forward(self, X):\n        # JIT-optimized forward pass\n        return self._forward_impl(X)\n```\n\n2. **Enhanced Monitoring**\n```python\ndef _forward(self, X, **Z):\n    if self.training and hasattr(self, 'logger'):\n        with torch.no_grad():\n            complexity_dist = torch.sigmoid(self.complexity_estimator(X))\n            self.logger.update({\n                'complexity_mean': complexity_dist.mean().item(),\n                'complexity_std': complexity_dist.std().item(),\n                'active_ratio': (complexity_dist >= self.complexity_threshold).float().mean().item()\n            })\n    return self._forward_impl(X, **Z)\n```\n\n3. **Advanced Features**\n```python\nclass AdaptiveLayer(GAUBase):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.complexity_norm = nn.LayerNorm(self.hidden_size)\n        self.complexity_dropout = nn.Dropout(0.1)\n        \n    def estimate_complexity(self, X):\n        # Enhanced complexity estimation\n        X_normed = self.complexity_norm(X)\n        X_dropped = self.complexity_dropout(X_normed)\n        return torch.sigmoid(self.complexity_estimator(X_dropped))\n```\n\n4. **Documentation and Testing**\n```python\n@gau_test\ndef test_adaptive_layer_advanced(device=None, dtype=None):\n    \"\"\"Comprehensive test suite for AdaptiveLayer\"\"\"\n    # Test basic functionality\n    layer = AdaptiveLayer(embed_dim=64, block_loc=(0,1), kwarg_all={})\n    \n    # Test gradient flow\n    X = torch.randn(2, 16, 64, requires_grad=True)\n    Y = layer(X)[0]\n    loss = Y.sum()\n    loss.backward()\n    assert X.grad is not None\n    \n    # Test complexity distribution\n    scores = layer.estimate_complexity(X)\n    assert torch.all(scores >= 0) and torch.all(scores <= 1)\n```\n\n## Future Directions\n\n1. **Dynamic Temperature**\n   - Implement learnable temperature parameter\n   - Add temperature scheduling during training\n   - Consider per-layer temperature adaptation\n\n2. **Hierarchical Complexity**\n   - Add multi-scale complexity estimation\n   - Implement hierarchical gating mechanisms\n   - Consider cross-layer complexity propagation\n\n3. **Optimization Strategies**\n   - Explore sparse computation techniques\n   - Implement adaptive precision based on complexity\n   - Consider quantization-aware training\n\nThe implementation is excellent and shows great promise for improving transformer efficiency. The smooth gating mechanism and proper handling of numerical issues make it particularly robust. Focus on implementing the suggested optimizations to further improve performance and monitoring capabilities.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_adaptive_layer": "@gau_test\ndef test_AdaptiveLayer_test_adaptive_layer(device=None, dtype=None) ->None:\n    B, L, D = 2, 4, 8\n    X = torch.randn(B, L, D, requires_grad=True, device=device, dtype=dtype)\n    embed_dim = D\n    block_loc = 0, 1\n    kwarg_all = {'complexity_threshold': 0.5}\n    layer = AdaptiveLayer(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype)\n    Y, Z = layer(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, got {Y.shape}'\n    assert isinstance(Z, dict), 'Expected Z to be a dict'\n    Z_low = {'complexity_threshold': 0.0}\n    Y_full_compute, _ = layer(X, **Z_low)\n    Z_high = {'complexity_threshold': 1.0}\n    Y_no_compute, _ = layer(X, **Z_high)\n    max_diff = (Y_no_compute - X).abs().max().item()\n    assert max_diff < 0.01, f'Max difference is {max_diff}, expected less than 1e-2 when threshold is high'\n    diff = (Y_full_compute - X).abs().max().item()\n    assert diff > 0.01, f'Difference is {diff}, expected greater than 1e-2 when threshold is low'\n    loss = Y.mean()\n    loss.backward()\n    grad_norm = layer.complexity_estimator.weight.grad.abs().sum().item()\n    assert grad_norm > 0, 'Gradients did not flow back to the complexity_estimator parameters'\n    print('All tests passed for AdaptiveLayer')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass AdaptiveLayer(GAUBase):\n    \"\"\"\n    AdaptiveLayer implements an adaptive computation layer that adjusts its computation based on input complexity.\n\n    The layer consists of:\n    - A complexity estimator which predicts a complexity score for each token in the input sequence.\n    - A gating mechanism that decides whether to bypass computation or perform standard MLP computation based on the complexity score.\n    - Standard MLP computations applied selectively based on the gating decision.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Dictionary of all keyword arguments for flexible configuration.\n        device (torch.device, optional): Device to instantiate the parameters on.\n        dtype (torch.dtype, optional): Data type of the parameters.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, complexity_threshold=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = embed_dim\n        hidden_ratio = 2\n        intermediate_size = int(hidden_size * hidden_ratio * 2 / 3)\n        intermediate_size = 256 * ((intermediate_size + 256 - 1) // 256)\n        self.intermediate_size = intermediate_size\n        self.complexity_estimator = nn.Linear(hidden_size, 1, **self.\n            factory_kwargs)\n        self.gate_proj = nn.Linear(hidden_size, intermediate_size * 2, bias\n            =False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(intermediate_size, hidden_size, bias=\n            False, **self.factory_kwargs)\n        self.act_fn = nn.SiLU()\n        self.kwargs = kwargs\n        self.complexity_threshold = complexity_threshold\n\n    def _forward(self, X, **Z):\n        complexity_scores = torch.sigmoid(self.complexity_estimator(X))\n        complexity_scores = complexity_scores.to(dtype=X.dtype)\n        threshold = Z.get('complexity_threshold', self.complexity_threshold)\n        k = 10.0\n        compute_mask = torch.sigmoid((complexity_scores - threshold) * k)\n        y = self.gate_proj(X)\n        gate, y = y.chunk(2, dim=-1)\n        z = self.act_fn(gate) * y\n        mlp_output = self.down_proj(z)\n        Y = X * (1 - compute_mask) + mlp_output * compute_mask\n        Z_ = {}\n        return Y, Z_\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"AdaptiveLayer\",\"document\":\"AdaptiveLayer implements an adaptive computation layer that adjusts its computation based on input complexity.\\n\\nThe layer consists of:\\n- A complexity estimator which predicts a complexity score for each token in the input sequence.\\n- A gating mechanism that decides whether to bypass computation or perform standard MLP computation based on the complexity score.\\n- Standard MLP computations applied selectively based on the gating decision.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Dictionary of all keyword arguments for flexible configuration.\\n    device (torch.device, optional): Device to instantiate the parameters on.\\n    dtype (torch.dtype, optional): Data type of the parameters.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "complexity_threshold": 0.5
+                        },
+                        "design_traces": null
+                    },
+                    "RetNet": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = AdaptiveLayer(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "MultiScaleRetention",
+                            "AdaptiveLayer"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "norm_eps": 1e-06
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "AdaptiveLayer": "{\"unitname\":\"AdaptiveLayer\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "adaretnet"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "o1_preview",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "o1_preview",
+                    "IMPLEMENTATION_OBSERVER": "claude3.5_sonnet",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0,
+                "IMPLEMENTATION_PLANNER": 0.371985,
+                "IMPLEMENTATION_CODER": 2.94525,
+                "PROPOSAL_REVIEWER": 0,
+                "IMPLEMENTATION_OBSERVER": 0.542397,
+                "SEARCH_ASSISTANT": 0
+            }
+        }
+    ]
+}

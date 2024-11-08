@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gpt_2_arssm",
+        "sparsestategau",
+        "mea",
+        "perceiverio",
+        "xl3m",
+        "diffusionbert"
+    ],
+    "proposed": [
+        "gpt_2_hela"
+    ],
+    "reranked": {
+        "rank": [
+            "gpt_2_hela"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "hierretnet",
+        "zebra",
+        "prefix",
+        "jamba",
+        "sentineltokens"
+    ],
+    "proposed": [
+        "hiergpt"
+    ],
+    "reranked": {
+        "rank": [
+            "hiergpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt2"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "rwkv6_scankernel",
+        "sparsestatetttmodel",
+        "mamba",
+        "lkconv",
+        "humanepisodic",
+        "infinibench"
+    ],
+    "proposed": [
+        "gpt2_sla"
+    ],
+    "reranked": {
+        "rank": [
+            "gpt2_sla"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

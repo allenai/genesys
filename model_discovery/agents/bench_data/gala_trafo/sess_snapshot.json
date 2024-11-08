@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "streamretnet",
+        "cachegpt",
+        "orderedmem",
+        "flash",
+        "diifinfms",
+        "diffusionbert"
+    ],
+    "proposed": [
+        "gala_trafo"
+    ],
+    "reranked": {
+        "rank": [
+            "gala_trafo"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "adaptivettt"
+    ]
+}

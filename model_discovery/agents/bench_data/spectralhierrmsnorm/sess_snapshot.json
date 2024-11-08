@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivekvmetatransformer",
+        "wavemamba2",
+        "grootvl",
+        "convssm",
+        "httyh",
+        "rrwkv"
+    ],
+    "proposed": [
+        "spectralhierrmsnorm"
+    ],
+    "reranked": {
+        "rank": [
+            "spectralhierrmsnorm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "spectralhierttt"
+    ]
+}

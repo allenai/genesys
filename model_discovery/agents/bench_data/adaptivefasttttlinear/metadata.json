@@ -1,0 +1,30 @@
+{
+    "title": "AdaptiveFastTTTLinear",
+    "acronym": "adaptivefasttttlinear",
+    "sess_id": "2024-11-01-01-54-37-f4d369",
+    "sess_snapshot": {
+        "ref_ids": [
+            "adaptivehierarchicalfastttt",
+            "dynamicsparsefftlm",
+            "memorizingtrans",
+            "decimamba",
+            "lighdynconv",
+            "maxmargin"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hierarchicalfastttt"
+        ]
+    },
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "freqhaa_gpt",
+        "hyperlora",
+        "lbcontextcompress",
+        "synthesizer",
+        "lightningattn",
+        "ssmfundmodel"
+    ],
+    "proposed": [
+        "dualstreamhiergpt"
+    ],
+    "reranked": {
+        "rank": [
+            "dualstreamhiergpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hiergpt"
+    ]
+}

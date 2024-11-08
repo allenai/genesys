@@ -1,0 +1,30 @@
+{
+    "title": "Proposal: HierarchicalSparseNorm-GPT",
+    "acronym": "hierarchicalsparsenorm_gpt",
+    "sess_id": "2024-10-30-00-28-37-95bdab",
+    "sess_snapshot": {
+        "ref_ids": [
+            "rwkv6_event",
+            "compressivegpt",
+            "gqa",
+            "likelihooddifflm",
+            "sentineltokens",
+            "locater"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hieranorm_attngpt"
+        ]
+    },
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

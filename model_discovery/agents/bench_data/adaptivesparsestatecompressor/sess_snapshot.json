@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hierarchicalgatedsparselm",
+        "sparsemodulargpt",
+        "hopfield",
+        "fastr2d2",
+        "xl3m",
+        "extensibleembed"
+    ],
+    "proposed": [
+        "adaptivesparsestatecompressor"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivesparsestatecompressor"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "sparsestategau"
+    ]
+}

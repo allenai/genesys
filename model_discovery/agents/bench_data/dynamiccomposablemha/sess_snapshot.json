@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "ttt_auxact",
+        "dynsparserotary",
+        "fastr2d2",
+        "scatterbrain",
+        "illusionssm",
+        "transnormer"
+    ],
+    "proposed": [
+        "dynamiccomposablemha"
+    ],
+    "reranked": {
+        "rank": [
+            "dynamiccomposablemha"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "selectivegpt"
+    ]
+}

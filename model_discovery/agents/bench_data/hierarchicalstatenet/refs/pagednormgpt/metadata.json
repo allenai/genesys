@@ -1,0 +1,30 @@
+{
+    "title": "PagedAdaptiveRMSNorm: Memory-Efficient Adaptive Normalization for Large Language Models",
+    "acronym": "pagednormgpt",
+    "sess_id": "2024-11-03-15-40-25-1ada6e",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hyperlora",
+            "hierarchicalfasttttlinearplus",
+            "soft",
+            "locost",
+            "hiddenattnmamba",
+            "elgllm"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hieranorm_attngpt"
+        ]
+    },
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivesparselm",
+        "selectivegpt",
+        "sinkhorn",
+        "linllms",
+        "d3pms",
+        "s4pp"
+    ],
+    "proposed": [
+        "swiglu_ssm"
+    ],
+    "reranked": {
+        "rank": [
+            "swiglu_ssm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hierarchicalsparsenorm_gpt",
+        "rwkv6_sef",
+        "flashattn",
+        "lstransformer",
+        "gpt",
+        "ssmfundmodel"
+    ],
+    "proposed": [
+        "mambafastttt"
+    ],
+    "reranked": {
+        "rank": [
+            "mambafastttt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicaladaptivermsnorm"
+    ]
+}

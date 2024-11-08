@@ -1,0 +1,30 @@
+{
+    "title": "AdaptiveHierarchicalRMSNorm",
+    "acronym": "adaptivehierarchicalrmsnorm",
+    "sess_id": "2024-10-31-17-15-13-c52cfe",
+    "sess_snapshot": {
+        "ref_ids": [
+            "spectralhmamba",
+            "han_gpt",
+            "based",
+            "megalodon",
+            "transnormerllm",
+            "sentineltokens"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "fasttttlinear"
+        ]
+    },
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

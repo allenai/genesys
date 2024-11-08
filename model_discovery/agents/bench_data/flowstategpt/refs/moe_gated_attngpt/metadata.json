@@ -1,0 +1,30 @@
+{
+    "title": "MoE-Gated-AttnGPT",
+    "acronym": "moe_gated_attngpt",
+    "sess_id": "2024-11-03-16-48-04-585e19",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hierarchicalgatedsparselm",
+            "hydralm",
+            "ssaugtrans",
+            "mambabyte",
+            "mechdesignscaling",
+            "theoryssms"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hieranorm_attngpt"
+        ]
+    },
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

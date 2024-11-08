@@ -1,0 +1,30 @@
+{
+    "title": "HardwareEfficientGPT",
+    "acronym": "hardwareefficientgpt",
+    "sess_id": "2024-11-01-00-49-25-b23786",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hierretnet",
+            "odeadaptgpt",
+            "alibi",
+            "flowformer",
+            "approxdiag",
+            "infinibench"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hierarchicalfastttt"
+        ]
+    },
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

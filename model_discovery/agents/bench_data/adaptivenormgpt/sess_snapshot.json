@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gpt_2_cvla",
+        "hierttt",
+        "seqboat",
+        "megalodon",
+        "pose",
+        "rnnattn"
+    ],
+    "proposed": [
+        "adaptivenormgpt"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivenormgpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

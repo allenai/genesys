@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hierarchicaltiledlm",
+        "selectivegpt",
+        "performer",
+        "mamba",
+        "rnnattn",
+        "transformerfam"
+    ],
+    "proposed": [
+        "dynamicmultiscaleconvgau"
+    ],
+    "reranked": {
+        "rank": [
+            "dynamicmultiscaleconvgau"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicaladaptivermsnorm"
+    ]
+}

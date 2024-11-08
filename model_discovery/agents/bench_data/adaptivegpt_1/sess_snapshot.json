@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "compressedstategab",
+        "hiergatedttt",
+        "compositionalattn",
+        "longformer",
+        "theoryssms",
+        "lightningattn"
+    ],
+    "proposed": [
+        "adaptivegpt_1"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivegpt_1"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hiergpt"
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "title": "SpectralHiPPOQ",
+    "acronym": "spectralhippoq",
+    "sess_id": "2024-11-07-00-56-16-b40eb3",
+    "sess_snapshot": {
+        "ref_ids": [
+            "adaptivemamba2",
+            "hybridssmnet",
+            "deltanet",
+            "lssl",
+            "infinibench",
+            "dynsmoothssms"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hippovq"
+        ]
+    },
+    "seed_ids": [
+        "hippovq"
+    ]
+}

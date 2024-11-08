@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "efficientsparsekfastttt",
+        "losslesscompressedlm",
+        "s5",
+        "staircaseattn",
+        "illusionssm",
+        "lminfinite"
+    ],
+    "proposed": [
+        "ioawarettt"
+    ],
+    "reranked": {
+        "rank": [
+            "ioawarettt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

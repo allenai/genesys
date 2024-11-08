@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "ssmgraphconvolution",
+        "dynamicgatedconv",
+        "lengenewope",
+        "yarn",
+        "explicitencoding",
+        "nevertrainscratch"
+    ],
+    "proposed": [
+        "an_improved_fasttttlinear"
+    ],
+    "reranked": {
+        "rank": [
+            "an_improved_fasttttlinear"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "streaminggpt"
+    ]
+}

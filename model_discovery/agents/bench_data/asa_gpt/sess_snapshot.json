@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "gpt_2_ala",
+        "compressivegpt",
+        "diffuseq",
+        "spikegpt",
+        "graphlm",
+        "e2"
+    ],
+    "proposed": [
+        "asa_gpt"
+    ],
+    "reranked": {
+        "rank": [
+            "asa_gpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt2"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gpt_2_gsla",
+        "gpt_2_hla",
+        "ngrammer",
+        "rebased",
+        "contdiffu",
+        "mambamixer"
+    ],
+    "proposed": [
+        "efficientselectivefastttt"
+    ],
+    "reranked": {
+        "rank": [
+            "efficientselectivefastttt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

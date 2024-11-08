@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "blocksparseretnet",
+        "hybridrwkv",
+        "mamba",
+        "normalizedattn",
+        "bmojo",
+        "kanmlp"
+    ],
+    "proposed": [
+        "fasttttlinearrope"
+    ],
+    "reranked": {
+        "rank": [
+            "fasttttlinearrope"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

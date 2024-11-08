@@ -1,0 +1,23 @@
+{
+    "node_id": null,
+    "ref_ids": [],
+    "proposed": [
+        "hybridrwkv"
+    ],
+    "reranked": {
+        "rank": [
+            "hybridrwkv"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Crossover designs",
+    "seed_ids": [
+        "rwkv6",
+        "fasttttlinear"
+    ]
+}

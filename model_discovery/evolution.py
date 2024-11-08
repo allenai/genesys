@@ -1776,7 +1776,7 @@ class PhylogeneticTree:
         new_tree.declares['root']=root_decl
         return new_tree
     
-    def get_session_input(self,sess_id:str):
+    def get_session_input(self,sess_id:str): 
         sessdata=self.design_sessions[sess_id]
         seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids'] if seed_id]
         refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids'] if ref_id]

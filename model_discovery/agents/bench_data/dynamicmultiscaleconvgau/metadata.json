@@ -1,0 +1,30 @@
+{
+    "title": "DynamicMultiScaleConvGAU: Enhancing the Conv GAU with Dynamic and Multi-Scale Convolutions for Efficient Language Modeling",
+    "acronym": "dynamicmultiscaleconvgau",
+    "sess_id": "2024-11-07-01-38-42-abe4c3",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hierarchicaltiledlm",
+            "selectivegpt",
+            "performer",
+            "mamba",
+            "rnnattn",
+            "transformerfam"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hierarchicaladaptivermsnorm"
+        ]
+    },
+    "seed_ids": [
+        "hierarchicaladaptivermsnorm"
+    ]
+}

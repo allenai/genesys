@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "metattt",
+        "fasttttlinear",
+        "compressivetransformer",
+        "cape",
+        "longt5",
+        "cepe"
+    ],
+    "proposed": [
+        "gpt_2_ala"
+    ],
+    "reranked": {
+        "rank": [
+            "gpt_2_ala"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt2"
+    ]
+}

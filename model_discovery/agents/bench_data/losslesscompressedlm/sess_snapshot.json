@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "asa_gpt",
+        "selectivegpt",
+        "nbce",
+        "productkeymem",
+        "3drpe",
+        "loki"
+    ],
+    "proposed": [
+        "losslesscompressedlm"
+    ],
+    "reranked": {
+        "rank": [
+            "losslesscompressedlm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

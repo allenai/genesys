@@ -1,0 +1,639 @@
+{
+    "implementation": {
+        "review": null,
+        "root": "GPT2",
+        "proposal": "GPT2 is a transformer-based language model.\n",
+        "proposal_traces": [],
+        "rating": null,
+        "declares": {
+            "AdaptiveSparseAttention": "{\"unitname\":\"AdaptiveSparseAttention\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+            "RotaryPositionalEmbeddings": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"requirements\":\"Rotary position embeddings for attention\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}"
+        },
+        "units": {
+            "AdaptiveSparseAttention": {
+                "review": "# Comprehensive Review: AdaptiveSparseAttention Implementation\n\n```rating 4.5```\n\n## Strengths\n\n1. **Causality Preservation**:\n   - Excellent implementation of causal routing using cumulative means\n   - Proper masking in attention computation\n   - Careful handling of position-dependent computations\n\n2. **Architecture Design**:\n   - Clean separation of routing, expert application, and attention mechanisms\n   - Well-structured initialization of expert networks\n   - Efficient parameter sharing through expert groups\n\n3. **Implementation Quality**:\n   - Comprehensive docstrings and type hints\n   - Robust error checking and assertions\n   - Clear code organization and modularity\n\n4. **Numerical Stability**:\n   - Layer normalization in expert application\n   - Proper scaling in attention computation\n   - Careful handling of numerical operations\n\n## Areas for Improvement\n\n1. **Memory Optimization**:\n```python\ndef _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor) -> torch.Tensor:\n    expert_out = torch.zeros_like(x)  # Could be memory intensive for large batches\n```\nConsider using in-place operations:\n```python\ndef _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor) -> torch.Tensor:\n    # Use accumulate_grad_in_backward for memory efficiency\n    expert_out = None\n    for i in range(self.num_experts):\n        current_out = self._compute_single_expert(i, x, routing_weights)\n        if expert_out is None:\n            expert_out = current_out\n        else:\n            expert_out.add_(current_out)\n    return expert_out\n```\n\n2. **Computational Efficiency**:\n```python\nrouting_weights = self._compute_routing_weights(X, L)\nq = self._apply_experts(q, routing_weights)\nk = self._apply_experts(k, routing_weights)\nv = self._apply_experts(v, routing_weights)\n```\nCould be optimized by:\n```python\ndef _apply_qkv_experts(self, q, k, v, routing_weights):\n    \"\"\"Joint expert application for Q, K, V to enable better parallelization\"\"\"\n    q_out = self._apply_experts(q, routing_weights)\n    k_out = self._apply_experts(k, routing_weights)\n    v_out = self._apply_experts(v, routing_weights)\n    return q_out, k_out, v_out\n```\n\n3. **Expert Load Balancing**:\nAdd auxiliary loss for better expert utilization:\n```python\ndef compute_load_balancing_loss(self, routing_weights):\n    # Add auxiliary loss to encourage uniform expert utilization\n    expert_loads = routing_weights.mean(dim=[0,1])\n    target_load = 1.0 / self.num_experts\n    load_balancing_loss = F.mse_loss(expert_loads, \n                                    torch.full_like(expert_loads, target_load))\n    return load_balancing_loss\n```\n\n## Innovation and Impact\n\n1. **Novel Contributions**:\n   - Integration of causal routing with expert systems\n   - Adaptive computation based on input complexity\n   - Efficient parameter sharing mechanism\n\n2. **Potential Impact**:\n   - Improved efficiency for long sequence processing\n   - Better handling of varying input complexities\n   - Reduced computation through dynamic sparsity\n\n3. **Technical Innovations**:\n   - Position-aware expert routing\n   - Causal cumulative averaging\n   - Noise-based regularization in routing\n\n## Integration and Scalability\n\n1. **Strong Points**:\n   - Clean interface with existing components\n   - Efficient parameter sharing\n   - Flexible expert configuration\n\n2. **Considerations**:\n   - Memory scaling with sequence length\n   - Expert computation overhead\n   - Training stability with many experts\n\n## Recommendations\n\n1. **Performance Optimization**:\n```python\n# Add caching for similar input patterns\n@torch.jit.script\ndef _fast_routing(self, x_pooled):\n    return self.router(x_pooled)\n```\n\n2. **Training Stability**:\n```python\n# Add gradient clipping for expert outputs\ndef _apply_experts(self, x, routing_weights):\n    expert_out = super()._apply_experts(x, routing_weights)\n    return torch.clip(expert_out, -100, 100)  # Prevent extreme values\n```\n\n3. **Memory Efficiency**:\n```python\n# Use gradient checkpointing for expert computation\n@torch.utils.checkpoint.checkpoint\ndef _expert_forward(self, x, expert_idx):\n    return self.expert_computation(x, expert_idx)\n```\n\n4. **Documentation Improvements**:\n   - Add performance characteristics\n   - Document memory requirements\n   - Include training recommendations\n\n## Future Directions\n\n1. **Adaptive Expert Count**:\n   - Dynamic expert pruning during training\n   - Input-dependent expert selection\n   - Hierarchical expert grouping\n\n2. **Optimization Techniques**:\n   - Quantization-aware expert design\n   - Sparse expert computation\n   - Efficient memory management\n\n3. **Integration Features**:\n   - Expert sharing across layers\n   - Conditional computation paths\n   - Progressive expert growth\n\nThe implementation shows excellent attention to detail and careful consideration of causality requirements. The combination of dynamic routing, expert integration, and efficient computation makes this a valuable contribution to the field. With the suggested optimizations, it could provide significant benefits in both training efficiency and inference performance.\n\nThe code passes all functionality checks and demonstrates strong potential for practical applications in large language models. The careful handling of causality and numerical stability suggests it would integrate well into production systems.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_adaptive_sparse_attention": "@gau_test\ndef test_AdaptiveSparseAttention_test_adaptive_sparse_attention(device=None,\n    dtype=None):\n    \"\"\"Test AdaptiveSparseAttention implementation with focus on causality\"\"\"\n    batch_size = 2\n    seq_len = 16\n    embed_dim = 64\n    n_heads = 4\n    model = AdaptiveSparseAttention(embed_dim=embed_dim, block_loc=(0, 0),\n        kwarg_all={}, n_heads=n_heads, device=device, dtype=dtype)\n    x = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    output, Z = model(x)\n    assert output.shape == x.shape, f\"Output shape {output.shape} doesn't match input shape {x.shape}\"\n    assert not torch.isnan(output).any(), 'Output contains NaN values'\n    assert not torch.isinf(output).any(), 'Output contains Inf values'\n    x_causal = torch.zeros_like(x)\n    x_causal[:, -1, :] = 1.0\n    output_causal, _ = model(x_causal)\n    assert torch.allclose(output_causal[:, 0, :], torch.zeros_like(\n        output_causal[:, 0, :]), atol=1e-05\n        ), 'Causality test failed: last position influences first position'\n    output_causal.sum().backward()\n    for p in model.parameters():\n        assert not torch.isnan(p.grad).any(), 'NaN gradients detected'\n        assert not torch.isinf(p.grad).any(), 'Inf gradients detected'\n    print('AdaptiveSparseAttention tests passed!')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nimport math\nfrom einops import rearrange, repeat\n\n\nclass AdaptiveSparseAttention(GAUBase):\n    \"\"\"\n    Adaptive Sparse Attention (ASA) implementation that combines dynamic sparsity,\n    hierarchical experts, and efficient routing for improved attention computation.\n    \n    Key features:\n    - Dynamic sparsity through causal learnable routing\n    - Hierarchical expert integration with causality preservation\n    - Efficient parameter sharing\n    - Compatible with RoPE positional embeddings\n    \n    Args:\n        embed_dim (int): Input embedding dimension\n        block_loc (tuple): Location of block in model\n        kwarg_all (dict): Additional arguments\n        n_heads (int): Number of attention heads\n        num_experts (int): Number of expert groups\n        expert_dim (int): Dimension of each expert\n        causal (bool): Whether to use causal attention\n        num_heads_kv (int, optional): Number of key/value heads for GQA\n        head_dim (int, optional): Dimension of each attention head\n        qkv_proj_bias (bool): Whether to use bias in QKV projection\n        out_proj_bias (bool): Whether to use bias in output projection\n        router_epsilon (float): Small value for router stability\n        device (torch.device, optional): Device to place tensors\n        dtype (torch.dtype, optional): Data type of tensors\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, num_experts: int=4, expert_dim: int=None, causal:\n        bool=True, num_heads_kv: int=None, head_dim: int=None,\n        qkv_proj_bias: bool=True, out_proj_bias: bool=True, router_epsilon:\n        float=1e-05, device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        self.head_dim = (head_dim if head_dim is not None else embed_dim //\n            n_heads)\n        self.causal = causal\n        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'\n        if head_dim is None:\n            assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n        self.num_experts = num_experts\n        self.expert_dim = (expert_dim if expert_dim is not None else self.\n            head_dim * 2)\n        self.router_epsilon = router_epsilon\n        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        out_dim = self.head_dim * self.num_heads\n        self.qkv_proj = nn.Linear(embed_dim, qkv_dim, bias=qkv_proj_bias,\n            **self.factory_kwargs)\n        self.out_proj = nn.Linear(out_dim, embed_dim, bias=out_proj_bias,\n            **self.factory_kwargs)\n        router_hidden = max(32, embed_dim // 8)\n        self.router = nn.Sequential(nn.Linear(embed_dim, router_hidden, **\n            self.factory_kwargs), nn.ReLU(), nn.Linear(router_hidden,\n            num_experts, **self.factory_kwargs))\n        self.expert_gates = nn.ModuleList([nn.Linear(self.head_dim, self.\n            expert_dim, **self.factory_kwargs) for _ in range(num_experts)])\n        self.expert_values = nn.ModuleList([nn.Linear(self.expert_dim, self\n            .head_dim, **self.factory_kwargs) for _ in range(num_experts)])\n        self._init_experts()\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n\n    def _init_experts(self):\n        \"\"\"Initialize expert networks for better stability\"\"\"\n        for gate, value in zip(self.expert_gates, self.expert_values):\n            nn.init.xavier_uniform_(gate.weight)\n            if gate.bias is not None:\n                nn.init.zeros_(gate.bias)\n            nn.init.xavier_uniform_(value.weight)\n            if value.bias is not None:\n                nn.init.zeros_(value.bias)\n\n    def _compute_routing_weights(self, x: torch.Tensor, seq_len: int\n        ) ->torch.Tensor:\n        \"\"\"Compute routing weights while preserving causality\"\"\"\n        B = x.size(0)\n        if self.causal:\n            x_cum_sum = torch.cumsum(x, dim=1)\n            positions = torch.arange(1, seq_len + 1, device=x.device, dtype\n                =x.dtype).view(1, -1, 1)\n            x_pooled = x_cum_sum / positions\n        else:\n            x_pooled = x.mean(dim=1, keepdim=True).expand(-1, seq_len, -1)\n        router_logits = self.router(x_pooled)\n        routing_weights = F.softmax(router_logits + self.router_epsilon, dim=-1\n            )\n        if self.training:\n            noise_scale = 0.1 * torch.arange(seq_len, device=x.device\n                ) / seq_len\n            noise = torch.randn_like(routing_weights) * noise_scale.view(1,\n                -1, 1)\n            routing_weights = F.softmax(router_logits + noise + self.\n                router_epsilon, dim=-1)\n        return routing_weights\n\n    def _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor\n        ) ->torch.Tensor:\n        \"\"\"Apply expert transformations with routing\"\"\"\n        B, H, L, D = x.shape\n        expert_out = torch.zeros_like(x)\n        x = F.layer_norm(x, (D,))\n        for i in range(self.num_experts):\n            weight = routing_weights[..., i].view(B, 1, L, 1)\n            gate_input = x.view(-1, D)\n            expert_gate = self.expert_gates[i](gate_input).view(B, H, L, -1)\n            expert_gate = F.gelu(expert_gate)\n            expert_value = self.expert_values[i](expert_gate.view(-1, self.\n                expert_dim))\n            expert_value = expert_value.view(B, H, L, D)\n            expert_out += expert_value * weight\n        return expert_out\n\n    def _forward(self, X: torch.Tensor, **Z) ->torch.Tensor:\n        \"\"\"\n        Forward pass implementing adaptive sparse attention with strict causality.\n        \n        Args:\n            X: Input tensor of shape (batch_size, seq_len, embed_dim)\n            Z: Additional arguments passed through\n            \n        Returns:\n            Output tensor of shape (batch_size, seq_len, embed_dim)\n        \"\"\"\n        B, L, _ = X.shape\n        qkv = self.qkv_proj(X)\n        q, k, v = qkv.split([self.num_heads * self.head_dim, self.\n            num_heads_kv * self.head_dim, self.num_heads_kv * self.head_dim\n            ], dim=-1)\n        q = rearrange(q, 'b l (h d) -> b h l d', h=self.num_heads)\n        k = rearrange(k, 'b l (h d) -> b h l d', h=self.num_heads_kv)\n        v = rearrange(v, 'b l (h d) -> b h l d', h=self.num_heads_kv)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        k = repeat(k, 'b h l d -> b (h r) l d', r=self.num_heads // self.\n            num_heads_kv)\n        v = repeat(v, 'b h l d -> b (h r) l d', r=self.num_heads // self.\n            num_heads_kv)\n        routing_weights = self._compute_routing_weights(X, L)\n        q = self._apply_experts(q, routing_weights)\n        k = self._apply_experts(k, routing_weights)\n        v = self._apply_experts(v, routing_weights)\n        scale = 1.0 / math.sqrt(self.head_dim)\n        scores = torch.matmul(q, k.transpose(-2, -1)) * scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device),\n                diagonal=1).bool()\n            scores.masked_fill_(causal_mask, float('-inf'))\n        attn = F.softmax(scores, dim=-1)\n        context = torch.matmul(attn, v)\n        output = rearrange(context, 'b h l d -> b l (h d)')\n        output = self.out_proj(output)\n        return output, Z\n",
+                "rating": 4.5,
+                "spec": "{\"unitname\":\"AdaptiveSparseAttention\",\"document\":\"Adaptive Sparse Attention (ASA) implementation that combines dynamic sparsity,\\nhierarchical experts, and efficient routing for improved attention computation.\\n\\nKey features:\\n- Dynamic sparsity through causal learnable routing\\n- Hierarchical expert integration with causality preservation\\n- Efficient parameter sharing\\n- Compatible with RoPE positional embeddings\\n\\nArgs:\\n    embed_dim (int): Input embedding dimension\\n    block_loc (tuple): Location of block in model\\n    kwarg_all (dict): Additional arguments\\n    n_heads (int): Number of attention heads\\n    num_experts (int): Number of expert groups\\n    expert_dim (int): Dimension of each expert\\n    causal (bool): Whether to use causal attention\\n    num_heads_kv (int, optional): Number of key/value heads for GQA\\n    head_dim (int, optional): Dimension of each attention head\\n    qkv_proj_bias (bool): Whether to use bias in QKV projection\\n    out_proj_bias (bool): Whether to use bias in output projection\\n    router_epsilon (float): Small value for router stability\\n    device (torch.device, optional): Device to place tensors\\n    dtype (torch.dtype, optional): Data type of tensors\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "RotaryPositionalEmbeddings"
+                ],
+                "suggestions": null,
+                "args": {
+                    "num_experts": 4,
+                    "n_heads": 8,
+                    "num_heads_kv": null,
+                    "router_epsilon": 1e-05,
+                    "expert_dim": null,
+                    "head_dim": null,
+                    "causal": true,
+                    "qkv_proj_bias": true,
+                    "out_proj_bias": true
+                },
+                "design_traces": null
+            },
+            "RMSNorm": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_rmsnorm": "@gau_test\ndef test_RMSNorm_test_rmsnorm(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype\n        =dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = rmsnorm(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass RMSNorm(GAUBase):\n    \"\"\"\n    Root Mean Square Layer Normalization (RMSNorm).\n\n    This layer applies a variant of layer normalization that uses only the root mean square\n    statistics, without centering. It's computationally more efficient than standard\n    layer normalization and has been shown to be effective in various NLP tasks.\n\n    Args:\n        embed_dim (int): The size of the input feature dimension.\n        block_loc (tuple): The location of this block in the model architecture.\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\n        device (torch.device, optional): The device on which to allocate the module's parameters.\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\n        eps (float, optional): A small constant added to the denominator for numerical stability.\n            Default: 1e-5.\n\n    Attributes:\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\n        variance_epsilon (float): The epsilon value used in the normalization formula.\n\n    Shape:\n        - Input: (*, embed_dim)\n        - Output: (*, embed_dim) (same shape as input)\n\n    Examples:\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\n        >>> x = torch.randn(1, 100, 128)\n        >>> output = rmsnorm(x)\n        >>> print(output.shape)\n        torch.Size([1, 100, 128])\n\n    References:\n        - Paper: \"Root Mean Square Layer Normalization\" by Biao Zhang and Rico Sennrich\n          https://arxiv.org/abs/1910.07467\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, eps=1e-05, **kwargs):\n        \"\"\"If group_size is not None, we do GroupNorm with each group having group_size elements.\n        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)\n            )\n        self.variance_epsilon = eps\n\n    def _forward(self, X, **Z):\n        input_dtype = X.dtype\n        X = X.to(torch.float32)\n        variance = X.pow(2).mean(-1, keepdim=True)\n        X = X * torch.rsqrt(variance + self.variance_epsilon)\n        return self.weight * X.to(input_dtype)\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"RMSNorm\",\"document\":\"\\n    Root Mean Square Layer Normalization (RMSNorm).\\n\\n    This layer applies a variant of layer normalization that uses only the root mean square\\n    statistics, without centering. It's computationally more efficient than standard\\n    layer normalization and has been shown to be effective in various NLP tasks.\\n\\n    Args:\\n        embed_dim (int): The size of the input feature dimension.\\n        block_loc (tuple): The location of this block in the model architecture.\\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\\n        device (torch.device, optional): The device on which to allocate the module's parameters.\\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\\n        eps (float, optional): A small constant added to the denominator for numerical stability.\\n            Default: 1e-5.\\n\\n    Attributes:\\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\\n        variance_epsilon (float): The epsilon value used in the normalization formula.\\n\\n    Shape:\\n        - Input: (*, embed_dim)\\n        - Output: (*, embed_dim) (same shape as input)\\n\\n    Examples:\\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\\n        >>> x = torch.randn(1, 100, 128)\\n        >>> output = rmsnorm(x)\\n        >>> print(output.shape)\\n        torch.Size([1, 100, 128])\\n\\n    References:\\n        - Paper: \\\"Root Mean Square Layer Normalization\\\" by Biao Zhang and Rico Sennrich\\n          https://arxiv.org/abs/1910.07467\\n    \",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "eps": 1e-05
+                },
+                "design_traces": null
+            },
+            "MHA": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_mha": "@gau_test\ndef test_MHA_test_mha(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    mha = MHA(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = mha(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport math\nfrom einops import rearrange, repeat\n\n\nclass MHA(GAUBase):\n    \"\"\"Multi-head self-attention and cross-attention\"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:\n        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:\n        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,\n        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:\n        \"\"\"\n        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.\n        return_residual: whether to return the input x along with the output. This is for\n            performance reason: for post-norm architecture, returning the input allows us\n            to fuse the backward of nn.Linear with the residual connection.\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.d_conv = d_conv\n        self.softmax_scale = softmax_scale\n        self.causal = causal\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'\n        if head_dim is None:\n            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n        self.head_dim = (head_dim if head_dim is not None else self.\n            embed_dim // n_heads)\n        self.mlp_dim = math.ceil(mlp_dim / 256) * 256\n        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        out_dim = self.head_dim * self.num_heads\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.\n            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,\n            **self.factory_kwargs, **self.kwarg_all)\n        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=\n            qkv_proj_bias, **self.factory_kwargs)\n        if self.d_conv > 0:\n            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.\n                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.\n                factory_kwargs)\n        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,\n            bias=out_proj_bias, **self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        \"\"\"\n        Arguments:\n            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if\n                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total\n                is the is the sum of the sequence lengths in the batch.\n            inference_params: for generation. Adapted from Megatron-LM (and Apex)\n            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470\n        \"\"\"\n        qkv = self.in_proj(X)\n        if self.mlp_dim > 0:\n            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.\n                mlp_dim], dim=-1)\n            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)\n            x_mlp = x_mlp_up * F.silu(x_mlp_gate)\n        if self.d_conv > 0:\n            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[\n                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()\n        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)\n        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)\n        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)\n        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //\n            self.num_heads_kv)\n        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //\n            self.num_heads_kv)\n        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.\n            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,\n            scale=self.softmax_scale).transpose(1, 2)\n        context = rearrange(context, '... h d -> ... (h d)')\n        if self.mlp_dim > 0:\n            context = torch.cat([context, x_mlp], dim=-1)\n        out = self.out_proj(context)\n        return out\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='RotaryPositionalEmbeddings',\n    requirements='', inputs=['input_emb', '*input_pos'], outputs=[\n    'output_emb'])]\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"MHA\",\"document\":\"\\nMHA\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "RotaryPositionalEmbeddings"
+                ],
+                "suggestions": null,
+                "args": {
+                    "softmax_scale": null,
+                    "out_proj_bias": true,
+                    "n_heads": 8,
+                    "num_heads_kv": null,
+                    "d_conv": 0,
+                    "mlp_dim": 0,
+                    "head_dim": null,
+                    "causal": true,
+                    "qkv_proj_bias": true,
+                    "rotary_emb_base": 10000.0
+                },
+                "design_traces": null
+            },
+            "RotaryPositionalEmbeddings": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_rotarypositionalembeddings": "@gau_test\ndef test_RotaryPositionalEmbeddings_test_rotarypositionalembeddings(device=\n    None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim,\n        block_loc, kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    input_emb = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    input_pos = torch.arange(128).to(device=device, dtype=dtype)\n    X = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {'input_emb': input_emb, 'input_pos': input_pos}\n    _, Z_ = rotarypositionalembeddings(X, **Z)\n    output_emb = Z_['output_emb']\n    assert output_emb.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom typing import Optional\n\n\nclass RotaryPositionalEmbeddings(GAUBase):\n    \"\"\"\n    This class implements Rotary Positional Embeddings (RoPE)\n    proposed in https://arxiv.org/abs/2104.09864.\n\n    Reference implementation (used for correctness verfication)\n    can be found here:\n    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80\n\n    In this implementation we cache the embeddings for each position upto\n    ``max_seq_len`` by computing this during init.\n\n    Args:\n        dim (int): Embedding dimension. This is usually set to the dim of each\n            head in the attention module computed as ````embed_dim`` // ``num_heads````\n        max_seq_len (int): Maximum expected sequence length for the\n            model, if exceeded the cached freqs will be recomputed\n        base (int): The base for the geometric progression used to compute\n            the rotation angles\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:\n        int=None, max_seq_len: int=4096, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.dim = rotary_emb_dim\n        self.base = rotary_emb_base\n        self.max_seq_len = max_seq_len\n        self._rope_init()\n\n    def reset_parameters(self):\n        self._rope_init()\n\n    def _rope_init(self):\n        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.\n            factory_kwargs)[:self.dim // 2].float() / self.dim)\n        self.register_buffer('theta', theta, persistent=False)\n        self.build_rope_cache(self.max_seq_len)\n\n    def build_rope_cache(self, max_seq_len: int=4096) ->None:\n        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=\n            self.theta.device)\n        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()\n        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],\n            dim=-1)\n        self.register_buffer('cache', cache, persistent=False)\n\n    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[\n        Tensor]=None) ->Tensor:\n        \"\"\"\n        Args:\n            x (Tensor): input tensor with shape\n                [b, s, n_h, h_d]\n            input_pos (Optional[Tensor]): Optional tensor which contains the position ids\n                of each token. During training, this is used to indicate the positions\n                of each token relative to its sample when packed, shape [b, s].\n                During inference, this indicates the position of the current token.\n                If none, assume the index of the token is its position id. Default is None.\n\n        Returns:\n            Tensor: output tensor with RoPE applied\n\n        Notation used for tensor shapes:\n            - b: batch size\n            - s: sequence length\n            - n_h: num heads\n            - h_d: head dim\n\n        TODO: The implementation below can be made more efficient\n        for inference.\n        \"\"\"\n        seq_len = input_emb.size(1)\n        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[\n            input_pos]\n        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)\n        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2\n            )\n        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped\n            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,\n            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)\n        x_out = x_out.flatten(3)\n        output_emb = x_out.type_as(input_emb)\n        return X, {'output_emb': output_emb}\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"document\":\"\\nThis class implements Rotary Positional Embeddings (RoPE)\\nproposed in https://arxiv.org/abs/2104.09864.\\n\\nReference implementation (used for correctness verfication)\\ncan be found here:\\nhttps://github.com/meta-llama/llama/blob/main/llama/model.py#L80\\n\\nIn this implementation we cache the embeddings for each position upto\\n``max_seq_len`` by computing this during init.\\n\\nArgs:\\n    dim (int): Embedding dimension. This is usually set to the dim of each\\n        head in the attention module computed as ````embed_dim`` // ``num_heads````\\n    max_seq_len (int): Maximum expected sequence length for the\\n        model, if exceeded the cached freqs will be recomputed\\n    base (int): The base for the geometric progression used to compute\\n        the rotation angles\\n\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "max_seq_len": 4096,
+                    "rotary_emb_base": 10000
+                },
+                "design_traces": null
+            },
+            "GatedMLP": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_gatedmlp": "@gau_test\ndef test_GatedMLP_test_gatedmlp(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_features': 128, 'out_features': 128, 'activation':\n        F.silu, 'bias': False, 'multiple_of': 128}\n    gatedmlp = GatedMLP(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gatedmlp(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GatedMLP(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_features=None, out_features=None,\n        activation=None, bias=False, multiple_of=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        out_features = out_features if out_features is not None else embed_dim\n        hidden_features = (hidden_features if hidden_features is not None else\n            int(8 * embed_dim / 3))\n        hidden_features = (hidden_features + multiple_of - 1\n            ) // multiple_of * multiple_of\n        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **\n            self.factory_kwargs)\n        self.activation = activation if activation is not None else F.silu\n        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **\n            self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        y = self.fc1(X)\n        y, gate = y.chunk(2, dim=-1)\n        y = y * self.activation(gate)\n        y = self.fc2(y)\n        return y\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"GatedMLP\",\"document\":\"\\nGated MLP\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "bias": false,
+                    "multiple_of": 128,
+                    "hidden_features": null,
+                    "out_features": null,
+                    "activation": null
+                },
+                "design_traces": null
+            },
+            "GPT2": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_gpt2": "@gau_test\ndef test_GPT2_test_gpt2(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gpt2(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GPT2(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.mha = AdaptiveSparseAttention(embed_dim=self.embed_dim, block_loc=self.block_loc,\n            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X1, Z = self.norm1(X, **Z)\n        X2, Z = self.mha(X1, **Z)\n        X = X + X2\n        X3, Z = self.norm2(X, **Z)\n        X4, Z = self.mlp(X3, **Z)\n        X = X + X4\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MHA', requirements='', inputs=[\n    'X'], outputs=['Y']), UnitDecl(unitname='GatedMLP', requirements='',\n    inputs=['X'], outputs=['Y']), UnitDecl(unitname='RMSNorm', requirements\n    ='', inputs=['X'], outputs=['Y'])]\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"GPT2\",\"document\":\"\\nGPT2\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "AdaptiveSparseAttention",
+                    "GatedMLP",
+                    "RMSNorm"
+                ],
+                "suggestions": null,
+                "args": {},
+                "design_traces": null
+            }
+        },
+        "suggestions": null,
+        "name": "asa_gpt"
+    },
+    "status": "implemented",
+    "history": [
+        {
+            "tree": {
+                "review": null,
+                "root": "GPT2",
+                "proposal": "GPT2 is a transformer-based language model.\n",
+                "proposal_traces": [],
+                "rating": null,
+                "declares": {
+                    "AdaptiveSparseAttention": "{\"unitname\":\"AdaptiveSparseAttention\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "RotaryPositionalEmbeddings": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"requirements\":\"Rotary position embeddings for attention\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}"
+                },
+                "units": {
+                    "AdaptiveSparseAttention": {
+                        "review": "# Comprehensive Review: AdaptiveSparseAttention Implementation\n\n```rating 4.5```\n\n## Strengths\n\n1. **Causality Preservation**:\n   - Excellent implementation of causal routing using cumulative means\n   - Proper masking in attention computation\n   - Careful handling of position-dependent computations\n\n2. **Architecture Design**:\n   - Clean separation of routing, expert application, and attention mechanisms\n   - Well-structured initialization of expert networks\n   - Efficient parameter sharing through expert groups\n\n3. **Implementation Quality**:\n   - Comprehensive docstrings and type hints\n   - Robust error checking and assertions\n   - Clear code organization and modularity\n\n4. **Numerical Stability**:\n   - Layer normalization in expert application\n   - Proper scaling in attention computation\n   - Careful handling of numerical operations\n\n## Areas for Improvement\n\n1. **Memory Optimization**:\n```python\ndef _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor) -> torch.Tensor:\n    expert_out = torch.zeros_like(x)  # Could be memory intensive for large batches\n```\nConsider using in-place operations:\n```python\ndef _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor) -> torch.Tensor:\n    # Use accumulate_grad_in_backward for memory efficiency\n    expert_out = None\n    for i in range(self.num_experts):\n        current_out = self._compute_single_expert(i, x, routing_weights)\n        if expert_out is None:\n            expert_out = current_out\n        else:\n            expert_out.add_(current_out)\n    return expert_out\n```\n\n2. **Computational Efficiency**:\n```python\nrouting_weights = self._compute_routing_weights(X, L)\nq = self._apply_experts(q, routing_weights)\nk = self._apply_experts(k, routing_weights)\nv = self._apply_experts(v, routing_weights)\n```\nCould be optimized by:\n```python\ndef _apply_qkv_experts(self, q, k, v, routing_weights):\n    \"\"\"Joint expert application for Q, K, V to enable better parallelization\"\"\"\n    q_out = self._apply_experts(q, routing_weights)\n    k_out = self._apply_experts(k, routing_weights)\n    v_out = self._apply_experts(v, routing_weights)\n    return q_out, k_out, v_out\n```\n\n3. **Expert Load Balancing**:\nAdd auxiliary loss for better expert utilization:\n```python\ndef compute_load_balancing_loss(self, routing_weights):\n    # Add auxiliary loss to encourage uniform expert utilization\n    expert_loads = routing_weights.mean(dim=[0,1])\n    target_load = 1.0 / self.num_experts\n    load_balancing_loss = F.mse_loss(expert_loads, \n                                    torch.full_like(expert_loads, target_load))\n    return load_balancing_loss\n```\n\n## Innovation and Impact\n\n1. **Novel Contributions**:\n   - Integration of causal routing with expert systems\n   - Adaptive computation based on input complexity\n   - Efficient parameter sharing mechanism\n\n2. **Potential Impact**:\n   - Improved efficiency for long sequence processing\n   - Better handling of varying input complexities\n   - Reduced computation through dynamic sparsity\n\n3. **Technical Innovations**:\n   - Position-aware expert routing\n   - Causal cumulative averaging\n   - Noise-based regularization in routing\n\n## Integration and Scalability\n\n1. **Strong Points**:\n   - Clean interface with existing components\n   - Efficient parameter sharing\n   - Flexible expert configuration\n\n2. **Considerations**:\n   - Memory scaling with sequence length\n   - Expert computation overhead\n   - Training stability with many experts\n\n## Recommendations\n\n1. **Performance Optimization**:\n```python\n# Add caching for similar input patterns\n@torch.jit.script\ndef _fast_routing(self, x_pooled):\n    return self.router(x_pooled)\n```\n\n2. **Training Stability**:\n```python\n# Add gradient clipping for expert outputs\ndef _apply_experts(self, x, routing_weights):\n    expert_out = super()._apply_experts(x, routing_weights)\n    return torch.clip(expert_out, -100, 100)  # Prevent extreme values\n```\n\n3. **Memory Efficiency**:\n```python\n# Use gradient checkpointing for expert computation\n@torch.utils.checkpoint.checkpoint\ndef _expert_forward(self, x, expert_idx):\n    return self.expert_computation(x, expert_idx)\n```\n\n4. **Documentation Improvements**:\n   - Add performance characteristics\n   - Document memory requirements\n   - Include training recommendations\n\n## Future Directions\n\n1. **Adaptive Expert Count**:\n   - Dynamic expert pruning during training\n   - Input-dependent expert selection\n   - Hierarchical expert grouping\n\n2. **Optimization Techniques**:\n   - Quantization-aware expert design\n   - Sparse expert computation\n   - Efficient memory management\n\n3. **Integration Features**:\n   - Expert sharing across layers\n   - Conditional computation paths\n   - Progressive expert growth\n\nThe implementation shows excellent attention to detail and careful consideration of causality requirements. The combination of dynamic routing, expert integration, and efficient computation makes this a valuable contribution to the field. With the suggested optimizations, it could provide significant benefits in both training efficiency and inference performance.\n\nThe code passes all functionality checks and demonstrates strong potential for practical applications in large language models. The careful handling of causality and numerical stability suggests it would integrate well into production systems.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_adaptive_sparse_attention": "@gau_test\ndef test_AdaptiveSparseAttention_test_adaptive_sparse_attention(device=None,\n    dtype=None):\n    \"\"\"Test AdaptiveSparseAttention implementation with focus on causality\"\"\"\n    batch_size = 2\n    seq_len = 16\n    embed_dim = 64\n    n_heads = 4\n    model = AdaptiveSparseAttention(embed_dim=embed_dim, block_loc=(0, 0),\n        kwarg_all={}, n_heads=n_heads, device=device, dtype=dtype)\n    x = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    output, Z = model(x)\n    assert output.shape == x.shape, f\"Output shape {output.shape} doesn't match input shape {x.shape}\"\n    assert not torch.isnan(output).any(), 'Output contains NaN values'\n    assert not torch.isinf(output).any(), 'Output contains Inf values'\n    x_causal = torch.zeros_like(x)\n    x_causal[:, -1, :] = 1.0\n    output_causal, _ = model(x_causal)\n    assert torch.allclose(output_causal[:, 0, :], torch.zeros_like(\n        output_causal[:, 0, :]), atol=1e-05\n        ), 'Causality test failed: last position influences first position'\n    output_causal.sum().backward()\n    for p in model.parameters():\n        assert not torch.isnan(p.grad).any(), 'NaN gradients detected'\n        assert not torch.isinf(p.grad).any(), 'Inf gradients detected'\n    print('AdaptiveSparseAttention tests passed!')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nimport math\nfrom einops import rearrange, repeat\n\n\nclass AdaptiveSparseAttention(GAUBase):\n    \"\"\"\n    Adaptive Sparse Attention (ASA) implementation that combines dynamic sparsity,\n    hierarchical experts, and efficient routing for improved attention computation.\n    \n    Key features:\n    - Dynamic sparsity through causal learnable routing\n    - Hierarchical expert integration with causality preservation\n    - Efficient parameter sharing\n    - Compatible with RoPE positional embeddings\n    \n    Args:\n        embed_dim (int): Input embedding dimension\n        block_loc (tuple): Location of block in model\n        kwarg_all (dict): Additional arguments\n        n_heads (int): Number of attention heads\n        num_experts (int): Number of expert groups\n        expert_dim (int): Dimension of each expert\n        causal (bool): Whether to use causal attention\n        num_heads_kv (int, optional): Number of key/value heads for GQA\n        head_dim (int, optional): Dimension of each attention head\n        qkv_proj_bias (bool): Whether to use bias in QKV projection\n        out_proj_bias (bool): Whether to use bias in output projection\n        router_epsilon (float): Small value for router stability\n        device (torch.device, optional): Device to place tensors\n        dtype (torch.dtype, optional): Data type of tensors\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, num_experts: int=4, expert_dim: int=None, causal:\n        bool=True, num_heads_kv: int=None, head_dim: int=None,\n        qkv_proj_bias: bool=True, out_proj_bias: bool=True, router_epsilon:\n        float=1e-05, device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        self.head_dim = (head_dim if head_dim is not None else embed_dim //\n            n_heads)\n        self.causal = causal\n        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'\n        if head_dim is None:\n            assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n        self.num_experts = num_experts\n        self.expert_dim = (expert_dim if expert_dim is not None else self.\n            head_dim * 2)\n        self.router_epsilon = router_epsilon\n        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        out_dim = self.head_dim * self.num_heads\n        self.qkv_proj = nn.Linear(embed_dim, qkv_dim, bias=qkv_proj_bias,\n            **self.factory_kwargs)\n        self.out_proj = nn.Linear(out_dim, embed_dim, bias=out_proj_bias,\n            **self.factory_kwargs)\n        router_hidden = max(32, embed_dim // 8)\n        self.router = nn.Sequential(nn.Linear(embed_dim, router_hidden, **\n            self.factory_kwargs), nn.ReLU(), nn.Linear(router_hidden,\n            num_experts, **self.factory_kwargs))\n        self.expert_gates = nn.ModuleList([nn.Linear(self.head_dim, self.\n            expert_dim, **self.factory_kwargs) for _ in range(num_experts)])\n        self.expert_values = nn.ModuleList([nn.Linear(self.expert_dim, self\n            .head_dim, **self.factory_kwargs) for _ in range(num_experts)])\n        self._init_experts()\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n\n    def _init_experts(self):\n        \"\"\"Initialize expert networks for better stability\"\"\"\n        for gate, value in zip(self.expert_gates, self.expert_values):\n            nn.init.xavier_uniform_(gate.weight)\n            if gate.bias is not None:\n                nn.init.zeros_(gate.bias)\n            nn.init.xavier_uniform_(value.weight)\n            if value.bias is not None:\n                nn.init.zeros_(value.bias)\n\n    def _compute_routing_weights(self, x: torch.Tensor, seq_len: int\n        ) ->torch.Tensor:\n        \"\"\"Compute routing weights while preserving causality\"\"\"\n        B = x.size(0)\n        if self.causal:\n            x_cum_sum = torch.cumsum(x, dim=1)\n            positions = torch.arange(1, seq_len + 1, device=x.device, dtype\n                =x.dtype).view(1, -1, 1)\n            x_pooled = x_cum_sum / positions\n        else:\n            x_pooled = x.mean(dim=1, keepdim=True).expand(-1, seq_len, -1)\n        router_logits = self.router(x_pooled)\n        routing_weights = F.softmax(router_logits + self.router_epsilon, dim=-1\n            )\n        if self.training:\n            noise_scale = 0.1 * torch.arange(seq_len, device=x.device\n                ) / seq_len\n            noise = torch.randn_like(routing_weights) * noise_scale.view(1,\n                -1, 1)\n            routing_weights = F.softmax(router_logits + noise + self.\n                router_epsilon, dim=-1)\n        return routing_weights\n\n    def _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor\n        ) ->torch.Tensor:\n        \"\"\"Apply expert transformations with routing\"\"\"\n        B, H, L, D = x.shape\n        expert_out = torch.zeros_like(x)\n        x = F.layer_norm(x, (D,))\n        for i in range(self.num_experts):\n            weight = routing_weights[..., i].view(B, 1, L, 1)\n            gate_input = x.view(-1, D)\n            expert_gate = self.expert_gates[i](gate_input).view(B, H, L, -1)\n            expert_gate = F.gelu(expert_gate)\n            expert_value = self.expert_values[i](expert_gate.view(-1, self.\n                expert_dim))\n            expert_value = expert_value.view(B, H, L, D)\n            expert_out += expert_value * weight\n        return expert_out\n\n    def _forward(self, X: torch.Tensor, **Z) ->torch.Tensor:\n        \"\"\"\n        Forward pass implementing adaptive sparse attention with strict causality.\n        \n        Args:\n            X: Input tensor of shape (batch_size, seq_len, embed_dim)\n            Z: Additional arguments passed through\n            \n        Returns:\n            Output tensor of shape (batch_size, seq_len, embed_dim)\n        \"\"\"\n        B, L, _ = X.shape\n        qkv = self.qkv_proj(X)\n        q, k, v = qkv.split([self.num_heads * self.head_dim, self.\n            num_heads_kv * self.head_dim, self.num_heads_kv * self.head_dim\n            ], dim=-1)\n        q = rearrange(q, 'b l (h d) -> b h l d', h=self.num_heads)\n        k = rearrange(k, 'b l (h d) -> b h l d', h=self.num_heads_kv)\n        v = rearrange(v, 'b l (h d) -> b h l d', h=self.num_heads_kv)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        k = repeat(k, 'b h l d -> b (h r) l d', r=self.num_heads // self.\n            num_heads_kv)\n        v = repeat(v, 'b h l d -> b (h r) l d', r=self.num_heads // self.\n            num_heads_kv)\n        routing_weights = self._compute_routing_weights(X, L)\n        q = self._apply_experts(q, routing_weights)\n        k = self._apply_experts(k, routing_weights)\n        v = self._apply_experts(v, routing_weights)\n        scale = 1.0 / math.sqrt(self.head_dim)\n        scores = torch.matmul(q, k.transpose(-2, -1)) * scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device),\n                diagonal=1).bool()\n            scores.masked_fill_(causal_mask, float('-inf'))\n        attn = F.softmax(scores, dim=-1)\n        context = torch.matmul(attn, v)\n        output = rearrange(context, 'b h l d -> b l (h d)')\n        output = self.out_proj(output)\n        return output, Z\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"AdaptiveSparseAttention\",\"document\":\"Adaptive Sparse Attention (ASA) implementation that combines dynamic sparsity,\\nhierarchical experts, and efficient routing for improved attention computation.\\n\\nKey features:\\n- Dynamic sparsity through causal learnable routing\\n- Hierarchical expert integration with causality preservation\\n- Efficient parameter sharing\\n- Compatible with RoPE positional embeddings\\n\\nArgs:\\n    embed_dim (int): Input embedding dimension\\n    block_loc (tuple): Location of block in model\\n    kwarg_all (dict): Additional arguments\\n    n_heads (int): Number of attention heads\\n    num_experts (int): Number of expert groups\\n    expert_dim (int): Dimension of each expert\\n    causal (bool): Whether to use causal attention\\n    num_heads_kv (int, optional): Number of key/value heads for GQA\\n    head_dim (int, optional): Dimension of each attention head\\n    qkv_proj_bias (bool): Whether to use bias in QKV projection\\n    out_proj_bias (bool): Whether to use bias in output projection\\n    router_epsilon (float): Small value for router stability\\n    device (torch.device, optional): Device to place tensors\\n    dtype (torch.dtype, optional): Data type of tensors\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "RotaryPositionalEmbeddings"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "num_experts": 4,
+                            "n_heads": 8,
+                            "num_heads_kv": null,
+                            "router_epsilon": 1e-05,
+                            "expert_dim": null,
+                            "head_dim": null,
+                            "causal": true,
+                            "qkv_proj_bias": true,
+                            "out_proj_bias": true
+                        },
+                        "design_traces": null
+                    },
+                    "RMSNorm": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rmsnorm": "@gau_test\ndef test_RMSNorm_test_rmsnorm(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype\n        =dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = rmsnorm(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass RMSNorm(GAUBase):\n    \"\"\"\n    Root Mean Square Layer Normalization (RMSNorm).\n\n    This layer applies a variant of layer normalization that uses only the root mean square\n    statistics, without centering. It's computationally more efficient than standard\n    layer normalization and has been shown to be effective in various NLP tasks.\n\n    Args:\n        embed_dim (int): The size of the input feature dimension.\n        block_loc (tuple): The location of this block in the model architecture.\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\n        device (torch.device, optional): The device on which to allocate the module's parameters.\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\n        eps (float, optional): A small constant added to the denominator for numerical stability.\n            Default: 1e-5.\n\n    Attributes:\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\n        variance_epsilon (float): The epsilon value used in the normalization formula.\n\n    Shape:\n        - Input: (*, embed_dim)\n        - Output: (*, embed_dim) (same shape as input)\n\n    Examples:\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\n        >>> x = torch.randn(1, 100, 128)\n        >>> output = rmsnorm(x)\n        >>> print(output.shape)\n        torch.Size([1, 100, 128])\n\n    References:\n        - Paper: \"Root Mean Square Layer Normalization\" by Biao Zhang and Rico Sennrich\n          https://arxiv.org/abs/1910.07467\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, eps=1e-05, **kwargs):\n        \"\"\"If group_size is not None, we do GroupNorm with each group having group_size elements.\n        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)\n            )\n        self.variance_epsilon = eps\n\n    def _forward(self, X, **Z):\n        input_dtype = X.dtype\n        X = X.to(torch.float32)\n        variance = X.pow(2).mean(-1, keepdim=True)\n        X = X * torch.rsqrt(variance + self.variance_epsilon)\n        return self.weight * X.to(input_dtype)\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RMSNorm\",\"document\":\"\\n    Root Mean Square Layer Normalization (RMSNorm).\\n\\n    This layer applies a variant of layer normalization that uses only the root mean square\\n    statistics, without centering. It's computationally more efficient than standard\\n    layer normalization and has been shown to be effective in various NLP tasks.\\n\\n    Args:\\n        embed_dim (int): The size of the input feature dimension.\\n        block_loc (tuple): The location of this block in the model architecture.\\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\\n        device (torch.device, optional): The device on which to allocate the module's parameters.\\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\\n        eps (float, optional): A small constant added to the denominator for numerical stability.\\n            Default: 1e-5.\\n\\n    Attributes:\\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\\n        variance_epsilon (float): The epsilon value used in the normalization formula.\\n\\n    Shape:\\n        - Input: (*, embed_dim)\\n        - Output: (*, embed_dim) (same shape as input)\\n\\n    Examples:\\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\\n        >>> x = torch.randn(1, 100, 128)\\n        >>> output = rmsnorm(x)\\n        >>> print(output.shape)\\n        torch.Size([1, 100, 128])\\n\\n    References:\\n        - Paper: \\\"Root Mean Square Layer Normalization\\\" by Biao Zhang and Rico Sennrich\\n          https://arxiv.org/abs/1910.07467\\n    \",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    },
+                    "MHA": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_mha": "@gau_test\ndef test_MHA_test_mha(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    mha = MHA(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = mha(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport math\nfrom einops import rearrange, repeat\n\n\nclass MHA(GAUBase):\n    \"\"\"Multi-head self-attention and cross-attention\"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, causal: bool=True, num_heads_kv: int=None, head_dim:\n        int=None, mlp_dim: int=0, qkv_proj_bias: bool=True, out_proj_bias:\n        bool=True, softmax_scale: float=None, rotary_emb_base=10000.0,\n        d_conv: int=0, device=None, dtype=None, **kwargs) ->None:\n        \"\"\"\n        num_heads_kv: can be used to toggle MQA / GQA. If None, use num_heads.\n        return_residual: whether to return the input x along with the output. This is for\n            performance reason: for post-norm architecture, returning the input allows us\n            to fuse the backward of nn.Linear with the residual connection.\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.d_conv = d_conv\n        self.softmax_scale = softmax_scale\n        self.causal = causal\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'\n        if head_dim is None:\n            assert self.embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n        self.head_dim = (head_dim if head_dim is not None else self.\n            embed_dim // n_heads)\n        self.mlp_dim = math.ceil(mlp_dim / 256) * 256\n        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        out_dim = self.head_dim * self.num_heads\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=self.\n            embed_dim, block_loc=self.block_loc, kwarg_all=self.kwarg_all,\n            **self.factory_kwargs, **self.kwarg_all)\n        self.in_proj = nn.Linear(embed_dim, qkv_dim + self.mlp_dim, bias=\n            qkv_proj_bias, **self.factory_kwargs)\n        if self.d_conv > 0:\n            self.conv1d = nn.Conv1d(qkv_dim, qkv_dim, kernel_size=self.\n                d_conv, padding=self.d_conv - 1, groups=qkv_dim, **self.\n                factory_kwargs)\n        self.out_proj = nn.Linear(out_dim + self.mlp_dim // 2, embed_dim,\n            bias=out_proj_bias, **self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        \"\"\"\n        Arguments:\n            x: (batch, seqlen, hidden_dim) (where hidden_dim = num heads * head dim) if\n                cu_seqlens is None and max_seqlen is None, else (total, hidden_dim) where total\n                is the is the sum of the sequence lengths in the batch.\n            inference_params: for generation. Adapted from Megatron-LM (and Apex)\n            https://github.com/NVIDIA/apex/blob/3ff1a10f72ec07067c4e44759442329804ac5162/apex/transformer/testing/standalone_transformer_lm.py#L470\n        \"\"\"\n        qkv = self.in_proj(X)\n        if self.mlp_dim > 0:\n            qkv, x_mlp = qkv.split([qkv.shape[-1] - self.mlp_dim, self.\n                mlp_dim], dim=-1)\n            x_mlp_up, x_mlp_gate = x_mlp.chunk(2, dim=-1)\n            x_mlp = x_mlp_up * F.silu(x_mlp_gate)\n        if self.d_conv > 0:\n            qkv = rearrange(self.conv1d(rearrange(qkv, 'b s d -> b d s'))[\n                ..., :-(self.d_conv - 1)], 'b d s -> b s d').contiguous()\n        q, k, v = qkv.split([self.num_heads * self.head_dim] * 3, dim=-1)\n        q = rearrange(q, '... (h d) -> ... h d', d=self.head_dim)\n        k = rearrange(k, '... (h d) -> ... h d', d=self.head_dim)\n        v = rearrange(v, '... (h d) -> ... h d', d=self.head_dim)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        k = torch.repeat_interleave(k, dim=2, repeats=self.num_heads //\n            self.num_heads_kv)\n        v = torch.repeat_interleave(v, dim=2, repeats=self.num_heads //\n            self.num_heads_kv)\n        context = F.scaled_dot_product_attention(q.transpose(1, 2), k.\n            transpose(1, 2), v.transpose(1, 2), is_causal=self.causal,\n            scale=self.softmax_scale).transpose(1, 2)\n        context = rearrange(context, '... h d -> ... (h d)')\n        if self.mlp_dim > 0:\n            context = torch.cat([context, x_mlp], dim=-1)\n        out = self.out_proj(context)\n        return out\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='RotaryPositionalEmbeddings',\n    requirements='', inputs=['input_emb', '*input_pos'], outputs=[\n    'output_emb'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MHA\",\"document\":\"\\nMHA\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "RotaryPositionalEmbeddings"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "softmax_scale": null,
+                            "out_proj_bias": true,
+                            "n_heads": 8,
+                            "num_heads_kv": null,
+                            "d_conv": 0,
+                            "mlp_dim": 0,
+                            "head_dim": null,
+                            "causal": true,
+                            "qkv_proj_bias": true,
+                            "rotary_emb_base": 10000.0
+                        },
+                        "design_traces": null
+                    },
+                    "RotaryPositionalEmbeddings": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rotarypositionalembeddings": "@gau_test\ndef test_RotaryPositionalEmbeddings_test_rotarypositionalembeddings(device=\n    None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim,\n        block_loc, kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    input_emb = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    input_pos = torch.arange(128).to(device=device, dtype=dtype)\n    X = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {'input_emb': input_emb, 'input_pos': input_pos}\n    _, Z_ = rotarypositionalembeddings(X, **Z)\n    output_emb = Z_['output_emb']\n    assert output_emb.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom typing import Optional\n\n\nclass RotaryPositionalEmbeddings(GAUBase):\n    \"\"\"\n    This class implements Rotary Positional Embeddings (RoPE)\n    proposed in https://arxiv.org/abs/2104.09864.\n\n    Reference implementation (used for correctness verfication)\n    can be found here:\n    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80\n\n    In this implementation we cache the embeddings for each position upto\n    ``max_seq_len`` by computing this during init.\n\n    Args:\n        dim (int): Embedding dimension. This is usually set to the dim of each\n            head in the attention module computed as ````embed_dim`` // ``num_heads````\n        max_seq_len (int): Maximum expected sequence length for the\n            model, if exceeded the cached freqs will be recomputed\n        base (int): The base for the geometric progression used to compute\n            the rotation angles\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:\n        int=None, max_seq_len: int=4096, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.dim = rotary_emb_dim\n        self.base = rotary_emb_base\n        self.max_seq_len = max_seq_len\n        self._rope_init()\n\n    def reset_parameters(self):\n        self._rope_init()\n\n    def _rope_init(self):\n        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.\n            factory_kwargs)[:self.dim // 2].float() / self.dim)\n        self.register_buffer('theta', theta, persistent=False)\n        self.build_rope_cache(self.max_seq_len)\n\n    def build_rope_cache(self, max_seq_len: int=4096) ->None:\n        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=\n            self.theta.device)\n        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()\n        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],\n            dim=-1)\n        self.register_buffer('cache', cache, persistent=False)\n\n    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[\n        Tensor]=None) ->Tensor:\n        \"\"\"\n        Args:\n            x (Tensor): input tensor with shape\n                [b, s, n_h, h_d]\n            input_pos (Optional[Tensor]): Optional tensor which contains the position ids\n                of each token. During training, this is used to indicate the positions\n                of each token relative to its sample when packed, shape [b, s].\n                During inference, this indicates the position of the current token.\n                If none, assume the index of the token is its position id. Default is None.\n\n        Returns:\n            Tensor: output tensor with RoPE applied\n\n        Notation used for tensor shapes:\n            - b: batch size\n            - s: sequence length\n            - n_h: num heads\n            - h_d: head dim\n\n        TODO: The implementation below can be made more efficient\n        for inference.\n        \"\"\"\n        seq_len = input_emb.size(1)\n        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[\n            input_pos]\n        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)\n        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2\n            )\n        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped\n            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,\n            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)\n        x_out = x_out.flatten(3)\n        output_emb = x_out.type_as(input_emb)\n        return X, {'output_emb': output_emb}\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"document\":\"\\nThis class implements Rotary Positional Embeddings (RoPE)\\nproposed in https://arxiv.org/abs/2104.09864.\\n\\nReference implementation (used for correctness verfication)\\ncan be found here:\\nhttps://github.com/meta-llama/llama/blob/main/llama/model.py#L80\\n\\nIn this implementation we cache the embeddings for each position upto\\n``max_seq_len`` by computing this during init.\\n\\nArgs:\\n    dim (int): Embedding dimension. This is usually set to the dim of each\\n        head in the attention module computed as ````embed_dim`` // ``num_heads````\\n    max_seq_len (int): Maximum expected sequence length for the\\n        model, if exceeded the cached freqs will be recomputed\\n    base (int): The base for the geometric progression used to compute\\n        the rotation angles\\n\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "max_seq_len": 4096,
+                            "rotary_emb_base": 10000
+                        },
+                        "design_traces": null
+                    },
+                    "GatedMLP": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gatedmlp": "@gau_test\ndef test_GatedMLP_test_gatedmlp(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_features': 128, 'out_features': 128, 'activation':\n        F.silu, 'bias': False, 'multiple_of': 128}\n    gatedmlp = GatedMLP(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gatedmlp(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GatedMLP(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_features=None, out_features=None,\n        activation=None, bias=False, multiple_of=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        out_features = out_features if out_features is not None else embed_dim\n        hidden_features = (hidden_features if hidden_features is not None else\n            int(8 * embed_dim / 3))\n        hidden_features = (hidden_features + multiple_of - 1\n            ) // multiple_of * multiple_of\n        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **\n            self.factory_kwargs)\n        self.activation = activation if activation is not None else F.silu\n        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **\n            self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        y = self.fc1(X)\n        y, gate = y.chunk(2, dim=-1)\n        y = y * self.activation(gate)\n        y = self.fc2(y)\n        return y\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GatedMLP\",\"document\":\"\\nGated MLP\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "bias": false,
+                            "multiple_of": 128,
+                            "hidden_features": null,
+                            "out_features": null,
+                            "activation": null
+                        },
+                        "design_traces": null
+                    },
+                    "GPT2": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gpt2": "@gau_test\ndef test_GPT2_test_gpt2(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gpt2(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GPT2(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.mha = AdaptiveSparseAttention(embed_dim=self.embed_dim, block_loc=self.block_loc,\n            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X1, Z = self.norm1(X, **Z)\n        X2, Z = self.mha(X1, **Z)\n        X = X + X2\n        X3, Z = self.norm2(X, **Z)\n        X4, Z = self.mlp(X3, **Z)\n        X = X + X4\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MHA', requirements='', inputs=[\n    'X'], outputs=['Y']), UnitDecl(unitname='GatedMLP', requirements='',\n    inputs=['X'], outputs=['Y']), UnitDecl(unitname='RMSNorm', requirements\n    ='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GPT2\",\"document\":\"\\nGPT2\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "AdaptiveSparseAttention",
+                            "GatedMLP",
+                            "RMSNorm"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    }
+                },
+                "suggestions": null,
+                "name": "asa_gpt"
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0,
+                "IMPLEMENTATION_PLANNER": 0,
+                "IMPLEMENTATION_CODER": 5.00616,
+                "PROPOSAL_REVIEWER": 0,
+                "SEARCH_ASSISTANT": 0,
+                "IMPLEMENTATION_OBSERVER": 7.778892000000003
+            },
+            "status": "unfinished",
+            "user_input": "",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "o1_mini",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "claude3.5_sonnet",
+                    "PROPOSAL_REVIEWER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_OBSERVER": "claude3.5_sonnet",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            }
+        },
+        {
+            "tree": {
+                "review": null,
+                "root": "GPT2",
+                "proposal": "GPT2 is a transformer-based language model.\n",
+                "units": {
+                    "GPT2": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gpt2": "@gau_test\ndef test_GPT2_test_gpt2(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gpt2(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GPT2(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.mha = AdaptiveSparseAttention(embed_dim=self.embed_dim, block_loc=self.block_loc,\n            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X1, Z = self.norm1(X, **Z)\n        X2, Z = self.mha(X1, **Z)\n        X = X + X2\n        X3, Z = self.norm2(X, **Z)\n        X4, Z = self.mlp(X3, **Z)\n        X = X + X4\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MHA', requirements='', inputs=[\n    'X'], outputs=['Y']), UnitDecl(unitname='GatedMLP', requirements='',\n    inputs=['X'], outputs=['Y']), UnitDecl(unitname='RMSNorm', requirements\n    ='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GPT2\",\"document\":\"\\nGPT2\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "AdaptiveSparseAttention",
+                            "GatedMLP",
+                            "RMSNorm"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "AdaptiveSparseAttention": {
+                        "review": "# Comprehensive Review: AdaptiveSparseAttention Implementation\n\n```rating 4.5```\n\n## Strengths\n\n1. **Causality Preservation**:\n   - Excellent implementation of causal routing using cumulative means\n   - Proper masking in attention computation\n   - Careful handling of position-dependent computations\n\n2. **Architecture Design**:\n   - Clean separation of routing, expert application, and attention mechanisms\n   - Well-structured initialization of expert networks\n   - Efficient parameter sharing through expert groups\n\n3. **Implementation Quality**:\n   - Comprehensive docstrings and type hints\n   - Robust error checking and assertions\n   - Clear code organization and modularity\n\n4. **Numerical Stability**:\n   - Layer normalization in expert application\n   - Proper scaling in attention computation\n   - Careful handling of numerical operations\n\n## Areas for Improvement\n\n1. **Memory Optimization**:\n```python\ndef _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor) -> torch.Tensor:\n    expert_out = torch.zeros_like(x)  # Could be memory intensive for large batches\n```\nConsider using in-place operations:\n```python\ndef _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor) -> torch.Tensor:\n    # Use accumulate_grad_in_backward for memory efficiency\n    expert_out = None\n    for i in range(self.num_experts):\n        current_out = self._compute_single_expert(i, x, routing_weights)\n        if expert_out is None:\n            expert_out = current_out\n        else:\n            expert_out.add_(current_out)\n    return expert_out\n```\n\n2. **Computational Efficiency**:\n```python\nrouting_weights = self._compute_routing_weights(X, L)\nq = self._apply_experts(q, routing_weights)\nk = self._apply_experts(k, routing_weights)\nv = self._apply_experts(v, routing_weights)\n```\nCould be optimized by:\n```python\ndef _apply_qkv_experts(self, q, k, v, routing_weights):\n    \"\"\"Joint expert application for Q, K, V to enable better parallelization\"\"\"\n    q_out = self._apply_experts(q, routing_weights)\n    k_out = self._apply_experts(k, routing_weights)\n    v_out = self._apply_experts(v, routing_weights)\n    return q_out, k_out, v_out\n```\n\n3. **Expert Load Balancing**:\nAdd auxiliary loss for better expert utilization:\n```python\ndef compute_load_balancing_loss(self, routing_weights):\n    # Add auxiliary loss to encourage uniform expert utilization\n    expert_loads = routing_weights.mean(dim=[0,1])\n    target_load = 1.0 / self.num_experts\n    load_balancing_loss = F.mse_loss(expert_loads, \n                                    torch.full_like(expert_loads, target_load))\n    return load_balancing_loss\n```\n\n## Innovation and Impact\n\n1. **Novel Contributions**:\n   - Integration of causal routing with expert systems\n   - Adaptive computation based on input complexity\n   - Efficient parameter sharing mechanism\n\n2. **Potential Impact**:\n   - Improved efficiency for long sequence processing\n   - Better handling of varying input complexities\n   - Reduced computation through dynamic sparsity\n\n3. **Technical Innovations**:\n   - Position-aware expert routing\n   - Causal cumulative averaging\n   - Noise-based regularization in routing\n\n## Integration and Scalability\n\n1. **Strong Points**:\n   - Clean interface with existing components\n   - Efficient parameter sharing\n   - Flexible expert configuration\n\n2. **Considerations**:\n   - Memory scaling with sequence length\n   - Expert computation overhead\n   - Training stability with many experts\n\n## Recommendations\n\n1. **Performance Optimization**:\n```python\n# Add caching for similar input patterns\n@torch.jit.script\ndef _fast_routing(self, x_pooled):\n    return self.router(x_pooled)\n```\n\n2. **Training Stability**:\n```python\n# Add gradient clipping for expert outputs\ndef _apply_experts(self, x, routing_weights):\n    expert_out = super()._apply_experts(x, routing_weights)\n    return torch.clip(expert_out, -100, 100)  # Prevent extreme values\n```\n\n3. **Memory Efficiency**:\n```python\n# Use gradient checkpointing for expert computation\n@torch.utils.checkpoint.checkpoint\ndef _expert_forward(self, x, expert_idx):\n    return self.expert_computation(x, expert_idx)\n```\n\n4. **Documentation Improvements**:\n   - Add performance characteristics\n   - Document memory requirements\n   - Include training recommendations\n\n## Future Directions\n\n1. **Adaptive Expert Count**:\n   - Dynamic expert pruning during training\n   - Input-dependent expert selection\n   - Hierarchical expert grouping\n\n2. **Optimization Techniques**:\n   - Quantization-aware expert design\n   - Sparse expert computation\n   - Efficient memory management\n\n3. **Integration Features**:\n   - Expert sharing across layers\n   - Conditional computation paths\n   - Progressive expert growth\n\nThe implementation shows excellent attention to detail and careful consideration of causality requirements. The combination of dynamic routing, expert integration, and efficient computation makes this a valuable contribution to the field. With the suggested optimizations, it could provide significant benefits in both training efficiency and inference performance.\n\nThe code passes all functionality checks and demonstrates strong potential for practical applications in large language models. The careful handling of causality and numerical stability suggests it would integrate well into production systems.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_adaptive_sparse_attention": "@gau_test\ndef test_AdaptiveSparseAttention_test_adaptive_sparse_attention(device=None,\n    dtype=None):\n    \"\"\"Test AdaptiveSparseAttention implementation with focus on causality\"\"\"\n    batch_size = 2\n    seq_len = 16\n    embed_dim = 64\n    n_heads = 4\n    model = AdaptiveSparseAttention(embed_dim=embed_dim, block_loc=(0, 0),\n        kwarg_all={}, n_heads=n_heads, device=device, dtype=dtype)\n    x = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    output, Z = model(x)\n    assert output.shape == x.shape, f\"Output shape {output.shape} doesn't match input shape {x.shape}\"\n    assert not torch.isnan(output).any(), 'Output contains NaN values'\n    assert not torch.isinf(output).any(), 'Output contains Inf values'\n    x_causal = torch.zeros_like(x)\n    x_causal[:, -1, :] = 1.0\n    output_causal, _ = model(x_causal)\n    assert torch.allclose(output_causal[:, 0, :], torch.zeros_like(\n        output_causal[:, 0, :]), atol=1e-05\n        ), 'Causality test failed: last position influences first position'\n    output_causal.sum().backward()\n    for p in model.parameters():\n        assert not torch.isnan(p.grad).any(), 'NaN gradients detected'\n        assert not torch.isinf(p.grad).any(), 'Inf gradients detected'\n    print('AdaptiveSparseAttention tests passed!')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nimport math\nfrom einops import rearrange, repeat\n\n\nclass AdaptiveSparseAttention(GAUBase):\n    \"\"\"\n    Adaptive Sparse Attention (ASA) implementation that combines dynamic sparsity,\n    hierarchical experts, and efficient routing for improved attention computation.\n    \n    Key features:\n    - Dynamic sparsity through causal learnable routing\n    - Hierarchical expert integration with causality preservation\n    - Efficient parameter sharing\n    - Compatible with RoPE positional embeddings\n    \n    Args:\n        embed_dim (int): Input embedding dimension\n        block_loc (tuple): Location of block in model\n        kwarg_all (dict): Additional arguments\n        n_heads (int): Number of attention heads\n        num_experts (int): Number of expert groups\n        expert_dim (int): Dimension of each expert\n        causal (bool): Whether to use causal attention\n        num_heads_kv (int, optional): Number of key/value heads for GQA\n        head_dim (int, optional): Dimension of each attention head\n        qkv_proj_bias (bool): Whether to use bias in QKV projection\n        out_proj_bias (bool): Whether to use bias in output projection\n        router_epsilon (float): Small value for router stability\n        device (torch.device, optional): Device to place tensors\n        dtype (torch.dtype, optional): Data type of tensors\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, num_experts: int=4, expert_dim: int=None, causal:\n        bool=True, num_heads_kv: int=None, head_dim: int=None,\n        qkv_proj_bias: bool=True, out_proj_bias: bool=True, router_epsilon:\n        float=1e-05, device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        self.head_dim = (head_dim if head_dim is not None else embed_dim //\n            n_heads)\n        self.causal = causal\n        assert self.num_heads % self.num_heads_kv == 0, 'num_heads must be divisible by num_heads_kv'\n        if head_dim is None:\n            assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n        self.num_experts = num_experts\n        self.expert_dim = (expert_dim if expert_dim is not None else self.\n            head_dim * 2)\n        self.router_epsilon = router_epsilon\n        qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        out_dim = self.head_dim * self.num_heads\n        self.qkv_proj = nn.Linear(embed_dim, qkv_dim, bias=qkv_proj_bias,\n            **self.factory_kwargs)\n        self.out_proj = nn.Linear(out_dim, embed_dim, bias=out_proj_bias,\n            **self.factory_kwargs)\n        router_hidden = max(32, embed_dim // 8)\n        self.router = nn.Sequential(nn.Linear(embed_dim, router_hidden, **\n            self.factory_kwargs), nn.ReLU(), nn.Linear(router_hidden,\n            num_experts, **self.factory_kwargs))\n        self.expert_gates = nn.ModuleList([nn.Linear(self.head_dim, self.\n            expert_dim, **self.factory_kwargs) for _ in range(num_experts)])\n        self.expert_values = nn.ModuleList([nn.Linear(self.expert_dim, self\n            .head_dim, **self.factory_kwargs) for _ in range(num_experts)])\n        self._init_experts()\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n\n    def _init_experts(self):\n        \"\"\"Initialize expert networks for better stability\"\"\"\n        for gate, value in zip(self.expert_gates, self.expert_values):\n            nn.init.xavier_uniform_(gate.weight)\n            if gate.bias is not None:\n                nn.init.zeros_(gate.bias)\n            nn.init.xavier_uniform_(value.weight)\n            if value.bias is not None:\n                nn.init.zeros_(value.bias)\n\n    def _compute_routing_weights(self, x: torch.Tensor, seq_len: int\n        ) ->torch.Tensor:\n        \"\"\"Compute routing weights while preserving causality\"\"\"\n        B = x.size(0)\n        if self.causal:\n            x_cum_sum = torch.cumsum(x, dim=1)\n            positions = torch.arange(1, seq_len + 1, device=x.device, dtype\n                =x.dtype).view(1, -1, 1)\n            x_pooled = x_cum_sum / positions\n        else:\n            x_pooled = x.mean(dim=1, keepdim=True).expand(-1, seq_len, -1)\n        router_logits = self.router(x_pooled)\n        routing_weights = F.softmax(router_logits + self.router_epsilon, dim=-1\n            )\n        if self.training:\n            noise_scale = 0.1 * torch.arange(seq_len, device=x.device\n                ) / seq_len\n            noise = torch.randn_like(routing_weights) * noise_scale.view(1,\n                -1, 1)\n            routing_weights = F.softmax(router_logits + noise + self.\n                router_epsilon, dim=-1)\n        return routing_weights\n\n    def _apply_experts(self, x: torch.Tensor, routing_weights: torch.Tensor\n        ) ->torch.Tensor:\n        \"\"\"Apply expert transformations with routing\"\"\"\n        B, H, L, D = x.shape\n        expert_out = torch.zeros_like(x)\n        x = F.layer_norm(x, (D,))\n        for i in range(self.num_experts):\n            weight = routing_weights[..., i].view(B, 1, L, 1)\n            gate_input = x.view(-1, D)\n            expert_gate = self.expert_gates[i](gate_input).view(B, H, L, -1)\n            expert_gate = F.gelu(expert_gate)\n            expert_value = self.expert_values[i](expert_gate.view(-1, self.\n                expert_dim))\n            expert_value = expert_value.view(B, H, L, D)\n            expert_out += expert_value * weight\n        return expert_out\n\n    def _forward(self, X: torch.Tensor, **Z) ->torch.Tensor:\n        \"\"\"\n        Forward pass implementing adaptive sparse attention with strict causality.\n        \n        Args:\n            X: Input tensor of shape (batch_size, seq_len, embed_dim)\n            Z: Additional arguments passed through\n            \n        Returns:\n            Output tensor of shape (batch_size, seq_len, embed_dim)\n        \"\"\"\n        B, L, _ = X.shape\n        qkv = self.qkv_proj(X)\n        q, k, v = qkv.split([self.num_heads * self.head_dim, self.\n            num_heads_kv * self.head_dim, self.num_heads_kv * self.head_dim\n            ], dim=-1)\n        q = rearrange(q, 'b l (h d) -> b h l d', h=self.num_heads)\n        k = rearrange(k, 'b l (h d) -> b h l d', h=self.num_heads_kv)\n        v = rearrange(v, 'b l (h d) -> b h l d', h=self.num_heads_kv)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        k = repeat(k, 'b h l d -> b (h r) l d', r=self.num_heads // self.\n            num_heads_kv)\n        v = repeat(v, 'b h l d -> b (h r) l d', r=self.num_heads // self.\n            num_heads_kv)\n        routing_weights = self._compute_routing_weights(X, L)\n        q = self._apply_experts(q, routing_weights)\n        k = self._apply_experts(k, routing_weights)\n        v = self._apply_experts(v, routing_weights)\n        scale = 1.0 / math.sqrt(self.head_dim)\n        scores = torch.matmul(q, k.transpose(-2, -1)) * scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device),\n                diagonal=1).bool()\n            scores.masked_fill_(causal_mask, float('-inf'))\n        attn = F.softmax(scores, dim=-1)\n        context = torch.matmul(attn, v)\n        output = rearrange(context, 'b h l d -> b l (h d)')\n        output = self.out_proj(output)\n        return output, Z\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"AdaptiveSparseAttention\",\"document\":\"Adaptive Sparse Attention (ASA) implementation that combines dynamic sparsity,\\nhierarchical experts, and efficient routing for improved attention computation.\\n\\nKey features:\\n- Dynamic sparsity through causal learnable routing\\n- Hierarchical expert integration with causality preservation\\n- Efficient parameter sharing\\n- Compatible with RoPE positional embeddings\\n\\nArgs:\\n    embed_dim (int): Input embedding dimension\\n    block_loc (tuple): Location of block in model\\n    kwarg_all (dict): Additional arguments\\n    n_heads (int): Number of attention heads\\n    num_experts (int): Number of expert groups\\n    expert_dim (int): Dimension of each expert\\n    causal (bool): Whether to use causal attention\\n    num_heads_kv (int, optional): Number of key/value heads for GQA\\n    head_dim (int, optional): Dimension of each attention head\\n    qkv_proj_bias (bool): Whether to use bias in QKV projection\\n    out_proj_bias (bool): Whether to use bias in output projection\\n    router_epsilon (float): Small value for router stability\\n    device (torch.device, optional): Device to place tensors\\n    dtype (torch.dtype, optional): Data type of tensors\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "RotaryPositionalEmbeddings"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "num_experts": 4,
+                            "n_heads": 8,
+                            "num_heads_kv": null,
+                            "router_epsilon": 1e-05,
+                            "expert_dim": null,
+                            "head_dim": null,
+                            "causal": true,
+                            "qkv_proj_bias": true,
+                            "out_proj_bias": true
+                        },
+                        "design_traces": null
+                    },
+                    "RotaryPositionalEmbeddings": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rotarypositionalembeddings": "@gau_test\ndef test_RotaryPositionalEmbeddings_test_rotarypositionalembeddings(device=\n    None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim,\n        block_loc, kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    input_emb = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    input_pos = torch.arange(128).to(device=device, dtype=dtype)\n    X = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {'input_emb': input_emb, 'input_pos': input_pos}\n    _, Z_ = rotarypositionalembeddings(X, **Z)\n    output_emb = Z_['output_emb']\n    assert output_emb.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom typing import Optional\n\n\nclass RotaryPositionalEmbeddings(GAUBase):\n    \"\"\"\n    This class implements Rotary Positional Embeddings (RoPE)\n    proposed in https://arxiv.org/abs/2104.09864.\n\n    Reference implementation (used for correctness verfication)\n    can be found here:\n    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80\n\n    In this implementation we cache the embeddings for each position upto\n    ``max_seq_len`` by computing this during init.\n\n    Args:\n        dim (int): Embedding dimension. This is usually set to the dim of each\n            head in the attention module computed as ````embed_dim`` // ``num_heads````\n        max_seq_len (int): Maximum expected sequence length for the\n            model, if exceeded the cached freqs will be recomputed\n        base (int): The base for the geometric progression used to compute\n            the rotation angles\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:\n        int=None, max_seq_len: int=4096, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.dim = rotary_emb_dim\n        self.base = rotary_emb_base\n        self.max_seq_len = max_seq_len\n        self._rope_init()\n\n    def reset_parameters(self):\n        self._rope_init()\n\n    def _rope_init(self):\n        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.\n            factory_kwargs)[:self.dim // 2].float() / self.dim)\n        self.register_buffer('theta', theta, persistent=False)\n        self.build_rope_cache(self.max_seq_len)\n\n    def build_rope_cache(self, max_seq_len: int=4096) ->None:\n        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=\n            self.theta.device)\n        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()\n        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],\n            dim=-1)\n        self.register_buffer('cache', cache, persistent=False)\n\n    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[\n        Tensor]=None) ->Tensor:\n        \"\"\"\n        Args:\n            x (Tensor): input tensor with shape\n                [b, s, n_h, h_d]\n            input_pos (Optional[Tensor]): Optional tensor which contains the position ids\n                of each token. During training, this is used to indicate the positions\n                of each token relative to its sample when packed, shape [b, s].\n                During inference, this indicates the position of the current token.\n                If none, assume the index of the token is its position id. Default is None.\n\n        Returns:\n            Tensor: output tensor with RoPE applied\n\n        Notation used for tensor shapes:\n            - b: batch size\n            - s: sequence length\n            - n_h: num heads\n            - h_d: head dim\n\n        TODO: The implementation below can be made more efficient\n        for inference.\n        \"\"\"\n        seq_len = input_emb.size(1)\n        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[\n            input_pos]\n        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)\n        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2\n            )\n        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped\n            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,\n            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)\n        x_out = x_out.flatten(3)\n        output_emb = x_out.type_as(input_emb)\n        return X, {'output_emb': output_emb}\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"document\":\"\\nThis class implements Rotary Positional Embeddings (RoPE)\\nproposed in https://arxiv.org/abs/2104.09864.\\n\\nReference implementation (used for correctness verfication)\\ncan be found here:\\nhttps://github.com/meta-llama/llama/blob/main/llama/model.py#L80\\n\\nIn this implementation we cache the embeddings for each position upto\\n``max_seq_len`` by computing this during init.\\n\\nArgs:\\n    dim (int): Embedding dimension. This is usually set to the dim of each\\n        head in the attention module computed as ````embed_dim`` // ``num_heads````\\n    max_seq_len (int): Maximum expected sequence length for the\\n        model, if exceeded the cached freqs will be recomputed\\n    base (int): The base for the geometric progression used to compute\\n        the rotation angles\\n\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "max_seq_len": 4096,
+                            "rotary_emb_base": 10000
+                        },
+                        "design_traces": null
+                    },
+                    "GatedMLP": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gatedmlp": "@gau_test\ndef test_GatedMLP_test_gatedmlp(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_features': 128, 'out_features': 128, 'activation':\n        F.silu, 'bias': False, 'multiple_of': 128}\n    gatedmlp = GatedMLP(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gatedmlp(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GatedMLP(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_features=None, out_features=None,\n        activation=None, bias=False, multiple_of=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        out_features = out_features if out_features is not None else embed_dim\n        hidden_features = (hidden_features if hidden_features is not None else\n            int(8 * embed_dim / 3))\n        hidden_features = (hidden_features + multiple_of - 1\n            ) // multiple_of * multiple_of\n        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **\n            self.factory_kwargs)\n        self.activation = activation if activation is not None else F.silu\n        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **\n            self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        y = self.fc1(X)\n        y, gate = y.chunk(2, dim=-1)\n        y = y * self.activation(gate)\n        y = self.fc2(y)\n        return y\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GatedMLP\",\"document\":\"\\nGated MLP\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "bias": false,
+                            "multiple_of": 128,
+                            "hidden_features": null,
+                            "out_features": null,
+                            "activation": null
+                        },
+                        "design_traces": null
+                    },
+                    "RMSNorm": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rmsnorm": "@gau_test\ndef test_RMSNorm_test_rmsnorm(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype\n        =dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = rmsnorm(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass RMSNorm(GAUBase):\n    \"\"\"\n    Root Mean Square Layer Normalization (RMSNorm).\n\n    This layer applies a variant of layer normalization that uses only the root mean square\n    statistics, without centering. It's computationally more efficient than standard\n    layer normalization and has been shown to be effective in various NLP tasks.\n\n    Args:\n        embed_dim (int): The size of the input feature dimension.\n        block_loc (tuple): The location of this block in the model architecture.\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\n        device (torch.device, optional): The device on which to allocate the module's parameters.\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\n        eps (float, optional): A small constant added to the denominator for numerical stability.\n            Default: 1e-5.\n\n    Attributes:\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\n        variance_epsilon (float): The epsilon value used in the normalization formula.\n\n    Shape:\n        - Input: (*, embed_dim)\n        - Output: (*, embed_dim) (same shape as input)\n\n    Examples:\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\n        >>> x = torch.randn(1, 100, 128)\n        >>> output = rmsnorm(x)\n        >>> print(output.shape)\n        torch.Size([1, 100, 128])\n\n    References:\n        - Paper: \"Root Mean Square Layer Normalization\" by Biao Zhang and Rico Sennrich\n          https://arxiv.org/abs/1910.07467\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, eps=1e-05, **kwargs):\n        \"\"\"If group_size is not None, we do GroupNorm with each group having group_size elements.\n        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)\n            )\n        self.variance_epsilon = eps\n\n    def _forward(self, X, **Z):\n        input_dtype = X.dtype\n        X = X.to(torch.float32)\n        variance = X.pow(2).mean(-1, keepdim=True)\n        X = X * torch.rsqrt(variance + self.variance_epsilon)\n        return self.weight * X.to(input_dtype)\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RMSNorm\",\"document\":\"\\n    Root Mean Square Layer Normalization (RMSNorm).\\n\\n    This layer applies a variant of layer normalization that uses only the root mean square\\n    statistics, without centering. It's computationally more efficient than standard\\n    layer normalization and has been shown to be effective in various NLP tasks.\\n\\n    Args:\\n        embed_dim (int): The size of the input feature dimension.\\n        block_loc (tuple): The location of this block in the model architecture.\\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\\n        device (torch.device, optional): The device on which to allocate the module's parameters.\\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\\n        eps (float, optional): A small constant added to the denominator for numerical stability.\\n            Default: 1e-5.\\n\\n    Attributes:\\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\\n        variance_epsilon (float): The epsilon value used in the normalization formula.\\n\\n    Shape:\\n        - Input: (*, embed_dim)\\n        - Output: (*, embed_dim) (same shape as input)\\n\\n    Examples:\\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\\n        >>> x = torch.randn(1, 100, 128)\\n        >>> output = rmsnorm(x)\\n        >>> print(output.shape)\\n        torch.Size([1, 100, 128])\\n\\n    References:\\n        - Paper: \\\"Root Mean Square Layer Normalization\\\" by Biao Zhang and Rico Sennrich\\n          https://arxiv.org/abs/1910.07467\\n    \",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "AdaptiveSparseAttention": "{\"unitname\":\"AdaptiveSparseAttention\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "RotaryPositionalEmbeddings": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"requirements\":\"Rotary position embeddings for attention\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "asa_gpt"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "o1_mini",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "claude3.5_sonnet",
+                    "PROPOSAL_REVIEWER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_OBSERVER": "claude3.5_sonnet",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0,
+                "IMPLEMENTATION_PLANNER": 0,
+                "IMPLEMENTATION_CODER": 5.00616,
+                "PROPOSAL_REVIEWER": 0,
+                "IMPLEMENTATION_OBSERVER": 7.778892000000003,
+                "SEARCH_ASSISTANT": 0
+            }
+        }
+    ]
+}

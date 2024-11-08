@@ -1,0 +1,30 @@
+{
+    "title": "AdaptiveNorm-GPT: Dynamic Hierarchical Normalization for Efficient Language Modeling",
+    "acronym": "adaptivenorm_gpt",
+    "sess_id": "2024-10-30-00-00-37-923b2b",
+    "sess_snapshot": {
+        "ref_ids": [
+            "rwkv6_scankernel",
+            "hierarchical_gated_graph_attenti",
+            "mentaltimetravel",
+            "samba",
+            "3drpe",
+            "trams"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hieranorm_attngpt"
+        ]
+    },
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

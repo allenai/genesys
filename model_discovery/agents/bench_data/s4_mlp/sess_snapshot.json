@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gpt_2_hla",
+        "hyperlora",
+        "convssm",
+        "linformer",
+        "assparseattn",
+        "posicoupling"
+    ],
+    "proposed": [
+        "s4_mlp"
+    ],
+    "reranked": {
+        "rank": [
+            "s4_mlp"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

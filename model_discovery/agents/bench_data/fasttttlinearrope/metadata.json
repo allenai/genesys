@@ -1,0 +1,31 @@
+{
+    "title": "FastTTTLinearRoPE: Integrating Rotary Positional Embedding into FastTTTLinear for Enhanced Positional Understanding",
+    "acronym": "fasttttlinearrope",
+    "sess_id": "2024-10-28-09-13-18-d3edd9",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "blocksparseretnet",
+            "hybridrwkv",
+            "mamba",
+            "normalizedattn",
+            "bmojo",
+            "kanmlp"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "fasttttlinear"
+        ]
+    },
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

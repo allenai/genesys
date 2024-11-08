@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "geogate_gpt",
+        "asa_gpt",
+        "diffuseq",
+        "staircaseattn",
+        "longt5",
+        "assparseattn"
+    ],
+    "proposed": [
+        "r_ssmwkv"
+    ],
+    "reranked": {
+        "rank": [
+            "r_ssmwkv"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "rwkv6"
+    ]
+}

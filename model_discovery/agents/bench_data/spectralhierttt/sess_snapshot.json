@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gpt_2_hla",
+        "adaptivemamba2",
+        "tnn",
+        "orderedmem",
+        "segrecurtrans",
+        "extensibleembed"
+    ],
+    "proposed": [
+        "spectralhierttt"
+    ],
+    "reranked": {
+        "rank": [
+            "spectralhierttt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierttt_1"
+    ]
+}

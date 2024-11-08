@@ -1,0 +1,31 @@
+{
+    "title": "BlockSparseRetNet: Hardware-Efficient Block Sparse RetNetMLP with Adaptive Granularity",
+    "acronym": "blocksparseretnet",
+    "sess_id": "2024-10-27-18-56-49-b0d10c",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "metattt",
+            "hierretnet",
+            "bigbird",
+            "matmulfree",
+            "transnormerllm",
+            "gpt"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "retnet"
+        ]
+    },
+    "seed_ids": [
+        "retnet"
+    ]
+}

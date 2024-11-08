@@ -1,0 +1,30 @@
+{
+    "title": "Proposal: AdaptiveHierarchicalRMSNorm",
+    "acronym": "adaptive_hiergpt_2",
+    "sess_id": "2024-11-04-16-01-54-bf7531",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hieraroute_gpt",
+            "blocksparseretnet",
+            "hippo",
+            "abc",
+            "diffusionlm",
+            "lminfinite"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hiergpt"
+        ]
+    },
+    "seed_ids": [
+        "hiergpt"
+    ]
+}

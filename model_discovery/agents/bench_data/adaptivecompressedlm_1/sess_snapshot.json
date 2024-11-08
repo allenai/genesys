@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "treetttnet",
+        "selectivegpt",
+        "lengenewope",
+        "linformer",
+        "mambalrp",
+        "bipe"
+    ],
+    "proposed": [
+        "adaptivecompressedlm_1"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivecompressedlm_1"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "spectralhmamba",
+        "han_gpt",
+        "based",
+        "megalodon",
+        "transnormerllm",
+        "sentineltokens"
+    ],
+    "proposed": [
+        "adaptivehierarchicalrmsnorm"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivehierarchicalrmsnorm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

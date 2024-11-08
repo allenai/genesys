@@ -1,0 +1,581 @@
+{
+    "implementation": {
+        "review": null,
+        "root": "GPT2",
+        "proposal": "GPT2 is a transformer-based language model.\n",
+        "units": {
+            "GPT2": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_gpt2": "@gau_test\ndef test_GPT2_test_gpt2(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gpt2(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GPT2(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.mha = GeometricGatedMHA(embed_dim=self.embed_dim, block_loc=self.block_loc,\n            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X1, Z = self.norm1(X, **Z)\n        X2, Z = self.mha(X1, **Z)\n        X = X + X2\n        X3, Z = self.norm2(X, **Z)\n        X4, Z = self.mlp(X3, **Z)\n        X = X + X4\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MHA', requirements='', inputs=[\n    'X'], outputs=['Y']), UnitDecl(unitname='GatedMLP', requirements='',\n    inputs=['X'], outputs=['Y']), UnitDecl(unitname='RMSNorm', requirements\n    ='', inputs=['X'], outputs=['Y'])]\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"GPT2\",\"document\":\"\\nGPT2\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "GeometricGatedMHA",
+                    "GatedMLP",
+                    "RMSNorm"
+                ],
+                "suggestions": null,
+                "args": {},
+                "design_traces": null
+            },
+            "GeometricGatedMHA": {
+                "review": "# Comprehensive Review of GeometricGatedMHA Implementation\n\n```rating 4.7```\n\n## Strengths\n\n1. **Memory Efficiency**:\n   - Excellent implementation of chunked attention computation\n   - Smart use of memory through gradient-efficient operations\n   - Well-designed caching mechanisms for position embeddings\n\n2. **Numerical Stability**:\n   - Robust initialization scheme with careful scaling\n   - Stable softmax implementation with proper normalization\n   - Gradient clipping in copy gate mechanism\n\n3. **Architecture Innovation**:\n   - Novel geometric attention patterns with learnable scaling\n   - Efficient head routing mechanism\n   - Adaptive computation through gating\n   - Clean separation of geometric and content-based attention\n\n4. **Code Quality**:\n   - Comprehensive documentation\n   - Clear type hints and error checking\n   - Well-structured modular design\n   - Efficient use of PyTorch primitives\n\n## Areas for Improvement\n\n1. **Performance Optimization**:\n```python\ndef chunk_attention(self, q, k, v):\n    # Add flash attention support\n    if hasattr(F, 'scaled_dot_product_attention') and self.use_flash:\n        return F.scaled_dot_product_attention(\n            q, k, v,\n            attn_mask=None,\n            dropout_p=self.dropout if self.training else 0.0,\n            is_causal=self.causal\n        )\n    # Existing chunked implementation\n    ...\n```\n\n2. **Memory Management**:\n```python\ndef _forward(self, X, **Z):\n    # Add gradient checkpointing\n    if self.gradient_checkpointing and self.training:\n        context = torch.utils.checkpoint.checkpoint(\n            self.chunk_attention, q, k, v\n        )\n    else:\n        context = self.chunk_attention(q, k, v)\n```\n\n3. **Additional Features**:\n   - Add dropout layers for regularization\n   - Implement relative position bias option\n   - Add support for sliding window attention\n   - Include attention pruning mechanism\n\n## Innovation and Impact\n\n1. **Novel Contributions**:\n   - The geometric attention mechanism provides better inductive bias\n   - Adaptive computation through gating is memory-efficient\n   - Head routing enables specialized processing\n   - Chunked attention enables processing of long sequences\n\n2. **Potential Impact**:\n   - Could significantly improve efficiency for long sequences\n   - May enable better transfer learning through geometric priors\n   - Potential for better few-shot learning through specialized heads\n   - Could reduce training compute requirements\n\n## Integration and Scalability\n\n1. **Integration Strengths**:\n   - Clean interface with existing components\n   - Well-handled device placement\n   - Proper handling of dtype consistency\n   - Good parameter initialization\n\n2. **Scalability Features**:\n   - Memory-efficient attention computation\n   - Support for grouped query attention\n   - Chunked processing for long sequences\n   - Efficient cache management\n\n## Recommendations\n\n1. **Performance Enhancements**:\n```python\nclass GeometricGatedMHA(GAUBase):\n    def __init__(self, ...):\n        self.use_flash = True  # Enable flash attention when available\n        self.gradient_checkpointing = False  # Optional memory saving\n        self.dropout = nn.Dropout(0.1)  # Add dropout for regularization\n        \n    def compute_geometric_bias(self, q, k):\n        # Add attention pruning\n        if hasattr(self, 'attention_mask'):\n            mask = self.compute_attention_mask(q)\n            return geo_bias.masked_fill(mask, float('-inf'))\n```\n\n2. **Memory Optimization**:\n   - Add support for 8-bit quantization\n   - Implement attention pattern caching\n   - Add support for sparse attention patterns\n   - Include adaptive precision computation\n\n3. **Feature Additions**:\n   - Add support for cross-attention\n   - Implement attention visualization hooks\n   - Add support for custom attention patterns\n   - Include attention head pruning\n\n4. **Documentation**:\n   - Add benchmark results\n   - Include memory usage analysis\n   - Document scaling characteristics\n   - Add more usage examples\n\n## Conclusion\n\nThe implementation shows excellent attention to detail and innovative design choices. The combination of geometric attention patterns with efficient computation makes it particularly promising for large-scale applications. The chunked attention mechanism and stable numerics suggest it will work well in practice.\n\nKey strengths are the memory efficiency and numerical stability, while main areas for improvement are around additional optimizations and features. The implementation is ready for production use but could benefit from the suggested enhancements for even better performance and flexibility.\n\nThe code demonstrates a sophisticated understanding of attention mechanisms and their practical implementation challenges. The solutions provided for memory efficiency and numerical stability are particularly noteworthy.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_geometric_gated_mha": "@gau_test\ndef test_GeometricGatedMHA_test_geometric_gated_mha(device=None, dtype=None):\n    \"\"\"Test the GeometricGatedMHA implementation with memory efficiency checks\"\"\"\n    batch_size, seq_len, embed_dim = 2, 16, 128\n    n_heads = 8\n    mha = GeometricGatedMHA(embed_dim=embed_dim, block_loc=(0, 0),\n        kwarg_all={}, n_heads=n_heads, device=device, dtype=dtype, chunk_size=8\n        )\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    output, Z = mha(X)\n    assert output.shape == X.shape, f\"Output shape {output.shape} doesn't match input shape {X.shape}\"\n    assert output.dtype == X.dtype, f\"Output dtype {output.dtype} doesn't match input dtype {X.dtype}\"\n    if mha.causal:\n        X1 = torch.ones(1, seq_len, embed_dim, device=device, dtype=dtype)\n        output1, _ = mha(X1)\n        for i in range(seq_len):\n            X2 = X1.clone()\n            X2[0, i + 1:] = 0\n            output2, _ = mha(X2)\n            assert torch.allclose(output1[0, i], output2[0, i], atol=1e-05\n                ), f'Causality violated at position {i}'\n    try:\n        long_seq_len = 2048\n        X_long = torch.randn(2, long_seq_len, embed_dim, device=device,\n            dtype=dtype)\n        output_long, _ = mha(X_long)\n        assert output_long.shape == X_long.shape, 'Long sequence forward pass failed'\n    except RuntimeError as e:\n        if 'out of memory' in str(e):\n            raise AssertionError('Memory efficiency test failed - OOM error')\n        raise e\n    print('All tests passed!')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nimport math\nfrom einops import rearrange, repeat\nfrom typing import Optional, Tuple\n\n\nclass GeometricGatedMHA(GAUBase):\n    \"\"\"\n    Memory-efficient Geometric Gated Multi-Head Attention with hierarchical attention routing.\n    \n    This implementation combines:\n    1. Geometric Attention Patterns with memory-efficient computation\n    2. Adaptive Copy Gates with stable gradients\n    3. Dynamic Head Routing with chunked processing\n    \n    The implementation uses chunked attention computation and stable softmax to handle\n    long sequences efficiently while maintaining numerical stability.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, causal: bool=True, num_heads_kv: Optional[int]=None,\n        head_dim: Optional[int]=None, qkv_proj_bias: bool=True,\n        out_proj_bias: bool=True, softmax_scale: Optional[float]=None,\n        rotary_emb_base: float=10000.0, chunk_size: int=1024, device=None,\n        dtype=None, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        self.causal = causal\n        self.chunk_size = chunk_size\n        if head_dim is None:\n            assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n            self.head_dim = embed_dim // n_heads\n        else:\n            self.head_dim = head_dim\n        self.qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        self.out_dim = self.head_dim * self.num_heads\n        self.qkv_proj = nn.Linear(embed_dim, self.qkv_dim, bias=\n            qkv_proj_bias, **self.factory_kwargs)\n        self.out_proj = nn.Linear(self.out_dim, embed_dim, bias=\n            out_proj_bias, **self.factory_kwargs)\n        self.geo_proj = nn.Linear(self.head_dim, self.head_dim, **self.\n            factory_kwargs)\n        self.geo_scale = nn.Parameter(torch.ones(self.num_heads, 1, 1, **\n            self.factory_kwargs) * 0.1)\n        self.copy_gate = nn.Linear(embed_dim, 1, **self.factory_kwargs)\n        self.head_router = nn.Linear(embed_dim, self.num_heads, **self.\n            factory_kwargs)\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.scale = (self.head_dim ** -0.5 if softmax_scale is None else\n            softmax_scale)\n        self.reset_parameters()\n\n    def chunk_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor\n        ) ->torch.Tensor:\n        \"\"\"Compute attention scores in chunks to save memory\"\"\"\n        batch_size, num_heads, seq_len, head_dim = q.shape\n        out = torch.zeros_like(q)\n        for i in range(0, seq_len, self.chunk_size):\n            chunk_end = min(i + self.chunk_size, seq_len)\n            q_chunk = q[:, :, i:chunk_end]\n            attn_weights = torch.matmul(q_chunk, k.transpose(-2, -1)\n                ) * self.scale\n            q_geo = self.geo_proj(q_chunk)\n            k_geo = self.geo_proj(k)\n            geo_bias = torch.matmul(q_geo, k_geo.transpose(-2, -1)\n                ) * self.geo_scale\n            attn_weights = attn_weights + geo_bias\n            if self.causal:\n                causal_mask = torch.triu(torch.ones(chunk_end - i, seq_len,\n                    dtype=torch.bool, device=q.device), diagonal=i + 1)\n                attn_weights.masked_fill_(causal_mask[None, None], float(\n                    '-inf'))\n            attn_max = torch.max(attn_weights, dim=-1, keepdim=True)[0]\n            exp_weights = torch.exp(attn_weights - attn_max)\n            attn_weights = exp_weights / (torch.sum(exp_weights, dim=-1,\n                keepdim=True) + 1e-06)\n            out[:, :, i:chunk_end] = torch.matmul(attn_weights, v)\n        return out\n\n    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, dict]:\n        batch_size, seq_len = X.shape[:2]\n        qkv = self.qkv_proj(X)\n        q, k, v = qkv.split([self.num_heads * self.head_dim, self.\n            num_heads_kv * self.head_dim, self.num_heads_kv * self.head_dim\n            ], dim=-1)\n        q = rearrange(q, 'b s (h d) -> b h s d', h=self.num_heads)\n        k = rearrange(k, 'b s (h d) -> b h s d', h=self.num_heads_kv)\n        v = rearrange(v, 'b s (h d) -> b h s d', h=self.num_heads_kv)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        if self.num_heads > self.num_heads_kv:\n            k = torch.repeat_interleave(k, repeats=self.num_heads // self.\n                num_heads_kv, dim=1)\n            v = torch.repeat_interleave(v, repeats=self.num_heads // self.\n                num_heads_kv, dim=1)\n        context = self.chunk_attention(q, k, v)\n        head_weights = torch.sigmoid(self.head_router(X))\n        head_weights = rearrange(head_weights, 'b s h -> b h s 1')\n        context = context * head_weights\n        context = rearrange(context, 'b h s d -> b s (h d)')\n        output = self.out_proj(context)\n        gate = torch.sigmoid(self.copy_gate(X).clamp(-5, 5))\n        output = gate * output + (1 - gate) * X\n        return output, Z\n\n    def reset_parameters(self):\n        \"\"\"Initialize parameters with stable values\"\"\"\n        nn.init.xavier_uniform_(self.qkv_proj.weight, gain=1 / math.sqrt(2))\n        nn.init.xavier_uniform_(self.out_proj.weight, gain=1 / math.sqrt(2))\n        nn.init.xavier_uniform_(self.geo_proj.weight, gain=0.1)\n        if self.qkv_proj.bias is not None:\n            nn.init.zeros_(self.qkv_proj.bias)\n        if self.out_proj.bias is not None:\n            nn.init.zeros_(self.out_proj.bias)\n        nn.init.zeros_(self.copy_gate.weight)\n        if self.copy_gate.bias is not None:\n            nn.init.constant_(self.copy_gate.bias, 1.0)\n        nn.init.xavier_uniform_(self.head_router.weight, gain=0.1)\n        if self.head_router.bias is not None:\n            nn.init.zeros_(self.head_router.bias)\n",
+                "rating": 4.7,
+                "spec": "{\"unitname\":\"GeometricGatedMHA\",\"document\":\"Memory-efficient Geometric Gated Multi-Head Attention with hierarchical attention routing.\\n\\nThis implementation combines:\\n1. Geometric Attention Patterns with memory-efficient computation\\n2. Adaptive Copy Gates with stable gradients\\n3. Dynamic Head Routing with chunked processing\\n\\nThe implementation uses chunked attention computation and stable softmax to handle\\nlong sequences efficiently while maintaining numerical stability.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "RotaryPositionalEmbeddings"
+                ],
+                "suggestions": null,
+                "args": {
+                    "softmax_scale": null,
+                    "chunk_size": 1024,
+                    "n_heads": 8,
+                    "num_heads_kv": null,
+                    "out_proj_bias": true,
+                    "head_dim": null,
+                    "causal": true,
+                    "qkv_proj_bias": true,
+                    "rotary_emb_base": 10000.0
+                },
+                "design_traces": null
+            },
+            "RotaryPositionalEmbeddings": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_rotarypositionalembeddings": "@gau_test\ndef test_RotaryPositionalEmbeddings_test_rotarypositionalembeddings(device=\n    None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim,\n        block_loc, kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    input_emb = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    input_pos = torch.arange(128).to(device=device, dtype=dtype)\n    X = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {'input_emb': input_emb, 'input_pos': input_pos}\n    _, Z_ = rotarypositionalembeddings(X, **Z)\n    output_emb = Z_['output_emb']\n    assert output_emb.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom typing import Optional\n\n\nclass RotaryPositionalEmbeddings(GAUBase):\n    \"\"\"\n    This class implements Rotary Positional Embeddings (RoPE)\n    proposed in https://arxiv.org/abs/2104.09864.\n\n    Reference implementation (used for correctness verfication)\n    can be found here:\n    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80\n\n    In this implementation we cache the embeddings for each position upto\n    ``max_seq_len`` by computing this during init.\n\n    Args:\n        dim (int): Embedding dimension. This is usually set to the dim of each\n            head in the attention module computed as ````embed_dim`` // ``num_heads````\n        max_seq_len (int): Maximum expected sequence length for the\n            model, if exceeded the cached freqs will be recomputed\n        base (int): The base for the geometric progression used to compute\n            the rotation angles\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:\n        int=None, max_seq_len: int=4096, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.dim = rotary_emb_dim\n        self.base = rotary_emb_base\n        self.max_seq_len = max_seq_len\n        self._rope_init()\n\n    def reset_parameters(self):\n        self._rope_init()\n\n    def _rope_init(self):\n        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.\n            factory_kwargs)[:self.dim // 2].float() / self.dim)\n        self.register_buffer('theta', theta, persistent=False)\n        self.build_rope_cache(self.max_seq_len)\n\n    def build_rope_cache(self, max_seq_len: int=4096) ->None:\n        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=\n            self.theta.device)\n        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()\n        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],\n            dim=-1)\n        self.register_buffer('cache', cache, persistent=False)\n\n    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[\n        Tensor]=None) ->Tensor:\n        \"\"\"\n        Args:\n            x (Tensor): input tensor with shape\n                [b, s, n_h, h_d]\n            input_pos (Optional[Tensor]): Optional tensor which contains the position ids\n                of each token. During training, this is used to indicate the positions\n                of each token relative to its sample when packed, shape [b, s].\n                During inference, this indicates the position of the current token.\n                If none, assume the index of the token is its position id. Default is None.\n\n        Returns:\n            Tensor: output tensor with RoPE applied\n\n        Notation used for tensor shapes:\n            - b: batch size\n            - s: sequence length\n            - n_h: num heads\n            - h_d: head dim\n\n        TODO: The implementation below can be made more efficient\n        for inference.\n        \"\"\"\n        seq_len = input_emb.size(1)\n        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[\n            input_pos]\n        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)\n        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2\n            )\n        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped\n            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,\n            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)\n        x_out = x_out.flatten(3)\n        output_emb = x_out.type_as(input_emb)\n        return X, {'output_emb': output_emb}\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"document\":\"\\nThis class implements Rotary Positional Embeddings (RoPE)\\nproposed in https://arxiv.org/abs/2104.09864.\\n\\nReference implementation (used for correctness verfication)\\ncan be found here:\\nhttps://github.com/meta-llama/llama/blob/main/llama/model.py#L80\\n\\nIn this implementation we cache the embeddings for each position upto\\n``max_seq_len`` by computing this during init.\\n\\nArgs:\\n    dim (int): Embedding dimension. This is usually set to the dim of each\\n        head in the attention module computed as ````embed_dim`` // ``num_heads````\\n    max_seq_len (int): Maximum expected sequence length for the\\n        model, if exceeded the cached freqs will be recomputed\\n    base (int): The base for the geometric progression used to compute\\n        the rotation angles\\n\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "max_seq_len": 4096,
+                    "rotary_emb_base": 10000
+                },
+                "design_traces": null
+            },
+            "GatedMLP": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_gatedmlp": "@gau_test\ndef test_GatedMLP_test_gatedmlp(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_features': 128, 'out_features': 128, 'activation':\n        F.silu, 'bias': False, 'multiple_of': 128}\n    gatedmlp = GatedMLP(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gatedmlp(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GatedMLP(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_features=None, out_features=None,\n        activation=None, bias=False, multiple_of=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        out_features = out_features if out_features is not None else embed_dim\n        hidden_features = (hidden_features if hidden_features is not None else\n            int(8 * embed_dim / 3))\n        hidden_features = (hidden_features + multiple_of - 1\n            ) // multiple_of * multiple_of\n        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **\n            self.factory_kwargs)\n        self.activation = activation if activation is not None else F.silu\n        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **\n            self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        y = self.fc1(X)\n        y, gate = y.chunk(2, dim=-1)\n        y = y * self.activation(gate)\n        y = self.fc2(y)\n        return y\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"GatedMLP\",\"document\":\"\\nGated MLP\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "bias": false,
+                    "multiple_of": 128,
+                    "hidden_features": null,
+                    "out_features": null,
+                    "activation": null
+                },
+                "design_traces": null
+            },
+            "RMSNorm": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_rmsnorm": "@gau_test\ndef test_RMSNorm_test_rmsnorm(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype\n        =dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = rmsnorm(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass RMSNorm(GAUBase):\n    \"\"\"\n    Root Mean Square Layer Normalization (RMSNorm).\n\n    This layer applies a variant of layer normalization that uses only the root mean square\n    statistics, without centering. It's computationally more efficient than standard\n    layer normalization and has been shown to be effective in various NLP tasks.\n\n    Args:\n        embed_dim (int): The size of the input feature dimension.\n        block_loc (tuple): The location of this block in the model architecture.\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\n        device (torch.device, optional): The device on which to allocate the module's parameters.\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\n        eps (float, optional): A small constant added to the denominator for numerical stability.\n            Default: 1e-5.\n\n    Attributes:\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\n        variance_epsilon (float): The epsilon value used in the normalization formula.\n\n    Shape:\n        - Input: (*, embed_dim)\n        - Output: (*, embed_dim) (same shape as input)\n\n    Examples:\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\n        >>> x = torch.randn(1, 100, 128)\n        >>> output = rmsnorm(x)\n        >>> print(output.shape)\n        torch.Size([1, 100, 128])\n\n    References:\n        - Paper: \"Root Mean Square Layer Normalization\" by Biao Zhang and Rico Sennrich\n          https://arxiv.org/abs/1910.07467\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, eps=1e-05, **kwargs):\n        \"\"\"If group_size is not None, we do GroupNorm with each group having group_size elements.\n        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)\n            )\n        self.variance_epsilon = eps\n\n    def _forward(self, X, **Z):\n        input_dtype = X.dtype\n        X = X.to(torch.float32)\n        variance = X.pow(2).mean(-1, keepdim=True)\n        X = X * torch.rsqrt(variance + self.variance_epsilon)\n        return self.weight * X.to(input_dtype)\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"RMSNorm\",\"document\":\"\\n    Root Mean Square Layer Normalization (RMSNorm).\\n\\n    This layer applies a variant of layer normalization that uses only the root mean square\\n    statistics, without centering. It's computationally more efficient than standard\\n    layer normalization and has been shown to be effective in various NLP tasks.\\n\\n    Args:\\n        embed_dim (int): The size of the input feature dimension.\\n        block_loc (tuple): The location of this block in the model architecture.\\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\\n        device (torch.device, optional): The device on which to allocate the module's parameters.\\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\\n        eps (float, optional): A small constant added to the denominator for numerical stability.\\n            Default: 1e-5.\\n\\n    Attributes:\\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\\n        variance_epsilon (float): The epsilon value used in the normalization formula.\\n\\n    Shape:\\n        - Input: (*, embed_dim)\\n        - Output: (*, embed_dim) (same shape as input)\\n\\n    Examples:\\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\\n        >>> x = torch.randn(1, 100, 128)\\n        >>> output = rmsnorm(x)\\n        >>> print(output.shape)\\n        torch.Size([1, 100, 128])\\n\\n    References:\\n        - Paper: \\\"Root Mean Square Layer Normalization\\\" by Biao Zhang and Rico Sennrich\\n          https://arxiv.org/abs/1910.07467\\n    \",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "eps": 1e-05
+                },
+                "design_traces": null
+            }
+        },
+        "rating": null,
+        "declares": {
+            "GeometricGatedMHA": "{\"unitname\":\"GeometricGatedMHA\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+            "RotaryPositionalEmbeddings": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"requirements\":\"Rotary position embeddings for geometric attention\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}"
+        },
+        "proposal_traces": [],
+        "suggestions": null,
+        "name": "geogate_gpt"
+    },
+    "status": "implemented",
+    "history": [
+        {
+            "tree": {
+                "review": null,
+                "root": "GPT2",
+                "proposal": "GPT2 is a transformer-based language model.\n",
+                "units": {
+                    "GPT2": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gpt2": "@gau_test\ndef test_GPT2_test_gpt2(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gpt2(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GPT2(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.mha = GeometricGatedMHA(embed_dim=self.embed_dim, block_loc=self.block_loc,\n            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X1, Z = self.norm1(X, **Z)\n        X2, Z = self.mha(X1, **Z)\n        X = X + X2\n        X3, Z = self.norm2(X, **Z)\n        X4, Z = self.mlp(X3, **Z)\n        X = X + X4\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MHA', requirements='', inputs=[\n    'X'], outputs=['Y']), UnitDecl(unitname='GatedMLP', requirements='',\n    inputs=['X'], outputs=['Y']), UnitDecl(unitname='RMSNorm', requirements\n    ='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GPT2\",\"document\":\"\\nGPT2\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "GeometricGatedMHA",
+                            "GatedMLP",
+                            "RMSNorm"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "GeometricGatedMHA": {
+                        "review": "# Comprehensive Review of GeometricGatedMHA Implementation\n\n```rating 4.7```\n\n## Strengths\n\n1. **Memory Efficiency**:\n   - Excellent implementation of chunked attention computation\n   - Smart use of memory through gradient-efficient operations\n   - Well-designed caching mechanisms for position embeddings\n\n2. **Numerical Stability**:\n   - Robust initialization scheme with careful scaling\n   - Stable softmax implementation with proper normalization\n   - Gradient clipping in copy gate mechanism\n\n3. **Architecture Innovation**:\n   - Novel geometric attention patterns with learnable scaling\n   - Efficient head routing mechanism\n   - Adaptive computation through gating\n   - Clean separation of geometric and content-based attention\n\n4. **Code Quality**:\n   - Comprehensive documentation\n   - Clear type hints and error checking\n   - Well-structured modular design\n   - Efficient use of PyTorch primitives\n\n## Areas for Improvement\n\n1. **Performance Optimization**:\n```python\ndef chunk_attention(self, q, k, v):\n    # Add flash attention support\n    if hasattr(F, 'scaled_dot_product_attention') and self.use_flash:\n        return F.scaled_dot_product_attention(\n            q, k, v,\n            attn_mask=None,\n            dropout_p=self.dropout if self.training else 0.0,\n            is_causal=self.causal\n        )\n    # Existing chunked implementation\n    ...\n```\n\n2. **Memory Management**:\n```python\ndef _forward(self, X, **Z):\n    # Add gradient checkpointing\n    if self.gradient_checkpointing and self.training:\n        context = torch.utils.checkpoint.checkpoint(\n            self.chunk_attention, q, k, v\n        )\n    else:\n        context = self.chunk_attention(q, k, v)\n```\n\n3. **Additional Features**:\n   - Add dropout layers for regularization\n   - Implement relative position bias option\n   - Add support for sliding window attention\n   - Include attention pruning mechanism\n\n## Innovation and Impact\n\n1. **Novel Contributions**:\n   - The geometric attention mechanism provides better inductive bias\n   - Adaptive computation through gating is memory-efficient\n   - Head routing enables specialized processing\n   - Chunked attention enables processing of long sequences\n\n2. **Potential Impact**:\n   - Could significantly improve efficiency for long sequences\n   - May enable better transfer learning through geometric priors\n   - Potential for better few-shot learning through specialized heads\n   - Could reduce training compute requirements\n\n## Integration and Scalability\n\n1. **Integration Strengths**:\n   - Clean interface with existing components\n   - Well-handled device placement\n   - Proper handling of dtype consistency\n   - Good parameter initialization\n\n2. **Scalability Features**:\n   - Memory-efficient attention computation\n   - Support for grouped query attention\n   - Chunked processing for long sequences\n   - Efficient cache management\n\n## Recommendations\n\n1. **Performance Enhancements**:\n```python\nclass GeometricGatedMHA(GAUBase):\n    def __init__(self, ...):\n        self.use_flash = True  # Enable flash attention when available\n        self.gradient_checkpointing = False  # Optional memory saving\n        self.dropout = nn.Dropout(0.1)  # Add dropout for regularization\n        \n    def compute_geometric_bias(self, q, k):\n        # Add attention pruning\n        if hasattr(self, 'attention_mask'):\n            mask = self.compute_attention_mask(q)\n            return geo_bias.masked_fill(mask, float('-inf'))\n```\n\n2. **Memory Optimization**:\n   - Add support for 8-bit quantization\n   - Implement attention pattern caching\n   - Add support for sparse attention patterns\n   - Include adaptive precision computation\n\n3. **Feature Additions**:\n   - Add support for cross-attention\n   - Implement attention visualization hooks\n   - Add support for custom attention patterns\n   - Include attention head pruning\n\n4. **Documentation**:\n   - Add benchmark results\n   - Include memory usage analysis\n   - Document scaling characteristics\n   - Add more usage examples\n\n## Conclusion\n\nThe implementation shows excellent attention to detail and innovative design choices. The combination of geometric attention patterns with efficient computation makes it particularly promising for large-scale applications. The chunked attention mechanism and stable numerics suggest it will work well in practice.\n\nKey strengths are the memory efficiency and numerical stability, while main areas for improvement are around additional optimizations and features. The implementation is ready for production use but could benefit from the suggested enhancements for even better performance and flexibility.\n\nThe code demonstrates a sophisticated understanding of attention mechanisms and their practical implementation challenges. The solutions provided for memory efficiency and numerical stability are particularly noteworthy.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_geometric_gated_mha": "@gau_test\ndef test_GeometricGatedMHA_test_geometric_gated_mha(device=None, dtype=None):\n    \"\"\"Test the GeometricGatedMHA implementation with memory efficiency checks\"\"\"\n    batch_size, seq_len, embed_dim = 2, 16, 128\n    n_heads = 8\n    mha = GeometricGatedMHA(embed_dim=embed_dim, block_loc=(0, 0),\n        kwarg_all={}, n_heads=n_heads, device=device, dtype=dtype, chunk_size=8\n        )\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    output, Z = mha(X)\n    assert output.shape == X.shape, f\"Output shape {output.shape} doesn't match input shape {X.shape}\"\n    assert output.dtype == X.dtype, f\"Output dtype {output.dtype} doesn't match input dtype {X.dtype}\"\n    if mha.causal:\n        X1 = torch.ones(1, seq_len, embed_dim, device=device, dtype=dtype)\n        output1, _ = mha(X1)\n        for i in range(seq_len):\n            X2 = X1.clone()\n            X2[0, i + 1:] = 0\n            output2, _ = mha(X2)\n            assert torch.allclose(output1[0, i], output2[0, i], atol=1e-05\n                ), f'Causality violated at position {i}'\n    try:\n        long_seq_len = 2048\n        X_long = torch.randn(2, long_seq_len, embed_dim, device=device,\n            dtype=dtype)\n        output_long, _ = mha(X_long)\n        assert output_long.shape == X_long.shape, 'Long sequence forward pass failed'\n    except RuntimeError as e:\n        if 'out of memory' in str(e):\n            raise AssertionError('Memory efficiency test failed - OOM error')\n        raise e\n    print('All tests passed!')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nimport math\nfrom einops import rearrange, repeat\nfrom typing import Optional, Tuple\n\n\nclass GeometricGatedMHA(GAUBase):\n    \"\"\"\n    Memory-efficient Geometric Gated Multi-Head Attention with hierarchical attention routing.\n    \n    This implementation combines:\n    1. Geometric Attention Patterns with memory-efficient computation\n    2. Adaptive Copy Gates with stable gradients\n    3. Dynamic Head Routing with chunked processing\n    \n    The implementation uses chunked attention computation and stable softmax to handle\n    long sequences efficiently while maintaining numerical stability.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, causal: bool=True, num_heads_kv: Optional[int]=None,\n        head_dim: Optional[int]=None, qkv_proj_bias: bool=True,\n        out_proj_bias: bool=True, softmax_scale: Optional[float]=None,\n        rotary_emb_base: float=10000.0, chunk_size: int=1024, device=None,\n        dtype=None, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        self.causal = causal\n        self.chunk_size = chunk_size\n        if head_dim is None:\n            assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n            self.head_dim = embed_dim // n_heads\n        else:\n            self.head_dim = head_dim\n        self.qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        self.out_dim = self.head_dim * self.num_heads\n        self.qkv_proj = nn.Linear(embed_dim, self.qkv_dim, bias=\n            qkv_proj_bias, **self.factory_kwargs)\n        self.out_proj = nn.Linear(self.out_dim, embed_dim, bias=\n            out_proj_bias, **self.factory_kwargs)\n        self.geo_proj = nn.Linear(self.head_dim, self.head_dim, **self.\n            factory_kwargs)\n        self.geo_scale = nn.Parameter(torch.ones(self.num_heads, 1, 1, **\n            self.factory_kwargs) * 0.1)\n        self.copy_gate = nn.Linear(embed_dim, 1, **self.factory_kwargs)\n        self.head_router = nn.Linear(embed_dim, self.num_heads, **self.\n            factory_kwargs)\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.scale = (self.head_dim ** -0.5 if softmax_scale is None else\n            softmax_scale)\n        self.reset_parameters()\n\n    def chunk_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor\n        ) ->torch.Tensor:\n        \"\"\"Compute attention scores in chunks to save memory\"\"\"\n        batch_size, num_heads, seq_len, head_dim = q.shape\n        out = torch.zeros_like(q)\n        for i in range(0, seq_len, self.chunk_size):\n            chunk_end = min(i + self.chunk_size, seq_len)\n            q_chunk = q[:, :, i:chunk_end]\n            attn_weights = torch.matmul(q_chunk, k.transpose(-2, -1)\n                ) * self.scale\n            q_geo = self.geo_proj(q_chunk)\n            k_geo = self.geo_proj(k)\n            geo_bias = torch.matmul(q_geo, k_geo.transpose(-2, -1)\n                ) * self.geo_scale\n            attn_weights = attn_weights + geo_bias\n            if self.causal:\n                causal_mask = torch.triu(torch.ones(chunk_end - i, seq_len,\n                    dtype=torch.bool, device=q.device), diagonal=i + 1)\n                attn_weights.masked_fill_(causal_mask[None, None], float(\n                    '-inf'))\n            attn_max = torch.max(attn_weights, dim=-1, keepdim=True)[0]\n            exp_weights = torch.exp(attn_weights - attn_max)\n            attn_weights = exp_weights / (torch.sum(exp_weights, dim=-1,\n                keepdim=True) + 1e-06)\n            out[:, :, i:chunk_end] = torch.matmul(attn_weights, v)\n        return out\n\n    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, dict]:\n        batch_size, seq_len = X.shape[:2]\n        qkv = self.qkv_proj(X)\n        q, k, v = qkv.split([self.num_heads * self.head_dim, self.\n            num_heads_kv * self.head_dim, self.num_heads_kv * self.head_dim\n            ], dim=-1)\n        q = rearrange(q, 'b s (h d) -> b h s d', h=self.num_heads)\n        k = rearrange(k, 'b s (h d) -> b h s d', h=self.num_heads_kv)\n        v = rearrange(v, 'b s (h d) -> b h s d', h=self.num_heads_kv)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        if self.num_heads > self.num_heads_kv:\n            k = torch.repeat_interleave(k, repeats=self.num_heads // self.\n                num_heads_kv, dim=1)\n            v = torch.repeat_interleave(v, repeats=self.num_heads // self.\n                num_heads_kv, dim=1)\n        context = self.chunk_attention(q, k, v)\n        head_weights = torch.sigmoid(self.head_router(X))\n        head_weights = rearrange(head_weights, 'b s h -> b h s 1')\n        context = context * head_weights\n        context = rearrange(context, 'b h s d -> b s (h d)')\n        output = self.out_proj(context)\n        gate = torch.sigmoid(self.copy_gate(X).clamp(-5, 5))\n        output = gate * output + (1 - gate) * X\n        return output, Z\n\n    def reset_parameters(self):\n        \"\"\"Initialize parameters with stable values\"\"\"\n        nn.init.xavier_uniform_(self.qkv_proj.weight, gain=1 / math.sqrt(2))\n        nn.init.xavier_uniform_(self.out_proj.weight, gain=1 / math.sqrt(2))\n        nn.init.xavier_uniform_(self.geo_proj.weight, gain=0.1)\n        if self.qkv_proj.bias is not None:\n            nn.init.zeros_(self.qkv_proj.bias)\n        if self.out_proj.bias is not None:\n            nn.init.zeros_(self.out_proj.bias)\n        nn.init.zeros_(self.copy_gate.weight)\n        if self.copy_gate.bias is not None:\n            nn.init.constant_(self.copy_gate.bias, 1.0)\n        nn.init.xavier_uniform_(self.head_router.weight, gain=0.1)\n        if self.head_router.bias is not None:\n            nn.init.zeros_(self.head_router.bias)\n",
+                        "rating": 4.7,
+                        "spec": "{\"unitname\":\"GeometricGatedMHA\",\"document\":\"Memory-efficient Geometric Gated Multi-Head Attention with hierarchical attention routing.\\n\\nThis implementation combines:\\n1. Geometric Attention Patterns with memory-efficient computation\\n2. Adaptive Copy Gates with stable gradients\\n3. Dynamic Head Routing with chunked processing\\n\\nThe implementation uses chunked attention computation and stable softmax to handle\\nlong sequences efficiently while maintaining numerical stability.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "RotaryPositionalEmbeddings"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "softmax_scale": null,
+                            "chunk_size": 1024,
+                            "n_heads": 8,
+                            "num_heads_kv": null,
+                            "out_proj_bias": true,
+                            "head_dim": null,
+                            "causal": true,
+                            "qkv_proj_bias": true,
+                            "rotary_emb_base": 10000.0
+                        },
+                        "design_traces": null
+                    },
+                    "RotaryPositionalEmbeddings": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rotarypositionalembeddings": "@gau_test\ndef test_RotaryPositionalEmbeddings_test_rotarypositionalembeddings(device=\n    None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim,\n        block_loc, kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    input_emb = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    input_pos = torch.arange(128).to(device=device, dtype=dtype)\n    X = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {'input_emb': input_emb, 'input_pos': input_pos}\n    _, Z_ = rotarypositionalembeddings(X, **Z)\n    output_emb = Z_['output_emb']\n    assert output_emb.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom typing import Optional\n\n\nclass RotaryPositionalEmbeddings(GAUBase):\n    \"\"\"\n    This class implements Rotary Positional Embeddings (RoPE)\n    proposed in https://arxiv.org/abs/2104.09864.\n\n    Reference implementation (used for correctness verfication)\n    can be found here:\n    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80\n\n    In this implementation we cache the embeddings for each position upto\n    ``max_seq_len`` by computing this during init.\n\n    Args:\n        dim (int): Embedding dimension. This is usually set to the dim of each\n            head in the attention module computed as ````embed_dim`` // ``num_heads````\n        max_seq_len (int): Maximum expected sequence length for the\n            model, if exceeded the cached freqs will be recomputed\n        base (int): The base for the geometric progression used to compute\n            the rotation angles\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:\n        int=None, max_seq_len: int=4096, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.dim = rotary_emb_dim\n        self.base = rotary_emb_base\n        self.max_seq_len = max_seq_len\n        self._rope_init()\n\n    def reset_parameters(self):\n        self._rope_init()\n\n    def _rope_init(self):\n        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.\n            factory_kwargs)[:self.dim // 2].float() / self.dim)\n        self.register_buffer('theta', theta, persistent=False)\n        self.build_rope_cache(self.max_seq_len)\n\n    def build_rope_cache(self, max_seq_len: int=4096) ->None:\n        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=\n            self.theta.device)\n        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()\n        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],\n            dim=-1)\n        self.register_buffer('cache', cache, persistent=False)\n\n    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[\n        Tensor]=None) ->Tensor:\n        \"\"\"\n        Args:\n            x (Tensor): input tensor with shape\n                [b, s, n_h, h_d]\n            input_pos (Optional[Tensor]): Optional tensor which contains the position ids\n                of each token. During training, this is used to indicate the positions\n                of each token relative to its sample when packed, shape [b, s].\n                During inference, this indicates the position of the current token.\n                If none, assume the index of the token is its position id. Default is None.\n\n        Returns:\n            Tensor: output tensor with RoPE applied\n\n        Notation used for tensor shapes:\n            - b: batch size\n            - s: sequence length\n            - n_h: num heads\n            - h_d: head dim\n\n        TODO: The implementation below can be made more efficient\n        for inference.\n        \"\"\"\n        seq_len = input_emb.size(1)\n        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[\n            input_pos]\n        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)\n        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2\n            )\n        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped\n            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,\n            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)\n        x_out = x_out.flatten(3)\n        output_emb = x_out.type_as(input_emb)\n        return X, {'output_emb': output_emb}\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"document\":\"\\nThis class implements Rotary Positional Embeddings (RoPE)\\nproposed in https://arxiv.org/abs/2104.09864.\\n\\nReference implementation (used for correctness verfication)\\ncan be found here:\\nhttps://github.com/meta-llama/llama/blob/main/llama/model.py#L80\\n\\nIn this implementation we cache the embeddings for each position upto\\n``max_seq_len`` by computing this during init.\\n\\nArgs:\\n    dim (int): Embedding dimension. This is usually set to the dim of each\\n        head in the attention module computed as ````embed_dim`` // ``num_heads````\\n    max_seq_len (int): Maximum expected sequence length for the\\n        model, if exceeded the cached freqs will be recomputed\\n    base (int): The base for the geometric progression used to compute\\n        the rotation angles\\n\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "max_seq_len": 4096,
+                            "rotary_emb_base": 10000
+                        },
+                        "design_traces": null
+                    },
+                    "GatedMLP": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gatedmlp": "@gau_test\ndef test_GatedMLP_test_gatedmlp(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_features': 128, 'out_features': 128, 'activation':\n        F.silu, 'bias': False, 'multiple_of': 128}\n    gatedmlp = GatedMLP(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gatedmlp(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GatedMLP(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_features=None, out_features=None,\n        activation=None, bias=False, multiple_of=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        out_features = out_features if out_features is not None else embed_dim\n        hidden_features = (hidden_features if hidden_features is not None else\n            int(8 * embed_dim / 3))\n        hidden_features = (hidden_features + multiple_of - 1\n            ) // multiple_of * multiple_of\n        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **\n            self.factory_kwargs)\n        self.activation = activation if activation is not None else F.silu\n        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **\n            self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        y = self.fc1(X)\n        y, gate = y.chunk(2, dim=-1)\n        y = y * self.activation(gate)\n        y = self.fc2(y)\n        return y\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GatedMLP\",\"document\":\"\\nGated MLP\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "bias": false,
+                            "multiple_of": 128,
+                            "hidden_features": null,
+                            "out_features": null,
+                            "activation": null
+                        },
+                        "design_traces": null
+                    },
+                    "RMSNorm": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rmsnorm": "@gau_test\ndef test_RMSNorm_test_rmsnorm(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype\n        =dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = rmsnorm(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass RMSNorm(GAUBase):\n    \"\"\"\n    Root Mean Square Layer Normalization (RMSNorm).\n\n    This layer applies a variant of layer normalization that uses only the root mean square\n    statistics, without centering. It's computationally more efficient than standard\n    layer normalization and has been shown to be effective in various NLP tasks.\n\n    Args:\n        embed_dim (int): The size of the input feature dimension.\n        block_loc (tuple): The location of this block in the model architecture.\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\n        device (torch.device, optional): The device on which to allocate the module's parameters.\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\n        eps (float, optional): A small constant added to the denominator for numerical stability.\n            Default: 1e-5.\n\n    Attributes:\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\n        variance_epsilon (float): The epsilon value used in the normalization formula.\n\n    Shape:\n        - Input: (*, embed_dim)\n        - Output: (*, embed_dim) (same shape as input)\n\n    Examples:\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\n        >>> x = torch.randn(1, 100, 128)\n        >>> output = rmsnorm(x)\n        >>> print(output.shape)\n        torch.Size([1, 100, 128])\n\n    References:\n        - Paper: \"Root Mean Square Layer Normalization\" by Biao Zhang and Rico Sennrich\n          https://arxiv.org/abs/1910.07467\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, eps=1e-05, **kwargs):\n        \"\"\"If group_size is not None, we do GroupNorm with each group having group_size elements.\n        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)\n            )\n        self.variance_epsilon = eps\n\n    def _forward(self, X, **Z):\n        input_dtype = X.dtype\n        X = X.to(torch.float32)\n        variance = X.pow(2).mean(-1, keepdim=True)\n        X = X * torch.rsqrt(variance + self.variance_epsilon)\n        return self.weight * X.to(input_dtype)\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RMSNorm\",\"document\":\"\\n    Root Mean Square Layer Normalization (RMSNorm).\\n\\n    This layer applies a variant of layer normalization that uses only the root mean square\\n    statistics, without centering. It's computationally more efficient than standard\\n    layer normalization and has been shown to be effective in various NLP tasks.\\n\\n    Args:\\n        embed_dim (int): The size of the input feature dimension.\\n        block_loc (tuple): The location of this block in the model architecture.\\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\\n        device (torch.device, optional): The device on which to allocate the module's parameters.\\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\\n        eps (float, optional): A small constant added to the denominator for numerical stability.\\n            Default: 1e-5.\\n\\n    Attributes:\\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\\n        variance_epsilon (float): The epsilon value used in the normalization formula.\\n\\n    Shape:\\n        - Input: (*, embed_dim)\\n        - Output: (*, embed_dim) (same shape as input)\\n\\n    Examples:\\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\\n        >>> x = torch.randn(1, 100, 128)\\n        >>> output = rmsnorm(x)\\n        >>> print(output.shape)\\n        torch.Size([1, 100, 128])\\n\\n    References:\\n        - Paper: \\\"Root Mean Square Layer Normalization\\\" by Biao Zhang and Rico Sennrich\\n          https://arxiv.org/abs/1910.07467\\n    \",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "GeometricGatedMHA": "{\"unitname\":\"GeometricGatedMHA\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "RotaryPositionalEmbeddings": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"requirements\":\"Rotary position embeddings for geometric attention\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "geogate_gpt"
+            },
+            "user_input": "",
+            "status": "unfinished",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "claude3.5_sonnet",
+                    "PROPOSAL_REVIEWER": "o1_preview",
+                    "IMPLEMENTATION_OBSERVER": "claude3.5_sonnet",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0,
+                "IMPLEMENTATION_PLANNER": 0.090474,
+                "IMPLEMENTATION_CODER": 1.705839,
+                "PROPOSAL_REVIEWER": 0,
+                "IMPLEMENTATION_OBSERVER": 2.5263150000000003,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": null,
+                "root": "GPT2",
+                "proposal": "GPT2 is a transformer-based language model.\n",
+                "units": {
+                    "GPT2": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gpt2": "@gau_test\ndef test_GPT2_test_gpt2(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    gpt2 = GPT2(embed_dim, block_loc, kwarg_all, device=device, dtype=dtype,\n        **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gpt2(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GPT2(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.mha = GeometricGatedMHA(embed_dim=self.embed_dim, block_loc=self.block_loc,\n            kwarg_all=self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.mlp = GatedMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm1 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n        self.norm2 = RMSNorm(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X1, Z = self.norm1(X, **Z)\n        X2, Z = self.mha(X1, **Z)\n        X = X + X2\n        X3, Z = self.norm2(X, **Z)\n        X4, Z = self.mlp(X3, **Z)\n        X = X + X4\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MHA', requirements='', inputs=[\n    'X'], outputs=['Y']), UnitDecl(unitname='GatedMLP', requirements='',\n    inputs=['X'], outputs=['Y']), UnitDecl(unitname='RMSNorm', requirements\n    ='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GPT2\",\"document\":\"\\nGPT2\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "GeometricGatedMHA",
+                            "GatedMLP",
+                            "RMSNorm"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "GeometricGatedMHA": {
+                        "review": "# Comprehensive Review of GeometricGatedMHA Implementation\n\n```rating 4.7```\n\n## Strengths\n\n1. **Memory Efficiency**:\n   - Excellent implementation of chunked attention computation\n   - Smart use of memory through gradient-efficient operations\n   - Well-designed caching mechanisms for position embeddings\n\n2. **Numerical Stability**:\n   - Robust initialization scheme with careful scaling\n   - Stable softmax implementation with proper normalization\n   - Gradient clipping in copy gate mechanism\n\n3. **Architecture Innovation**:\n   - Novel geometric attention patterns with learnable scaling\n   - Efficient head routing mechanism\n   - Adaptive computation through gating\n   - Clean separation of geometric and content-based attention\n\n4. **Code Quality**:\n   - Comprehensive documentation\n   - Clear type hints and error checking\n   - Well-structured modular design\n   - Efficient use of PyTorch primitives\n\n## Areas for Improvement\n\n1. **Performance Optimization**:\n```python\ndef chunk_attention(self, q, k, v):\n    # Add flash attention support\n    if hasattr(F, 'scaled_dot_product_attention') and self.use_flash:\n        return F.scaled_dot_product_attention(\n            q, k, v,\n            attn_mask=None,\n            dropout_p=self.dropout if self.training else 0.0,\n            is_causal=self.causal\n        )\n    # Existing chunked implementation\n    ...\n```\n\n2. **Memory Management**:\n```python\ndef _forward(self, X, **Z):\n    # Add gradient checkpointing\n    if self.gradient_checkpointing and self.training:\n        context = torch.utils.checkpoint.checkpoint(\n            self.chunk_attention, q, k, v\n        )\n    else:\n        context = self.chunk_attention(q, k, v)\n```\n\n3. **Additional Features**:\n   - Add dropout layers for regularization\n   - Implement relative position bias option\n   - Add support for sliding window attention\n   - Include attention pruning mechanism\n\n## Innovation and Impact\n\n1. **Novel Contributions**:\n   - The geometric attention mechanism provides better inductive bias\n   - Adaptive computation through gating is memory-efficient\n   - Head routing enables specialized processing\n   - Chunked attention enables processing of long sequences\n\n2. **Potential Impact**:\n   - Could significantly improve efficiency for long sequences\n   - May enable better transfer learning through geometric priors\n   - Potential for better few-shot learning through specialized heads\n   - Could reduce training compute requirements\n\n## Integration and Scalability\n\n1. **Integration Strengths**:\n   - Clean interface with existing components\n   - Well-handled device placement\n   - Proper handling of dtype consistency\n   - Good parameter initialization\n\n2. **Scalability Features**:\n   - Memory-efficient attention computation\n   - Support for grouped query attention\n   - Chunked processing for long sequences\n   - Efficient cache management\n\n## Recommendations\n\n1. **Performance Enhancements**:\n```python\nclass GeometricGatedMHA(GAUBase):\n    def __init__(self, ...):\n        self.use_flash = True  # Enable flash attention when available\n        self.gradient_checkpointing = False  # Optional memory saving\n        self.dropout = nn.Dropout(0.1)  # Add dropout for regularization\n        \n    def compute_geometric_bias(self, q, k):\n        # Add attention pruning\n        if hasattr(self, 'attention_mask'):\n            mask = self.compute_attention_mask(q)\n            return geo_bias.masked_fill(mask, float('-inf'))\n```\n\n2. **Memory Optimization**:\n   - Add support for 8-bit quantization\n   - Implement attention pattern caching\n   - Add support for sparse attention patterns\n   - Include adaptive precision computation\n\n3. **Feature Additions**:\n   - Add support for cross-attention\n   - Implement attention visualization hooks\n   - Add support for custom attention patterns\n   - Include attention head pruning\n\n4. **Documentation**:\n   - Add benchmark results\n   - Include memory usage analysis\n   - Document scaling characteristics\n   - Add more usage examples\n\n## Conclusion\n\nThe implementation shows excellent attention to detail and innovative design choices. The combination of geometric attention patterns with efficient computation makes it particularly promising for large-scale applications. The chunked attention mechanism and stable numerics suggest it will work well in practice.\n\nKey strengths are the memory efficiency and numerical stability, while main areas for improvement are around additional optimizations and features. The implementation is ready for production use but could benefit from the suggested enhancements for even better performance and flexibility.\n\nThe code demonstrates a sophisticated understanding of attention mechanisms and their practical implementation challenges. The solutions provided for memory efficiency and numerical stability are particularly noteworthy.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_geometric_gated_mha": "@gau_test\ndef test_GeometricGatedMHA_test_geometric_gated_mha(device=None, dtype=None):\n    \"\"\"Test the GeometricGatedMHA implementation with memory efficiency checks\"\"\"\n    batch_size, seq_len, embed_dim = 2, 16, 128\n    n_heads = 8\n    mha = GeometricGatedMHA(embed_dim=embed_dim, block_loc=(0, 0),\n        kwarg_all={}, n_heads=n_heads, device=device, dtype=dtype, chunk_size=8\n        )\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    output, Z = mha(X)\n    assert output.shape == X.shape, f\"Output shape {output.shape} doesn't match input shape {X.shape}\"\n    assert output.dtype == X.dtype, f\"Output dtype {output.dtype} doesn't match input dtype {X.dtype}\"\n    if mha.causal:\n        X1 = torch.ones(1, seq_len, embed_dim, device=device, dtype=dtype)\n        output1, _ = mha(X1)\n        for i in range(seq_len):\n            X2 = X1.clone()\n            X2[0, i + 1:] = 0\n            output2, _ = mha(X2)\n            assert torch.allclose(output1[0, i], output2[0, i], atol=1e-05\n                ), f'Causality violated at position {i}'\n    try:\n        long_seq_len = 2048\n        X_long = torch.randn(2, long_seq_len, embed_dim, device=device,\n            dtype=dtype)\n        output_long, _ = mha(X_long)\n        assert output_long.shape == X_long.shape, 'Long sequence forward pass failed'\n    except RuntimeError as e:\n        if 'out of memory' in str(e):\n            raise AssertionError('Memory efficiency test failed - OOM error')\n        raise e\n    print('All tests passed!')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nimport math\nfrom einops import rearrange, repeat\nfrom typing import Optional, Tuple\n\n\nclass GeometricGatedMHA(GAUBase):\n    \"\"\"\n    Memory-efficient Geometric Gated Multi-Head Attention with hierarchical attention routing.\n    \n    This implementation combines:\n    1. Geometric Attention Patterns with memory-efficient computation\n    2. Adaptive Copy Gates with stable gradients\n    3. Dynamic Head Routing with chunked processing\n    \n    The implementation uses chunked attention computation and stable softmax to handle\n    long sequences efficiently while maintaining numerical stability.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        n_heads: int=8, causal: bool=True, num_heads_kv: Optional[int]=None,\n        head_dim: Optional[int]=None, qkv_proj_bias: bool=True,\n        out_proj_bias: bool=True, softmax_scale: Optional[float]=None,\n        rotary_emb_base: float=10000.0, chunk_size: int=1024, device=None,\n        dtype=None, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.num_heads = n_heads\n        self.num_heads_kv = (num_heads_kv if num_heads_kv is not None else\n            n_heads)\n        self.causal = causal\n        self.chunk_size = chunk_size\n        if head_dim is None:\n            assert embed_dim % n_heads == 0, 'embed_dim must be divisible by num_heads'\n            self.head_dim = embed_dim // n_heads\n        else:\n            self.head_dim = head_dim\n        self.qkv_dim = self.head_dim * (self.num_heads + 2 * self.num_heads_kv)\n        self.out_dim = self.head_dim * self.num_heads\n        self.qkv_proj = nn.Linear(embed_dim, self.qkv_dim, bias=\n            qkv_proj_bias, **self.factory_kwargs)\n        self.out_proj = nn.Linear(self.out_dim, embed_dim, bias=\n            out_proj_bias, **self.factory_kwargs)\n        self.geo_proj = nn.Linear(self.head_dim, self.head_dim, **self.\n            factory_kwargs)\n        self.geo_scale = nn.Parameter(torch.ones(self.num_heads, 1, 1, **\n            self.factory_kwargs) * 0.1)\n        self.copy_gate = nn.Linear(embed_dim, 1, **self.factory_kwargs)\n        self.head_router = nn.Linear(embed_dim, self.num_heads, **self.\n            factory_kwargs)\n        kwarg_all['rotary_emb_dim'] = self.head_dim\n        self.rotary_emb = RotaryPositionalEmbeddings(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n        self.scale = (self.head_dim ** -0.5 if softmax_scale is None else\n            softmax_scale)\n        self.reset_parameters()\n\n    def chunk_attention(self, q: torch.Tensor, k: torch.Tensor, v: torch.Tensor\n        ) ->torch.Tensor:\n        \"\"\"Compute attention scores in chunks to save memory\"\"\"\n        batch_size, num_heads, seq_len, head_dim = q.shape\n        out = torch.zeros_like(q)\n        for i in range(0, seq_len, self.chunk_size):\n            chunk_end = min(i + self.chunk_size, seq_len)\n            q_chunk = q[:, :, i:chunk_end]\n            attn_weights = torch.matmul(q_chunk, k.transpose(-2, -1)\n                ) * self.scale\n            q_geo = self.geo_proj(q_chunk)\n            k_geo = self.geo_proj(k)\n            geo_bias = torch.matmul(q_geo, k_geo.transpose(-2, -1)\n                ) * self.geo_scale\n            attn_weights = attn_weights + geo_bias\n            if self.causal:\n                causal_mask = torch.triu(torch.ones(chunk_end - i, seq_len,\n                    dtype=torch.bool, device=q.device), diagonal=i + 1)\n                attn_weights.masked_fill_(causal_mask[None, None], float(\n                    '-inf'))\n            attn_max = torch.max(attn_weights, dim=-1, keepdim=True)[0]\n            exp_weights = torch.exp(attn_weights - attn_max)\n            attn_weights = exp_weights / (torch.sum(exp_weights, dim=-1,\n                keepdim=True) + 1e-06)\n            out[:, :, i:chunk_end] = torch.matmul(attn_weights, v)\n        return out\n\n    def _forward(self, X: torch.Tensor, **Z) ->Tuple[torch.Tensor, dict]:\n        batch_size, seq_len = X.shape[:2]\n        qkv = self.qkv_proj(X)\n        q, k, v = qkv.split([self.num_heads * self.head_dim, self.\n            num_heads_kv * self.head_dim, self.num_heads_kv * self.head_dim\n            ], dim=-1)\n        q = rearrange(q, 'b s (h d) -> b h s d', h=self.num_heads)\n        k = rearrange(k, 'b s (h d) -> b h s d', h=self.num_heads_kv)\n        v = rearrange(v, 'b s (h d) -> b h s d', h=self.num_heads_kv)\n        Z['input_emb'] = q\n        _, Z = self.rotary_emb(X, **Z)\n        q = Z['output_emb']\n        Z['input_emb'] = k\n        _, Z = self.rotary_emb(X, **Z)\n        k = Z['output_emb']\n        if self.num_heads > self.num_heads_kv:\n            k = torch.repeat_interleave(k, repeats=self.num_heads // self.\n                num_heads_kv, dim=1)\n            v = torch.repeat_interleave(v, repeats=self.num_heads // self.\n                num_heads_kv, dim=1)\n        context = self.chunk_attention(q, k, v)\n        head_weights = torch.sigmoid(self.head_router(X))\n        head_weights = rearrange(head_weights, 'b s h -> b h s 1')\n        context = context * head_weights\n        context = rearrange(context, 'b h s d -> b s (h d)')\n        output = self.out_proj(context)\n        gate = torch.sigmoid(self.copy_gate(X).clamp(-5, 5))\n        output = gate * output + (1 - gate) * X\n        return output, Z\n\n    def reset_parameters(self):\n        \"\"\"Initialize parameters with stable values\"\"\"\n        nn.init.xavier_uniform_(self.qkv_proj.weight, gain=1 / math.sqrt(2))\n        nn.init.xavier_uniform_(self.out_proj.weight, gain=1 / math.sqrt(2))\n        nn.init.xavier_uniform_(self.geo_proj.weight, gain=0.1)\n        if self.qkv_proj.bias is not None:\n            nn.init.zeros_(self.qkv_proj.bias)\n        if self.out_proj.bias is not None:\n            nn.init.zeros_(self.out_proj.bias)\n        nn.init.zeros_(self.copy_gate.weight)\n        if self.copy_gate.bias is not None:\n            nn.init.constant_(self.copy_gate.bias, 1.0)\n        nn.init.xavier_uniform_(self.head_router.weight, gain=0.1)\n        if self.head_router.bias is not None:\n            nn.init.zeros_(self.head_router.bias)\n",
+                        "rating": 4.7,
+                        "spec": "{\"unitname\":\"GeometricGatedMHA\",\"document\":\"Memory-efficient Geometric Gated Multi-Head Attention with hierarchical attention routing.\\n\\nThis implementation combines:\\n1. Geometric Attention Patterns with memory-efficient computation\\n2. Adaptive Copy Gates with stable gradients\\n3. Dynamic Head Routing with chunked processing\\n\\nThe implementation uses chunked attention computation and stable softmax to handle\\nlong sequences efficiently while maintaining numerical stability.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "RotaryPositionalEmbeddings"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "softmax_scale": null,
+                            "chunk_size": 1024,
+                            "n_heads": 8,
+                            "num_heads_kv": null,
+                            "out_proj_bias": true,
+                            "head_dim": null,
+                            "causal": true,
+                            "qkv_proj_bias": true,
+                            "rotary_emb_base": 10000.0
+                        },
+                        "design_traces": null
+                    },
+                    "RotaryPositionalEmbeddings": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rotarypositionalembeddings": "@gau_test\ndef test_RotaryPositionalEmbeddings_test_rotarypositionalembeddings(device=\n    None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rotarypositionalembeddings = RotaryPositionalEmbeddings(embed_dim,\n        block_loc, kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    input_emb = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    input_pos = torch.arange(128).to(device=device, dtype=dtype)\n    X = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {'input_emb': input_emb, 'input_pos': input_pos}\n    _, Z_ = rotarypositionalembeddings(X, **Z)\n    output_emb = Z_['output_emb']\n    assert output_emb.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom typing import Optional\n\n\nclass RotaryPositionalEmbeddings(GAUBase):\n    \"\"\"\n    This class implements Rotary Positional Embeddings (RoPE)\n    proposed in https://arxiv.org/abs/2104.09864.\n\n    Reference implementation (used for correctness verfication)\n    can be found here:\n    https://github.com/meta-llama/llama/blob/main/llama/model.py#L80\n\n    In this implementation we cache the embeddings for each position upto\n    ``max_seq_len`` by computing this during init.\n\n    Args:\n        dim (int): Embedding dimension. This is usually set to the dim of each\n            head in the attention module computed as ````embed_dim`` // ``num_heads````\n        max_seq_len (int): Maximum expected sequence length for the\n            model, if exceeded the cached freqs will be recomputed\n        base (int): The base for the geometric progression used to compute\n            the rotation angles\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, rotary_emb_base: int=10000, rotary_emb_dim:\n        int=None, max_seq_len: int=4096, **kwargs) ->None:\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.dim = rotary_emb_dim\n        self.base = rotary_emb_base\n        self.max_seq_len = max_seq_len\n        self._rope_init()\n\n    def reset_parameters(self):\n        self._rope_init()\n\n    def _rope_init(self):\n        theta = 1.0 / self.base ** (torch.arange(0, self.dim, 2, **self.\n            factory_kwargs)[:self.dim // 2].float() / self.dim)\n        self.register_buffer('theta', theta, persistent=False)\n        self.build_rope_cache(self.max_seq_len)\n\n    def build_rope_cache(self, max_seq_len: int=4096) ->None:\n        seq_idx = torch.arange(max_seq_len, dtype=self.theta.dtype, device=\n            self.theta.device)\n        idx_theta = torch.einsum('i, j -> ij', seq_idx, self.theta).float()\n        cache = torch.stack([torch.cos(idx_theta), torch.sin(idx_theta)],\n            dim=-1)\n        self.register_buffer('cache', cache, persistent=False)\n\n    def _forward(self, X: Tensor, input_emb: Tensor, input_pos: Optional[\n        Tensor]=None) ->Tensor:\n        \"\"\"\n        Args:\n            x (Tensor): input tensor with shape\n                [b, s, n_h, h_d]\n            input_pos (Optional[Tensor]): Optional tensor which contains the position ids\n                of each token. During training, this is used to indicate the positions\n                of each token relative to its sample when packed, shape [b, s].\n                During inference, this indicates the position of the current token.\n                If none, assume the index of the token is its position id. Default is None.\n\n        Returns:\n            Tensor: output tensor with RoPE applied\n\n        Notation used for tensor shapes:\n            - b: batch size\n            - s: sequence length\n            - n_h: num heads\n            - h_d: head dim\n\n        TODO: The implementation below can be made more efficient\n        for inference.\n        \"\"\"\n        seq_len = input_emb.size(1)\n        rope_cache = self.cache[:seq_len] if input_pos is None else self.cache[\n            input_pos]\n        xshaped = input_emb.float().reshape(*input_emb.shape[:-1], -1, 2)\n        rope_cache = rope_cache.view(-1, xshaped.size(1), 1, xshaped.size(3), 2\n            )\n        x_out = torch.stack([xshaped[..., 0] * rope_cache[..., 0] - xshaped\n            [..., 1] * rope_cache[..., 1], xshaped[..., 1] * rope_cache[...,\n            0] + xshaped[..., 0] * rope_cache[..., 1]], -1)\n        x_out = x_out.flatten(3)\n        output_emb = x_out.type_as(input_emb)\n        return X, {'output_emb': output_emb}\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"document\":\"\\nThis class implements Rotary Positional Embeddings (RoPE)\\nproposed in https://arxiv.org/abs/2104.09864.\\n\\nReference implementation (used for correctness verfication)\\ncan be found here:\\nhttps://github.com/meta-llama/llama/blob/main/llama/model.py#L80\\n\\nIn this implementation we cache the embeddings for each position upto\\n``max_seq_len`` by computing this during init.\\n\\nArgs:\\n    dim (int): Embedding dimension. This is usually set to the dim of each\\n        head in the attention module computed as ````embed_dim`` // ``num_heads````\\n    max_seq_len (int): Maximum expected sequence length for the\\n        model, if exceeded the cached freqs will be recomputed\\n    base (int): The base for the geometric progression used to compute\\n        the rotation angles\\n\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "max_seq_len": 4096,
+                            "rotary_emb_base": 10000
+                        },
+                        "design_traces": null
+                    },
+                    "GatedMLP": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_gatedmlp": "@gau_test\ndef test_GatedMLP_test_gatedmlp(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_features': 128, 'out_features': 128, 'activation':\n        F.silu, 'bias': False, 'multiple_of': 128}\n    gatedmlp = GatedMLP(embed_dim, block_loc, kwarg_all, device=device,\n        dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = gatedmlp(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass GatedMLP(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_features=None, out_features=None,\n        activation=None, bias=False, multiple_of=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        out_features = out_features if out_features is not None else embed_dim\n        hidden_features = (hidden_features if hidden_features is not None else\n            int(8 * embed_dim / 3))\n        hidden_features = (hidden_features + multiple_of - 1\n            ) // multiple_of * multiple_of\n        self.fc1 = nn.Linear(embed_dim, 2 * hidden_features, bias=bias, **\n            self.factory_kwargs)\n        self.activation = activation if activation is not None else F.silu\n        self.fc2 = nn.Linear(hidden_features, out_features, bias=bias, **\n            self.factory_kwargs)\n\n    def _forward(self, X, **Z):\n        y = self.fc1(X)\n        y, gate = y.chunk(2, dim=-1)\n        y = y * self.activation(gate)\n        y = self.fc2(y)\n        return y\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GatedMLP\",\"document\":\"\\nGated MLP\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "bias": false,
+                            "multiple_of": 128,
+                            "hidden_features": null,
+                            "out_features": null,
+                            "activation": null
+                        },
+                        "design_traces": null
+                    },
+                    "RMSNorm": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_rmsnorm": "@gau_test\ndef test_RMSNorm_test_rmsnorm(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    rmsnorm = RMSNorm(embed_dim, block_loc, kwarg_all, device=device, dtype\n        =dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = rmsnorm(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom torch import Tensor\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass RMSNorm(GAUBase):\n    \"\"\"\n    Root Mean Square Layer Normalization (RMSNorm).\n\n    This layer applies a variant of layer normalization that uses only the root mean square\n    statistics, without centering. It's computationally more efficient than standard\n    layer normalization and has been shown to be effective in various NLP tasks.\n\n    Args:\n        embed_dim (int): The size of the input feature dimension.\n        block_loc (tuple): The location of this block in the model architecture.\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\n        device (torch.device, optional): The device on which to allocate the module's parameters.\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\n        eps (float, optional): A small constant added to the denominator for numerical stability.\n            Default: 1e-5.\n\n    Attributes:\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\n        variance_epsilon (float): The epsilon value used in the normalization formula.\n\n    Shape:\n        - Input: (*, embed_dim)\n        - Output: (*, embed_dim) (same shape as input)\n\n    Examples:\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\n        >>> x = torch.randn(1, 100, 128)\n        >>> output = rmsnorm(x)\n        >>> print(output.shape)\n        torch.Size([1, 100, 128])\n\n    References:\n        - Paper: \"Root Mean Square Layer Normalization\" by Biao Zhang and Rico Sennrich\n          https://arxiv.org/abs/1910.07467\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, eps=1e-05, **kwargs):\n        \"\"\"If group_size is not None, we do GroupNorm with each group having group_size elements.\n        group_size=None is equivalent to group_size=hidden_size (i.e. there's only 1 group).\n        \"\"\"\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.weight = nn.Parameter(torch.ones(embed_dim, **self.factory_kwargs)\n            )\n        self.variance_epsilon = eps\n\n    def _forward(self, X, **Z):\n        input_dtype = X.dtype\n        X = X.to(torch.float32)\n        variance = X.pow(2).mean(-1, keepdim=True)\n        X = X * torch.rsqrt(variance + self.variance_epsilon)\n        return self.weight * X.to(input_dtype)\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RMSNorm\",\"document\":\"\\n    Root Mean Square Layer Normalization (RMSNorm).\\n\\n    This layer applies a variant of layer normalization that uses only the root mean square\\n    statistics, without centering. It's computationally more efficient than standard\\n    layer normalization and has been shown to be effective in various NLP tasks.\\n\\n    Args:\\n        embed_dim (int): The size of the input feature dimension.\\n        block_loc (tuple): The location of this block in the model architecture.\\n        kwarg_all (dict): Additional keyword arguments passed to the parent class.\\n        device (torch.device, optional): The device on which to allocate the module's parameters.\\n        dtype (torch.dtype, optional): The dtype of the module's parameters.\\n        eps (float, optional): A small constant added to the denominator for numerical stability.\\n            Default: 1e-5.\\n\\n    Attributes:\\n        weight (nn.Parameter): Learnable scale parameter of shape (embed_dim,).\\n        variance_epsilon (float): The epsilon value used in the normalization formula.\\n\\n    Shape:\\n        - Input: (*, embed_dim)\\n        - Output: (*, embed_dim) (same shape as input)\\n\\n    Examples:\\n        >>> rmsnorm = RMSNorm(128, (0, 6), {})\\n        >>> x = torch.randn(1, 100, 128)\\n        >>> output = rmsnorm(x)\\n        >>> print(output.shape)\\n        torch.Size([1, 100, 128])\\n\\n    References:\\n        - Paper: \\\"Root Mean Square Layer Normalization\\\" by Biao Zhang and Rico Sennrich\\n          https://arxiv.org/abs/1910.07467\\n    \",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "GeometricGatedMHA": "{\"unitname\":\"GeometricGatedMHA\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "RotaryPositionalEmbeddings": "{\"unitname\":\"RotaryPositionalEmbeddings\",\"requirements\":\"Rotary position embeddings for geometric attention\",\"inputs\":[\"input_emb\",\"*input_pos\"],\"outputs\":[\"output_emb\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "geogate_gpt"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "claude3.5_sonnet",
+                    "PROPOSAL_REVIEWER": "o1_preview",
+                    "IMPLEMENTATION_OBSERVER": "claude3.5_sonnet",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0,
+                "IMPLEMENTATION_PLANNER": 0.090474,
+                "IMPLEMENTATION_CODER": 1.705839,
+                "PROPOSAL_REVIEWER": 0,
+                "IMPLEMENTATION_OBSERVER": 2.5263150000000003,
+                "SEARCH_ASSISTANT": 0
+            }
+        }
+    ]
+}

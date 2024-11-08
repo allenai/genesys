@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "memhiergpt",
+        "blocksparseretnet",
+        "gateloop",
+        "hgrn2",
+        "deepwienerssm",
+        "transnormerllm"
+    ],
+    "proposed": [
+        "gpt_2_agla"
+    ],
+    "reranked": {
+        "rank": [
+            "gpt_2_agla"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt_2_chla"
+    ]
+}

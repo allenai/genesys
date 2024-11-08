@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hieraroute_gpt",
+        "blocksparseretnet",
+        "hippo",
+        "abc",
+        "diffusionlm",
+        "lminfinite"
+    ],
+    "proposed": [
+        "adaptive_hiergpt_2"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptive_hiergpt_2"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hiergpt"
+    ]
+}

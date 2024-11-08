@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "he_gpt",
+        "spectralhierrmsnorm",
+        "longheads",
+        "routingtransformer",
+        "semanticcompress",
+        "lighdynconv"
+    ],
+    "proposed": [
+        "gatedgraphssm"
+    ],
+    "reranked": {
+        "rank": [
+            "gatedgraphssm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gatedtttlinear"
+    ]
+}

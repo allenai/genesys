@@ -1,0 +1,30 @@
+{
+    "title": "AdaptiveCompressedTTTLinear: Efficient State Management for Test-Time Training with Adaptive Compression",
+    "acronym": "adaptivecompressedlm_1",
+    "sess_id": "2024-10-31-14-38-11-ff39de",
+    "sess_snapshot": {
+        "ref_ids": [
+            "treetttnet",
+            "selectivegpt",
+            "lengenewope",
+            "linformer",
+            "mambalrp",
+            "bipe"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "fasttttlinear"
+        ]
+    },
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

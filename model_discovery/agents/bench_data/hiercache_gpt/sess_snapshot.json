@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "odeadaptgpt",
+        "streaminggpt",
+        "roformer",
+        "gqa",
+        "trams",
+        "gpt3"
+    ],
+    "proposed": [
+        "hiercache_gpt"
+    ],
+    "reranked": {
+        "rank": [
+            "hiercache_gpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "geogate_gpt"
+    ]
+}

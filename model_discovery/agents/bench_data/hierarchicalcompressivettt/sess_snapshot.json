@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivesparsettt",
+        "gpt_2_ahla",
+        "mamba",
+        "colt5",
+        "loki",
+        "analogbits"
+    ],
+    "proposed": [
+        "hierarchicalcompressivettt"
+    ],
+    "reranked": {
+        "rank": [
+            "hierarchicalcompressivettt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

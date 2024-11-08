@@ -1,0 +1,30 @@
+{
+    "title": "ODEAdaptGPT: Continuous Adaptive Normalization for Efficient Language Models",
+    "acronym": "odeadaptgpt",
+    "sess_id": "2024-10-29-22-02-04-aa6064",
+    "sess_snapshot": {
+        "ref_ids": [
+            "eventmamba2",
+            "gatedtttlinear",
+            "alibi",
+            "clex",
+            "repeatafterme",
+            "blockbert"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hieranorm_attngpt"
+        ]
+    },
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

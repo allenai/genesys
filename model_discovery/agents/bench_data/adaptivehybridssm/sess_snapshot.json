@@ -1,0 +1,26 @@
+{
+    "ref_ids": [
+        "gatedhierarchicalmamba",
+        "adaptivettt",
+        "vqtransformer",
+        "butterfly",
+        "pi",
+        "deepwienerssm"
+    ],
+    "proposed": [
+        "adaptivehybridssm"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivehybridssm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Design from scratch",
+    "seed_ids": []
+}

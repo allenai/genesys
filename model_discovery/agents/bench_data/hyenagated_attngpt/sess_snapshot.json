@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gatedhierarchicalmamba",
+        "hypermetalearner",
+        "remixer",
+        "luna",
+        "slotssm",
+        "selfretrieval"
+    ],
+    "proposed": [
+        "hyenagated_attngpt"
+    ],
+    "reranked": {
+        "rank": [
+            "hyenagated_attngpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

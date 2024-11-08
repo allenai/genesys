@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "spectralmamba_1",
+        "moe_gated_attngpt",
+        "flowformer",
+        "staircaseattn",
+        "ssmfundmodel",
+        "kanmlp"
+    ],
+    "proposed": [
+        "flowstategpt"
+    ],
+    "reranked": {
+        "rank": [
+            "flowstategpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gatedtttlinear"
+    ]
+}

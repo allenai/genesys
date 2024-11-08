@@ -1,0 +1,30 @@
+{
+    "title": "MambaFastTTT: Enhancing FastTTTLinear with Selective State Space Models for Efficient Long-Range Dependency Modeling",
+    "acronym": "mambafastttt",
+    "sess_id": "2024-11-07-01-14-43-0bf824",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hierarchicalsparsenorm_gpt",
+            "rwkv6_sef",
+            "flashattn",
+            "lstransformer",
+            "gpt",
+            "ssmfundmodel"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hierarchicaladaptivermsnorm"
+        ]
+    },
+    "seed_ids": [
+        "hierarchicaladaptivermsnorm"
+    ]
+}

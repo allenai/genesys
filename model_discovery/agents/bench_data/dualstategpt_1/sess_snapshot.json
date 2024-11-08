@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivenormgpt",
+        "dyngatttt",
+        "mega",
+        "linllms",
+        "extensibleembed",
+        "hiddenattnmamba"
+    ],
+    "proposed": [
+        "dualstategpt_1"
+    ],
+    "reranked": {
+        "rank": [
+            "dualstategpt_1"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "ssmfasttttlinear_1"
+    ]
+}

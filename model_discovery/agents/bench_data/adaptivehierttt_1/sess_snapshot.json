@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "dynamichybridftt",
+        "ssmfasttttlinear",
+        "soft",
+        "deltanet",
+        "zamba",
+        "reparamdiscdiffu"
+    ],
+    "proposed": [
+        "adaptivehierttt_1"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivehierttt_1"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierttt_1"
+    ]
+}

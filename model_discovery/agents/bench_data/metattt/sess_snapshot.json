@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "fasttttlinear",
+        "hierretnet",
+        "longheads",
+        "compositionalattn",
+        "poolingformer",
+        "elgllm"
+    ],
+    "proposed": [
+        "metattt"
+    ],
+    "reranked": {
+        "rank": [
+            "metattt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "ttt"
+    ]
+}

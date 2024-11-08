@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hierarchicalgatedttt",
+        "odeadaptgpt",
+        "multiresconvmem",
+        "s4d",
+        "hitrans",
+        "gpt"
+    ],
+    "proposed": [
+        "dynamicconvttt"
+    ],
+    "reranked": {
+        "rank": [
+            "dynamicconvttt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "streaminggpt"
+    ]
+}

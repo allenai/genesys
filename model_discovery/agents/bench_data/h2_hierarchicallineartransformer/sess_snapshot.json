@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "gala_trafo",
+        "hypermetalearner",
+        "statefreeinf",
+        "neurocache",
+        "blockbert",
+        "pose"
+    ],
+    "proposed": [
+        "h2_hierarchicallineartransformer"
+    ],
+    "reranked": {
+        "rank": [
+            "h2_hierarchicallineartransformer"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "meta_hierarchical_linear_transfo"
+    ]
+}

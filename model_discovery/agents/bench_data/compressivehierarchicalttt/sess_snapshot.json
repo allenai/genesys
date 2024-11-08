@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivettt_1",
+        "lightningtttlinear",
+        "infiniti",
+        "reformer",
+        "diffusionbert",
+        "lminfinite"
+    ],
+    "proposed": [
+        "compressivehierarchicalttt"
+    ],
+    "reranked": {
+        "rank": [
+            "compressivehierarchicalttt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

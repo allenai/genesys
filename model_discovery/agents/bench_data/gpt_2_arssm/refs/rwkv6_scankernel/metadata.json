@@ -1,0 +1,29 @@
+{
+    "title": "RWKV6-ScanKernel",
+    "acronym": "rwkv6_scankernel",
+    "sess_id": "2024-10-27-14-12-19-0d7b35",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "rmt",
+            "kerple",
+            "scalelawrope",
+            "poolingformer"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "rwkv6"
+        ]
+    },
+    "seed_ids": [
+        "rwkv6"
+    ]
+}

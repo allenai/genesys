@@ -1,0 +1,31 @@
+{
+    "title": "AdaptiveSparseTTTLinear: Enhancing TTTLinear with Dynamic Sparsity and State Compression",
+    "acronym": "adaptivesparselm_1",
+    "sess_id": "2024-10-28-12-43-42-853dcd",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "he_gpt",
+            "hierretnet",
+            "prefix",
+            "longrope",
+            "assparseattn",
+            "hyenadistill"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "fasttttlinear"
+        ]
+    },
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

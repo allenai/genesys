@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hiercache_gpt",
+        "s3fasttttlinear",
+        "hyena",
+        "normalizedattn",
+        "flagembedding",
+        "elgllm"
+    ],
+    "proposed": [
+        "hiershare_gpt"
+    ],
+    "reranked": {
+        "rank": [
+            "hiershare_gpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

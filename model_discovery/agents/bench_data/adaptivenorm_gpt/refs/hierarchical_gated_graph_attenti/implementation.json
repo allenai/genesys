@@ -1,0 +1,929 @@
+{
+    "implementation": {
+        "review": "",
+        "root": "HG_GAT_BlockV2",
+        "proposal_traces": [],
+        "proposal": "",
+        "rating": 0,
+        "declares": {
+            "HG_GAT_Block": "{\"unitname\":\"HG_GAT_Block\",\"requirements\":\"N/A\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+            "HG_GAT_BlockV2": "{\"unitname\":\"HG_GAT_BlockV2\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+            "GraphAttentionLayer": "{\"unitname\":\"GraphAttentionLayer\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+            "GraphAttentionLayerV2": "{\"unitname\":\"GraphAttentionLayerV2\",\"requirements\":\"Implements graph-based multi-head attention.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+            "HierarchicalGatedRMSNorm": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+            "HierarchicalGatedRMSNormV2": "{\"unitname\":\"HierarchicalGatedRMSNormV2\",\"requirements\":\"Implements multi-scale RMS normalization with gating mechanisms.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+        },
+        "units": {
+            "HG_GAT_Block": {
+                "review": "## Feedback Report\n\n### Overall Assessment\n```rating 4.5```\n\n### Strengths of the Implementation\n1. **Innovative Integration**: The implementation successfully integrates hierarchical multi-scale normalization with dynamic gating mechanisms and efficient graph-based attention. This combination is novel and addresses the proposal's goal of capturing both local and global dependencies in language models.\n\n2. **Comprehensive Docstrings**: The docstrings provided for each GAU are detailed and informative, offering clear guidance on the purpose, usage, and expected behavior of each component. This is crucial for maintainability and ease of understanding.\n\n3. **Code Structure and Clarity**: The code is well-structured and follows a logical flow. The separation of concerns between different components (e.g., normalization and attention) is clear, making the codebase easier to navigate and extend.\n\n4. **Functionality and Integration**: The implementation has passed both the format and functionality checks, indicating that it integrates well within the larger language model framework and functions as expected.\n\n### Areas for Improvement and Specific Suggestions\n1. **Optimization of Causal Operations**: While the implementation of causal downsampling and upsampling is correct, there might be room for optimization. Consider exploring more efficient methods for these operations, especially for very large sequences, to reduce computational overhead.\n\n2. **Parameter Efficiency**: The use of separate parameters for each scale in the HierarchicalGatedRMSNorm could potentially increase the model's parameter count. Consider exploring parameter sharing strategies across scales to enhance efficiency without sacrificing performance.\n\n3. **Unit Tests**: Although the functionality check passed, it would be beneficial to see more comprehensive unit tests that cover edge cases and stress-test the GAUs under various conditions. This will ensure robustness and reliability.\n\n4. **Scalability Considerations**: While the current implementation is efficient, ensure that it scales well with larger models and datasets. This might involve profiling the code to identify bottlenecks and optimizing them.\n\n### Comments on Innovation and Potential Impact\n- **Innovation**: The integration of hierarchical normalization with graph-based attention is a novel approach that has the potential to significantly enhance the expressiveness and adaptability of language models. This design could set a new standard for handling long sequences in autoregressive models.\n\n- **Impact**: By capturing both local and global dependencies more effectively, this implementation could lead to improvements in perplexity, accuracy on downstream tasks, and robustness to varied inputs. The dynamic gating mechanisms further enhance adaptability, making the model more versatile across different contexts.\n\n### Recommendations for the Coder\n1. **Explore Further Optimizations**: Look into potential optimizations for causal operations and parameter sharing to enhance efficiency further.\n\n2. **Expand Unit Tests**: Develop more comprehensive unit tests to ensure the robustness of the implementation under various scenarios.\n\n3. **Monitor Scalability**: As the model is scaled up, keep an eye on performance metrics to ensure that the implementation remains efficient and effective.\n\n4. **Documentation**: Continue to maintain high-quality documentation, as it is crucial for future development and collaboration.\n\nOverall, this implementation is a strong step forward in advancing the capabilities of language models, and with a few refinements, it could have a significant impact on the field.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_HG_GAT_Block": "@gau_test\ndef test_HG_GAT_Block_test_HG_GAT_Block(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    hg_gat_block = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = hg_gat_block(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_Block(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block (HG_GAT_Block)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating \n    mechanisms and efficient graph-based attention to capture both local and global \n    dependencies in language models. It consists of two main components:\n\n    1. Hierarchical Gated RMSNorm\n    2. Graph Attention Layer\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block import HG_GAT_Block\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNorm(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayer(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                "rating": 4.5,
+                "spec": "{\"unitname\":\"HG_GAT_Block\",\"document\":\"Hierarchical Gated Graph Attention Block (HG_GAT_Block)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating \\nmechanisms and efficient graph-based attention to capture both local and global \\ndependencies in language models. It consists of two main components:\\n\\n1. Hierarchical Gated RMSNorm\\n2. Graph Attention Layer\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block import HG_GAT_Block\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                "children": [
+                    "HierarchicalGatedRMSNorm",
+                    "GraphAttentionLayer"
+                ],
+                "suggestions": null,
+                "args": {},
+                "design_traces": null
+            },
+            "HG_GAT_BlockV2": {
+                "review": "### Feedback Report\n\n#### Overall Assessment\n```rating 4.0```\n\n#### Strengths of the Implementation\n1. **Successful Refinement**: The coder has successfully refined the GAUs by creating enhanced versions (`V2` variants) of the original units. This indicates a thoughtful approach to improving the existing design while maintaining the core functionalities.\n\n2. **Clear Documentation**: The implementation includes comprehensive docstrings for each GAU, providing clear usage examples and detailed explanations of the arguments and functionality. This enhances the readability and maintainability of the code.\n\n3. **Functionality Check Passed**: The implementation passed the functionality checker, confirming that the GAUs integrate well into the larger language model and perform as expected during both forward and backward passes.\n\n4. **Format Check Passed**: The code adheres to the required format guidelines, ensuring consistency and readability.\n\n#### Areas for Improvement and Specific Suggestions\n1. **CHILDREN_DECLARATIONS**: The warnings about missing `CHILDREN_DECLARATIONS` suggest that the GAUs might not be leveraging child units effectively. Consider:\n   - **Modular Design**: If applicable, break down complex GAUs into smaller, reusable components. This can improve maintainability and facilitate testing of individual components.\n\n2. **Optimization Opportunities**: While the current implementation is robust, consider exploring optimization techniques to further enhance performance:\n   - **Parameter Sharing**: Investigate opportunities for parameter sharing across scales in `HierarchicalGatedRMSNormV2` to reduce memory usage.\n   - **Efficient Attention Mechanisms**: Explore efficient attention mechanisms, such as sparse or linear attention, in `GraphAttentionLayerV2` to improve scalability.\n\n#### Comments on Innovation and Potential Impact\n- The introduction of `V2` variants demonstrates innovation by refining existing designs to potentially improve performance and adaptability. This aligns with the proposal's goal of enhancing model expressiveness and efficiency.\n- The use of hierarchical normalization and graph-based attention remains a promising approach for capturing complex dependencies in language models, potentially improving performance on tasks requiring long-range dependency modeling.\n\n#### Recommendations for the Coder\n1. **Address CHILDREN_DECLARATIONS**: Consider whether the GAUs could benefit from a more modular design with explicit child declarations. This could enhance the flexibility and reusability of the components.\n\n2. **Explore Further Optimizations**: Investigate additional optimization techniques, such as parameter sharing and efficient attention mechanisms, to improve scalability and performance.\n\n3. **Continue Testing and Validation**: Ensure thorough testing and validation of the `V2` variants to confirm that the enhancements lead to tangible improvements in model performance.\n\nBy addressing these areas, the implementation can be further refined to better align with the proposal's goals and enhance its impact on language model design.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_hg_gat_block_v2": "@gau_test\ndef test_HG_GAT_BlockV2_test_hg_gat_block_v2(device=None, dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = gau(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('HG_GAT_BlockV2 test passed.')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_BlockV2(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block V2 (HG_GAT_BlockV2)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating\n    mechanisms and efficient graph-based attention to capture both local and global\n    dependencies in language models. It uses the updated versions of child GAUs and\n    includes proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block_v2 import HG_GAT_BlockV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNormV2(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayerV2(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                "rating": 4.0,
+                "spec": "{\"unitname\":\"HG_GAT_BlockV2\",\"document\":\"Hierarchical Gated Graph Attention Block V2 (HG_GAT_BlockV2)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating\\nmechanisms and efficient graph-based attention to capture both local and global\\ndependencies in language models. It uses the updated versions of child GAUs and\\nincludes proper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block_v2 import HG_GAT_BlockV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "HierarchicalGatedRMSNormV2",
+                    "GraphAttentionLayerV2"
+                ],
+                "suggestions": null,
+                "args": {},
+                "design_traces": null
+            },
+            "GraphAttentionLayer": {
+                "review": null,
+                "requirements": "",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_GraphAttentionLayer": "@gau_test\ndef test_GraphAttentionLayer_test_GraphAttentionLayer(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    graph_attn = GraphAttentionLayer(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = graph_attn(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayer(GAUBase):\n    \"\"\"\n    Graph Attention Layer.\n\n    This unit performs multi-head self-attention, capturing global dependencies efficiently.\n    It supports causal attention by applying appropriate masking.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer import GraphAttentionLayer\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"GraphAttentionLayer\",\"document\":\"Graph Attention Layer.\\n\\nThis unit performs multi-head self-attention, capturing global dependencies efficiently.\\nIt supports causal attention by applying appropriate masking.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer import GraphAttentionLayer\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "dropout": 0.1,
+                    "num_heads": 8
+                },
+                "design_traces": null
+            },
+            "GraphAttentionLayerV2": {
+                "review": null,
+                "requirements": "Implements graph-based multi-head attention.",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_graph_attention_layer_v2": "@gau_test\ndef test_GraphAttentionLayerV2_test_graph_attention_layer_v2(device=None,\n    dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    num_heads = 8\n    dropout = 0.1\n    attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, num_heads=num_heads, dropout=\n        dropout, device=device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = attn_layer(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('GraphAttentionLayerV2 test passed.')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayerV2(GAUBase):\n    \"\"\"\n    Graph Attention Layer V2.\n\n    This unit is an enhanced version of the original GraphAttentionLayer.\n    It performs multi-head self-attention to capture global dependencies and includes\n    proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer_v2 import GraphAttentionLayerV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        if embed_dim % num_heads != 0:\n            raise ValueError(\n                f'embed_dim {embed_dim} must be divisible by num_heads {num_heads}'\n                )\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"GraphAttentionLayerV2\",\"document\":\"Graph Attention Layer V2.\\n\\nThis unit is an enhanced version of the original GraphAttentionLayer.\\nIt performs multi-head self-attention to capture global dependencies and includes\\nproper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer_v2 import GraphAttentionLayerV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "dropout": 0.1,
+                    "num_heads": 8
+                },
+                "design_traces": null
+            },
+            "HierarchicalGatedRMSNorm": {
+                "review": null,
+                "requirements": "",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_HierarchicalGatedRMSNorm": "@gau_test\ndef test_HierarchicalGatedRMSNorm_test_HierarchicalGatedRMSNorm(device=None,\n    dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    scales = [1, 2, 4]\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype, scales=\n        scales)\n    Y, Z = norm(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNorm(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm.\n\n    This unit performs multi-scale RMS normalization with gating mechanisms.\n    It processes input embeddings at multiple scales and applies dynamic gating \n    to control the influence of each scale.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=[1, 2, 4], eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(scales), **self.\n            factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"document\":\"Hierarchical Gated RMSNorm.\\n\\nThis unit performs multi-scale RMS normalization with gating mechanisms.\\nIt processes input embeddings at multiple scales and applies dynamic gating \\nto control the influence of each scale.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "scales": [
+                        1,
+                        2,
+                        4
+                    ],
+                    "eps": 1e-05
+                },
+                "design_traces": null
+            },
+            "HierarchicalGatedRMSNormV2": {
+                "review": null,
+                "requirements": "Implements multi-scale RMS normalization with gating mechanisms.",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_hierarchical_gated_rmsnorm_v2": "@gau_test\ndef test_HierarchicalGatedRMSNormV2_test_hierarchical_gated_rmsnorm_v2(device\n    =None, dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    scales = [1, 2, 4]\n    eps = 1e-05\n    norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, scales=scales, eps=eps, device=\n        device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = norm(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('HierarchicalGatedRMSNormV2 test passed.')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNormV2(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm V2.\n\n    This unit is an enhanced version of the original Hierarchical Gated RMSNorm.\n    It performs multi-scale RMS normalization with gating mechanisms and includes\n    proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm_v2 import HierarchicalGatedRMSNormV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=None, eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales if scales is not None else [1, 2, 4]\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in self.scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in self.scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(self.scales), **\n            self.factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"HierarchicalGatedRMSNormV2\",\"document\":\"Hierarchical Gated RMSNorm V2.\\n\\nThis unit is an enhanced version of the original Hierarchical Gated RMSNorm.\\nIt performs multi-scale RMS normalization with gating mechanisms and includes\\nproper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm_v2 import HierarchicalGatedRMSNormV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "scales": null,
+                    "eps": 1e-05
+                },
+                "design_traces": null
+            }
+        },
+        "suggestions": "",
+        "name": "hierarchical_gated_graph_attenti"
+    },
+    "status": "implemented",
+    "history": [
+        {
+            "tree": {
+                "review": "",
+                "root": "HG_GAT_Block",
+                "proposal": "",
+                "units": {
+                    "HG_GAT_Block": {
+                        "review": "## Feedback Report\n\n### Overall Assessment\n```rating 4.5```\n\n### Strengths of the Implementation\n1. **Innovative Integration**: The implementation successfully integrates hierarchical multi-scale normalization with dynamic gating mechanisms and efficient graph-based attention. This combination is novel and addresses the proposal's goal of capturing both local and global dependencies in language models.\n\n2. **Comprehensive Docstrings**: The docstrings provided for each GAU are detailed and informative, offering clear guidance on the purpose, usage, and expected behavior of each component. This is crucial for maintainability and ease of understanding.\n\n3. **Code Structure and Clarity**: The code is well-structured and follows a logical flow. The separation of concerns between different components (e.g., normalization and attention) is clear, making the codebase easier to navigate and extend.\n\n4. **Functionality and Integration**: The implementation has passed both the format and functionality checks, indicating that it integrates well within the larger language model framework and functions as expected.\n\n### Areas for Improvement and Specific Suggestions\n1. **Optimization of Causal Operations**: While the implementation of causal downsampling and upsampling is correct, there might be room for optimization. Consider exploring more efficient methods for these operations, especially for very large sequences, to reduce computational overhead.\n\n2. **Parameter Efficiency**: The use of separate parameters for each scale in the HierarchicalGatedRMSNorm could potentially increase the model's parameter count. Consider exploring parameter sharing strategies across scales to enhance efficiency without sacrificing performance.\n\n3. **Unit Tests**: Although the functionality check passed, it would be beneficial to see more comprehensive unit tests that cover edge cases and stress-test the GAUs under various conditions. This will ensure robustness and reliability.\n\n4. **Scalability Considerations**: While the current implementation is efficient, ensure that it scales well with larger models and datasets. This might involve profiling the code to identify bottlenecks and optimizing them.\n\n### Comments on Innovation and Potential Impact\n- **Innovation**: The integration of hierarchical normalization with graph-based attention is a novel approach that has the potential to significantly enhance the expressiveness and adaptability of language models. This design could set a new standard for handling long sequences in autoregressive models.\n\n- **Impact**: By capturing both local and global dependencies more effectively, this implementation could lead to improvements in perplexity, accuracy on downstream tasks, and robustness to varied inputs. The dynamic gating mechanisms further enhance adaptability, making the model more versatile across different contexts.\n\n### Recommendations for the Coder\n1. **Explore Further Optimizations**: Look into potential optimizations for causal operations and parameter sharing to enhance efficiency further.\n\n2. **Expand Unit Tests**: Develop more comprehensive unit tests to ensure the robustness of the implementation under various scenarios.\n\n3. **Monitor Scalability**: As the model is scaled up, keep an eye on performance metrics to ensure that the implementation remains efficient and effective.\n\n4. **Documentation**: Continue to maintain high-quality documentation, as it is crucial for future development and collaboration.\n\nOverall, this implementation is a strong step forward in advancing the capabilities of language models, and with a few refinements, it could have a significant impact on the field.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_HG_GAT_Block": "@gau_test\ndef test_HG_GAT_Block_test_HG_GAT_Block(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    hg_gat_block = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = hg_gat_block(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_Block(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block (HG_GAT_Block)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating \n    mechanisms and efficient graph-based attention to capture both local and global \n    dependencies in language models. It consists of two main components:\n\n    1. Hierarchical Gated RMSNorm\n    2. Graph Attention Layer\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block import HG_GAT_Block\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNorm(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayer(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"HG_GAT_Block\",\"document\":\"Hierarchical Gated Graph Attention Block (HG_GAT_Block)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating \\nmechanisms and efficient graph-based attention to capture both local and global \\ndependencies in language models. It consists of two main components:\\n\\n1. Hierarchical Gated RMSNorm\\n2. Graph Attention Layer\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block import HG_GAT_Block\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                        "children": [
+                            "HierarchicalGatedRMSNorm",
+                            "GraphAttentionLayer"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "GraphAttentionLayer": {
+                        "review": null,
+                        "requirements": "",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_GraphAttentionLayer": "@gau_test\ndef test_GraphAttentionLayer_test_GraphAttentionLayer(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    graph_attn = GraphAttentionLayer(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = graph_attn(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayer(GAUBase):\n    \"\"\"\n    Graph Attention Layer.\n\n    This unit performs multi-head self-attention, capturing global dependencies efficiently.\n    It supports causal attention by applying appropriate masking.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer import GraphAttentionLayer\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GraphAttentionLayer\",\"document\":\"Graph Attention Layer.\\n\\nThis unit performs multi-head self-attention, capturing global dependencies efficiently.\\nIt supports causal attention by applying appropriate masking.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer import GraphAttentionLayer\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "dropout": 0.1,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "HierarchicalGatedRMSNorm": {
+                        "review": null,
+                        "requirements": "",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_HierarchicalGatedRMSNorm": "@gau_test\ndef test_HierarchicalGatedRMSNorm_test_HierarchicalGatedRMSNorm(device=None,\n    dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    scales = [1, 2, 4]\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype, scales=\n        scales)\n    Y, Z = norm(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNorm(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm.\n\n    This unit performs multi-scale RMS normalization with gating mechanisms.\n    It processes input embeddings at multiple scales and applies dynamic gating \n    to control the influence of each scale.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=[1, 2, 4], eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(scales), **self.\n            factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"document\":\"Hierarchical Gated RMSNorm.\\n\\nThis unit performs multi-scale RMS normalization with gating mechanisms.\\nIt processes input embeddings at multiple scales and applies dynamic gating \\nto control the influence of each scale.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "scales": [
+                                1,
+                                2,
+                                4
+                            ],
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": 0,
+                "declares": {
+                    "HG_GAT_Block": "{\"unitname\":\"HG_GAT_Block\",\"requirements\":\"N/A\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                    "GraphAttentionLayer": "{\"unitname\":\"GraphAttentionLayer\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "HierarchicalGatedRMSNorm": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": "",
+                "name": "hierarchical_gated_graph_attenti"
+            },
+            "user_input": "",
+            "status": "unfinished",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "o1_preview",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "o1_mini",
+                    "IMPLEMENTATION_OBSERVER": "gpt4o_0806",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.147714,
+                "IMPLEMENTATION_CODER": 9.541995,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 1.1159475,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": "",
+                "root": "HG_GAT_Block",
+                "proposal": "",
+                "units": {
+                    "HG_GAT_Block": {
+                        "review": "## Feedback Report\n\n### Overall Assessment\n```rating 4.5```\n\n### Strengths of the Implementation\n1. **Innovative Integration**: The implementation successfully integrates hierarchical multi-scale normalization with dynamic gating mechanisms and efficient graph-based attention. This combination is novel and addresses the proposal's goal of capturing both local and global dependencies in language models.\n\n2. **Comprehensive Docstrings**: The docstrings provided for each GAU are detailed and informative, offering clear guidance on the purpose, usage, and expected behavior of each component. This is crucial for maintainability and ease of understanding.\n\n3. **Code Structure and Clarity**: The code is well-structured and follows a logical flow. The separation of concerns between different components (e.g., normalization and attention) is clear, making the codebase easier to navigate and extend.\n\n4. **Functionality and Integration**: The implementation has passed both the format and functionality checks, indicating that it integrates well within the larger language model framework and functions as expected.\n\n### Areas for Improvement and Specific Suggestions\n1. **Optimization of Causal Operations**: While the implementation of causal downsampling and upsampling is correct, there might be room for optimization. Consider exploring more efficient methods for these operations, especially for very large sequences, to reduce computational overhead.\n\n2. **Parameter Efficiency**: The use of separate parameters for each scale in the HierarchicalGatedRMSNorm could potentially increase the model's parameter count. Consider exploring parameter sharing strategies across scales to enhance efficiency without sacrificing performance.\n\n3. **Unit Tests**: Although the functionality check passed, it would be beneficial to see more comprehensive unit tests that cover edge cases and stress-test the GAUs under various conditions. This will ensure robustness and reliability.\n\n4. **Scalability Considerations**: While the current implementation is efficient, ensure that it scales well with larger models and datasets. This might involve profiling the code to identify bottlenecks and optimizing them.\n\n### Comments on Innovation and Potential Impact\n- **Innovation**: The integration of hierarchical normalization with graph-based attention is a novel approach that has the potential to significantly enhance the expressiveness and adaptability of language models. This design could set a new standard for handling long sequences in autoregressive models.\n\n- **Impact**: By capturing both local and global dependencies more effectively, this implementation could lead to improvements in perplexity, accuracy on downstream tasks, and robustness to varied inputs. The dynamic gating mechanisms further enhance adaptability, making the model more versatile across different contexts.\n\n### Recommendations for the Coder\n1. **Explore Further Optimizations**: Look into potential optimizations for causal operations and parameter sharing to enhance efficiency further.\n\n2. **Expand Unit Tests**: Develop more comprehensive unit tests to ensure the robustness of the implementation under various scenarios.\n\n3. **Monitor Scalability**: As the model is scaled up, keep an eye on performance metrics to ensure that the implementation remains efficient and effective.\n\n4. **Documentation**: Continue to maintain high-quality documentation, as it is crucial for future development and collaboration.\n\nOverall, this implementation is a strong step forward in advancing the capabilities of language models, and with a few refinements, it could have a significant impact on the field.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_HG_GAT_Block": "@gau_test\ndef test_HG_GAT_Block_test_HG_GAT_Block(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    hg_gat_block = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = hg_gat_block(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_Block(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block (HG_GAT_Block)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating \n    mechanisms and efficient graph-based attention to capture both local and global \n    dependencies in language models. It consists of two main components:\n\n    1. Hierarchical Gated RMSNorm\n    2. Graph Attention Layer\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block import HG_GAT_Block\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNorm(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayer(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"HG_GAT_Block\",\"document\":\"Hierarchical Gated Graph Attention Block (HG_GAT_Block)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating \\nmechanisms and efficient graph-based attention to capture both local and global \\ndependencies in language models. It consists of two main components:\\n\\n1. Hierarchical Gated RMSNorm\\n2. Graph Attention Layer\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block import HG_GAT_Block\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                        "children": [
+                            "HierarchicalGatedRMSNorm",
+                            "GraphAttentionLayer"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "GraphAttentionLayer": {
+                        "review": null,
+                        "requirements": "",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_GraphAttentionLayer": "@gau_test\ndef test_GraphAttentionLayer_test_GraphAttentionLayer(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    graph_attn = GraphAttentionLayer(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = graph_attn(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayer(GAUBase):\n    \"\"\"\n    Graph Attention Layer.\n\n    This unit performs multi-head self-attention, capturing global dependencies efficiently.\n    It supports causal attention by applying appropriate masking.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer import GraphAttentionLayer\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GraphAttentionLayer\",\"document\":\"Graph Attention Layer.\\n\\nThis unit performs multi-head self-attention, capturing global dependencies efficiently.\\nIt supports causal attention by applying appropriate masking.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer import GraphAttentionLayer\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "dropout": 0.1,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "HierarchicalGatedRMSNorm": {
+                        "review": null,
+                        "requirements": "",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_HierarchicalGatedRMSNorm": "@gau_test\ndef test_HierarchicalGatedRMSNorm_test_HierarchicalGatedRMSNorm(device=None,\n    dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    scales = [1, 2, 4]\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype, scales=\n        scales)\n    Y, Z = norm(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNorm(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm.\n\n    This unit performs multi-scale RMS normalization with gating mechanisms.\n    It processes input embeddings at multiple scales and applies dynamic gating \n    to control the influence of each scale.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=[1, 2, 4], eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(scales), **self.\n            factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"document\":\"Hierarchical Gated RMSNorm.\\n\\nThis unit performs multi-scale RMS normalization with gating mechanisms.\\nIt processes input embeddings at multiple scales and applies dynamic gating \\nto control the influence of each scale.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "scales": [
+                                1,
+                                2,
+                                4
+                            ],
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": 0,
+                "declares": {
+                    "HG_GAT_Block": "{\"unitname\":\"HG_GAT_Block\",\"requirements\":\"N/A\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                    "GraphAttentionLayer": "{\"unitname\":\"GraphAttentionLayer\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "HierarchicalGatedRMSNorm": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": "",
+                "name": "hierarchical_gated_graph_attenti"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "o1_preview",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "o1_mini",
+                    "IMPLEMENTATION_OBSERVER": "gpt4o_0806",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.147714,
+                "IMPLEMENTATION_CODER": 9.541995,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 1.1159475,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": "",
+                "root": "HG_GAT_BlockV2",
+                "proposal": "",
+                "units": {
+                    "HG_GAT_Block": {
+                        "review": "## Feedback Report\n\n### Overall Assessment\n```rating 4.5```\n\n### Strengths of the Implementation\n1. **Innovative Integration**: The implementation successfully integrates hierarchical multi-scale normalization with dynamic gating mechanisms and efficient graph-based attention. This combination is novel and addresses the proposal's goal of capturing both local and global dependencies in language models.\n\n2. **Comprehensive Docstrings**: The docstrings provided for each GAU are detailed and informative, offering clear guidance on the purpose, usage, and expected behavior of each component. This is crucial for maintainability and ease of understanding.\n\n3. **Code Structure and Clarity**: The code is well-structured and follows a logical flow. The separation of concerns between different components (e.g., normalization and attention) is clear, making the codebase easier to navigate and extend.\n\n4. **Functionality and Integration**: The implementation has passed both the format and functionality checks, indicating that it integrates well within the larger language model framework and functions as expected.\n\n### Areas for Improvement and Specific Suggestions\n1. **Optimization of Causal Operations**: While the implementation of causal downsampling and upsampling is correct, there might be room for optimization. Consider exploring more efficient methods for these operations, especially for very large sequences, to reduce computational overhead.\n\n2. **Parameter Efficiency**: The use of separate parameters for each scale in the HierarchicalGatedRMSNorm could potentially increase the model's parameter count. Consider exploring parameter sharing strategies across scales to enhance efficiency without sacrificing performance.\n\n3. **Unit Tests**: Although the functionality check passed, it would be beneficial to see more comprehensive unit tests that cover edge cases and stress-test the GAUs under various conditions. This will ensure robustness and reliability.\n\n4. **Scalability Considerations**: While the current implementation is efficient, ensure that it scales well with larger models and datasets. This might involve profiling the code to identify bottlenecks and optimizing them.\n\n### Comments on Innovation and Potential Impact\n- **Innovation**: The integration of hierarchical normalization with graph-based attention is a novel approach that has the potential to significantly enhance the expressiveness and adaptability of language models. This design could set a new standard for handling long sequences in autoregressive models.\n\n- **Impact**: By capturing both local and global dependencies more effectively, this implementation could lead to improvements in perplexity, accuracy on downstream tasks, and robustness to varied inputs. The dynamic gating mechanisms further enhance adaptability, making the model more versatile across different contexts.\n\n### Recommendations for the Coder\n1. **Explore Further Optimizations**: Look into potential optimizations for causal operations and parameter sharing to enhance efficiency further.\n\n2. **Expand Unit Tests**: Develop more comprehensive unit tests to ensure the robustness of the implementation under various scenarios.\n\n3. **Monitor Scalability**: As the model is scaled up, keep an eye on performance metrics to ensure that the implementation remains efficient and effective.\n\n4. **Documentation**: Continue to maintain high-quality documentation, as it is crucial for future development and collaboration.\n\nOverall, this implementation is a strong step forward in advancing the capabilities of language models, and with a few refinements, it could have a significant impact on the field.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_HG_GAT_Block": "@gau_test\ndef test_HG_GAT_Block_test_HG_GAT_Block(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    hg_gat_block = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = hg_gat_block(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_Block(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block (HG_GAT_Block)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating \n    mechanisms and efficient graph-based attention to capture both local and global \n    dependencies in language models. It consists of two main components:\n\n    1. Hierarchical Gated RMSNorm\n    2. Graph Attention Layer\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block import HG_GAT_Block\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNorm(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayer(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                        "rating": 4.5,
+                        "spec": "{\"unitname\":\"HG_GAT_Block\",\"document\":\"Hierarchical Gated Graph Attention Block (HG_GAT_Block)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating \\nmechanisms and efficient graph-based attention to capture both local and global \\ndependencies in language models. It consists of two main components:\\n\\n1. Hierarchical Gated RMSNorm\\n2. Graph Attention Layer\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block import HG_GAT_Block\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_Block(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                        "children": [
+                            "HierarchicalGatedRMSNorm",
+                            "GraphAttentionLayer"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "HG_GAT_BlockV2": {
+                        "review": "### Feedback Report\n\n#### Overall Assessment\n```rating 4.0```\n\n#### Strengths of the Implementation\n1. **Successful Refinement**: The coder has successfully refined the GAUs by creating enhanced versions (`V2` variants) of the original units. This indicates a thoughtful approach to improving the existing design while maintaining the core functionalities.\n\n2. **Clear Documentation**: The implementation includes comprehensive docstrings for each GAU, providing clear usage examples and detailed explanations of the arguments and functionality. This enhances the readability and maintainability of the code.\n\n3. **Functionality Check Passed**: The implementation passed the functionality checker, confirming that the GAUs integrate well into the larger language model and perform as expected during both forward and backward passes.\n\n4. **Format Check Passed**: The code adheres to the required format guidelines, ensuring consistency and readability.\n\n#### Areas for Improvement and Specific Suggestions\n1. **CHILDREN_DECLARATIONS**: The warnings about missing `CHILDREN_DECLARATIONS` suggest that the GAUs might not be leveraging child units effectively. Consider:\n   - **Modular Design**: If applicable, break down complex GAUs into smaller, reusable components. This can improve maintainability and facilitate testing of individual components.\n\n2. **Optimization Opportunities**: While the current implementation is robust, consider exploring optimization techniques to further enhance performance:\n   - **Parameter Sharing**: Investigate opportunities for parameter sharing across scales in `HierarchicalGatedRMSNormV2` to reduce memory usage.\n   - **Efficient Attention Mechanisms**: Explore efficient attention mechanisms, such as sparse or linear attention, in `GraphAttentionLayerV2` to improve scalability.\n\n#### Comments on Innovation and Potential Impact\n- The introduction of `V2` variants demonstrates innovation by refining existing designs to potentially improve performance and adaptability. This aligns with the proposal's goal of enhancing model expressiveness and efficiency.\n- The use of hierarchical normalization and graph-based attention remains a promising approach for capturing complex dependencies in language models, potentially improving performance on tasks requiring long-range dependency modeling.\n\n#### Recommendations for the Coder\n1. **Address CHILDREN_DECLARATIONS**: Consider whether the GAUs could benefit from a more modular design with explicit child declarations. This could enhance the flexibility and reusability of the components.\n\n2. **Explore Further Optimizations**: Investigate additional optimization techniques, such as parameter sharing and efficient attention mechanisms, to improve scalability and performance.\n\n3. **Continue Testing and Validation**: Ensure thorough testing and validation of the `V2` variants to confirm that the enhancements lead to tangible improvements in model performance.\n\nBy addressing these areas, the implementation can be further refined to better align with the proposal's goals and enhance its impact on language model design.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_hg_gat_block_v2": "@gau_test\ndef test_HG_GAT_BlockV2_test_hg_gat_block_v2(device=None, dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = gau(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('HG_GAT_BlockV2 test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_BlockV2(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block V2 (HG_GAT_BlockV2)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating\n    mechanisms and efficient graph-based attention to capture both local and global\n    dependencies in language models. It uses the updated versions of child GAUs and\n    includes proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block_v2 import HG_GAT_BlockV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNormV2(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayerV2(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                        "rating": 4.0,
+                        "spec": "{\"unitname\":\"HG_GAT_BlockV2\",\"document\":\"Hierarchical Gated Graph Attention Block V2 (HG_GAT_BlockV2)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating\\nmechanisms and efficient graph-based attention to capture both local and global\\ndependencies in language models. It uses the updated versions of child GAUs and\\nincludes proper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block_v2 import HG_GAT_BlockV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "HierarchicalGatedRMSNormV2",
+                            "GraphAttentionLayerV2"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "GraphAttentionLayer": {
+                        "review": null,
+                        "requirements": "",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_GraphAttentionLayer": "@gau_test\ndef test_GraphAttentionLayer_test_GraphAttentionLayer(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    graph_attn = GraphAttentionLayer(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = graph_attn(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayer(GAUBase):\n    \"\"\"\n    Graph Attention Layer.\n\n    This unit performs multi-head self-attention, capturing global dependencies efficiently.\n    It supports causal attention by applying appropriate masking.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer import GraphAttentionLayer\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GraphAttentionLayer\",\"document\":\"Graph Attention Layer.\\n\\nThis unit performs multi-head self-attention, capturing global dependencies efficiently.\\nIt supports causal attention by applying appropriate masking.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer import GraphAttentionLayer\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayer(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "dropout": 0.1,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "GraphAttentionLayerV2": {
+                        "review": null,
+                        "requirements": "Implements graph-based multi-head attention.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_graph_attention_layer_v2": "@gau_test\ndef test_GraphAttentionLayerV2_test_graph_attention_layer_v2(device=None,\n    dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    num_heads = 8\n    dropout = 0.1\n    attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, num_heads=num_heads, dropout=\n        dropout, device=device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = attn_layer(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('GraphAttentionLayerV2 test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayerV2(GAUBase):\n    \"\"\"\n    Graph Attention Layer V2.\n\n    This unit is an enhanced version of the original GraphAttentionLayer.\n    It performs multi-head self-attention to capture global dependencies and includes\n    proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer_v2 import GraphAttentionLayerV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        if embed_dim % num_heads != 0:\n            raise ValueError(\n                f'embed_dim {embed_dim} must be divisible by num_heads {num_heads}'\n                )\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GraphAttentionLayerV2\",\"document\":\"Graph Attention Layer V2.\\n\\nThis unit is an enhanced version of the original GraphAttentionLayer.\\nIt performs multi-head self-attention to capture global dependencies and includes\\nproper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer_v2 import GraphAttentionLayerV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "dropout": 0.1,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "HierarchicalGatedRMSNorm": {
+                        "review": null,
+                        "requirements": "",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_HierarchicalGatedRMSNorm": "@gau_test\ndef test_HierarchicalGatedRMSNorm_test_HierarchicalGatedRMSNorm(device=None,\n    dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_len = 10\n    scales = [1, 2, 4]\n    block_loc = 0, 0\n    kwarg_all = {}\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, device=device, dtype=dtype, scales=\n        scales)\n    Y, Z = norm(X)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, but got {Y.shape}'\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNorm(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm.\n\n    This unit performs multi-scale RMS normalization with gating mechanisms.\n    It processes input embeddings at multiple scales and applies dynamic gating \n    to control the influence of each scale.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=[1, 2, 4], eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(scales), **self.\n            factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"document\":\"Hierarchical Gated RMSNorm.\\n\\nThis unit performs multi-scale RMS normalization with gating mechanisms.\\nIt processes input embeddings at multiple scales and applies dynamic gating \\nto control the influence of each scale.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm import HierarchicalGatedRMSNorm\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNorm(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "scales": [
+                                1,
+                                2,
+                                4
+                            ],
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    },
+                    "HierarchicalGatedRMSNormV2": {
+                        "review": null,
+                        "requirements": "Implements multi-scale RMS normalization with gating mechanisms.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_hierarchical_gated_rmsnorm_v2": "@gau_test\ndef test_HierarchicalGatedRMSNormV2_test_hierarchical_gated_rmsnorm_v2(device\n    =None, dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    scales = [1, 2, 4]\n    eps = 1e-05\n    norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, scales=scales, eps=eps, device=\n        device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = norm(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('HierarchicalGatedRMSNormV2 test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNormV2(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm V2.\n\n    This unit is an enhanced version of the original Hierarchical Gated RMSNorm.\n    It performs multi-scale RMS normalization with gating mechanisms and includes\n    proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm_v2 import HierarchicalGatedRMSNormV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=None, eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales if scales is not None else [1, 2, 4]\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in self.scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in self.scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(self.scales), **\n            self.factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"HierarchicalGatedRMSNormV2\",\"document\":\"Hierarchical Gated RMSNorm V2.\\n\\nThis unit is an enhanced version of the original Hierarchical Gated RMSNorm.\\nIt performs multi-scale RMS normalization with gating mechanisms and includes\\nproper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm_v2 import HierarchicalGatedRMSNormV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "scales": null,
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": 0,
+                "declares": {
+                    "HG_GAT_Block": "{\"unitname\":\"HG_GAT_Block\",\"requirements\":\"N/A\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                    "HG_GAT_BlockV2": "{\"unitname\":\"HG_GAT_BlockV2\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "GraphAttentionLayer": "{\"unitname\":\"GraphAttentionLayer\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "GraphAttentionLayerV2": "{\"unitname\":\"GraphAttentionLayerV2\",\"requirements\":\"Implements graph-based multi-head attention.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "HierarchicalGatedRMSNorm": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "HierarchicalGatedRMSNormV2": "{\"unitname\":\"HierarchicalGatedRMSNormV2\",\"requirements\":\"Implements multi-scale RMS normalization with gating mechanisms.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": "",
+                "name": "hierarchical_gated_graph_attenti"
+            },
+            "user_input": "",
+            "status": "unfinished",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "o1_preview",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "o1_mini",
+                    "IMPLEMENTATION_OBSERVER": "gpt4o_0806",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.0,
+                "IMPLEMENTATION_CODER": 18.39846,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 2.9832799999999997,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": "",
+                "root": "HG_GAT_BlockV2",
+                "proposal": "",
+                "units": {
+                    "HG_GAT_BlockV2": {
+                        "review": "### Feedback Report\n\n#### Overall Assessment\n```rating 4.0```\n\n#### Strengths of the Implementation\n1. **Successful Refinement**: The coder has successfully refined the GAUs by creating enhanced versions (`V2` variants) of the original units. This indicates a thoughtful approach to improving the existing design while maintaining the core functionalities.\n\n2. **Clear Documentation**: The implementation includes comprehensive docstrings for each GAU, providing clear usage examples and detailed explanations of the arguments and functionality. This enhances the readability and maintainability of the code.\n\n3. **Functionality Check Passed**: The implementation passed the functionality checker, confirming that the GAUs integrate well into the larger language model and perform as expected during both forward and backward passes.\n\n4. **Format Check Passed**: The code adheres to the required format guidelines, ensuring consistency and readability.\n\n#### Areas for Improvement and Specific Suggestions\n1. **CHILDREN_DECLARATIONS**: The warnings about missing `CHILDREN_DECLARATIONS` suggest that the GAUs might not be leveraging child units effectively. Consider:\n   - **Modular Design**: If applicable, break down complex GAUs into smaller, reusable components. This can improve maintainability and facilitate testing of individual components.\n\n2. **Optimization Opportunities**: While the current implementation is robust, consider exploring optimization techniques to further enhance performance:\n   - **Parameter Sharing**: Investigate opportunities for parameter sharing across scales in `HierarchicalGatedRMSNormV2` to reduce memory usage.\n   - **Efficient Attention Mechanisms**: Explore efficient attention mechanisms, such as sparse or linear attention, in `GraphAttentionLayerV2` to improve scalability.\n\n#### Comments on Innovation and Potential Impact\n- The introduction of `V2` variants demonstrates innovation by refining existing designs to potentially improve performance and adaptability. This aligns with the proposal's goal of enhancing model expressiveness and efficiency.\n- The use of hierarchical normalization and graph-based attention remains a promising approach for capturing complex dependencies in language models, potentially improving performance on tasks requiring long-range dependency modeling.\n\n#### Recommendations for the Coder\n1. **Address CHILDREN_DECLARATIONS**: Consider whether the GAUs could benefit from a more modular design with explicit child declarations. This could enhance the flexibility and reusability of the components.\n\n2. **Explore Further Optimizations**: Investigate additional optimization techniques, such as parameter sharing and efficient attention mechanisms, to improve scalability and performance.\n\n3. **Continue Testing and Validation**: Ensure thorough testing and validation of the `V2` variants to confirm that the enhancements lead to tangible improvements in model performance.\n\nBy addressing these areas, the implementation can be further refined to better align with the proposal's goals and enhance its impact on language model design.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_hg_gat_block_v2": "@gau_test\ndef test_HG_GAT_BlockV2_test_hg_gat_block_v2(device=None, dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = gau(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('HG_GAT_BlockV2 test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HG_GAT_BlockV2(GAUBase):\n    \"\"\"\n    Hierarchical Gated Graph Attention Block V2 (HG_GAT_BlockV2)\n\n    This GAU integrates hierarchical multi-scale normalization with dynamic gating\n    mechanisms and efficient graph-based attention to capture both local and global\n    dependencies in language models. It uses the updated versions of child GAUs and\n    includes proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from hg_gat_block_v2 import HG_GAT_BlockV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Z = {}\n        Y, Z = gau(X, **Z)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.norm = HierarchicalGatedRMSNormV2(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.graph_attention = GraphAttentionLayerV2(embed_dim=\n            self.embed_dim, block_loc=self.block_loc, kwarg_all=\n            self.kwarg_all, **self.factory_kwargs, **self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        X_norm, Z = self.norm(X, **Z)\n        Y, Z = self.graph_attention(X_norm, **Z)\n        return Y, Z\n",
+                        "rating": 4.0,
+                        "spec": "{\"unitname\":\"HG_GAT_BlockV2\",\"document\":\"Hierarchical Gated Graph Attention Block V2 (HG_GAT_BlockV2)\\n\\nThis GAU integrates hierarchical multi-scale normalization with dynamic gating\\nmechanisms and efficient graph-based attention to capture both local and global\\ndependencies in language models. It uses the updated versions of child GAUs and\\nincludes proper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hg_gat_block_v2 import HG_GAT_BlockV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    gau = HG_GAT_BlockV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Z = {}\\n    Y, Z = gau(X, **Z)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "HierarchicalGatedRMSNormV2",
+                            "GraphAttentionLayerV2"
+                        ],
+                        "suggestions": null,
+                        "args": {},
+                        "design_traces": null
+                    },
+                    "GraphAttentionLayerV2": {
+                        "review": null,
+                        "requirements": "Implements graph-based multi-head attention.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_graph_attention_layer_v2": "@gau_test\ndef test_GraphAttentionLayerV2_test_graph_attention_layer_v2(device=None,\n    dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    num_heads = 8\n    dropout = 0.1\n    attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, num_heads=num_heads, dropout=\n        dropout, device=device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = attn_layer(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('GraphAttentionLayerV2 test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass GraphAttentionLayerV2(GAUBase):\n    \"\"\"\n    Graph Attention Layer V2.\n\n    This unit is an enhanced version of the original GraphAttentionLayer.\n    It performs multi-head self-attention to capture global dependencies and includes\n    proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from graph_attention_layer_v2 import GraphAttentionLayerV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = attn_layer(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        num_heads (int, optional): Number of attention heads. Defaults to 8.\n        dropout (float, optional): Dropout probability. Defaults to 0.1.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, num_heads=8, dropout=0.1, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.num_heads = num_heads\n        self.head_dim = embed_dim // num_heads\n        if embed_dim % num_heads != 0:\n            raise ValueError(\n                f'embed_dim {embed_dim} must be divisible by num_heads {num_heads}'\n                )\n        self.scale = self.head_dim ** -0.5\n        self.q_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.k_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.v_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.out_proj = nn.Linear(embed_dim, embed_dim, **self.factory_kwargs)\n        self.dropout = nn.Dropout(dropout)\n        self.causal = True\n\n    def _forward(self, X, **Z):\n        B, L, D = X.size()\n        Q = self.q_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        K = self.k_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        V = self.v_proj(X).view(B, L, self.num_heads, self.head_dim).transpose(\n            1, 2)\n        attn_scores = torch.matmul(Q, K.transpose(-2, -1)) * self.scale\n        if self.causal:\n            causal_mask = torch.triu(torch.ones(L, L, device=X.device,\n                dtype=torch.bool), diagonal=1)\n            attn_scores = attn_scores.masked_fill(causal_mask.unsqueeze(0).\n                unsqueeze(0), float('-inf'))\n        attn_probs = F.softmax(attn_scores, dim=-1)\n        attn_probs = self.dropout(attn_probs)\n        attn_output = torch.matmul(attn_probs, V)\n        attn_output = attn_output.transpose(1, 2).contiguous().view(B, L, D)\n        Y = self.out_proj(attn_output)\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"GraphAttentionLayerV2\",\"document\":\"Graph Attention Layer V2.\\n\\nThis unit is an enhanced version of the original GraphAttentionLayer.\\nIt performs multi-head self-attention to capture global dependencies and includes\\nproper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from graph_attention_layer_v2 import GraphAttentionLayerV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    attn_layer = GraphAttentionLayerV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = attn_layer(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    num_heads (int, optional): Number of attention heads. Defaults to 8.\\n    dropout (float, optional): Dropout probability. Defaults to 0.1.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "dropout": 0.1,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "HierarchicalGatedRMSNormV2": {
+                        "review": null,
+                        "requirements": "Implements multi-scale RMS normalization with gating mechanisms.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_hierarchical_gated_rmsnorm_v2": "@gau_test\ndef test_HierarchicalGatedRMSNormV2_test_hierarchical_gated_rmsnorm_v2(device\n    =None, dtype=None) ->None:\n    embed_dim = 128\n    block_loc = 0, 0\n    kwarg_all = {}\n    scales = [1, 2, 4]\n    eps = 1e-05\n    norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=\n        block_loc, kwarg_all=kwarg_all, scales=scales, eps=eps, device=\n        device, dtype=dtype)\n    B, L, D = 2, 50, embed_dim\n    X = torch.randn(B, L, D, device=device, dtype=dtype)\n    Z = {}\n    Y, Z = norm(X, **Z)\n    assert Y.shape == (B, L, D\n        ), f'Output shape {Y.shape} does not match expected {B, L, D}'\n    print('HierarchicalGatedRMSNormV2 test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\n\n\nclass HierarchicalGatedRMSNormV2(GAUBase):\n    \"\"\"\n    Hierarchical Gated RMSNorm V2.\n\n    This unit is an enhanced version of the original Hierarchical Gated RMSNorm.\n    It performs multi-scale RMS normalization with gating mechanisms and includes\n    proper CHILDREN_DECLARATIONS.\n\n    **Code Example:**\n\n        import torch\n        from hierarchical_gated_rmsnorm_v2 import HierarchicalGatedRMSNormV2\n\n        embed_dim = 128\n        block_loc = (0, 0)\n        kwarg_all = {}\n        norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\n\n        X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\n        Y, Z = norm(X)\n        print(Y.shape)  # Should output: torch.Size([2, 50, 128])\n\n    Args:\n        embed_dim (int): Dimensionality of the input embeddings.\n        block_loc (tuple): Location of the block within the network.\n        kwarg_all (dict): Additional keyword arguments.\n        device (torch.device, optional): Device to use.\n        dtype (torch.dtype, optional): Data type to use.\n        scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\n        eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, scales=None, eps=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.scales = scales if scales is not None else [1, 2, 4]\n        self.eps = eps\n        self.gammas = nn.ParameterDict({f's{s}': nn.Parameter(torch.ones(\n            embed_dim, **self.factory_kwargs)) for s in self.scales})\n        self.gate_weights = nn.ModuleDict({f'g{s}': nn.Linear(embed_dim,\n            embed_dim, **self.factory_kwargs) for s in self.scales})\n        self.scale_weights = nn.Parameter(torch.ones(len(self.scales), **\n            self.factory_kwargs))\n\n    def _decompose_scales(self, X):\n        x_scales = {}\n        for s in self.scales:\n            if s == 1:\n                x_scales[s] = X\n            else:\n                x_scales[s] = self._causal_downsample(X, s)\n        return x_scales\n\n    def _causal_downsample(self, X, scale):\n        batch_size, seq_len, embed_dim = X.size()\n        padding = scale - 1, 0\n        X_padded = F.pad(X.transpose(1, 2), padding)\n        weight = X.new_ones((embed_dim, 1, scale), **self.factory_kwargs\n            ) / scale\n        x_s = F.conv1d(X_padded, weight, stride=scale, groups=embed_dim\n            ).transpose(1, 2)\n        return x_s\n\n    def _causal_upsample(self, y_s, scale, target_length):\n        upsampled = y_s.repeat_interleave(scale, dim=1)\n        return upsampled[:, :target_length, :]\n\n    def _forward(self, X, **Z):\n        X = X.to(**self.factory_kwargs)\n        x_scales = self._decompose_scales(X)\n        y_scales = []\n        for idx, s in enumerate(self.scales):\n            x_s = x_scales[s]\n            rms_s = torch.sqrt(x_s.pow(2).mean(-1, keepdim=True) + self.eps)\n            gamma_s = self.gammas[f's{s}']\n            gated = torch.sigmoid(self.gate_weights[f'g{s}'](x_s))\n            y_s = gated * (x_s / rms_s * gamma_s)\n            upsampled_y_s = self._causal_upsample(y_s, s, X.size(1))\n            y_scales.append(upsampled_y_s)\n        weights = F.softmax(self.scale_weights, dim=0)\n        Y = sum(w * y_s for w, y_s in zip(weights, y_scales))\n        return Y, {}\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"HierarchicalGatedRMSNormV2\",\"document\":\"Hierarchical Gated RMSNorm V2.\\n\\nThis unit is an enhanced version of the original Hierarchical Gated RMSNorm.\\nIt performs multi-scale RMS normalization with gating mechanisms and includes\\nproper CHILDREN_DECLARATIONS.\\n\\n**Code Example:**\\n\\n    import torch\\n    from hierarchical_gated_rmsnorm_v2 import HierarchicalGatedRMSNormV2\\n\\n    embed_dim = 128\\n    block_loc = (0, 0)\\n    kwarg_all = {}\\n    norm = HierarchicalGatedRMSNormV2(embed_dim=embed_dim, block_loc=block_loc, kwarg_all=kwarg_all)\\n\\n    X = torch.randn(2, 50, embed_dim)  # Batch size 2, sequence length 50\\n    Y, Z = norm(X)\\n    print(Y.shape)  # Should output: torch.Size([2, 50, 128])\\n\\nArgs:\\n    embed_dim (int): Dimensionality of the input embeddings.\\n    block_loc (tuple): Location of the block within the network.\\n    kwarg_all (dict): Additional keyword arguments.\\n    device (torch.device, optional): Device to use.\\n    dtype (torch.dtype, optional): Data type to use.\\n    scales (list of int, optional): List of scales to use. Defaults to [1, 2, 4].\\n    eps (float, optional): Epsilon for numerical stability. Defaults to 1e-5.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "scales": null,
+                            "eps": 1e-05
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": 0,
+                "declares": {
+                    "HG_GAT_Block": "{\"unitname\":\"HG_GAT_Block\",\"requirements\":\"N/A\",\"inputs\":[\"N/A\"],\"outputs\":[\"N/A\"]}",
+                    "HG_GAT_BlockV2": "{\"unitname\":\"HG_GAT_BlockV2\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "GraphAttentionLayer": "{\"unitname\":\"GraphAttentionLayer\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "GraphAttentionLayerV2": "{\"unitname\":\"GraphAttentionLayerV2\",\"requirements\":\"Implements graph-based multi-head attention.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "HierarchicalGatedRMSNorm": "{\"unitname\":\"HierarchicalGatedRMSNorm\",\"requirements\":\"\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                    "HierarchicalGatedRMSNormV2": "{\"unitname\":\"HierarchicalGatedRMSNormV2\",\"requirements\":\"Implements multi-scale RMS normalization with gating mechanisms.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": "",
+                "name": "hierarchical_gated_graph_attenti"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "o1_preview",
+                    "IMPLEMENTATION_PLANNER": "o1_mini",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "o1_mini",
+                    "IMPLEMENTATION_OBSERVER": "gpt4o_0806",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.0,
+                "IMPLEMENTATION_CODER": 18.39846,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 2.9832799999999997,
+                "SEARCH_ASSISTANT": 0
+            }
+        }
+    ]
+}

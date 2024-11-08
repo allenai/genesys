@@ -1,0 +1,30 @@
+{
+    "title": "gpt_2_arssm",
+    "acronym": "gpt_2_arssm",
+    "sess_id": "2024-11-01-17-39-12-aa3425",
+    "sess_snapshot": {
+        "ref_ids": [
+            "rwkv6_scankernel",
+            "sparsestatetttmodel",
+            "mamba",
+            "lkconv",
+            "humanepisodic",
+            "infinibench"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "gpt_2_ala"
+        ]
+    },
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

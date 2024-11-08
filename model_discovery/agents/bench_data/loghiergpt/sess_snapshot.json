@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hieraroute_gpt",
+        "adaptivespectralhierttt",
+        "recurattnnet",
+        "softmaxattn",
+        "selfextend",
+        "longt5"
+    ],
+    "proposed": [
+        "loghiergpt"
+    ],
+    "reranked": {
+        "rank": [
+            "loghiergpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hiergpt"
+    ]
+}

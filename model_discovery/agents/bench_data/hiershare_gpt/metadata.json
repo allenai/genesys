@@ -1,0 +1,30 @@
+{
+    "title": "HierShare-GPT: Efficient Parameter Sharing through Hierarchical Normalization",
+    "acronym": "hiershare_gpt",
+    "sess_id": "2024-11-03-15-15-00-e8e447",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hiercache_gpt",
+            "s3fasttttlinear",
+            "hyena",
+            "normalizedattn",
+            "flagembedding",
+            "elgllm"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hieranorm_attngpt"
+        ]
+    },
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

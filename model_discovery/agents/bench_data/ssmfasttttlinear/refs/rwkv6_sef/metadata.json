@@ -1,0 +1,31 @@
+{
+    "title": "RWKV6-SEF: Integrating Parameter-Efficient State Expansion into RWKV6FeedForward",
+    "acronym": "rwkv6_sef",
+    "sess_id": "2024-10-27-19-02-06-3eea2c",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "geogate_gpt",
+            "lightningtttlinear",
+            "liquids4",
+            "decimamba",
+            "transextra",
+            "mambamixer"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "rwkv6"
+        ]
+    },
+    "seed_ids": [
+        "rwkv6"
+    ]
+}

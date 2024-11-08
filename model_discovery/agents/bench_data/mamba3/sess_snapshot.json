@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "hiergpt",
+        "fasttttlinear",
+        "zebra",
+        "staircaseattn",
+        "mamba4gcn",
+        "trams"
+    ],
+    "proposed": [
+        "mamba3"
+    ],
+    "reranked": {
+        "rank": [
+            "mamba3"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "mamba2"
+    ]
+}

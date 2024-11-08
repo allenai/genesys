@@ -1,0 +1,30 @@
+{
+    "title": "SSMFastTTTLinear: Efficient Test-Time Adaptation through State Space Duality",
+    "acronym": "ssmftt",
+    "sess_id": "2024-10-31-01-07-35-ad0ae5",
+    "sess_snapshot": {
+        "ref_ids": [
+            "adaptivesparselm",
+            "selectivegpt",
+            "sinkhorn",
+            "linllms",
+            "d3pms",
+            "s4pp"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hierarchicalfastttt"
+        ]
+    },
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

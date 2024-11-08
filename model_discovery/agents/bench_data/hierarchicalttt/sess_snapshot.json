@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "castl",
+        "adaptivettt_1",
+        "kangpt",
+        "longheads",
+        "pose",
+        "kanmlp"
+    ],
+    "proposed": [
+        "hierarchicalttt"
+    ],
+    "reranked": {
+        "rank": [
+            "hierarchicalttt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "blocksparseretnet",
+        "streaminggpt",
+        "infiniti",
+        "bptrans",
+        "elgllm",
+        "rrwkv"
+    ],
+    "proposed": [
+        "gpt_2_chla"
+    ],
+    "reranked": {
+        "rank": [
+            "gpt_2_chla"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

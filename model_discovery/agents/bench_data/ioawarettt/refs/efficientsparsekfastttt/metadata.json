@@ -1,0 +1,31 @@
+{
+    "title": "EfficientSPARSEKFastTTT: Integrating SPARSEK Attention into FastTTTLinear for Efficient Long-Context Language Modeling",
+    "acronym": "efficientsparsekfastttt",
+    "sess_id": "2024-10-28-10-01-53-60e2d4",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "rwkv6_event",
+            "matrixfreeadaptivelm",
+            "gqa",
+            "sparsetransformer",
+            "scalelawrope",
+            "moa"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "fasttttlinear"
+        ]
+    },
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

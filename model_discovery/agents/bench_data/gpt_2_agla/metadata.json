@@ -1,0 +1,30 @@
+{
+    "title": "AdaptiveGranularityLinearAttention: Enhancing Linear Attention with Dynamic Granularity Control and Hardware-Efficient State Transitions",
+    "acronym": "gpt_2_agla",
+    "sess_id": "2024-11-04-23-21-52-5cb1fa",
+    "sess_snapshot": {
+        "ref_ids": [
+            "memhiergpt",
+            "blocksparseretnet",
+            "gateloop",
+            "hgrn2",
+            "deepwienerssm",
+            "transnormerllm"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "gpt_2_chla"
+        ]
+    },
+    "seed_ids": [
+        "gpt_2_chla"
+    ]
+}

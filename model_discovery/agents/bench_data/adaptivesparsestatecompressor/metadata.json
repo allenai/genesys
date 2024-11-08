@@ -1,0 +1,30 @@
+{
+    "title": "AdaptiveSparseStateCompressor",
+    "acronym": "adaptivesparsestatecompressor",
+    "sess_id": "2024-11-04-10-03-34-727fa1",
+    "sess_snapshot": {
+        "ref_ids": [
+            "hierarchicalgatedsparselm",
+            "sparsemodulargpt",
+            "hopfield",
+            "fastr2d2",
+            "xl3m",
+            "extensibleembed"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "sparsestategau"
+        ]
+    },
+    "seed_ids": [
+        "sparsestategau"
+    ]
+}

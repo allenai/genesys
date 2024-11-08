@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hiergatedttt",
+        "adaptivesparselm_1",
+        "hydra",
+        "lkconv",
+        "hiddenattnmamba",
+        "transformerfam"
+    ],
+    "proposed": [
+        "adaptivehybridgpt"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivehybridgpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt2"
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "hierretnet",
+        "odeadaptgpt",
+        "alibi",
+        "flowformer",
+        "approxdiag",
+        "infinibench"
+    ],
+    "proposed": [
+        "hardwareefficientgpt"
+    ],
+    "reranked": {
+        "rank": [
+            "hardwareefficientgpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

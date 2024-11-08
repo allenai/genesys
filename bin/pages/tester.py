@@ -4,6 +4,7 @@ import time
 import streamlit as st
 import sys,os
 import random
+import shutil
 sys.path.append('.')
 
 import model_discovery.utils as U
@@ -25,6 +26,7 @@ import tiktoken
 import anthropic
 
 from model_discovery.agents.agent_utils import *
+import model_discovery.utils as U
 
 
 
@@ -102,6 +104,43 @@ def tester(evosys,project_dir):
         st.subheader(f'Evaluation scores under `14M`')
         st.dataframe(df.style.highlight_max(axis=0,color='violet'),use_container_width=True)
 
+    
+    da = evosys.ptree.filter_by_type(['DesignArtifactImplemented'])
+    ds = evosys.ptree.filter_by_type(['DesignArtifact'])
+    random.seed(42)
+    da_100 = random.sample(da,100)
+
+    benchmark_data_dir = U.pjoin(project_dir,'model_discovery','agents','bench_data')
+    if not U.pexists(benchmark_data_dir):
+        U.mkdir(benchmark_data_dir)
+    for design in da_100:
+        ndir = U.pjoin(evosys.evo_dir,'db','designs',design)
+        ddir = U.pjoin(benchmark_data_dir,design)
+        if not U.pexists(ddir):
+            U.mkdir(ddir)
+        if not U.pexists(U.pjoin(ddir,'proposal.json')):
+            shutil.copy(U.pjoin(ndir,'proposal.json'),U.pjoin(ddir,'proposal.json'))
+        if not U.pexists(U.pjoin(ddir,'metadata.json')):
+            shutil.copy(U.pjoin(ndir,'metadata.json'),U.pjoin(ddir,'metadata.json'))
+        metadata = U.load_json(U.pjoin(ddir,'metadata.json'))
+        sess_snapshot = metadata['sess_snapshot']
+        if not U.pexists(U.pjoin(ddir,'sess_snapshot.json')):
+            sess_snapshot['proposed'] = [design]
+            sess_snapshot['reranked'] = {'rank':[design]}
+            U.save_json(sess_snapshot,U.pjoin(ddir,'sess_snapshot.json'))
+        seed_ids = sess_snapshot['seed_ids']
+        ref_ids = sess_snapshot['ref_ids']
+        seeds_dir = U.pjoin(ddir,'seeds')
+        for seed_id in seed_ids:
+            if seed_id in da+ds:
+                if not U.pexists(U.pjoin(seeds_dir,seed_id)):
+                    shutil.copytree(U.pjoin(evosys.evo_dir,'db','designs',seed_id),U.pjoin(seeds_dir,seed_id))
+        ref_dir = U.pjoin(ddir,'refs')
+        for ref_id in ref_ids:
+            if ref_id in da+ds:
+                if not U.pexists(U.pjoin(ref_dir,ref_id)):
+                    shutil.copytree(U.pjoin(evosys.evo_dir,'db','designs',ref_id),U.pjoin(ref_dir,ref_id))
+        
 
     # da = evosys.ptree.filter_by_type('DesignArtifact')
     # st.write(da)
@@ -127,29 +166,29 @@ def tester(evosys,project_dir):
 
     ##################### Debugging C Guard #####################
 
-    from model_discovery.agents.agent_utils import context_safe_guard,count_msg
+    # from model_discovery.agents.agent_utils import context_safe_guard,count_msg
 
-    def count_message(message,model_name):
-        return sum([count_msg(msg,model_name) for msg in message])
+    # def count_message(message,model_name):
+    #     return sum([count_msg(msg,model_name) for msg in message])
     
-    CKPT_DIR = os.environ['CKPT_DIR']
-    debug_dir = os.path.join(CKPT_DIR,'ctx_error_logs')
-    if not os.path.exists(debug_dir):
-        st.write('No debug records found')
-    else:
-        debug_records = []
-        for file in os.listdir(debug_dir):
-            debug_records.append(U.load_json(os.path.join(debug_dir,file)))
-        st.write(len(debug_records))
-        message = debug_records[1]
-        model_name = 'o1-preview'
-        st.write(count_message(message,model_name))
-        st.write(len(message))
-        message=context_safe_guard(message,model_name)
-        st.write(count_message(message,model_name))
-        st.write(len(message))
-        # for msg in message:
-        #     st.code(msg['content'][-100:])
+    # CKPT_DIR = os.environ['CKPT_DIR']
+    # debug_dir = os.path.join(CKPT_DIR,'ctx_error_logs')
+    # if not os.path.exists(debug_dir):
+    #     st.write('No debug records found')
+    # else:
+    #     debug_records = []
+    #     for file in os.listdir(debug_dir):
+    #         debug_records.append(U.load_json(os.path.join(debug_dir,file)))
+    #     st.write(len(debug_records))
+    #     message = debug_records[1]
+    #     model_name = 'o1-preview'
+    #     st.write(count_message(message,model_name))
+    #     st.write(len(message))
+    #     message=context_safe_guard(message,model_name)
+    #     st.write(count_message(message,model_name))
+    #     st.write(len(message))
+    #     # for msg in message:
+    #     #     st.code(msg['content'][-100:])
 
 
 

@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "streamretnet",
+        "hierarchicalcompressedlm",
+        "s5",
+        "hyena",
+        "d3pms",
+        "assparseattn"
+    ],
+    "proposed": [
+        "adaptivekvmetatransformer"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivekvmetatransformer"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

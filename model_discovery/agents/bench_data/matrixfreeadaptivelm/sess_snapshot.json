@@ -1,0 +1,28 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "rwkv6_sc",
+        "flashfftconv",
+        "ssmlayernonlin",
+        "ssmformal",
+        "kanmlp"
+    ],
+    "proposed": [
+        "matrixfreeadaptivelm"
+    ],
+    "reranked": {
+        "rank": [
+            "matrixfreeadaptivelm"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

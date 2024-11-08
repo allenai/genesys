@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivenormtransformer",
+        "swiglu_ssm",
+        "hippo",
+        "ssmlayernonlin",
+        "canmambaicl",
+        "maxmargin"
+    ],
+    "proposed": [
+        "spectralstatetransformer"
+    ],
+    "reranked": {
+        "rank": [
+            "spectralstatetransformer"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "meta_hierarchical_linear_transfo"
+    ]
+}

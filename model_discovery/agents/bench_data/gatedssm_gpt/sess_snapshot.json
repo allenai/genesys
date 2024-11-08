@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "spectralhierttt",
+        "ssmftt",
+        "lkconv",
+        "hyena",
+        "genanatooptdesign",
+        "hyenadistill"
+    ],
+    "proposed": [
+        "gatedssm_gpt"
+    ],
+    "reranked": {
+        "rank": [
+            "gatedssm_gpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hieranorm_attngpt"
+    ]
+}

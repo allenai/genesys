@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "geogate_gpt",
+        "lightningtttlinear",
+        "liquids4",
+        "decimamba",
+        "transextra",
+        "mambamixer"
+    ],
+    "proposed": [
+        "rwkv6_sef"
+    ],
+    "reranked": {
+        "rank": [
+            "rwkv6_sef"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "rwkv6"
+    ]
+}

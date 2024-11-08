@@ -5,6 +5,7 @@ import time
 import re
 import keyword
 import textwrap
+import shutil
 import torch
 import yaml
 import zipfile
@@ -362,4 +363,3 @@ def log_slow_model(design_id,time_elapsed,time_lower):
 def check_error_model(design_id):
     local_doc = read_local_doc()
     return design_id in local_doc.get('error_models',{})
-

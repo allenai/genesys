@@ -1,0 +1,29 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "gpt_2_ala",
+        "rwkv6_sef",
+        "lbcontextcompress",
+        "memcompress",
+        "gpt",
+        "smr"
+    ],
+    "proposed": [
+        "ssmfasttttlinear"
+    ],
+    "reranked": {
+        "rank": [
+            "ssmfasttttlinear"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

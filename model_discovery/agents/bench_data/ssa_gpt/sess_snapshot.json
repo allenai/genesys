@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "dynamicgatedconv",
+        "adaptivesparselm_1",
+        "flash",
+        "longhorn",
+        "mambalrp",
+        "coupledmamba"
+    ],
+    "proposed": [
+        "ssa_gpt"
+    ],
+    "reranked": {
+        "rank": [
+            "ssa_gpt"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

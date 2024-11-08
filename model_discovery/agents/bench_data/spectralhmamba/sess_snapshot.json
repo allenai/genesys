@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "maxlinretnet",
+        "ssmfasttttlinear",
+        "performer",
+        "memformer",
+        "polysketchformer",
+        "kanmlp"
+    ],
+    "proposed": [
+        "spectralhmamba"
+    ],
+    "reranked": {
+        "rank": [
+            "spectralhmamba"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalmamba"
+    ]
+}

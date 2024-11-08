@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaptivehierarchicalfastttt",
+        "dynamicsparsefftlm",
+        "memorizingtrans",
+        "decimamba",
+        "lighdynconv",
+        "maxmargin"
+    ],
+    "proposed": [
+        "adaptivefasttttlinear"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivefasttttlinear"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

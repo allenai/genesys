@@ -1,0 +1,27 @@
+{
+    "node_id": null,
+    "ref_ids": [
+        "compositionalattn",
+        "rwkv4",
+        "effibeam",
+        "ssmformal"
+    ],
+    "proposed": [
+        "adaretnet"
+    ],
+    "reranked": {
+        "rank": [
+            "adaretnet"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "retnet"
+    ]
+}

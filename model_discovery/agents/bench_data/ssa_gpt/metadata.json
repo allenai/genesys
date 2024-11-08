@@ -1,0 +1,30 @@
+{
+    "title": "SSA-GPT",
+    "acronym": "ssa_gpt",
+    "sess_id": "2024-10-30-19-32-22-1bad5e",
+    "sess_snapshot": {
+        "ref_ids": [
+            "dynamicgatedconv",
+            "adaptivesparselm_1",
+            "flash",
+            "longhorn",
+            "mambalrp",
+            "coupledmamba"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "gpt_2_ala"
+        ]
+    },
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

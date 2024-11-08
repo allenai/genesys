@@ -1,0 +1,30 @@
+{
+    "title": "HardwareEDVQ: Hardware-Optimized Event-Driven Vector Quantized Attention",
+    "acronym": "hardwareeventvq",
+    "sess_id": "2024-11-04-16-20-58-3db56b",
+    "sess_snapshot": {
+        "ref_ids": [
+            "adaptiveselectivettt_1",
+            "gatedfastttt",
+            "cosformer",
+            "scattn",
+            "diffusionlm",
+            "corm"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "eventvq"
+        ]
+    },
+    "seed_ids": [
+        "eventvq"
+    ]
+}

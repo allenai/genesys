@@ -1,0 +1,26 @@
+{
+    "ref_ids": [
+        "stateadaptivetransformer_1",
+        "hierstreamttt",
+        "gssm",
+        "lineartransformer",
+        "assparseattn",
+        "lightningattn"
+    ],
+    "proposed": [
+        "hybridstategate"
+    ],
+    "reranked": {
+        "rank": [
+            "hybridstategate"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Design from scratch",
+    "seed_ids": []
+}

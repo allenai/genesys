@@ -1,0 +1,1088 @@
+{
+    "implementation": {
+        "review": null,
+        "root": "RetNet",
+        "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+        "proposal_traces": [],
+        "rating": null,
+        "declares": {
+            "TileManager": "{\"unitname\":\"TileManager\",\"requirements\":\"Handles IO-aware tiling for efficient memory access.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+            "RetNetMLP_v2": "{\"unitname\":\"RetNetMLP_v2\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+            "TileManager_v2": "{\"unitname\":\"TileManager_v2\",\"requirements\":\"Implements adaptive tiling mechanism for efficient memory access.\",\"inputs\":[\"X\"],\"outputs\":[\"tiled_output\"]}",
+            "AdaptiveKVCache": "{\"unitname\":\"AdaptiveKVCache\",\"requirements\":\"Manages intelligent caching of key-value pairs for streaming inference.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+            "StreamRetNetMLP": "{\"unitname\":\"StreamRetNetMLP\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+        },
+        "units": {
+            "MultiScaleRetention": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "hidden_size": null,
+                    "norm_eps": 1e-05,
+                    "num_heads": 8
+                },
+                "design_traces": null
+            },
+            "TileManager": {
+                "review": null,
+                "requirements": "Handles IO-aware tiling for efficient memory access.",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "tile_manager_test": "@gau_test\ndef test_TileManager_tile_manager_test(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    tile_size = 64\n    X = torch.randn(batch_size, seq_length, embed_dim, device=device, dtype\n        =dtype)\n\n    def compute_fn(tile, sink_attn):\n        return tile\n    sink_attn = torch.randn(batch_size, 4, embed_dim, device=device, dtype=\n        dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = TileManager(embed_dim=embed_dim, block_loc=block_loc, kwarg_all\n        =kwarg_all, device=device, dtype=dtype, tile_size=tile_size)\n    tiled_output, Z = model(X, compute_fn=compute_fn, sink_attn=sink_attn)\n    assert tiled_output.shape == X.shape, f'Output shape {tiled_output.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    print('TileManager unit test passed.')\n"
+                },
+                "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager(GAUBase):\n    \"\"\"\n    TileManager implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n\n    def _forward(self, X, compute_fn, sink_attn, **Z):\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"TileManager\",\"document\":\"TileManager implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "tile_size": 128
+                },
+                "design_traces": null
+            },
+            "RetNetMLP_v2": {
+                "review": "```rating 4.7```\n\n**Strengths of the Implementation:**\n\n1. **Successful Format and Functionality Checks:** The code passes both the format checker and the functionality checker, indicating that the implementation adheres to the required guidelines and integrates seamlessly into the larger model. This demonstrates attention to detail and a solid understanding of the GAU framework.\n\n2. **Effective Reuse of Existing Units:** By reusing the existing `AdaptiveKVCache` GAU and introducing a new `TileManager_v2`, the coder avoids duplication and potential conflicts with existing units. This approach enhances modularity and code maintainability.\n\n3. **Alignment with the Proposal:** The implementation closely follows the proposed design of integrating attention sink mechanisms, adaptive tiling, and selective KV caching into `RetNetMLP_v2`. The code effectively embodies the core ideas outlined in the proposal.\n\n4. **Comprehensive Documentation:** The docstrings provide clear and detailed explanations of the design ideas, arguments, inputs, and outputs for each class. This level of documentation aids in code readability and future maintenance.\n\n5. **Adherence to GAU Interface Guidelines:** The `_forward` methods correctly accept `X` and `**Z` as arguments, complying with the GAU interface specifications. The use of `Z` for passing intermediate variables like `sink_attn` demonstrates proper handling of state within the GAUs.\n\n6. **Modularity and Reusability:** The decomposition of complex functionality into smaller, reusable GAUs (`TileManager_v2` and `AdaptiveKVCache`) promotes modularity. This design facilitates easier testing, debugging, and potential future enhancements.\n\n**Areas for Improvement and Suggestions:**\n\n1. **Expand Unit Tests:**\n   - **Increase Coverage:** While the functionality checker passes, consider expanding the unit tests to cover more edge cases and stress scenarios. For example, test with varying sequence lengths, batch sizes, and different configurations of `sink_size` and `tile_size`.\n   - **Test Integration Points:** Include tests that verify the interaction between `RetNetMLP_v2` and its child GAUs to ensure that data flows correctly through the units.\n\n2. **Performance Optimization:**\n   - **Profiling:** Profile the code to identify any potential performance bottlenecks, especially in the `_compute_block` method and during tiling operations.\n   - **Memory Efficiency:** Assess memory usage during training and inference, particularly with long sequences, to ensure that the adaptive tiling mechanism efficiently manages resources.\n\n3. **Ensure Scalability:**\n   - **Stress Testing:** Conduct stress tests with larger models and datasets to verify that the implementation scales effectively without degradation in performance.\n   - **Parallelization:** Explore opportunities for parallel processing within the tiling mechanism to leverage multi-core processors or GPUs more effectively.\n\n4. **Robustness in Streaming Scenarios:**\n   - **Streaming Inference Tests:** Specifically test the model's performance in streaming inference scenarios to validate the benefits of attention sink integration and selective KV caching.\n   - **Cache Management:** Ensure that the `AdaptiveKVCache` efficiently manages memory over long sequences and does not introduce latency due to cache updates.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Innovative Mechanisms:** The integration of attention sinks and adaptive tiling represents a novel approach to improving memory efficiency and computational performance in language models. These mechanisms align with cutting-edge research in efficient model design.\n\n- **Potential for Enhanced Streaming Performance:** The selective KV caching mechanism is particularly impactful for streaming inference, as it intelligently manages memory by caching important key-value pairs, potentially reducing computational overhead.\n\n- **Scalability and Practical Deployment:** If the implementation proves robust and efficient, it could significantly contribute to making large language models more practical for real-world applications that require streaming and low-latency processing.\n\n**Recommendations for the Coder:**\n\n1. **Validate Functional Correctness:**\n   - Continue to rigorously test the implementation to ensure that it produces correct outputs across various inputs. Pay special attention to the correctness of the attention sink integration.\n\n2. **Optimize `TileManager_v2`:**\n   - Since `TileManager_v2` is a new GAU, closely inspect its implementation for efficiency. Ensure that the tiling operation does not introduce significant overhead and that concatenation operations are optimized.\n\n3. **Maintain Consistent Coding Standards:**\n   - Ensure that coding style and formatting are consistent across all GAUs. This includes adhering to naming conventions, indentation, and code readability practices.\n\n4. **Document Any Assumptions:**\n   - Clearly document any assumptions made in the implementation, such as expected input shapes, data types, or behaviors of the attention sink tokens.\n\n5. **Prepare for Future Extensions:**\n   - Consider how the current design can be extended or modified in the future. For instance, think about parameterizing certain aspects to allow for dynamic adjustment based on different workloads or hardware capabilities.\n\n6. **Collaborate with the Team:**\n   - Share your implementation and findings with the rest of the team to gather feedback and ensure that your work aligns with the overall project objectives.\n\n**Conclusion:**\n\nThe coder has delivered a strong implementation that aligns well with the proposed design and demonstrates a high level of proficiency in model development. By addressing the minor areas for improvement, particularly in expanding unit tests and optimizing performance, the coder can further enhance the quality and robustness of the implementation. The innovative features introduced have the potential to significantly impact the efficiency and scalability of streaming language models within the project.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_retnet_mlp_v2": "@gau_test\ndef test_RetNetMLP_v2_test_retnet_mlp_v2(device=None, dtype=None) ->None:\n    batch_size = 2\n    seq_len = 256\n    embed_dim = 512\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    Z = {}\n    model = RetNetMLP_v2(embed_dim=embed_dim, block_loc=(0, 1), kwarg_all={\n        }, device=device, dtype=dtype)\n    Y, Z_out = model(X, **Z)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, got {Y.shape}'\n    assert isinstance(Z_out, dict), 'Z_out should be a dict'\n    print('RetNetMLP_v2 unit test passed.')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass RetNetMLP_v2(GAUBase):\n    \"\"\"\n    RetNetMLP_v2 is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    **Design Idea**:\n    RetNetMLP_v2 enhances the original RetNetMLP by integrating attention sinks and adaptive tiling,\n    which improves memory efficiency and computational performance during streaming inference.\n    The unit reuses the existing `AdaptiveKVCache` GAU and introduces a new `TileManager_v2` GAU.\n\n    **Args**:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    **Inputs**:\n        X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\n\n    **Outputs**:\n        Y: Output sequence embeddings of the same shape as X.\n        Z: Updated intermediate variables.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(self.sink_size, self.\n            embed_dim, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.embed_dim, self.embed_dim * 4, bias\n            =False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.embed_dim * 2, self.embed_dim, bias\n            =False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager_v2(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        Z_with_sink = dict(Z)\n        Z_with_sink['sink_attn'] = sink_attn\n        tiled_output, Z_tile = self.tile_manager(X, **Z_with_sink)\n        Y_kv, Z_kv = self.kv_cache(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                "rating": 4.7,
+                "spec": "{\"unitname\":\"RetNetMLP_v2\",\"document\":\"RetNetMLP_v2 is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\n**Design Idea**:\\nRetNetMLP_v2 enhances the original RetNetMLP by integrating attention sinks and adaptive tiling,\\nwhich improves memory efficiency and computational performance during streaming inference.\\nThe unit reuses the existing `AdaptiveKVCache` GAU and introduces a new `TileManager_v2` GAU.\\n\\n**Args**:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\\n\\n**Inputs**:\\n    X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\\n\\n**Outputs**:\\n    Y: Output sequence embeddings of the same shape as X.\\n    Z: Updated intermediate variables.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                "children": [
+                    "TileManager_v2",
+                    "AdaptiveKVCache"
+                ],
+                "suggestions": null,
+                "args": {
+                    "sink_size": 4,
+                    "tile_size": 128
+                },
+                "design_traces": null
+            },
+            "RetNet": {
+                "review": null,
+                "requirements": null,
+                "reuse_from": null,
+                "desc": "\n",
+                "gautests": {
+                    "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = StreamRetNetMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "MultiScaleRetention",
+                    "StreamRetNetMLP"
+                ],
+                "suggestions": null,
+                "args": {
+                    "norm_eps": 1e-06
+                },
+                "design_traces": null
+            },
+            "StreamRetNetMLP": {
+                "review": "```rating 5.0```\n\n**Strengths of the Implementation:**\n\n- **Full Compliance with the Proposal:**\n  - The implementation successfully incorporates the attention sink integration, adaptive tiling, and selective KV caching mechanisms as outlined in the proposal. This demonstrates a thorough understanding of the intended design improvements.\n\n- **Passing All Checks:**\n  - The code passes both the format checker and the functionality checker, indicating adherence to coding standards and confirming that the implementation functions correctly within the larger model.\n\n- **Comprehensive Documentation:**\n  - Detailed docstrings are provided for each class (`StreamRetNetMLP`, `TileManager`, `AdaptiveKVCache`), clearly explaining their purpose, arguments, and functionality. This enhances readability and maintainability.\n\n- **Effective Unit Testing:**\n  - All unit tests pass, demonstrating that each component functions correctly in isolation and adheres to expected interfaces. This aids in ensuring reliability and ease of future maintenance.\n\n- **Modular and Scalable Design:**\n  - By decomposing the GAU into smaller units (`TileManager`, `AdaptiveKVCache`), the implementation promotes modularity, making it easier to scale and integrate into larger models.\n\n- **Innovation Realized:**\n  - The implementation effectively realizes the innovative aspects of the proposal, potentially leading to performance improvements in streaming inference scenarios.\n\n**Areas for Improvement and Specific Suggestions:**\n\nWhile the implementation is strong, there are minor areas that could be refined:\n\n1. **Enhance Inline Comments:**\n\n   - **Suggestion:**\n     - While docstrings are comprehensive, adding more inline comments within complex methods (e.g., `_forward` methods) can further improve code clarity.\n\n2. **Parameter Initialization:**\n\n   - **Suggestion:**\n     - Review the initialization of parameters, especially for the `importance_estimator` in `AdaptiveKVCache`. Consider initializing weights with methods like Xavier or Kaiming initialization to potentially improve learning performance.\n\n3. **Optimize Tiling Mechanism:**\n\n   - **Suggestion:**\n     - Evaluate the `TileManager`\u2019s tiling strategy to ensure it maximizes memory efficiency without introducing significant computational overhead. Profiling the code may reveal opportunities for optimization.\n\n4. **Expand Unit Tests:**\n\n   - **Suggestion:**\n     - Incorporate additional unit tests to cover edge cases, such as varying `sink_size` and `tile_size`, extreme sequence lengths, or batch sizes. This helps to ensure robustness across different usage scenarios.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Effective Implementation of Proposed Innovations:**\n  - The attention sink mechanism and adaptive tiling are promising strategies for improving memory efficiency and computational performance in streaming inference.\n\n- **Scalability:**\n  - The design should enhance the model's ability to handle long sequences and large-scale data efficiently, aligning with the goal of better scalability.\n\n- **Potential Performance Gains:**\n  - By reducing memory overhead and optimizing computation, the implementation may lead to faster inference times and lower resource consumption, which is crucial for real-world applications.\n\n- **Foundation for Future Work:**\n  - The modular design allows for future enhancements, such as experimenting with different importance estimation strategies in `AdaptiveKVCache` or further tuning of hyperparameters for optimal performance.\n\n**Recommendations for the Coder:**\n\n1. **Monitor Performance Metrics:**\n\n   - After integrating the GAU into the larger model, monitor key performance indicators such as training speed, inference latency, memory usage, and model accuracy to validate the expected efficiency gains.\n\n2. **Experiment with Hyperparameters:**\n\n   - Explore the impact of different values for `sink_size`, `tile_size`, and `threshold` in `AdaptiveKVCache` on model performance. This can help in fine-tuning the model for specific applications.\n\n3. **Documentation of Observations:**\n\n   - Document any observations regarding the performance improvements or challenges encountered during integration and testing. This information can be valuable for future development and for sharing insights with the team.\n\n4. **Code Maintenance:**\n\n   - Continue to ensure that the codebase remains clean, well-documented, and adherent to best practices. Regular code reviews can help maintain code quality.\n\n5. **Collaboration and Feedback:**\n\n   - Engage with other team members to share findings and gather feedback. Collaborative discussions can lead to further enhancements and innovative ideas.\n\n**Conclusion:**\n\nThe implementation is excellent, effectively translating the proposal into a functional and efficient GAU. By addressing minor areas for improvement and focusing on performance validation, the coder has delivered a high-quality component that enhances the language model's capabilities. The innovative approaches incorporated have the potential to significantly impact the model's performance, particularly in streaming inference scenarios.",
+                "requirements": "N/A",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "stream_retnet_mlp_test": "@gau_test\ndef test_StreamRetNetMLP_stream_retnet_mlp_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = StreamRetNetMLP(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype, sink_size=4,\n        tile_size=64)\n    Y, Z = model(X)\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    loss = Y.sum()\n    loss.backward()\n    for name, param in model.named_parameters():\n        if 'importance_estimator' in name:\n            assert param.grad is not None, f'Parameter {name} has no gradient'\n    print('StreamRetNetMLP unit test passed.')\n"
+                },
+                "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass StreamRetNetMLP(GAUBase):\n    \"\"\"\n    StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(sink_size, self.\n            hidden_size, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.hidden_size, self.hidden_size * 4,\n            bias=False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.hidden_size * 2, self.hidden_size,\n            bias=False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        tiled_output, Z_tile = self.tile_manager.forward(X, compute_fn=self\n            ._compute_block, sink_attn=sink_attn, **Z)\n        Y_kv, Z_kv = self.kv_cache.forward(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                "rating": 5.0,
+                "spec": "{\"unitname\":\"StreamRetNetMLP\",\"document\":\"StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                "children": [
+                    "TileManager",
+                    "AdaptiveKVCache"
+                ],
+                "suggestions": null,
+                "args": {
+                    "sink_size": 4,
+                    "tile_size": 128
+                },
+                "design_traces": null
+            },
+            "TileManager_v2": {
+                "review": null,
+                "requirements": "Implements adaptive tiling mechanism for efficient memory access.",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "test_tile_manager_v2": "@gau_test\ndef test_TileManager_v2_test_tile_manager_v2(device=None, dtype=None):\n    batch_size = 2\n    seq_len = 256\n    embed_dim = 512\n    tile_size = 64\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    sink_size = 4\n    sink_tokens = torch.randn(batch_size, sink_size, embed_dim, device=\n        device, dtype=dtype)\n\n    def dummy_compute_fn(tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        output = combined[:, sink_size:, :]\n        return output\n    Z = {'sink_attn': sink_tokens}\n    model = TileManager_v2(embed_dim=embed_dim, block_loc=(0, 1), kwarg_all\n        ={}, tile_size=tile_size, compute_fn=dummy_compute_fn, device=\n        device, dtype=dtype)\n    tiled_output, Z_out = model(X, **Z)\n    assert tiled_output.shape == X.shape, f'Expected output shape {X.shape}, got {tiled_output.shape}'\n    assert isinstance(Z_out, dict), 'Z_out should be a dict'\n    print('TileManager_v2 unit test passed.')\n"
+                },
+                "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager_v2(GAUBase):\n    \"\"\"\n    TileManager_v2 implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    **Design Idea**:\n    TileManager_v2 splits the input sequence into smaller tiles to enable efficient processing,\n    reducing memory overhead and optimizing computational resources. The compute function is stored\n    as an instance variable, and 'sink_attn' is retrieved from Z.\n\n    **Args**:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n        compute_fn (callable): Function to compute the output of each tile.\n\n    **Inputs**:\n        X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\n        Z: Dictionary containing intermediate variables, expects 'sink_attn'.\n\n    **Outputs**:\n        tiled_output: Output sequence embeddings after processing tiles.\n        Z: Updated intermediate variables.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, compute_fn=None, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n        self.compute_fn = compute_fn\n\n    def _forward(self, X, **Z):\n        sink_attn = Z.get('sink_attn', None)\n        if sink_attn is None:\n            raise ValueError('sink_attn not found in Z')\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = self.compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"TileManager_v2\",\"document\":\"TileManager_v2 implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\n**Design Idea**:\\nTileManager_v2 splits the input sequence into smaller tiles to enable efficient processing,\\nreducing memory overhead and optimizing computational resources. The compute function is stored\\nas an instance variable, and 'sink_attn' is retrieved from Z.\\n\\n**Args**:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\\n    compute_fn (callable): Function to compute the output of each tile.\\n\\n**Inputs**:\\n    X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\\n    Z: Dictionary containing intermediate variables, expects 'sink_attn'.\\n\\n**Outputs**:\\n    tiled_output: Output sequence embeddings after processing tiles.\\n    Z: Updated intermediate variables.\",\"inputs\":[\"X\"],\"outputs\":[\"tiled_output\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "compute_fn": null,
+                    "tile_size": 128
+                },
+                "design_traces": null
+            },
+            "AdaptiveKVCache": {
+                "review": null,
+                "requirements": "Manages intelligent caching of key-value pairs for efficient streaming inference.",
+                "reuse_from": null,
+                "desc": null,
+                "gautests": {
+                    "adaptive_kv_cache_test": "@gau_test\ndef test_AdaptiveKVCache_adaptive_kv_cache_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = AdaptiveKVCache(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = model(X)\n    assert 'kv_cache' in Z, 'kv_cache not found in Z'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    loss = Y.sum()\n    loss.backward()\n    assert model.importance_estimator.weight.grad is not None, 'No gradient for importance_estimator.weight'\n    assert model.importance_estimator.bias.grad is not None, 'No gradient for importance_estimator.bias'\n    print('AdaptiveKVCache unit test passed.')\n"
+                },
+                "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\n\n\nclass AdaptiveKVCache(GAUBase):\n    \"\"\"\n    AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\n    It updates the cache based on the importance of the input.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, threshold: float=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.importance_estimator = nn.Linear(embed_dim, 1, **self.\n            factory_kwargs)\n        self.threshold = threshold\n\n    def _forward(self, X, **Z):\n        scores = self.importance_estimator(X)\n        scores = torch.sigmoid(scores)\n        mask = scores > self.threshold\n        if 'kv_cache' in Z:\n            cache = Z['kv_cache']\n        else:\n            cache = []\n        cache_entries = []\n        for b in range(X.size(0)):\n            selected = X[b][mask[b].squeeze(-1)]\n            cache_entries.append(selected)\n        if cache_entries:\n            cache.append(cache_entries)\n            Z_ = {'kv_cache': cache}\n        else:\n            Z_ = Z\n        Y = X * scores\n        return Y, Z_\n",
+                "rating": null,
+                "spec": "{\"unitname\":\"AdaptiveKVCache\",\"document\":\"AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\\nIt updates the cache based on the importance of the input.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                "children": [],
+                "suggestions": null,
+                "args": {
+                    "threshold": 0.5
+                },
+                "design_traces": null
+            }
+        },
+        "suggestions": null,
+        "name": "streamretnet"
+    },
+    "status": "implemented",
+    "history": [
+        {
+            "tree": {
+                "review": null,
+                "root": "RetNet",
+                "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+                "units": {
+                    "MultiScaleRetention": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "hidden_size": null,
+                            "norm_eps": 1e-05,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "TileManager": {
+                        "review": null,
+                        "requirements": "Handles IO-aware tiling for efficient memory access.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "tile_manager_test": "@gau_test\ndef test_TileManager_tile_manager_test(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    tile_size = 64\n    X = torch.randn(batch_size, seq_length, embed_dim, device=device, dtype\n        =dtype)\n\n    def compute_fn(tile, sink_attn):\n        return tile\n    sink_attn = torch.randn(batch_size, 4, embed_dim, device=device, dtype=\n        dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = TileManager(embed_dim=embed_dim, block_loc=block_loc, kwarg_all\n        =kwarg_all, device=device, dtype=dtype, tile_size=tile_size)\n    tiled_output, Z = model(X, compute_fn=compute_fn, sink_attn=sink_attn)\n    assert tiled_output.shape == X.shape, f'Output shape {tiled_output.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    print('TileManager unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager(GAUBase):\n    \"\"\"\n    TileManager implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n\n    def _forward(self, X, compute_fn, sink_attn, **Z):\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"TileManager\",\"document\":\"TileManager implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "RetNet": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = StreamRetNetMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "MultiScaleRetention",
+                            "StreamRetNetMLP"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "norm_eps": 1e-06
+                        },
+                        "design_traces": null
+                    },
+                    "AdaptiveKVCache": {
+                        "review": null,
+                        "requirements": "Manages intelligent caching of key-value pairs for efficient streaming inference.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "adaptive_kv_cache_test": "@gau_test\ndef test_AdaptiveKVCache_adaptive_kv_cache_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = AdaptiveKVCache(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = model(X)\n    assert 'kv_cache' in Z, 'kv_cache not found in Z'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    loss = Y.sum()\n    loss.backward()\n    assert model.importance_estimator.weight.grad is not None, 'No gradient for importance_estimator.weight'\n    assert model.importance_estimator.bias.grad is not None, 'No gradient for importance_estimator.bias'\n    print('AdaptiveKVCache unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\n\n\nclass AdaptiveKVCache(GAUBase):\n    \"\"\"\n    AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\n    It updates the cache based on the importance of the input.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, threshold: float=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.importance_estimator = nn.Linear(embed_dim, 1, **self.\n            factory_kwargs)\n        self.threshold = threshold\n\n    def _forward(self, X, **Z):\n        scores = self.importance_estimator(X)\n        scores = torch.sigmoid(scores)\n        mask = scores > self.threshold\n        if 'kv_cache' in Z:\n            cache = Z['kv_cache']\n        else:\n            cache = []\n        cache_entries = []\n        for b in range(X.size(0)):\n            selected = X[b][mask[b].squeeze(-1)]\n            cache_entries.append(selected)\n        if cache_entries:\n            cache.append(cache_entries)\n            Z_ = {'kv_cache': cache}\n        else:\n            Z_ = Z\n        Y = X * scores\n        return Y, Z_\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"AdaptiveKVCache\",\"document\":\"AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\\nIt updates the cache based on the importance of the input.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "threshold": 0.5
+                        },
+                        "design_traces": null
+                    },
+                    "StreamRetNetMLP": {
+                        "review": "```rating 5.0```\n\n**Strengths of the Implementation:**\n\n- **Full Compliance with the Proposal:**\n  - The implementation successfully incorporates the attention sink integration, adaptive tiling, and selective KV caching mechanisms as outlined in the proposal. This demonstrates a thorough understanding of the intended design improvements.\n\n- **Passing All Checks:**\n  - The code passes both the format checker and the functionality checker, indicating adherence to coding standards and confirming that the implementation functions correctly within the larger model.\n\n- **Comprehensive Documentation:**\n  - Detailed docstrings are provided for each class (`StreamRetNetMLP`, `TileManager`, `AdaptiveKVCache`), clearly explaining their purpose, arguments, and functionality. This enhances readability and maintainability.\n\n- **Effective Unit Testing:**\n  - All unit tests pass, demonstrating that each component functions correctly in isolation and adheres to expected interfaces. This aids in ensuring reliability and ease of future maintenance.\n\n- **Modular and Scalable Design:**\n  - By decomposing the GAU into smaller units (`TileManager`, `AdaptiveKVCache`), the implementation promotes modularity, making it easier to scale and integrate into larger models.\n\n- **Innovation Realized:**\n  - The implementation effectively realizes the innovative aspects of the proposal, potentially leading to performance improvements in streaming inference scenarios.\n\n**Areas for Improvement and Specific Suggestions:**\n\nWhile the implementation is strong, there are minor areas that could be refined:\n\n1. **Enhance Inline Comments:**\n\n   - **Suggestion:**\n     - While docstrings are comprehensive, adding more inline comments within complex methods (e.g., `_forward` methods) can further improve code clarity.\n\n2. **Parameter Initialization:**\n\n   - **Suggestion:**\n     - Review the initialization of parameters, especially for the `importance_estimator` in `AdaptiveKVCache`. Consider initializing weights with methods like Xavier or Kaiming initialization to potentially improve learning performance.\n\n3. **Optimize Tiling Mechanism:**\n\n   - **Suggestion:**\n     - Evaluate the `TileManager`\u2019s tiling strategy to ensure it maximizes memory efficiency without introducing significant computational overhead. Profiling the code may reveal opportunities for optimization.\n\n4. **Expand Unit Tests:**\n\n   - **Suggestion:**\n     - Incorporate additional unit tests to cover edge cases, such as varying `sink_size` and `tile_size`, extreme sequence lengths, or batch sizes. This helps to ensure robustness across different usage scenarios.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Effective Implementation of Proposed Innovations:**\n  - The attention sink mechanism and adaptive tiling are promising strategies for improving memory efficiency and computational performance in streaming inference.\n\n- **Scalability:**\n  - The design should enhance the model's ability to handle long sequences and large-scale data efficiently, aligning with the goal of better scalability.\n\n- **Potential Performance Gains:**\n  - By reducing memory overhead and optimizing computation, the implementation may lead to faster inference times and lower resource consumption, which is crucial for real-world applications.\n\n- **Foundation for Future Work:**\n  - The modular design allows for future enhancements, such as experimenting with different importance estimation strategies in `AdaptiveKVCache` or further tuning of hyperparameters for optimal performance.\n\n**Recommendations for the Coder:**\n\n1. **Monitor Performance Metrics:**\n\n   - After integrating the GAU into the larger model, monitor key performance indicators such as training speed, inference latency, memory usage, and model accuracy to validate the expected efficiency gains.\n\n2. **Experiment with Hyperparameters:**\n\n   - Explore the impact of different values for `sink_size`, `tile_size`, and `threshold` in `AdaptiveKVCache` on model performance. This can help in fine-tuning the model for specific applications.\n\n3. **Documentation of Observations:**\n\n   - Document any observations regarding the performance improvements or challenges encountered during integration and testing. This information can be valuable for future development and for sharing insights with the team.\n\n4. **Code Maintenance:**\n\n   - Continue to ensure that the codebase remains clean, well-documented, and adherent to best practices. Regular code reviews can help maintain code quality.\n\n5. **Collaboration and Feedback:**\n\n   - Engage with other team members to share findings and gather feedback. Collaborative discussions can lead to further enhancements and innovative ideas.\n\n**Conclusion:**\n\nThe implementation is excellent, effectively translating the proposal into a functional and efficient GAU. By addressing minor areas for improvement and focusing on performance validation, the coder has delivered a high-quality component that enhances the language model's capabilities. The innovative approaches incorporated have the potential to significantly impact the model's performance, particularly in streaming inference scenarios.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "stream_retnet_mlp_test": "@gau_test\ndef test_StreamRetNetMLP_stream_retnet_mlp_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = StreamRetNetMLP(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype, sink_size=4,\n        tile_size=64)\n    Y, Z = model(X)\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    loss = Y.sum()\n    loss.backward()\n    for name, param in model.named_parameters():\n        if 'importance_estimator' in name:\n            assert param.grad is not None, f'Parameter {name} has no gradient'\n    print('StreamRetNetMLP unit test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass StreamRetNetMLP(GAUBase):\n    \"\"\"\n    StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(sink_size, self.\n            hidden_size, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.hidden_size, self.hidden_size * 4,\n            bias=False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.hidden_size * 2, self.hidden_size,\n            bias=False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        tiled_output, Z_tile = self.tile_manager.forward(X, compute_fn=self\n            ._compute_block, sink_attn=sink_attn, **Z)\n        Y_kv, Z_kv = self.kv_cache.forward(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                        "rating": 5.0,
+                        "spec": "{\"unitname\":\"StreamRetNetMLP\",\"document\":\"StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "TileManager",
+                            "AdaptiveKVCache"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "sink_size": 4,
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "TileManager": "{\"unitname\":\"TileManager\",\"requirements\":\"Handles IO-aware tiling for efficient memory access.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                    "AdaptiveKVCache": "{\"unitname\":\"AdaptiveKVCache\",\"requirements\":\"Manages intelligent caching of key-value pairs for efficient streaming inference.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                    "StreamRetNetMLP": "{\"unitname\":\"StreamRetNetMLP\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "streamretnet"
+            },
+            "user_input": "",
+            "status": "unfinished",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "gpt4o_0806",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "gpt4o_0806",
+                    "IMPLEMENTATION_OBSERVER": "o1_preview",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.0356925,
+                "IMPLEMENTATION_CODER": 3.250305,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 2.938335,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": null,
+                "root": "RetNet",
+                "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+                "units": {
+                    "MultiScaleRetention": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "hidden_size": null,
+                            "norm_eps": 1e-05,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "TileManager": {
+                        "review": null,
+                        "requirements": "Handles IO-aware tiling for efficient memory access.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "tile_manager_test": "@gau_test\ndef test_TileManager_tile_manager_test(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    tile_size = 64\n    X = torch.randn(batch_size, seq_length, embed_dim, device=device, dtype\n        =dtype)\n\n    def compute_fn(tile, sink_attn):\n        return tile\n    sink_attn = torch.randn(batch_size, 4, embed_dim, device=device, dtype=\n        dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = TileManager(embed_dim=embed_dim, block_loc=block_loc, kwarg_all\n        =kwarg_all, device=device, dtype=dtype, tile_size=tile_size)\n    tiled_output, Z = model(X, compute_fn=compute_fn, sink_attn=sink_attn)\n    assert tiled_output.shape == X.shape, f'Output shape {tiled_output.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    print('TileManager unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager(GAUBase):\n    \"\"\"\n    TileManager implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n\n    def _forward(self, X, compute_fn, sink_attn, **Z):\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"TileManager\",\"document\":\"TileManager implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "RetNet": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = StreamRetNetMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "MultiScaleRetention",
+                            "StreamRetNetMLP"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "norm_eps": 1e-06
+                        },
+                        "design_traces": null
+                    },
+                    "AdaptiveKVCache": {
+                        "review": null,
+                        "requirements": "Manages intelligent caching of key-value pairs for efficient streaming inference.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "adaptive_kv_cache_test": "@gau_test\ndef test_AdaptiveKVCache_adaptive_kv_cache_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = AdaptiveKVCache(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = model(X)\n    assert 'kv_cache' in Z, 'kv_cache not found in Z'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    loss = Y.sum()\n    loss.backward()\n    assert model.importance_estimator.weight.grad is not None, 'No gradient for importance_estimator.weight'\n    assert model.importance_estimator.bias.grad is not None, 'No gradient for importance_estimator.bias'\n    print('AdaptiveKVCache unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\n\n\nclass AdaptiveKVCache(GAUBase):\n    \"\"\"\n    AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\n    It updates the cache based on the importance of the input.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, threshold: float=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.importance_estimator = nn.Linear(embed_dim, 1, **self.\n            factory_kwargs)\n        self.threshold = threshold\n\n    def _forward(self, X, **Z):\n        scores = self.importance_estimator(X)\n        scores = torch.sigmoid(scores)\n        mask = scores > self.threshold\n        if 'kv_cache' in Z:\n            cache = Z['kv_cache']\n        else:\n            cache = []\n        cache_entries = []\n        for b in range(X.size(0)):\n            selected = X[b][mask[b].squeeze(-1)]\n            cache_entries.append(selected)\n        if cache_entries:\n            cache.append(cache_entries)\n            Z_ = {'kv_cache': cache}\n        else:\n            Z_ = Z\n        Y = X * scores\n        return Y, Z_\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"AdaptiveKVCache\",\"document\":\"AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\\nIt updates the cache based on the importance of the input.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "threshold": 0.5
+                        },
+                        "design_traces": null
+                    },
+                    "StreamRetNetMLP": {
+                        "review": "```rating 5.0```\n\n**Strengths of the Implementation:**\n\n- **Full Compliance with the Proposal:**\n  - The implementation successfully incorporates the attention sink integration, adaptive tiling, and selective KV caching mechanisms as outlined in the proposal. This demonstrates a thorough understanding of the intended design improvements.\n\n- **Passing All Checks:**\n  - The code passes both the format checker and the functionality checker, indicating adherence to coding standards and confirming that the implementation functions correctly within the larger model.\n\n- **Comprehensive Documentation:**\n  - Detailed docstrings are provided for each class (`StreamRetNetMLP`, `TileManager`, `AdaptiveKVCache`), clearly explaining their purpose, arguments, and functionality. This enhances readability and maintainability.\n\n- **Effective Unit Testing:**\n  - All unit tests pass, demonstrating that each component functions correctly in isolation and adheres to expected interfaces. This aids in ensuring reliability and ease of future maintenance.\n\n- **Modular and Scalable Design:**\n  - By decomposing the GAU into smaller units (`TileManager`, `AdaptiveKVCache`), the implementation promotes modularity, making it easier to scale and integrate into larger models.\n\n- **Innovation Realized:**\n  - The implementation effectively realizes the innovative aspects of the proposal, potentially leading to performance improvements in streaming inference scenarios.\n\n**Areas for Improvement and Specific Suggestions:**\n\nWhile the implementation is strong, there are minor areas that could be refined:\n\n1. **Enhance Inline Comments:**\n\n   - **Suggestion:**\n     - While docstrings are comprehensive, adding more inline comments within complex methods (e.g., `_forward` methods) can further improve code clarity.\n\n2. **Parameter Initialization:**\n\n   - **Suggestion:**\n     - Review the initialization of parameters, especially for the `importance_estimator` in `AdaptiveKVCache`. Consider initializing weights with methods like Xavier or Kaiming initialization to potentially improve learning performance.\n\n3. **Optimize Tiling Mechanism:**\n\n   - **Suggestion:**\n     - Evaluate the `TileManager`\u2019s tiling strategy to ensure it maximizes memory efficiency without introducing significant computational overhead. Profiling the code may reveal opportunities for optimization.\n\n4. **Expand Unit Tests:**\n\n   - **Suggestion:**\n     - Incorporate additional unit tests to cover edge cases, such as varying `sink_size` and `tile_size`, extreme sequence lengths, or batch sizes. This helps to ensure robustness across different usage scenarios.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Effective Implementation of Proposed Innovations:**\n  - The attention sink mechanism and adaptive tiling are promising strategies for improving memory efficiency and computational performance in streaming inference.\n\n- **Scalability:**\n  - The design should enhance the model's ability to handle long sequences and large-scale data efficiently, aligning with the goal of better scalability.\n\n- **Potential Performance Gains:**\n  - By reducing memory overhead and optimizing computation, the implementation may lead to faster inference times and lower resource consumption, which is crucial for real-world applications.\n\n- **Foundation for Future Work:**\n  - The modular design allows for future enhancements, such as experimenting with different importance estimation strategies in `AdaptiveKVCache` or further tuning of hyperparameters for optimal performance.\n\n**Recommendations for the Coder:**\n\n1. **Monitor Performance Metrics:**\n\n   - After integrating the GAU into the larger model, monitor key performance indicators such as training speed, inference latency, memory usage, and model accuracy to validate the expected efficiency gains.\n\n2. **Experiment with Hyperparameters:**\n\n   - Explore the impact of different values for `sink_size`, `tile_size`, and `threshold` in `AdaptiveKVCache` on model performance. This can help in fine-tuning the model for specific applications.\n\n3. **Documentation of Observations:**\n\n   - Document any observations regarding the performance improvements or challenges encountered during integration and testing. This information can be valuable for future development and for sharing insights with the team.\n\n4. **Code Maintenance:**\n\n   - Continue to ensure that the codebase remains clean, well-documented, and adherent to best practices. Regular code reviews can help maintain code quality.\n\n5. **Collaboration and Feedback:**\n\n   - Engage with other team members to share findings and gather feedback. Collaborative discussions can lead to further enhancements and innovative ideas.\n\n**Conclusion:**\n\nThe implementation is excellent, effectively translating the proposal into a functional and efficient GAU. By addressing minor areas for improvement and focusing on performance validation, the coder has delivered a high-quality component that enhances the language model's capabilities. The innovative approaches incorporated have the potential to significantly impact the model's performance, particularly in streaming inference scenarios.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "stream_retnet_mlp_test": "@gau_test\ndef test_StreamRetNetMLP_stream_retnet_mlp_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = StreamRetNetMLP(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype, sink_size=4,\n        tile_size=64)\n    Y, Z = model(X)\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    loss = Y.sum()\n    loss.backward()\n    for name, param in model.named_parameters():\n        if 'importance_estimator' in name:\n            assert param.grad is not None, f'Parameter {name} has no gradient'\n    print('StreamRetNetMLP unit test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass StreamRetNetMLP(GAUBase):\n    \"\"\"\n    StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(sink_size, self.\n            hidden_size, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.hidden_size, self.hidden_size * 4,\n            bias=False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.hidden_size * 2, self.hidden_size,\n            bias=False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        tiled_output, Z_tile = self.tile_manager.forward(X, compute_fn=self\n            ._compute_block, sink_attn=sink_attn, **Z)\n        Y_kv, Z_kv = self.kv_cache.forward(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                        "rating": 5.0,
+                        "spec": "{\"unitname\":\"StreamRetNetMLP\",\"document\":\"StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "TileManager",
+                            "AdaptiveKVCache"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "sink_size": 4,
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "TileManager": "{\"unitname\":\"TileManager\",\"requirements\":\"Handles IO-aware tiling for efficient memory access.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                    "AdaptiveKVCache": "{\"unitname\":\"AdaptiveKVCache\",\"requirements\":\"Manages intelligent caching of key-value pairs for efficient streaming inference.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                    "StreamRetNetMLP": "{\"unitname\":\"StreamRetNetMLP\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "streamretnet"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "gpt4o_0806",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "gpt4o_0806",
+                    "IMPLEMENTATION_OBSERVER": "o1_preview",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.0356925,
+                "IMPLEMENTATION_CODER": 3.250305,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 2.938335,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": null,
+                "root": "RetNet",
+                "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+                "units": {
+                    "MultiScaleRetention": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "hidden_size": null,
+                            "norm_eps": 1e-05,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "TileManager": {
+                        "review": null,
+                        "requirements": "Handles IO-aware tiling for efficient memory access.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "tile_manager_test": "@gau_test\ndef test_TileManager_tile_manager_test(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    tile_size = 64\n    X = torch.randn(batch_size, seq_length, embed_dim, device=device, dtype\n        =dtype)\n\n    def compute_fn(tile, sink_attn):\n        return tile\n    sink_attn = torch.randn(batch_size, 4, embed_dim, device=device, dtype=\n        dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = TileManager(embed_dim=embed_dim, block_loc=block_loc, kwarg_all\n        =kwarg_all, device=device, dtype=dtype, tile_size=tile_size)\n    tiled_output, Z = model(X, compute_fn=compute_fn, sink_attn=sink_attn)\n    assert tiled_output.shape == X.shape, f'Output shape {tiled_output.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    print('TileManager unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager(GAUBase):\n    \"\"\"\n    TileManager implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n\n    def _forward(self, X, compute_fn, sink_attn, **Z):\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"TileManager\",\"document\":\"TileManager implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "RetNetMLP_v2": {
+                        "review": "```rating 4.7```\n\n**Strengths of the Implementation:**\n\n1. **Successful Format and Functionality Checks:** The code passes both the format checker and the functionality checker, indicating that the implementation adheres to the required guidelines and integrates seamlessly into the larger model. This demonstrates attention to detail and a solid understanding of the GAU framework.\n\n2. **Effective Reuse of Existing Units:** By reusing the existing `AdaptiveKVCache` GAU and introducing a new `TileManager_v2`, the coder avoids duplication and potential conflicts with existing units. This approach enhances modularity and code maintainability.\n\n3. **Alignment with the Proposal:** The implementation closely follows the proposed design of integrating attention sink mechanisms, adaptive tiling, and selective KV caching into `RetNetMLP_v2`. The code effectively embodies the core ideas outlined in the proposal.\n\n4. **Comprehensive Documentation:** The docstrings provide clear and detailed explanations of the design ideas, arguments, inputs, and outputs for each class. This level of documentation aids in code readability and future maintenance.\n\n5. **Adherence to GAU Interface Guidelines:** The `_forward` methods correctly accept `X` and `**Z` as arguments, complying with the GAU interface specifications. The use of `Z` for passing intermediate variables like `sink_attn` demonstrates proper handling of state within the GAUs.\n\n6. **Modularity and Reusability:** The decomposition of complex functionality into smaller, reusable GAUs (`TileManager_v2` and `AdaptiveKVCache`) promotes modularity. This design facilitates easier testing, debugging, and potential future enhancements.\n\n**Areas for Improvement and Suggestions:**\n\n1. **Expand Unit Tests:**\n   - **Increase Coverage:** While the functionality checker passes, consider expanding the unit tests to cover more edge cases and stress scenarios. For example, test with varying sequence lengths, batch sizes, and different configurations of `sink_size` and `tile_size`.\n   - **Test Integration Points:** Include tests that verify the interaction between `RetNetMLP_v2` and its child GAUs to ensure that data flows correctly through the units.\n\n2. **Performance Optimization:**\n   - **Profiling:** Profile the code to identify any potential performance bottlenecks, especially in the `_compute_block` method and during tiling operations.\n   - **Memory Efficiency:** Assess memory usage during training and inference, particularly with long sequences, to ensure that the adaptive tiling mechanism efficiently manages resources.\n\n3. **Ensure Scalability:**\n   - **Stress Testing:** Conduct stress tests with larger models and datasets to verify that the implementation scales effectively without degradation in performance.\n   - **Parallelization:** Explore opportunities for parallel processing within the tiling mechanism to leverage multi-core processors or GPUs more effectively.\n\n4. **Robustness in Streaming Scenarios:**\n   - **Streaming Inference Tests:** Specifically test the model's performance in streaming inference scenarios to validate the benefits of attention sink integration and selective KV caching.\n   - **Cache Management:** Ensure that the `AdaptiveKVCache` efficiently manages memory over long sequences and does not introduce latency due to cache updates.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Innovative Mechanisms:** The integration of attention sinks and adaptive tiling represents a novel approach to improving memory efficiency and computational performance in language models. These mechanisms align with cutting-edge research in efficient model design.\n\n- **Potential for Enhanced Streaming Performance:** The selective KV caching mechanism is particularly impactful for streaming inference, as it intelligently manages memory by caching important key-value pairs, potentially reducing computational overhead.\n\n- **Scalability and Practical Deployment:** If the implementation proves robust and efficient, it could significantly contribute to making large language models more practical for real-world applications that require streaming and low-latency processing.\n\n**Recommendations for the Coder:**\n\n1. **Validate Functional Correctness:**\n   - Continue to rigorously test the implementation to ensure that it produces correct outputs across various inputs. Pay special attention to the correctness of the attention sink integration.\n\n2. **Optimize `TileManager_v2`:**\n   - Since `TileManager_v2` is a new GAU, closely inspect its implementation for efficiency. Ensure that the tiling operation does not introduce significant overhead and that concatenation operations are optimized.\n\n3. **Maintain Consistent Coding Standards:**\n   - Ensure that coding style and formatting are consistent across all GAUs. This includes adhering to naming conventions, indentation, and code readability practices.\n\n4. **Document Any Assumptions:**\n   - Clearly document any assumptions made in the implementation, such as expected input shapes, data types, or behaviors of the attention sink tokens.\n\n5. **Prepare for Future Extensions:**\n   - Consider how the current design can be extended or modified in the future. For instance, think about parameterizing certain aspects to allow for dynamic adjustment based on different workloads or hardware capabilities.\n\n6. **Collaborate with the Team:**\n   - Share your implementation and findings with the rest of the team to gather feedback and ensure that your work aligns with the overall project objectives.\n\n**Conclusion:**\n\nThe coder has delivered a strong implementation that aligns well with the proposed design and demonstrates a high level of proficiency in model development. By addressing the minor areas for improvement, particularly in expanding unit tests and optimizing performance, the coder can further enhance the quality and robustness of the implementation. The innovative features introduced have the potential to significantly impact the efficiency and scalability of streaming language models within the project.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_retnet_mlp_v2": "@gau_test\ndef test_RetNetMLP_v2_test_retnet_mlp_v2(device=None, dtype=None) ->None:\n    batch_size = 2\n    seq_len = 256\n    embed_dim = 512\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    Z = {}\n    model = RetNetMLP_v2(embed_dim=embed_dim, block_loc=(0, 1), kwarg_all={\n        }, device=device, dtype=dtype)\n    Y, Z_out = model(X, **Z)\n    assert Y.shape == X.shape, f'Expected output shape {X.shape}, got {Y.shape}'\n    assert isinstance(Z_out, dict), 'Z_out should be a dict'\n    print('RetNetMLP_v2 unit test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass RetNetMLP_v2(GAUBase):\n    \"\"\"\n    RetNetMLP_v2 is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    **Design Idea**:\n    RetNetMLP_v2 enhances the original RetNetMLP by integrating attention sinks and adaptive tiling,\n    which improves memory efficiency and computational performance during streaming inference.\n    The unit reuses the existing `AdaptiveKVCache` GAU and introduces a new `TileManager_v2` GAU.\n\n    **Args**:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    **Inputs**:\n        X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\n\n    **Outputs**:\n        Y: Output sequence embeddings of the same shape as X.\n        Z: Updated intermediate variables.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.embed_dim = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(self.sink_size, self.\n            embed_dim, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.embed_dim, self.embed_dim * 4, bias\n            =False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.embed_dim * 2, self.embed_dim, bias\n            =False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager_v2(embed_dim=self.embed_dim,\n            block_loc=self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        Z_with_sink = dict(Z)\n        Z_with_sink['sink_attn'] = sink_attn\n        tiled_output, Z_tile = self.tile_manager(X, **Z_with_sink)\n        Y_kv, Z_kv = self.kv_cache(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                        "rating": 4.7,
+                        "spec": "{\"unitname\":\"RetNetMLP_v2\",\"document\":\"RetNetMLP_v2 is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\n**Design Idea**:\\nRetNetMLP_v2 enhances the original RetNetMLP by integrating attention sinks and adaptive tiling,\\nwhich improves memory efficiency and computational performance during streaming inference.\\nThe unit reuses the existing `AdaptiveKVCache` GAU and introduces a new `TileManager_v2` GAU.\\n\\n**Args**:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\\n\\n**Inputs**:\\n    X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\\n\\n**Outputs**:\\n    Y: Output sequence embeddings of the same shape as X.\\n    Z: Updated intermediate variables.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                        "children": [
+                            "TileManager_v2",
+                            "AdaptiveKVCache"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "sink_size": 4,
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "RetNet": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = StreamRetNetMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "MultiScaleRetention",
+                            "StreamRetNetMLP"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "norm_eps": 1e-06
+                        },
+                        "design_traces": null
+                    },
+                    "StreamRetNetMLP": {
+                        "review": "```rating 5.0```\n\n**Strengths of the Implementation:**\n\n- **Full Compliance with the Proposal:**\n  - The implementation successfully incorporates the attention sink integration, adaptive tiling, and selective KV caching mechanisms as outlined in the proposal. This demonstrates a thorough understanding of the intended design improvements.\n\n- **Passing All Checks:**\n  - The code passes both the format checker and the functionality checker, indicating adherence to coding standards and confirming that the implementation functions correctly within the larger model.\n\n- **Comprehensive Documentation:**\n  - Detailed docstrings are provided for each class (`StreamRetNetMLP`, `TileManager`, `AdaptiveKVCache`), clearly explaining their purpose, arguments, and functionality. This enhances readability and maintainability.\n\n- **Effective Unit Testing:**\n  - All unit tests pass, demonstrating that each component functions correctly in isolation and adheres to expected interfaces. This aids in ensuring reliability and ease of future maintenance.\n\n- **Modular and Scalable Design:**\n  - By decomposing the GAU into smaller units (`TileManager`, `AdaptiveKVCache`), the implementation promotes modularity, making it easier to scale and integrate into larger models.\n\n- **Innovation Realized:**\n  - The implementation effectively realizes the innovative aspects of the proposal, potentially leading to performance improvements in streaming inference scenarios.\n\n**Areas for Improvement and Specific Suggestions:**\n\nWhile the implementation is strong, there are minor areas that could be refined:\n\n1. **Enhance Inline Comments:**\n\n   - **Suggestion:**\n     - While docstrings are comprehensive, adding more inline comments within complex methods (e.g., `_forward` methods) can further improve code clarity.\n\n2. **Parameter Initialization:**\n\n   - **Suggestion:**\n     - Review the initialization of parameters, especially for the `importance_estimator` in `AdaptiveKVCache`. Consider initializing weights with methods like Xavier or Kaiming initialization to potentially improve learning performance.\n\n3. **Optimize Tiling Mechanism:**\n\n   - **Suggestion:**\n     - Evaluate the `TileManager`\u2019s tiling strategy to ensure it maximizes memory efficiency without introducing significant computational overhead. Profiling the code may reveal opportunities for optimization.\n\n4. **Expand Unit Tests:**\n\n   - **Suggestion:**\n     - Incorporate additional unit tests to cover edge cases, such as varying `sink_size` and `tile_size`, extreme sequence lengths, or batch sizes. This helps to ensure robustness across different usage scenarios.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Effective Implementation of Proposed Innovations:**\n  - The attention sink mechanism and adaptive tiling are promising strategies for improving memory efficiency and computational performance in streaming inference.\n\n- **Scalability:**\n  - The design should enhance the model's ability to handle long sequences and large-scale data efficiently, aligning with the goal of better scalability.\n\n- **Potential Performance Gains:**\n  - By reducing memory overhead and optimizing computation, the implementation may lead to faster inference times and lower resource consumption, which is crucial for real-world applications.\n\n- **Foundation for Future Work:**\n  - The modular design allows for future enhancements, such as experimenting with different importance estimation strategies in `AdaptiveKVCache` or further tuning of hyperparameters for optimal performance.\n\n**Recommendations for the Coder:**\n\n1. **Monitor Performance Metrics:**\n\n   - After integrating the GAU into the larger model, monitor key performance indicators such as training speed, inference latency, memory usage, and model accuracy to validate the expected efficiency gains.\n\n2. **Experiment with Hyperparameters:**\n\n   - Explore the impact of different values for `sink_size`, `tile_size`, and `threshold` in `AdaptiveKVCache` on model performance. This can help in fine-tuning the model for specific applications.\n\n3. **Documentation of Observations:**\n\n   - Document any observations regarding the performance improvements or challenges encountered during integration and testing. This information can be valuable for future development and for sharing insights with the team.\n\n4. **Code Maintenance:**\n\n   - Continue to ensure that the codebase remains clean, well-documented, and adherent to best practices. Regular code reviews can help maintain code quality.\n\n5. **Collaboration and Feedback:**\n\n   - Engage with other team members to share findings and gather feedback. Collaborative discussions can lead to further enhancements and innovative ideas.\n\n**Conclusion:**\n\nThe implementation is excellent, effectively translating the proposal into a functional and efficient GAU. By addressing minor areas for improvement and focusing on performance validation, the coder has delivered a high-quality component that enhances the language model's capabilities. The innovative approaches incorporated have the potential to significantly impact the model's performance, particularly in streaming inference scenarios.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "stream_retnet_mlp_test": "@gau_test\ndef test_StreamRetNetMLP_stream_retnet_mlp_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = StreamRetNetMLP(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype, sink_size=4,\n        tile_size=64)\n    Y, Z = model(X)\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    loss = Y.sum()\n    loss.backward()\n    for name, param in model.named_parameters():\n        if 'importance_estimator' in name:\n            assert param.grad is not None, f'Parameter {name} has no gradient'\n    print('StreamRetNetMLP unit test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass StreamRetNetMLP(GAUBase):\n    \"\"\"\n    StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(sink_size, self.\n            hidden_size, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.hidden_size, self.hidden_size * 4,\n            bias=False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.hidden_size * 2, self.hidden_size,\n            bias=False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        tiled_output, Z_tile = self.tile_manager.forward(X, compute_fn=self\n            ._compute_block, sink_attn=sink_attn, **Z)\n        Y_kv, Z_kv = self.kv_cache.forward(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                        "rating": 5.0,
+                        "spec": "{\"unitname\":\"StreamRetNetMLP\",\"document\":\"StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "TileManager",
+                            "AdaptiveKVCache"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "sink_size": 4,
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "TileManager_v2": {
+                        "review": null,
+                        "requirements": "Implements adaptive tiling mechanism for efficient memory access.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "test_tile_manager_v2": "@gau_test\ndef test_TileManager_v2_test_tile_manager_v2(device=None, dtype=None):\n    batch_size = 2\n    seq_len = 256\n    embed_dim = 512\n    tile_size = 64\n    X = torch.randn(batch_size, seq_len, embed_dim, device=device, dtype=dtype)\n    sink_size = 4\n    sink_tokens = torch.randn(batch_size, sink_size, embed_dim, device=\n        device, dtype=dtype)\n\n    def dummy_compute_fn(tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        output = combined[:, sink_size:, :]\n        return output\n    Z = {'sink_attn': sink_tokens}\n    model = TileManager_v2(embed_dim=embed_dim, block_loc=(0, 1), kwarg_all\n        ={}, tile_size=tile_size, compute_fn=dummy_compute_fn, device=\n        device, dtype=dtype)\n    tiled_output, Z_out = model(X, **Z)\n    assert tiled_output.shape == X.shape, f'Expected output shape {X.shape}, got {tiled_output.shape}'\n    assert isinstance(Z_out, dict), 'Z_out should be a dict'\n    print('TileManager_v2 unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager_v2(GAUBase):\n    \"\"\"\n    TileManager_v2 implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    **Design Idea**:\n    TileManager_v2 splits the input sequence into smaller tiles to enable efficient processing,\n    reducing memory overhead and optimizing computational resources. The compute function is stored\n    as an instance variable, and 'sink_attn' is retrieved from Z.\n\n    **Args**:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n        compute_fn (callable): Function to compute the output of each tile.\n\n    **Inputs**:\n        X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\n        Z: Dictionary containing intermediate variables, expects 'sink_attn'.\n\n    **Outputs**:\n        tiled_output: Output sequence embeddings after processing tiles.\n        Z: Updated intermediate variables.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, compute_fn=None, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n        self.compute_fn = compute_fn\n\n    def _forward(self, X, **Z):\n        sink_attn = Z.get('sink_attn', None)\n        if sink_attn is None:\n            raise ValueError('sink_attn not found in Z')\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = self.compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"TileManager_v2\",\"document\":\"TileManager_v2 implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\n**Design Idea**:\\nTileManager_v2 splits the input sequence into smaller tiles to enable efficient processing,\\nreducing memory overhead and optimizing computational resources. The compute function is stored\\nas an instance variable, and 'sink_attn' is retrieved from Z.\\n\\n**Args**:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\\n    compute_fn (callable): Function to compute the output of each tile.\\n\\n**Inputs**:\\n    X: Input sequence embeddings of shape (batch_size, seq_len, embed_dim).\\n    Z: Dictionary containing intermediate variables, expects 'sink_attn'.\\n\\n**Outputs**:\\n    tiled_output: Output sequence embeddings after processing tiles.\\n    Z: Updated intermediate variables.\",\"inputs\":[\"X\"],\"outputs\":[\"tiled_output\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "compute_fn": null,
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "AdaptiveKVCache": {
+                        "review": null,
+                        "requirements": "Manages intelligent caching of key-value pairs for efficient streaming inference.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "adaptive_kv_cache_test": "@gau_test\ndef test_AdaptiveKVCache_adaptive_kv_cache_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = AdaptiveKVCache(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = model(X)\n    assert 'kv_cache' in Z, 'kv_cache not found in Z'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    loss = Y.sum()\n    loss.backward()\n    assert model.importance_estimator.weight.grad is not None, 'No gradient for importance_estimator.weight'\n    assert model.importance_estimator.bias.grad is not None, 'No gradient for importance_estimator.bias'\n    print('AdaptiveKVCache unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\n\n\nclass AdaptiveKVCache(GAUBase):\n    \"\"\"\n    AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\n    It updates the cache based on the importance of the input.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, threshold: float=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.importance_estimator = nn.Linear(embed_dim, 1, **self.\n            factory_kwargs)\n        self.threshold = threshold\n\n    def _forward(self, X, **Z):\n        scores = self.importance_estimator(X)\n        scores = torch.sigmoid(scores)\n        mask = scores > self.threshold\n        if 'kv_cache' in Z:\n            cache = Z['kv_cache']\n        else:\n            cache = []\n        cache_entries = []\n        for b in range(X.size(0)):\n            selected = X[b][mask[b].squeeze(-1)]\n            cache_entries.append(selected)\n        if cache_entries:\n            cache.append(cache_entries)\n            Z_ = {'kv_cache': cache}\n        else:\n            Z_ = Z\n        Y = X * scores\n        return Y, Z_\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"AdaptiveKVCache\",\"document\":\"AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\\nIt updates the cache based on the importance of the input.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "threshold": 0.5
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "TileManager": "{\"unitname\":\"TileManager\",\"requirements\":\"Handles IO-aware tiling for efficient memory access.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                    "RetNetMLP_v2": "{\"unitname\":\"RetNetMLP_v2\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                    "TileManager_v2": "{\"unitname\":\"TileManager_v2\",\"requirements\":\"Implements adaptive tiling mechanism for efficient memory access.\",\"inputs\":[\"X\"],\"outputs\":[\"tiled_output\"]}",
+                    "AdaptiveKVCache": "{\"unitname\":\"AdaptiveKVCache\",\"requirements\":\"Manages intelligent caching of key-value pairs for streaming inference.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                    "StreamRetNetMLP": "{\"unitname\":\"StreamRetNetMLP\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "streamretnet"
+            },
+            "user_input": "",
+            "status": "unfinished",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "gpt4o_0806",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "gpt4o_0806",
+                    "IMPLEMENTATION_OBSERVER": "o1_preview",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.0,
+                "IMPLEMENTATION_CODER": 3.2024100000000004,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 3.44643,
+                "SEARCH_ASSISTANT": 0
+            }
+        },
+        {
+            "tree": {
+                "review": null,
+                "root": "RetNet",
+                "proposal": "In this work, we propose Retentive Network (RetNet) as a foundation architecture for large language models, simultaneously achieving training parallelism, low-cost inference, and good performance. We theoretically derive the connection between recurrence and attention. Then we propose the retention mechanism for sequence modeling, which supports three computation paradigms, i.e., parallel, recurrent, and chunkwise recurrent. Specifically, the parallel representation allows for training parallelism. The recurrent representation enables low-cost O(1) inference, which improves decoding throughput, latency, and GPU memory without sacrificing performance. The chunkwise recurrent representation facilitates efficient long-sequence modeling with linear complexity, where each chunk is encoded parallelly while recurrently summarizing the chunks. Experimental results on language modeling show that RetNet achieves favorable scaling results, parallel training, low-cost deployment, and efficient inference. The intriguing properties make RetNet a strong successor to Transformer for large language models.",
+                "units": {
+                    "MultiScaleRetention": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_multiscaleretention": "@gau_test\ndef test_MultiScaleRetention_test_multiscaleretention(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {'hidden_size': 128}\n    multiscaleretention = MultiScaleRetention(embed_dim, block_loc,\n        kwarg_all, device=device, dtype=dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = multiscaleretention(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\nfrom einops import rearrange, repeat\nfrom torchtune.modules import RotaryPositionalEmbeddings, RMSNorm\n\n\nclass MultiScaleRetention(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, hidden_size=None, num_heads: int=8,\n        norm_eps: float=1e-05, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        hidden_size = hidden_size if hidden_size is not None else embed_dim\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.num_kv_heads = num_heads\n        self.num_kv_groups = self.num_heads // self.num_kv_heads\n        self.key_dim = hidden_size\n        self.value_dim = hidden_size * 2\n        self.key_dim_per_group = self.key_dim // self.num_kv_groups\n        self.value_dim_per_group = self.value_dim // self.num_kv_groups\n        assert self.key_dim % num_heads == 0, f'key dim must be divisible by num_heads of {num_heads}'\n        assert self.value_dim % num_heads == 0, f'value dim must be divisible by num_heads of {num_heads}'\n        self.head_qk_dim = self.key_dim // num_heads\n        self.head_v_dim = self.value_dim // num_heads\n        self.q_proj = nn.Linear(hidden_size, self.key_dim, bias=False,\n            device=device, dtype=dtype)\n        self.k_proj = nn.Linear(hidden_size, self.key_dim_per_group, bias=\n            False, device=device, dtype=dtype)\n        self.v_proj = nn.Linear(hidden_size, self.value_dim_per_group, bias\n            =False, device=device, dtype=dtype)\n        self.g_proj = nn.Linear(hidden_size, self.value_dim, bias=False,\n            device=device, dtype=dtype)\n        self.o_proj = nn.Linear(self.value_dim, hidden_size, bias=False,\n            device=device, dtype=dtype)\n        self.g_norm = RMSNorm(self.head_v_dim, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.gate_fn = ACT2FN['swish']\n        self.rotary = RotaryPositionalEmbeddings(dim=self.head_qk_dim).to(\n            device=device, dtype=dtype)\n        self.apply(self._initialize_weights)\n\n    def _initialize_weights(self, module: nn.Module):\n        if getattr(module, '_is_hf_initialized', False):\n            return\n        if isinstance(module, nn.Linear):\n            nn.init.xavier_uniform_(module.weight, gain=2 ** -2.5)\n            if module.bias is not None:\n                nn.init.zeros_(module.bias)\n        module._is_hf_initialized = True\n\n    def naive_retention(self, q, k, v):\n        orig_type = q.dtype\n        q, k, v = q.float(), k.float(), v.float()\n        _, n_heads, seq_len, d_head = q.shape\n        s = (1 - q.new_tensor(2.0, dtype=torch.float).pow(-5.0 - q.\n            new_tensor(range(n_heads), dtype=torch.float))).log2()\n        n = q.new_tensor(range(seq_len), dtype=torch.float)\n        n = torch.exp2((n.unsqueeze(-1) - n) * s.view(-1, 1, 1)) * n.unsqueeze(\n            -1).ge(n)\n        s = torch.einsum('bhqd,bhkd,hqk->bhqk', q * d_head ** -0.5, k, n.to\n            (q.dtype))\n        o = torch.einsum('bhqk,bhkd->bhqd', s, v)\n        return o.to(orig_type)\n\n    def _forward(self, X, **Z):\n        q = self.q_proj(X)\n        k = self.k_proj(X)\n        v = self.v_proj(X)\n        q = rearrange(q, '... (h d) -> ... h d', h=self.num_heads)\n        k = rearrange(k, '... (h d) -> ... h d', h=self.num_kv_heads)\n        q = self.rotary(q)\n        k = self.rotary(k)\n        q = q.transpose(1, 2)\n        if self.num_kv_groups > 1:\n            k = repeat(k, 'b t h d -> b (h g) t d', h=self.num_kv_heads, g=\n                self.num_kv_groups)\n            v = repeat(v, 'b t (h d) -> b (h g) t d', h=self.num_kv_heads,\n                g=self.num_kv_groups)\n        else:\n            k, v = rearrange(k, 'b t h d -> b h t d'), rearrange(v,\n                'b t (h d) -> b h t d', h=self.num_kv_heads)\n        o = self.naive_retention(q, k, v)\n        o = rearrange(o, 'b h l d -> b l h d')\n        g = self.g_proj(X)\n        o = rearrange(self.g_norm(o), 'b l h d -> b l (h d)')\n        o = o * self.gate_fn(g)\n        o = self.o_proj(o)\n        return o\n\n\nCHILDREN_DECLARATIONS = []\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"MultiScaleRetention\",\"document\":\"\\nRetNet MultiScaleRetention\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "hidden_size": null,
+                            "norm_eps": 1e-05,
+                            "num_heads": 8
+                        },
+                        "design_traces": null
+                    },
+                    "TileManager": {
+                        "review": null,
+                        "requirements": "Handles IO-aware tiling for efficient memory access.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "tile_manager_test": "@gau_test\ndef test_TileManager_tile_manager_test(device=None, dtype=None) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    tile_size = 64\n    X = torch.randn(batch_size, seq_length, embed_dim, device=device, dtype\n        =dtype)\n\n    def compute_fn(tile, sink_attn):\n        return tile\n    sink_attn = torch.randn(batch_size, 4, embed_dim, device=device, dtype=\n        dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = TileManager(embed_dim=embed_dim, block_loc=block_loc, kwarg_all\n        =kwarg_all, device=device, dtype=dtype, tile_size=tile_size)\n    tiled_output, Z = model(X, compute_fn=compute_fn, sink_attn=sink_attn)\n    assert tiled_output.shape == X.shape, f'Output shape {tiled_output.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    print('TileManager unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\n\n\nclass TileManager(GAUBase):\n    \"\"\"\n    TileManager implements the adaptive tiling mechanism for efficient memory access.\n    It processes the input sequence by dividing it into tiles and applying a compute function\n    to each tile along with the attention sinks.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n        tile_size (int): Size of each tile for tiling.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, tile_size: int=128, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.tile_size = tile_size\n\n    def _forward(self, X, compute_fn, sink_attn, **Z):\n        tiles = torch.split(X, self.tile_size, dim=1)\n        outputs = []\n        for tile in tiles:\n            tile_output = compute_fn(tile, sink_attn)\n            outputs.append(tile_output)\n        tiled_output = torch.cat(outputs, dim=1)\n        return tiled_output, Z\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"TileManager\",\"document\":\"TileManager implements the adaptive tiling mechanism for efficient memory access.\\nIt processes the input sequence by dividing it into tiles and applying a compute function\\nto each tile along with the attention sinks.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\\n    tile_size (int): Size of each tile for tiling.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    },
+                    "RetNet": {
+                        "review": null,
+                        "requirements": null,
+                        "reuse_from": null,
+                        "desc": "\n",
+                        "gautests": {
+                            "test_retnet": "@gau_test\ndef test_RetNet_test_retnet(device=None, dtype=None):\n    embed_dim = 128\n    block_loc = 0, 6\n    kwarg_all = {}\n    retnet = RetNet(embed_dim, block_loc, kwarg_all, device=device, dtype=\n        dtype, **kwarg_all)\n    x = torch.randn(1, 100, 128).to(device=device, dtype=dtype)\n    Z = {}\n    y, Z_ = retnet(x, **Z)\n    assert y.shape == (1, 100, 128)\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nimport torch.nn.functional as F\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom torchtune.modules import RMSNorm\n\n\nclass RetNet(GAUBase):\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, norm_eps: float=1e-06, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.attn_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.attn = MultiScaleRetention(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **self.\n            factory_kwargs, **self.kwarg_all)\n        self.mlp_norm = RMSNorm(self.hidden_size, eps=norm_eps).to(device=\n            device, dtype=dtype)\n        self.mlp = StreamRetNetMLP(embed_dim=self.embed_dim, block_loc=self.\n            block_loc, kwarg_all=self.kwarg_all, **self.factory_kwargs, **\n            self.kwarg_all)\n\n    def _forward(self, X, **Z):\n        hidden_states = self.attn_norm(X)\n        X = self.attn(hidden_states, **Z)[0] + X\n        hidden_states = self.mlp_norm(X)\n        X = self.mlp(hidden_states, **Z)[0] + X\n        return X, Z\n\n\nCHILDREN_DECLARATIONS = [UnitDecl(unitname='MultiScaleRetention',\n    requirements='', inputs=['X'], outputs=['Y']), UnitDecl(unitname=\n    'RetNetMLP', requirements='', inputs=['X'], outputs=['Y'])]\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"RetNet\",\"document\":\"\\nRetNet\\n\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "MultiScaleRetention",
+                            "StreamRetNetMLP"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "norm_eps": 1e-06
+                        },
+                        "design_traces": null
+                    },
+                    "AdaptiveKVCache": {
+                        "review": null,
+                        "requirements": "Manages intelligent caching of key-value pairs for efficient streaming inference.",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "adaptive_kv_cache_test": "@gau_test\ndef test_AdaptiveKVCache_adaptive_kv_cache_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = AdaptiveKVCache(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype)\n    Y, Z = model(X)\n    assert 'kv_cache' in Z, 'kv_cache not found in Z'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    loss = Y.sum()\n    loss.backward()\n    assert model.importance_estimator.weight.grad is not None, 'No gradient for importance_estimator.weight'\n    assert model.importance_estimator.bias.grad is not None, 'No gradient for importance_estimator.bias'\n    print('AdaptiveKVCache unit test passed.')\n"
+                        },
+                        "code": "import torch\nfrom torch import nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nfrom transformers.activations import ACT2FN\n\n\nclass AdaptiveKVCache(GAUBase):\n    \"\"\"\n    AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\n    It updates the cache based on the importance of the input.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments.\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, threshold: float=0.5, **kwargs):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.importance_estimator = nn.Linear(embed_dim, 1, **self.\n            factory_kwargs)\n        self.threshold = threshold\n\n    def _forward(self, X, **Z):\n        scores = self.importance_estimator(X)\n        scores = torch.sigmoid(scores)\n        mask = scores > self.threshold\n        if 'kv_cache' in Z:\n            cache = Z['kv_cache']\n        else:\n            cache = []\n        cache_entries = []\n        for b in range(X.size(0)):\n            selected = X[b][mask[b].squeeze(-1)]\n            cache_entries.append(selected)\n        if cache_entries:\n            cache.append(cache_entries)\n            Z_ = {'kv_cache': cache}\n        else:\n            Z_ = Z\n        Y = X * scores\n        return Y, Z_\n",
+                        "rating": null,
+                        "spec": "{\"unitname\":\"AdaptiveKVCache\",\"document\":\"AdaptiveKVCache manages intelligent caching of key-value pairs for efficient streaming inference.\\nIt updates the cache based on the importance of the input.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                        "children": [],
+                        "suggestions": null,
+                        "args": {
+                            "threshold": 0.5
+                        },
+                        "design_traces": null
+                    },
+                    "StreamRetNetMLP": {
+                        "review": "```rating 5.0```\n\n**Strengths of the Implementation:**\n\n- **Full Compliance with the Proposal:**\n  - The implementation successfully incorporates the attention sink integration, adaptive tiling, and selective KV caching mechanisms as outlined in the proposal. This demonstrates a thorough understanding of the intended design improvements.\n\n- **Passing All Checks:**\n  - The code passes both the format checker and the functionality checker, indicating adherence to coding standards and confirming that the implementation functions correctly within the larger model.\n\n- **Comprehensive Documentation:**\n  - Detailed docstrings are provided for each class (`StreamRetNetMLP`, `TileManager`, `AdaptiveKVCache`), clearly explaining their purpose, arguments, and functionality. This enhances readability and maintainability.\n\n- **Effective Unit Testing:**\n  - All unit tests pass, demonstrating that each component functions correctly in isolation and adheres to expected interfaces. This aids in ensuring reliability and ease of future maintenance.\n\n- **Modular and Scalable Design:**\n  - By decomposing the GAU into smaller units (`TileManager`, `AdaptiveKVCache`), the implementation promotes modularity, making it easier to scale and integrate into larger models.\n\n- **Innovation Realized:**\n  - The implementation effectively realizes the innovative aspects of the proposal, potentially leading to performance improvements in streaming inference scenarios.\n\n**Areas for Improvement and Specific Suggestions:**\n\nWhile the implementation is strong, there are minor areas that could be refined:\n\n1. **Enhance Inline Comments:**\n\n   - **Suggestion:**\n     - While docstrings are comprehensive, adding more inline comments within complex methods (e.g., `_forward` methods) can further improve code clarity.\n\n2. **Parameter Initialization:**\n\n   - **Suggestion:**\n     - Review the initialization of parameters, especially for the `importance_estimator` in `AdaptiveKVCache`. Consider initializing weights with methods like Xavier or Kaiming initialization to potentially improve learning performance.\n\n3. **Optimize Tiling Mechanism:**\n\n   - **Suggestion:**\n     - Evaluate the `TileManager`\u2019s tiling strategy to ensure it maximizes memory efficiency without introducing significant computational overhead. Profiling the code may reveal opportunities for optimization.\n\n4. **Expand Unit Tests:**\n\n   - **Suggestion:**\n     - Incorporate additional unit tests to cover edge cases, such as varying `sink_size` and `tile_size`, extreme sequence lengths, or batch sizes. This helps to ensure robustness across different usage scenarios.\n\n**Comments on Innovation and Potential Impact:**\n\n- **Effective Implementation of Proposed Innovations:**\n  - The attention sink mechanism and adaptive tiling are promising strategies for improving memory efficiency and computational performance in streaming inference.\n\n- **Scalability:**\n  - The design should enhance the model's ability to handle long sequences and large-scale data efficiently, aligning with the goal of better scalability.\n\n- **Potential Performance Gains:**\n  - By reducing memory overhead and optimizing computation, the implementation may lead to faster inference times and lower resource consumption, which is crucial for real-world applications.\n\n- **Foundation for Future Work:**\n  - The modular design allows for future enhancements, such as experimenting with different importance estimation strategies in `AdaptiveKVCache` or further tuning of hyperparameters for optimal performance.\n\n**Recommendations for the Coder:**\n\n1. **Monitor Performance Metrics:**\n\n   - After integrating the GAU into the larger model, monitor key performance indicators such as training speed, inference latency, memory usage, and model accuracy to validate the expected efficiency gains.\n\n2. **Experiment with Hyperparameters:**\n\n   - Explore the impact of different values for `sink_size`, `tile_size`, and `threshold` in `AdaptiveKVCache` on model performance. This can help in fine-tuning the model for specific applications.\n\n3. **Documentation of Observations:**\n\n   - Document any observations regarding the performance improvements or challenges encountered during integration and testing. This information can be valuable for future development and for sharing insights with the team.\n\n4. **Code Maintenance:**\n\n   - Continue to ensure that the codebase remains clean, well-documented, and adherent to best practices. Regular code reviews can help maintain code quality.\n\n5. **Collaboration and Feedback:**\n\n   - Engage with other team members to share findings and gather feedback. Collaborative discussions can lead to further enhancements and innovative ideas.\n\n**Conclusion:**\n\nThe implementation is excellent, effectively translating the proposal into a functional and efficient GAU. By addressing minor areas for improvement and focusing on performance validation, the coder has delivered a high-quality component that enhances the language model's capabilities. The innovative approaches incorporated have the potential to significantly impact the model's performance, particularly in streaming inference scenarios.",
+                        "requirements": "N/A",
+                        "reuse_from": null,
+                        "desc": null,
+                        "gautests": {
+                            "stream_retnet_mlp_test": "@gau_test\ndef test_StreamRetNetMLP_stream_retnet_mlp_test(device=None, dtype=None\n    ) ->None:\n    embed_dim = 64\n    batch_size = 2\n    seq_length = 256\n    X = torch.randn(batch_size, seq_length, embed_dim, requires_grad=True,\n        device=device, dtype=dtype)\n    block_loc = 0, 1\n    kwarg_all = {}\n    model = StreamRetNetMLP(embed_dim=embed_dim, block_loc=block_loc,\n        kwarg_all=kwarg_all, device=device, dtype=dtype, sink_size=4,\n        tile_size=64)\n    Y, Z = model(X)\n    assert Y.shape == X.shape, f'Output shape {Y.shape} does not match input shape {X.shape}'\n    assert isinstance(Z, dict), 'Intermediate variables Z must be a dict'\n    loss = Y.sum()\n    loss.backward()\n    for name, param in model.named_parameters():\n        if 'importance_estimator' in name:\n            assert param.grad is not None, f'Parameter {name} has no gradient'\n    print('StreamRetNetMLP unit test passed.')\n"
+                        },
+                        "code": "import torch\nimport torch.nn as nn\nfrom model_discovery.model.utils.modules import GAUBase, gau_test, UnitDecl\nimport torch.nn.functional as F\nfrom transformers.activations import ACT2FN\n\n\nclass StreamRetNetMLP(GAUBase):\n    \"\"\"\n    StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\n    adaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\n    The MLP processes the input sequence along with attention sinks and handles memory efficiently\n    during both training and inference.\n\n    Args:\n        embed_dim (int): Dimension of the embeddings.\n        block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\n        kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\n        sink_size (int, optional): Number of attention sink tokens. Default is 4.\n        tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\n\n    \"\"\"\n\n    def __init__(self, embed_dim: int, block_loc: tuple, kwarg_all: dict,\n        device=None, dtype=None, sink_size: int=4, tile_size: int=128, **kwargs\n        ):\n        self.factory_kwargs = {'device': device, 'dtype': dtype}\n        super().__init__(embed_dim, block_loc, kwarg_all)\n        self.hidden_size = embed_dim\n        self.sink_size = sink_size\n        self.tile_size = tile_size\n        self.sink_tokens = nn.Parameter(torch.randn(sink_size, self.\n            hidden_size, **self.factory_kwargs))\n        self.gate_proj = nn.Linear(self.hidden_size, self.hidden_size * 4,\n            bias=False, **self.factory_kwargs)\n        self.down_proj = nn.Linear(self.hidden_size * 2, self.hidden_size,\n            bias=False, **self.factory_kwargs)\n        self.act_fn = ACT2FN['swish']\n        self.tile_manager = TileManager(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n        self.kv_cache = AdaptiveKVCache(embed_dim=self.embed_dim, block_loc\n            =self.block_loc, kwarg_all=self.kwarg_all, **\n            self.factory_kwargs, **self.kwarg_all)\n\n    def _process_sinks(self, X):\n        sink_tokens = self.sink_tokens.unsqueeze(0).expand(X.size(0), -1, -1)\n        return sink_tokens\n\n    def _compute_block(self, tile, sink_attn):\n        combined = torch.cat([sink_attn, tile], dim=1)\n        y = self.gate_proj(combined)\n        gate, y = y.chunk(2, -1)\n        z = self.act_fn(gate) * y\n        o = self.down_proj(z)\n        tile_output = o[:, self.sink_size:, :]\n        return tile_output\n\n    def _forward(self, X, **Z):\n        sink_attn = self._process_sinks(X)\n        tiled_output, Z_tile = self.tile_manager.forward(X, compute_fn=self\n            ._compute_block, sink_attn=sink_attn, **Z)\n        Y_kv, Z_kv = self.kv_cache.forward(tiled_output, **Z)\n        Z.update(Z_tile)\n        Z.update(Z_kv)\n        Y = Y_kv\n        return Y, Z\n",
+                        "rating": 5.0,
+                        "spec": "{\"unitname\":\"StreamRetNetMLP\",\"document\":\"StreamRetNetMLP is an optimized MLP unit for RetNet that introduces attention sink integration,\\nadaptive tiling, and selective KV caching mechanisms for efficient streaming inference.\\nThe MLP processes the input sequence along with attention sinks and handles memory efficiently\\nduring both training and inference.\\n\\nArgs:\\n    embed_dim (int): Dimension of the embeddings.\\n    block_loc (tuple): Location of the block within the network, (layer_idx, n_block).\\n    kwarg_all (dict): Dictionary of all keyword arguments, used to initialize child units.\\n    sink_size (int, optional): Number of attention sink tokens. Default is 4.\\n    tile_size (int, optional): Size of each tile for adaptive tiling. Default is 128.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}",
+                        "children": [
+                            "TileManager",
+                            "AdaptiveKVCache"
+                        ],
+                        "suggestions": null,
+                        "args": {
+                            "sink_size": 4,
+                            "tile_size": 128
+                        },
+                        "design_traces": null
+                    }
+                },
+                "rating": null,
+                "declares": {
+                    "TileManager": "{\"unitname\":\"TileManager\",\"requirements\":\"Handles IO-aware tiling for efficient memory access.\",\"inputs\":[\"X\",\"compute_fn\",\"sink_attn\"],\"outputs\":[\"tiled_output\"]}",
+                    "RetNetMLP_v2": "{\"unitname\":\"RetNetMLP_v2\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                    "TileManager_v2": "{\"unitname\":\"TileManager_v2\",\"requirements\":\"Implements adaptive tiling mechanism for efficient memory access.\",\"inputs\":[\"X\"],\"outputs\":[\"tiled_output\"]}",
+                    "AdaptiveKVCache": "{\"unitname\":\"AdaptiveKVCache\",\"requirements\":\"Manages intelligent caching of key-value pairs for streaming inference.\",\"inputs\":[\"X\"],\"outputs\":[\"Y\",\"new_cache\"]}",
+                    "StreamRetNetMLP": "{\"unitname\":\"StreamRetNetMLP\",\"requirements\":\"N/A\",\"inputs\":[\"X\"],\"outputs\":[\"Y\"]}"
+                },
+                "proposal_traces": [],
+                "suggestions": null,
+                "name": "streamretnet"
+            },
+            "user_input": "",
+            "status": "implemented",
+            "design_cfg": {
+                "max_attemps": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 3,
+                    "implementation_debug": 7,
+                    "design_proposal": 10
+                },
+                "threshold": {
+                    "proposal_rating": 4.0,
+                    "implementation_rating": 3.0
+                },
+                "use_unlimited_prompt": true,
+                "mutation_no_tree": true,
+                "agent_types": {
+                    "DESIGN_PROPOSER": "hybrid",
+                    "IMPLEMENTATION_PLANNER": "hybrid",
+                    "IMPLEMENTATION_CODER": "hybrid",
+                    "PROPOSAL_REVIEWER": "hybrid",
+                    "IMPLEMENTATION_OBSERVER": "hybrid",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "running_mode": "Proposal + Implementation",
+                "unittest_pass_required": false,
+                "crossover_no_ref": true,
+                "scratch_no_tree": true,
+                "_agent_types": {
+                    "DESIGN_PROPOSER": "claude3.5_sonnet",
+                    "IMPLEMENTATION_PLANNER": "gpt4o_0806",
+                    "IMPLEMENTATION_CODER": "o1_preview",
+                    "PROPOSAL_REVIEWER": "gpt4o_0806",
+                    "IMPLEMENTATION_OBSERVER": "o1_preview",
+                    "SEARCH_ASSISTANT": "None"
+                },
+                "termination": {
+                    "max_debug_budget": 0,
+                    "max_failed_rounds": 3,
+                    "max_total_budget": 0
+                },
+                "agent_weights": {
+                    "DESIGN_PROPOSER": [
+                        0.05,
+                        0.0,
+                        0.6000000000000001,
+                        0.2,
+                        0.15
+                    ],
+                    "IMPLEMENTATION_PLANNER": [
+                        0.05000000000000002,
+                        0.0,
+                        0.44999999999999996,
+                        0.3,
+                        0.20000000000000007
+                    ],
+                    "IMPLEMENTATION_CODER": [
+                        0.0,
+                        0.0,
+                        0.3,
+                        0.4999999999999996,
+                        0.2
+                    ],
+                    "PROPOSAL_REVIEWER": [
+                        0.10000000000000002,
+                        0.0,
+                        0.5499999999999999,
+                        0.2,
+                        0.15000000000000002
+                    ],
+                    "IMPLEMENTATION_OBSERVER": [
+                        0.05,
+                        0.0,
+                        0.15000000000000002,
+                        0.15000000000000002,
+                        0.6499999999999999,
+                        0.0
+                    ]
+                },
+                "num_samples": {
+                    "implementation": 1,
+                    "rerank_method": "rating",
+                    "proposal": 1
+                },
+                "search_settings": {
+                    "proposal_search": true,
+                    "proposal_review_search": true,
+                    "search_for_papers_num": 10
+                },
+                "max_attempts": {
+                    "post_refinement": 0,
+                    "max_search_rounds": 4,
+                    "implementation_debug": 5,
+                    "design_proposal": 5
+                }
+            },
+            "costs": {
+                "DESIGN_PROPOSER": 0.0,
+                "IMPLEMENTATION_PLANNER": 0.0,
+                "IMPLEMENTATION_CODER": 3.2024100000000004,
+                "PROPOSAL_REVIEWER": 0.0,
+                "IMPLEMENTATION_OBSERVER": 3.44643,
+                "SEARCH_ASSISTANT": 0
+            }
+        }
+    ]
+}

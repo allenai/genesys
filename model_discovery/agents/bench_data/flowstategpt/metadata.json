@@ -1,0 +1,30 @@
+{
+    "title": "FlowStateGatedTTTLinear: Enhancing GatedTTTLinear with Flow Conservation and Selective State Spaces",
+    "acronym": "flowstategpt",
+    "sess_id": "2024-11-05-16-38-21-66d141",
+    "sess_snapshot": {
+        "ref_ids": [
+            "spectralmamba_1",
+            "moe_gated_attngpt",
+            "flowformer",
+            "staircaseattn",
+            "ssmfundmodel",
+            "kanmlp"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "gatedtttlinear"
+        ]
+    },
+    "seed_ids": [
+        "gatedtttlinear"
+    ]
+}

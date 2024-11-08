@@ -1,0 +1,31 @@
+{
+    "title": "CompressedStateTTTLinear: Memory-Efficient State Management for Test-Time Training",
+    "acronym": "compressedstategab",
+    "sess_id": "2024-10-28-08-15-52-6bf625",
+    "sess_snapshot": {
+        "node_id": null,
+        "ref_ids": [
+            "matrixfreeadaptivelm",
+            "rwkv6_scankernel",
+            "longrope",
+            "coneheads",
+            "hierarchinn",
+            "e2"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "fasttttlinear"
+        ]
+    },
+    "seed_ids": [
+        "fasttttlinear"
+    ]
+}

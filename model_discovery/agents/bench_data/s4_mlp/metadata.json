@@ -1,0 +1,30 @@
+{
+    "title": "S4-MLP: Enhancing SwiGluMLP with Structured State Space Models for Improved Long-Range Dependency Modeling",
+    "acronym": "s4_mlp",
+    "sess_id": "2024-10-31-21-27-04-6b1073",
+    "sess_snapshot": {
+        "ref_ids": [
+            "gpt_2_hla",
+            "hyperlora",
+            "convssm",
+            "linformer",
+            "assparseattn",
+            "posicoupling"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "hierarchicalfastttt"
+        ]
+    },
+    "seed_ids": [
+        "hierarchicalfastttt"
+    ]
+}

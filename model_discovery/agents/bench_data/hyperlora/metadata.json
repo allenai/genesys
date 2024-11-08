@@ -1,0 +1,30 @@
+{
+    "title": "HyperLoRA: Dynamic Low-Rank Adaptation in MetaLearner GAU through HyperNetworks",
+    "acronym": "hyperlora",
+    "sess_id": "2024-10-30-19-31-51-e4f185",
+    "sess_snapshot": {
+        "ref_ids": [
+            "streamretnet",
+            "maxlinretnet",
+            "hipattn",
+            "rwkv4",
+            "xl3m",
+            "transnormerllm"
+        ],
+        "proposed": [],
+        "reranked": {},
+        "num_samples": {
+            "implementation": 1,
+            "rerank_method": "rating",
+            "proposal": 1
+        },
+        "instruct": "",
+        "mode": "Mutate existing design",
+        "seed_ids": [
+            "gpt_2_ala"
+        ]
+    },
+    "seed_ids": [
+        "gpt_2_ala"
+    ]
+}

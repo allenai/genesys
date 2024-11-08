@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "adaretnet",
+        "matrixfreeadaptivelm",
+        "fire",
+        "longheads",
+        "neuralcompress",
+        "diffusionbert"
+    ],
+    "proposed": [
+        "adaptivehierarchicalmha"
+    ],
+    "reranked": {
+        "rank": [
+            "adaptivehierarchicalmha"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "gpt2"
+    ]
+}

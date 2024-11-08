@@ -1,0 +1,28 @@
+{
+    "ref_ids": [
+        "selectivehierarchicalttt_1",
+        "expertswiglu",
+        "resonance",
+        "memcompress",
+        "cepe",
+        "lminfinite"
+    ],
+    "proposed": [
+        "chunkedretnet"
+    ],
+    "reranked": {
+        "rank": [
+            "chunkedretnet"
+        ]
+    },
+    "num_samples": {
+        "implementation": 1,
+        "rerank_method": "rating",
+        "proposal": 1
+    },
+    "instruct": "",
+    "mode": "Mutate existing design",
+    "seed_ids": [
+        "retnet"
+    ]
+}
