@@ -3330,7 +3330,10 @@ class EvolutionSystem(exec_utils.System):
                 print(f"Code file not found for design {design_id}")
                 U.log_error_model(design_id,scale)
                 return None
-        code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
+        try:
+            code = check_tune(scale,design_id, code=_code,check_only=True,cpu_only=False,reformat_only=True)
+        except Exception as e:
+            code = None
         if code is None:
             print(f'Check tune failed for design {design_id} at scale {scale}')
             U.log_error_model(design_id,scale)
