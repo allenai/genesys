@@ -1113,6 +1113,11 @@ class GUFlow(FlowCreator):
                 self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
         return query,state,{}
    
+    def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
+        return self._implement_proposal_recursive_gau(main_tid,proposal,acronym,resume,initial_pass)
+
+    ########################### GAU FLOW ###############################
+
     def check_code_format(self,code,selection=None,spec=None,analysis=None,declaration=None):
         # 1. check the format code for GAU
         reformatted_code,new_args,gau_tests,format_errors,format_warnings,fetal_errors,docstring,children_decl, unit_name=check_and_reformat_gau_code(code,selection)
@@ -1177,7 +1182,6 @@ class GUFlow(FlowCreator):
             
         return format_checks,format_errors,format_warnings,fetal_errors,unit_name, reformatted_code, docstring, new_args, gau_tests, children_decl, NEW_DECLARED
 
-
     def recommend_reuses(self,unimplemented_units): # all unimplemented units should have declarations
         # return dict of dicts of units {unit_name: [unit_name, ...]}
         _items={}
@@ -1212,7 +1216,7 @@ class GUFlow(FlowCreator):
                 _items[f'{seed_id}.{unit}']=tree.units[unit].code
         return _items
 
-    def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
+    def _implement_proposal_recursive_gau(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
         '''
         1. Implement the selected unit first
         2. Implement any unimplemented newly declared units
@@ -2060,6 +2064,12 @@ class GUFlow(FlowCreator):
             self.stream.snow()
         return RETS
     
+
+    ########################### Baseline Naive GAB ###############################
+
+    
+
+
     
     @register_module(
         "EXIT",

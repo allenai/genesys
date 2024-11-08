@@ -739,13 +739,13 @@ def ptree_monitor(evosys):
     components.html(source_code, height = export_height)
 
 
-
 def _evolve(evosys):
     # else:
     #     if st.session_state.evo_running:
     #         st.toast(f'The command center is not active anymore. You may stop listing to command center.')
     #         # stop_evo(evosys)
 
+    st.title("Evolution System")
     if evosys.benchmark_mode:# and not st.session_state.evo_running:
         st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
     else:
@@ -757,6 +757,7 @@ def _evolve(evosys):
 
 
 def _bench(evosys):
+    st.title("Agent Benchmark")
     if not evosys.benchmark_mode:# and not st.session_state.evo_running:
         st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
     else:
@@ -764,6 +765,7 @@ def _bench(evosys):
 
     network_status(evosys,benchmark_mode=True)
     running_logs(evosys)
+    ptree_monitor(evosys)
 
 
 
@@ -777,6 +779,7 @@ BASIC_BASELINES = [
 ]
 
 def _eureka(evosys):
+    st.title("Eureka Moments")
     with st.status('Loading latest data...'):
         design_vectors = evosys.ptree.get_design_vectors()
         baseline_vectors = evosys.ptree.get_baseline_vectors()
@@ -867,6 +870,7 @@ def _data_filter(data,filter_func):
     return {k:v for k,v in data.items() if filter_func(v)}
 
 def _stats(evosys):
+    st.title("Experiment Statistics")
     st.subheader("Session Statistics Monitor")
     with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         # evosys.ptree.update_design_tree()
@@ -1008,9 +1012,8 @@ def evolve(evosys,project_dir):
     with st.sidebar:
         AU.running_status(st,evosys)
 
-        # benchmark_mode = st.checkbox("***Agent Benchmark 🪑***",
-        #     value=evosys.benchmark_mode,disabled=st.session_state.evo_running)
-        mode = st.selectbox("Mode",options=[i.value for i in EvoModes],index=0,
+        _index = 1 if evosys.benchmark_mode else 0
+        mode = st.selectbox("Mode",options=[i.value for i in EvoModes],index=_index,
             help='Choose the mode to view the evolution system or the agent benchmark.'
         )
         mode = EvoModes(mode)
@@ -1026,19 +1029,6 @@ def evolve(evosys,project_dir):
                 use_container_width=True
             )
         
-    if mode == EvoModes.EVOLVE:
-        st.title("Evolution System")
-        if not evosys.benchmark_mode and not st.session_state.evo_running:
-            st.warning(f'The namespace ```{evosys.evoname}``` is set to evolution mode. Please do not run benchmark in this namespace.')
-    elif mode == EvoModes.BENCH:
-        st.title("Agent Benchmark")
-        if evosys.benchmark_mode and not st.session_state.evo_running:
-            st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
-    elif mode == EvoModes.EUREKA:
-        st.title("Eureka Moments")
-    elif mode == EvoModes.STATS:
-        st.title("Experiment Statistics")
-
     assert evosys.remote_db, "You must connect to a remote database to run the evolution."
 
     if mode in [EvoModes.EVOLVE,EvoModes.BENCH]:
