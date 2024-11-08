@@ -656,7 +656,6 @@ class FirestoreManager:
         if 'metadata' in index_term:
             metadata_path=U.pjoin(design_dir,'metadata.json')
             if not U.pexists(metadata_path) or overwrite:
-                print(f'Downloading metadata for design {design_id}')
                 Doc_ref=self.collection.document(design_id)
                 if not Doc_ref.get().exists and U.pexists(design_dir):
                     shutil.rmtree(design_dir)
@@ -664,6 +663,7 @@ class FirestoreManager:
                 Doc=Doc_ref.get().to_dict()
                 if Doc is None:
                     return
+                print(f'Downloading metadata for design {design_id}')
                 metadata=Doc['metadata']
                 U.save_json(metadata,metadata_path)
                 print(f'Downloaded metadata for design {design_id}')
