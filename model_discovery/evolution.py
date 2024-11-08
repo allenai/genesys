@@ -1931,6 +1931,21 @@ class PhylogeneticTree:
         if self.FM:
             self.FM.updated_terms=[]
 
+    def is_error_session(self,sessdata:dict):
+        proposed = sessdata['proposed']
+        for acronym in proposed:
+            design=self.get_node(acronym)
+            if design is None:
+                return True
+        return False
+        if not self.benchmark_mode:
+            seeds = sessdata['seed_ids']
+            for acronym in seeds:
+                design=self.get_node(acronym)
+                if design is None:
+                    return True
+        return False
+
     def get_unfinished_designs(self,return_finished=False): # MARK: read all unfinished designs in all nodes
         self.load_design_sessions()
         self.update_design_tree()
@@ -1941,14 +1956,7 @@ class PhylogeneticTree:
             if sess_id in running_designs:
                 continue
             sessdata=self.design_sessions[sess_id]
-            proposed = sessdata['proposed']
-            is_error=False
-            for acronym in proposed:
-                design=self.get_node(acronym)
-                if design is None:
-                    is_error=True
-                    break
-            if is_error:
+            if self.is_error_session(sessdata):
                 continue
             num_samples=sessdata['num_samples']
             passed,implemented,challenging,_=self.get_session_state(sess_id)
