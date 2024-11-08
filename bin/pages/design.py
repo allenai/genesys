@@ -18,6 +18,7 @@ import time
 import model_discovery.utils as U
 from model_discovery.agents.flow.gau_flows import EndReasons,RunningModes,AGENT_OPTIONS,\
     END_REASONS_LABELS,DesignModes,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
+from model_discovery.system import DEFAULT_AGENTS
 import bin.app_utils as AU
 
 
@@ -523,6 +524,7 @@ def _design_tuning(evosys,project_dir):
 
     db_dir = evosys.ptree.db_dir
     design_cfg = evosys.design_cfg.copy()
+    design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
     n_sources = {}
 
     with st.sidebar:
@@ -710,7 +712,7 @@ def _design_tuning(evosys,project_dir):
     EXPERIMENT_RUNS=1
     
     # cols = st.columns([7,2.5,1.8,1.2])
-    cols = st.columns([6,1.5,2.5,0.8,1.2])
+    cols = st.columns([5,1.5,2,0.8,1.3,1.2])
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)", help='Will be combined with selector\'s instructions (if any)')
     with cols[1]:
@@ -726,7 +728,12 @@ def _design_tuning(evosys,project_dir):
     with cols[4]:
         st.write('')
         st.write('')
-        resume = st.checkbox(label="Resume",value=True)
+        resume = st.checkbox(label="Resume",value=True,help='If checked, will randomly resume the unfinished design session if any.')
+    with cols[5]:
+        st.write('')
+        st.write('')
+        design_cfg['flow_type'] = 'naive' if st.checkbox(label="Naive",value=False,help='Use the Naive GAB Coder and Observer') else 'gau'
+
 
     if submit:
         for i in range(EXPERIMENT_RUNS):
@@ -749,8 +756,7 @@ def _design_tuning(evosys,project_dir):
                 select_cfg['n_sources']=n_sources
                 manual_seed = None if manual_seed == 'None' else manual_seed
                 manual_refs = None if manual_refs == 'None' else manual_refs.split(',')
-                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume,
-                              )
+                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume)
     
     elif view_log_btn:
         show_log(load_log(selected_design_log_path))
@@ -794,7 +800,7 @@ def design(evosys,project_dir):
         # if st.button(btn_text,use_container_width=True):
         #     st.session_state['design_tab'] = 'design_tunner'
         #     # st.rerun()
-        choose_mode=st.selectbox("Choose a Mode",options=['Design Engine','Design Agents'],index=1)
+        choose_mode=st.selectbox("Choose a Mode",options=['Design Agents','Design Engine'],index=0)
 
     # if st.session_state['design_tab']=='design_tunner':
     #     _design_tuning(evosys,project_dir)

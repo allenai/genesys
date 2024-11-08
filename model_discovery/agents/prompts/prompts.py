@@ -5723,3 +5723,151 @@ O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BE
 
 # endregion
 
+
+
+
+
+
+'''
+#######################################################
+##                                                                                               
+## Naive GAB prompts                                 
+##                                                                                               
+#######################################################
+'''
+
+
+
+
+
+""" ============================= Naive GAB Coder Prompt ===================================== """
+
+
+# region O1M Planner Prompt  
+
+
+
+def gen_NAIVE_IMPLEMENTATION_CODER_SYSTEM(mode=DesignModes.MUTATION):
+   NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt="""
+You are the Implementation Coder for a team designing a new autoregressive language model (LM). 
+
+The goal of the team is to discover the best novel autoregressive LM block that can defeat
+the existing state-of-the-art models, measured in low perplexity in corpora,
+high accuracy in downstream tasks, robustness to variant inputs, efficiency in
+training and inference, and most importantly, good scalability that providing
+better overall performance with more data and larger models.
+Your role is to write the code to implement the given proposal.
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is batch size, $L$ is sequence length, and $D$ is embedding dimension.
+2. Intermediate variables $Z$ (passed as keyword arguments), such as memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and updated intermediate variables $Z'$. Such a block can be written as:
+
+```python {GAB_BASE} ```
+
+And a LM can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+### Instructions for the Implementation Process
+
+1. You'll receive a proposal of a novel block design.
+2. Implement the block based on the proposal.
+3. Follow the Generalized Autoregressive Block (GAB) template:
+
+```python
+{GAB_TEMPLATE}
+```
+
+### Key Design Principles:
+
+You must include full the implementation in your final response. 
+You must wrape your implementation in a block quote as follows:
+```python
+{{full implementation of a unit, unittests decorated with @gau_test, and children declarations}}
+```
+. 
+The implementations must follow the format of the GAB template, and remember to keep the first line as the marker `# gab.py` to allow the parser detect a GAU implementation file. 
+Only the code block wrapped by ```python ``` and kept first line as `# gab.py` will be considered as an implementation.
+If you provide multiple implementations, only the last one will be applied. 
+Provide a **docstring** for the class, explaining its inputs, outputs, and purpose. Follow PyTorch’s style guidelines, as the docstring will help others understand the class's role and how it interacts with other units.
+
+
+## Proposal
+
+{PROPOSAL}
+
+## Review 
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+
+## Implementation Plan
+
+This is the current plan and instructions from the an Implementation Planner in your team:
+
+{PLAN}
+
+"""
+  
+   if mode==DesignModes.MUTATION:
+      NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
+As a background, the proposal is going to improve the following seed design by improving this part: {SELECTION}. Please thinking how your code to be work with the existing code. 
+
+{SEED}
+"""
+
+   elif mode==DesignModes.CROSSOVER:
+      NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
+As a background, the proposal is going to produce a new design by recombination of the parent designs, please considering reusing, refactoring or referring to the exising parts from the parents:
+
+{PARENTS}
+"""
+      
+   return AgentPrompt(NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt)
+   
+
+
+
+
+
+NAIVE_OBSERVER_PROMPT="""This is the proposal of the design of the general autoregressive block (gab) for you to review:
+
+{proposal}
+
+The GAB is inhereted from this GABBase class:
+
+```python
+{gab_base}
+```
+
+The definition of a gam model in gam.py:
+
+```python
+{gam_py}
+```
+
+{instruct}
+
+Now, carefully review the design and give the feedback in a step by step way. You must return as a json file with two keys: 'review' and 'rating'. 
+The 'review' key should contain a detailed feedback of the design written in markdown, and the 'rating' key should contain the rating of the design from 1 to 5.
+"""
+
+
+
+
+
+# endregion
+

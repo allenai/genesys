@@ -39,8 +39,11 @@ current_dir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfra
 
 gam_prompt_path = os.path.join(current_dir,'..','prompts','gam_prompt.py')
 gau_template_path = os.path.join(current_dir,'..','prompts','gau_template.py')
+gab_template_path = os.path.join(current_dir,'..','prompts','gab_template.py')
+
 GAM_TEMPLATE=open(gam_prompt_path).read()
 GAU_TEMPLATE=open(gau_template_path).read()
+GAB_TEMPLATE=open(gab_template_path).read()
 
 GAU_BASE=inspect.getsource(GAUBase)
 GAB_BASE=inspect.getsource(GABBase)
@@ -159,7 +162,7 @@ class GUFlow(FlowCreator):
     the input query should be the seeds from the root tree for the design
     Do not allow root for now
     """
-    def __init__(self,system,status_handler,stream,sess_id,design_cfg,user_input='',cpu_only=False,log_fn=None,design_mode=DesignModes.MUTATION):
+    def __init__(self,system,status_handler,stream,sess_id,design_cfg,user_input='',cpu_only=False,log_fn=None):
         self.costs={
             'DESIGN_PROPOSER':0,
             'PROPOSAL_REVIEWER':0,
@@ -178,6 +181,8 @@ class GUFlow(FlowCreator):
         self.outs=['design_stack']
         self.cpu_only=cpu_only
         self.log_fn=log_fn if log_fn else lambda x,y=None: None
+
+        self.flow_type=design_cfg.get('flow_type','gau')
         
         # prepare roles
 
@@ -1112,7 +1117,12 @@ class GUFlow(FlowCreator):
         return query,state,{}
    
     def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
-        return self._implement_proposal_recursive_gau(main_tid,proposal,acronym,resume,initial_pass)
+        if self.flow_type=='gau':
+            return self._implement_proposal_recursive_gau(main_tid,proposal,acronym,resume,initial_pass)
+        elif self.flow_type=='naive':
+            return self._implement_proposal_recursive_naive(main_tid,proposal,acronym,resume,initial_pass)
+        else:
+            raise NotImplementedError(f'Flow type {self.flow_type} not implemented')
 
     ########################### GAU FLOW ###############################
 
@@ -2065,10 +2075,50 @@ class GUFlow(FlowCreator):
 
     ########################### Baseline Naive GAB ###############################
 
-    
+    def _implement_proposal_recursive_naive(self,main_tid,proposal,acronym):
+        raise NotImplementedError
+
+        self.dialog=self.system.dialog
+        OBSERVE_THRESHOLD=self.threshold['implementation_rating']
+        cost_raw=copy.deepcopy(self.costs)
+
+        end_reason = None
+        RETS={}
+        RETS['ROUNDS']=[]
+        SUCCEED=False
+
+        
+        IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
+            GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
+            PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+        
+        implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
+                                            alias='implementation_planner',note=f'Starting implementation planning...')
+        _,out=self.call_dialog(implementation_planner_tid,gu_implementation_unit_selection_prompt)
 
 
-    
+        for attempt in range(self.max_attemps['implementation_debug']):
+
+
+            IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUT_IMPLEMENTATION_CODER_SYSTEM(
+                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PLAN=plan,
+                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+            implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder, # keep last 2 messages and system message
+                                                alias='implementation_coder',note=f'Starting design implementation...')
+
+            if attempt == 0:
+                thread_tid = implementation_coder_tid
+            else:
+                if debug_thread_tid is None:
+                    query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
+                    debug_thread_tid = self.dialog.fork(implementation_coder_tid,SYSTEM_CALLER,DEBUGGER,
+                                                        alias='debugging',note='Starting debugging...')
+                thread_tid = debug_thread_tid
+
+
+
+
+
     @register_module(
         "EXIT",
         hints="output the initial threads",
