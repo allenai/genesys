@@ -2170,6 +2170,8 @@ class PhylogeneticTree:
         other_designs=[]
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
             artifact = DesignArtifact.load(self.design_dir(id))
+            if artifact is None:
+                continue
             if artifact.type=='DesignArtifactImplemented':
                 implemented_designs.append(artifact)
             else:
