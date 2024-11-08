@@ -208,6 +208,7 @@ Please try to fix the code based on the information provided. Do not include any
 def build_GU_QUERY(seeds,refs=None,instruct=None,user_input=None,
          mode=DesignModes.MUTATION,mutation_no_tree=True,scratch_no_tree=False):
    if mode==DesignModes.MUTATION:
+      seeds_prompt = seeds[0].to_prompt() if seeds else ''
       query = f"""
 # Seed Design
 
@@ -215,7 +216,7 @@ You are tasked with improving the following seed design:
 
 ---
 
-{seeds[0].to_prompt()}
+{seeds_prompt}
 
 ---
 """
