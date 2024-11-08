@@ -1035,8 +1035,8 @@ class GUFlow(FlowCreator):
         # select the highest rated unimplemented proposal
         proposals=[]
         acronyms=[] 
-        rerank=self.ptree.session_get(self.sess_id,'reranked')
-        if not rerank:
+        rerank=self.ptree.get_reranked_proposals(self.sess_id)
+        if rerank is None:
             _proposals,_acronyms=self.ptree.session_proposals(self.sess_id,passed_only=True)
             proposals=[]
             acronyms=[]
@@ -1048,8 +1048,6 @@ class GUFlow(FlowCreator):
             self.ptree.session_set(self.sess_id,'reranked',rerank)
         for acronym in rerank['rank']:
             design=self.ptree.get_node(acronym)
-            if design is None:
-                continue
             if not design.is_implemented():
                 proposals.append(design.proposal)
                 acronyms.append(acronym)

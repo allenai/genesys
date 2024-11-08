@@ -1940,8 +1940,18 @@ class PhylogeneticTree:
             if sess_id in running_designs:
                 continue
             sessdata=self.design_sessions[sess_id]
+            proposed = sessdata['proposed']
+            is_error=False
+            for acronym in proposed:
+                design=self.get_node(acronym)
+                if design is None:
+                    is_error=True
+                    break
+            if is_error:
+                continue
             num_samples=sessdata['num_samples']
             passed,implemented,challenging,_=self.get_session_state(sess_id)
+
             if len(passed)<num_samples['proposal']:
                 unfinished_designs.append(sess_id)
             elif len(implemented)+len(challenging)<num_samples['implementation']:
@@ -1986,6 +1996,14 @@ class PhylogeneticTree:
             proposals.append(design.proposal)
             acronyms.append(acronym)
         return proposals,acronyms
+    
+    def get_reranked_proposals(self,sess_id:str):
+        rerank=self.session_get(sess_id,'reranked')
+        for acronym in rerank.get('rank',[]):
+            design=self.get_node(acronym)
+            if design is None:
+                return None
+        return rerank
     
     def session_implementations(self,sess_id:str):
         sessdata=self.design_sessions[sess_id]
