@@ -781,7 +781,7 @@ BASIC_BASELINES = [
 def _eureka(evosys):
     st.title("Eureka Moments")
     default_baseline = 'random'
-    cols = st.columns(5)
+    cols = st.columns(6)
     with cols[0]:
         baseline = st.selectbox('Baseline',options=BASIC_BASELINES,index=0)
     with cols[1]:
@@ -791,9 +791,13 @@ def _eureka(evosys):
     with cols[3]:
         first_N = st.number_input('First N Designs',min_value=0,max_value=100,value=100,step=10)
     with cols[4]:
+        filter_threshold = st.number_input('Filter Threshold (%)',min_value=0,max_value=100,value=5,step=1,
+            help='Leave the metrics where there is at least one design with relative rating higher than this threshold'
+        )
+    with cols[5]:
         st.write('')
         st.write('')
-        absolute = st.checkbox('Absolute',value=True,help='Whether to use absolute values or relative difference compared to the baseline.')
+        absolute = st.checkbox('Absolute Diff.',value=True,help='Whether to use absolute values or relative difference compared to the baseline.')
 
         
     with st.status('Loading latest data...'):
@@ -809,24 +813,65 @@ def _eureka(evosys):
     for scale in leaderboards_normed:
         relative = baseline if baseline in baselines[scale] else default_baseline
         _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale])
-        cols = st.columns(2)
-        with cols[0]:
-            with st.expander(f'{scale} Normed metrics (0-1, higher is better)',expanded=False):
-                leaderboards_normed_ = _leaderboards_normed.copy()
-                leaderboards_normed_['avg.'] = leaderboards_normed_.mean(axis=1)
-                leaderboards_normed_['max.'] = leaderboards_normed_.max(axis=1)
-                st.dataframe(leaderboards_normed_)
-        with cols[1]:
-            with st.expander(f'{scale} Relative to ```{relative}``` (Normed metrics, %, {"absolute" if absolute else "relative"})',expanded=False):
-                leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,absolute=absolute)
-                leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
-                leaderboards_relative['max.'] = leaderboards_relative.max(axis=1)
-                leaderboards_relative['eureka'] = (
-                    (leaderboards_relative['avg.'] >= eureka_threshold_overall) 
-                    | (leaderboards_relative['max.'] >= eureka_threshold_single)
-                )
-                st.dataframe(leaderboards_relative)
-                combined_eureka[scale] = leaderboards_relative['eureka']
+        leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,absolute=absolute,filter_threshold=filter_threshold)
+        leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
+
+        # cols = st.columns(2)
+        # with cols[0]:
+        #     with st.expander(f'{scale} Normed metrics (0-1, higher is better)',expanded=False):
+        #         leaderboards_normed_ = _leaderboards_normed.copy()
+        #         leaderboards_normed_['avg.'] = leaderboards_normed_.mean(axis=1)
+        #         leaderboards_normed_['max.'] = leaderboards_normed_.max(axis=1)
+        #         st.dataframe(leaderboards_normed_)
+        # with cols[1]:
+        #     with st.expander(f'{scale} Relative to ```{relative}``` (Normed metrics, %, {"absolute" if absolute else "relative"})',expanded=False):
+        #         leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
+        #         leaderboards_relative['max.'] = leaderboards_relative.max(axis=1)
+        #         leaderboards_relative['eureka'] = (
+        #             (leaderboards_relative['avg.'] >= eureka_threshold_overall) 
+        #             | (leaderboards_relative['max.'] >= eureka_threshold_single)
+        #         )
+        #         st.dataframe(leaderboards_relative)
+        #         combined_eureka[scale] = leaderboards_relative['eureka']
+
+        leaderboards_normed_combined = _leaderboards_normed.copy()
+        leaderboards_normed_combined = leaderboards_normed_combined.loc[:,leaderboards_relative.columns]
+
+        # Drop NA values from both DataFrames
+        leaderboards_normed_combined = leaderboards_normed_combined.dropna()
+        leaderboards_relative = leaderboards_relative.dropna()
+        
+        # Ensure both DataFrames have the same index after dropping NA
+        common_index = leaderboards_normed_combined.index.intersection(leaderboards_relative.index)
+        leaderboards_normed_combined = leaderboards_normed_combined.loc[common_index]
+        leaderboards_relative = leaderboards_relative.loc[common_index]
+        # recompute avg for both, remove the old avg
+        leaderboards_normed_combined = leaderboards_normed_combined.drop(columns=['avg.'])
+        leaderboards_relative = leaderboards_relative.drop(columns=['avg.'])
+        leaderboards_normed_combined['avg.'] = leaderboards_normed_combined.mean(axis=1)
+        # _relative = f'{relative} (baseline)' if relative != 'random' else 'random'
+        relative_avg = leaderboards_normed_combined.loc[relative,'avg.']
+        leaderboards_relative['avg.'] = 100*(leaderboards_normed_combined['avg.'] - relative_avg)/relative_avg
+        
+        # Combine the values of the two leaderboards as normed (relative) e.g., 3.2 (4.5%)
+        def combine_values(normed, relative):
+            return normed.applymap(lambda x: f'{x:.4f}') + ' (' + relative.applymap(lambda x: f'{x:.2f}%') + ')'
+
+        leaderboards_normed_combined = combine_values(leaderboards_normed_combined, leaderboards_relative)
+
+
+        highlight_color = 'violet'
+        with st.expander(f'Combined leaderboard for ```{scale}``` (with relative (%) to ```{relative}```, max highlighted in :{highlight_color}[{highlight_color}])',expanded=True):
+            baseline_rows = leaderboards_normed_combined[leaderboards_normed_combined.index.str.contains('(baseline)')]
+            random_row = leaderboards_normed_combined.loc['random']
+            remaining_rows = leaderboards_normed_combined[~leaderboards_normed_combined.index.isin(baseline_rows.index)]
+            remaining_rows = remaining_rows.drop(index='random')
+            remaining_rows = remaining_rows.sort_values(by='avg.',ascending=True)
+            leaderboards_normed_combined = pd.concat([random_row.to_frame().T,baseline_rows,remaining_rows])
+            st.dataframe(leaderboards_normed_combined.style.highlight_max(axis=0,color=highlight_color),use_container_width=True)
+
+
+
 
     st.subheader('Combined Eureka Moments')
     # fill the missing rows with False
@@ -838,7 +883,6 @@ def _eureka(evosys):
         return evosys.ptree.get_node(x).timestamp
     combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
     st.dataframe(combined_eureka)
-
 
 
 
