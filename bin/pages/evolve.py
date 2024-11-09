@@ -790,7 +790,7 @@ def _eureka(evosys):
     # with cols[2]:
     #     eureka_threshold_overall = st.number_input('Eureka Threshold (Overall)',min_value=0,max_value=100,value=1,step=1)
     with cols[2]:
-        first_N = st.number_input('First N Designs',min_value=0,max_value=100,value=100,step=10)
+        first_N = st.number_input('First N Designs',min_value=0,max_value=100,value=0,step=50)
         first_N = None if first_N==0 else first_N
     with cols[3]:
         filter_threshold = st.number_input('Filter Threshold (%)',min_value=0,max_value=100,value=5,step=1,
@@ -863,16 +863,19 @@ def _eureka(evosys):
     col1, col2 = st.columns(2)
     with col1:
         st.subheader('Combined Eureka Moments')
-        # fill the missing rows with False
-        combined_eureka = combined_eureka.fillna(False)
+        # combined_eureka = combined_eureka.fillna()
+        def _reweight(x):
+            # mean over non-None values
+            return x.mean()
+        combined_eureka['eureka'] = combined_eureka.apply(lambda x: _reweight(x),axis=1)
         combined_eureka = combined_eureka.drop(BASIC_BASELINES, errors='ignore')
-        combined_eureka['eureka'] = combined_eureka.sum(axis=1)
         # add time stamp column by 
         def get_timestamp(x):
             return evosys.ptree.get_node(x).timestamp
         combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
         combined_eureka = combined_eureka.sort_values(by='timestamp',ascending=True)
         st.dataframe(combined_eureka)
+
     with col2:
         st.subheader('Population Eureka over time')
         population_size = 50
@@ -903,33 +906,12 @@ def _eureka(evosys):
         })
         chart_data['std_upper'] = chart_data['mean'] + chart_data['std']
         chart_data['std_lower'] = chart_data['mean'] - chart_data['std']
-        # st.line_chart(chart_data,x='generation',y=['mean','std_upper','std_lower','max','min'],height=400)
 
-
-        # Create the line and shaded area chart with Altair
-        line = alt.Chart(chart_data).mark_line(color='blue').encode(
-            x='generation', y='mean', 
-        )
-
-        # Line for max
-        line_max = alt.Chart(chart_data).mark_line(color='red', strokeDash=[4,4]).encode(
-            x='generation', y='max'
-        )
-        
-        # Line for min
-        line_min = alt.Chart(chart_data).mark_line(color='green', strokeDash=[4,4]).encode(
-            x='generation', y='min'
-        )
-
-        # Shaded region for standard deviation
-        band = alt.Chart(chart_data).mark_area(opacity=0.2).encode(
-            x='generation', y='std_lower', y2='std_upper'
-        )
-
-        # Combine the line and the shaded area
+        line = alt.Chart(chart_data).mark_line(color='blue').encode(x='generation', y='mean')
+        line_max = alt.Chart(chart_data).mark_line(color='red', strokeDash=[4,4]).encode(x='generation', y='max')
+        line_min = alt.Chart(chart_data).mark_line(color='green', strokeDash=[4,4]).encode(x='generation', y='min')
+        band = alt.Chart(chart_data).mark_area(opacity=0.2).encode(x='generation', y='std_lower', y2='std_upper')
         chart = band + line + line_max + line_min
-
-        # Display in Streamlit
         st.altair_chart(chart, use_container_width=True)
 
 
