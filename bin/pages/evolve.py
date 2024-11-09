@@ -1172,10 +1172,16 @@ def _stats(evosys):
 
                 # Create the line and shaded area chart with Altair
                 line = alt.Chart(chart_data).mark_line(color='blue').encode(
-                    x='generation',
-                    y='mean'
+                    x='generation', y='mean'
                 )
-
+                # Line for max
+                line_max = alt.Chart(chart_data).mark_line(color='red', strokeDash=[4,4]).encode(
+                    x='generation', y='max'
+                )
+                # Line for min
+                line_min = alt.Chart(chart_data).mark_line(color='green', strokeDash=[4,4]).encode(
+                    x='generation', y='min'
+                )
                 # Shaded region for standard deviation
                 band = alt.Chart(chart_data).mark_area(opacity=0.2).encode(
                     x='generation',
@@ -1186,17 +1192,12 @@ def _stats(evosys):
                 )
 
                 # Combine the line and the shaded area
-                chart = band + line
+                chart = band + line + line_min + line_max
 
                 # Display in Streamlit
                 st.altair_chart(chart, use_container_width=True)
                 # st.area_chart(chart_data,x='generation',y=['score_mean','score_std'])
 
-            
-
-
-
-                
 
 
 
