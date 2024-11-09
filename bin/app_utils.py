@@ -130,12 +130,18 @@ def system_status(st,evosys,title,icon):
   with st.expander(f"{title}",expanded=True,icon=icon):
       settings={}
       settings['Experiment Directory']=evosys.evo_dir
+        
+      n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
+      n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
+
+      st.write(f'Designs: :blue[{n_designs}] (**:green[{n_implemented}]**)')
       if evosys.design_budget_limit>0:
           text=f'💲: {evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
           st.progress(min(1.0,evosys.ptree.design_cost/evosys.design_budget_limit),text=text)
       else:
           text=f'💲: {evosys.ptree.design_cost:.2f}/♾️'
           st.progress(1.0,text=text)
+
       _verify_budget = U.sort_dict_by_scale(evosys.selector._verify_budget,False)
       for scale,num in _verify_budget.items():
           remaining = num-evosys.selector.verify_budget[scale] 

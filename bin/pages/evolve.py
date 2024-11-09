@@ -782,20 +782,21 @@ BASIC_BASELINES = [
 def _eureka(evosys):
     st.title("Eureka Moments")
     default_baseline = 'random'
-    cols = st.columns(6)
+    cols = st.columns(5)
     with cols[0]:
-        baseline = st.selectbox('Baseline',options=BASIC_BASELINES,index=0)
+        baseline = st.selectbox('Baseline',options=BASIC_BASELINES,index=2)
     with cols[1]:
-        eureka_threshold_single = st.number_input('Eureka Threshold (Single)',min_value=0,max_value=100,value=15,step=1)
+        eureka_threshold_single = st.number_input('Eureka Threshold (Single)',min_value=0,max_value=100,value=10,step=1)
+    # with cols[2]:
+    #     eureka_threshold_overall = st.number_input('Eureka Threshold (Overall)',min_value=0,max_value=100,value=1,step=1)
     with cols[2]:
-        eureka_threshold_overall = st.number_input('Eureka Threshold (Overall)',min_value=0,max_value=100,value=1,step=1)
-    with cols[3]:
         first_N = st.number_input('First N Designs',min_value=0,max_value=100,value=100,step=10)
-    with cols[4]:
+        first_N = None if first_N==0 else first_N
+    with cols[3]:
         filter_threshold = st.number_input('Filter Threshold (%)',min_value=0,max_value=100,value=5,step=1,
             help='Leave the metrics where there is at least one design with relative rating higher than this threshold'
         )
-    with cols[5]:
+    with cols[4]:
         st.write('')
         st.write('')
         absolute = st.checkbox('Absolute Diff.',value=True,help='Whether to use absolute values or relative difference compared to the baseline.')
@@ -809,31 +810,12 @@ def _eureka(evosys):
 
 
     combined_eureka = pd.DataFrame()
-
     st.subheader('Raw Data for Computing Fixed-baseline Eureka')
     for scale in leaderboards_normed:
         relative = baseline if baseline in baselines[scale] else default_baseline
         _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale])
         leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,absolute=absolute,filter_threshold=filter_threshold)
         leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
-
-        # cols = st.columns(2)
-        # with cols[0]:
-        #     with st.expander(f'{scale} Normed metrics (0-1, higher is better)',expanded=False):
-        #         leaderboards_normed_ = _leaderboards_normed.copy()
-        #         leaderboards_normed_['avg.'] = leaderboards_normed_.mean(axis=1)
-        #         leaderboards_normed_['max.'] = leaderboards_normed_.max(axis=1)
-        #         st.dataframe(leaderboards_normed_)
-        # with cols[1]:
-        #     with st.expander(f'{scale} Relative to ```{relative}``` (Normed metrics, %, {"absolute" if absolute else "relative"})',expanded=False):
-        #         leaderboards_relative['avg.'] = leaderboards_relative.mean(axis=1)
-        #         leaderboards_relative['max.'] = leaderboards_relative.max(axis=1)
-        #         leaderboards_relative['eureka'] = (
-        #             (leaderboards_relative['avg.'] >= eureka_threshold_overall) 
-        #             | (leaderboards_relative['max.'] >= eureka_threshold_single)
-        #         )
-        #         st.dataframe(leaderboards_relative)
-        #         combined_eureka[scale] = leaderboards_relative['eureka']
 
         leaderboards_normed_combined = _leaderboards_normed.copy()
         leaderboards_normed_combined = leaderboards_normed_combined.loc[:,leaderboards_relative.columns]
@@ -870,20 +852,86 @@ def _eureka(evosys):
             remaining_rows = remaining_rows.sort_values(by='avg.',ascending=True)
             leaderboards_normed_combined = pd.concat([random_row.to_frame().T,baseline_rows,remaining_rows])
             st.dataframe(leaderboards_normed_combined.style.highlight_max(axis=0,color=highlight_color),use_container_width=True)
+        
+        leaderboards_relative_remaining = leaderboards_relative.loc[remaining_rows.index]
+        # mark eureka designs (rows) by the number of columns that are >= eureka_threshold_single
+        num_highlights = leaderboards_relative_remaining.apply(lambda x: (x >= eureka_threshold_single).sum(), axis=1)
+        combined_eureka[scale] = num_highlights
 
 
 
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader('Combined Eureka Moments')
+        # fill the missing rows with False
+        combined_eureka = combined_eureka.fillna(False)
+        combined_eureka = combined_eureka.drop(BASIC_BASELINES, errors='ignore')
+        combined_eureka['eureka'] = combined_eureka.sum(axis=1)
+        # add time stamp column by 
+        def get_timestamp(x):
+            return evosys.ptree.get_node(x).timestamp
+        combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
+        combined_eureka = combined_eureka.sort_values(by='timestamp',ascending=True)
+        st.dataframe(combined_eureka)
+    with col2:
+        st.subheader('Population Eureka over time')
+        population_size = 50
+        step_size = 30
+        _col1, _col2 = st.columns(2)
+        with _col1:
+            population_size = st.slider('Population size',min_value=10,max_value=100,value=50,step=10)
+        with _col2:
+            step_size = st.slider('Step size',min_value=10,max_value=100,value=30,step=10)
+        generations = []
+        eureka_means = []
+        eureka_stds = []
+        eureka_maxs = []
+        eureka_mins = []
+        for i in range(0,len(combined_eureka),step_size):
+            _designs = list(combined_eureka.index)[i:i+population_size]
+            generations.append(int(i/step_size))
+            eureka_means.append(np.mean(combined_eureka.loc[_designs]['eureka']))
+            eureka_stds.append(np.std(combined_eureka.loc[_designs]['eureka']))
+            eureka_maxs.append(np.max(combined_eureka.loc[_designs]['eureka']))
+            eureka_mins.append(np.min(combined_eureka.loc[_designs]['eureka']))
+        chart_data = pd.DataFrame({
+            'generation':generations,
+            'mean':eureka_means,
+            'std':eureka_stds,
+            'max':eureka_maxs,
+            'min':eureka_mins
+        })
+        chart_data['std_upper'] = chart_data['mean'] + chart_data['std']
+        chart_data['std_lower'] = chart_data['mean'] - chart_data['std']
+        # st.line_chart(chart_data,x='generation',y=['mean','std_upper','std_lower','max','min'],height=400)
 
-    st.subheader('Combined Eureka Moments')
-    # fill the missing rows with False
-    combined_eureka = combined_eureka.fillna(False)
-    combined_eureka = combined_eureka.drop(BASIC_BASELINES, errors='ignore')
-    combined_eureka['eureka'] = combined_eureka.any(axis=1)
-    # add time stamp column by 
-    def get_timestamp(x):
-        return evosys.ptree.get_node(x).timestamp
-    combined_eureka['timestamp'] = combined_eureka.index.map(get_timestamp)
-    st.dataframe(combined_eureka)
+
+        # Create the line and shaded area chart with Altair
+        line = alt.Chart(chart_data).mark_line(color='blue').encode(
+            x='generation', y='mean', 
+        )
+
+        # Line for max
+        line_max = alt.Chart(chart_data).mark_line(color='red', strokeDash=[4,4]).encode(
+            x='generation', y='max'
+        )
+        
+        # Line for min
+        line_min = alt.Chart(chart_data).mark_line(color='green', strokeDash=[4,4]).encode(
+            x='generation', y='min'
+        )
+
+        # Shaded region for standard deviation
+        band = alt.Chart(chart_data).mark_area(opacity=0.2).encode(
+            x='generation', y='std_lower', y2='std_upper'
+        )
+
+        # Combine the line and the shaded area
+        chart = band + line + line_max + line_min
+
+        # Display in Streamlit
+        st.altair_chart(chart, use_container_width=True)
+
 
 
 
