@@ -1088,8 +1088,11 @@ def _stats(evosys):
                 )
             with col2:
                 st.subheader('Accuracy-Population over time')
-                population_size = 50
-                step_size = 30
+                _col1, _col2 = st.columns(2)
+                with _col1:
+                    population_size = st.slider('Population size',min_value=10,max_value=100,value=50,step=10)
+                with _col2:
+                    step_size = st.slider('Step size',min_value=10,max_value=100,value=30,step=10)
                 timestamp_filtered = {k:v for k,v in timestamps.items() if k in scores_filtered}
                 timestamp_filtered = dict(sorted(timestamp_filtered.items(), key=lambda x: x[1]))
                 generations = []
