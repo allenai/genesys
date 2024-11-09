@@ -6,6 +6,7 @@ import sys,os
 from enum import Enum
 from subprocess import check_output
 import pytz
+import altair as alt
 import streamlit.components.v1 as components
 from google.cloud import firestore
 from datetime import datetime, timedelta
@@ -896,6 +897,33 @@ def _draw_pie(data,startangle=90):
     ax.axis('equal')  
     return fig
 
+def _draw_pie_alt(data, startangle=90):
+    # Convert the dictionary to a DataFrame
+    data_df = pd.DataFrame(list(data.items()), columns=['Category', 'Value'])
+    
+    # Calculate the percentage for each slice
+    total = sum(data.values())
+    data_df['Percentage'] = data_df['Value'] / total * 100
+    data_df['Category'] = data_df.apply(lambda row: f"{row['Category']} ({row['Value']})", axis=1)  # Label with category and value
+
+    
+    # Create the pie chart
+    pie_chart = alt.Chart(data_df).mark_arc(innerRadius=0).encode(
+        theta=alt.Theta('Value', type='quantitative'),
+        color=alt.Color('Category', type='nominal'),
+        tooltip=[alt.Tooltip('Category', title='Category'), 
+                 alt.Tooltip('Value', title='Value'),
+                 alt.Tooltip('Percentage', format='.2f', title='Percentage (%)')]
+    ).configure_view(
+        strokeWidth=0
+    ).configure_arc(
+        startAngle=startangle
+    )# .properties(
+    #     title="Pie Chart"
+    # )
+    
+    return pie_chart
+
 def _data_to_freq(data,unit=None,outlier=None,precision=2):
     freq = {}
     outliers = 0
@@ -918,6 +946,14 @@ def _data_to_freq(data,unit=None,outlier=None,precision=2):
 
 def _data_filter(data,filter_func):
     return {k:v for k,v in data.items() if filter_func(v)}
+
+def _score_stratify(_scores):
+    return np.array([
+        '<0.6' if x < 0.6 else 
+        '0.6-0.65' if x < 0.65 else 
+        '0.65-0.7' if x < 0.7 else 
+        '>0.7' for x in _scores
+    ])
 
 def _stats(evosys):
     st.title("Experiment Statistics")
@@ -957,7 +993,7 @@ def _stats(evosys):
             with col1:
                 st.subheader('Design state distribution')  
                 state_counts = _data_to_freq(states)
-                st.pyplot(_draw_pie(state_counts,startangle=150))
+                st.altair_chart(_draw_pie_alt(state_counts,startangle=150))
             with col2:
                 st.subheader('Implementation attempt distribution')
                 # st.pyplot(_draw_pie(attempt_counts,startangle=30))
@@ -994,18 +1030,13 @@ def _stats(evosys):
                 chart_data = pd.DataFrame(
                     _data, columns=["cost", "accuracy", "Accuracy"]
                 )
-                chart_data["accuracy_level"] = np.array([
-                    'low' if x < 0.6 else 
-                    'medium' if x < 0.65 else 
-                    'high' if x < 0.7 else 
-                    'very high' for x in _scores
-                ])
+                chart_data["accuracy_stratification"] = _score_stratify(_scores)
                 
                 st.scatter_chart(
                     chart_data,
                     x="cost",
                     y="accuracy",
-                    color="accuracy_level",
+                    color="accuracy_stratification",
                     size="Accuracy",
                 )
             
@@ -1028,17 +1059,12 @@ def _stats(evosys):
                 chart_data = pd.DataFrame(
                     _data, columns=["rating", "accuracy", "Accuracy"]
                 )
-                chart_data["accuracy_level"] = np.array([
-                    'low' if x < 0.6 else 
-                    'medium' if x < 0.65 else 
-                    'high' if x < 0.7 else 
-                    'very high' for x in _scores
-                ])
+                chart_data["accuracy_stratification"] = _score_stratify(_scores)
                 st.scatter_chart(
                     chart_data,
                     x="rating",
                     y="accuracy",
-                    color="accuracy_level",
+                    color="accuracy_stratification",
                     size="Accuracy",
                 )
 
@@ -1051,20 +1077,72 @@ def _stats(evosys):
                 chart_data = pd.DataFrame(
                     _data, columns=["timestamp", "accuracy", "Accuracy"]
                 )
-                chart_data["accuracy_level"] = np.array([
-                    'low' if x < 0.6 else 
-                    'medium' if x < 0.65 else 
-                    'high' if x < 0.7 else 
-                    'very high' for x in _scores
-                ])
+                chart_data["accuracy_stratification"] = _score_stratify(_scores)
                 
                 st.scatter_chart(
                     chart_data,
                     x="timestamp",
                     y="accuracy",
-                    color="accuracy_level",
+                    color="accuracy_stratification",
                     size="Accuracy",
                 )
+            with col2:
+                st.subheader('Accuracy-Population over time')
+                population_size = 50
+                step_size = 30
+                timestamp_filtered = {k:v for k,v in timestamps.items() if k in scores_filtered}
+                timestamp_filtered = dict(sorted(timestamp_filtered.items(), key=lambda x: x[1]))
+                generations = []
+                score_means = []
+                score_stds = []
+                score_mins = []
+                score_maxs = []
+                center=0.5
+                for i in range(0,len(timestamp_filtered),step_size):
+                    _designs = list(timestamp_filtered.keys())[i:i+population_size]
+                    generations.append(int(i/step_size))
+                    score_means.append(np.mean([scores_filtered[d] for d in _designs])-center)
+                    score_stds.append(np.std([scores_filtered[d] for d in _designs]))
+                    score_mins.append(np.min([scores_filtered[d] for d in _designs])-center)
+                    score_maxs.append(np.max([scores_filtered[d] for d in _designs])-center)
+                chart_data = pd.DataFrame({
+                    'generation':generations,
+                    'mean':score_means,
+                    'std':score_stds,
+                    'max':score_maxs,
+                    'min':score_mins
+                })
+                
+                # Calculate upper and lower bounds for the shaded area
+                chart_data['std_upper'] = chart_data['mean'] + chart_data['std']
+                chart_data['std_lower'] = chart_data['mean'] - chart_data['std']
+
+                # Create the line and shaded area chart with Altair
+                line = alt.Chart(chart_data).mark_line(color='blue').encode(
+                    x='generation',
+                    y='mean'
+                )
+
+                # Shaded region for standard deviation
+                band = alt.Chart(chart_data).mark_area(opacity=0.2).encode(
+                    x='generation',
+                    y='std_lower',
+                    y2='std_upper'
+                    # y='min',
+                    # y2='max'
+                )
+
+                # Combine the line and the shaded area
+                chart = band + line
+
+                # Display in Streamlit
+                st.altair_chart(chart, use_container_width=True)
+                # st.area_chart(chart_data,x='generation',y=['score_mean','score_std'])
+
+            
+
+
+
                 
 
 

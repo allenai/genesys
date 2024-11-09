@@ -165,6 +165,10 @@ def tester(evosys,project_dir):
     # st.write(failed)
 
 
+    d = random.choice(evosys.ptree.filter_by_type(['DesignArtifactImplemented']))
+    node = evosys.ptree.get_node(d)
+    st.write(node.implementation.history[-1])
+
 
 
 
