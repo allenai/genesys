@@ -3344,6 +3344,9 @@ class EvolutionSystem(exec_utils.System):
         from model_discovery.model.library.tester import check_tune
         
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
+        if design is None:
+            print(f"Design {design_id} not found")
+            return None
         design_id=design.acronym
         ### XXX need manully check then comment it, need to fix, TUNE cause the problem
         if design.type=='DesignArtifactImplemented':

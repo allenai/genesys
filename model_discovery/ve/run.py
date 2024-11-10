@@ -117,9 +117,9 @@ TIME_LOWER={ # from COSTS_LOWER, considered Median case
 }
 
 SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
-    '14M':3,
-    '31M':3,
-    '70M':2,
+    '14M':4,
+    '31M':4,
+    '70M':3,
     '125M':2,
     '350M':1.5,
     '760M':1.5,
