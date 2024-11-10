@@ -2937,10 +2937,6 @@ class EvolutionSystem(exec_utils.System):
     @property
     def remaining_verify_budget(self):
         return sum(self.selector.verify_budget.values())
-    
-    def conclude(self):
-        # conclude results and report to db
-        pass
 
     def get_evo_state(self):
         evo_state={}
