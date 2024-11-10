@@ -997,10 +997,14 @@ def _stats(evosys):
 
         states = {}
         costs = {}
+        impl_costs = {}
+        proposal_costs = {}
         scores_14m = {}
         ratings = {}
         attempts = {}
         timestamps = {}
+        cfg_implementations = {}
+        cfg_proposals = {}
         for design in designs+implemented:
             node = evosys.ptree.get_node(design)
             state = node.state
@@ -1009,11 +1013,18 @@ def _stats(evosys):
             else:
                 attempt = 0
             states[design] = state
-            costs[design] = sum(node.get_cost(with_history=True).values())
+            costs[design] = sum(node.get_cost(with_history=False).values())
+            proposal_costs[design] = sum(node.proposal.costs.values())
+            if node.implementation:
+                impl_costs[design] = sum(node.implementation.get_cost(with_history=False).values())
             timestamps[design] = node.timestamp
             scores_14m[design] = node.get_score('14M')
             ratings[design] = node.proposal.rating
             attempts[design] = attempt
+            cfg_proposals[design] = node.proposal.design_cfg
+            if node.implementation and node.implementation.history:
+                cfg_implementations[design] = node.implementation.history[-1].design_cfg
+
 
         if len(designs)+len(implemented)+len(sessions) == 0:
             st.info('No design session statistics available at the moment.')
@@ -1179,7 +1190,93 @@ def _stats(evosys):
                 # Display in Streamlit
                 st.altair_chart(chart, use_container_width=True)
                 # st.area_chart(chart_data,x='generation',y=['score_mean','score_std'])
+            
 
+            col1, col2, col3, col4  = st.columns(4)
+            impl_agents = {i:v['_agent_types']['IMPLEMENTATION_CODER'] for i,v in cfg_implementations.items()}
+            proposal_agents = {i:v['_agent_types']['DESIGN_PROPOSER'] for i,v in cfg_proposals.items()}
+            impl_agent_scores = {}
+            impl_agent_costs = {}
+            proposal_agent_scores = {}
+            proposal_agent_costs = {}
+            pair_cost = {}
+            pair_score = {}
+            pair_effective = {}
+            for design in impl_costs:
+                agent = impl_agents[design]
+                pagent = proposal_agents[design]
+                score = scores_14m[design]
+                cost = impl_costs[design]
+                pcost = proposal_costs[design]
+                if agent not in impl_agent_scores:
+                    impl_agent_scores[agent] = []
+                impl_agent_scores[agent].append(score)
+                if pagent not in proposal_agent_scores:
+                    proposal_agent_scores[pagent] = []
+                proposal_agent_scores[pagent].append(score)
+                if agent not in impl_agent_costs:
+                    impl_agent_costs[agent] = []
+                impl_agent_costs[agent].append(cost)
+                if pagent not in proposal_agent_costs:
+                    proposal_agent_costs[pagent] = []
+                proposal_agent_costs[pagent].append(pcost)
+                pair = f'{agent}-{pagent}'
+                if pair not in pair_score:
+                    pair_score[pair] = []
+                pair_score[pair].append(score)
+                if pair not in pair_cost:
+                    pair_cost[pair] = []
+                pair_cost[pair].append(cost+pcost)
+                if pair not in pair_effective:
+                    pair_effective[pair] = []
+                pair_effective[pair].append(100*score/(cost+pcost))
+
+            with col1:
+                st.subheader('Impl. agent-score')
+                impl_agent_scores_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in impl_agent_scores.items()}
+                impl_agent_scores_std = {f'{k} ({len(v)})':np.std(v) for k,v in impl_agent_scores.items()}
+                chart_data = pd.DataFrame(list(impl_agent_scores_mean.items()),columns=['agent','mean score'])
+                st.bar_chart(chart_data,x='agent',y='mean score')
+            with col2:
+                st.subheader('Prop. agent-score')
+                proposal_agent_scores_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in proposal_agent_scores.items()}
+                proposal_agent_scores_std = {f'{k} ({len(v)})':np.std(v) for k,v in proposal_agent_scores.items()}
+                chart_data = pd.DataFrame(list(proposal_agent_scores_mean.items()),columns=['agent','mean score'])
+                st.bar_chart(chart_data,x='agent',y='mean score')
+            with col3:
+                st.subheader('Impl. agent-cost')
+                impl_agent_costs_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in impl_agent_costs.items()}
+                impl_agent_costs_std = {f'{k} ({len(v)})':np.std(v) for k,v in impl_agent_costs.items()}
+                chart_data = pd.DataFrame(list(impl_agent_costs_mean.items()),columns=['agent','mean cost'])
+                st.bar_chart(chart_data,x='agent',y='mean cost')    
+            with col4:
+                st.subheader('Prop. agent-cost')
+                proposal_agent_costs_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in proposal_agent_costs.items()}
+                proposal_agent_costs_std = {f'{k} ({len(v)})':np.std(v) for k,v in proposal_agent_costs.items()}
+                chart_data = pd.DataFrame(list(proposal_agent_costs_mean.items()),columns=['agent','mean cost'])
+                st.bar_chart(chart_data,x='agent',y='mean cost')
+
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.subheader('Agent-pair-score')
+                pair_score_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in pair_score.items()}
+                pair_score_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_score.items()}
+                chart_data = pd.DataFrame(list(pair_score_mean.items()),columns=['pair','mean score'])
+                st.bar_chart(chart_data,x='pair',y='mean score')
+
+            with col2:
+                st.subheader('Agent-pair-cost')
+                pair_cost_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in pair_cost.items()}
+                pair_cost_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_cost.items()}
+                chart_data = pd.DataFrame(list(pair_cost_mean.items()),columns=['pair','mean cost'])
+                st.bar_chart(chart_data,x='pair',y='mean cost')
+
+            with col3:
+                st.subheader('Cost-effectiveness')
+                pair_effective_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in pair_effective.items()}
+                pair_effective_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_effective.items()}
+                chart_data = pd.DataFrame(list(pair_effective_mean.items()),columns=['pair','mean cost-effectiveness'])
+                st.bar_chart(chart_data,x='pair',y='mean cost-effectiveness')
 
 
 

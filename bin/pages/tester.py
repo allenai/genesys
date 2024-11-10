@@ -170,6 +170,8 @@ def tester(evosys,project_dir):
     st.write(node.implementation.history[-1])
 
 
+    # evosys.ptree.FM.sync_to_db()
+
 
 
 
