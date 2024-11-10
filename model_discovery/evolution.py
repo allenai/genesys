@@ -3342,6 +3342,7 @@ class EvolutionSystem(exec_utils.System):
         design=self.ptree.get_node(design_id) # need to ensure this design has not been verified under scale
         if design is None:
             print(f"Design {design_id} not found")
+            U.log_error_model(design_id,scale)
             return None
         design_id=design.acronym
         ### XXX need manully check then comment it, need to fix, TUNE cause the problem
