@@ -1045,7 +1045,7 @@ def _stats(evosys):
                 rounds[design] = []
                 for h in node.implementation.history:
                     rounds[design].append(len(h.rounds))
-                attempts[design] = sum(rounds[design]) #attempt
+                attempts[design] = attempt #sum(rounds[design]) #attempt
 
 
         if len(designs)+len(implemented)+len(sessions) == 0:
