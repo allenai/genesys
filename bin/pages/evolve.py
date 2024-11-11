@@ -423,43 +423,45 @@ def network_status(evosys,benchmark_mode=False):
         else:
             st.info('No active design sessions')
 
-        if not benchmark_mode:
-            running_verifications = evosys.CM.get_running_verifications()
-            running_verifications = {v:running_verifications[v] for v in running_verifications if running_verifications[v]['heartbeat'] is not None}
-            st.write(f'##### Running Verifications ```{len(running_verifications)}```')
-            if len(running_verifications)>0:
-                # for sess_id in running_verifications:
-                running_verifications_df = pd.DataFrame(running_verifications).T
-                if 'latest_log' in running_verifications_df.columns:
-                    del running_verifications_df['latest_log']
-                if 'timestamp' in running_verifications_df.columns:
-                    del running_verifications_df['timestamp']
-                if 'W&B Training Run' in running_verifications_df.columns: # ad hoc for some errors in log
-                    del running_verifications_df['W&B Training Run']
-                if 'wandb_url' in running_verifications_df.columns:
-                    running_verifications_df.rename(columns={'wandb_url':'W&B Training Run'},inplace=True)
-                if 'W&B Training Run' not in running_verifications_df.columns:
-                    wandb_urls = []
-                    for sess_id in running_verifications_df.index:
-                        ve_dir = U.pjoin(evosys.evo_dir, 've', sess_id)
-                        if os.path.exists(ve_dir):
-                            wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
-                            wandb_id=wandb_ids['pretrain']['id']
-                            project=wandb_ids['project']
-                            entity=wandb_ids['entity']
-                            url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                            wandb_urls.append(url)
-                        else:
-                            wandb_urls.append(None)
-                    running_verifications_df['W&B Training Run'] = wandb_urls
-                if 'pid' in running_verifications_df.columns:
-                    running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
-                if 'heartbeat' in running_verifications_df.columns:
-                    running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
-                running_verifications_df.rename(columns={'status':'Status','pid':'PID','heartbeat':'Last Heartbeat','node_id':'Node ID'},inplace=True)
-                st.dataframe(running_verifications_df,use_container_width=True,column_config={'W&B Training Run': st.column_config.LinkColumn('W&B Training Run')})
-            else:
+        running_verifications = evosys.CM.get_running_verifications()
+        running_verifications = {v:running_verifications[v] for v in running_verifications if running_verifications[v]['heartbeat'] is not None}
+        st.write(f'##### Running Verifications ```{len(running_verifications)}```')
+        if len(running_verifications)>0:
+            # for sess_id in running_verifications:
+            running_verifications_df = pd.DataFrame(running_verifications).T
+            if 'latest_log' in running_verifications_df.columns:
+                del running_verifications_df['latest_log']
+            if 'timestamp' in running_verifications_df.columns:
+                del running_verifications_df['timestamp']
+            if 'W&B Training Run' in running_verifications_df.columns: # ad hoc for some errors in log
+                del running_verifications_df['W&B Training Run']
+            if 'wandb_url' in running_verifications_df.columns:
+                running_verifications_df.rename(columns={'wandb_url':'W&B Training Run'},inplace=True)
+            if 'W&B Training Run' not in running_verifications_df.columns:
+                wandb_urls = []
+                for sess_id in running_verifications_df.index:
+                    ve_dir = U.pjoin(evosys.evo_dir, 've', sess_id)
+                    if os.path.exists(ve_dir):
+                        wandb_ids = U.load_json(U.pjoin(ve_dir, 'wandb_ids.json'))
+                        wandb_id=wandb_ids['pretrain']['id']
+                        project=wandb_ids['project']
+                        entity=wandb_ids['entity']
+                        url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
+                        wandb_urls.append(url)
+                    else:
+                        wandb_urls.append(None)
+                running_verifications_df['W&B Training Run'] = wandb_urls
+            if 'pid' in running_verifications_df.columns:
+                running_verifications_df['pid'] = running_verifications_df['pid'].astype(str)
+            if 'heartbeat' in running_verifications_df.columns:
+                running_verifications_df['heartbeat'] = pd.to_datetime(running_verifications_df['heartbeat'],unit='s').dt.strftime('%Y-%m-%d %H:%M:%S %Z')
+            running_verifications_df.rename(columns={'status':'Status','pid':'PID','heartbeat':'Last Heartbeat','node_id':'Node ID'},inplace=True)
+            st.dataframe(running_verifications_df,use_container_width=True,column_config={'W&B Training Run': st.column_config.LinkColumn('W&B Training Run')})
+        else:
+            if not benchmark_mode:
                 st.info('No running verifications')
+            else:
+                st.info('No running verifications ***(verification is not needed in agent benchmark)***')
 
 # def system_config(evosys):
 #     with st.expander(f"System Config for ```{evosys.evoname}```",expanded=False,icon='🔍'):
@@ -622,7 +624,7 @@ def benchmark_launch_pad(evosys):
     #         help='If checked, will apply the n seeds distribution on the left instead of the one in config in Mixed mode. Notice that if use this one, there will be no warmup.')
 
 
-    col1, col2, col3, col4, col5 = st.columns([1,1,1,1,1.2],gap='small')
+    col1, col2, col3, col4, col5, col6 = st.columns([1,1,1,1,1,0.9],gap='small')
     with col1:
         input_max_designs_per_node=st.number_input("Max Designs Per Node",min_value=0,value=0,disabled=st.session_state.evo_running,
             help='Global control of the maximum number of design threads to run on each node in addition to the local settings on each node. 0 is unlimited.'
@@ -654,8 +656,22 @@ def benchmark_launch_pad(evosys):
     #     'allow_tree': _allow_tree,
     # }
 
-
+    
     with col4:
+        # always use extreme mode, use as much gpus as possible
+        verify_schedule=st.selectbox("Verification Scheduling",['full utilization'],disabled=True, #st.session_state.evo_running,
+            help='The strategy to schedule verification jobs across nodes. Currently, only full utilization is supported, which means scheduling verify jobs immediately when a node is free. (***Verification is not needed in agent benchmark***)'
+        )
+
+
+    with col6:
+        st.write('')
+        st.write('')
+        input_allow_resume=st.checkbox("Allow Resume",value=True,disabled=True,
+            help='Whether allow resume training.'
+        )
+
+    with col5:
         st.write('')
         st.write('')
         # distributed='Distributed ' if evosys.remote_db else ''
@@ -675,8 +691,8 @@ def benchmark_launch_pad(evosys):
     if not st.session_state.evo_running:
         if run_bench_btn:       
             with st.spinner('Launching... The benchmark will be launched in the background. You may leave the gui and can always go back here to check.'):  
-                evosys.set_benchmark_mode(benchmark_settings)
-                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total)
+                evosys.set_benchmark_mode()
+                launch_evo(evosys,input_max_designs_per_node,input_max_designs_total,True,allow_resume=input_allow_resume)
     else:
         if stop_bench_btn:
             if st.session_state.command_center:

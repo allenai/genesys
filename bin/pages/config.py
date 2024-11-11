@@ -225,61 +225,61 @@ def evosys_config(evosys):
                 st.write(settings)
                 st.form_submit_button("Refresh")
 
-        with st.form("Benchmark Settings"):
-            if not evosys.benchmark_mode:
-                st.caption(f'Benchmark Settings (`{evosys.evoname}` is not in benchmark mode)')
-            else:
-                st.caption('Benchmark Settings')
-            cols = st.columns([0.8,1,2,1.2,0.8])
-            with cols[0]:
-                _n_trials = st.number_input('Number of Trials',min_value=1,value=100,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
-                    help='The number of design sessions to run.')
-            with cols[1]:
-                _MODE_OPTIONS = BENCH_MODE_OPTIONS.copy()
-                _MODE_OPTIONS[3] = 'Mixed (Use right or select config)'
-                _design_mode = st.selectbox('Design Mode',options=_MODE_OPTIONS,index=0,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
-                    help='If you choose Mixed mode, the number of seeds will follow the distribution settings, otherwise, it will always sample 1 (Mutation-only), 2 (Crossover-only), 0 (Scratch-only) seeds respectively.'
-                )
-                if _design_mode == 'Mixed (Use right or select config)':
-                    _design_mode = 'Mixed'
-            with cols[2]:
-                default_n_seeds_dist = {
-                    '0': 0.1,
-                    '1': 0.8,
-                    '2': 0.1,
-                    '3': 0,
-                    '4': 0,
-                    '5': 0,
-                }
-                _n_seeds_dist_df = pd.DataFrame(default_n_seeds_dist,index=['Weights'])
-                _n_seeds_dist_df = st.data_editor(_n_seeds_dist_df,use_container_width=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode)
-                _n_seeds_dist = _n_seeds_dist_df.to_dict(orient='records')[0]
-                _n_seeds_dist = {k:v for k,v in _n_seeds_dist.items()}
-            with cols[3]:
-                _allow_tree=st.checkbox("Allow Sampling Tree",value=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
-                    help='Whether allow sampling from the phylogenetic tree or only sampling from the seed references.'
-                )
-                _overwrite_config = st.checkbox('Overwrite Mixed Cfg.',value=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
-                    help='If checked, will apply the n seeds distribution on the left instead of the one in config in Mixed mode. Notice that if use this one, there will be no warmup.')
+        # with st.form("Benchmark Settings"):
+        #     if not evosys.benchmark_mode:
+        #         st.caption(f'Benchmark Settings (`{evosys.evoname}` is not in benchmark mode)')
+        #     else:
+        #         st.caption('Benchmark Settings')
+        #     cols = st.columns([0.8,1,2,1.2,0.8])
+        #     with cols[0]:
+        #         _n_trials = st.number_input('Number of Trials',min_value=1,value=100,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+        #             help='The number of design sessions to run.')
+        #     with cols[1]:
+        #         _MODE_OPTIONS = BENCH_MODE_OPTIONS.copy()
+        #         _MODE_OPTIONS[3] = 'Mixed (Use right or select config)'
+        #         _design_mode = st.selectbox('Design Mode',options=_MODE_OPTIONS,index=0,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+        #             help='If you choose Mixed mode, the number of seeds will follow the distribution settings, otherwise, it will always sample 1 (Mutation-only), 2 (Crossover-only), 0 (Scratch-only) seeds respectively.'
+        #         )
+        #         if _design_mode == 'Mixed (Use right or select config)':
+        #             _design_mode = 'Mixed'
+        #     with cols[2]:
+        #         default_n_seeds_dist = {
+        #             '0': 0.1,
+        #             '1': 0.8,
+        #             '2': 0.1,
+        #             '3': 0,
+        #             '4': 0,
+        #             '5': 0,
+        #         }
+        #         _n_seeds_dist_df = pd.DataFrame(default_n_seeds_dist,index=['Weights'])
+        #         _n_seeds_dist_df = st.data_editor(_n_seeds_dist_df,use_container_width=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode)
+        #         _n_seeds_dist = _n_seeds_dist_df.to_dict(orient='records')[0]
+        #         _n_seeds_dist = {k:v for k,v in _n_seeds_dist.items()}
+        #     with cols[3]:
+        #         _allow_tree=st.checkbox("Allow Sampling Tree",value=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+        #             help='Whether allow sampling from the phylogenetic tree or only sampling from the seed references.'
+        #         )
+        #         _overwrite_config = st.checkbox('Overwrite Mixed Cfg.',value=True,disabled=st.session_state.evo_running or not evosys.benchmark_mode,
+        #             help='If checked, will apply the n seeds distribution on the left instead of the one in config in Mixed mode. Notice that if use this one, there will be no warmup.')
                 
-            benchmark_settings = {
-                'n_trials': _n_trials,
-                'max_retries': None,
-                'design_mode': _design_mode,
-                'n_seeds_dist': _n_seeds_dist,
-                'overwrite_config': _overwrite_config,
-                'allow_tree': _allow_tree,
-            }
+        #     benchmark_settings = {
+        #         'n_trials': _n_trials,
+        #         'max_retries': None,
+        #         'design_mode': _design_mode,
+        #         'n_seeds_dist': _n_seeds_dist,
+        #         'overwrite_config': _overwrite_config,
+        #         'allow_tree': _allow_tree,
+        #     }
 
-            with cols[4]:
-                st.write('')
-                apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running or not evosys.benchmark_mode)
+        #     with cols[4]:
+        #         st.write('')
+        #         apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running or not evosys.benchmark_mode)
             
-            if apply_btn:
-                with st.spinner("Applying and saving..."):
-                    evosys.reconfig(benchmark_settings=benchmark_settings)
-                    st.toast("Applied and saved benchmark config")
-                    st.rerun()
+        #     if apply_btn:
+        #         with st.spinner("Applying and saving..."):
+        #             evosys.reconfig(benchmark_settings=benchmark_settings)
+        #             st.toast("Applied and saved benchmark config")
+        #             st.rerun()
 
 def ve_config(evosys):
     with st.expander(f"Verification Engine Settings for ```{evosys.evoname}```",expanded=False,icon='⚙️'):
@@ -472,7 +472,7 @@ def design_config(evosys):
     design_cfg['mutation_no_tree']=design_cfg.get('mutation_no_tree',DEFAULT_MUTATION_NO_TREE)
     design_cfg['scratch_no_tree']=design_cfg.get('scratch_no_tree',DEFAULT_SCRATCH_NO_TREE)
     design_cfg['use_unlimited_prompt']=design_cfg.get('use_unlimited_prompt',DEFAULT_USE_UNLIMITED_PROMPT)
-
+    design_cfg['flow_type']=design_cfg.get('flow_type','gau')
     #### Configure design
     
 
@@ -560,11 +560,14 @@ def design_config(evosys):
             design_cfg['num_samples']=num_samples
 
             with col3:
-                st.markdown("###### Other Configurations")
+                # st.markdown("###### Other Configurations")
                 design_cfg['unittest_pass_required']=st.checkbox('Unittests required',value=design_cfg['unittest_pass_required'],
                     help='If true, will require unittests to pass besides checkers and observers.')
                 design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg['use_unlimited_prompt'],
                     help='If true, will prompt the agent to not worry about the number of tokens in their reasoning and response, and use as many as needed to give the best response.')
+                _use_naive_flow=st.checkbox('Use Naive Flow',value=design_cfg['flow_type']=='naive',disabled=not evosys.benchmark_mode,
+                    help='If true, will use the Naive GAB Coder and Observer instead of the GAUTree Coder and Observer. Only applicable in benchmark mode.')
+                design_cfg['flow_type']='naive' if _use_naive_flow else 'gau'
 
             st.form_submit_button("Save and Apply",
                 on_click=apply_design_config,args=(evosys,design_cfg),

@@ -2770,14 +2770,6 @@ BUDGET_TYPES = ['design_bound','verify_bound']
 
 BENCH_MODE_OPTIONS = ['Mutation-only','Crossover-only','Scratch-only','Mixed']
 
-DEFAULT_BENCHMARK_SETTINGS = {
-    'n_trials': 100,
-    'max_retries': None,
-    'design_mode': 'Mutation-only',
-    'n_seeds_dist': {'0': 0.1,'1': 0.8,'2': 0.1,'3': 0,'4': 0,'5': 0},
-    'overwrite_config': True,
-    'allow_tree': True,
-}
 
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
@@ -2805,7 +2797,6 @@ class EvolutionSystem(exec_utils.System):
         self.select_cfg = {}
         self.ve_cfg = {}
         self.benchmark_mode = False
-        self.benchmark_settings = {}
         self.load(**kwargs)
 
     def load(self,**kwargs):
@@ -2868,7 +2859,7 @@ class EvolutionSystem(exec_utils.System):
         print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         
         if self.params['benchmark_mode']:
-            self.set_benchmark_mode(self.benchmark_settings)
+            self.set_benchmark_mode()
         else:
             self.unset_benchmark_mode()
         
@@ -2939,9 +2930,8 @@ class EvolutionSystem(exec_utils.System):
         else:
             return self._verify_budget
         
-    def set_benchmark_mode(self,benchmark_settings={}):
+    def set_benchmark_mode(self):
         self.benchmark_mode = True
-        self.benchmark_settings = U.init_dict(benchmark_settings,DEFAULT_BENCHMARK_SETTINGS)
         self.ptree.benchmark_mode = True
     
     def unset_benchmark_mode(self):
@@ -2997,7 +2987,7 @@ class EvolutionSystem(exec_utils.System):
         if self.CM is not None:
             self.CM.st = stream
 
-    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None,ve_cfg=None,benchmark_settings=None):
+    def reconfig(self,design_cfg=None,search_cfg=None,select_cfg=None,ve_cfg=None):
         if design_cfg is not None:
             self.design_cfg = design_cfg
         if search_cfg is not None:
@@ -3006,9 +2996,7 @@ class EvolutionSystem(exec_utils.System):
             self.select_cfg = select_cfg
         if ve_cfg is not None:
             self.ve_cfg = ve_cfg
-        if benchmark_settings is not None:
-            self.set_benchmark_mode(benchmark_settings)
-        if design_cfg is not None or search_cfg is not None or select_cfg is not None or ve_cfg is not None or benchmark_settings is not None:
+        if design_cfg is not None or search_cfg is not None or select_cfg is not None or ve_cfg is not None:
             self.save_config()
 
     def reload(self,params=None):
@@ -3088,7 +3076,6 @@ class EvolutionSystem(exec_utils.System):
         self.search_cfg = config.get('search_cfg',{})
         self.select_cfg = config.get('select_cfg',{})
         self.ve_cfg = config.get('ve_cfg',{})
-        self.benchmark_settings = config.get('benchmark_settings',{})
         params = config.get('params',{})
         params.update(self.params) # to directly use config, provide only evoname in config
         self.params = params # logic is that, if new params provided, use new params, otherwise, use config, otherwise, use default
@@ -3104,7 +3091,6 @@ class EvolutionSystem(exec_utils.System):
         config['select_cfg'] = self.select_cfg
         config['ve_cfg'] = self.ve_cfg
         config['params'] = self.params
-        config['benchmark_settings'] = self.benchmark_settings
         U.save_json(config,U.pjoin(self.evo_dir,'config.json'))
         if self.ptree.FM:
             self.ptree.FM.upload_experiment(self.evoname,config)
