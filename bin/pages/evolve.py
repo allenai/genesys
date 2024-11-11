@@ -782,11 +782,12 @@ def bench_summary(evosys):
         for node in nodes:
             if node.implementation:
                 state,n_tries = node.state.split(':')
-                if ('implemented' in state or 'succeeded' in state) and int(n_tries)<=evosys.ptree.challenging_threshold:
+                threshold = 3 #evosys.ptree.challenging_threshold
+                if ('implemented' in state or 'succeeded' in state) and int(n_tries)<=threshold:
                     status[node.acronym] = 'succeeded'
                 else:
                     status[node.acronym] = 'failed'
-                rounds[node.acronym] = min(int(n_tries),evosys.ptree.challenging_threshold)
+                rounds[node.acronym] = min(int(n_tries),threshold)
             else:
                 status[node.acronym] = 'Unimplemented'
         freqs = _data_to_freq(status)
