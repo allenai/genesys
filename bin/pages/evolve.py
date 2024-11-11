@@ -21,6 +21,7 @@ from streamlit.runtime.scriptrunner import add_script_run_ctx
 
 sys.path.append('.')
 import model_discovery.utils as U
+from model_discovery.evolution import BENCHMARK_DIR
 import bin.app_utils as AU
 from bin.pages.listen import DESIGN_ACTIVE_STATES,VERIFY_ACTIVE_STATES
 from bin.pages.viewer import export_leaderboards,leaderboard_filter,leaderboard_relative
@@ -772,6 +773,25 @@ def _evolve(evosys):
     ptree_monitor(evosys)
 
 
+def bench_results(evosys):
+    with st.expander(f"🏆 **Benchmark Results**",expanded=True):
+        bench_designs = os.listdir(BENCHMARK_DIR)
+        nodes = [evosys.ptree.get_node(d) for d in bench_designs]
+        status = {}
+        for node in nodes:
+            if node.implementation:
+                state,n_tries = node.state.split(':')
+                if 'implemented' in state and int(n_tries)<=evosys.ptree.challenging_threshold:
+                    status[node.acronym] = 'succeeded'
+                else:
+                    status[node.acronym] = 'failed'
+            else:
+                status[node.acronym] = 'Unimplemented'
+        freqs = _data_to_freq(status)
+        st.write(f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. :green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, :red[{freqs["failed"]/len(nodes):.2%}] failed.')
+
+
+
 def _bench(evosys):
     st.title("Agent Benchmark")
     if not evosys.benchmark_mode:# and not st.session_state.evo_running:
@@ -781,6 +801,7 @@ def _bench(evosys):
 
     network_status(evosys,benchmark_mode=True)
     running_logs(evosys)
+    bench_results(evosys)
     ptree_monitor(evosys)
 
 
