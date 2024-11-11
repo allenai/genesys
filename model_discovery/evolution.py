@@ -1402,7 +1402,10 @@ class DesignArtifact(NodeObject):
                 n_tries = len(self.implementation.history)
                 status = self.implementation.status
                 if 'gab' in status:
-                    return f'{status}:{n_tries}'
+                    if 'succeeded' in status and n_tries<=4:
+                        return f'succeeded_gab:{n_tries}'
+                    else:
+                        return f'failed_gab:{n_tries}'
                 if status=='implemented':
                     if len(self.verifications)>0:
                         return f'implemented (verified):{n_tries}'
