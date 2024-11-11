@@ -2145,12 +2145,12 @@ class GUFlow(
 
 
             if attempt==0: # first attempt, implement the unit
-                status_info=f'Starting design implementation attempt `{attempt}`...'
+                status_info=f'Starting design implementation attempt `{attempt+1}`...'
                 GUM_IMPLEMENTATION_UNIT=P.gen_NAIVE_IMPLEMENTATION()
                 gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT()
                 GUM_IMPLEMENTATION_UNIT.apply(IMPLEMENTATION_CODER.obj)
             else: # Debugging or refining the implementation
-                status_info=f'Starting design implementation attempt `{attempt}`...'
+                status_info=f'Starting design implementation attempt `{attempt+1}`...'
                 RETRY_RPOMPT=P.gen_NAIVE_IMPLEMENTATION_RETRY()
                 if USE_PAIRING:
                     pass_or_not='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
