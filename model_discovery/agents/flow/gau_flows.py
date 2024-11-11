@@ -184,7 +184,9 @@ class GUFlow(
         self.log_fn=log_fn if log_fn else lambda x,y=None: None
 
         self.flow_type=design_cfg.get('flow_type','gau')
-        
+        print(f'***$$$ Design flow type: {self.flow_type}')
+
+
         # prepare roles
 
         AGENT_TYPES = {

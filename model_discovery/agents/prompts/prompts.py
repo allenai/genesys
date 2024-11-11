@@ -103,7 +103,7 @@ Your code failed the functionality checker:
 
 {REPORT}
 
-Here is the composed LM block code `gab.py` based on the GAUs for you to refer:
+Here is the exported LM block code `gab.py` for you to refer:
 
 {GAB_CODE_WITH_LINE_NUM}
 """

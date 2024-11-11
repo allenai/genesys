@@ -1104,7 +1104,7 @@ class Proposal:
 @dataclass
 class ImplementationAttempt:
     status: str
-    rounds: int
+    rounds: list
     costs: Dict[str, float]
     tree: GAUTree
     design_cfg: Dict[str, Any]
@@ -1400,13 +1400,16 @@ class DesignArtifact(NodeObject):
                 return 'proposed (unimplemented)'
             else:
                 n_tries = len(self.implementation.history)
-                if self.implementation.status=='implemented':
+                status = self.implementation.status
+                if 'gab' in status:
+                    return f'{status}:{n_tries}'
+                if status=='implemented':
                     if len(self.verifications)>0:
                         return f'implemented (verified):{n_tries}'
                     else:
                         return f'implemented (unverified):{n_tries}'
                 else:
-                    return f'unfinished ({self.implementation.status}):{n_tries}'
+                    return f'unfinished ({status}):{n_tries}'
 
 # def write_dot(G, path):
 #     """Write NetworkX graph G to Graphviz dot format on path.
@@ -2048,7 +2051,7 @@ class PhylogeneticTree:
             if design is None:
                 continue
             if design.implementation:
-                if design.implementation.status=='implemented':
+                if design.implementation.status in ['implemented','succeeded_gab']:
                     implemented.append(acronym) 
                 else:
                     unfinished.append(acronym)
@@ -3175,6 +3178,10 @@ class EvolutionSystem(exec_utils.System):
         if self.stream:
             self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
 
+        if self.benchmark_mode and len(unfinished_designs)==0:
+            self.stream.write("All benchmark designs are implemented, stopping design process")
+            return
+        
         selector_args={}
         selector_args['n_sources']=select_cfg.get('n_sources',DEFAULT_N_SOURCES)
         selector_args['allow_tree']=select_cfg.get('random_allow_tree',DEFAULT_RANDOM_ALLOW_TREE)

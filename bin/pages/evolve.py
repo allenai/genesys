@@ -1012,6 +1012,7 @@ def _stats(evosys):
 
         states = {}
         costs = {}
+        rounds = {}
         impl_costs = {}
         proposal_costs = {}
         scores_14m = {}
@@ -1032,13 +1033,19 @@ def _stats(evosys):
             proposal_costs[design] = sum(node.proposal.costs.values())
             if node.implementation:
                 impl_costs[design] = sum(node.implementation.get_cost(with_history=False).values())
-            timestamps[design] = node.timestamp
+            try:
+                timestamps[design] = node.timestamp
+            except:
+                timestamps[design] = None
             scores_14m[design] = node.get_score('14M')
             ratings[design] = node.proposal.rating
-            attempts[design] = attempt
             cfg_proposals[design] = node.proposal.design_cfg
             if node.implementation and node.implementation.history:
                 cfg_implementations[design] = node.implementation.history[-1].design_cfg
+                rounds[design] = []
+                for h in node.implementation.history:
+                    rounds[design].append(len(h.rounds))
+                attempts[design] = sum(rounds[design]) #attempt
 
 
         if len(designs)+len(implemented)+len(sessions) == 0:
