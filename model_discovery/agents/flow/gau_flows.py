@@ -395,6 +395,8 @@ class GUFlow(
             if not self.ptree.acquire_design_lock(self.sess_id): # For benchmark, active sessions + finished designs < max designs
                 self.log_fn(f'Design lock not acquired, design is full, stopping proposal generation...','PROPOSAL')
                 break
+            if self.flow_type == 'naive':
+                raise NotImplementedError('Naive flow is not implemented for proposal generation yet.')
             self.log_fn(f'Generating proposal {i+1}...','PROPOSAL')
             cost_raw=copy.deepcopy(self.costs)
             query,state,RET=self._generate_proposal(self.seed_input,state,main_tid)
