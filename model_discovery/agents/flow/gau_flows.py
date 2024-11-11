@@ -156,7 +156,8 @@ END_REASONS_LABELS = {
     EndReasons.MAX_FAILED_ROUNDS_REACHED:'Failed',
 }
 
-class GUFlow(FlowCreator): 
+class GUFlow(
+    FlowCreator): 
     """
     The flow for designing a GAB Flow nested of GAB Units from scratch.
     the input query should be the seeds from the root tree for the design
@@ -384,6 +385,7 @@ class GUFlow(FlowCreator):
         i=0
         while True:
             passed_proposals,_=self.ptree.session_proposals(self.sess_id,passed_only=True)
+
             remaining_samples=self.num_samples['proposal']-len(passed_proposals)
             info=f'{len(passed_proposals)} proposals passed yet. Remaining {remaining_samples} proposal{"s" if remaining_samples>1 else ""} to generate.'
             self.stream.write(info)
@@ -1038,22 +1040,22 @@ class GUFlow(FlowCreator):
 
     def reranked_proposal(self):
         # select the highest rated unimplemented proposal
-        proposals=[]
-        acronyms=[] 
         rerank=self.ptree.get_reranked_proposals(self.sess_id)
         if not rerank or 'rank' not in rerank:
             _proposals,_acronyms=self.ptree.session_proposals(self.sess_id,passed_only=True)
-            proposals=[]
-            acronyms=[]
+            proposals_dedup=[]
+            acronyms_dedup=[]
             for i,acronym in enumerate(_acronyms):
-                if acronym not in acronyms: # why it happens at all???
-                    proposals.append(_proposals[i])
-                    acronyms.append(acronym)
-            rerank=self.rerank_proposals(proposals,acronyms)
+                if acronym not in acronyms_dedup: # why it happens at all???
+                    proposals_dedup.append(_proposals[i])
+                    acronyms_dedup.append(acronym)
+            rerank=self.rerank_proposals(proposals_dedup,acronyms_dedup)
             self.ptree.session_set(self.sess_id,'reranked',rerank)
+        proposals=[]
+        acronyms=[] 
         for acronym in rerank['rank']:
             design=self.ptree.get_node(acronym)
-            if not design.is_implemented():
+            if not design.is_implemented() and acronym not in acronyms:
                 proposals.append(design.proposal)
                 acronyms.append(acronym)
         return proposals,acronyms
@@ -1083,6 +1085,7 @@ class GUFlow(FlowCreator):
             self.stream.log(end_reason,'end')
             return query,state,{}
         self.stream.write(f'Implementing {len(proposals)} proposals: {", ".join([f"{i+1}. {proposal.modelname} with rating {proposal.rating} out of 5" for i,proposal in enumerate(proposals)])}')
+        assert len(proposals) == self.num_samples['implementation'], f'Expected {self.num_samples["implementation"]} proposals, got {len(proposals)}'
         for proposal,acronym in zip(proposals,acronyms):
             if not self.ptree.acquire_design_lock(self.sess_id): # For benchmark, active sessions + finished designs < max designs
                 self.log_fn(f'Design lock not acquired, design is full, stopping implementation...','IMPLEMENTATION')
@@ -1092,6 +1095,28 @@ class GUFlow(FlowCreator):
                 continue
             self.log_fn(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5','IMPLEMENTATION')
             self.stream.write(f'Implementing proposal: {proposal.modelname} with rating {proposal.rating} out of 5')
+            cost_raw=copy.deepcopy(self.costs)
+            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym)
+            costs={k:v-cost_raw[k] for k,v in self.costs.items()}
+            self.log_fn(f'Adding implementation to tree, tuning and exporting full LM codes...','IMPLEMENTATION')
+            with self.status_handler(f'Adding implementation to tree, tuning and exporting full LM codes...'):
+                if self.flow_type=='gau':
+                    ROUNDS,SUCCEED,INITIAL_PASS=RETS['ROUNDS'],RETS['SUCCEED'],RETS['INITIAL_PASS']
+                    if SUCCEED:
+                        status='implemented'
+                    else:
+                        status='initial_pass' if INITIAL_PASS else 'failed'
+                    self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
+                elif self.flow_type=='naive':
+                    gab_code,ROUNDS,SUCCEED = RETS['GAB_CODE'],RETS['ROUNDS'],RETS['SUCCEED']
+                    status = 'succeeded_gab' if SUCCEED else 'failed_gab'
+                    self.ptree.implement_gab(acronym,gab_code,ROUNDS,status,costs,self.design_cfg,self.user_input)
+                else:
+                    raise NotImplementedError(f'Flow type {self.flow_type} not implemented')
+        return query,state,{}
+   
+    def _implement_proposal_recursive(self,main_tid,proposal,acronym):
+        if self.flow_type=='gau':
             tree_ckpt,status=self.ptree.get_implementation_checkpoint(acronym)
             initial_pass=False
             if tree_ckpt is None:
@@ -1102,25 +1127,10 @@ class GUFlow(FlowCreator):
                 if status in ['initial_pass','unfinished']:
                     initial_pass=True
                 self.stream.write(f'Resuming implementation checkpoint of {acronym}...')
-
-            cost_raw=copy.deepcopy(self.costs)
-            RETS=self._implement_proposal_recursive(main_tid,proposal,acronym,resume=tree_ckpt is not None,initial_pass=initial_pass)
-            costs={k:v-cost_raw[k] for k,v in self.costs.items()}
-            ROUNDS,SUCCEED,INITIAL_PASS=RETS['ROUNDS'],RETS['SUCCEED'],RETS['INITIAL_PASS']
-            if SUCCEED:
-                status='implemented'
-            else:
-                status='initial_pass' if INITIAL_PASS else 'failed'
-            self.log_fn(f'Adding implementation to tree, tuning and exporting full LM codes...','IMPLEMENTATION')
-            with self.status_handler(f'Adding implementation to tree, tuning and exporting full LM codes...'):
-                self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
-        return query,state,{}
-   
-    def _implement_proposal_recursive(self,main_tid,proposal,acronym,resume=False,initial_pass=False):
-        if self.flow_type=='gau':
+            resume=tree_ckpt is not None
             return self._implement_proposal_recursive_gau(main_tid,proposal,acronym,resume,initial_pass)
         elif self.flow_type=='naive':
-            return self._implement_proposal_recursive_naive(main_tid,proposal,acronym,resume,initial_pass)
+            return self._implement_proposal_recursive_naive(main_tid,proposal,acronym)
         else:
             raise NotImplementedError(f'Flow type {self.flow_type} not implemented')
 
@@ -2076,44 +2086,258 @@ class GUFlow(FlowCreator):
     ########################### Baseline Naive GAB ###############################
 
     def _implement_proposal_recursive_naive(self,main_tid,proposal,acronym):
-        raise NotImplementedError
-
         self.dialog=self.system.dialog
         OBSERVE_THRESHOLD=self.threshold['implementation_rating']
-        cost_raw=copy.deepcopy(self.costs)
+        self.stream.write(f'### Implementing proposal {proposal.modelname} for agent benchmark...')
 
         end_reason = None
         RETS={}
+        traces=[]
         RETS['ROUNDS']=[]
         SUCCEED=False
-
+        USE_PAIRING=self._agent_types['IMPLEMENTATION_OBSERVER']!='None'
         
-        IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
-            GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
-            PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+        context_implementation_planner=AgentContext() 
+        planner_context=AgentContext()
+        context_implementation_coder=AgentContext()
+        context_implementation_observer=AgentContext()
+
+        ################# SELECTING THE NEXT UNIT TO WORK ON #################
         
-        implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
-                                            alias='implementation_planner',note=f'Starting implementation planning...')
-        _,out=self.call_dialog(implementation_planner_tid,gu_implementation_unit_selection_prompt)
+        context_implementation_planner=copy.deepcopy(planner_context)
+        if self.design_mode==DesignModes.MUTATION: 
+            GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.NM_IMPLEMENTATION_PLANNER_BACKGROUND
+            _background_prompt={'SEED':self.seed,'SELECTION':proposal.selection,'GAU_BASE':GAU_BASE}
+        elif self.design_mode==DesignModes.CROSSOVER:
+            GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.NC_IMPLEMENTATION_PLANNER_BACKGROUND
+            _background_prompt={'PARENTS':self.seed,'GAU_BASE':GAU_BASE}
+        else:
+            GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.NS_IMPLEMENTATION_PLANNER_BACKGROUND
+            _background_prompt={}
 
+        with self.status_handler('Starting implementation planning...'):
+            IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
+                GAB_BASE=GAB_BASE,GAB_TEMPLATE=GAB_TEMPLATE,
+                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+            
+            implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
+                                                alias='implementation_planner',note=f'Starting implementation planning...')
+            _,out=self.call_dialog(implementation_planner_tid,'Please plan the implementation of the proposal.')
+            plan=out['text']
+            self.stream.write(f'### Plan\n\n{plan}')
+            self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
 
+        SUCCEED=False
         for attempt in range(self.max_attemps['implementation_debug']):
 
-
+            GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_NAIVE_IMPLEMENTATION_CODER_SYSTEM(mode=self.design_mode)
+            if self.design_mode==DesignModes.MUTATION:
+                _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed,'GAU_BASE':GAU_BASE}
+            elif self.design_mode==DesignModes.CROSSOVER:
+                _background_prompt={'PARENTS':self.seed,'GAU_BASE':GAU_BASE}
+            else:
+                _background_prompt={}
             IMPLEMENTATION_CODER=reload_role('implementation_coder',self.agents['IMPLEMENTATION_CODER'],GUT_IMPLEMENTATION_CODER_SYSTEM(
-                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,PLAN=plan,
+                GAB_BASE=GAB_BASE,GAB_TEMPLATE=GAB_TEMPLATE,PLAN=plan,
                 PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
             implementation_coder_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_CODER,context=context_implementation_coder, # keep last 2 messages and system message
                                                 alias='implementation_coder',note=f'Starting design implementation...')
 
-            if attempt == 0:
-                thread_tid = implementation_coder_tid
+
+            if attempt==0: # first attempt, implement the unit
+                status_info=f'Starting design implementation attempt `{attempt}`...'
+                GUM_IMPLEMENTATION_UNIT=P.gen_NAIVE_IMPLEMENTATION()
+                gu_implement_unit_prompt=GUM_IMPLEMENTATION_UNIT()
+                GUM_IMPLEMENTATION_UNIT.apply(IMPLEMENTATION_CODER.obj)
+            else: # Debugging or refining the implementation
+                status_info=f'Starting design implementation attempt `{attempt}`...'
+                RETRY_RPOMPT=P.gen_NAIVE_IMPLEMENTATION_RETRY()
+                if USE_PAIRING:
+                    pass_or_not='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                else:
+                    pass_or_not='IMPLEMENTATION OBSERVER NOT AVAILABLE'
+                gu_implement_unit_prompt=RETRY_RPOMPT(
+                    FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT,
+                    REVIEW=review if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                    RATING=rating if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                    SUGGESTIONS=suggestions if USE_PAIRING else 'IMPLEMENTATION OBSERVER NOT AVAILABLE',
+                    PASS_OR_NOT=pass_or_not,
+                )
+                RETRY_RPOMPT.apply(IMPLEMENTATION_CODER.obj)
+
+
+            with self.status_handler(status_info): # calling the agent
+                context_implementation_coder=context_implementation_coder.truncate(4)
+                self.print_details(IMPLEMENTATION_CODER.obj,context_implementation_coder,gu_implement_unit_prompt)
+                _,out=self.call_dialog(implementation_coder_tid,gu_implement_unit_prompt,context_implementation_coder)
+                context_implementation_coder=self.dialog.context(implementation_coder_tid)
+                codes = [i for i in out['code'] if i.strip().startswith('# gab.py')]
+                self.stream.write(f'## Implementation detected: {len(codes)}')
+                for idx,code in enumerate(codes):
+                    self.stream.write(f'### Code {idx+1}\n```python\n{code}\n```')
+                self.print_raw_output(out,'IMPLEMENTATION_CODER')                        
+
+            # Run all checks for every implementations, optimize both grammar and semantics at the same time 
+            # avoid redundant debugging steps, i.e. only the debug for the passed plans are needed
+            with self.status_handler('Checking the implementation of the selected unit...'):
+                _func_checkpass = False
+                if len(codes)>0:
+                    gabcode = codes[-1]
+                    collapse_write(self.stream,'Code to check',f'```python\n\n{gabcode}\n\n```')
+                    self.log_fn(f'Checking the implementation...','IMPLEMENTATION')
+                    checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(gabcode,'gab',cpu_only=self.cpu_only)
+                    self.log_fn(f'Checker checks result: {checkpass}','IMPLEMENTATION')
+                    _func_checkpass = checkpass
+
+                    self.stream.write(f'### Check passed: {checkpass}')
+                    self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
+                    self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
+                    self.stream.write(f'### Reformatted GAB Code\n')
+                    self.stream.code(gabcode_reformat,language='python',line_numbers=True)
+                    
+                    checker_report = check_report # XXX: Too long in the prompt
+                    check_report = f'### Checkers report\n```bash\n{check_report}\n```\n\n'
+                else:
+                    check_report = P.GAB_ERROR
+                    checker_report = P.GAB_ERROR
+                    check_results={}
+                    gabcode_reformat=None
+                    checkpass=False
+                    self.stream.write(f'#### Functionality check skipped due to no implementation detected')
+
+                func_checks = {
+                    'checkpass':checkpass,
+                    'check_report':check_report,
+                    'check_results':check_results,
+                }
+                
+                if checkpass:
+                    FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_PASS.format(
+                        REPORT=check_report,
+                    )
+                else:
+                    gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                    FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
+                        REPORT=check_report,
+                        GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
+                    )
+
+            ########################### Review the implementation ###########################
+            
+            if USE_PAIRING:
+                if not _func_checkpass:
+                    _FUNCTION_CHECKER_REPORT=FUNCTION_CHECKER_REPORT
+                else:
+                    _FUNCTION_CHECKER_REPORT='Functionality check passed.'
+                
+                if self.design_mode==DesignModes.MUTATION:
+                    GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.NM_IMPLEMENTATION_OBSERVER_BACKGROUND
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.NC_IMPLEMENTATION_OBSERVER_BACKGROUND
+                else:
+                    GUT_IMPLEMENTATION_OBSERVER_SYSTEM=P.NS_IMPLEMENTATION_OBSERVER_BACKGROUND
+
+                if self.design_mode==DesignModes.MUTATION:
+                    _background_prompt={'SELECTION':proposal.selection,'SEED':self.seed,'GAU_BASE':GAU_BASE}
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    _background_prompt={'PARENTS':self.seed,'GAU_BASE':GAU_BASE}
+                else:
+                    _background_prompt={}
+
+                IMPLEMENTATION_OBSERVER=reload_role('implementation_reviewer',self.agents['IMPLEMENTATION_OBSERVER'], GUT_IMPLEMENTATION_OBSERVER_SYSTEM(
+                    GAB_BASE=GAB_BASE,GAB_TEMPLATE=GAB_TEMPLATE,PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+                implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
+                            alias='implementation_observer',note=f'Observing implementation...')
+                status_info=f'Observing implementation...'
+                prompt_kwargs={}
+
+                GUT_IMPLEMENTATION_UNIT_OBSERVE=P.NAIVE_IMPLEMENTATION_OBSERVE
+                prompt_kwargs['FUNCTION_CHECKER_REPORT']=_FUNCTION_CHECKER_REPORT
+                gum_implementation_unit_review_prompt=GUT_IMPLEMENTATION_UNIT_OBSERVE(
+                    IMPLEMENTATION=gabcode_reformat,
+                    **prompt_kwargs
+                )
+                GUT_IMPLEMENTATION_UNIT_OBSERVE.apply(IMPLEMENTATION_OBSERVER.obj)
+
+                with self.status_handler(status_info):
+                    # if UNSTRUCT_OBSERVER: # no history  
+                    context_implementation_observer=AgentContext() # no history for all
+                    self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,gum_implementation_unit_review_prompt)
+                    _,out=self.call_dialog(implementation_observer_tid,gum_implementation_unit_review_prompt)
+                    context_implementation_observer=self.dialog.context(implementation_observer_tid)
+                    review,rating=out['text'],out['rating']
+                    suggestions='N/A'
+                    self.stream.write(review)
+                    self.print_raw_output(out,'IMPLEMENTATION_OBSERVER')
+                    for _ in range(5):
+                        succeed,rating,RETRY_PROMPT=P.gen_O1_RATING_DEBUG_prompt(rating)
+                        if succeed:
+                            break
+                        self.print_details(IMPLEMENTATION_OBSERVER.obj,context_implementation_observer,RETRY_PROMPT())
+                        RETRY_PROMPT.apply(IMPLEMENTATION_OBSERVER.obj)
+                        self.stream.write(f'Error in output, retry...') # TODO: very costly and wasteful, need to fix
+                        _,out=self.call_dialog(implementation_observer_tid,RETRY_PROMPT())
+                        rating=out['rating']
+                        self.stream.write(f'##### Correcting rating: {rating}')
+                        self.print_raw_output(out,'PROPOSAL_REVIEWER')
+                    if not succeed:
+                        info = 'Failed to generate a valid design proposal, stopping design process'
+                        self.log_fn(info,'ERROR')
+                        raise Exception(info)
+                    passornot='Accept' if rating>=OBSERVE_THRESHOLD else 'Reject'
+                    self.stream.write(f'### Rating: {rating} out of 5 ({passornot})')
+                    
             else:
-                if debug_thread_tid is None:
-                    query = f'The designer designed the model: {text}\n\nThe checker failed the model: {query}\n\nPlease debug the model.'
-                    debug_thread_tid = self.dialog.fork(implementation_coder_tid,SYSTEM_CALLER,DEBUGGER,
-                                                        alias='debugging',note='Starting debugging...')
-                thread_tid = debug_thread_tid
+                review=None
+                rating=None
+                suggestions=None
+
+            ########################### Attempt finished ###########################  
+            if USE_PAIRING:
+                review_pass=rating>=OBSERVE_THRESHOLD
+            else:
+                review_pass=True
+            design = {
+                'gab_code':gabcode_reformat,
+                'func_checks':func_checks,
+            }
+            traces.append(design)
+
+
+            RET={
+                'round':attempt,
+                'succeed':checkpass and review_pass,
+                'code':gabcode_reformat,
+            }
+            RETS['ROUNDS'].append(RET)
+
+            if checkpass and review_pass: # passed  
+                self.stream.write(f'#### Implementation passed')
+                self.log_fn(f'Implementation passed','IMPLEMENTATION')
+                SUCCEED=True
+                break
+            
+                
+        ########################### Design finished ###########################  
+        RETS['SUCCEED']=SUCCEED
+        if end_reason is None:
+            end_reason = EndReasons.IMPLEMENTATION_SUCCESS if SUCCEED else EndReasons.IMPLEMENTATION_FAILURE
+        self.stream.log(end_reason,'end')
+        if SUCCEED:
+            self.log_fn(f'Design Implementation succeeded!','IMPLEMENTATION')
+            self.stream.write('#### Design Implementation succeeded!')
+            self.stream.balloons()
+        else:
+            self.log_fn(f'Design Implementation failed!','IMPLEMENTATION')
+            self.stream.write('#### Design Implementation failed!')
+            self.stream.snow()
+        
+        RETS['GAB_CODE']=gabcode_reformat
+        return RETS
+    
+
+
+
 
 
 

@@ -105,6 +105,9 @@ def tester(evosys,project_dir):
         st.dataframe(df.style.highlight_max(axis=0,color='violet'),use_container_width=True)
 
 
+
+    # st.write(list(evosys.ptree.design_sessions.items())[0])
+
     # st.write(len(evosys.ptree.filter_by_type(['DesignArtifact'])))
     # st.write(len(os.listdir(U.pjoin(evosys.evo_dir,'db','designs'))))
 
@@ -165,9 +168,9 @@ def tester(evosys,project_dir):
     # st.write(failed)
 
 
-    d = random.choice(evosys.ptree.filter_by_type(['DesignArtifactImplemented']))
-    node = evosys.ptree.get_node(d)
-    st.write(node.implementation.history[-1])
+    # d = random.choice(evosys.ptree.filter_by_type(['DesignArtifactImplemented']))
+    # node = evosys.ptree.get_node(d)
+    # st.write(node.implementation.history[-1])
 
 
     # evosys.ptree.FM.sync_to_db()

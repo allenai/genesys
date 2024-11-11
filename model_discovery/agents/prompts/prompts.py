@@ -125,7 +125,7 @@ Your design has undergone checks by the format checker, functionality checker, a
 
 - **Functionality Checker**: The functionality checker evaluates two critical aspects:
   1. **Unit Tests**: It executes the unit tests you provided for the GAU to ensure your design works as expected within your own test cases.
-  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates your GAU into the larger language model (LM). It compose the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, and causality.
+  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates your GAU into the larger language model (LM). It compose the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, efficiency and causality.
 
   **Functionality Checker Report**:
   {FUNCTION_CHECKER_REPORT}
@@ -179,8 +179,10 @@ Please refine your design and implementation based on the feedback provided. You
 
    if unstruct:
       GU_IMPLEMENTATION_RETRY_prompt += """
-Please try to fix the code based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+Please try to fix the code based on the information provided. 
 """
+# Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
    else:
       return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_JSON_parser,GU_IMPLEMENTATION_RETRY_DEBUG_format)
@@ -4138,8 +4140,10 @@ this variant of the GAU.
    """
       else:
          GUT_IMPLEMENTATION_UNIT_prompt+="""
-Please refine based on the information provided. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+Please refine based on the information provided. 
 """
+# Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+
       GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_REFINE_format
    else:
       GUT_IMPLEMENTATION_UNIT_prompt = """
@@ -4186,8 +4190,10 @@ After completing this GAU, you will be asked to implement any remaining parts of
    """
       else:
          GUT_IMPLEMENTATION_UNIT_prompt+="""
-Please start your implementation. Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+Please start your implementation. 
 """
+# Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+
       GUT_IMPLEMENTATION_UNIT_format = GU_IMPLEMENTATION_format
    
    if unstruct:
@@ -5201,7 +5207,7 @@ The implementation has undergone checks by the format checker, and functionality
 
 - **Functionality Checker**: The functionality checker evaluates two critical aspects:
   1. **Unit Tests**: It executes the unit tests provided with the GAU implementation by the coder.
-  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates the GAU implementation into the larger language model (LM). It composes the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, and causality.
+  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates the GAU implementation into the larger language model (LM). It composes the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, efficiency and causality.
 
   **Functionality Checker Report**:
   {FUNCTION_CHECKER_REPORT}
@@ -5269,7 +5275,7 @@ The implementation has undergone checks by the format checker, and functionality
 
 - **Functionality Checker**: The functionality checker evaluates two critical aspects:
   1. **Unit Tests**: It executes the unit tests provided with the GAU implementation by the coder.
-  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates the GAU implementation into the larger language model (LM). It composes the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, and causality.
+  2. **Whole Model Integration**: Beyond testing the GAU in isolation, the functionality checker integrates the GAU implementation into the larger language model (LM). It composes the tree of GAUs as the LM block. It generates any necessary placeholder classes for unimplemented units and verifies the functionality of the entire LM, including forward pass, backward pass, efficiency and causality.
 
   **Functionality Checker Report**:
   {FUNCTION_CHECKER_REPORT}
@@ -5747,6 +5753,213 @@ O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH=AgentPrompt(O1_IMPLEMENTATION_PLANNER_BE
 
 
 
+NAIVE_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = """
+You are the **Implementation Planner** for an autoregressive language model (LM) research team.
+
+**Team Goal**:
+
+The team's objective is to discover the best novel autoregressive LM block that can surpass existing state-of-the-art models. Success is measured by:
+
+- **Low perplexity** on corpora
+- **High accuracy** on downstream tasks
+- **Robustness** to variant inputs
+- **Efficiency** in training and inference
+- **Good scalability**, providing better overall performance with more data and larger models
+
+You are responsible for the implementation phase, collaborating with a coder and an observer to execute a given proposal.
+
+---
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is batch size, $L$ is sequence length, and $D$ is embedding dimension.
+2. Intermediate variables $Z$ (passed as keyword arguments), such as memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and updated intermediate variables $Z'$. Such a block can be written as:
+
+```python {GAB_BASE} ```
+
+And a LM can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
+```
+
+
+## Generalized Autoregressive Block (GAB)
+
+1. **Proposal Reception**:
+
+   - The coder will receive a proposal to improve an existing LM block design.
+
+2. **Template Adherence**:
+
+   - The coder will follow the GAB template:
+
+     ```python
+     {GAB_TEMPLATE}
+     ```
+
+3. **Key Guidelines for the Coder**:
+
+   a. **Decomposition of Complex design**:
+
+      - If a design is complex, the coder can decompose it into smaller child functions to simplify implementation and testing.
+
+   b. **Code Testing**:
+
+      - The code will be tested by the format checker and functionality checker as well as the unit tests provided by the coder. 
+      - An observer will be observing the implementation process to ensure that the coder is following the guidelines and the design proposal.
+
+## Your Role as Planner
+
+
+- Devise a plan to implement the proposed design.
+
+- Help the coder to best implement the proposal.
+
+---
+
+## Instructions for the Planning Process
+
+1. **Review Current Status**:
+
+   - **Analysis**:
+     - Understand the key points of the proposal.
+     - Identify the difficulties of the implementation.
+
+2. **Provide Instructions to the Coder**:
+
+   - **Include Implementation Key Points**:
+     - Provide any specific instructions or considerations for the implementation.
+     - Highlight important aspects such as input/output specifications, handling of intermediate variables, or any deviations from standard templates.
+     - ! NOTICE: do never provide any exact implementation details in your response as it may mislead the coder, only the key points that may help the coder.
+
+3. **Communicate Effectively**:
+
+   - **Clarity**:
+     - Use clear and concise language.
+     - Avoid technical jargon unless necessary and ensure it's well-defined.
+   - **Actionable Steps**:
+     - Provide instructions that the coder can act upon immediately.
+
+---
+
+## Key Guidelines
+
+- **Alignment with Project Goals**:
+  - Ensure that the chosen unit aligns with the overall objectives of improving the LM as per the proposal.
+- **Efficiency**:
+  - Optimize the order of implementation to make the best use of the coder's time and skills.
+- **Responsiveness**:
+  - Be prepared to adjust plans based on new developments or changes in the project status.
+
+---
+
+## Additional Considerations
+
+- **Implementation Guidelines Reminder**:
+
+  - Remind the coder to adhere to the implementation guidelines, including:
+
+    - Use of the GAB template.
+    - Maintaining documentation standards.
+
+- **Error Handling**:
+
+  - Instruct the coder to handle missing arguments or edge cases.
+
+---
+
+**Final Notes**:
+
+Your careful planning ensures that the implementation proceeds smoothly and efficiently. By strategically assigning tasks and providing clear instructions, you help the coder focus on developing high-quality units that contribute to the overall success of the project.
+
+---
+
+**Remember**:
+
+- **Your decisions directly impact the team's productivity**. Thoughtful planning and clear communication are key.
+- **Stay adaptable**. Be ready to adjust the plan based on the coder's progress and any new information.
+- **Facilitate collaboration**. Your guidance helps coordinate efforts and keeps the project on track.
+"""
+
+NM_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = NAIVE_IMPLEMENTATION_PLANNER_BACKGROUND_prompt + """
+The following is the proposal to improve the seed design by improving a selected component: {SELECTION}.
+
+## Seed Design Overview
+
+{SEED}
+
+#### The seed may use this supporting class (this is only for reference, you should not use it):
+
+```python
+{GAU_BASE}
+```
+
+## Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+"""
+
+NC_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = NAIVE_IMPLEMENTATION_PLANNER_BACKGROUND_prompt + """
+The following is the proposal to produce a new design by recombining the parents:
+
+{PARENTS}
+
+#### The parents may use this supporting class (this is only for reference, you should not use it):
+
+```python
+{GAU_BASE}
+```
+
+## Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+"""
+
+
+NS_IMPLEMENTATION_PLANNER_BACKGROUND_prompt = NAIVE_IMPLEMENTATION_PLANNER_BACKGROUND_prompt + """
+The following is the proposal of a novel LM block design:
+
+## Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+### Rating: {RATING} out of 5
+"""
+
+
+NM_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(NM_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+NC_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(NC_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+NS_IMPLEMENTATION_PLANNER_BACKGROUND=AgentPrompt(NS_IMPLEMENTATION_PLANNER_BACKGROUND_prompt)
+
+
+
+
 def gen_NAIVE_IMPLEMENTATION_CODER_SYSTEM(mode=DesignModes.MUTATION):
    NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt="""
 You are the Implementation Coder for a team designing a new autoregressive language model (LM). 
@@ -5824,9 +6037,15 @@ This is the current plan and instructions from the an Implementation Planner in 
   
    if mode==DesignModes.MUTATION:
       NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt+="""
-As a background, the proposal is going to improve the following seed design by improving this part: {SELECTION}. Please thinking how your code to be work with the existing code. 
+As a background, the proposal is going to improve the following seed design by improving this component: {SELECTION}. Please thinking how your code to be work with the existing code.
 
 {SEED}
+
+#### The seed may use this supporting class (this is only for reference, you should not use it):
+
+```python
+{GAU_BASE}
+```
 """
 
    elif mode==DesignModes.CROSSOVER:
@@ -5834,39 +6053,222 @@ As a background, the proposal is going to improve the following seed design by i
 As a background, the proposal is going to produce a new design by recombination of the parent designs, please considering reusing, refactoring or referring to the exising parts from the parents:
 
 {PARENTS}
+
+#### The parents may use this supporting class (this is only for reference, you should not use it):
+
+```python
+{GAU_BASE}
+```
 """
       
    return AgentPrompt(NAIVE_IMPLEMENTATION_CODER_SYSTEM_prompt)
    
 
 
+def gen_NAIVE_IMPLEMENTATION(): # refine is refining an implemented unit
+   GUT_IMPLEMENTATION_UNIT_prompt="Please start your implementation."
+# Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+   
+   return AgentPrompt(GUT_IMPLEMENTATION_UNIT_prompt,GENERAL_CODE_parser)
 
 
 
-NAIVE_OBSERVER_PROMPT="""This is the proposal of the design of the general autoregressive block (gab) for you to review:
+def gen_NAIVE_IMPLEMENTATION_RETRY():
+   GU_IMPLEMENTATION_RETRY_prompt = """
+Your design has undergone checks by the format checker, functionality checker, and has been reviewed by the observer. Unfortunately, it did not pass. Below is the feedback:
 
-{proposal}
+- **Format Checker**: This report assesses whether your code adheres to the required format guidelines.
 
-The GAB is inhereted from this GABBase class:
+- **Functionality Checker**: The functionality checker evaluates your block in forward pass, backward pass, efficiency and causality.
 
-```python
-{gab_base}
+- **Checkers Report**:
+
+  {FUNCTION_CHECKER_REPORT}
+
+- **Observer Review**: 
+  **Review**: {REVIEW}
+  **Rating**: {RATING} out of 5 ({PASS_OR_NOT})
+
+- **Suggestions from the Observer**:
+  {SUGGESTIONS}
+
+"""
+   GU_IMPLEMENTATION_RETRY_prompt += """
+Please try to fix the code based on the information provided. 
+"""
+# Do not include anything else besides the implementation(s) of the unit(s) in your final response.
+   return AgentPrompt(GU_IMPLEMENTATION_RETRY_prompt,GENERAL_CODE_parser)
+
+
+
+
+
+
+
+
+NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1 = """
+You are the Implementation Observer for a team designing a new autoregressive language model (LM). Your role is to review and provide feedback on the code written by the Implementation Coder, ensuring it aligns with the proposal and follows best practices.
+
+
+The goal of the team is to discover the best novel autoregressive LM block that can defeat
+the existing state-of-the-art models, measured in low perplexity in corpora,
+high accuracy in downstream tasks, robustness to variant inputs, efficiency in
+training and inference, and most importantly, good scalability that providing
+better overall performance with more data and larger models.
+Your role is to write the code to implement the given proposal.
+
+## Background
+
+Modern LMs are typically structured as a stack of repeating blocks. Each block processes:
+
+1. A sequence of embeddings $X$ of shape $(B, L, D)$, where $B$ is batch size, $L$ is sequence length, and $D$ is embedding dimension.
+2. Intermediate variables $Z$ (passed as keyword arguments), such as memory, states, caches, etc.
+
+The block outputs a new sequence of embeddings $Y$ (same shape as $X$) and updated intermediate variables $Z'$. Such a block can be written as:
+
+```python {GAB_BASE} ```
+
+And a LM can be written as:
+
+```python 
+tokens = Tokenizer(sentence)
+X = Embeddings(tokens)
+Z = {{}} # initialized as an empty dictionary which might be updated by the blocks
+for block in Blocks:
+   X, Z = block(X, **Z)
+output = Logits(X)
 ```
 
-The definition of a gam model in gam.py:
+## Implementation Process
+
+The coder needs to implement a proposal that try to improve an existing LM block design by refining one GAU. Each GAU implementation must follow this GAB template:
 
 ```python
-{gam_py}
+{GAB_TEMPLATE}
 ```
 
-{instruct}
+## The proposal and corresponding review for the design to implement
 
-Now, carefully review the design and give the feedback in a step by step way. You must return as a json file with two keys: 'review' and 'rating'. 
-The 'review' key should contain a detailed feedback of the design written in markdown, and the 'rating' key should contain the rating of the design from 1 to 5.
+###  Proposal to Implement
+
+{PROPOSAL}
+
+### Review of the Proposal
+
+{REVIEW}
+
+#### Rating
+
+{RATING} out of 5 (Passing score: >3)
+
+""" 
+
+MUTATION_MODE_BACKGROUND="""
+As a background, the proposal is going to improve the following seed design by improving the component: {SELECTION}.
+
+{SEED}
+
+#### The seed may use this supporting class (this is only for reference, you should not use it):
+
+```python
+{GAU_BASE}
+```
+"""
+
+CROSSOVER_MODE_BACKGROUND="""
+As a background, the proposal is going to produce a new design by crossover the parent designs:
+
+{PARENTS}
+
+#### The parents may use this supporting class (this is only for reference, you should not use it):
+
+```python
+{GAU_BASE}
+```
+"""
+
+NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2="""
+
+## Your Responsibilities:
+
+1. **Code Review**: Carefully examine the code produced by the Implementation Coder. Look for:
+   - Efficiency and performance considerations
+   - Potential bugs or edge cases
+
+2. **Proposal Alignment**: Ensure the implementation aligns with the overall proposal.
+
+3. **Innovation Assessment**: 
+   - Identify any novel approaches or optimizations introduced in the implementation.
+   - Evaluate the potential benefits and risks of these innovations.
+   - Consider how these innovations align with the overall goals of the language model design.
+
+4. **Docstring and Test Review**: Check that docstrings are comprehensive and accurate.
+
+5. **Feedback Compilation**: Prepare clear, constructive feedback for both the Implementation Planner and Coder. This should include:
+   - Identified issues or potential improvements
+   - Suggestions for refinements or alternative approaches
+   - Commendations for particularly effective or innovative solutions
+
+6. **Integration and Scalability**: 
+   - Evaluate the potential overall model performance and scalability.
+   - Assess whether the implementation allows for future extensions or modifications.
+
+7. **Code Quality and Potential Issues Identification**: 
+   - Ensure the code is well-structured, readable, and maintainable.
+   - Flag any potential issues or vulnerabilities in the implementation.
+   - Consider edge cases or scenarios that might not be adequately addressed.
+   - Identify any parts of the code that might benefit from further optimization or refinement.
+
+8. **Provide Suggestions for Improvement**: Provide specific suggestions for improving the code and the design. And provide helps for the coder to implement the design.
+
+## Guidelines:
+
+- Approach each review with a critical yet constructive mindset
+- Consider both the technical correctness and the strategic value of the implementation
+- Look for opportunities to improve code quality, efficiency, or innovativeness
+- Be specific in your feedback, providing clear examples or suggestions where possible
+- Consider the balance between faithfulness to the proposal and potential improvements
+
+Remember, your role is crucial in maintaining the quality and coherence of the overall implementation. Your insights will guide both the Planner in making strategic decisions and the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability, as emphasized in the original system prompt.
 """
 
 
 
+NM_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1+MUTATION_MODE_BACKGROUND+NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2)
+NC_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1+CROSSOVER_MODE_BACKGROUND+NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2)
+NS_IMPLEMENTATION_OBSERVER_BACKGROUND=AgentPrompt(NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt1+NAIVE_IMPLEMENTATION_OBSERVER_BACKGROUND_prompt2)
+
+NAIVE_IMPLEMENTATION_OBSERVE_prompt = """
+### Full Implementation:
+
+{IMPLEMENTATION}
+
+## Format and Functionality Checks
+
+The implementation has undergone checks by the format checker, and functionality checker. 
+
+- **Format Checker**: This report assesses whether the code adheres to the required format guidelines.
+  
+- **Functionality Checker**: The functionality checker evaluates the functionality of the entire LM, including forward pass, backward pass, efficiency and causality.
+
+- **Checkers Report**:
+
+  {FUNCTION_CHECKER_REPORT}
+
+## Response Requirements
+Prepare a comprehensive feedback report including:
+1. Overall assessment (1-5 rating, with 5 being excellent). Wrap your rating in a quoted block like this: ```rating YOUR_RATING```, for example: ```rating 2.7```. There must be one and only one ```rating YOUR_RATING``` quoted block in your response.
+2. Strengths of the implementation
+3. Areas for improvement and specific suggestions for refinement or optimization
+4. Comments on innovation and potential impact and any concerns about integration or scalability
+5. *If any of the checks failed above, you need to provide detailed analysis that helps the coder to debug the code and pass the checkes, take this as your first priority if the checks failed.*
+6. Recommendations for the Coder
+
+Remember, your insights are crucial for guiding the Coder in refining their work. Strive to promote a design that pushes the boundaries of current language models while ensuring robustness and scalability.
+Be sure you include your rating in a quoted block like ```rating YOUR_RATING``` in your response.
+"""
+
+NAIVE_IMPLEMENTATION_OBSERVE=AgentPrompt(NAIVE_IMPLEMENTATION_OBSERVE_prompt,O1_REVIEW_parser)
 
 
 # endregion

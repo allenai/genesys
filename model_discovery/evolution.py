@@ -374,7 +374,7 @@ class FirestoreManager:
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}" collection "{collection_name}"')
             
-    def upload_implementation(self, design_id, implementation, overwrite=False,verbose=False):
+    def upload_implementation(self, design_id, implementation, overwrite=False,verbose=False,gab=False):
         history=implementation.pop('history')
         self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose)
         for idx,step in enumerate(history):
@@ -694,6 +694,7 @@ class FirestoreManager:
                 if Doc is None:
                     Doc=self.collection.document(design_id).get().to_dict()
                 implementation=Doc['implementation']
+                status=implementation['status']
                 implementation['history']=[]
                 for idx in index_term['implementation_history']:
                     step_ref = self.collection.document(design_id).collection('implementation_history').document(str(idx))
@@ -705,23 +706,24 @@ class FirestoreManager:
             
             elif U.pexists(implementation_path):
                 _implementation=U.load_json(implementation_path)
-                index_ih = [i for i in index_term['implementation_history'] if 'rounds' not in i]
-                if len(_implementation['history'])<len(index_ih):
-                    if Doc is None:
-                        Doc=self.collection.document(design_id).get().to_dict()
-                    implementation=Doc['implementation']
-                    implementation['history']=_implementation['history']
-                    for idx in range(len(_implementation['history']),len(index_ih)):
-                        step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
-                        if 'rounds' not in step:
-                            step['rounds']=[]
-                        index_step_rounds = index_term['implementation_history'][f'{idx}_rounds']
-                        for round_idx in range(len(step['rounds']),len(index_step_rounds)):
-                            rounds_data = self.collection.document(design_id).collection('implementation_history').document(str(idx)).collection('rounds').document(str(round_idx)).get().to_dict()
-                            step['rounds'].append(rounds_data)
-                        implementation['history'].append(step)
-                    U.save_json(implementation,implementation_path)
-                    print(f'Downloaded implementation for design {design_id}')
+                if 'gab' not in _implementation['status']:
+                    index_ih = [i for i in index_term['implementation_history'] if 'rounds' not in i]
+                    if len(_implementation['history'])<len(index_ih):
+                        if Doc is None:
+                            Doc=self.collection.document(design_id).get().to_dict()
+                        implementation=Doc['implementation']
+                        implementation['history']=_implementation['history']
+                        for idx in range(len(_implementation['history']),len(index_ih)):
+                            step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
+                            if 'rounds' not in step:
+                                step['rounds']=[]
+                            index_step_rounds = index_term['implementation_history'][f'{idx}_rounds']
+                            for round_idx in range(len(step['rounds']),len(index_step_rounds)):
+                                rounds_data = self.collection.document(design_id).collection('implementation_history').document(str(idx)).collection('rounds').document(str(round_idx)).get().to_dict()
+                                step['rounds'].append(rounds_data)
+                            implementation['history'].append(step)
+                        U.save_json(implementation,implementation_path)
+                        print(f'Downloaded implementation for design {design_id}')
 
         # check verifications
         if 'verifications' in index_term:
@@ -1111,13 +1113,15 @@ class ImplementationAttempt:
     def to_dict(self):
         dict=asdict(self)
         dict['design_cfg']['running_mode']=self.design_cfg['running_mode'].value
-        dict['tree']=self.tree.to_dict()
+        if 'gab' not in self.status:
+            dict['tree']=self.tree.to_dict()
         return dict
 
     @classmethod
     def from_dict(cls, dict: Dict):
         dict['design_cfg']['running_mode']=RunningModes(dict['design_cfg']['running_mode'])
-        dict['tree']=GAUTree.from_dict(dict['tree'])
+        if 'gab' not in dict['status']:
+            dict['tree']=GAUTree.from_dict(dict['tree'])
         return cls(**dict)
 
 
@@ -1150,7 +1154,8 @@ class Implementation:
 
     def to_dict(self):
         dict=asdict(self)
-        dict['implementation']=self.implementation.to_dict()
+        if 'gab' not in self.status:
+            dict['implementation']=self.implementation.to_dict()
         dict['history']=[attempt.to_dict() for attempt in self.history]
         return dict
 
@@ -1164,7 +1169,8 @@ class Implementation:
             if 'rounds' not in attempt:
                 attempt['rounds'] = []
             _dict['history'][i] = ImplementationAttempt.from_dict(attempt)
-        _dict['implementation']=GAUTree.from_dict(_dict['implementation'])
+        if 'gab' not in _dict['status']:
+            _dict['implementation']=GAUTree.from_dict(_dict['implementation'])
         return cls(**_dict)
 
     @classmethod
@@ -1554,8 +1560,6 @@ class PhylogeneticTree:
         #         metadata_dir = U.pjoin(self.design_dir(acronym),'metadata.json')
         #         U.save_json(metadata_dir,metadata)
 
-
-
     def get_design_session(self,sess_id:str):
         if sess_id not in self.design_sessions and self.FM:
             sessdata = self.FM.get_design_session(sess_id)
@@ -1783,10 +1787,21 @@ class PhylogeneticTree:
     def get_session_input(self,sess_id:str): 
         sessdata=self.design_sessions[sess_id]
         if self.benchmark_mode:
+            seeds=[]
             seeds_dir = U.pjoin(BENCHMARK_DIR,sess_id,'seeds')
-            seeds = [DesignArtifact.load(U.pjoin(seeds_dir,i)) for i in os.listdir(seeds_dir)]
+            seed_ids=[]
+            if os.path.exists(seeds_dir):
+                seed_ids = os.listdir(seeds_dir)
+                seeds += [DesignArtifact.load(U.pjoin(seeds_dir,i)) for i in seed_ids]
+            for seed_id in sessdata['seed_ids']:
+                if seed_id not in seed_ids:
+                    seed=self.get_node(seed_id)
+                    if seed is not None:
+                        seeds.append(seed)
             refs_dir = U.pjoin(BENCHMARK_DIR,sess_id,'refs')
-            refs = [DesignArtifact.load(U.pjoin(refs_dir,i)) for i in os.listdir(refs_dir)]
+            refs = []
+            if os.path.exists(refs_dir):
+                refs += [DesignArtifact.load(U.pjoin(refs_dir,i)) for i in os.listdir(refs_dir)]
         else:
             seeds=[self.get_node(seed_id) for seed_id in sessdata['seed_ids'] if seed_id]
             refs=[self.get_node(ref_id) for ref_id in sessdata['ref_ids'] if ref_id]
@@ -1859,15 +1874,16 @@ class PhylogeneticTree:
     def acquire_design_lock(self,sess_id=None): # no need to really lock, as CC is still sequential
         if not self.benchmark_mode:
             return True
-        active_sessions = self.CM.get_active_design_sessions()
-        active_sessions=list(active_sessions.keys())
-        finished_designs = self.get_finished_designs()
-        if sess_id and sess_id not in active_sessions:
-            active_sessions.append(sess_id)
-        if len(active_sessions)+len(finished_designs)<=self.CM.max_designs:
-            return True
-        else:
-            return False
+        return True
+        # active_sessions = self.CM.get_active_design_sessions()
+        # active_sessions=list(active_sessions.keys())
+        # finished_designs = self.get_finished_designs()
+        # if sess_id and sess_id not in active_sessions:
+        #     active_sessions.append(sess_id)
+        # if len(active_sessions)+len(finished_designs)<=self.CM.max_designs:
+        #     return True
+        # else:
+        #     return False
     
     def get_session_state(self,sess_id:str):
         passed,_ = self.session_proposals(sess_id,passed_only=True)
@@ -1998,10 +2014,13 @@ class PhylogeneticTree:
         proposals=[]
         for acronym in sessdata['proposed']:
             design=self.get_node(acronym)
-            if design is None:
-                continue
-            if passed_only and not design.proposal.passed:
-                continue
+            if not self.benchmark_mode:
+                if design is None:
+                    continue
+                if passed_only and not design.proposal.passed:
+                    continue
+            else:
+                assert design is not None, f'Design {acronym} not found'
             proposals.append(design.proposal)
             acronyms.append(acronym)
         return proposals,acronyms
@@ -2111,6 +2130,22 @@ class PhylogeneticTree:
             # for scale in self.target_scales:
             #     codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
             U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
+        self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
+        self.FM.update_index()
+
+    def implement_gab(self,acronym:str,code,ROUNDS,status,costs,design_cfg,user_input):
+        design_artifact=self.get_node(acronym)
+        implementation=design_artifact.implementation
+        attempt=ImplementationAttempt(status=status, rounds=ROUNDS, costs=costs, tree=code, design_cfg=design_cfg, user_input=user_input)
+        if implementation is None:
+            implementation=Implementation(status=status, implementation=code, history=[attempt])
+        else:
+            implementation.status=status
+            implementation.implementation=code
+            implementation.history.append(attempt)
+        implementation.save(self.design_dir(acronym))
+        design_artifact.implementation=implementation
+        self.G.nodes[acronym]['data']=design_artifact
         self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
         self.FM.update_index()
 
@@ -2853,6 +2888,7 @@ class EvolutionSystem(exec_utils.System):
                 design_cfg['running_mode'] = RunningModes(design_cfg['running_mode'])
                 user_input = proposal['user_input']
                 self.ptree.propose(sess_id,proposal,{},costs,design_cfg,user_input)
+                
 
         # Scan VE for missing verifications
         ve_dir=U.pjoin(self.evo_dir,'ve')
