@@ -2338,11 +2338,6 @@ class GUFlow(
 
 
 
-
-
-
-
-
     @register_module(
         "EXIT",
         hints="output the initial threads",

@@ -1338,7 +1338,8 @@ class DesignArtifact(NodeObject):
             mdtext += f'\n**Seed IDs:** {self.seed_ids}'
         if self.implementation:
             mdtext += f'\n**Implementated:** {self.implementation.status}'
-            mdtext += f'\n**GAU Tree:**\n{self.implementation.implementation.tree_view()}'
+            if 'gab' not in self.implementation.status:
+                mdtext += f'\n**GAU Tree:**\n{self.implementation.implementation.tree_view()}'
         else:
             mdtext += f'\n**Implementated:** False'
         mdtext += self.verify_summary()
