@@ -304,7 +304,7 @@ def verify_selector(evosys,project_dir):
 def select(evosys,project_dir):
     
     with st.sidebar:
-        AU.running_status(st,evosys)
+        # AU.running_status(st,evosys)
 
         mode=st.selectbox('Choose a Selector',options=['Design Selector','Verify Selector'],index=0)
 
