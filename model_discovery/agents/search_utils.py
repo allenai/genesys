@@ -650,13 +650,13 @@ class SuperScholarSearcher:
         return False
 
     def safe_search(self,fn,query,result_limit=10):
-        # try:
-        if result_limit<=0:
+        try:
+            if result_limit<=0:
+                return []
+            return fn(query,result_limit)
+        except Exception as e:
+            print(f"Error searching {fn.__name__}: {e}")
             return []
-        return fn(query,result_limit)
-        # except Exception as e:
-        #     print(f"Error searching {fn.__name__}: {e}")
-        #     return []
 
     def search_s2(self,query, result_limit=10,start_year=2010, top_conf_only=True, **fields) -> Union[None, List[Dict]]:
         # https://api.semanticscholar.org/api-docs/graph#tag/Paper-Data/operation/post_graph_get_papers
