@@ -1337,11 +1337,11 @@ class DesignArtifact(NodeObject):
         else:
             mdtext += f'\n**Seed IDs:** {self.seed_ids}'
         if self.implementation:
-            mdtext += f'\n**Implementated:** {self.implementation.status}'
+            mdtext += f'\n**Implemented:** {self.implementation.status}'
             if 'gab' not in self.implementation.status:
                 mdtext += f'\n**GAU Tree:**\n{self.implementation.implementation.tree_view()}'
         else:
-            mdtext += f'\n**Implementated:** False'
+            mdtext += f'\n**Implemented:** False'
         mdtext += self.verify_summary()
         return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
 
