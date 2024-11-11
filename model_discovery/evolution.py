@@ -1346,7 +1346,7 @@ class DesignArtifact(NodeObject):
         return mdtext.replace(':', ' ').replace('e.\ng.\n', 'e.g.').replace('i.\ne.\n', 'i.e.')
 
     def is_implemented(self):
-        return self.implementation is not None and self.implementation.status=='implemented'
+        return self.implementation is not None and self.implementation.status in ['implemented','succeeded_gab']
     
     @property
     def costs(self):
@@ -1901,7 +1901,7 @@ class PhylogeneticTree:
         challenging=[]
         for acronym in unfinished_impls:
             impl=unfinished_impls[acronym]
-            if len(impl.history)>self.challenging_threshold:
+            if len(impl.history)>=self.challenging_threshold:
                 challenging.append(acronym)
         return passed,implemented,challenging,unfinished
 

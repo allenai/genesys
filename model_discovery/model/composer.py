@@ -89,6 +89,8 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         self.ptree=ptree
     
     def new_term(self,acronym,tree):
+        if not isinstance(tree,GAUTree):
+            return
         for unit_name in tree.units:
             if unit_name not in self.terms:
                 self.terms[unit_name]=GAUDictTerm(name=unit_name)
