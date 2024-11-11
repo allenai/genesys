@@ -745,9 +745,7 @@ class Selector:
         refs=self._sample_from_sources(n_sources) if sum(n_sources.values())>0 else []
         poolr = self.ptree.filter_by_type(['ReferenceCoreWithTree'])
         if allow_tree:
-            print('@@@@@@@@@@@@@@ allow_tree',allow_tree)
             poold = self.ptree.filter_by_type(['DesignArtifactImplemented'])
-            print('@@@@@@@@@@@@@@ poold',len(poold))
             pd = len(poold)/(len(poold)+len(poolr))
         seeds = []
         for _ in range(n_seeds):
