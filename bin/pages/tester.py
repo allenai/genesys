@@ -105,6 +105,8 @@ def tester(evosys,project_dir):
         st.dataframe(df.style.highlight_max(axis=0,color='violet'),use_container_width=True)
 
 
+    
+    st.write('hybridstreaminggpt' in evosys.ptree.design_sessions)
 
     # st.write(list(evosys.ptree.design_sessions.items())[0])
 

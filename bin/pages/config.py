@@ -18,8 +18,7 @@ import numpy as np
 import pandas as pd
 
 from model_discovery.agents.flow.gau_flows import DesignModes,RunningModes
-from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,\
-    DEFAULT_BENCHMARK_SETTINGS,BENCH_MODE_OPTIONS,DEFAULT_RANDOM_ALLOW_TREE
+from model_discovery.evolution import DEFAULT_PARAMS,DEFAULT_N_SOURCES,BUDGET_TYPES,DEFAULT_RANDOM_ALLOW_TREE
 from model_discovery.agents.roles.selector import DEFAULT_SEED_DIST,SCHEDULER_OPTIONS,RANKING_METHODS,MERGE_METHODS,\
     DEFAULT_RANKING_ARGS,DEFAULT_QUADRANT_ARGS,DEFAULT_DESIGN_EXPLORE_ARGS,DEFAULT_VERIFY_EXPLORE_ARGS,\
         SELECT_METHODS,VERIFY_STRATEGIES,DEFAULT_SELECT_METHOD,DEFAULT_VERIFY_STRATEGY,DEFAULT_N_SEEDS_SETTINGS,DEFAULT_N_SEEDS_DIST
@@ -499,23 +498,27 @@ def design_config(evosys):
             design_cfg['agent_types'] = agent_types
             st.caption('***Note:** If you choose "hybrid", you will need to configure the weights for each agent below in advanced configs later.*')
 
-            col1,col2,col3=st.columns([3,2,1])
+            col1,col2,col3=st.columns([3.2,1.8,1])
             termination={}
             threshold={}
             max_attempts = {}
             with col1:
-                st.markdown("##### Configure termination and budgets (0 is no limit)")
+                st.markdown("##### Configure termination and budgets")
                 cols=st.columns(4)
                 with cols[0]:
-                    termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=design_cfg['termination']['max_failed_rounds'])
+                    termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=design_cfg['termination']['max_failed_rounds'],
+                                                                       help='The maximum number of failed rounds before termination. 0 is no limit. ')
                 with cols[1]:
-                    termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=design_cfg['termination']['max_total_budget'])
+                    termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=design_cfg['termination']['max_total_budget'],
+                                                                       help='The maximum number of design attempts before termination. 0 is no limit.')
                 with cols[2]:
-                    termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=design_cfg['termination']['max_debug_budget'])
+                    termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=design_cfg['termination']['max_debug_budget'],
+                                                                       help='The maximum number of debug attempts before termination. 0 is no limit.')
                 with cols[3]:
-                    max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=design_cfg['max_attemps']['max_search_rounds'])
+                    max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=design_cfg['max_attemps']['max_search_rounds'],
+                                                                       help='The maximum number of search attempts before termination. 0 is NO SEARCH.')
             with col2:
-                st.markdown("##### Configure the threshold for ratings")
+                st.markdown("##### Configure rating thresholds")
                 cols=st.columns(2)
                 with cols[0]:
                     threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0.0,max_value=5.0,value=float(design_cfg['threshold']['proposal_rating']),step=0.5)

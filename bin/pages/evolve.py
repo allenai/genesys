@@ -23,7 +23,6 @@ sys.path.append('.')
 import model_discovery.utils as U
 import bin.app_utils as AU
 from bin.pages.listen import DESIGN_ACTIVE_STATES,VERIFY_ACTIVE_STATES
-from model_discovery.evolution import BENCH_MODE_OPTIONS
 from bin.pages.viewer import export_leaderboards,leaderboard_filter,leaderboard_relative
 
 

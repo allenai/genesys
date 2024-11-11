@@ -1583,6 +1583,8 @@ class PhylogeneticTree:
             if not metadata:
                 to_delete.append(sess_id) # delete empty sessions
                 continue
+            if self.is_error_session(metadata):
+                continue
             self.design_sessions[sess_id] = metadata
         for sess_id in to_delete:
             shutil.rmtree(self.session_dir(sess_id))
@@ -1708,6 +1710,9 @@ class PhylogeneticTree:
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode.value}".encode()).hexdigest()
         if sess_id is None:
             sess_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
+        if sess_id in self.design_sessions:
+            print(f'Session {sess_id} already exists.')
+            return sess_id
         sessdata = {
             'seed_ids': seed_ids,
             'ref_ids': ref_ids,
@@ -2768,8 +2773,6 @@ DEFAULT_RANDOM_ALLOW_TREE = True
 
 BUDGET_TYPES = ['design_bound','verify_bound']
 
-BENCH_MODE_OPTIONS = ['Mutation-only','Crossover-only','Scratch-only','Mixed']
-
 
 # @exec_utils.Registry("config","evolution")
 # class CustomParams(exec_utils.ModuleParams):
@@ -2856,18 +2859,16 @@ class EvolutionSystem(exec_utils.System):
                 self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],
                 CM=self.CM,token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS),
                 benchmark_mode=self.params['benchmark_mode'])
-        print(f"Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
+        unfinished_designs = self.ptree.get_unfinished_designs()
+        print(f"***$$$ Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(unfinished_designs)}/{len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         
-        if self.params['benchmark_mode']:
-            self.set_benchmark_mode()
-        else:
-            self.unset_benchmark_mode()
+        self.set_benchmark_mode() if self.params['benchmark_mode'] else self.unset_benchmark_mode()
         
         if self.benchmark_mode:
             for acronym in os.listdir(BENCHMARK_DIR):
-                if acronym in self.ptree.design_sessions and acronym in self.ptree.G.nodes:
+                if acronym in self.ptree.design_sessions or acronym in self.ptree.G.nodes:
                     continue
-                print(f'Initialize benchmark design: {acronym}')
+                print(f'Initialize benchmark design: {acronym}, {acronym in self.ptree.design_sessions} {acronym in self.ptree.G.nodes}')
                 sessdata = U.load_json(U.pjoin(BENCHMARK_DIR,acronym,'sess_snapshot.json'))
                 seed_ids = sessdata['seed_ids']
                 ref_ids = sessdata['ref_ids']
