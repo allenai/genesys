@@ -764,7 +764,7 @@ def _evolve(evosys):
 
     st.title("Evolution System")
     if evosys.benchmark_mode:# and not st.session_state.evo_running:
-        st.warning(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
+        st.error(f'The namespace ```{evosys.evoname}``` is set to benchmark mode. Please do not run evolution in this namespace.')
     else:
         evolution_launch_pad(evosys)
 
@@ -773,35 +773,42 @@ def _evolve(evosys):
     ptree_monitor(evosys)
 
 
-def bench_results(evosys):
-    with st.expander(f"🏆 **Benchmark Results**",expanded=True):
+def bench_summary(evosys):
+    with st.expander(f"🏆 **Benchmark Summary**",expanded=True):
         bench_designs = os.listdir(BENCHMARK_DIR)
         nodes = [evosys.ptree.get_node(d) for d in bench_designs]
         status = {}
+        rounds = {}
         for node in nodes:
             if node.implementation:
                 state,n_tries = node.state.split(':')
-                if 'implemented' in state and int(n_tries)<=evosys.ptree.challenging_threshold:
+                if ('implemented' in state or 'succeeded' in state) and int(n_tries)<=evosys.ptree.challenging_threshold:
                     status[node.acronym] = 'succeeded'
                 else:
                     status[node.acronym] = 'failed'
+                rounds[node.acronym] = min(int(n_tries),evosys.ptree.challenging_threshold)
             else:
                 status[node.acronym] = 'Unimplemented'
         freqs = _data_to_freq(status)
-        st.write(f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. :green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, :red[{freqs["failed"]/len(nodes):.2%}] failed.')
+        st.write(
+            f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
+            f':green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, ',
+            f':red[{freqs["failed"]/len(nodes):.2%}] failed. ',
+            f'Average attempts: :blue[{np.mean(list(rounds.values())):.2f}]. '
+        )
 
 
 
 def _bench(evosys):
     st.title("Agent Benchmark")
     if not evosys.benchmark_mode:# and not st.session_state.evo_running:
-        st.warning(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
+        st.error(f'The namespace ```{evosys.evoname}``` is not set to benchmark mode. Please set it to benchmark mode to launch the benchmark.')
     else:
         benchmark_launch_pad(evosys)
 
     network_status(evosys,benchmark_mode=True)
     running_logs(evosys)
-    bench_results(evosys)
+    bench_summary(evosys)
     ptree_monitor(evosys)
 
 
