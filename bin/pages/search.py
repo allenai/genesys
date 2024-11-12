@@ -162,7 +162,7 @@ def unit_explorer(evosys,project_dir):
     if choose_unit is not None:
         unit,tree_name,decl=GD.get_unit(choose_unit,choose_variant)
         st.write(f'Tree: ```{tree_name}```')
-        st.write(f'Decl: ```{decl}```')
+        st.write(f'Decl: \n```\n{decl}\n```')
         cols=st.columns([1,1])
         with cols[0]:
             with st.expander("Code",expanded=False):
