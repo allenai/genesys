@@ -933,7 +933,12 @@ def check_and_reformat_gau_code(source_code,unit_name=None):
 
     reformatted_code=astor.to_source(tree)
     code_lines = reformatted_code.split('\n')
-    tree = ast.parse(reformatted_code)
+    try:
+        tree = ast.parse(reformatted_code)
+    except Exception as e:
+        full_traceback=str(traceback.format_exc()).replace('File "<string>"','In "Reformatted Code"')
+        fetal_errors.append(f"Fetal Error: Failed to parse the reformatted code: {e}.\nPlease make sure the format is correct. Full traceback:\n{full_traceback}")
+        return None, None, None, errors, warnings, fetal_errors, None, None, None
 
     # Step 5: Run the AttributeChecker
     attribute_checker = AttributeChecker(unit_name, children, code_lines)
