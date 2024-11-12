@@ -265,26 +265,27 @@ def verify_daemon(evoname, evosys, sess_id, design_id, scale, node_id, pid):
                     update_local_doc(sess_id, 'ZOMBIE', delete=True)
                     break
             else:
-                if status == 'TRAINING':
-                    # detect if cuda has any process running
-                    is_training = False
-                    for i in range(3):
-                        memory_allocated = torch.cuda.memory_allocated(0)
-                        memory_reserved = torch.cuda.memory_reserved(0)
-                        total_memory = memory_allocated + memory_reserved
+                # FIXME: this is not working
+                # if status == 'TRAINING':
+                #     # detect if cuda has any process running
+                #     is_training = False
+                #     for i in range(3):
+                #         memory_allocated = torch.cuda.memory_allocated(0)
+                #         memory_reserved = torch.cuda.memory_reserved(0)
+                #         total_memory = memory_allocated + memory_reserved
                         
-                        if total_memory < 0.5 * 1024 ** 3:  # if less than 0.5GB, then it may not training actively
-                            do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, checking times {i+1}...')
-                            time.sleep(10)
-                        else:
-                            is_training = True
-                            break
-                    if not is_training:
-                        do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, terminating...')
-                        break
-                else:
-                    do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is running with status {status}')
-                    update_local_doc(sess_id, status)
+                #         if total_memory < 0.5 * 1024 ** 3:  # if less than 0.5GB, then it may not training actively
+                #             do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, checking times {i+1}...')
+                #             time.sleep(10)
+                #         else:
+                #             is_training = True
+                #             break
+                #     if not is_training:
+                #         do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is training but no GPU memory used, terminating...')
+                #         break
+                # else:
+                do_log(exp_log_ref,f'Daemon: Node {node_id} verification {sess_id} is running with status {status}')
+                update_local_doc(sess_id, status)
             time.sleep(60)  # Check every minute for active processes
 
         # Check if the process completed successfully
