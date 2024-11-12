@@ -26,6 +26,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
+import wandb
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -1057,13 +1058,11 @@ def _stratify_to_mean(stratify):
     else:
         return 0.75
 
-def session_stats(evosys):
+def session_stats(evosys,design_nodes,implemented_nodes):
     st.subheader("Session Statistics Monitor")
     with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         # evosys.ptree.update_design_tree()
 
-        designs = evosys.ptree.filter_by_type('DesignArtifact')
-        implemented = evosys.ptree.filter_by_type('DesignArtifactImplemented')
         sessions = evosys.ptree.design_sessions
 
         states = {}
@@ -1077,8 +1076,8 @@ def session_stats(evosys):
         timestamps = {}
         cfg_implementations = {}
         cfg_proposals = {}
-        for design in designs+implemented:
-            node = evosys.ptree.get_node(design)
+        for node in design_nodes+implemented_nodes:
+            design = node.acronym
             state = node.state
             if ':' in state:
                 state, attempt = state.split(':')
@@ -1104,7 +1103,7 @@ def session_stats(evosys):
                 attempts[design] = attempt #sum(rounds[design]) #attempt
 
 
-        if len(designs)+len(implemented)+len(sessions) == 0:
+        if len(design_nodes)+len(implemented_nodes)+len(sessions) == 0:
             st.info('No design session statistics available at the moment.')
         else:
             # _angle=st.slider('Pie chart start angle',min_value=0,max_value=360,value=90,step=10)
@@ -1357,7 +1356,7 @@ def session_stats(evosys):
                 st.bar_chart(chart_data,x='pair',y='mean cost-effectiveness')
 
 
-def unit_analyzer(evosys):
+def unit_analyzer(evosys,design_nodes,implemented_nodes):
     st.subheader("Unit Analyzer")
     with st.expander(f"Unit Analysis for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         st.subheader('Block-Unit Tree')
@@ -1409,13 +1408,12 @@ def unit_analyzer(evosys):
             score_14M_str = {}
             bows = {}
             word_freq = {}
-            for design in evosys.ptree.filter_by_type('DesignArtifactImplemented'):
-                node = evosys.ptree.get_node(design)
+            for node in implemented_nodes:
                 _score = node.get_score(scale='14M')
+                design = node.acronym
                 if _score>0:
                     score_14M_str[design] = _score_stratify_single(_score)
-                    root = node.implementation.implementation.root
-                    bows[design] = list(set(node.implementation.implementation.units.keys())-set([root]))
+                    bows[design] = node.get_bow()
                     for bow in bows[design]:
                         if bow not in word_freq:
                             word_freq[bow] = 0
@@ -1456,11 +1454,43 @@ def unit_analyzer(evosys):
 
 
 
+
+def scaling_analysis(evosys,design_nodes,implemented_nodes):
+    st.subheader('Scaling Analysis')
+    api = wandb.Api()
+    token_mults = evosys.ptree.token_mults
+    with st.expander(f"Scaling Analysis for ```{evosys.evoname}```",expanded=True):
+        bows = {}
+        scores = {}
+        n_params = {}
+        losses = {}
+        for node in implemented_nodes:
+            if len(node.verifications)>0:
+                scores[node.acronym] = node.get_scores()
+                bows[node.acronym] = node.get_bow()
+                n_params[node.acronym] = {}
+                losses[node.acronym] = {}
+                for scale in node.verifications:
+                    report = node.verifications[scale].verification_report
+                    wandb_ids = report['wandb_ids.json']
+                    if not report.get('trainer_state.json',None):
+                        run = api.run(f"{wandb_ids['entity']}/{wandb_ids['project']}/{wandb_ids['pretrain']['id']}")
+                        metrics = run.summary  # Summary includes the latest metrics logged, e.g., accuracy, loss
+                        node.verifications[scale].verification_report['trainer_state.json'] = {'loss':metrics.get('train/loss')}
+                        
+                    losses[node.acronym][scale] = report['trainer_state.json']['loss']
+                    n_params[node.acronym][scale] = report['eval_results.json']['config']['model_num_parameters']
+
+
+
+
 def _stats(evosys):
     st.title("Experiment Statistics")
-    session_stats(evosys)
-    unit_analyzer(evosys)
-
+    design_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifact')]
+    implemented_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifactImplemented')]
+    session_stats(evosys,design_nodes,implemented_nodes)
+    unit_analyzer(evosys,design_nodes,implemented_nodes)
+    scaling_analysis(evosys,design_nodes,implemented_nodes)
 
 
 class EvoModes(Enum):

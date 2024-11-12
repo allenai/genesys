@@ -405,8 +405,8 @@ class FirestoreManager:
         reports=verification.pop('verification_report')
         if 'eval_results.json' not in reports:
             return
-        if 'trainer_state.json' not in reports:
-            return
+        # if 'trainer_state.json' not in reports:
+        #     return
         if design_id not in Index:
             Index[design_id]={}
         if 'verifications' not in Index[design_id]:
@@ -1213,6 +1213,7 @@ class Verification:
     @classmethod
     def load(cls, dir: str):
         return cls.from_dict(U.load_json(dir))
+    
 
 @dataclass
 class DesignArtifact(NodeObject):
@@ -1365,6 +1366,18 @@ class DesignArtifact(NodeObject):
                     cnt += 1
         avg_acc /= cnt
         return avg_acc
+    
+    def get_scores(self):
+        scores = {}
+        for scale in self.verifications:
+            scores[scale] = self.get_score(scale)
+        return scores
+    
+    def get_bow(self,with_root=False):
+        if with_root:
+            return list(self.implementation.implementation.units.keys())
+        else:
+            return list(set(self.implementation.implementation.units.keys())-set([self.implementation.implementation.root]))
     
     @property
     def score(self): # XXX: need to improve a lot
