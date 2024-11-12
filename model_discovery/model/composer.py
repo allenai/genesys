@@ -16,6 +16,9 @@ from streamlit_flow import streamlit_flow
 from streamlit_flow.state import StreamlitFlowState
 from streamlit_flow.elements import StreamlitFlowNode, StreamlitFlowEdge
 from streamlit_flow.layouts import TreeLayout, RadialLayout
+from pyvis.network import Network
+import math
+import networkx as nx
 
 from dataclasses import dataclass, field
 from .utils.modules import GAUBase, gau_test
@@ -127,6 +130,75 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         if K==1:
             return matches[0] # for convenience
         return matches # tuples of (node,tree_name,decl)
+    
+
+    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None,bgcolor="#fafafa"):
+        nt=Network(
+            directed=True,height=height,width=width,
+            layout=layout, 
+            bgcolor=bgcolor, #font_color="#ffffff",
+            #select_menu=True, # filter_menu=True,
+            # heading=f'Phylogenetic Tree for {self.db_dir.split("/")[-2]}'
+        )
+        nt.prep_notebook(True)#,'./etc/ptree_template.html')
+        nt.from_nx(G)
+        fname='UTree' if not layout else 'UTree_layout'
+        if max_nodes: fname+=f'_{max_nodes}'
+        nt.show(U.pjoin(self.ptree.db_dir, '..', fname+'.html'))
+
+    def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee",color_root='yellow',size_root=25,
+               color_term='red',size_term=20,color_variant='blue',size_variant=10,no_root=False,no_units=False): #,with_ext=False
+        G=nx.DiGraph()
+        variant_edges=[]
+        reuse_edges=[]
+        cnt=0
+        for name in self.terms:
+            if max_nodes and cnt>=max_nodes:
+                break
+            term=self.terms[name]
+            if no_root and term.is_root:
+                continue
+            cnt+=1
+            # add the term node
+            G.add_node(
+                name,
+                title=name,
+                size=size_term if not term.is_root else size_root,
+                color=color_term if not term.is_root else color_root,
+            )
+
+            for variant,content in term.variants.items():
+                (node,variant,desc)=content
+                # add the variant node
+                if not no_units:
+                    G.add_node(
+                        variant,
+                        title=U.break_sentence(desc,100),
+                        size=size_variant,
+                        color=color_variant,
+                    )
+                    # add the edge
+                    variant_edges.append((name,variant))
+                # add the edge from the reuse node
+                if node.reuse_from is not None:
+                    parent = node.reuse_from.split('.')[-1]
+                    if not no_units:
+                        reuse_edges.append((parent,variant))
+                    else:
+                        if (parent,name) not in reuse_edges and parent!=name:
+                            reuse_edges.append((parent,name))
+            
+        for edge in variant_edges:
+            if edge[0] in G.nodes and edge[1] in G.nodes:
+                G.add_edge(edge[0],edge[1],color=color_variant)
+        for edge in reuse_edges:
+            if edge[0] in G.nodes and edge[1] in G.nodes:
+                G.add_edge(edge[0],edge[1],color=color_term)
+        fname='unit_tree'
+        if max_nodes: fname+=f'_{max_nodes}'
+        self.viz(G,max_nodes=max_nodes,height=height,layout=layout,bgcolor=bgcolor)
+
+
     
 class GABComposer:
     def compose(self,tree):
@@ -274,8 +346,8 @@ class GAUTree:
         self.review = review # review of the design
         self.rating = rating
         self.suggestions = suggestions
-        if lib_dir is not None:
-            self.dict = GAUDict(lib_dir) # TODO: consider this later
+        # if lib_dir is not None:
+        #     self.dict = GAUDict(lib_dir) # TODO: consider this later
         
     def get_unit_desc(self,unit_name):
         if unit_name in self.units:
@@ -289,8 +361,8 @@ class GAUTree:
         else:
             return None
     
-    def set_lib_dir(self,lib_dir):
-        self.dict = GAUDict(lib_dir)
+    # def set_lib_dir(self,lib_dir):
+    #     self.dict = GAUDict(lib_dir)
 
     def add_unit(self, spec, code, args, desc, review, rating, children, gautests, suggestions, design_traces=None, requirements=None, overwrite=False, reuse_from=None):
         name = spec.unitname
@@ -346,9 +418,9 @@ class GAUTree:
         assert name in self.declares, f"Unit {name} is not declared"
         del self.declares[name]
 
-    def register_unit(self, name): # permanently register a unit to the GAUDict, do it only when the unit is fully tested
-        assert name in self.units, f"Unit {name} is not in the tree"
-        self.dict.register(self.units[name])
+    # def register_unit(self, name): # permanently register a unit to the GAUDict, do it only when the unit is fully tested
+    #     assert name in self.units, f"Unit {name} is not in the tree"
+    #     self.dict.register(self.units[name])
 
     def descendants(self,name): # recursively get decendants of a unit
         if name not in self.units and name not in self.declares:

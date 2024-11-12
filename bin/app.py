@@ -171,10 +171,9 @@ pages = {
     'Search': search,
     'Viewer': viewer,
     'Config': config,
-    'Listen': listen,
 }
 if not DEPLOY_MODE:
-    # pages['Listen'] = listen
+    pages['Listen'] = listen
     pages['Tester'] = tester
 
 

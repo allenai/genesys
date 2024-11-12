@@ -17,7 +17,15 @@ import psutil
 import matplotlib.pyplot as plt
 import subprocess
 from streamlit.runtime.scriptrunner import add_script_run_ctx
+from wordcloud import WordCloud
 
+from dataclasses import dataclass
+from typing import List
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -1023,14 +1031,33 @@ def _data_filter(data,filter_func):
 
 def _score_stratify(_scores):
     return np.array([
-        '<0.6' if x < 0.6 else 
-        '0.6-0.65' if x < 0.65 else 
-        '0.65-0.7' if x < 0.7 else 
-        '>0.7' for x in _scores
+        _score_stratify_single(x) for x in _scores
     ])
 
-def _stats(evosys):
-    st.title("Experiment Statistics")
+def _score_stratify_single(score):
+    return '<0.6' if score < 0.6 else '0.6-0.65' if score < 0.65 else '0.65-0.7' if score < 0.7 else '>0.7'
+
+def _stratify_to_weight(stratify):
+    if stratify=='<0.6':
+        return 0.25
+    elif stratify=='0.6-0.65':
+        return 0.5
+    elif stratify=='0.65-0.7':
+        return 0.75
+    else:
+        return 1
+    
+def _stratify_to_mean(stratify):
+    if stratify=='<0.6':
+        return 0.55
+    elif stratify=='0.6-0.65':
+        return 0.625
+    elif stratify=='0.65-0.7':
+        return 0.675
+    else:
+        return 0.75
+
+def session_stats(evosys):
     st.subheader("Session Statistics Monitor")
     with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         # evosys.ptree.update_design_tree()
@@ -1328,6 +1355,111 @@ def _stats(evosys):
                 pair_effective_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_effective.items()}
                 chart_data = pd.DataFrame(list(pair_effective_mean.items()),columns=['pair','mean cost-effectiveness'])
                 st.bar_chart(chart_data,x='pair',y='mean cost-effectiveness')
+
+
+def unit_analyzer(evosys):
+    st.subheader("Unit Analyzer")
+    with st.expander(f"Unit Analysis for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
+        st.subheader('Block-Unit Tree')
+
+        if 'utree_max_nodes' not in st.session_state:
+            st.session_state.utree_max_nodes=50
+
+        _bg_color=AU.theme_aware_options(st,"#fafafa","#f0f0f0","#fafafa")
+        
+        col1, col2, col3, col4, col5 = st.columns([5,0.1,1.5,0.8,0.8])
+        with col1:
+            _max_nodes=st.slider('Max Units to Display',min_value=0,max_value=len(evosys.ptree.GD.terms),value=st.session_state.utree_max_nodes)
+
+        with col4:
+            st.write('')
+            st.write('')
+            _no_root = st.checkbox('No Root',value=True)
+
+        with col5:
+            st.write('')
+            st.write('')
+            _no_units = st.checkbox('No Units',value=True)
+
+        export_height = 750
+        evosys.ptree.GD.export(max_nodes=st.session_state.utree_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,
+                               no_root=_no_root,no_units=_no_units)
+        utree_dir_small=U.pjoin(evosys.evo_dir,f'UTree_{st.session_state.utree_max_nodes}.html')
+
+        # check this: https://github.com/napoles-uach/streamlit_network 
+        with col3:
+            st.write('')
+            st.write('')
+            if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
+                evosys.ptree.GD.export(max_nodes=_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,no_root=_no_root,no_units=_no_units)
+                utree_dir_small=U.pjoin(evosys.evo_dir,f'UTree_{_max_nodes}.html')
+                st.session_state.utree_max_nodes=_max_nodes
+                
+        st.write(f'**First {st.session_state.utree_max_nodes} nodes under the namespace ```{evosys.evoname}```** Legend: :red[Unit Nodes/Reuse Edges] | :blue[Design Nodes/Variant Edges] | :orange[Root Units]')
+
+        HtmlFile = open(utree_dir_small, 'r', encoding='utf-8')
+        source_code = HtmlFile.read() 
+        components.html(source_code, height = export_height)
+
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader('Naive Bayes Analysis of Unit Bag-of-Words')
+
+            score_14M_str = {}
+            bows = {}
+            word_freq = {}
+            for design in evosys.ptree.filter_by_type('DesignArtifactImplemented'):
+                node = evosys.ptree.get_node(design)
+                _score = node.get_score(scale='14M')
+                if _score>0:
+                    score_14M_str[design] = _score_stratify_single(_score)
+                    root = node.implementation.implementation.root
+                    bows[design] = list(set(node.implementation.implementation.units.keys())-set([root]))
+                    for bow in bows[design]:
+                        if bow not in word_freq:
+                            word_freq[bow] = 0
+                        word_freq[bow] += _stratify_to_weight(score_14M_str[design])
+
+            data = [(bows[design],score_14M_str[design]) for design in bows]
+            bow_texts = [' '.join(bow) for bow, _ in data]  # Join words in each BOW
+            labels = [label for _, label in data]
+
+            # Transform BOWs into features
+            vectorizer = CountVectorizer()
+            X = vectorizer.fit_transform(bow_texts)
+            y = labels
+
+            # Train Naive Bayes classifier
+            nb = MultinomialNB()
+            nb.fit(X, y)
+
+            words = st.multiselect('Select words',vectorizer.get_feature_names_out())
+            X_words = vectorizer.transform([' '.join(words)])
+            prediction = nb.predict(X_words)[0]
+            probabilities = nb.predict_proba(X_words)[0]
+            _preds = pd.DataFrame({
+                'Category': nb.classes_,
+                'Probability': probabilities
+            })
+            # .sort_values('Probability', ascending=False)
+            weight = sum(probabilities[i] * _stratify_to_mean(nb.classes_[i]) for i in range(len(nb.classes_)))
+            st.write(f'**Weighted Score: ```{weight:.4f}```**')
+            st.bar_chart(_preds,x='Category',y='Probability')
+
+        with col2:
+            st.subheader('Score-weighted Wordcloud of Units')
+            wordcloud = WordCloud(width=600, height=400, background_color='white').generate_from_frequencies(word_freq)
+            st.image(wordcloud.to_image())
+
+
+
+
+
+def _stats(evosys):
+    st.title("Experiment Statistics")
+    session_stats(evosys)
+    unit_analyzer(evosys)
 
 
 
