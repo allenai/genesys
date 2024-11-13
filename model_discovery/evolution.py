@@ -399,12 +399,12 @@ class FirestoreManager:
                     else:
                         print(f'Failed to upload round "{round_idx}" for design "{design_id}" implementation history "{idx}"')
 
-    def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False,is_baseline=False):
+    def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False,is_baseline=False,protect_keys=[]):
         collection = self.baseline_collection if is_baseline else self.collection
         Index = self.baseline_index if is_baseline else self.index  
         reports=verification.pop('verification_report')
         if 'eval_results.json' not in reports:
-            return
+            raise ValueError(f'Verification report for scale "{scale}" in design "{design_id}" does not contain eval_results.json')
         # if 'trainer_state.json' not in reports:
         #     return
         if design_id not in Index:
@@ -425,6 +425,8 @@ class FirestoreManager:
         for key,report in reports.items():
             if key in ['training_record.csv','system_metrics.csv']:
                 continue # XXX: skip these files for now
+            if key in protect_keys:
+                continue
             upload=True        
             if key in Index[design_id]['verifications'][scale] and not overwrite:
                 if key in ['training_record.csv','system_metrics.csv']: continue

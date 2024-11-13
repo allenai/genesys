@@ -1473,14 +1473,106 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
                 for scale in node.verifications:
                     report = node.verifications[scale].verification_report
                     wandb_ids = report['wandb_ids.json']
-                    if not report.get('trainer_state.json',None):
+                    trainer_state = report.get('trainer_state.json',{})
+                    if not trainer_state or 'loss' not in trainer_state:
                         run = api.run(f"{wandb_ids['entity']}/{wandb_ids['project']}/{wandb_ids['pretrain']['id']}")
                         metrics = run.summary  # Summary includes the latest metrics logged, e.g., accuracy, loss
-                        node.verifications[scale].verification_report['trainer_state.json'] = {'loss':metrics.get('train/loss')}
-                        
-                    losses[node.acronym][scale] = report['trainer_state.json']['loss']
+                        trainer_state['loss'] = metrics.get('train/loss')
+                        node.verifications[scale].verification_report['trainer_state.json'] = trainer_state
+                        evosys.ptree.FM.upload_verification(node.acronym,node.verifications[scale].to_dict(),scale,overwrite=True,protect_keys=['wandb_ids.json','eval_results.json'])
+                        verification_path=U.pjoin(evosys.evo_dir,'db','designs',node.acronym,'verifications',scale+'.json')
+                        U.save_json(node.verifications[scale].to_dict(),verification_path)
+                        print(f'Uploaded verification for scale {scale} in design {node.acronym}, loss: {trainer_state["loss"]}')
+                    losses[node.acronym][scale] = node.verifications[scale].verification_report['trainer_state.json']['loss']
                     n_params[node.acronym][scale] = report['eval_results.json']['config']['model_num_parameters']
 
+        all_params = []
+        all_tokens = []
+        all_scores = []
+        all_losses = []
+        all_scales = []
+        design_losses = {}
+        design_params = {}
+        design_scales = {}
+        design_scores = {}
+        for design in losses:
+            design_losses[design] = []
+            design_params[design] = []
+            design_scales[design] = []
+            design_scores[design] = []
+            for scale in losses[design]:
+                _loss = losses[design][scale]
+                _score = scores[design][scale]
+                if _loss == 0 or _score == 0:
+                    continue
+                _params = n_params[design][scale]
+                _tokens = token_mults[scale]*_params
+                all_tokens.append(_tokens)
+                all_params.append(_params)
+                all_scores.append(_score)
+                all_losses.append(_loss)
+                all_scales.append(int(scale.replace('M','')))
+                design_losses[design].append(_loss)
+                design_params[design].append(_params)
+                design_scales[design].append(int(scale.replace('M','')))
+                design_scores[design].append(_score)
+
+        st.subheader('Training Tokens vs Loss')
+        tokens_loss = pd.DataFrame({
+            'Tokens':all_tokens,
+            'Loss':all_losses,
+            'Scale':all_scales,
+            'Score':all_scores,
+        })
+        st.scatter_chart(tokens_loss,x='Tokens',y='Loss',color='Score',size='Scale')
+
+        st.subheader('Design Params vs Loss')
+        combined_data = []
+        for design in design_params:
+            for i in range(len(design_params[design])):
+                combined_data.append({
+                    'Params': design_params[design][i],
+                    'Loss': design_losses[design][i],
+                    'Scale': design_scales[design][i],
+                    'Design': design
+                })
+        
+        combined_df = pd.DataFrame(combined_data)
+        
+        # Create line chart using Altair
+        chart = alt.Chart(combined_df).mark_line(point=True).encode(
+            x=alt.X('Params', scale=alt.Scale(type='log')),
+            y='Loss',
+            color='Design',
+            tooltip=['Design', 'Scale', 'Params', 'Loss']
+        ).interactive()
+        
+        st.altair_chart(chart, use_container_width=True)
+
+
+        
+        st.subheader('Design Params vs Score')
+        combined_data = []
+        for design in design_params:
+            for i in range(len(design_params[design])):
+                combined_data.append({
+                    'Params': design_params[design][i],
+                    'Score': design_scores[design][i],
+                    'Scale': design_scales[design][i],
+                    'Design': design
+                })
+        
+        combined_df = pd.DataFrame(combined_data)
+        
+        # Create line chart using Altair
+        chart = alt.Chart(combined_df).mark_line(point=True).encode(
+            x=alt.X('Params', scale=alt.Scale(type='log')),
+            y='Score',
+            color='Design',
+            tooltip=['Design', 'Scale', 'Params', 'Score']
+        ).interactive()
+        
+        st.altair_chart(chart, use_container_width=True)
 
 
 
