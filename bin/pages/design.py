@@ -562,6 +562,8 @@ def _design_tuning(evosys,project_dir):
             for i,agent in enumerate(agent_type_labels):
                 with cols[i]:
                     options=AGENT_OPTIONS[agent].copy()
+                    if agent in ['IMPLEMENTATION_PLANNER']:
+                        options+=['None']
                     options+=['hybrid']
                     index = options.index(design_cfg['agent_types'][agent]) if design_cfg['agent_types'][agent] in options else 0
                     agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
@@ -637,10 +639,11 @@ def _design_tuning(evosys,project_dir):
         design_cfg['max_attemps'] = max_attempts
 
         with col2:
-            st.markdown("##### Other settings")
+            # st.markdown("##### Other settings")
             design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=False)
             design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)#,help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
-
+            design_cfg['no_f_checkers']=st.checkbox('No F-Checkers',value=False,help='If true, will turn off the Functional Checkers when checking the implementation code. Only applicable in benchmark mode.')
+            
         with col3:
             color=AU.theme_aware_options(st,'orange','violet','violet')
             st.markdown(f"##### :{color}[*View previous runs*]")

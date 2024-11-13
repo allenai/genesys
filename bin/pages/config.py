@@ -472,6 +472,8 @@ def design_config(evosys):
     design_cfg['scratch_no_tree']=design_cfg.get('scratch_no_tree',DEFAULT_SCRATCH_NO_TREE)
     design_cfg['use_unlimited_prompt']=design_cfg.get('use_unlimited_prompt',DEFAULT_USE_UNLIMITED_PROMPT)
     design_cfg['flow_type']=design_cfg.get('flow_type','gau')
+    design_cfg['no_f_checkers']=design_cfg.get('no_f_checkers',False)
+
     #### Configure design
     
 
@@ -488,6 +490,8 @@ def design_config(evosys):
                     if agent in ['SEARCH_ASSISTANT']:
                         index=len(options)-1
                         help='Whether use a separate search assistant agent to perform search tasks. (deprecated for now)'
+                    elif agent in ['IMPLEMENTATION_PLANNER']:
+                        options+=['None']
                     elif agent in ['IMPLEMENTATION_OBSERVER']:
                         index=len(options)-2
                     elif agent in ['IMPLEMENTATION_CODER']:
@@ -563,19 +567,28 @@ def design_config(evosys):
             design_cfg['num_samples']=num_samples
 
             with col3:
-                # st.markdown("###### Other Configurations")
+                st.markdown("###### Other Configurations")
                 design_cfg['unittest_pass_required']=st.checkbox('Unittests required',value=design_cfg['unittest_pass_required'],
                     help='If true, will require unittests to pass besides checkers and observers.')
                 design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg['use_unlimited_prompt'],
                     help='If true, will prompt the agent to not worry about the number of tokens in their reasoning and response, and use as many as needed to give the best response.')
-                _use_naive_flow=st.checkbox('Use Naive Flow',value=design_cfg['flow_type']=='naive',disabled=not evosys.benchmark_mode,
-                    help='If true, will use the Naive GAB Coder and Observer instead of the GAUTree Coder and Observer. Only applicable in benchmark mode.')
-                design_cfg['flow_type']='naive' if _use_naive_flow else 'gau'
 
-            st.form_submit_button("Save and Apply",
-                on_click=apply_design_config,args=(evosys,design_cfg),
-                # disabled=st.session_state.evo_running,
-            )   
+            cols = st.columns([0.9,1,1,3.3])
+            with cols[1]:
+                if evosys.benchmark_mode:
+                    _use_naive_flow=st.checkbox('*Use Naive Flow*',value=design_cfg['flow_type']=='naive',disabled=not evosys.benchmark_mode,
+                        help='If true, will use the Naive GAB Coder and Observer instead of the GAUTree Coder and Observer. Only applicable in benchmark mode.')
+                    design_cfg['flow_type']='naive' if _use_naive_flow else 'gau'
+            with cols[2]:
+                if evosys.benchmark_mode:
+                    design_cfg['no_f_checkers']=st.checkbox('*No F-Checkers*',value=design_cfg['no_f_checkers'],disabled=not evosys.benchmark_mode,
+                        help='If true, will turn off the Functional Checkers when checking the implementation code. Only applicable in benchmark mode.')
+
+            with cols[0]:
+                st.form_submit_button("Save and Apply",
+                    on_click=apply_design_config,args=(evosys,design_cfg),
+                    # disabled=st.session_state.evo_running,
+                )   
 
 
 EMBEDDING_MODELS = {

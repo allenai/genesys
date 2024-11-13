@@ -2068,7 +2068,8 @@ class PhylogeneticTree:
             if design is None:
                 continue
             if design.implementation:
-                if design.implementation.status in ['implemented','succeeded_gab']:
+                status=design.implementation.status.replace(' (valid)','').replace(' (invalid)','')
+                if status in ['implemented','succeeded_gab']:
                     implemented.append(acronym) 
                 else:
                     unfinished.append(acronym)

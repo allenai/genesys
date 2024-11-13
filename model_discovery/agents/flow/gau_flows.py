@@ -184,7 +184,10 @@ class GUFlow(
         self.log_fn=log_fn if log_fn else lambda x,y=None: None
 
         self.flow_type=design_cfg.get('flow_type','gau')
+        self.no_fcheckers=design_cfg.get('no_f_checkers',False)
         print(f'***$$$ Design flow type: {self.flow_type}')
+        if self.no_fcheckers:
+            print('***$$$ Functional checkers are turned off. Please make sure its a benchmark run.***$$$')
 
 
         # prepare roles
@@ -1110,10 +1113,14 @@ class GUFlow(
                         status='implemented'
                     else:
                         status='initial_pass' if INITIAL_PASS else 'failed'
+                    if self.no_fcheckers:
+                        status+=f' (invalid)' if not RETS['VALID'] else ' (valid)'
                     self.ptree.implement(acronym,self.tree,ROUNDS,status,costs,self.design_cfg,self.user_input)
                 elif self.flow_type=='naive':
                     gab_code,ROUNDS,SUCCEED = RETS['GAB_CODE'],RETS['ROUNDS'],RETS['SUCCEED']
                     status = 'succeeded_gab' if SUCCEED else 'failed_gab'
+                    if self.no_fcheckers:
+                        status+=f' (invalid)' if not RETS['VALID'] else ' (valid)'
                     self.ptree.implement_gab(acronym,gab_code,ROUNDS,status,costs,self.design_cfg,self.user_input)
                 else:
                     raise NotImplementedError(f'Flow type {self.flow_type} not implemented')
@@ -1263,6 +1270,7 @@ class GUFlow(
             PROTECTED_UNITS=[]
         self.stream.write(f'##### Protected Units: {PROTECTED_UNITS}')
         USE_PAIRING=self._agent_types['IMPLEMENTATION_OBSERVER']!='None'
+        USE_PLANNER=self._agent_types['IMPLEMENTATION_PLANNER']!='None'
         # o1 beta does not support structured outputs, so let it output the code directly
         # UNSTRUCT_CODER='o1' in self._agent_types['IMPLEMENTATION_CODER']
         # UNSTRUCT_OBSERVER='o1' in self._agent_types['IMPLEMENTATION_OBSERVER']
@@ -1315,156 +1323,166 @@ class GUFlow(
 
             ################# SELECTING THE NEXT UNIT TO WORK ON #################
             
-            context_implementation_planner=copy.deepcopy(planner_context)
-            if self.design_mode==DesignModes.MUTATION: 
-                GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1M_IMPLEMENTATION_PLANNER_BACKGROUND
-                _background_prompt={'SEED':self.seed,'SELECTION':proposal.selection}
-            elif self.design_mode==DesignModes.CROSSOVER:
-                GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1C_IMPLEMENTATION_PLANNER_BACKGROUND
-                _background_prompt={'PARENTS':self.seed}
-            else:
-                GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1S_IMPLEMENTATION_PLANNER_BACKGROUND
-                _background_prompt={}
+            if USE_PLANNER:
+                context_implementation_planner=copy.deepcopy(planner_context)
+                if self.design_mode==DesignModes.MUTATION: 
+                    GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1M_IMPLEMENTATION_PLANNER_BACKGROUND
+                    _background_prompt={'SEED':self.seed,'SELECTION':proposal.selection}
+                elif self.design_mode==DesignModes.CROSSOVER:
+                    GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1C_IMPLEMENTATION_PLANNER_BACKGROUND
+                    _background_prompt={'PARENTS':self.seed}
+                else:
+                    GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.O1S_IMPLEMENTATION_PLANNER_BACKGROUND
+                    _background_prompt={}
 
-            IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
-                GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
-                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
-            
-            implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
-                                                alias='implementation_planner',note=f'Starting implementation planning...')
+                IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
+                    GAB_BASE=GAB_BASE,GAU_BASE=GAU_BASE,GAU_TEMPLATE=GAU_TEMPLATE,
+                    PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+                
+                implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
+                                                    alias='implementation_planner',note=f'Starting implementation planning...')
 
 
-            if INITIAL_PASS:
-                potential_reuses={}
-                parents_reuses={}
-                if self.design_mode==DesignModes.CROSSOVER:
-                    parents_reuses=self.reuse_parents(self.seed_ids)
-                    REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses)
-
-                else: 
-                    potential_reuses,reuse_prompt=self.recommend_reuses(UNIMPLEMENTED)
-                    if self.design_mode==DesignModes.MUTATION:
+                if INITIAL_PASS:
+                    potential_reuses={}
+                    parents_reuses={}
+                    if self.design_mode==DesignModes.CROSSOVER:
                         parents_reuses=self.reuse_parents(self.seed_ids)
-                        REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
-                    else:
-                        REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
+                        REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses)
+
+                    else: 
+                        potential_reuses,reuse_prompt=self.recommend_reuses(UNIMPLEMENTED)
+                        if self.design_mode==DesignModes.MUTATION:
+                            parents_reuses=self.reuse_parents(self.seed_ids)
+                            REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,parents_reuses=parents_reuses,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
+                        else:
+                            REUSE_PROMPT=P.gen_REUSE_PROMPT(self.design_mode,potential_reuses=potential_reuses,reuse_prompt=reuse_prompt)
 
 
+                if round>1 or UNSTRUCT_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
+                    with self.status_handler('Planning for the next round...'):
+                        SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root}
+                        SKIP_PLANNING=False
+                        if UNSTRUCT_PLANNER:
+                            if round==1: # working on the selected unit, no reuse
+                                if self.design_mode==DesignModes.MUTATION:
+                                    GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION
+                                elif self.design_mode==DesignModes.CROSSOVER:
+                                    GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER
+                                else:
+                                    GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH
+                                gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                                    VIEW=VIEW_DETAILED
+                                )
+                            elif not INITIAL_PASS:
+                                SKIP_PLANNING=True
+                            elif len(UNIMPLEMENTED)==0:
+                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_POST_REFINE
+                                gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                                    ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
+                                    PROTECTED=PROTECTED_UNITS,LOG='\n'.join(LOG)
+                                )
+                            else: # SELECTION of unimplemented units
+                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_SELECTION
+                                gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                                    ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,LOG='\n'.join(LOG),
+                                    IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED,PROTECTED=PROTECTED_UNITS,
+                                    REUSE_PROMPT=REUSE_PROMPT
+                                )
+                        else:
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
+                            #     SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
+                            # gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
+                            #     VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
+                            # )
 
-            if round>1 or UNSTRUCT_PLANNER: # if round > 1, let the agent choose the next unit to work on, TODO: maybe more background about previous rounds
-                with self.status_handler('Planning for the next round...'):
-                    SELECTIONS=set(IMPLEMENTED+UNIMPLEMENTED)#-{self.tree.root}
-                    SKIP_PLANNING=False
-                    if UNSTRUCT_PLANNER:
-                        if round==1: # working on the selected unit, no reuse
-                            if self.design_mode==DesignModes.MUTATION:
-                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_MUTATION
-                            elif self.design_mode==DesignModes.CROSSOVER:
-                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_CROSSOVER
+                        if not SKIP_PLANNING:
+                            GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
+                            self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
+                            # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
+                            planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
+                            _,out=self.call_dialog(implementation_planner_tid,gu_implementation_unit_selection_prompt)
+                        motivation,rough_plan,reuse_code,reuse_from,reuse_type=None,None,None,None,None
+                        termination=False
+                        if UNSTRUCT_PLANNER:
+                            if not SKIP_PLANNING: # reuse the results last round, only happen when failed in the begining
+                                if round==1:
+                                    plan=out['text']
+                                    if self.design_mode==DesignModes.MUTATION:
+                                        selection=proposal.selection
+                                    else:
+                                        selection='root'
+                                else:
+                                    plan,selection,reuse_unit=out['text'],out['selection'],out['reuse']
+                                    for _reuse in reuse_unit:
+                                        if _reuse in parents_reuses:
+                                            reuse_code = parents_reuses[_reuse]
+                                            reuse_from = _reuse
+                                            reuse_type = 'parents'
+                                            break
+                                        elif _reuse in potential_reuses:
+                                            reuse_code = potential_reuses[_reuse]
+                                            reuse_from = _reuse
+                                            reuse_type = 'recommended'
+                                            break
+
+                                planner_context.append(plan,'assistant',{})
+                                if round>1 and len(UNIMPLEMENTED)==0:
+                                    termination="```terminate```" in plan
+                                self.stream.write(f'### Selection: {selection}')
+                                self.stream.write(f'### Plan\n{plan}')
+                                self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                                if not termination and round>1:
+                                    succeed,selection,_=P.gen_SELECTION_DEBUG_prompt(selection,SELECTIONS)
+                                    if not succeed:
+                                        if len(UNIMPLEMENTED)==0:
+                                            termination=True
+                                        else:
+                                            selection = random.choice(UNIMPLEMENTED)
+                                            plan+=f'\n\n### NOTE: The selection does not successfully parsed, randomly select {selection} from {UNIMPLEMENTED} instead. You may ignore the plan if not useful.'
                             else:
-                                GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_BEGIN_SCRATCH
-                            gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                                VIEW=VIEW_DETAILED
-                            )
-                        elif not INITIAL_PASS:
-                            SKIP_PLANNING=True
-                        elif len(UNIMPLEMENTED)==0:
-                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_POST_REFINE
-                            gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                                ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,
-                                PROTECTED=PROTECTED_UNITS,LOG='\n'.join(LOG)
-                            )
-                        else: # SELECTION of unimplemented units
-                            GUM_IMPLEMENTATION_UNIT_SELECTION=P.O1_IMPLEMENTATION_PLANNER_SELECTION
-                            gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                                ROUND=round,VIEW=VIEW_DETAILED,SELECTIONS=SELECTIONS,LOG='\n'.join(LOG),
-                                IMPLEMENTED=IMPLEMENTED,UNIMPLEMENTED=UNIMPLEMENTED,PROTECTED=PROTECTED_UNITS,
-                                REUSE_PROMPT=REUSE_PROMPT
-                            )
-                    else:
-                        raise NotImplementedError('Structural prompts need to be updated.')
-                        # GUM_IMPLEMENTATION_UNIT_SELECTION=P.gen_GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        #     SELECTIONS,post_refining=len(UNIMPLEMENTED)==0)
-                        # gu_implementation_unit_selection_prompt=GUM_IMPLEMENTATION_UNIT_SELECTION(
-                        #     VIEW=VIEW_DETAILED,LOG='\n'.join(LOG),ROUND=round
-                        # )
-
-                    if not SKIP_PLANNING:
-                        GUM_IMPLEMENTATION_UNIT_SELECTION.apply(IMPLEMENTATION_PLANNER.obj)
-                        self.print_details(IMPLEMENTATION_PLANNER.obj,context_implementation_planner,gu_implementation_unit_selection_prompt)
-                        # self.stream.write(f'{VIEW_DETAILED}\n\nNow selecting the next unit to work on...')
-                        planner_context.append(gu_implementation_unit_selection_prompt,'user',{})
-                        _,out=self.call_dialog(implementation_planner_tid,gu_implementation_unit_selection_prompt)
-                    motivation,rough_plan,reuse_code,reuse_from,reuse_type=None,None,None,None,None
-                    termination=False
-                    if UNSTRUCT_PLANNER:
-                        if not SKIP_PLANNING: # reuse the results last round, only happen when failed in the begining
-                            if round==1:
-                                plan=out['text']
                                 if self.design_mode==DesignModes.MUTATION:
                                     selection=proposal.selection
                                 else:
                                     selection='root'
-                            else:
-                                plan,selection,reuse_unit=out['text'],out['selection'],out['reuse']
-                                for _reuse in reuse_unit:
-                                    if _reuse in parents_reuses:
-                                        reuse_code = parents_reuses[_reuse]
-                                        reuse_from = _reuse
-                                        reuse_type = 'parents'
-                                        break
-                                    elif _reuse in potential_reuses:
-                                        reuse_code = potential_reuses[_reuse]
-                                        reuse_from = _reuse
-                                        reuse_type = 'recommended'
-                                        break
-
-                            planner_context.append(plan,'assistant',{})
-                            if round>1 and len(UNIMPLEMENTED)==0:
-                                termination="```terminate```" in plan
-                            self.stream.write(f'### Selection: {selection}')
-                            self.stream.write(f'### Plan\n{plan}')
-                            self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
-                            if not termination and round>1:
-                                succeed,selection,_=P.gen_SELECTION_DEBUG_prompt(selection,SELECTIONS)
-                                if not succeed:
-                                    if len(UNIMPLEMENTED)==0:
-                                        termination=True
-                                    else:
-                                        selection = random.choice(UNIMPLEMENTED)
-                                        plan+=f'\n\n### NOTE: The selection does not successfully parsed, randomly select {selection} from {UNIMPLEMENTED} instead. You may ignore the plan if not useful.'
+                                termination=False
+                                plan='Not available yet.'
                         else:
-                            if self.design_mode==DesignModes.MUTATION:
-                                selection=proposal.selection
-                            else:
-                                selection='root'
-                            termination=False
-                            plan='Not available yet.'
-                    else:
-                        raise NotImplementedError('Structural prompts need to be updated.')
-                        # selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
-                        # plan=out['text']
-                        # self.stream.write(f'### Selection: {selection}')
-                        # self.stream.write(f'### Motivation\n{motivation}')    
-                        # self.stream.write(f'### Rough Plan\n{rough_plan}')
-                        # self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
-                        # planner_context.append(plan,'assistant',{})
-            else: # round 1, work on the selected unit
-                raise NotImplementedError('Structural prompts need to be updated.')
-                # if self.design_mode==DesignModes.MUTATION:
-                #     selection=proposal.selection
-                # else:
-                #     selection='root'
-                # termination=False
-                # plan='Not available for the first round.'
-            LOG.append(f'Round {round} started. Implementing unit {selection}.')
-
-
-
-            if selection in IMPLEMENTED:
-                self.stream.write(f'##### Start implementing refined unit {selection}')
+                            raise NotImplementedError('Structural prompts need to be updated.')
+                            # selection,motivation,rough_plan,termination=out['selection'],out['motivation'],out['rough_plan'],out['termination']
+                            # plan=out['text']
+                            # self.stream.write(f'### Selection: {selection}')
+                            # self.stream.write(f'### Motivation\n{motivation}')    
+                            # self.stream.write(f'### Rough Plan\n{rough_plan}')
+                            # self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+                            # planner_context.append(plan,'assistant',{})
+                else: # round 1, work on the selected unit
+                    raise NotImplementedError('Structural prompts need to be updated.')
+                    # if self.design_mode==DesignModes.MUTATION:
+                    #     selection=proposal.selection
+                    # else:
+                    #     selection='root'
+                    # termination=False
+                    # plan='Not available for the first round.'
+                LOG.append(f'Round {round} started. Implementing unit {selection}.')
             else:
-                self.stream.write(f'##### Start implementing new unit {selection}')
+                with self.status_handler('Randomly selecting the next unit...'):
+                    SKIP_PLANNING= round>1 and not INITIAL_PASS
+                    plan='Not available.'
+                    termination=False
+                    motivation,rough_plan,reuse_code,reuse_from,reuse_type=None,None,None,None,None
+                    if not SKIP_PLANNING: # reuse the results last round, only happen when failed in the begining
+                        if round==1:
+                            selection=proposal.selection if self.design_mode==DesignModes.MUTATION else 'root'
+                        else:
+                            if len(UNIMPLEMENTED)==0:
+                                termination=True
+                            else:
+                                selection = random.choice(UNIMPLEMENTED)
+                    else:
+                        selection=proposal.selection if self.design_mode==DesignModes.MUTATION else 'root'
+                    
 
 
             ### Termination
@@ -1491,6 +1509,13 @@ class GUFlow(
                 break
 
             ################# UNIT IMPLEMENTATION INNER LOOP #################
+
+
+            if selection in IMPLEMENTED:
+                self.stream.write(f'##### Start implementing refined unit {selection}')
+            else:
+                self.stream.write(f'##### Start implementing new unit {selection}')
+
 
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
@@ -1789,6 +1814,8 @@ class GUFlow(
                             _unit_test_passed=True
                             _unit_test_results=''
                             for unitname in format_checks.keys():
+                                if self.no_fcheckers:
+                                    continue
                                 __unit_test_results, _unit_test_code, __unit_test_passed = self.tree.test_unit(unitname, True)
                                 self.stream.write(f'### {unitname} Unit Tests Passed: {__unit_test_passed}')
                                 self.stream.write(f'### {unitname} Unit Tests Results\n```bash\n{__unit_test_results}\n```')
@@ -1813,7 +1840,8 @@ class GUFlow(
 
                         gabcode = self.tree.compose()
                         self.log_fn(f'Checking the implementation of {selection}...','IMPLEMENTATION')
-                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(gabcode,selection,cpu_only=self.cpu_only)
+                        checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(
+                            gabcode,selection,cpu_only=self.cpu_only,reformat_only=self.no_fcheckers)
                         self.log_fn(f'Checker checks result: {checkpass}','IMPLEMENTATION')
                         _func_checkpass = checkpass
 
@@ -2070,6 +2098,17 @@ class GUFlow(
                     LOG.append(f'Newly declared units in Round {round}: {NEW_DECLARED}.')
                 
         ########################### Design finished ###########################  
+        if self.no_fcheckers: # to confirm if the implementation is correct
+            with self.status_handler('Post-checking the implementation...'):
+                checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(
+                    self.tree.compose(),'gab',cpu_only=self.cpu_only)
+                self.stream.write(f'### Post-checking passed: {checkpass}')
+                self.stream.write(f'### Post-checking report\n```python\n{check_report}\n```')
+                self.stream.write(f'### Post-checking output\n```python\n{check_results}\n```')
+                RETS['VALID']=checkpass
+        else:
+            RETS['VALID']=SUCCEED
+
         self.tree.clear_disconnected() 
         RETS['SUCCEED']=SUCCEED
         RETS['INITIAL_PASS']=INITIAL_PASS
@@ -2100,6 +2139,7 @@ class GUFlow(
         RETS['ROUNDS']=[]
         SUCCEED=False
         USE_PAIRING=self._agent_types['IMPLEMENTATION_OBSERVER']!='None'
+        USE_PLANNER=self._agent_types['IMPLEMENTATION_PLANNER']!='None'
         
         context_implementation_planner=AgentContext() 
         planner_context=AgentContext()
@@ -2119,17 +2159,20 @@ class GUFlow(
             GUT_IMPLEMENTATION_PLANNER_SYSTEM=P.NS_IMPLEMENTATION_PLANNER_BACKGROUND
             _background_prompt={}
 
-        with self.status_handler('Starting implementation planning...'):
-            IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
-                GAB_BASE=GAB_BASE,GAB_TEMPLATE=GAB_TEMPLATE,
-                PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
-            
-            implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
-                                                alias='implementation_planner',note=f'Starting implementation planning...')
-            _,out=self.call_dialog(implementation_planner_tid,'Please plan the implementation of the proposal.')
-            plan=out['text']
-            self.stream.write(f'### Plan\n\n{plan}')
-            self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+        if USE_PLANNER:
+            with self.status_handler('Starting implementation planning...'):
+                IMPLEMENTATION_PLANNER=reload_role('implementation_planner',self.agents['IMPLEMENTATION_PLANNER'],GUT_IMPLEMENTATION_PLANNER_SYSTEM(
+                    GAB_BASE=GAB_BASE,GAB_TEMPLATE=GAB_TEMPLATE,
+                    PROPOSAL=proposal.proposal,REVIEW=proposal.review,RATING=proposal.rating,**_background_prompt))
+                
+                implementation_planner_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_PLANNER,context=context_implementation_planner,
+                                                    alias='implementation_planner',note=f'Starting implementation planning...')
+                _,out=self.call_dialog(implementation_planner_tid,'Please plan the implementation of the proposal.')
+                plan=out['text']
+                self.stream.write(f'### Plan\n\n{plan}')
+                self.print_raw_output(out,'IMPLEMENTATION_PLANNER')
+        else:
+            plan=None
 
         SUCCEED=False
         for attempt in range(self.max_attemps['implementation_debug']):
@@ -2189,7 +2232,8 @@ class GUFlow(
                     gabcode = codes[-1]
                     collapse_write(self.stream,'Code to check',f'```python\n\n{gabcode}\n\n```')
                     self.log_fn(f'Checking the implementation...','IMPLEMENTATION')
-                    checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(gabcode,'gab',cpu_only=self.cpu_only)
+                    checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(
+                        gabcode,'gab',cpu_only=self.cpu_only,reformat_only=self.no_fcheckers)
                     self.log_fn(f'Checker checks result: {checkpass}','IMPLEMENTATION')
                     _func_checkpass = checkpass
 
@@ -2323,6 +2367,17 @@ class GUFlow(
             
                 
         ########################### Design finished ###########################  
+        if self.no_fcheckers:
+            with self.status_handler('Post-checking the implementation...'):
+                checkpass,check_report,gabcode_reformat,check_results = self.system.checker.check(
+                    gabcode_reformat,'gab',cpu_only=self.cpu_only)
+                self.stream.write(f'### Post-checking passed: {checkpass}')
+                self.stream.write(f'### Post-checking report\n```python\n{check_report}\n```')
+                self.stream.write(f'### Post-checking output\n```python\n{check_results}\n```')
+                RETS['VALID']=checkpass
+        else:
+            RETS['VALID']=SUCCEED
+
         RETS['SUCCEED']=SUCCEED
         if end_reason is None:
             end_reason = EndReasons.IMPLEMENTATION_SUCCESS if SUCCEED else EndReasons.IMPLEMENTATION_FAILURE
