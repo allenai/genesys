@@ -800,11 +800,18 @@ def bench_summary(evosys):
             else:
                 status[node.acronym] = 'Unimplemented'
         freqs = _data_to_freq(status)
+        if 'succeeded' not in freqs:
+            freqs['succeeded']=0
+        if 'failed' not in freqs:
+            freqs['failed']=0
+        freqs['unimplemented']=len(nodes)-freqs['succeeded']-freqs['failed']
+        avg_rounds=np.mean(list(rounds.values())) if rounds else 0
         st.write(
             f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
             f':green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, ',
-            f':red[{freqs["failed"]/len(nodes):.2%}] failed. ',
-            f'Average attempts: :blue[{np.mean(list(rounds.values())):.2f}]. '
+            f':red[{freqs["failed"]/len(nodes):.2%}] failed, ',
+            f':grey[{freqs["unimplemented"]/len(nodes):.2%}] unimplemented. ',
+            f'Average attempts: :blue[{avg_rounds:.2f}]. '
         )
 
 
