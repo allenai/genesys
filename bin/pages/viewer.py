@@ -121,13 +121,15 @@ def _view_designs(evosys):
                 itree=design.implementation.implementation
                 _view_tree(itree)
                 # gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
-                # gab_code = itree.compose()
-                # st.subheader('Exported GAB Code')
-                # with st.expander('Click to expand'):
-                #     st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')
-                #     st.code(gab_code,language='python')
+                gab_code = itree.compose()
+                st.subheader('Exported GAB Code')
+                with st.expander('Click to expand'):
+                    st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')
+                    st.code(gab_code,language='python')
             else:
                 st.warning('The design has not been implemented yet.')
+
+            
             if design.verifications:
                 st.subheader('Verification Results')
                 for scale in design.verifications:
@@ -183,6 +185,8 @@ def _view_designs(evosys):
         else:
             st.warning('No verification results found for this core reference.')
     
+
+
 
 
 def _view_dialogs(evosys):
