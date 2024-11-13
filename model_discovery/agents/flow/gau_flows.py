@@ -1522,7 +1522,7 @@ class GUFlow(
             else:
                 self.stream.write(f'##### Start implementing new unit {selection}')
 
-
+            REUSE_UNIT_PROMPT=None
             tree_backup=copy.deepcopy(self.tree) # backup the tree for rollback
             for attempt in range(self.max_attemps['implementation_debug']):
                 GUT_IMPLEMENTATION_CODER_SYSTEM=P.gen_GUT_IMPLEMENTATION_CODER_SYSTEM(
