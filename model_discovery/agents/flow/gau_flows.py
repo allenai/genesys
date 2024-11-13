@@ -249,9 +249,15 @@ class GUFlow(
         self.stream.write(f'Number of seeds sampled: :green[{len(seeds)}].\tNumber of references: :orange[{len(refs)}].\tWorking in design mode: :violet[{self.design_mode}]')
         self.seed_input=P.build_GU_QUERY(seeds,refs,instruct,user_input,mode=self.design_mode,mutation_no_tree=design_cfg['mutation_no_tree'],scratch_no_tree=design_cfg['scratch_no_tree'])
         if self.design_mode==DesignModes.MUTATION:
-            self.seed_tree = self.ptree.get_gau_tree(seeds[0].acronym)
-            self.seed = seeds[0].to_prompt()
-            self.seed_ids=[seeds[0].acronym]
+            seed = seeds[0]
+            if seed.type=='DesignArtifactImplemented':
+                self.seed_tree = seed.implementation.implementation
+            elif seed.type=='ReferenceCoreWithTree':
+                self.seed_tree = seed.tree
+            else:
+                raise ValueError(f'Invalid seed type: {seed.type}')
+            self.seed = seed.to_prompt()
+            self.seed_ids=[seed.acronym]
         elif self.design_mode==DesignModes.CROSSOVER:
             self.seed_tree = self.ptree.new_gau_tree()
             seeds_prompt='\n\n'

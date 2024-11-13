@@ -593,11 +593,11 @@ def _design_tuning(evosys,project_dir):
                     n_sources[source] = st.number_input(label=display_name,min_value=0,value=value)#,max_value=1,disabled=True)
         with _scol2:
             # st.markdown("##### Input Settings")
-            design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg['crossover_no_ref'],
+            design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg.get('crossover_no_ref',True),
                 help='If true, will not use references in crossover mode, it is recommended as crossover does not need cold start, and context length can be over long.')
-            design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=design_cfg['mutation_no_tree'],
+            design_cfg['mutation_no_tree'] = st.checkbox("Mutation no tree",value=design_cfg.get('mutation_no_tree',True),
                 help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in mutation mode, it is recommended as context length can be over long.')
-            design_cfg['scratch_no_tree'] = st.checkbox("Scratch no tree",value=design_cfg['scratch_no_tree'],
+            design_cfg['scratch_no_tree'] = st.checkbox("Scratch no tree",value=design_cfg.get('scratch_no_tree',False),
                 help='If true, will not show full tree but only the document for types with tree (i.e., ReferenceCoreWithTree, DesignArtifactImplemented) in scratch mode, it is recommended as context length can be over long.')
 
         col1,col2=st.columns([3,2])
