@@ -788,6 +788,7 @@ def bench_summary(evosys):
         nodes = [evosys.ptree.get_node(d) for d in bench_designs]
         status = {}
         rounds = {}
+        no_fcheckers = False
         for node in nodes:
             if node.implementation:
                 state,n_tries = node.state.split(':')
@@ -800,14 +801,16 @@ def bench_summary(evosys):
                     status[node.acronym] = 'failed'
                 if 'invalid' in state and status[node.acronym]!='unfinished':
                     status[node.acronym] += ' (invalid)'
+                    no_fcheckers = True
                 elif 'valid' in state and status[node.acronym]!='unfinished':
                     status[node.acronym] += ' (valid)'
+                    no_fcheckers = True
                 rounds[node.acronym] = min(int(n_tries),threshold)
             else:
                 status[node.acronym] = 'unfinished'
         freqs = _data_to_freq(status)
         avg_rounds=np.mean(list(rounds.values())) if rounds else 0
-        if not evosys.design_cfg.get('no_fcheckers',False):
+        if not no_fcheckers:
             if 'succeeded' not in freqs:
                 freqs['succeeded']=0
             if 'failed' not in freqs:
@@ -827,10 +830,10 @@ def bench_summary(evosys):
                 freqs['failed (invalid)']=0
             if 'succeeded (invalid)' not in freqs:
                 freqs['succeeded (invalid)']=0
-            if 'failed (valid)' not in freqs:
+            if 'failed (valid)' not in freqs: # theoretically impossible
                 freqs['failed (valid)']=0
             freqs['Succeded & Valid']=freqs['succeeded (valid)']+freqs['failed (valid)']
-            freqs['Failed / Invalid']=freqs['failed (invalid)']+freqs['succeeded (invalid)']
+            freqs['Failed / Invalid']=freqs['failed (invalid)']+freqs['succeeded (invalid)']+freqs.get('failed',0)
             freqs['unfinished']=len(nodes)-freqs['Succeded & Valid']-freqs['Failed / Invalid']
             st.write(
                 f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
