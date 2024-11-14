@@ -796,23 +796,47 @@ def bench_summary(evosys):
                     status[node.acronym] = 'succeeded'
                 else:
                     status[node.acronym] = 'failed'
+                if 'invalid' in state:
+                    status[node.acronym] += ' (invalid)'
+                elif 'valid' in state:
+                    status[node.acronym] += ' (valid)'
                 rounds[node.acronym] = min(int(n_tries),threshold)
             else:
                 status[node.acronym] = 'Unimplemented'
         freqs = _data_to_freq(status)
-        if 'succeeded' not in freqs:
-            freqs['succeeded']=0
-        if 'failed' not in freqs:
-            freqs['failed']=0
-        freqs['unimplemented']=len(nodes)-freqs['succeeded']-freqs['failed']
         avg_rounds=np.mean(list(rounds.values())) if rounds else 0
-        st.write(
-            f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
-            f':green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, ',
-            f':red[{freqs["failed"]/len(nodes):.2%}] failed, ',
-            f':grey[{freqs["unimplemented"]/len(nodes):.2%}] unimplemented. ',
-            f'Average attempts: :blue[{avg_rounds:.2f}]. '
-        )
+        if evosys.design_cfg.get('no_fcheckers',False):
+            if 'succeeded' not in freqs:
+                freqs['succeeded']=0
+            if 'failed' not in freqs:
+                freqs['failed']=0
+            freqs['unimplemented']=len(nodes)-freqs['succeeded']-freqs['failed']
+            st.write(
+                f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
+                f':green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, ',
+                f':red[{freqs["failed"]/len(nodes):.2%}] failed, ',
+                f':grey[{freqs["unimplemented"]/len(nodes):.2%}] unimplemented. ',
+                f'Average attempts: :blue[{avg_rounds:.2f}]. '
+            )
+        else:
+            if 'succeeded (valid)' not in freqs:
+                freqs['succeeded (valid)']=0
+            if 'failed (invalid)' not in freqs:
+                freqs['failed (invalid)']=0
+            if 'succeeded (invalid)' not in freqs:
+                freqs['succeeded (invalid)']=0
+            if 'failed (valid)' not in freqs:
+                freqs['failed (valid)']=0
+            freqs['Succeded & Valid']=freqs['succeeded (valid)']+freqs['failed (valid)']
+            freqs['Failed / Invalid']=freqs['failed (invalid)']+freqs['succeeded (invalid)']
+            freqs['unimplemented']=len(nodes)-freqs['Succeded & Valid']-freqs['Failed / Invalid']
+            st.write(
+                f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
+                f':green[{freqs["Succeded & Valid"]/len(nodes):.2%}] succeded & valid, ',
+                f':red[{freqs["Failed / Invalid"]/len(nodes):.2%}] failed or invalid, ',
+                f':grey[{freqs["unimplemented"]/len(nodes):.2%}] unimplemented. ',
+                f'Average attempts: :blue[{avg_rounds:.2f}]. '
+            )
 
 
 
