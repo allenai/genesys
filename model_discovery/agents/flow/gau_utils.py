@@ -515,7 +515,7 @@ class AttributeChecker(ast.NodeVisitor):
 
     def process_moduledict(self, node):
         """Handle nn.ModuleDict initialization"""
-        if isinstance(node.args[0], ast.Dict):
+        if len(node.args)>0 and isinstance(node.args[0], ast.Dict):
             for key, value in zip(node.args[0].keys, node.args[0].values):
                 self.current_path.append(f"ModuleDict[{key.s}]")
                 if isinstance(value, ast.Call):
