@@ -2886,7 +2886,8 @@ class EvolutionSystem(exec_utils.System):
         self.set_benchmark_mode() if self.params['benchmark_mode'] else self.unset_benchmark_mode()
         
         if self.benchmark_mode:
-            for acronym in os.listdir(BENCHMARK_DIR):
+            benchmark_sessisons = os.listdir(BENCHMARK_DIR)
+            for acronym in benchmark_sessisons:
                 if acronym in self.ptree.design_sessions or acronym in self.ptree.G.nodes:
                     continue
                 print(f'Initialize benchmark design: {acronym}, {acronym in self.ptree.design_sessions} {acronym in self.ptree.G.nodes}')
@@ -2902,7 +2903,12 @@ class EvolutionSystem(exec_utils.System):
                 design_cfg['running_mode'] = RunningModes(design_cfg['running_mode'])
                 user_input = proposal['user_input']
                 self.ptree.propose(sess_id,proposal,{},costs,design_cfg,user_input)
-                
+            to_del = []
+            for sess_id in self.ptree.design_sessions:
+                if sess_id not in benchmark_sessisons:
+                    to_del.append(sess_id)
+            for sess_id in to_del:
+                self.ptree.design_sessions.pop(sess_id)
 
         # Scan VE for missing verifications
         ve_dir=U.pjoin(self.evo_dir,'ve')
