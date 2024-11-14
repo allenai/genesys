@@ -640,9 +640,11 @@ def _design_tuning(evosys,project_dir):
 
         with col2:
             # st.markdown("##### Other settings")
-            design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=False)
-            design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=False)#,help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
-            design_cfg['no_f_checkers']=st.checkbox('No F-Checkers',value=False,help='If true, will turn off the Functional Checkers when checking the implementation code. Only applicable in benchmark mode.')
+            design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg.get('use_unlimited_prompt',False))
+            design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg.get('unittest_pass_required',False))
+                # help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
+            design_cfg['no_f_checkers']=st.checkbox('No F-Checkers',value=design_cfg.get('no_f_checkers',False),
+                help='If true, will turn off the Functional Checkers when checking the implementation code. Only applicable in benchmark mode.')
             
         with col3:
             color=AU.theme_aware_options(st,'orange','violet','violet')
@@ -735,7 +737,8 @@ def _design_tuning(evosys,project_dir):
     with cols[5]:
         st.write('')
         st.write('')
-        design_cfg['flow_type'] = 'naive' if st.checkbox(label="Naive",value=False,help='Use the Naive GAB Coder and Observer') else 'gau'
+        _is_naive = design_cfg.get('flow_type','gau')=='naive'
+        design_cfg['flow_type'] = 'naive' if st.checkbox(label="Naive",value=_is_naive,help='Use the Naive GAB Coder and Observer') else 'gau'
 
 
     if submit:
