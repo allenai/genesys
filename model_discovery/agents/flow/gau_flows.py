@@ -1891,11 +1891,14 @@ class GUFlow(
                                 REPORT=check_report,
                             )
                         else:
-                            gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
-                            FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
-                                REPORT=check_report,
-                                GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
-                            )
+                            if not self.no_fcheckers:
+                                gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                                FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
+                                    REPORT=check_report,
+                                    GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
+                                )
+                            else:
+                                FUNCTION_CHECKER_REPORT = 'Functional checkers are turned off.'
 
                 ########################### Review the implementation ###########################
                 
@@ -2270,11 +2273,14 @@ class GUFlow(
                         REPORT=check_report,
                     )
                 else:
-                    gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
-                    FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
-                        REPORT=check_report,
-                        GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
-                    )
+                    if not self.no_fcheckers:
+                        gabcode_reformat_with_line_num = '\n'.join([f'{i+1}: {line}' for i,line in enumerate(gabcode_reformat.split('\n'))])
+                        FUNCTION_CHECKER_REPORT = P.FUNCTION_CHECKER_REPORT_FAIL.format(
+                            REPORT=check_report,
+                            GAB_CODE_WITH_LINE_NUM=gabcode_reformat_with_line_num
+                        )
+                    else:
+                        FUNCTION_CHECKER_REPORT = 'Functional checkers are turned off.'
 
             ########################### Review the implementation ###########################
             
