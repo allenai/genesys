@@ -209,7 +209,7 @@ class CommandCenter:
 
                 if self.evosys.should_stop():
                     print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Done, stopping the command center.')
-                    self.evosys.conclude()
+                    # self.evosys.conclude()
                     break
 
                 # self.evosys.CM.get_active_connections() # refresh the connection status
