@@ -1001,7 +1001,7 @@ def _eureka(evosys):
         line_min = alt.Chart(chart_data).mark_line(color='green', strokeDash=[4,4]).encode(x='generation', y='min')
         band = alt.Chart(chart_data).mark_area(opacity=0.2).encode(x='generation', y='std_lower', y2='std_upper')
         chart = band + line + line_max + line_min
-        st.altair_chart(chart, use_container_width=True)
+        st.altair_chart(chart.interactive(), use_container_width=True)
 
 
 
@@ -1147,7 +1147,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
             with col1:
                 st.subheader('Design state distribution')  
                 state_counts = _data_to_freq(states)
-                st.altair_chart(_draw_pie_alt(state_counts,startangle=150))
+                st.altair_chart(_draw_pie_alt(state_counts,startangle=150).interactive())
             with col2:
                 st.subheader('Implementation attempt distribution')
                 # st.pyplot(_draw_pie(attempt_counts,startangle=30))
@@ -1301,7 +1301,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 chart = band + line + line_min + line_max
 
                 # Display in Streamlit
-                st.altair_chart(chart, use_container_width=True)
+                st.altair_chart(chart.interactive(), use_container_width=True)
                 # st.area_chart(chart_data,x='generation',y=['score_mean','score_std'])
             
 
@@ -1574,9 +1574,9 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
                 })
         
         combined_df = pd.DataFrame(combined_data)
-        
+
         # Create line chart using Altair
-        chart = alt.Chart(combined_df).mark_line(point=True).encode(
+        chart = alt.Chart(combined_df).mark_line(point=True,opacity=0.1).encode(
             x=alt.X('Params', scale=alt.Scale(type='log')),
             y='Loss',
             color='Design',
@@ -1601,7 +1601,7 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
         combined_df = pd.DataFrame(combined_data)
         
         # Create line chart using Altair
-        chart = alt.Chart(combined_df).mark_line(point=True).encode(
+        chart = alt.Chart(combined_df).mark_line(point=True,opacity=0.1).encode(
             x=alt.X('Params', scale=alt.Scale(type='log')),
             y='Score',
             color='Design',
