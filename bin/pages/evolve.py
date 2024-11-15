@@ -208,7 +208,7 @@ class CommandCenter:
                     break
 
                 if self.evosys.should_stop():
-                    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Done, stopping the command center.')
+                    print(f'[{time.strftime("%Y-%m-%d %H:%M:%S")}] Done, stopping the command center. &&&&&&&')
                     # self.evosys.conclude()
                     break
 
@@ -595,44 +595,6 @@ def benchmark_launch_pad(evosys):
     
     st.header("Launch Pad")
 
-    # _color = AU.theme_aware_options(st,'orange','violet','violet')
-    # st.markdown(f'###### Convinient Benchmark Settings :{_color}[*(Please remember to configure other settings in the ```Config``` tab)*]')
-    # cols = st.columns([1,1,1.3,2.5,1])
-    # with cols[0]:
-    #     n_trials_cur = evosys.benchmark_settings.get('n_trials',100)
-    #     _n_trials = st.number_input('Number of Trials',min_value=1,value=n_trials_cur,disabled=st.session_state.evo_running,
-    #         help='The number of design sessions to run.')
-    # with cols[1]:
-    #     max_retries_cur = evosys.benchmark_settings.get('max_retries',3)
-    #     if max_retries_cur is None:
-    #         max_retries_cur = evosys.ptree.challenging_threshold
-    #     _max_retries = st.number_input('Max Impl. Retries',min_value=0,value=max_retries_cur,disabled=st.session_state.evo_running, 
-    #         help='The maximum number of *implementation retries* of one session. If set to 0, it will be no retry.')
-    # with cols[2]:
-    #     _MODE_OPTIONS = BENCH_MODE_OPTIONS.copy()
-    #     _MODE_OPTIONS[3] = 'Mixed (Edit right or Config tab)'
-    #     design_mode_cur = evosys.benchmark_settings.get('design_mode','Mutation-only')
-    #     design_mode_cur = _MODE_OPTIONS.index(design_mode_cur)
-    #     _design_mode = st.selectbox('Design Mode',options=_MODE_OPTIONS,index=design_mode_cur,disabled=st.session_state.evo_running,
-    #         help='If you choose Mixed mode, the number of seeds will follow the distribution settings, otherwise, it will always sample 1 (Mutation-only), 2 (Crossover-only), 0 (Scratch-only) seeds respectively.'
-    #     )
-    #     if _design_mode == 'Mixed (Edit right or Config tab)':
-    #         _design_mode = 'Mixed'
-    # with cols[3]:
-    #     default_n_seeds_dist = {'0': 0.1, '1': 0.8, '2': 0.1, '3': 0, '4': 0, '5': 0}
-    #     n_seeds_dist_cur = evosys.benchmark_settings.get('n_seeds_dist',default_n_seeds_dist)
-    #     _n_seeds_dist_df = pd.DataFrame(n_seeds_dist_cur,index=['Weights'])
-    #     _n_seeds_dist_df = st.data_editor(_n_seeds_dist_df,use_container_width=True,disabled=st.session_state.evo_running or 'Mixed' not in _design_mode)
-    #     _n_seeds_dist = _n_seeds_dist_df.to_dict(orient='records')[0]
-    #     _n_seeds_dist = {k:v for k,v in _n_seeds_dist.items()}
-    # with cols[4]:
-    #     st.write('')
-    #     st.write('')
-    #     overwrite_config_cur = evosys.benchmark_settings.get('overwrite_config',True)
-    #     _overwrite_config = st.checkbox('Overwrite',value=overwrite_config_cur,disabled=st.session_state.evo_running or 'Mixed' not in _design_mode,
-    #         help='If checked, will apply the n seeds distribution on the left instead of the one in config in Mixed mode. Notice that if use this one, there will be no warmup.')
-
-
     col1, col2, col3, col4, col5, col6 = st.columns([1,1,1,1,1,0.9],gap='small')
     with col1:
         input_max_designs_per_node=st.number_input("Max Designs Per Node",min_value=0,value=0,disabled=st.session_state.evo_running,
@@ -647,24 +609,6 @@ def benchmark_launch_pad(evosys):
             help='Overall network task scheduling strategy. Currently, only load balancing is supported, which always assigns the jobs to the highest available nodes.'
         )
 
-    # with col5:
-    #     st.write('')
-    #     st.write('')
-    #     allow_tree_cur = evosys.benchmark_settings.get('allow_tree',True)
-    #     _allow_tree=st.checkbox("Allow Sampling from Tree",value=allow_tree_cur,disabled=st.session_state.evo_running,
-    #         help='Whether allow sampling from the phylogenetic tree or only sampling from the seed references.'
-    #     )
-
-        
-    # benchmark_settings = {
-    #     'n_trials': _n_trials,
-    #     'max_retries': _max_retries,
-    #     'design_mode': _design_mode,
-    #     'n_seeds_dist': _n_seeds_dist,
-    #     'overwrite_config': _overwrite_config,
-    #     'allow_tree': _allow_tree,
-    # }
-
     
     with col4:
         # always use extreme mode, use as much gpus as possible
@@ -677,7 +621,7 @@ def benchmark_launch_pad(evosys):
         st.write('')
         st.write('')
         input_allow_resume=st.checkbox("Allow Resume",value=True,disabled=True,
-            help='Whether allow resume training.'
+            help='Whether allow resume training. Not useful in benchmark mode.'
         )
 
     with col5:
