@@ -1059,7 +1059,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
         rounds = {}
         impl_costs = {}
         proposal_costs = {}
-        scores_14m = {}
+        avg_score = {}
         ratings = {}
         attempts = {}
         timestamps = {}
@@ -1081,7 +1081,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 timestamps[design] = node.timestamp
             except:
                 timestamps[design] = None
-            scores_14m[design] = node.get_score('14M')
+            avg_score[design] = np.mean(list(node.get_scores().values())) #node.get_score(scale='14M')
             ratings[design] = node.proposal.rating
             cfg_proposals[design] = node.proposal.design_cfg
             if node.implementation and node.implementation.history:
@@ -1119,8 +1119,8 @@ def session_stats(evosys,design_nodes,implemented_nodes):
 
             col1, col2 = st.columns(2)
             with col1:
-                st.subheader('Avg. accuracy (14M) Distribution')
-                scores_filtered = _data_filter(scores_14m,lambda x: x is not None and 0<x<1)
+                st.subheader('Avg. accuracy Distribution')
+                scores_filtered = _data_filter(avg_score,lambda x: x is not None and 0<x<1)
                 _scores = np.array(list(scores_filtered.values())).astype(float)
                 mean_score_14m = np.mean(_scores)
                 std_score_14m = np.std(_scores)
@@ -1271,7 +1271,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
             for design in impl_costs:
                 agent = impl_agents[design]
                 pagent = proposal_agents[design]
-                score = scores_14m[design]
+                score = avg_score[design]
                 cost = impl_costs[design]
                 pcost = proposal_costs[design]
                 if agent not in impl_agent_scores:
@@ -1394,21 +1394,21 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
         with col1:
             st.subheader('Naive Bayes Analysis of Unit Bag-of-Words')
 
-            score_14M_str = {}
+            avg_score = {}
             bows = {}
             word_freq = {}
             for node in implemented_nodes:
-                _score = node.get_score(scale='14M')
+                _score = np.mean(list(node.get_scores().values())) #node.get_score(scale='14M')
                 design = node.acronym
                 if _score>0:
-                    score_14M_str[design] = _score_stratify_single(_score)
+                    avg_score[design] = _score_stratify_single(_score)
                     bows[design] = node.get_bow()
                     for bow in bows[design]:
                         if bow not in word_freq:
                             word_freq[bow] = 0
-                        word_freq[bow] += _stratify_to_weight(score_14M_str[design])
+                        word_freq[bow] += _stratify_to_weight(avg_score[design])
 
-            data = [(bows[design],score_14M_str[design]) for design in bows]
+            data = [(bows[design],avg_score[design]) for design in bows]
             bow_texts = [' '.join(bow) for bow, _ in data]  # Join words in each BOW
             labels = [label for _, label in data]
 
