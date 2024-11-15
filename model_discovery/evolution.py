@@ -1998,13 +1998,16 @@ class PhylogeneticTree:
                 if design is None:
                     return True
         return False
+    
+    def get_running_designs(self):
+        return list(self.CM.get_active_design_sessions().keys())
 
     def get_unfinished_designs(self,return_finished=False): # MARK: read all unfinished designs in all nodes
         self.load_design_sessions()
         self.update_design_tree()
         unfinished_designs = []
         finished_designs = []
-        running_designs = list(self.CM.get_active_design_sessions().keys())
+        running_designs = self.get_running_designs()
         for sess_id in self.design_sessions:
             if sess_id in running_designs:
                 continue
@@ -2983,9 +2986,13 @@ class EvolutionSystem(exec_utils.System):
         self.benchmark_mode = False
         self.ptree.benchmark_mode = False
 
+    @property
+    def running_designs(self):
+        return len(self.CM.get_active_design_sessions())
+
     def should_stop(self):
         if self.benchmark_mode:
-            if self.unfinished_designs==0:
+            if self.unfinished_designs==0 and self.running_designs==0:
                 print(f"There is no unfinished designs in benchmark mode, stopping evolution...")
                 return True
         else:
