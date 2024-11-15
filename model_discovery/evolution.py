@@ -2969,15 +2969,19 @@ class EvolutionSystem(exec_utils.System):
     def should_stop(self):
         if self.benchmark_mode:
             if self.unfinished_designs==0:
+                print(f"There is no unfinished designs in benchmark mode, stopping evolution...")
                 return True
         else:
             if self.selector.budget_type=='design_bound':
                 if self.selector.design_budget<=0:
+                    print(f"Design bound hitted: Design budget is used up, stopping evolution...")
                     return True
                 elif self.max_samples>0 and self.finished_designs>=self.max_samples:
+                    print(f"Max samples reached: {self.max_samples}, stopping evolution...")
                     return True
             elif self.selector.budget_type=='verify_bound':
                 if self.remaining_verify_budget<=0:
+                    print(f"Verify bound hitted: Verify budget is used up, stopping evolution...")
                     return True
         return False
     
