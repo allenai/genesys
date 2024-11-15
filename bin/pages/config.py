@@ -1005,10 +1005,11 @@ def local_experiments(evosys):
         experiment['budget_type']=ckpt_config['params']['budget_type']
         U.mkdir(U.pjoin(exp_dir,'db','sessions'))
         U.mkdir(U.pjoin(exp_dir,'db','designs'))
-        experiment['created_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))
-        experiment['sampled_designs']=len(os.listdir(U.pjoin(exp_dir,'db','designs')))
+        experiment['local_sessions']=len(os.listdir(U.pjoin(exp_dir,'db','sessions')))
+        experiment['local_designs']=len(os.listdir(U.pjoin(exp_dir,'db','designs')))
         experiment['use_remote_db']=ckpt_config.get('params',{}).get('use_remote_db',False)
         experiment['group_id']=ckpt_config.get('params',{}).get('group_id','default')
+        experiment['benchmark_mode']=ckpt_config.get('params',{}).get('benchmark_mode',False)
         
         if ckpt==default_namespace:
             default_btn=('Default',None,True)
