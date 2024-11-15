@@ -728,7 +728,8 @@ def _evolve(evosys):
 
 
 def bench_summary(evosys):
-    with st.expander(f"🏆 **Benchmark Summary**",expanded=True):
+    st.subheader("🏆 Benchmark Status")
+    with st.expander(f"**Benchmark Summary**",expanded=True):
         bench_designs = os.listdir(BENCHMARK_DIR)
         nodes = []
         for d in bench_designs:
@@ -742,6 +743,9 @@ def bench_summary(evosys):
         costs = {}
         raw_states = {}
         no_fcheckers = False
+        succeeded = []
+        failed = []
+        unfinished = []
         for node in nodes:
             if node.implementation:
                 state,n_tries = node.state.split(':')
@@ -759,6 +763,12 @@ def bench_summary(evosys):
                 elif 'valid' in state and status[node.acronym]!='unfinished':
                     status[node.acronym] += ' (valid)'
                     no_fcheckers = True
+                if status[node.acronym] in ['succeeded','succeeded (valid)']:
+                    succeeded.append(node.acronym)
+                elif status[node.acronym] in ['failed','failed (invalid)','failed (valid)','succeeded (invalid)']:
+                    failed.append(node.acronym)
+                elif status[node.acronym]=='unfinished':
+                    unfinished.append(node.acronym)
                 rounds[node.acronym] = min(int(n_tries),threshold)
                 costs[node.acronym] = sum(node.implementation.get_cost().values())
             else:
@@ -802,6 +812,32 @@ def bench_summary(evosys):
                 f'Average attempts: :blue[{avg_rounds:.2f}]. ',
                 f'Average cost: :blue[{avg_costs:.2f}]. '
             )
+        
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        with st.expander('Succeeded Designs'):
+            _data = {
+                'Succeeded':succeeded,
+                'Attempts':[rounds[d] for d in succeeded],
+                'Cost':[costs[d] for d in succeeded]
+            }
+            st.dataframe(_data,use_container_width=True)
+    with col2:
+        with st.expander('Failed Designs'):
+            _data = {
+                'Failed':failed,
+                'Attempts':[rounds[d] for d in failed],
+                'Cost':[costs[d] for d in failed]
+            }
+            st.dataframe(_data,use_container_width=True)
+    with col3:
+        with st.expander('Unfinished Designs'):
+            _data = {
+                'Unfinished':unfinished,
+                'Attempts':[rounds.get(d, None) for d in unfinished],
+                'Cost':[costs.get(d, None) for d in unfinished]
+            }
+            st.dataframe(_data,use_container_width=True)
 
 
 
