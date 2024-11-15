@@ -758,7 +758,7 @@ def bench_summary(evosys):
                 status[node.acronym] = 'unfinished'
         freqs = _data_to_freq(status)
         raw_freqs = _data_to_freq(raw_states)
-        # st.write(raw_freqss)
+        st.write(raw_freqs)
         avg_rounds=np.mean(list(rounds.values())) if rounds else 0
         avg_costs = np.mean(list(costs.values())) if costs else 0
         if not no_fcheckers:
