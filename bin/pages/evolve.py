@@ -833,8 +833,8 @@ def bench_summary(evosys):
         with st.expander('Unfinished Designs'):
             _data = {
                 'Unfinished':unfinished,
-                'Attempts':[rounds[d] for d in unfinished if d in rounds else None],
-                'Cost':[costs[d] for d in unfinished if d in costs else None]
+                'Attempts':[rounds.get(d, None) for d in unfinished],
+                'Cost':[costs.get(d, None) for d in unfinished]
             }
             st.dataframe(_data,use_container_width=True)
 
