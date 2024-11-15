@@ -773,6 +773,7 @@ def bench_summary(evosys):
                 costs[node.acronym] = sum(node.implementation.get_cost().values())
             else:
                 status[node.acronym] = 'unfinished'
+                unfinished.append(node.acronym)
         freqs = _data_to_freq(status)
         raw_freqs = _data_to_freq(raw_states)
         # st.write(raw_freqs)
