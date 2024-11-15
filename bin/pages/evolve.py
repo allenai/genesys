@@ -733,10 +733,12 @@ def bench_summary(evosys):
         status = {}
         rounds = {}
         costs = {}
+        raw_states = {}
         no_fcheckers = False
         for node in nodes:
             if node.implementation:
                 state,n_tries = node.state.split(':')
+                raw_states[node.acronym] = state
                 threshold = 5
                 if ('implemented' in state or 'succeeded' in state) and int(n_tries)<threshold:
                     status[node.acronym] = 'succeeded'
@@ -755,6 +757,8 @@ def bench_summary(evosys):
             else:
                 status[node.acronym] = 'unfinished'
         freqs = _data_to_freq(status)
+        raw_freqs = _data_to_freq(raw_states)
+        st.write(raw_freqs)
         avg_rounds=np.mean(list(rounds.values())) if rounds else 0
         avg_costs = np.mean(list(costs.values())) if costs else 0
         if not no_fcheckers:
