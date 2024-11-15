@@ -788,6 +788,7 @@ def bench_summary(evosys):
         nodes = [evosys.ptree.get_node(d) for d in bench_designs]
         status = {}
         rounds = {}
+        costs = {}
         no_fcheckers = False
         for node in nodes:
             if node.implementation:
@@ -806,10 +807,12 @@ def bench_summary(evosys):
                     status[node.acronym] += ' (valid)'
                     no_fcheckers = True
                 rounds[node.acronym] = min(int(n_tries),threshold)
+                costs[node.acronym] = sum(node.implementation.get_cost().values())
             else:
                 status[node.acronym] = 'unfinished'
         freqs = _data_to_freq(status)
         avg_rounds=np.mean(list(rounds.values())) if rounds else 0
+        avg_costs = np.mean(list(costs.values())) if costs else 0
         if not no_fcheckers:
             if 'succeeded' not in freqs:
                 freqs['succeeded']=0
@@ -821,7 +824,8 @@ def bench_summary(evosys):
                 f':green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, ',
                 f':red[{freqs["failed"]/len(nodes):.2%}] failed, ',
                 f':grey[{freqs["unfinished"]/len(nodes):.2%}] unfinished. ',
-                f'Average attempts: :blue[{avg_rounds:.2f}]. '
+                f'Average attempts: :blue[{avg_rounds:.2f}]. ',
+                f'Average cost: :blue[{avg_costs:.2f}]. '
             )
         else:
             if 'succeeded (valid)' not in freqs:
@@ -840,7 +844,8 @@ def bench_summary(evosys):
                 f':green[{freqs["Succeded & Valid"]/len(nodes):.2%}] succeded & valid, ',
                 f':red[{freqs["Failed / Invalid"]/len(nodes):.2%}] failed or invalid, ',
                 f':grey[{freqs["unfinished"]/len(nodes):.2%}] unfinished. ',
-                f'Average attempts: :blue[{avg_rounds:.2f}]. '
+                f'Average attempts: :blue[{avg_rounds:.2f}]. ',
+                f'Average cost: :blue[{avg_costs:.2f}]. '
             )
 
 
