@@ -815,7 +815,7 @@ def bench_summary(evosys):
         
     col1, col2, col3 = st.columns(3)
     with col1:
-        with st.expander('Succeeded Designs'):
+        with st.expander(f'Succeeded Designs: `{len(succeeded)}`'):
             _data = {
                 'Succeeded':succeeded,
                 'Attempts':[rounds[d] for d in succeeded],
@@ -823,7 +823,7 @@ def bench_summary(evosys):
             }
             st.dataframe(_data,use_container_width=True)
     with col2:
-        with st.expander('Failed Designs'):
+        with st.expander(f'Failed Designs: `{len(failed)}`'):
             _data = {
                 'Failed':failed,
                 'Attempts':[rounds[d] for d in failed],
@@ -831,7 +831,7 @@ def bench_summary(evosys):
             }
             st.dataframe(_data,use_container_width=True)
     with col3:
-        with st.expander('Unfinished Designs'):
+        with st.expander(f'Unfinished Designs: `{len(unfinished)}`'):
             _data = {
                 'Unfinished':unfinished,
                 'Attempts':[rounds.get(d, None) for d in unfinished],
