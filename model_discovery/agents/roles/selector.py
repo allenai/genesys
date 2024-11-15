@@ -637,7 +637,7 @@ class Selector:
         self.ptree=ptree
         self.select_cfg=select_cfg
         self.budget_type=budget_type
-        self._verify_budget=_verify_budget
+        self._verify_budget=_verify_budget # raw verify budget
         self.stream=stream
         self.design_budget_limit=design_budget_limit
         self.token_mults=token_mults
@@ -949,7 +949,6 @@ class Selector:
                 if str(mult) not in node.verifications[scale]:
                     return acronym,scale
         return None,None
-            
 
     def _random_select_verify(self,available_verify_budget,exclude_list=[],select_cfg=None):
         unverified_by_scale=self.ptree.get_unverified_designs(exclude_list=exclude_list) # indexed by scale
@@ -1035,7 +1034,8 @@ class Selector:
 
     @property
     def available_verify_budget(self):
-        return {k:v for k,v in self.verify_budget.items() if k in self.unlocked_scales}
+        verify_budget = self.dynamic_budget_control()
+        return {k:v for k,v in verify_budget.items() if k in self.unlocked_scales}
 
     @property
     def unlocked_scales(self):
@@ -1048,21 +1048,33 @@ class Selector:
         else:
             available_scales = [s for s in sorted_scales if U.letternum2num(s)<U.letternum2num(self.scale_stair_start)]
         return available_scales
-
-    def request_temporal_budget(self): # keep selection ratios
-        _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)
-        exceeded={}
-        for scale in used:
-            exceeded[scale]=used[scale]-self._verify_budget[scale]
-        scales=list(exceeded.keys())
-        scales.sort(key=lambda x:int(x.replace('M','')))
+    
+    def get_selection_ratios(self):
         selection_ratios = {}
+        scales=list(self._verify_budget.keys())
+        scales.sort(key=lambda x:int(x.replace('M','')))
         # budget current scale / budget previous scale, lowest scale is 1
         for i in range(len(scales)):
             if i==0:
                 selection_ratios[scales[i]]=1
             else:
                 selection_ratios[scales[i]]=self._verify_budget[scales[i]]/self._verify_budget[scales[i-1]]
+
+
+    def request_temporal_budget(self): # keep selection ratios
+        return self._dynamic_budget_control(assign_temp=True)
+        
+    def dynamic_budget_control(self,assign_temp=False): # keep selection ratios
+        _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)
+        exceeded={}
+        for scale in used:
+            exceeded[scale]=used[scale]-self._verify_budget[scale] # 
+        scales=list(exceeded.keys())
+        if not assign_temp:
+            if all([exceeded[s]>=0 for s in scales]):
+                return {}
+        scales.sort(key=lambda x:int(x.replace('M','')))
+        selection_ratios = self.get_selection_ratios()
 
         def dict_geq(d1,d2):
             for k in d1:
