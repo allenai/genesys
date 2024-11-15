@@ -740,7 +740,7 @@ def bench_summary(evosys):
                 state,n_tries = node.state.split(':')
                 raw_states[node.acronym] = state
                 threshold = 5
-                if ('implemented' in state or 'succeeded' in state) and int(n_tries)<=threshold:
+                if ('implemented' in state or 'succeeded' in state) and int(n_tries)<threshold:
                     status[node.acronym] = 'succeeded'
                 elif int(n_tries)<threshold:
                     status[node.acronym] = 'unfinished'
