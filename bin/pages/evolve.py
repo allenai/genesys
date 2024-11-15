@@ -1125,7 +1125,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 mean_score_14m = np.mean(_scores)
                 std_score_14m = np.std(_scores)
                 scores_counts = _data_to_freq(_scores,unit=0.01)
-                st.write(f'Mean: ```{mean_score_14m:.2f}```, Std: ```{std_score_14m:.2f}```')
+                st.write(f'Mean: ```{mean_score_14m:.2f}```, Std: ```{std_score_14m:.2f}```, Total: ```{len(scores_filtered)}```')
                 chart_data = pd.DataFrame(list(scores_counts.items()),columns=['scores','frequency'])
                 st.bar_chart(chart_data,x='scores',y='frequency')
 
@@ -1274,6 +1274,8 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 score = avg_score[design]
                 cost = impl_costs[design]
                 pcost = proposal_costs[design]
+                if not 0<score<1:
+                    continue
                 if agent not in impl_agent_scores:
                     impl_agent_scores[agent] = []
                 impl_agent_scores[agent].append(score)
