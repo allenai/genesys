@@ -1034,7 +1034,7 @@ class Selector:
 
     @property
     def available_verify_budget(self):
-        verify_budget = self.dynamic_budget_control()
+        verify_budget = self.dynamic_budget_assign()
         return {k:v for k,v in verify_budget.items() if k in self.unlocked_scales}
 
     @property
@@ -1048,33 +1048,28 @@ class Selector:
         else:
             available_scales = [s for s in sorted_scales if U.letternum2num(s)<U.letternum2num(self.scale_stair_start)]
         return available_scales
-    
-    def get_selection_ratios(self):
-        selection_ratios = {}
-        scales=list(self._verify_budget.keys())
-        scales.sort(key=lambda x:int(x.replace('M','')))
-        # budget current scale / budget previous scale, lowest scale is 1
-        for i in range(len(scales)):
-            if i==0:
-                selection_ratios[scales[i]]=1
-            else:
-                selection_ratios[scales[i]]=self._verify_budget[scales[i]]/self._verify_budget[scales[i-1]]
-
 
     def request_temporal_budget(self): # keep selection ratios
-        return self._dynamic_budget_control(assign_temp=True)
+        return self.dynamic_budget_assign(assign_temp=True)
         
-    def dynamic_budget_control(self,assign_temp=False): # keep selection ratios
+    def dynamic_budget_assign(self,assign_temp=False): # keep selection ratios
         _,used=self.ptree.budget_status(self._verify_budget,ret_verified=True)
         exceeded={}
         for scale in used:
             exceeded[scale]=used[scale]-self._verify_budget[scale] # 
         scales=list(exceeded.keys())
         if not assign_temp:
-            if all([exceeded[s]>=0 for s in scales]):
+            if all([exceeded[s]>=0 for s in scales]): # or should remove all exceeded scales?
                 return {}
         scales.sort(key=lambda x:int(x.replace('M','')))
-        selection_ratios = self.get_selection_ratios()
+        
+        selection_ratios = {}
+        # budget current scale / budget previous scale, lowest scale is 1
+        for i in range(len(scales)):
+            if i==0:
+                selection_ratios[scales[i]]=1
+            else:
+                selection_ratios[scales[i]]=self._verify_budget[scales[i]]/self._verify_budget[scales[i-1]]
 
         def dict_geq(d1,d2):
             for k in d1:
@@ -1083,44 +1078,43 @@ class Selector:
                 if d1[k]<d2[k]:
                     return False
             return True
-        
-        def dict_add(d1,d2):
-            return {k:d1.get(k,0)+d2.get(k,0) for k in set(d1)|set(d2)}
 
         def dict_sub(d1,d2):
-            return {k:d1.get(k,0)-d2.get(k,0) for k in set(d1)|set(d2)}
+            # return {k:d1.get(k,0)-d2.get(k,0) for k in set(d1)|set(d2)}
+            d={}
+            assert set(d1.keys())==set(d2.keys())
+            for k in set(d1):
+                d[k]=d1[k]-d2[k]
+            return d
         
         def scale_to_int(scale):
             return int(scale.replace('M',''))
         
-        def get_lower_half(scale,scales):
-            lower=[s for s in scales if scale_to_int(s)<=scale_to_int(scale)]
-            lower.sort(key=scale_to_int)
-            return lower
+        def get_lowest_scale(scales):
+            return min(scales,key=scale_to_int)
 
-        def try_assign(scale,scales):
-            assign={s:0 for s in scales}
-            lower=get_lower_half(scale,scales)
-            budget=1
-            for s in lower[::-1]:
-                assign[s]=budget
-                budget=int(budget/selection_ratios[s])
+        def try_assign(assign): # always assign one unit, while keeping the SR
+            scales=list(assign.keys())
+            scales.sort(key=scale_to_int)
+            for idx,scale in enumerate(scales):
+                upper=scales[idx+1] if idx+1<len(scales) else None
+                if upper is None:
+                    break
+                upper_sr = selection_ratios[upper]
+                if assign[scale]<1/upper_sr:
+                    break
+                sr = assign[upper]/assign[scale]
+                if sr<upper_sr:
+                    assign[upper]+=1
+                    return assign
+            assign[get_lowest_scale(scales)]+=1
             return assign
 
-        assign={}
-        found=False
-        while not found:
-            # scan from small scale to large scale
-            for scale in scales:
-                _assign=copy.deepcopy(assign)
-                _assign=dict_add(_assign,try_assign(scale,scales))
-                if dict_geq(_assign,exceeded):
-                    found=True
-                    break
-            assign=_assign # next round with full budget or found
+        assign={k:0 for k in scales}
+        while not dict_geq(assign,used):
+            assign=try_assign(assign)
 
-        remaining = dict_sub(assign,exceeded)
+        remaining = dict_sub(assign,used)
         available_budget = {k:v for k,v in remaining.items() if v>0}
         return available_budget
-            
         

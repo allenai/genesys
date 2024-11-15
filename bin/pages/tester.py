@@ -106,7 +106,81 @@ def tester(evosys,project_dir):
 
 
     
-    st.write('hybridstreaminggpt' in evosys.ptree.design_sessions)
+    # st.write('hybridstreaminggpt' in evosys.ptree.design_sessions)
+
+
+
+    selector = evosys.selector
+    assign_temp=False
+    _,used=selector.ptree.budget_status(selector._verify_budget,ret_verified=True)
+    exceeded={}
+    for scale in used:
+        exceeded[scale]=used[scale]-selector._verify_budget[scale] # 
+    scales=list(exceeded.keys())
+    if not assign_temp:
+        if all([exceeded[s]>=0 for s in scales]):
+            return {}
+    scales.sort(key=lambda x:int(x.replace('M','')))
+    
+    selection_ratios = {}
+    # budget current scale / budget previous scale, lowest scale is 1
+    for i in range(len(scales)):
+        if i==0:
+            selection_ratios[scales[i]]=1
+        else:
+            selection_ratios[scales[i]]=selector._verify_budget[scales[i]]/selector._verify_budget[scales[i-1]]
+
+    def dict_geq(d1,d2):
+        for k in d1:
+            if k not in d2:
+                continue
+            if d1[k]<d2[k]:
+                return False
+        return True
+
+    def dict_sub(d1,d2):
+        # return {k:d1.get(k,0)-d2.get(k,0) for k in set(d1)|set(d2)}
+        d={}
+        assert set(d1.keys())==set(d2.keys())
+        for k in set(d1):
+            d[k]=d1[k]-d2[k]
+        return d
+    
+    def scale_to_int(scale):
+        return int(scale.replace('M',''))
+    
+    def get_lowest_scale(scales):
+        return min(scales,key=scale_to_int)
+
+    def try_assign(assign): # always assign one unit, while keeping the SR
+        scales=list(assign.keys())
+        scales.sort(key=scale_to_int)
+        for idx,scale in enumerate(scales):
+            upper=scales[idx+1] if idx+1<len(scales) else None
+            if upper is None:
+                break
+            upper_sr = selection_ratios[upper]
+            if assign[scale]<1/upper_sr:
+                break
+            sr = assign[upper]/assign[scale]
+            if sr<upper_sr:
+                assign[upper]+=1
+                return assign
+        assign[get_lowest_scale(scales)]+=1
+        return assign
+
+    assign={k:0 for k in scales}
+    while not dict_geq(assign,used):
+        assign=try_assign(assign)
+
+    remaining = dict_sub(assign,used)
+    available_budget = {k:v for k,v in remaining.items() if v>0}
+    
+    st.write('verify budget',{k:selector._verify_budget[k] for k in scales})
+    st.write('used',{k:used[k] for k in scales})
+    st.write('assign',{k:assign[k] for k in scales})
+    st.write('remaining',{k:remaining[k] for k in scales})
+    st.write('available budget',available_budget)
 
     # st.write(list(evosys.ptree.design_sessions.items())[0])
 
