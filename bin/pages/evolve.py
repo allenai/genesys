@@ -729,7 +729,13 @@ def _evolve(evosys):
 def bench_summary(evosys):
     with st.expander(f"🏆 **Benchmark Summary**",expanded=True):
         bench_designs = os.listdir(BENCHMARK_DIR)
-        nodes = [evosys.ptree.get_node(d) for d in bench_designs]
+        nodes = []
+        for d in bench_designs:
+            node = evosys.ptree.get_node(d)
+            if node is None:
+                print(f'{d} not found in the phylogenetic tree.')
+            else:
+                nodes.append(node)
         status = {}
         rounds = {}
         costs = {}

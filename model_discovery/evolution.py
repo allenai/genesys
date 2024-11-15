@@ -571,7 +571,7 @@ class FirestoreManager:
         if not sessdata:
             return
         progress = self.to_session_progress(sessdata)
-        if self.progress_leq(self.sess_index.get(sess_id,{}),sessdata):
+        if self.progress_leq(self.sess_index.get(sess_id,{}),sessdata) and not overwrite:
             return
         log_collection=self.log_doc_ref.collection('design_sessions')
         log_ref = log_collection.document(sess_id)
@@ -776,6 +776,10 @@ class FirestoreManager:
     def delete_design(self,design_id): # remove erroneous design from db
         self.collection.document(design_id).delete()
         self.del_index(design_id)
+
+    def delete_session(self,sess_id):
+        self.log_doc_ref.collection('design_sessions').document(sess_id).delete()
+        # self.del_design_sessions_index(sess_id)
 
     def sync(self,overwrite=False,verbose=False):
         self.sync_to_db(overwrite=overwrite,verbose=verbose)
@@ -1581,6 +1585,13 @@ class PhylogeneticTree:
         #         metadata_dir = U.pjoin(self.design_dir(acronym),'metadata.json')
         #         U.save_json(metadata_dir,metadata)
 
+    def del_session(self,sess_id):
+        if sess_id not in self.design_sessions:
+            return
+        self.FM.delete_session(sess_id)
+        self.design_sessions.pop(sess_id)
+        shutil.rmtree(self.session_dir(sess_id))
+
     def get_design_session(self,sess_id:str):
         if sess_id not in self.design_sessions and self.FM:
             sessdata = self.FM.get_design_session(sess_id)
@@ -1719,7 +1730,7 @@ class PhylogeneticTree:
         return nodes
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
-    def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None): # new design session, a session explore the steps from a selected node
+    def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None,overwrite=False): # new design session, a session explore the steps from a selected node
         if len(seed_ids)==0:
             mode=DesignModes.SCRATCH
         elif len(seed_ids)==1:
@@ -1730,7 +1741,7 @@ class PhylogeneticTree:
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode.value}".encode()).hexdigest()
         if sess_id is None:
             sess_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
-        if sess_id in self.design_sessions:
+        if sess_id in self.design_sessions and not overwrite:
             print(f'Session {sess_id} already exists.')
             return sess_id
         sessdata = {
@@ -1745,7 +1756,7 @@ class PhylogeneticTree:
         self.design_sessions[sess_id] = sessdata
         sess_dir=self.session_dir(sess_id)
         U.mkdir(sess_dir)
-        self.save_session(sess_id)
+        self.save_session(sess_id,overwrite=overwrite)
         U.mkdir(U.pjoin(sess_dir, 'log'))
         return sess_id
     
@@ -2120,7 +2131,7 @@ class PhylogeneticTree:
         self.FM.upload_proposal_traces(acronym,_proposal_traces,overwrite=True)
         self.FM.update_index()
 
-    def save_session(self,sess_id: str):
+    def save_session(self,sess_id: str,overwrite=False):
         sessdata=self.design_sessions[sess_id]        
         try:
             sessdata['mode']=DesignModes(sessdata['mode'])
@@ -2130,7 +2141,7 @@ class PhylogeneticTree:
         U.save_json(sessdata, U.pjoin(self.session_dir(sess_id), 'metadata.json'))
         if self.FM: # keep firestore always up to date
             self.FM.get_design_sessions_index()
-            self.FM.upload_design_session(sess_id,sessdata)
+            self.FM.upload_design_session(sess_id,sessdata,overwrite=overwrite)
         sessdata['mode']=DesignModes(sessdata['mode'])
 
     def implement(self, acronym: str, tree,ROUNDS,status,costs,design_cfg,user_input): # update a proposal node with implementation
@@ -2888,15 +2899,21 @@ class EvolutionSystem(exec_utils.System):
         if self.benchmark_mode:
             benchmark_sessisons = os.listdir(BENCHMARK_DIR)
             for acronym in benchmark_sessisons:
-                if acronym in self.ptree.design_sessions or acronym in self.ptree.G.nodes:
+                if acronym in self.ptree.G.nodes: 
                     continue
+                # if acronym in self.ptree.design_sessions:
+                #     continue 
+                # if acronym in self.ptree.G.nodes:
+                #     self.ptree.del_design(acronym)
+                if acronym in self.ptree.design_sessions: # recreate the session to ensure 1-1 correspondence between design sessions and nodes
+                    self.ptree.del_session(acronym)
                 print(f'Initialize benchmark design: {acronym}, {acronym in self.ptree.design_sessions} {acronym in self.ptree.G.nodes}')
                 sessdata = U.load_json(U.pjoin(BENCHMARK_DIR,acronym,'sess_snapshot.json'))
                 seed_ids = sessdata['seed_ids']
                 ref_ids = sessdata['ref_ids']
                 instruct = sessdata['instruct']
                 num_samples = sessdata['num_samples']
-                sess_id = self.ptree.new_design(seed_ids,ref_ids,instruct,num_samples,sess_id=acronym)
+                sess_id = self.ptree.new_design(seed_ids,ref_ids,instruct,num_samples,sess_id=acronym,overwrite=True)
                 proposal = U.load_json(U.pjoin(BENCHMARK_DIR,acronym,'proposal.json'))
                 costs = proposal['costs']
                 design_cfg = proposal['design_cfg']
