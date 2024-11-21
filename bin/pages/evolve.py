@@ -732,11 +732,6 @@ def bench_summary(evosys):
     with st.expander(f"**Benchmark Summary**",expanded=True):
         bench_designs = os.listdir(BENCHMARK_DIR)
         nodes = []
-        MISSING = ['hastransformer','hybridstategate','adaptivehierarchicalmha']
-        for d in MISSING:
-            node = evosys.ptree.G.nodes.get(d)['data']
-            st.write(f'Benchmark design {d} is missing? {node is None}')
-
         for d in bench_designs:
             node = evosys.ptree.get_node(d)
             if node is None:
