@@ -2933,16 +2933,8 @@ class EvolutionSystem(exec_utils.System):
 
             benchmark_sessisons = os.listdir(BENCHMARK_DIR)
             for acronym in benchmark_sessisons:
-                if acronym in self.ptree.G.nodes: 
-                    node = self.ptree.G.nodes[acronym]['data']
-                    if node is not None:
-                        continue
-                # if acronym in self.ptree.design_sessions:
-                #     continue 
-                # if acronym in self.ptree.G.nodes:
-                #     self.ptree.del_design(acronym)
-                load_benchmark_design(acronym)
-
+                if self.ptree.get_node(acronym) is None:
+                    load_benchmark_design(acronym)
             to_del = []
             covered = []
             for sess_id in self.ptree.design_sessions:
