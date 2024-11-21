@@ -2948,7 +2948,6 @@ class EvolutionSystem(exec_utils.System):
                 else:
                     covered.append(acronym)
             for sess_id in to_del:
-                # self.ptree.design_sessions.pop(sess_id)
                 self.ptree.del_session(sess_id)
                 print(f'Deleted session {sess_id} for {acronym}')
             to_del=[]
