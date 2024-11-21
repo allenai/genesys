@@ -2904,16 +2904,7 @@ class EvolutionSystem(exec_utils.System):
         self.set_benchmark_mode() if self.params['benchmark_mode'] else self.unset_benchmark_mode()
         
         if self.benchmark_mode:
-            benchmark_sessisons = os.listdir(BENCHMARK_DIR)
-            for acronym in benchmark_sessisons:
-                if acronym in self.ptree.G.nodes: 
-                    node = self.ptree.G.nodes[acronym]['data']
-                    if node is not None:
-                        continue
-                # if acronym in self.ptree.design_sessions:
-                #     continue 
-                # if acronym in self.ptree.G.nodes:
-                #     self.ptree.del_design(acronym)
+            def load_benchmark_design(acronym):
                 if acronym in self.ptree.design_sessions: # recreate the session to ensure 1-1 correspondence between design sessions and nodes
                     self.ptree.del_session(acronym)
                     print(f'Deleted session {acronym}')
@@ -2938,12 +2929,32 @@ class EvolutionSystem(exec_utils.System):
                 design_cfg['running_mode'] = RunningModes(design_cfg['running_mode'])
                 user_input = proposal['user_input']
                 self.ptree.propose(sess_id,proposal,{},costs,design_cfg,user_input,overwrite=True)
+
+
+            benchmark_sessisons = os.listdir(BENCHMARK_DIR)
+            for acronym in benchmark_sessisons:
+                if acronym in self.ptree.G.nodes: 
+                    node = self.ptree.G.nodes[acronym]['data']
+                    if node is not None:
+                        continue
+                # if acronym in self.ptree.design_sessions:
+                #     continue 
+                # if acronym in self.ptree.G.nodes:
+                #     self.ptree.del_design(acronym)
+                load_benchmark_design(acronym)
+
             to_del = []
+            covered = []
             for sess_id in self.ptree.design_sessions:
                 sessdata=self.ptree.design_sessions[sess_id]
+                if len(sessdata['proposed'])!=1:
+                    to_del.append(sess_id)
+                    continue
                 acronym = sessdata['proposed'][0]
                 if acronym not in benchmark_sessisons:
                     to_del.append(sess_id)
+                else:
+                    covered.append(acronym)
             for sess_id in to_del:
                 # self.ptree.design_sessions.pop(sess_id)
                 self.ptree.del_session(sess_id)
@@ -2957,6 +2968,11 @@ class EvolutionSystem(exec_utils.System):
                 for acronym in to_del:
                     self.ptree.del_design(acronym)
                     print(f'Deleted {acronym} from the phylogenetic tree.')
+            uncovered = [acronym for acronym in benchmark_sessisons if acronym not in covered]
+            if len(uncovered)>0:
+                print(f'Found {len(uncovered)} benchmark designs not covered by any design sessions.')
+                for acronym in uncovered:
+                    load_benchmark_design(acronym)
 
         # Scan VE for missing verifications
         ve_dir=U.pjoin(self.evo_dir,'ve')
