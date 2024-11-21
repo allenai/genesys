@@ -695,16 +695,17 @@ class FirestoreManager:
             if not U.pexists(implementation_path) or overwrite:
                 if Doc is None:
                     Doc=self.collection.document(design_id).get().to_dict()
-                implementation=Doc['implementation']
-                status=implementation['status']
-                implementation['history']=[]
-                for idx in index_term['implementation_history']:
-                    step_ref = self.collection.document(design_id).collection('implementation_history').document(str(idx))
-                    if step_ref.get().exists:
-                        step = step_ref.get().to_dict()[str(idx)]
-                        implementation['history'].append(step)
-                U.save_json(implementation,implementation_path)
-                print(f'Downloaded implementation for design {design_id}')
+                if 'implementation' in Doc:
+                    implementation=Doc['implementation']
+                    status=implementation['status']
+                    implementation['history']=[]
+                    for idx in index_term['implementation_history']:
+                        step_ref = self.collection.document(design_id).collection('implementation_history').document(str(idx))
+                        if step_ref.get().exists:
+                            step = step_ref.get().to_dict()[str(idx)]
+                            implementation['history'].append(step)
+                    U.save_json(implementation,implementation_path)
+                    print(f'Downloaded implementation for design {design_id}')
             
             elif U.pexists(implementation_path):
                 _implementation=U.load_json(implementation_path)
@@ -2098,7 +2099,7 @@ class PhylogeneticTree:
             implementations[acronym]=design.implementation
         return implementations
 
-    def propose(self, sess_id: str, proposal,proposal_traces,costs,design_cfg,user_input): # create a new design artifact
+    def propose(self, sess_id: str, proposal,proposal_traces,costs,design_cfg,user_input,overwrite=False): # create a new design artifact
         sessdata=copy.deepcopy(self.design_sessions[sess_id])
         seeds=sessdata['seed_ids']
         proposal['costs']=costs
@@ -2110,8 +2111,11 @@ class PhylogeneticTree:
             if line.startswith("# "):
                 title = line[2:]
                 break
-        acronym = self.unique_acronym(proposal.modelname)
-        proposal.modelname = acronym
+        if not overwrite:
+            acronym = self.unique_acronym(proposal.modelname)
+            proposal.modelname = acronym
+        else:
+            acronym = proposal.modelname
         sessdata['mode']=sessdata['mode'].value
         metadata = {'sess_id': sess_id, 'acronym': acronym, 'seed_ids': seeds, 'title': title, 'sess_snapshot': sessdata} # sess_snapshot is the status of the session when this sampling happens
         U.save_json(metadata, U.pjoin(self.design_dir(acronym), 'metadata.json'))
@@ -2910,6 +2914,15 @@ class EvolutionSystem(exec_utils.System):
                 #     self.ptree.del_design(acronym)
                 if acronym in self.ptree.design_sessions: # recreate the session to ensure 1-1 correspondence between design sessions and nodes
                     self.ptree.del_session(acronym)
+                    print(f'Deleted session {acronym}')
+                to_del = []
+                for sess_id in self.ptree.design_sessions:
+                    sessdata=self.ptree.design_sessions[sess_id]
+                    if acronym in sessdata['proposed']:
+                        to_del.append(sess_id)
+                for sess_id in to_del:
+                    self.ptree.del_session(sess_id)
+                    print(f'Deleted session {sess_id} for {acronym}')
                 print(f'Initialize benchmark design: {acronym}, {acronym in self.ptree.design_sessions} {acronym in self.ptree.G.nodes}')
                 sessdata = U.load_json(U.pjoin(BENCHMARK_DIR,acronym,'sess_snapshot.json'))
                 seed_ids = sessdata['seed_ids']
@@ -2922,13 +2935,26 @@ class EvolutionSystem(exec_utils.System):
                 design_cfg = proposal['design_cfg']
                 design_cfg['running_mode'] = RunningModes(design_cfg['running_mode'])
                 user_input = proposal['user_input']
-                self.ptree.propose(sess_id,proposal,{},costs,design_cfg,user_input)
+                self.ptree.propose(sess_id,proposal,{},costs,design_cfg,user_input,overwrite=True)
             to_del = []
             for sess_id in self.ptree.design_sessions:
-                if sess_id not in benchmark_sessisons:
+                sessdata=self.ptree.design_sessions[sess_id]
+                acronym = sessdata['proposed'][0]
+                if acronym not in benchmark_sessisons:
                     to_del.append(sess_id)
             for sess_id in to_del:
-                self.ptree.design_sessions.pop(sess_id)
+                # self.ptree.design_sessions.pop(sess_id)
+                self.ptree.del_session(sess_id)
+                print(f'Deleted session {sess_id} for {acronym}')
+            to_del=[]
+            for acronym in self.ptree.filter_by_type(['DesignArtifact','DesignArtifactImplemented']):
+                if acronym not in benchmark_sessisons:
+                    to_del.append(acronym)
+            if len(to_del)>0:
+                print(f'Found {len(to_del)} designs not in benchmark sessions.')
+                for acronym in to_del:
+                    self.ptree.del_design(acronym)
+                    print(f'Deleted {acronym} from the phylogenetic tree.')
 
         # Scan VE for missing verifications
         ve_dir=U.pjoin(self.evo_dir,'ve')
@@ -3231,7 +3257,8 @@ class EvolutionSystem(exec_utils.System):
             self.stream.write(f"Found {len(unfinished_designs)} unfinished designs, allow resume: {resume}")
 
         if self.benchmark_mode and len(unfinished_designs)==0:
-            self.stream.write("All benchmark designs are implemented, stopping design process")
+            _msg = "All benchmark designs are implemented, stopping design process"
+            self.stream.write(_msg) if self.stream else print(_msg)
             return
         
         selector_args={}
