@@ -117,11 +117,14 @@ def _view_designs(evosys):
                 st.markdown(design.proposal.review)
                 st.write('#### Rating: ',design.proposal.rating,'out of 5')
             if design.implementation:
-                st.subheader(f'GAU Tree for {selected_design}')
                 itree=design.implementation.implementation
-                _view_tree(itree)
-                # gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
-                gab_code = itree.compose()
+                if isinstance(itree,str):
+                    gab_code = itree
+                else:
+                    st.subheader(f'GAU Tree for {selected_design}')
+                    _view_tree(itree)
+                    # gab_code=check_tune('14M',design.acronym,code=itree.compose(),skip_tune=True,reformat_only=True)
+                    gab_code = itree.compose()
                 st.subheader('Exported GAB Code')
                 with st.expander('Click to expand'):
                     st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')

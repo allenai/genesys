@@ -29,6 +29,7 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 import wandb
+import re
 
 sys.path.append('.')
 import model_discovery.utils as U
@@ -732,6 +733,8 @@ def _evolve(evosys):
 def count_class_loc(source_code, base_class_name):
     """Finds classes inherited from a base class and counts their lines of code."""
     # Parse the source code into an AST
+    source_code = re.sub(r'"""[\s\S]*?"""', '', source_code)
+    source_code = re.sub(r"'''[\s\S]*?'''", '', source_code)
     tree = ast.parse(source_code)
 
     # Find classes that inherit from the specified base class
@@ -760,6 +763,8 @@ def count_class_loc(source_code, base_class_name):
 def count_fn_loc(source_code):
     """Counts all function and method code lines, excluding comments and blank lines."""
     # Parse the source code into an AST
+    source_code = re.sub(r'"""[\s\S]*?"""', '', source_code)
+    source_code = re.sub(r"'''[\s\S]*?'''", '', source_code)
     tree = ast.parse(source_code)
 
     # Find all function definitions
@@ -853,6 +858,8 @@ def bench_summary(evosys):
         # st.write(raw_freqs)
         avg_rounds=np.mean(list(rounds.values())) if rounds else 0
         avg_costs = np.mean(list(costs.values())) if costs else 0
+        std_costs = np.std(list(costs.values())) if costs else 0
+        std_rounds = np.std(list(rounds.values())) if rounds else 0
         if not no_fcheckers:
             if 'succeeded' not in freqs:
                 freqs['succeeded']=0
@@ -869,15 +876,15 @@ def bench_summary(evosys):
                 f':grey[{freqs["unfinished"]/len(nodes):.2%}] unfinished. ',
             )
             st.write(
-                f'Avg. attempts: :blue[{avg_rounds:.2f}], ',
-                f'Avg. cost: :blue[{avg_costs:.2f}], ',
-                f'Adjusted cost: :blue[{avg_costs/success_rate:.2f}]. '
+                f'Avg. attempts: :blue[{avg_rounds:.2f}] (std: :red[{std_rounds:.2f}]), ',
+                f'Avg. cost: :blue[{avg_costs:.2f}] (std: :red[{std_costs:.2f}]), ',
+                f'Adjusted cost: :blue[{avg_costs/success_rate:.2f}] (std: :red[{std_costs/success_rate:.2f}]). '
             )
             locs_fn = [_count_fn_loc(codes[d]) for d in succeeded]
-            locs_gab = [_count_ga_loc(codes[d]) for d in succeeded]
+            locs_ga = [_count_ga_loc(codes[d]) for d in succeeded]
             st.write(
-                f'Avg. LoC (all fn): :blue[{np.mean(locs_fn):.2f}], ',
-                f'Avg. LoC (by gax): :blue[{np.mean(locs_gab):.2f}]. '
+                f'Avg. LoC (by function): :blue[{np.mean(locs_fn):.2f}] (std: :red[{np.std(locs_fn):.2f}]), ',
+                f'Avg. LoC (by class): :blue[{np.mean(locs_ga):.2f}] (std: :red[{np.std(locs_ga):.2f}]). '
             )
         else:
             if 'succeeded (valid)' not in freqs:
@@ -899,17 +906,17 @@ def bench_summary(evosys):
                 f':green[{freqs["Succeded & Valid"]/len(nodes):.2%}] succeded & valid, ',
                 f':red[{freqs["Failed / Invalid"]/len(nodes):.2%}] failed or invalid, ',
                 f':grey[{freqs["unfinished"]/len(nodes):.2%}] unfinished. ',
-            )
+            )   
             st.write(
-                f'Avg. attempts: :blue[{avg_rounds:.2f}], ',
-                f'Avg. cost: :blue[{avg_costs:.2f}], ',
-                f'Adjusted cost: :blue[{avg_costs/success_rate:.2f}]. '
+                f'Avg. attempts: :blue[{avg_rounds:.2f}] (std: :red[{std_rounds:.2f}]), ',
+                f'Avg. cost: :blue[{avg_costs:.2f}] (std: :red[{std_costs:.2f}]), ',
+                f'Adjusted cost: :blue[{avg_costs/success_rate:.2f}] (std: :red[{std_costs/success_rate:.2f}]). '
             )
             locs_fn = [_count_fn_loc(codes[d]) for d in succeeded]
-            locs_gau = [_count_ga_loc(codes[d]) for d in succeeded]
-            st.write(
-                f'Avg. LoC (all fn): :blue[{np.mean(locs_fn):.2f}], ',
-                f'Avg. LoC (by gax): :blue[{np.mean(locs_gau):.2f}]. '
+            locs_ga = [_count_ga_loc(codes[d]) for d in succeeded]
+            st.write(   
+                f'Avg. LoC (by function): :blue[{np.mean(locs_fn):.2f}] (std: :red[{np.std(locs_fn):.2f}]), ',
+                f'Avg. LoC (by class): :blue[{np.mean(locs_ga):.2f}] (std: :red[{np.std(locs_ga):.2f}]). '
             )
         
     col1, col2, col3 = st.columns(3)
