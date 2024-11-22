@@ -1,6 +1,7 @@
 import json
 import time
 import pathlib
+import ast
 import streamlit as st
 import sys,os
 from enum import Enum
@@ -727,9 +728,80 @@ def _evolve(evosys):
     ptree_monitor(evosys)
 
 
+
+def count_class_loc(source_code, base_class_name):
+    """Finds classes inherited from a base class and counts their lines of code."""
+    # Parse the source code into an AST
+    tree = ast.parse(source_code)
+
+    # Find classes that inherit from the specified base class
+    target_classes = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.ClassDef):  # If the node is a class definition
+            for base in node.bases:
+                if isinstance(base, ast.Name) and base.id == base_class_name:
+                    target_classes.append(node)
+
+    # Count lines of code for the target classes
+    total_lines = 0
+    for target_class in target_classes:
+        class_start = target_class.lineno
+        class_end = max(getattr(node, 'lineno', class_start) for node in ast.walk(target_class))
+
+        # Extract and process the lines of the class
+        class_code_lines = source_code.splitlines()[class_start - 1:class_end]
+        for line in class_code_lines:
+            stripped_line = line.strip()
+            if stripped_line and not stripped_line.startswith("#"):  # Exclude comments and blank lines
+                total_lines += 1
+
+    return total_lines
+
+def count_fn_loc(source_code):
+    """Counts all function and method code lines, excluding comments and blank lines."""
+    # Parse the source code into an AST
+    tree = ast.parse(source_code)
+
+    # Find all function definitions
+    functions = [node for node in ast.walk(tree) if isinstance(node, ast.FunctionDef)]
+
+    # Count lines of code for each function
+    total_lines = 0
+    for func in functions:
+        func_start = func.lineno
+        func_end = max(getattr(node, 'lineno', func_start) for node in ast.walk(func))
+
+        # Extract and process the lines of the function
+        func_code_lines = source_code.splitlines()[func_start - 1:func_end]
+        for line in func_code_lines:
+            stripped_line = line.strip()
+            if stripped_line and not stripped_line.startswith("#"):  # Exclude comments and blank lines
+                total_lines += 1
+
+    return total_lines
+
+def _count_fn_loc(impl):
+    if isinstance(impl,str):
+        return count_fn_loc(impl)
+    else:
+        return sum([count_fn_loc(impl.units[i].code) for i in impl.units])
+
+def _count_gab_loc(source_code):
+    return count_class_loc(source_code,'GABBase')+count_class_loc(source_code,'Module')
+
+def _count_gau_loc(source_code):
+    return count_class_loc(source_code,'GAUBase')
+
+def _count_ga_loc(impl):
+    if isinstance(impl,str):
+        return _count_gab_loc(impl)
+    else:
+        return sum([_count_gau_loc(impl.units[i].code) for i in impl.units])
+
+
 def bench_summary(evosys):
     st.subheader("🏆 Benchmark Status")
-    with st.expander(f"**Benchmark Summary**",expanded=True):
+    with st.expander(f"**Benchmark Summary for ```{evosys.evoname}```**",expanded=True):
         bench_designs = os.listdir(BENCHMARK_DIR)
         nodes = []
         for d in bench_designs:
@@ -746,9 +818,11 @@ def bench_summary(evosys):
         succeeded = []
         failed = []
         unfinished = []
+        codes = {}
         for node in nodes:
             if node.implementation:
                 state,n_tries = node.state.split(':')
+                codes[node.acronym] = node.implementation.implementation
                 raw_states[node.acronym] = state
                 threshold = 5
                 if ('implemented' in state or 'succeeded' in state) and int(n_tries)<=threshold:
@@ -785,13 +859,25 @@ def bench_summary(evosys):
             if 'failed' not in freqs:
                 freqs['failed']=0
             freqs['unfinished']=len(nodes)-freqs['succeeded']-freqs['failed']
+            success_rate = freqs['succeeded']/len(nodes)
             st.write(
                 f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
-                f':green[{freqs["succeeded"]/len(nodes):.2%}] succeeded, ',
+            )
+            st.write(
+                f':green[{success_rate:.2%}] succeeded, ',
                 f':red[{freqs["failed"]/len(nodes):.2%}] failed, ',
                 f':grey[{freqs["unfinished"]/len(nodes):.2%}] unfinished. ',
-                f'Average attempts: :blue[{avg_rounds:.2f}]. ',
-                f'Average cost: :blue[{avg_costs:.2f}]. '
+            )
+            st.write(
+                f'Avg. attempts: :blue[{avg_rounds:.2f}], ',
+                f'Avg. cost: :blue[{avg_costs:.2f}], ',
+                f'Adjusted cost: :blue[{avg_costs/success_rate:.2f}]. '
+            )
+            locs_fn = [_count_fn_loc(codes[d]) for d in succeeded]
+            locs_gab = [_count_ga_loc(codes[d]) for d in succeeded]
+            st.write(
+                f'Avg. LoC (all fn): :blue[{np.mean(locs_fn):.2f}], ',
+                f'Avg. LoC (by gax): :blue[{np.mean(locs_gab):.2f}]. '
             )
         else:
             if 'succeeded (valid)' not in freqs:
@@ -805,13 +891,25 @@ def bench_summary(evosys):
             freqs['Succeded & Valid']=freqs['succeeded (valid)']+freqs['failed (valid)']
             freqs['Failed / Invalid']=freqs['failed (invalid)']+freqs['succeeded (invalid)']+freqs.get('failed',0)
             freqs['unfinished']=len(nodes)-freqs['Succeded & Valid']-freqs['Failed / Invalid']
+            success_rate = freqs['Succeded & Valid']/len(nodes)
             st.write(
                 f'{len(nodes)/len(bench_designs):.2%} of benchmark nodes loaded. ',
+            )
+            st.write(
                 f':green[{freqs["Succeded & Valid"]/len(nodes):.2%}] succeded & valid, ',
                 f':red[{freqs["Failed / Invalid"]/len(nodes):.2%}] failed or invalid, ',
                 f':grey[{freqs["unfinished"]/len(nodes):.2%}] unfinished. ',
-                f'Average attempts: :blue[{avg_rounds:.2f}]. ',
-                f'Average cost: :blue[{avg_costs:.2f}]. '
+            )
+            st.write(
+                f'Avg. attempts: :blue[{avg_rounds:.2f}], ',
+                f'Avg. cost: :blue[{avg_costs:.2f}], ',
+                f'Adjusted cost: :blue[{avg_costs/success_rate:.2f}]. '
+            )
+            locs_fn = [_count_fn_loc(codes[d]) for d in succeeded]
+            locs_gau = [_count_ga_loc(codes[d]) for d in succeeded]
+            st.write(
+                f'Avg. LoC (all fn): :blue[{np.mean(locs_fn):.2f}], ',
+                f'Avg. LoC (by gax): :blue[{np.mean(locs_gau):.2f}]. '
             )
         
     col1, col2, col3 = st.columns(3)
