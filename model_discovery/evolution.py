@@ -1419,19 +1419,30 @@ class DesignArtifact(NodeObject):
             if not self.implementation:
                 return 'proposed (unimplemented)'
             else:
-                n_tries = len(self.implementation.history)
-                status = self.implementation.status
+                n_tries = 0
+                for attempt in self.implementation.history: # check if there is redundant tries
+                    status = attempt.status
+                    n_tries += 1
+
+                # n_tries = len(self.implementation.history)
+                # status = self.implementation.status
+                    if 'gab' in status:
+                        if 'succeeded' in status:
+                            # if n_tries>=5:
+                            #     status = 'exceeded'
+                            return f'{status}:{n_tries}'
+                    if status=='implemented':
+                        if len(self.verifications)>0:
+                            return f'implemented (verified):{n_tries}'
+                        else:
+                            return f'implemented (unverified):{n_tries}'
+                    # else:
+                    
                 if 'gab' in status:
-                    if 'succeeded' in status and n_tries>=5:
-                        status = 'exceeded'
+                    # if 'succeeded' in status and n_tries>=5:
+                    #     status = 'exceeded'
                     return f'{status}:{n_tries}'
-                if status=='implemented':
-                    if len(self.verifications)>0:
-                        return f'implemented (verified):{n_tries}'
-                    else:
-                        return f'implemented (unverified):{n_tries}'
-                else:
-                    return f'unfinished ({status}):{n_tries}'
+                return f'unfinished ({status}):{n_tries}'
 
 # def write_dot(G, path):
 #     """Write NetworkX graph G to Graphviz dot format on path.
