@@ -1077,12 +1077,16 @@ def _eureka(evosys):
         with _col2:
             step_size = st.slider('Step size',min_value=10,max_value=100,value=30,step=10)
         generations = []
+        gen_sizes = []
         eureka_means = []
         eureka_stds = []
         eureka_maxs = []
         eureka_mins = []
         for i in range(0,len(combined_eureka),step_size):
             _designs = list(combined_eureka.index)[i:i+population_size]
+            if len(_designs)<population_size*0.7:
+                continue
+            gen_sizes.append(len(_designs))
             generations.append(int(i/step_size))
             eureka_means.append(np.mean(combined_eureka.loc[_designs]['eureka']))
             eureka_stds.append(np.std(combined_eureka.loc[_designs]['eureka']))
@@ -1090,6 +1094,7 @@ def _eureka(evosys):
             eureka_mins.append(np.min(combined_eureka.loc[_designs]['eureka']))
         chart_data = pd.DataFrame({
             'generation':generations,
+            'size':gen_sizes,
             'mean':eureka_means,
             'std':eureka_stds,
             'max':eureka_maxs,
@@ -1361,6 +1366,8 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 center=0.5
                 for i in range(0,len(timestamp_filtered),step_size):
                     _designs = list(timestamp_filtered.keys())[i:i+population_size]
+                    if len(_designs)<population_size*0.7:
+                        continue
                     generations.append(int(i/step_size))
                     score_means.append(np.mean([scores_filtered[d] for d in _designs])-center)
                     score_stds.append(np.std([scores_filtered[d] for d in _designs]))
@@ -1494,6 +1501,152 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 pair_effective_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_effective.items()}
                 chart_data = pd.DataFrame(list(pair_effective_mean.items()),columns=['pair','mean cost-effectiveness'])
                 st.bar_chart(chart_data,x='pair',y='mean cost-effectiveness')
+
+
+
+
+def _stat_func_check(func_check):
+    errors=[]
+    if 'The code is not parsable' in func_check:
+        errors.append('syntax: unparsable')
+    if 'The code is not executable' in func_check:
+        errors.append('syntax: unexecutable')
+    if 'The class "GAB" is not defined in the provided code' in func_check:
+        errors.append('format: GAB_not_defined')
+    if 'The method "_forward" is not defined in the class "GAB" or "GAB" is not defined.' in func_check:
+        errors.append('format: _forward_not_defined')
+    if 'The method "__init__" is not defined in the class "GAB" or "GAB" is not defined.' in func_check:
+        errors.append('format: __init___not_defined')
+    if 'The dictionary "gab_config" is not defined.' in func_check:
+        errors.append('format: gab_config_not_defined')
+    if '"gab_config" should be a dictionary.' in func_check:
+        errors.append('format: gab_config_not_dict')
+    if 'The class "GAB" is not defined in the provided code, cannot validate "gab_config".' in func_check:
+        errors.append('format: GAB_not_defined')
+    if 'The dictionary "gab_config" is missing the following required arguments: ' in func_check:
+        errors.append('format: gab_config_missing_args')
+
+    if 'An error occurred while executing the unit test' in func_check:
+        errors.append('unit_test')
+    if 'Error: Model initialization failed' in func_check:
+        errors.append('model_init')
+
+    if 'Error: Forward pass failed with error' in func_check:
+        errors.append('forward_pass')
+    if 'Error: The output shape of GAB should be the same as the input.' in func_check:
+        errors.append('output_shape')
+
+    if 'Error: Causality test failed' in func_check:
+        errors.append('causality')
+    if 'Differentiability test failed' in func_check:
+        errors.append('differentiability')
+
+    if 'The model is not training correctly. The loss is not decreasing.' in func_check:
+        errors.append('diverging: loss_not_decreasing')
+    if 'The model is diverging. The loss is' in func_check:
+        errors.append('diverging: loss')
+    if 'The model is diverging. The gradient norm is NaN.' in func_check:
+        errors.append('diverging: grad_norm')
+    if 'The model is not efficient. The training time is overly long.' in func_check:
+        errors.append('inefficient: training_time')
+    if 'The model is not efficient. The memory usage is overly high.' in func_check:
+        errors.append('inefficient: memory_usage')
+    if 'The model is not efficient. The FLOPs is overly high.' in func_check:
+        errors.append('inefficient: flops')
+    if 'The model is not effective. The training loss is overly high.' in func_check:
+        errors.append('ineffective: training_loss')
+
+    return errors
+
+def _stat_format_check(format_check):
+    errors=[]
+    for line in format_check:
+        if 'Fetal Error: parsing the code' in line or 'Fetal Error: Failed to parse the reformatted code' in line:
+            errors.append('syntax: unparsable')
+        if 'Fetal Error: No GAUBase class found.' in line or 'Fetal Error: Cannot detect the GAU class.' in line:
+            errors.append('gau: GAUBase_not_found')
+        if 'Fetal Error: Multiple GAUBase classes found' in line or 'Error: Multiple classes inheriting from GAUBase found' in line:
+            errors.append('gau: multiple_gau')
+
+        if 'Fetal Error when trying to execute the code by exec(reformatted_code)' in line:
+            errors.append('syntax: unexecutable')
+        
+        if 'Fetal Error: Failed to parse CHILDREN_DECLARATIONS' in line:
+            errors.append('gau: CHILDREN_DECLARATIONS_not_parseable')
+        if 'are declared as children but never used' in line:
+            errors.append('gau: unused_children')
+
+        if 'Fetal Error: No __init__ method found in the GAU.' in line:
+            errors.append('gau: __init___not_found')
+        if 'Fetal Error: No _forward method found in the GAU.' in line:
+            errors.append('gau: _forward_not_found')
+
+
+        if 'a GAU can only inherit from GAUBase directly, not multiple classes' in line:
+            errors.append('gau: GAUBase_inheritance')
+        if 'you are not allowed to define any nn.Module, whenever you need a submodule, declare a child GAU instead.' in line:
+            errors.append('gau: nn.Module_not_allowed')
+        if 'Error: The forward method in GAUBase should not be overridden.' in line:
+            errors.append('gau: forward_override')
+        if 'Error: nn.Sequential is not supported in GAU. You may use ModuleList, ModuleDict.' in line:
+            errors.append('gau: nn.Sequential_not_supported')
+        if 'Error: in-place assignment to a gau instance is never encouraged' in line:
+            errors.append('gau: inplace_assignment')
+        if 'Error: GAU call must have the sequence as the first argument and the **Z.' in line:
+            errors.append('gau: gau_call_args')
+        if 'Error: GAU call always returns a tuple of two variables, the first is a sequence and the second must be the updated Z. If you need to return other variables, you can include them in Z.' in line:
+            errors.append('gau: gau_call_return')
+
+    return errors
+
+def impl_analysis(evosys,design_nodes,implemented_nodes):
+    st.subheader('Implementation Analysis')
+    rounds=[]
+    for node in design_nodes:
+        impl = node.implementation
+        if impl is None:
+            continue
+        for attempt in impl.history:
+            rounds+=attempt.rounds
+    with st.expander(f'**Analysis over ```{len(rounds)}``` rounds**',expanded=True):
+        failed_format_checks=[]
+        failed_func_checks=[]
+        total_format_checks=0
+        total_func_checks=0
+        for round in rounds:
+            for r in round['unit_design_traces']:
+                func_check = r['func_checks']
+                format_check = r['format_checks']
+                for unit in format_check:
+                    _check=format_check[unit]['format_errors']
+                    total_format_checks+=1
+                    if len(_check)>0:
+                        failed_format_checks.append(_check)
+                total_func_checks+=1
+                if not func_check['checkpass']:
+                    failed_func_checks.append(func_check['check_report'])
+
+        func_errors = {}
+        gau_errors = {}
+        for func_check in failed_func_checks:
+            for error in _stat_func_check(func_check):
+                if error not in func_errors:
+                    func_errors[error] = 0
+                func_errors[error]+=1
+        for format_check in failed_format_checks:
+            for error in _stat_format_check(format_check):
+                if error not in gau_errors:
+                    gau_errors[error] = 0
+                gau_errors[error]+=1
+        col1, col2 = st.columns(2)
+        with col1:
+            st.write(f'**Failed Func Checks: ```{len(failed_func_checks)}/{total_func_checks}```**')
+            # st.write(f'**Func Errors: ```{func_errors}```**')
+            st.bar_chart(pd.DataFrame(list(func_errors.items()),columns=['error','count']),x='error',y='count')
+        with col2:
+            st.write(f'**Failed Format Checks: ```{len(failed_format_checks)}/{total_format_checks}```**')
+            # st.write(f'**GAU Errors: ```{gau_errors}```**')
+            st.bar_chart(pd.DataFrame(list(gau_errors.items()),columns=['error','count']),x='error',y='count')
 
 
 def unit_analyzer(evosys,design_nodes,implemented_nodes):
@@ -1721,6 +1874,7 @@ def _stats(evosys):
     design_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifact')]
     implemented_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifactImplemented')]
     session_stats(evosys,design_nodes,implemented_nodes)
+    impl_analysis(evosys,design_nodes,implemented_nodes)
     unit_analyzer(evosys,design_nodes,implemented_nodes)
     scaling_analysis(evosys,design_nodes,implemented_nodes)
 
