@@ -1882,8 +1882,8 @@ def _stats(evosys):
 class EvoModes(Enum):
     EVOLVE = 'Evolution System'
     BENCH = 'Agent Benchmark'
-    EUREKA = 'Eureka Moments'
     STATS = 'Experiment Statistics'
+    EUREKA = 'Eureka Moments'
 
 
 def evolve(evosys,project_dir):
