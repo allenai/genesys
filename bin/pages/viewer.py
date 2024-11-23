@@ -127,7 +127,7 @@ def _view_designs(evosys):
                     gab_code = itree.compose()
                 st.subheader('Exported GAB Code')
                 with st.expander('Click to expand'):
-                    st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab.py')
+                    st.download_button('Download GAB Code',gab_code,file_name=f'{selected_design}_gab_{evosys.evoname}.py')
                     st.code(gab_code,language='python')
             else:
                 st.warning('The design has not been implemented yet.')
@@ -679,6 +679,10 @@ def leaderboard_filter(leaderboard,task_filter=[]):
 
 def selector_lab(evosys,project_dir):
     st.title('*Experiment Visualizer*')
+
+    if evosys.benchmark_mode:
+        st.warning('Experiment visualization is not available for agent benchmark.')
+        return
 
     with st.status('Loading latest data...'):
         design_vectors = evosys.ptree.get_design_vectors()
