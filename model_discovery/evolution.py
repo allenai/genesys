@@ -726,8 +726,9 @@ class FirestoreManager:
                         implementation=Doc['implementation']
                         implementation['history']=_implementation['history']
                         for idx in set(need_get):
-                            local_step = _implementation['history'].get(idx,{})
-                            if local_step=={}:
+                            if idx < len(implementation['history']):
+                                local_step = implementation['history'][idx]
+                            else:
                                 local_step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
                             if 'rounds' not in local_step:
                                 local_step['rounds']=[]
