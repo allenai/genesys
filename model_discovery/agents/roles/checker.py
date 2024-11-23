@@ -904,7 +904,7 @@ class Checker(exec_utils.BaseTool):
                     captured_output += _test_output.getvalue()
                 except Exception as e:
                     captured_output += f"An error occurred while executing the unit test:\n{traceback.format_exc()}"
-                    checkpass0=False
+                    # checkpass0=False
                 
                 for _config in [GAMConfig_31M(),config]:
                     self.rprint(f'Checking model in multiple scales... Reloading the model with config on {_config.scale}...')

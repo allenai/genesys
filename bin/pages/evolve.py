@@ -1529,7 +1529,17 @@ def _stat_func_check(func_check):
     if 'An error occurred while executing the unit test' in func_check:
         errors.append('unit_test')
     if 'Error: Model initialization failed' in func_check:
-        errors.append('model_init')
+        if 'An exception occurred during the forward pass' in func_check:
+            if 'RuntimeError: shape' in func_check or 'shapes cannot be' in func_check or 'does not match the number of dimensions' in func_check or 'input tensor must have' in func_check\
+                or 'the number of sizes provided' in func_check or 'got shape' in func_check or 'must be a sequence of shape' in func_check or 'must be a 3D tensor' in func_check\
+                or 'must match the size of tensor' in func_check or 'IndexError' in func_check or 'Sizes of tensors must match' in func_check:
+                errors.append('model_init: shape_error')
+            elif 'type must be' in func_check or 'expected scalar type' in func_check or 'must have the same dtype' in func_check:
+                errors.append('model_init: dtype_error')
+            else:
+                errors.append('model_init: forward_error')
+        else:
+            errors.append('model_init: other')
 
     if 'Error: Forward pass failed with error' in func_check:
         errors.append('forward_pass')
@@ -1555,6 +1565,9 @@ def _stat_func_check(func_check):
         errors.append('inefficient: flops')
     if 'The model is not effective. The training loss is overly high.' in func_check:
         errors.append('ineffective: training_loss')
+
+    if 'Format check failed with fetal errors' in func_check:
+        errors.append('format: fetal_errors')
 
     return errors
 
@@ -1614,18 +1627,19 @@ def impl_analysis(evosys,design_nodes,implemented_nodes):
         total_format_checks=0
         total_func_checks=0
         for round in rounds:
-            for r in round['unit_design_traces']:
-                func_check = r['func_checks']
-                format_check = r['format_checks']
-                for unit in format_check:
-                    _check=format_check[unit]['format_errors']
-                    total_format_checks+=1
-                    if len(_check)>0:
-                        failed_format_checks.append(_check)
-                total_func_checks+=1
-                if not func_check['checkpass']:
-                    failed_func_checks.append(func_check['check_report'])
-
+            if 'unit_design_traces' in round:
+                for r in round['unit_design_traces']:
+                    func_check = r['func_checks']
+                    format_check = r['format_checks']
+                    for unit in format_check:
+                        _check=format_check[unit]['format_errors']
+                        total_format_checks+=1
+                        if len(_check)>0:
+                            failed_format_checks.append(_check)
+                    total_func_checks+=1
+                    if not func_check['checkpass']:
+                        failed_func_checks.append(func_check['check_report'])
+            
         func_errors = {}
         gau_errors = {}
         for func_check in failed_func_checks:
@@ -1647,9 +1661,14 @@ def impl_analysis(evosys,design_nodes,implemented_nodes):
             st.write(f'**Failed Format Checks: ```{len(failed_format_checks)}/{total_format_checks}```**')
             # st.write(f'**GAU Errors: ```{gau_errors}```**')
             st.bar_chart(pd.DataFrame(list(gau_errors.items()),columns=['error','count']),x='error',y='count')
+        errors = {'func':func_errors,'gau':gau_errors,'total_func':total_func_checks,'total_format':total_format_checks,
+                  'n_failed_func':len(failed_func_checks),'n_failed_format':len(failed_format_checks),'n_rounds':len(rounds)}
+        st.download_button(label='Download Impl. Error Stats',data=json.dumps(errors),file_name=f'impl_errors_{evosys.evoname}.json')
 
 
 def unit_analyzer(evosys,design_nodes,implemented_nodes):
+    if evosys.benchmark_mode:
+        return
     st.subheader("Unit Analyzer")
     with st.expander(f"Unit Analysis for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         st.subheader('Block-Unit Tree')
@@ -1749,6 +1768,8 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
 
 
 def scaling_analysis(evosys,design_nodes,implemented_nodes):
+    if evosys.benchmark_mode:
+        return
     st.subheader('Scaling Analysis')
     api = wandb.Api()
     token_mults = evosys.ptree.token_mults

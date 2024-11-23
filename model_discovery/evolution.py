@@ -711,20 +711,33 @@ class FirestoreManager:
                 _implementation=U.load_json(implementation_path)
                 if 'gab' not in _implementation['status']:
                     index_ih = [i for i in index_term['implementation_history'] if 'rounds' not in i]
+                    need_get=[]
                     if len(_implementation['history'])<len(index_ih):
+                        need_get=list(range(len(_implementation['history']),len(index_ih)))
+                    for idx in range(len(_implementation['history'])):
+                        index_step_rounds = index_term['implementation_history'][f'{idx}_rounds']
+                        _local_rounds = _implementation['history'][idx].get('rounds',[])
+                        if len(_local_rounds)<len(index_step_rounds):
+                            need_get=list(range(idx,len(index_ih)))
+                            break
+                    if need_get:
                         if Doc is None:
                             Doc=self.collection.document(design_id).get().to_dict()
                         implementation=Doc['implementation']
                         implementation['history']=_implementation['history']
-                        for idx in range(len(_implementation['history']),len(index_ih)):
-                            step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
-                            if 'rounds' not in step:
-                                step['rounds']=[]
+                        for idx in set(need_get):
+                            # step=self.collection.document(design_id).collection('implementation_history').document(str(idx)).get().to_dict()[str(idx)]
+                            local_step = _implementation['history'][idx]
+                            if 'rounds' not in local_step:
+                                local_step['rounds']=[]
                             index_step_rounds = index_term['implementation_history'][f'{idx}_rounds']
-                            for round_idx in range(len(step['rounds']),len(index_step_rounds)):
+                            for round_idx in range(len(local_step['rounds']),len(index_step_rounds)):
                                 rounds_data = self.collection.document(design_id).collection('implementation_history').document(str(idx)).collection('rounds').document(str(round_idx)).get().to_dict()
-                                step['rounds'].append(rounds_data)
-                            implementation['history'].append(step)
+                                local_step['rounds'].append(rounds_data)
+                            if idx < len(implementation['history']):
+                                implementation['history'][idx]=local_step
+                            else:
+                                implementation['history'].append(local_step)
                         U.save_json(implementation,implementation_path)
                         print(f'Downloaded implementation for design {design_id}')
 
