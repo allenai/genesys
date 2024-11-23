@@ -715,6 +715,8 @@ class FirestoreManager:
                     if len(_implementation['history'])<len(index_ih):
                         need_get=list(range(len(_implementation['history']),len(index_ih)))
                     for idx in range(len(_implementation['history'])):
+                        if idx not in index_ih:
+                            continue
                         index_step_rounds = index_term['implementation_history'][f'{idx}_rounds']
                         _local_rounds = _implementation['history'][idx].get('rounds',[])
                         if len(_local_rounds)<len(index_step_rounds):
