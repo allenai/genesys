@@ -3512,13 +3512,17 @@ class EvolutionSystem(exec_utils.System):
         if code is None:
             print(f'Check tune failed for design {design_id} at scale {scale}')
             U.log_error_model(design_id,scale)
+            with U.local_lock():
+                local_doc = U.read_local_doc()
+                local_doc['model_ready'] = 'error'
+                U.write_local_doc(local_doc)
             return None
         with open(U.pjoin(self.ckpt_dir,'gab.py'),'w', encoding='utf-8') as f:
             f.write(code)
 
         with U.local_lock():
             local_doc = U.read_local_doc()
-            local_doc['model_ready'] = True
+            local_doc['model_ready'] = 'ready'
             U.write_local_doc(local_doc)
 
     @classmethod

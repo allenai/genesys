@@ -356,7 +356,7 @@ def _run_verification(params, design_id, scale, resume, cli=False, prep_only=Fal
     if not RANDOM_TESTING:
         with U.local_lock():
             local_doc = U.read_local_doc()
-            local_doc['model_ready'] = False
+            local_doc['model_ready'] = 'preparing'
             U.write_local_doc(local_doc)
         cmd = f"python -m model_discovery.evolution --mode prep_model --params {params_str} --design_id {design_id} --scale {scale}"
         if cli:
@@ -369,10 +369,15 @@ def _run_verification(params, design_id, scale, resume, cli=False, prep_only=Fal
         if prep_only:
             return process
         
-        while not U.read_local_doc().get('model_ready',False):
+        while True:
+            model_ready = U.read_local_doc().get('model_ready','preparing')
+            if model_ready == 'ready':
+                break
+            if model_ready == 'error':
+                print(f'Model preparation failed for {design_id}_{scale}')
+                return None
             time.sleep(1)
 
-    # FIXME: should wait until the model is ready
     cmd = f"python -m model_discovery.evolution --mode verify --params {params_str} --design_id {design_id} --scale {scale}"
     if resume:
         cmd+=' --resume'
@@ -398,6 +403,8 @@ def run_verification(params, design_id, scale, resume, cli=False, prep_only=Fals
     if cli or (not None in polls):
         params = copy.deepcopy(params)
         process = _run_verification(params, design_id, scale, resume, cli=cli, prep_only=prep_only, RANDOM_TESTING=RANDOM_TESTING)
+        if process is None:
+            return None,f'Model preparation failed for {design_id}_{scale}'
         if prep_only:
             return None,'Prepare only (for testing)'
         if not cli:
