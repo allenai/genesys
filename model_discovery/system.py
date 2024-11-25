@@ -510,7 +510,8 @@ class ModelDiscoverySystem(exec_utils.System):
         if log_collection:
             latest_log = str(time.time())
             log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
-            index_ref = log_collection.document('index')
+            # index_ref = log_collection.document('index')
+            index_ref,_ = self.ptree.CM.get_design_sessions_index()
             def log_fn(msg,status='RUNNING'):
                 timestamp = str(time.time())
                 try:
