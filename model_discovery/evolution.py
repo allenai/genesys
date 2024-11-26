@@ -2686,18 +2686,17 @@ class ConnectionManager:
             self.accept_verify_job[node_id] = self.connections[node_id]['accept_verify_job']
         return list(self.connections.keys())
     
-    def _get_log(self,sess_id,log_collection_name,zombie_threshold=None):
+    def _get_log(self,index_ref,all_index,sess_id,log_collection_name,zombie_threshold=None):
         log_collection = self.log_doc_ref.collection(log_collection_name)
-        index_term = log_collection.document('index').get()
-        if not index_term.exists:
+        if not all_index.exists:
             return None,None,None
-        index_term = index_term.to_dict()
-        if sess_id not in index_term:
+        all_index = all_index.to_dict()
+        if sess_id not in all_index:
             return None,None,None
         log_df = None
-        status = index_term[sess_id]['status']
-        heartbeat = index_term[sess_id]['timestamp']
-        latest_log = index_term[sess_id]['latest_log'] 
+        status = all_index[sess_id]['status']
+        heartbeat = all_index[sess_id]['timestamp']
+        latest_log = all_index[sess_id]['latest_log'] 
         if not latest_log:
             return None,None,None
         log_ref = log_collection.document(sess_id).collection('logs').document(latest_log)
@@ -2711,7 +2710,6 @@ class ConnectionManager:
         heartbeat = log_df.index[0]
         if zombie_threshold and time.time()-float(heartbeat)>zombie_threshold:
             print(f'Detected zombie session: {sess_id}')
-            index_ref = self.log_doc_ref.collection(log_collection_name).document('index')
             index_ref.set({sess_id:{
                 'status':'ZOMBIE',
                 'timestamp':str(time.time())
@@ -2720,10 +2718,12 @@ class ConnectionManager:
         return log_df,status,heartbeat
 
     def get_session_log(self,sess_id):
-        return self._get_log(sess_id,'design_sessions',DESIGN_ZOMBIE_THRESHOLD)
+        index_ref,all_index = self.get_design_sessions_index()
+        return self._get_log(index_ref,all_index,sess_id,'design_sessions',DESIGN_ZOMBIE_THRESHOLD)
     
     def get_verification_log(self,sess_id):
-        return self._get_log(sess_id,'verifications',VERIFY_ZOMBIE_THRESHOLD)
+        index_ref,all_index = self.get_verifications_index()
+        return self._get_log(index_ref,all_index,sess_id,'verifications',VERIFY_ZOMBIE_THRESHOLD)
 
     def get_design_sessions_index(self):
         return index_chunk_tool(self.log_doc_ref,self.log_doc_ref.collection('design_sessions'),'design_sessions')
