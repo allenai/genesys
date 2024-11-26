@@ -352,6 +352,8 @@ class FirestoreManager:
                 print(f'Uploaded "{key}" for design "{design_id}" successfully')
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}"')
+                return False
+        return True
 
     def upload_collection_key_data(self, design_id, collection_name, key, data, overwrite=False, verbose=False,collection=None):
         key=str(key)
@@ -373,10 +375,37 @@ class FirestoreManager:
                 print(f'Uploaded "{key}" for design "{design_id}" collection "{collection_name}" successfully')
             else:
                 print(f'Failed to upload "{key}" for design "{design_id}" collection "{collection_name}"')
+                return False
+        return True
             
     def upload_implementation(self, design_id, implementation, overwrite=False,verbose=False,gab=False):
         history=implementation.pop('history')
-        self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose)
+        if not self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose):
+            # try to upload again by making it smaller
+            print('try to upload again by making it smaller')
+            implementation['implementation']['proposal']=''
+            implementation['implementation']['proposal_traces']=[]
+            if not self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose):
+                print('try to make it smaller by removing search stacks')
+                proposal = U.load_json(U.pjoin(self.db_dir, 'designs', design_id,'proposal.json'))
+                _SUCCESS=False
+                for i in range(len(proposal['review_search_stack'])):
+                    proposal['review_search_stack'].pop() # remove the last step
+                    self.upload_key_data(design_id,'proposal',proposal,overwrite=True,verbose=verbose)
+                    if self.upload_key_data(design_id,'implementation',implementation,overwrite=True,verbose=verbose):
+                        _SUCCESS=True
+                        break
+                    if len(proposal['search_stack'])>0:
+                        proposal['search_stack'].pop() # remove the last step
+                    else:
+                        continue
+                    self.upload_key_data(design_id,'proposal',proposal,overwrite=True,verbose=verbose)
+                    if self.upload_key_data(design_id,'implementation',implementation,overwrite=True,verbose=verbose):
+                        _SUCCESS=True
+                        break
+                if not _SUCCESS:
+                    print('*** failed to upload even after removing search stacks')
+
         for idx,step in enumerate(history):
             if 'rounds' not in step:
                 step['rounds']=[]
@@ -499,11 +528,45 @@ class FirestoreManager:
         self.upload_key_data(design_id,'metadata',metadata,overwrite,verbose=verbose)
 
     def upload_proposal(self,design_id,proposal,overwrite=False,verbose=False):
-        self.upload_key_data(design_id,'proposal',proposal,overwrite,verbose=verbose)
+        if not self.upload_key_data(design_id,'proposal',proposal,overwrite,verbose=verbose):
+            # try to upload again by making it smaller
+            print('try to upload again by making it smaller')
+            _SUCCESS=False
+            for i in range(len(proposal['review_search_stack'])):
+                proposal['review_search_stack'].pop() # remove the last step
+                if self.upload_key_data(design_id,'proposal',proposal,overwrite=True,verbose=verbose):
+                    _SUCCESS=True
+                    break
+                if len(proposal['search_stack'])>0:
+                    proposal['search_stack'].pop() # remove the last step
+                else:
+                    continue
+                if self.upload_key_data(design_id,'proposal',proposal,overwrite=True,verbose=verbose):
+                    _SUCCESS=True
+                    break
+            if not _SUCCESS:
+                print('*** failed to upload even after removing search stacks')
     
     def upload_proposal_traces(self,design_id,proposal_traces,overwrite=False,verbose=False):
         for trace_id,trace in proposal_traces.items():
-            self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite,verbose=verbose)
+            if not self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite,verbose=verbose):
+                # try to upload again by making it smaller
+                print('try to upload again by making it smaller')
+                _SUCCESS=False
+                for i in range(len(trace['review_search_stack'])):
+                    trace['review_search_stack'].pop() # remove the last step
+                    if self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite=True,verbose=verbose):
+                        _SUCCESS=True
+                        break
+                    if len(trace['search_stack'])>0:
+                        trace['search_stack'].pop() # remove the last step
+                    else:
+                        continue
+                    if self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite=True,verbose=verbose):
+                        _SUCCESS=True
+                        break
+                if not _SUCCESS:
+                    print('*** failed to upload even after removing search stacks')
 
     def upload_design(self, design_id, design, overwrite=False, upload_index=True, verbose=False):
         """
