@@ -2688,9 +2688,9 @@ class ConnectionManager:
     
     def _get_log(self,index_ref,all_index,sess_id,log_collection_name,zombie_threshold=None):
         log_collection = self.log_doc_ref.collection(log_collection_name)
-        if not all_index.exists:
-            return None,None,None
-        all_index = all_index.to_dict()
+        # if not all_index.exists:
+        #     return None,None,None
+        # all_index = all_index.to_dict()
         if sess_id not in all_index:
             return None,None,None
         log_df = None
