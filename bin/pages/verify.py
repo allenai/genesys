@@ -111,6 +111,11 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
     else:
         log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
         do_log(exp_log_ref,log)
+        index_ref,_ = evosys.CM.get_verifications_index()
+        index_ref.set({sess_id:{
+            'status':'ERROR',
+            'timestamp':str(time.time())
+        }},merge=True)
 
     return sess_id, pid
 
