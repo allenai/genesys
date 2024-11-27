@@ -109,9 +109,12 @@ def acquire_lock(name,tts=20):
     mkdir(lock_dir)
     lock_file=pjoin(lock_dir,f'{name}.lock')
     if pexists(lock_file):
-        lock_time,tts=read_file(lock_file).split('\n')
-        if time.time()-float(lock_time)<=float(tts):
-            return False
+        try:
+            lock_time,tts=read_file(lock_file).split('\n')
+            if time.time()-float(lock_time)<=float(tts):
+                return False
+        except Exception as e:
+            pass # lock file is corrupted, ignore it
     with open(lock_file,'w') as f:
         f.write(f'{time.time()}\n{tts}')
     return True
