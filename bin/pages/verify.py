@@ -115,6 +115,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
                 'status':'ERROR',
                 'timestamp':str(time.time())
             }},merge=True)
+            sess_id = None
         log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
         do_log(exp_log_ref,log)
 
@@ -410,7 +411,7 @@ def run_verification(params, design_id, scale, resume, cli=False, prep_only=Fals
         params = copy.deepcopy(params)
         process = _run_verification(params, design_id, scale, resume, cli=cli, prep_only=prep_only, RANDOM_TESTING=RANDOM_TESTING)
         if process is None:
-            return {design_id}_{scale},f'ERROR: Model preparation failed for {design_id}_{scale}'
+            return key,f'ERROR: Model preparation failed for {design_id}_{scale}'
         if prep_only:
             return None,'Prepare only (for testing)'
         if not cli:
