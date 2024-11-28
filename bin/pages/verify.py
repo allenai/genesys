@@ -109,7 +109,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
         daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {_design_id} --scale {_scale} --node_id {node_id} --pid {pid}"
         subprocess.Popen(daemon_cmd, shell=True)
     else:
-        if sess_id and 'ERROR' in pid:
+        if sess_id:
             index_ref,_ = evosys.CM.get_verifications_index()
             index_ref.set({sess_id:{
                 'status':'ERROR',
