@@ -102,7 +102,7 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
     exp_log_ref = evosys.CM.get_log_ref()
     
     if sess_id:
-        if 'ERROR' in pid:
+        if isinstance(pid,str) and 'ERROR' in pid:
             index_ref,_ = evosys.CM.get_verifications_index()
             index_ref.set({sess_id:{
                 'status':'ERROR',
