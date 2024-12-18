@@ -102,20 +102,25 @@ def verify_command(node_id, evosys, evoname, design_id=None, scale=None, resume=
     exp_log_ref = evosys.CM.get_log_ref()
     
     if sess_id:
-        log = f'Node {node_id} running verification on {_design_id}_{_scale}'
-        do_log(exp_log_ref,log)
-        # Start the daemon in a separate process
-        print('Starting Verify Daemon Process...')
-        daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {_design_id} --scale {_scale} --node_id {node_id} --pid {pid}"
-        subprocess.Popen(daemon_cmd, shell=True)
+        if isinstance(pid,str) and 'ERROR' in pid:
+            index_ref,_ = evosys.CM.get_verifications_index()
+            index_ref.set({sess_id:{
+                'status':'ERROR',
+                'timestamp':str(time.time())
+            }},merge=True)
+            sess_id = None
+            log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
+            do_log(exp_log_ref,log)
+        else:
+            log = f'Node {node_id} running verification on {_design_id}_{_scale}'
+            do_log(exp_log_ref,log)
+            # Start the daemon in a separate process
+            print('Starting Verify Daemon Process...')
+            daemon_cmd = f"python -m bin.pages.verify --daemon --evoname {evoname} --sess_id {sess_id} --design_id {_design_id} --scale {_scale} --node_id {node_id} --pid {pid}"
+            subprocess.Popen(daemon_cmd, shell=True)
     else:
         log = f'Node {node_id} failed to run verification on {design_id}_{scale} with error: {pid}'
         do_log(exp_log_ref,log)
-        index_ref,_ = evosys.CM.get_verifications_index()
-        index_ref.set({sess_id:{
-            'status':'ERROR',
-            'timestamp':str(time.time())
-        }},merge=True)
 
     return sess_id, pid
 
@@ -379,7 +384,7 @@ def _run_verification(params, design_id, scale, resume, cli=False, prep_only=Fal
             if model_ready == 'ready':
                 break
             if model_ready == 'error':
-                print(f'Model preparation failed for {design_id}_{scale}')
+                print(f'ERROR: Model preparation failed for {design_id}_{scale}')
                 return None
             time.sleep(1)
 
@@ -409,7 +414,7 @@ def run_verification(params, design_id, scale, resume, cli=False, prep_only=Fals
         params = copy.deepcopy(params)
         process = _run_verification(params, design_id, scale, resume, cli=cli, prep_only=prep_only, RANDOM_TESTING=RANDOM_TESTING)
         if process is None:
-            return None,f'Model preparation failed for {design_id}_{scale}'
+            return key,f'ERROR: Model preparation failed for {design_id}_{scale}'
         if prep_only:
             return None,'Prepare only (for testing)'
         if not cli:
