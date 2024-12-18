@@ -1974,14 +1974,14 @@ class PhylogeneticTree:
         return coreref_dir
     
     def _get_node(self, acronym: str):
-        if acronym not in self.G.nodes:
-            if self.FM:
-                self.FM.get_index()
-                if acronym not in self.FM.index:
-                    return None
-                self.FM.download_design(acronym)
-                artifact=DesignArtifact.load(self.design_dir(acronym))
-                self.G.add_node(acronym, data=artifact)
+        # if acronym not in self.G.nodes:
+        #     if self.FM:
+        #         self.FM.get_index()
+        #         if acronym not in self.FM.index:
+        #             return None
+        #         self.FM.download_design(acronym)
+        #         artifact=DesignArtifact.load(self.design_dir(acronym))
+        #         self.G.add_node(acronym, data=artifact)
         if acronym in self.G.nodes:
             return self.G.nodes[acronym]['data']
         else:
