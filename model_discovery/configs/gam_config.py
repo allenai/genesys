@@ -209,6 +209,10 @@ class GAMConfig_1T(GAMConfig): # Just for fun
     batch_tokens: int = 6400*1024 # 6.4M tokens
 
 
+
+
+
+
 # Debugging configuration
 
 
