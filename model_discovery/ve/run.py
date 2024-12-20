@@ -21,11 +21,14 @@ from transformers import (
     TrainingArguments,
     DataCollatorForLanguageModeling,
     TrainerCallback,
+    AutoConfig, 
+    AutoModelForCausalLM, 
 )
 from accelerate import notebook_launcher
 import functools as ft
 from argparse import Namespace
 import subprocess
+import fla  # noqa
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
@@ -79,7 +82,7 @@ parser.add_argument("--ckpt_dir", type=str, default=None)
 parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
 parser.add_argument("--logging_steps", type=int, default=DEFAULT_LOG_STEPS)
-parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
+parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use, almost never need to change during evo
 parser.add_argument("--PERF_PROF_MODE", action='store_true') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
 # parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps, do not use it as it may change the behavior of training
@@ -99,6 +102,9 @@ parser.add_argument("--params", type=str, default='')
 parser.add_argument("--sess_id", type=str, default='') 
 parser.add_argument("--cpu_only", action='store_true') 
 parser.add_argument("--silent", action='store_true')
+
+parser.add_argument("--hf_model", type=str,default='none') # use models from HF lib, if set, will ignore gab
+parser.add_argument("--hf_config", type=str,default='none') # use models from HF lib, if set, will ignore gab
 
 
 
@@ -132,7 +138,7 @@ def get_step_time_lower(scale,n_gpus):
     slow_threshold = SLOW_TOLERANCE[scale]
 
     # FIXME: sometimes not estimated correctly
-    config = eval(f"GAMConfig_{scale}()")
+    config = eval(f"GAMConfig_{scale}()") # will not be used in HF mode
     time_lower = TIME_LOWER[scale] * 8/n_gpus # TODO: not consider the gpu type yet
     training_tokens = config.reference_size * 20 # the data is based on 20 tokens per param
     num_steps = int(np.ceil(training_tokens / (config.batch_tokens))) # actually the data is based on max batch size, so its a bit overestimated
@@ -143,7 +149,11 @@ def get_step_time_lower(scale,n_gpus):
 
 def _explore_setup(args):
     setup(args)
-    gab,gab_config = BlockRegister.load_block(args.gab_name)
+    HF_MODE = args.hf_model != 'none'
+    if HF_MODE:
+        gab,gab_config = None,None # No gab for HF mode
+    else:
+        gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     num_steps=10 # a small number for testing OOM
@@ -155,6 +165,9 @@ def _explore_setup(args):
         num_processes=args.n_gpus, 
         use_port=free_port,
     )
+    if HF_MODE:
+        return
+    
     time_elapsed = time.perf_counter() - time_start
     scale = args.scale
     n_gpus = args.n_gpus
@@ -179,7 +192,7 @@ def _auto_tune_setup(args,log_fn=None): # Need to be called before training afte
     args.mode='_explore_setup'
     args_dict = vars(args)
     gradient_accumulation_steps=config.gradient_accumulation_steps
-    
+        
     while True:
         log_fn(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
         util_logger.info(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
@@ -263,10 +276,14 @@ def setup(args,log_fn=None) -> None:
 def before_train(args,log_fn):
     start = time.perf_counter()
     log_fn('Preparing the model...')
-    gab,gab_config = BlockRegister.load_block(args.gab_name)
+    HF_MODE = args.hf_model != 'none'
+    if HF_MODE:
+        gab,gab_config = None,None # No gab for HF mode
+    else:
+        gab,gab_config = BlockRegister.load_block(args.gab_name)
     if args.PERF_PROF_MODE or args.RANDOM_TESTING: # skip the following if in performance profiling mode
         return args,gab,gab_config
-        
+    
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
     global wandb_ids
@@ -288,6 +305,9 @@ def before_train(args,log_fn):
             name=f"{args.evoname}_{args.design_id}_{datetime.now().strftime('%Y%m%d%H%M%S')}"
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
+    
+    if HF_MODE:
+        return args,gab,gab_config
     
     # if not args.auto_find_batch_size_hf:    
     log_fn('Auto tuning the gradient accumulation steps...')
@@ -350,18 +370,30 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
         The global configuration for training.
     """
     log_fn = log_fn if log_fn else lambda x,y=None: None
+
+    HF_MODE = args.hf_model != 'none'
+
     with U.CodeTimer("setup model"):
         log_fn('Setting up the model...')
         start=time.perf_counter()
         if isinstance(args, dict):
             args = Namespace(**args)
-        config = eval(f"GAMConfig_{args.scale}()")
-        model = ModisLMHeadModel(
-            config, gab, dtype=torch.bfloat16, device="cuda",
-            block_config=gab_config,
-            RANDOM_TESTING=args.RANDOM_TESTING
-        ) # seems should not be bf16 for tf32 mode
-        model.print_size()
+        if HF_MODE: # preparing HF model
+            # config = ...
+            model = AutoModelForCausalLM.from_config(AutoConfig.from_pretrained(args.model_name_or_path))
+            model.train()
+            trainable_params, all_param = model.num_parameters(only_trainable=True), model.num_parameters()
+            util_logger.info(f"% of trainable params: {trainable_params:d} / {all_param:d} = {trainable_params / all_param:.2%}")
+            util_logger.info(f"{model}\n{model.config}")
+            # raise NotImplementedError('HF mode is not implemented yet')
+        else:
+            config = eval(f"GAMConfig_{args.scale}()")
+            model = ModisLMHeadModel(
+                config, gab, dtype=torch.bfloat16, device="cuda",
+                block_config=gab_config,
+                RANDOM_TESTING=args.RANDOM_TESTING
+            ) # seems should not be bf16 for tf32 mode
+            model.print_size()
         log_fn('Setting up the model done.')
 
     with U.CodeTimer("loading dataset"):
@@ -591,7 +623,11 @@ def run_eval(args,log_fn):
     #     return
     print("Evaluation Start")
     log_fn('Setting up the evaluation arguments...')
-    cfg=eval(f"GAMConfig_{args.scale}()")
+    HF_MODE = args.hf_model != 'none' # TODO: check if it matters in eval
+    if HF_MODE:
+        raise NotImplementedError('HF mode is not implemented yet')
+    else:
+        cfg=eval(f"GAMConfig_{args.scale}()")
     if not args.RANDOM_TESTING:
         wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
         wandb_ids['evaluate']={}
