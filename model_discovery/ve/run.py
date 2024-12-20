@@ -315,9 +315,10 @@ def before_train(args,log_fn):
         args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
     except Exception as e:
         util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
-        scale=args.design_id.split('_')[-1]
-        design=args.design_id[:-len(scale)-1]
-        U.log_error_model(design,scale)
+        if not (HF_MODE or args.mode == 'test'):    
+            scale=args.design_id.split('_')[-1]
+            design=args.design_id[:-len(scale)-1]
+            U.log_error_model(design,scale)
         log_fn(f'Evaluation failed with error...','ERROR')
         sys.exit()
     log_fn('Auto tuning the gradient accumulation steps done.')
@@ -604,9 +605,10 @@ def train(args,log_fn=None):
         util_logger.error(f"Error during training: {e}")
         print(traceback.format_exc())
         # if 'torch.OutOfMemoryError' in str(e): # NOTE: just capture all for now
-        scale=args.design_id.split('_')[-1]
-        design=args.design_id[:-len(scale)-1]
-        U.log_error_model(design,scale)
+        if not (HF_MODE or args.mode == 'test'):
+            scale=args.design_id.split('_')[-1]
+            design=args.design_id[:-len(scale)-1]
+            U.log_error_model(design,scale)
         log_fn(f'Training failed with error...','ERROR')
         sys.exit()
     after_train(args,log_fn)
@@ -682,9 +684,10 @@ def evalu(args,log_fn=None):
         run_eval(args,log_fn)
     except Exception as e:
         util_logger.error(f"Error during evaluation: {e}")
-        scale=args.design_id.split('_')[-1]
-        design=args.design_id[:-len(scale)-1]
-        U.log_error_model(design,scale)
+        if not (HF_MODE or args.mode == 'test'):    
+            scale=args.design_id.split('_')[-1]
+            design=args.design_id[:-len(scale)-1]
+            U.log_error_model(design,scale)
         log_fn(f'Evaluation failed with error...','ERROR')
         sys.exit()
     util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
