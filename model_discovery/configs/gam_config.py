@@ -145,7 +145,7 @@ class GAMConfig_760M(GAMConfig):
 
 @dataclass
 class GAMConfig_1300M(GAMConfig):
-    scale: str = '1.3B'
+    scale: str = '1300M'
     d_model: int = 2048
     n_block: int = 24
     reference_size: int = 1273792512

@@ -37,6 +37,7 @@ from ..configs.gam_config import (
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 from ..configs.const import *
+from ..configs.hf_configs import hf_config_from_args
 from ..model.gam import ModisLMHeadModel
 from .evaluator import cli_evaluate
 from .. import utils as U
@@ -103,7 +104,6 @@ parser.add_argument("--sess_id", type=str, default='')
 parser.add_argument("--cpu_only", action='store_true') 
 parser.add_argument("--silent", action='store_true')
 
-parser.add_argument("--hf_model", type=str,default='none') # use models from HF lib, if set, will ignore gab
 parser.add_argument("--hf_config", type=str,default='none') # use models from HF lib, if set, will ignore gab
 
 
@@ -149,7 +149,7 @@ def get_step_time_lower(scale,n_gpus):
 
 def _explore_setup(args):
     setup(args)
-    HF_MODE = args.hf_model != 'none'
+    HF_MODE = args.hf_config != 'none'
     if HF_MODE:
         gab,gab_config = None,None # No gab for HF mode
     else:
@@ -186,7 +186,7 @@ def _explore_setup(args):
 
 # stable but slow
 def _auto_tune_setup(args,log_fn=None): # Need to be called before training after models are prepared
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     config = eval(f"GAMConfig_{args.scale}()")
     config.training_data = ['cosmopedia-v2']
     args.mode='_explore_setup'
@@ -236,7 +236,7 @@ def setup(args,log_fn=None) -> None:
         The global run configuration
     :raises: ValueError 
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNINNG': print(f'[{y}] {x}')
 
     log_fn('Setting up the run environment...')
 
@@ -276,7 +276,7 @@ def setup(args,log_fn=None) -> None:
 def before_train(args,log_fn):
     start = time.perf_counter()
     log_fn('Preparing the model...')
-    HF_MODE = args.hf_model != 'none'
+    HF_MODE = args.hf_config != 'none'
     if HF_MODE:
         gab,gab_config = None,None # No gab for HF mode
     else:
@@ -363,24 +363,29 @@ class LogFnCallback(TrainerCallback):
             'TRAINING'
         )
 
+
+
 def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None: 
     """Runs the full training pipeline 
 
     :param args: 
         The global configuration for training.
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
 
-    HF_MODE = args.hf_model != 'none'
+    if isinstance(args, dict):
+        args = Namespace(**args)
+    HF_MODE = args.hf_config != 'none'
 
     with U.CodeTimer("setup model"):
         log_fn('Setting up the model...')
         start=time.perf_counter()
-        if isinstance(args, dict):
-            args = Namespace(**args)
         if HF_MODE: # preparing HF model
-            # config = ...
-            model = AutoModelForCausalLM.from_config(AutoConfig.from_pretrained(args.model_name_or_path))
+            model_config,config = hf_config_from_args(args.hf_config)
+            print(model_config)
+            model = AutoModelForCausalLM.from_config(model_config)
+            model = model.to(device="cuda").to(dtype=torch.bfloat16)
+            print(model)
             model.train()
             trainable_params, all_param = model.num_parameters(only_trainable=True), model.num_parameters()
             util_logger.info(f"% of trainable params: {trainable_params:d} / {all_param:d} = {trainable_params / all_param:.2%}")
@@ -575,13 +580,16 @@ def after_train(args,log_fn):
     util_logger.info(f"Time elapsed for finishing training: {(time.perf_counter() - start):.1f} s")
 
 def train(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
     start = time.perf_counter()
     args,gab,gab_config=before_train(args,log_fn)
-    check_problem(args.design_id,log_fn) # check after testing in before_train
+
+    HF_MODE = args.hf_config != 'none'
+    if not HF_MODE: 
+        check_problem(args.design_id,log_fn) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -623,9 +631,9 @@ def run_eval(args,log_fn):
     #     return
     print("Evaluation Start")
     log_fn('Setting up the evaluation arguments...')
-    HF_MODE = args.hf_model != 'none' # TODO: check if it matters in eval
+    HF_MODE = args.hf_config != 'none' # TODO: check if it matters in eval
     if HF_MODE:
-        raise NotImplementedError('HF mode is not implemented yet')
+        _,cfg=hf_config_from_args(args.hf_config)
     else:
         cfg=eval(f"GAMConfig_{args.scale}()")
     if not args.RANDOM_TESTING:
@@ -663,9 +671,11 @@ def run_eval(args,log_fn):
     notebook_launcher(cli_evaluate, args=(None,gab,gab_config,log_fn), num_processes=args.n_gpus, use_port=free_port)
     
 def evalu(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if args.PERF_PROF_MODE: return
-    check_problem(args.design_id,log_fn)
+    HF_MODE = args.hf_config != 'none'
+    if not HF_MODE:    
+        check_problem(args.design_id,log_fn)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
     try:
@@ -731,9 +741,11 @@ def report(args,log_fn=None) -> dict:
     :param args: 
         The global training configuration. 
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if args.PERF_PROF_MODE: return
-    check_problem(args.design_id,log_fn)
+    HF_MODE = args.hf_config != 'none'
+    if not HF_MODE:    
+        check_problem(args.design_id,log_fn)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
@@ -779,7 +791,7 @@ def check_problem(design_id,log_fn):
     scale=design_id.split('_')[-1]
     design=design_id[:-len(scale)-1]
     if design in local_doc.get('error_models',{}):
-        log_fn(f'{design_id} is too slow in this machine: {local_doc["error_models"][design]} x 5, skipping...','EXIT')
+        log_fn(f'{design_id} is erroneous in this machine: {local_doc["error_models"][design]} x 5, skipping...','EXIT')
         sys.exit()
 
 def main(args,log_fn=None):
@@ -788,9 +800,10 @@ def main(args,log_fn=None):
     :param args: 
         The CLI arguments. 
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
 
-    check_problem(args.design_id,log_fn) # check before starting
+    if args.hf_config == 'none':
+        check_problem(args.design_id,log_fn) # check before starting
     
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
@@ -826,5 +839,14 @@ if __name__ == "__main__":
         main(args)
     elif args.mode=='_explore_setup':
         _explore_setup(args)
+    else:
+        print(f'''
+evoname: {args.evoname}
+design_id: {args.design_id}
+scale: {args.scale}
+hf_config: {args.hf_config}
+resume: {args.resume}
+''')
+        main(args)
 
 
