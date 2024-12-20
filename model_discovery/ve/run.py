@@ -588,7 +588,7 @@ def train(args,log_fn=None):
     args,gab,gab_config=before_train(args,log_fn)
 
     HF_MODE = args.hf_config != 'none'
-    if not HF_MODE: 
+    if not (HF_MODE or args.mode == 'test'):
         check_problem(args.design_id,log_fn) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
@@ -674,7 +674,7 @@ def evalu(args,log_fn=None):
     log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
-    if not HF_MODE:    
+    if not (HF_MODE or args.mode == 'test'):    
         check_problem(args.design_id,log_fn)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
@@ -744,7 +744,7 @@ def report(args,log_fn=None) -> dict:
     log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
-    if not HF_MODE:    
+    if not (HF_MODE or args.mode == 'test'):
         check_problem(args.design_id,log_fn)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
@@ -802,7 +802,8 @@ def main(args,log_fn=None):
     """
     log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
 
-    if args.hf_config == 'none':
+    HF_MODE = args.hf_config != 'none'
+    if not (HF_MODE or args.mode == 'test'):
         check_problem(args.design_id,log_fn) # check before starting
     
     start = time.perf_counter()

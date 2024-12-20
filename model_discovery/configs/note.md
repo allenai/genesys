@@ -1,3 +1,9 @@
+## Test
+
+bash scripts/run_ve.sh \
+  --mode test \
+  --resume
+
 
 
 ## Mamba2-1.3B
