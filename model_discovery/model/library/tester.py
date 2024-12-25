@@ -106,7 +106,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
+    model_name = 'mamba2' 
     path = None
     tree_dir = None
     # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'

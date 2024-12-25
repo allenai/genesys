@@ -129,7 +129,7 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
     '31M':5,
     '70M':4,
     '125M':3,
-    '350M':1.5,
+    '350M':2.5,
     '760M':1.5,
     '1300M':1.5,
 }
@@ -328,7 +328,7 @@ def before_train(args,log_fn):
 
 
 class LogFnCallback(TrainerCallback):
-    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=2):
+    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=3):
         self.log_fn = log_fn
         self.n_gpus = n_gpus
         self.design_id = design_id
