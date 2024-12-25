@@ -33,6 +33,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     )
     cfg = eval(f"GAMConfig_{scale}()")
 
+    gabpath = os.path.join(os.environ.get('CKPT_DIR'),'gab.py')
 
     if code is None:
         if path is None:
@@ -59,7 +60,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     code+='\n\n\nfrom model_discovery.model.block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
     if check_only:
         return code
-    with open(U.pjoin(path,'gab.py'),'w') as f:
+    with open(U.pjoin(gabpath,'gab.py'),'w') as f:
         f.write(code)
     savedir=U.pjoin(path, 'reports')
     U.mkdir(savedir,exist_ok=True)
@@ -105,7 +106,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
+    model_name = 'mamba2' 
     path = None
     tree_dir = None
     # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
@@ -126,3 +127,4 @@ if __name__ == "__main__":
             check_tune(scale, model_name, path)
     else:
         run(scale, model_name,args, path=path,training_token_multiplier=training_token_multiplier) # Then run this
+
