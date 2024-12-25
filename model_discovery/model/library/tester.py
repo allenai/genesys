@@ -86,7 +86,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.resume=True
     args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
-    args.port="25869"
+    # args.port="25869"
     args.tune_lr_in_auto_bs=False
 
     # args.n_gpus = 1 # use it for the first time setup and data loading
@@ -105,13 +105,15 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'retnet' 
+    model_name = 'gpt2' 
     path = None
     tree_dir = None
-    tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
-    path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
-    scale = '14M' 
+    # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
+    # path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
+    scale = '350M' 
     args = ve_parser.parse_args()
+
+    training_token_multiplier = 20
 
     if args.mode=='check':
         if tree_dir is not None and U.pexists(tree_dir):
@@ -123,4 +125,4 @@ if __name__ == "__main__":
         else:
             check_tune(scale, model_name, path)
     else:
-        run(scale, model_name,args, path=path) # Then run this
+        run(scale, model_name,args, path=path,training_token_multiplier=training_token_multiplier) # Then run this

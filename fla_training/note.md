@@ -9,20 +9,10 @@ python preprocess.py \
   --split train \
   --context_length 2048
 
+2. Train the model
 
-bash train.sh \
-  type=gla \
-  lr=3e-4 \
-  steps=20480 \
-  batch=8 \
-  update=1 \
+
+bash scripts/fla_train.sh \
+  data=chengjunyan1/smollm-12.5-corpus \
   warmup=1024 \
-  context=2048 \
-  path=exp/gla-340M-10B \
-  project=fla \
-  model=configs/gla_340M.json \
-  data=HuggingFaceFW/fineweb-edu \
-  name=sample-10BT \
-  cache=data/HuggingFaceFW/fineweb-edu/sample-10BT/train
-
-  
+  model=mamba2_350M

@@ -235,4 +235,3 @@ class GAMConfig_debug(GAMConfig_14M):
     # use_template: bool = False
     
 
-

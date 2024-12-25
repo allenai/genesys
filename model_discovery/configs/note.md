@@ -2,6 +2,7 @@
 
 bash scripts/run_ve.sh \
   --mode test \
+  --PERF_PROF_MODE \
   --resume
 
 

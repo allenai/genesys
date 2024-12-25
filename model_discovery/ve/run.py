@@ -28,7 +28,10 @@ from accelerate import notebook_launcher
 import functools as ft
 from argparse import Namespace
 import subprocess
-import fla  # noqa
+
+# FIXME: fla will init cuda!!!
+# from ..configs.hf_configs import hf_config_from_args
+
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
@@ -37,7 +40,6 @@ from ..configs.gam_config import (
     GAMConfig_1300M,GAMConfig_2700M,GAMConfig_6700M,GAMConfig_13B,GAMConfig_175B,GAMConfig_1T,GAMConfig_debug
 )
 from ..configs.const import *
-from ..configs.hf_configs import hf_config_from_args
 from ..model.gam import ModisLMHeadModel
 from .evaluator import cli_evaluate
 from .. import utils as U
@@ -68,7 +70,7 @@ def find_free_port(start_port=25986, max_port=65535):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
-parser.add_argument("--design_id", type=str, default="test") # evosytem will assign acronym_scale as id
+parser.add_argument("--design_id", type=str, default="test_14M") # evosytem will assign acronym_scale as id
 parser.add_argument("--resume", action='store_true', help="Whether to resume from the latest checkpoint if there is one, or fully retrain")
 parser.add_argument("--scale", type=str, default='debug') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
@@ -165,7 +167,7 @@ def _explore_setup(args):
         num_processes=args.n_gpus, 
         use_port=free_port,
     )
-    if HF_MODE:
+    if HF_MODE or args.mode == 'test':
         return
     
     time_elapsed = time.perf_counter() - time_start
@@ -306,7 +308,7 @@ def before_train(args,log_fn):
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     
-    if HF_MODE:
+    if HF_MODE or args.mode == 'test': # XXX: may remove test mode here
         return args,gab,gab_config
     
     # if not args.auto_find_batch_size_hf:    
@@ -382,6 +384,7 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
         log_fn('Setting up the model...')
         start=time.perf_counter()
         if HF_MODE: # preparing HF model
+            raise NotImplementedError('HF mode is not implemented yet')
             model_config,config = hf_config_from_args(args.hf_config)
             print(model_config)
             model = AutoModelForCausalLM.from_config(model_config)
@@ -635,6 +638,7 @@ def run_eval(args,log_fn):
     log_fn('Setting up the evaluation arguments...')
     HF_MODE = args.hf_config != 'none' # TODO: check if it matters in eval
     if HF_MODE:
+        raise NotImplementedError('HF mode is not implemented yet')
         _,cfg=hf_config_from_args(args.hf_config)
     else:
         cfg=eval(f"GAMConfig_{args.scale}()")
@@ -836,7 +840,7 @@ if __name__ == "__main__":
     
     if args.mode=='test':
         args.evoname = "ve_test"
-        args.design_id = "test"
+        args.design_id = "test_14M"
         args.resume = True
         # args.n_gpus = 1
         # args.PERF_PROF_MODE = True
