@@ -33,7 +33,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     )
     cfg = eval(f"GAMConfig_{scale}()")
 
-    gabpath = os.path.join(os.environ.get('CKPT_DIR'),'gab.py')
+    gabpath = os.path.join(os.environ.get('CKPT_DIR'))
 
     if code is None:
         if path is None:
