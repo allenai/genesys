@@ -111,10 +111,10 @@ if __name__ == "__main__":
     tree_dir = None
     # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
     # path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
-    scale = '350M' 
+    scale = '125M' 
     args = ve_parser.parse_args()
 
-    training_token_multiplier = 20
+    training_token_multiplier = 100
 
     if args.mode=='check':
         if tree_dir is not None and U.pexists(tree_dir):

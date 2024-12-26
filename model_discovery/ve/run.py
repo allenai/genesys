@@ -137,6 +137,8 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
 
 
 def get_step_time_lower(scale,n_gpus):
+    if '-' in scale:
+        scale = scale.split('-')[0]
     slow_threshold = SLOW_TOLERANCE[scale]
 
     # FIXME: sometimes not estimated correctly
