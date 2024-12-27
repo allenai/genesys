@@ -191,8 +191,7 @@ def _explore_setup(args):
 
 # stable but slow
 def _auto_tune_setup(args,log_fn=None): # Need to be called before training after models are prepared
-    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     config = eval(f"GAMConfig_{args.scale}()")
     config.training_data = ['cosmopedia-v2']
     args.mode='_explore_setup'
@@ -378,7 +377,8 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
     :param args: 
         The global configuration for training.
     """
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None 
 
     if isinstance(args, dict):
         args = Namespace(**args)
@@ -588,7 +588,9 @@ def after_train(args,log_fn):
     util_logger.info(f"Time elapsed for finishing training: {(time.perf_counter() - start):.1f} s")
 
 def train(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None 
+
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
@@ -682,7 +684,8 @@ def run_eval(args,log_fn):
     notebook_launcher(cli_evaluate, args=(None,gab,gab_config,log_fn), num_processes=args.n_gpus, use_port=free_port)
     
 def evalu(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None 
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):    
