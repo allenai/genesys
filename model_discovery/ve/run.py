@@ -191,7 +191,8 @@ def _explore_setup(args):
 
 # stable but slow
 def _auto_tune_setup(args,log_fn=None): # Need to be called before training after models are prepared
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None
     config = eval(f"GAMConfig_{args.scale}()")
     config.training_data = ['cosmopedia-v2']
     args.mode='_explore_setup'
