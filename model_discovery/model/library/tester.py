@@ -72,10 +72,11 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     if path is None:
         assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
         path=U.pjoin(LIBRARY_PATH, model_name)
-    with open(U.pjoin(path,'gab.py'),'r') as f:
-        code=f.read()
-    with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
-        f.write(code)
+    # with open(U.pjoin(path,'gab.py'),'r') as f:
+    #     code=f.read()
+    # ckpt_dir = os.environ.get('CKPT_DIR')
+    # with open(U.pjoin(ckpt_dir,'gab.py'),'w') as f:
+    #     f.write(code)
     args.evoname='LIBRARY_HOLD'
     args.design_id=model_name+'_'+scale
     assert training_token_multiplier>0
@@ -89,6 +90,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.logging_steps=10
     # args.port="25869"
     args.tune_lr_in_auto_bs=False
+    args.lmeval_batch_size='64'
 
     # args.n_gpus = 1 # use it for the first time setup and data loading
 
@@ -106,15 +108,23 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
-    path = None
+    # spectraladaptivegpt 
+    model_name = 'vqhpmemory' 
+    # path = None
     tree_dir = None
     # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
     # path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
-    scale = '125M' 
+    
+    ckpt_dir = os.environ.get('CKPT_DIR')
+    path = U.pjoin(ckpt_dir,'HOLD')
+
+    
+    scale = '350M' 
     args = ve_parser.parse_args()
 
-    training_token_multiplier = 100
+
+
+    training_token_multiplier = 20
 
     if args.mode=='check':
         if tree_dir is not None and U.pexists(tree_dir):
