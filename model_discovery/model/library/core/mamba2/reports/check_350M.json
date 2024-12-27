@@ -1,0 +1,12 @@
+{
+    "log": "Checking the designed model...\nChecking code format...\nCode format is correct and reformatted.\n\n\nWarnings:\n\nThe \"__init__\" method of \"GAB\" is missing the \"block_loc\" argument. Automatically added by the reformatter.\n\nThe super().__init__(embed_dim, block_loc) call in GAB is force overwritten by the reformatter. It may cause error if you modified this line.\n\nChecking the unit tests...\nChecking model in multiple scales... Reloading the model with config on 31M...\nTesting forward pass... Mock input shape: torch.Size([2, 2048]).\nForward check finished. Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n - No captured output during the loading and initialization of the model.\n\n - No captured output or error during the forward pass of the model.\n\n\n\nEND OF CAPTURED OUTPUT.\n\n\nChecking model in multiple scales... Reloading the model with config on 14M...\nTesting forward pass... Mock input shape: torch.Size([2, 2048]).\nForward check finished. Captured output during the test:\n\nBEGIN OF CAPTURED OUTPUT:\n\n - No captured output during the loading and initialization of the model.\n\n - No captured output or error during the forward pass of the model.\n\n - No captured output during the loading and initialization of the model.\n\n - No captured output or error during the forward pass of the model.\n\n\n\nEND OF CAPTURED OUTPUT.\n\n\nModel initialization succeeded.\n|------Model size------|\n Total params: 5.52M (tied)\n - GAM params: 5.52M\n   - Embedding: 4.10M\n   - Non-embedding: 1.42M\n     - Block: 236.56K x 6\n       - GAB: 236.56K\n - LM Head params: 4.10M\n|----------------------|\n\nChecking forward pass... Mock input shape: torch.Size([2, 2048]).\nForward pass test passed\nChecking causality... It checks the causality by changing all future steps X[t+delta] of X[t] and see if Y[t] or any previous outputs change.Mock input shape: torch.Size([2, 100, 128]).\nCausality test passed\nChecking differentiability... Mock input shape: torch.Size([2, 2048]).\nDifferentiability test passed\nChecking effectiveness...\nThe model is effective.\n\nAll tests passed!\n\n",
+    "effectiveness": {
+        "run_time": 11.7485,
+        "loss": 9.4875,
+        "gradient_of_losses": -0.225,
+        "max_memory_allocated": 10170.34716796875,
+        "total_flos": 2791031439360.0,
+        "train_loss": 9.4875
+    },
+    "hints": []
+}

@@ -33,6 +33,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     )
     cfg = eval(f"GAMConfig_{scale}()")
 
+    gabpath = os.path.join(os.environ.get('CKPT_DIR'))
 
     if code is None:
         if path is None:
@@ -59,7 +60,7 @@ def check_tune(scale, model_name, path=None, code=None, check_only=False, cpu_on
     code+='\n\n\nfrom model_discovery.model.block_registry import BlockRegister\n\nBlockRegister(\n    name="default",\n    config=block_config\n)(GAB)'
     if check_only:
         return code
-    with open(U.pjoin(path,'gab.py'),'w') as f:
+    with open(U.pjoin(gabpath,'gab.py'),'w') as f:
         f.write(code)
     savedir=U.pjoin(path, 'reports')
     U.mkdir(savedir,exist_ok=True)
@@ -71,10 +72,11 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     if path is None:
         assert model_name in MODEL2CODE, "Model name not found in MODEL2CODE, path not provided as well"
         path=U.pjoin(LIBRARY_PATH, model_name)
-    with open(U.pjoin(path,'gab.py'),'r') as f:
-        code=f.read()
-    with open('/home/junyanc/model_discovery/model_discovery/model/gab.py','w') as f:
-        f.write(code)
+    # with open(U.pjoin(path,'gab.py'),'r') as f:
+    #     code=f.read()
+    # ckpt_dir = os.environ.get('CKPT_DIR')
+    # with open(U.pjoin(ckpt_dir,'gab.py'),'w') as f:
+    #     f.write(code)
     args.evoname='LIBRARY_HOLD'
     args.design_id=model_name+'_'+scale
     assert training_token_multiplier>0
@@ -86,8 +88,9 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.resume=True
     args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
-    args.port="25869"
+    # args.port="25869"
     args.tune_lr_in_auto_bs=False
+    args.lmeval_batch_size='64'
 
     # args.n_gpus = 1 # use it for the first time setup and data loading
 
@@ -105,13 +108,23 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'retnet' 
-    path = None
+    # spectraladaptivegpt 
+    model_name = 'vqhpmemory' 
+    # path = None
     tree_dir = None
-    tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
-    path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
-    scale = '14M' 
+    # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
+    # path = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/gau'
+    
+    ckpt_dir = os.environ.get('CKPT_DIR')
+    path = U.pjoin(ckpt_dir,'HOLD')
+
+    
+    scale = '350M' 
     args = ve_parser.parse_args()
+
+
+
+    training_token_multiplier = 20
 
     if args.mode=='check':
         if tree_dir is not None and U.pexists(tree_dir):
@@ -123,4 +136,5 @@ if __name__ == "__main__":
         else:
             check_tune(scale, model_name, path)
     else:
-        run(scale, model_name,args, path=path) # Then run this
+        run(scale, model_name,args, path=path,training_token_multiplier=training_token_multiplier) # Then run this
+
