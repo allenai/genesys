@@ -98,6 +98,7 @@ parser.add_argument("--training_data", type=str, default='None')
 parser.add_argument("--tokenizer", type=str, default='None')
 parser.add_argument("--context_length", type=str, default='None') # need convert to int
 parser.add_argument("--step_slow_tolerance", type=float, default=2.5) # how much slower than the lower bound is considered slow
+parser.add_argument("--lmeval_batch_size", type=str, default='auto') # batch size for lm evaluation
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -128,7 +129,7 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
     '14M':10,
     '31M':5,
     '70M':4,
-    '125M':3,
+    '125M':4,
     '350M':2.5,
     '760M':1.5,
     '1300M':1.5,
@@ -662,7 +663,8 @@ def run_eval(args,log_fn):
         "--model_args", f"pretrained={args.evoname}/{args.scale}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", eval_tasks, 
         # "--device", "cuda",
-        "--batch_size", f"auto",
+        # "--batch_size", f"auto",
+        "--batch_size", f"{args.lmeval_batch_size}",
         "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
         "--cache_requests", "true", # refresh for debugging, true for normal 

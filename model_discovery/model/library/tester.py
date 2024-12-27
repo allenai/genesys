@@ -89,6 +89,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.logging_steps=10
     # args.port="25869"
     args.tune_lr_in_auto_bs=False
+    args.lmeval_batch_size='32'
 
     # args.n_gpus = 1 # use it for the first time setup and data loading
 
@@ -106,7 +107,7 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
 
 
 if __name__ == "__main__":
-    model_name = 'gpt2' 
+    model_name = 'mamba2' 
     path = None
     tree_dir = None
     # tree_dir = f'/home/junyanc/model_discovery/model_discovery/model/library/core/{model_name}/units'
