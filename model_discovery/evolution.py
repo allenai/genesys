@@ -1781,7 +1781,7 @@ class PhylogeneticTree:
         design_vectors = dict(zip(designs, results))
 
         return design_vectors
-    
+
     def get_design_vector(self,node_dict,is_baseline=False, unit_info=False,load_wandb=False):
         vector = {}
         node = node_dict
@@ -1810,6 +1810,23 @@ class PhylogeneticTree:
 
     def get_baseline_vectors(self):
         return self.get_design_vectors(is_baseline=True)
+
+    def get_custom_vectors(self,folder):
+        ckpt_dir=os.environ.get('CKPT_DIR')
+        dir=U.pjoin(ckpt_dir,folder)
+        vectors={}
+        print(f'{len(os.listdir(dir))} files found in {dir}')
+        for file in os.listdir(dir):
+            model_scale=file.split('-')[0]
+            _,scale=model_scale.split('_')
+            report=U.load_json(U.pjoin(dir,file,'report.json'))
+            assert report, f'No report found for {file}'
+            vector = {}
+            vector['verifications']={scale:report}
+            vector['proposal_rating']=0
+            vector['units']={}
+            vectors[file]=vector
+        return vectors
 
     def get_design_artifacts(self):
         self.update_design_tree()
