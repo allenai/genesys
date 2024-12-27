@@ -21,11 +21,17 @@ from transformers import (
     TrainingArguments,
     DataCollatorForLanguageModeling,
     TrainerCallback,
+    AutoConfig, 
+    AutoModelForCausalLM, 
 )
 from accelerate import notebook_launcher
 import functools as ft
 from argparse import Namespace
 import subprocess
+
+# FIXME: fla will init cuda!!!
+# from ..configs.hf_configs import hf_config_from_args
+
 
 from .data_loader import load_datasets
 from .modis_trainer import ModisTrainer
@@ -64,7 +70,7 @@ def find_free_port(start_port=25986, max_port=65535):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--evoname", type=str, default="evolution_test") # the name of the whole evolution
-parser.add_argument("--design_id", type=str, default="test") # evosytem will assign acronym_scale as id
+parser.add_argument("--design_id", type=str, default="test_14M") # evosytem will assign acronym_scale as id
 parser.add_argument("--resume", action='store_true', help="Whether to resume from the latest checkpoint if there is one, or fully retrain")
 parser.add_argument("--scale", type=str, default='debug') 
 parser.add_argument("--n_gpus", type=int, default=torch.cuda.device_count())
@@ -79,7 +85,7 @@ parser.add_argument("--ckpt_dir", type=str, default=None)
 parser.add_argument("--data_dir", type=str, default=None)
 parser.add_argument("--download_data_only", action='store_true')
 parser.add_argument("--logging_steps", type=int, default=DEFAULT_LOG_STEPS)
-parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use 
+parser.add_argument("--gab_name", type=str, default='default') ## name of gab block to use, almost never need to change during evo
 parser.add_argument("--PERF_PROF_MODE", action='store_true') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
 parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto find batch size
 # parser.add_argument("--tune_lr_in_auto_bs", type=bool, default=False) # tune lr or tune grad accumulation steps, do not use it as it may change the behavior of training
@@ -92,6 +98,7 @@ parser.add_argument("--training_data", type=str, default='None')
 parser.add_argument("--tokenizer", type=str, default='None')
 parser.add_argument("--context_length", type=str, default='None') # need convert to int
 parser.add_argument("--step_slow_tolerance", type=float, default=2.5) # how much slower than the lower bound is considered slow
+parser.add_argument("--lmeval_batch_size", type=str, default='auto') # batch size for lm evaluation
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -99,6 +106,8 @@ parser.add_argument("--params", type=str, default='')
 parser.add_argument("--sess_id", type=str, default='') 
 parser.add_argument("--cpu_only", action='store_true') 
 parser.add_argument("--silent", action='store_true')
+
+parser.add_argument("--hf_config", type=str,default='none') # use models from HF lib, if set, will ignore gab
 
 
 
@@ -120,8 +129,8 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
     '14M':10,
     '31M':5,
     '70M':4,
-    '125M':3,
-    '350M':1.5,
+    '125M':4,
+    '350M':2.5,
     '760M':1.5,
     '1300M':1.5,
 }
@@ -129,10 +138,12 @@ SLOW_TOLERANCE={ # bound the time within the most pessimistic estimate
 
 
 def get_step_time_lower(scale,n_gpus):
+    if '-' in scale:
+        scale = scale.split('-')[0]
     slow_threshold = SLOW_TOLERANCE[scale]
 
     # FIXME: sometimes not estimated correctly
-    config = eval(f"GAMConfig_{scale}()")
+    config = eval(f"GAMConfig_{scale}()") # will not be used in HF mode
     time_lower = TIME_LOWER[scale] * 8/n_gpus # TODO: not consider the gpu type yet
     training_tokens = config.reference_size * 20 # the data is based on 20 tokens per param
     num_steps = int(np.ceil(training_tokens / (config.batch_tokens))) # actually the data is based on max batch size, so its a bit overestimated
@@ -143,7 +154,11 @@ def get_step_time_lower(scale,n_gpus):
 
 def _explore_setup(args):
     setup(args)
-    gab,gab_config = BlockRegister.load_block(args.gab_name)
+    HF_MODE = args.hf_config != 'none'
+    if HF_MODE:
+        gab,gab_config = None,None # No gab for HF mode
+    else:
+        gab,gab_config = BlockRegister.load_block(args.gab_name)
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     num_steps=10 # a small number for testing OOM
@@ -155,6 +170,9 @@ def _explore_setup(args):
         num_processes=args.n_gpus, 
         use_port=free_port,
     )
+    if HF_MODE or args.mode == 'test':
+        return
+    
     time_elapsed = time.perf_counter() - time_start
     scale = args.scale
     n_gpus = args.n_gpus
@@ -173,13 +191,13 @@ def _explore_setup(args):
 
 # stable but slow
 def _auto_tune_setup(args,log_fn=None): # Need to be called before training after models are prepared
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     config = eval(f"GAMConfig_{args.scale}()")
     config.training_data = ['cosmopedia-v2']
     args.mode='_explore_setup'
     args_dict = vars(args)
     gradient_accumulation_steps=config.gradient_accumulation_steps
-    
+        
     while True:
         log_fn(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
         util_logger.info(f"Exploring with gradient_accumulation_steps: {gradient_accumulation_steps}")
@@ -223,7 +241,7 @@ def setup(args,log_fn=None) -> None:
         The global run configuration
     :raises: ValueError 
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNINNG': print(f'[{y}] {x}')
 
     log_fn('Setting up the run environment...')
 
@@ -263,10 +281,14 @@ def setup(args,log_fn=None) -> None:
 def before_train(args,log_fn):
     start = time.perf_counter()
     log_fn('Preparing the model...')
-    gab,gab_config = BlockRegister.load_block(args.gab_name)
+    HF_MODE = args.hf_config != 'none'
+    if HF_MODE:
+        gab,gab_config = None,None # No gab for HF mode
+    else:
+        gab,gab_config = BlockRegister.load_block(args.gab_name)
     if args.PERF_PROF_MODE or args.RANDOM_TESTING: # skip the following if in performance profiling mode
         return args,gab,gab_config
-        
+    
     ## initialize wandb
     util_logger.info(f'Setting up wandb...')
     global wandb_ids
@@ -289,15 +311,19 @@ def before_train(args,log_fn):
         )
     util_logger.info(f'Time elapsed for setting up wandb: {(time.perf_counter() - start):.1f} s')
     
+    if HF_MODE or args.mode == 'test': # XXX: may remove test mode here
+        return args,gab,gab_config
+    
     # if not args.auto_find_batch_size_hf:    
     log_fn('Auto tuning the gradient accumulation steps...')
     try:
         args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
     except Exception as e:
         util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
-        scale=args.design_id.split('_')[-1]
-        design=args.design_id[:-len(scale)-1]
-        U.log_error_model(design,scale)
+        if not (HF_MODE or args.mode == 'test'):    
+            scale=args.design_id.split('_')[-1]
+            design=args.design_id[:-len(scale)-1]
+            U.log_error_model(design,scale)
         log_fn(f'Evaluation failed with error...','ERROR')
         sys.exit()
     log_fn('Auto tuning the gradient accumulation steps done.')
@@ -305,7 +331,7 @@ def before_train(args,log_fn):
 
 
 class LogFnCallback(TrainerCallback):
-    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=2):
+    def __init__(self, log_fn,design_id,scale,log_steps,n_gpus,tolerance=3):
         self.log_fn = log_fn
         self.n_gpus = n_gpus
         self.design_id = design_id
@@ -343,25 +369,43 @@ class LogFnCallback(TrainerCallback):
             'TRAINING'
         )
 
+
+
 def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None: 
     """Runs the full training pipeline 
 
     :param args: 
         The global configuration for training.
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+
+    if isinstance(args, dict):
+        args = Namespace(**args)
+    HF_MODE = args.hf_config != 'none'
+
     with U.CodeTimer("setup model"):
         log_fn('Setting up the model...')
         start=time.perf_counter()
-        if isinstance(args, dict):
-            args = Namespace(**args)
-        config = eval(f"GAMConfig_{args.scale}()")
-        model = ModisLMHeadModel(
-            config, gab, dtype=torch.bfloat16, device="cuda",
-            block_config=gab_config,
-            RANDOM_TESTING=args.RANDOM_TESTING
-        ) # seems should not be bf16 for tf32 mode
-        model.print_size()
+        if HF_MODE: # preparing HF model
+            raise NotImplementedError('HF mode is not implemented yet')
+            model_config,config = hf_config_from_args(args.hf_config)
+            print(model_config)
+            model = AutoModelForCausalLM.from_config(model_config)
+            model = model.to(device="cuda").to(dtype=torch.bfloat16)
+            print(model)
+            model.train()
+            trainable_params, all_param = model.num_parameters(only_trainable=True), model.num_parameters()
+            util_logger.info(f"% of trainable params: {trainable_params:d} / {all_param:d} = {trainable_params / all_param:.2%}")
+            util_logger.info(f"{model}\n{model.config}")
+            # raise NotImplementedError('HF mode is not implemented yet')
+        else:
+            config = eval(f"GAMConfig_{args.scale}()")
+            model = ModisLMHeadModel(
+                config, gab, dtype=torch.bfloat16, device="cuda",
+                block_config=gab_config,
+                RANDOM_TESTING=args.RANDOM_TESTING
+            ) # seems should not be bf16 for tf32 mode
+            model.print_size()
         log_fn('Setting up the model done.')
 
     with U.CodeTimer("loading dataset"):
@@ -543,13 +587,16 @@ def after_train(args,log_fn):
     util_logger.info(f"Time elapsed for finishing training: {(time.perf_counter() - start):.1f} s")
 
 def train(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
     start = time.perf_counter()
     args,gab,gab_config=before_train(args,log_fn)
-    check_problem(args.design_id,log_fn) # check after testing in before_train
+
+    HF_MODE = args.hf_config != 'none'
+    if not (HF_MODE or args.mode == 'test'):
+        check_problem(args.design_id,log_fn) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -564,9 +611,10 @@ def train(args,log_fn=None):
         util_logger.error(f"Error during training: {e}")
         print(traceback.format_exc())
         # if 'torch.OutOfMemoryError' in str(e): # NOTE: just capture all for now
-        scale=args.design_id.split('_')[-1]
-        design=args.design_id[:-len(scale)-1]
-        U.log_error_model(design,scale)
+        if not (HF_MODE or args.mode == 'test'):
+            scale=args.design_id.split('_')[-1]
+            design=args.design_id[:-len(scale)-1]
+            U.log_error_model(design,scale)
         log_fn(f'Training failed with error...','ERROR')
         sys.exit()
     after_train(args,log_fn)
@@ -591,7 +639,12 @@ def run_eval(args,log_fn):
     #     return
     print("Evaluation Start")
     log_fn('Setting up the evaluation arguments...')
-    cfg=eval(f"GAMConfig_{args.scale}()")
+    HF_MODE = args.hf_config != 'none' # TODO: check if it matters in eval
+    if HF_MODE:
+        raise NotImplementedError('HF mode is not implemented yet')
+        _,cfg=hf_config_from_args(args.hf_config)
+    else:
+        cfg=eval(f"GAMConfig_{args.scale}()")
     if not args.RANDOM_TESTING:
         wandb_ids=U.load_json(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/wandb_ids.json")
         wandb_ids['evaluate']={}
@@ -610,7 +663,8 @@ def run_eval(args,log_fn):
         "--model_args", f"pretrained={args.evoname}/{args.scale}/{args.design_id},ckpt_dir={args.ckpt_dir},gab_name={args.gab_name}",
         "--tasks", eval_tasks, 
         # "--device", "cuda",
-        "--batch_size", f"auto",
+        # "--batch_size", f"auto",
+        "--batch_size", f"{args.lmeval_batch_size}",
         "--max_batch_size", f"{cfg.eval_batch_size}",
         "--output_path", f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/eval_results",
         "--cache_requests", "true", # refresh for debugging, true for normal 
@@ -627,18 +681,21 @@ def run_eval(args,log_fn):
     notebook_launcher(cli_evaluate, args=(None,gab,gab_config,log_fn), num_processes=args.n_gpus, use_port=free_port)
     
 def evalu(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if args.PERF_PROF_MODE: return
-    check_problem(args.design_id,log_fn)
+    HF_MODE = args.hf_config != 'none'
+    if not (HF_MODE or args.mode == 'test'):    
+        check_problem(args.design_id,log_fn)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
     try:
         run_eval(args,log_fn)
     except Exception as e:
         util_logger.error(f"Error during evaluation: {e}")
-        scale=args.design_id.split('_')[-1]
-        design=args.design_id[:-len(scale)-1]
-        U.log_error_model(design,scale)
+        if not (HF_MODE or args.mode == 'test'):    
+            scale=args.design_id.split('_')[-1]
+            design=args.design_id[:-len(scale)-1]
+            U.log_error_model(design,scale)
         log_fn(f'Evaluation failed with error...','ERROR')
         sys.exit()
     util_logger.info(f"Evaluation time: {(time.perf_counter() - start):.1f} s")
@@ -695,9 +752,11 @@ def report(args,log_fn=None) -> dict:
     :param args: 
         The global training configuration. 
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
     if args.PERF_PROF_MODE: return
-    check_problem(args.design_id,log_fn)
+    HF_MODE = args.hf_config != 'none'
+    if not (HF_MODE or args.mode == 'test'):
+        check_problem(args.design_id,log_fn)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
@@ -743,7 +802,7 @@ def check_problem(design_id,log_fn):
     scale=design_id.split('_')[-1]
     design=design_id[:-len(scale)-1]
     if design in local_doc.get('error_models',{}):
-        log_fn(f'{design_id} is too slow in this machine: {local_doc["error_models"][design]} x 5, skipping...','EXIT')
+        log_fn(f'{design_id} is erroneous in this machine: {local_doc["error_models"][design]} x 5, skipping...','EXIT')
         sys.exit()
 
 def main(args,log_fn=None):
@@ -752,9 +811,11 @@ def main(args,log_fn=None):
     :param args: 
         The CLI arguments. 
     """
-    log_fn = log_fn if log_fn else lambda x,y=None: None
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
 
-    check_problem(args.design_id,log_fn) # check before starting
+    HF_MODE = args.hf_config != 'none'
+    if not (HF_MODE or args.mode == 'test'):
+        check_problem(args.design_id,log_fn) # check before starting
     
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
@@ -783,12 +844,21 @@ if __name__ == "__main__":
     
     if args.mode=='test':
         args.evoname = "ve_test"
-        args.design_id = "test"
+        args.design_id = "test_14M"
         args.resume = True
         # args.n_gpus = 1
         # args.PERF_PROF_MODE = True
         main(args)
     elif args.mode=='_explore_setup':
         _explore_setup(args)
+    else:
+        print(f'''
+evoname: {args.evoname}
+design_id: {args.design_id}
+scale: {args.scale}
+hf_config: {args.hf_config}
+resume: {args.resume}
+''')
+        main(args)
 
 

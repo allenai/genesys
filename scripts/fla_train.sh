@@ -10,6 +10,7 @@ echo "type:             ${type:=gla}"
 echo "data:             ${data:=}"
 echo "name:             ${name:=}"
 echo "cache:            ${cache:=}"
+echo "varlen:           ${varlen:=false}"
 echo "seed:             ${seed:=42}"
 echo "context:          ${context:=2048}"
 echo "steps:            ${steps:=0}"
@@ -18,7 +19,7 @@ echo "limit:            ${limit:=16}"
 echo "preprocessing:    ${preprocessing:=32}"
 echo "workers:          ${workers:=32}"
 echo "logging:          ${logging:=32}"
-echo "config:           ${config:=configs/deepspeed.yaml}"
+echo "config:           ${config:=fsdp}"
 
 echo "lr:               ${lr:=3e-4}"
 echo "scheduler:        ${scheduler:=cosine_with_min_lr}"
@@ -31,7 +32,7 @@ echo "norm:             ${norm:=1.0}"
 echo "batch:            ${batch:=32}"
 echo "update:           ${update:=4}"
 echo "warmup:           ${warmup:=512}"
-echo "path:             ${path:=}"
+echo "path:             ${path:= ckpt/HF_BASELINES}"
 echo "checkpoint:       ${checkpoint:=}"
 echo "node:             ${node:=}"
 echo "rank:             ${rank:=}"
@@ -69,6 +70,7 @@ params="--model_name_or_path $model \
     --gradient_accumulation_steps $update \
     --seed $seed \
     --logging_steps $logging \
+    --log_level info \
     --bf16"
 
 if [ $steps -gt 0 ]; then
@@ -80,6 +82,9 @@ if [ "$name" != "" ]; then
 fi
 if [ "$cache" != "" ]; then
   params+=" --cache_dir $cache"
+fi
+if [ "$varlen" == "true" ]; then
+  params+=" --varlen"
 fi
 if [ "$checkpoint" != "" ]; then
   params+=" --resume_from_checkpoint $checkpoint"
@@ -184,6 +189,6 @@ export WANDB_RESUME=allow
 export WANDB_NAME="$type.$(basename $path)"
 export WANDB_PROJECT=$project
 export WANDB_RUN_ID="$WANDB_NAME-$date"
-accelerate launch $accelerate_params --config_file $config run.py $params
+accelerate launch $accelerate_params --config_file $config fla_training/run.py $params
 
 echo "RUNNING DONE!"

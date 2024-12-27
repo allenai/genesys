@@ -7,10 +7,10 @@ from torchtune.modules import RMSNorm
 
 class GAB(GABBase):
 
-    def __init__(self, embed_dim: int, n_heads, rotary_pct, device=None,
-        dtype=None, **kwargs):
+    def __init__(self, embed_dim: int, block_loc, n_heads, rotary_pct, 
+        device=None, dtype=None, **kwargs):
         factory_kwargs = {'device': device, 'dtype': dtype}
-        super().__init__(embed_dim)
+        super().__init__(embed_dim, block_loc)
         self.fn = MHA(embed_dim, n_heads, causal=True, rotary_emb_dim=int(
             rotary_pct * embed_dim // n_heads), **factory_kwargs)
         self.fn2 = GatedMLP(embed_dim, **factory_kwargs)
