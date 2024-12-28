@@ -92,6 +92,7 @@ parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto
 parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
 parser.add_argument("--ddp_find_unused_parameters", action='store_true') # whether use ddp find unused parameters feature in HF Trainer for safer but slower training
 parser.add_argument("--RANDOM_TESTING", action='store_true') # whether use random testing
+parser.add_argument("--turn_off_autotune", action='store_true') # whether use auto find batch size
 
 parser.add_argument("--eval_tasks", type=str, default='None')
 parser.add_argument("--training_data", type=str, default='None')
@@ -317,18 +318,19 @@ def before_train(args,log_fn):
         return args,gab,gab_config
     
     # if not args.auto_find_batch_size_hf:    
-    log_fn('Auto tuning the gradient accumulation steps...')
-    try:
-        args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
-    except Exception as e:
-        util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
-        if not (HF_MODE or args.mode == 'test'):    
-            scale=args.design_id.split('_')[-1]
-            design=args.design_id[:-len(scale)-1]
-            U.log_error_model(design,scale)
-        log_fn(f'Evaluation failed with error...','ERROR')
-        sys.exit()
-    log_fn('Auto tuning the gradient accumulation steps done.')
+    if not args.turn_off_autotune:
+        log_fn('Auto tuning the gradient accumulation steps...')
+        try:
+            args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
+        except Exception as e:
+            util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
+            if not (HF_MODE or args.mode == 'test'):    
+                scale=args.design_id.split('_')[-1]
+                design=args.design_id[:-len(scale)-1]
+                U.log_error_model(design,scale)
+            log_fn(f'Evaluation failed with error...','ERROR')
+            sys.exit()
+        log_fn('Auto tuning the gradient accumulation steps done.')
     return args,gab,gab_config
 
 
@@ -439,7 +441,7 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
             num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
         per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus//args.gradient_accumulation_steps
 
-    print(f"Training tokens: {U.strscale(training_tokens)}, num steps: {num_steps}, per device batch size: {per_device_batch_size}, num gpus: {args.n_gpus}")
+    print(f"[INFO] Training tokens: {U.strscale(training_tokens)}, num steps: {num_steps}, per device batch size: {per_device_batch_size}, num gpus: {args.n_gpus}, gradient accumulation steps: {args.gradient_accumulation_steps}")
 
     training_args=TrainingArguments(
         learning_rate=config.learning_rate,

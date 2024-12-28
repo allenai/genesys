@@ -92,6 +92,8 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.tune_lr_in_auto_bs=False
     args.lmeval_batch_size='64'
     args.ignore_error=True
+    args.turn_off_autotune=True
+    args.gradient_accumulation_steps=16
 
     # args.n_gpus = 1 # use it for the first time setup and data loading
 
