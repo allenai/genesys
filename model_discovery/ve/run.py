@@ -99,6 +99,8 @@ parser.add_argument("--tokenizer", type=str, default='None')
 parser.add_argument("--context_length", type=str, default='None') # need convert to int
 parser.add_argument("--step_slow_tolerance", type=float, default=2.5) # how much slower than the lower bound is considered slow
 parser.add_argument("--lmeval_batch_size", type=str, default='auto') # batch size for lm evaluation
+parser.add_argument("--ignore_error", action='store_true')
+
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -599,7 +601,7 @@ def train(args,log_fn=None):
 
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):
-        check_problem(args.design_id,log_fn) # check after testing in before_train
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -689,7 +691,7 @@ def evalu(args,log_fn=None):
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):    
-        check_problem(args.design_id,log_fn)
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
     try:
@@ -760,7 +762,7 @@ def report(args,log_fn=None) -> dict:
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):
-        check_problem(args.design_id,log_fn)
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
@@ -797,7 +799,9 @@ def report(args,log_fn=None) -> dict:
     return report
 
 
-def check_problem(design_id,log_fn):
+def check_problem(design_id,log_fn,ignore_error=False):
+    if ignore_error:
+        return
     local_doc = U.read_local_doc()
     if f'{design_id}' in local_doc.get('too_slow',{}):
         time_elapsed,time_lower = local_doc['too_slow'][f'{design_id}']
@@ -819,7 +823,7 @@ def main(args,log_fn=None):
 
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):
-        check_problem(args.design_id,log_fn) # check before starting
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error) # check before starting
     
     start = time.perf_counter()
     print(f"Starting run with args: {args}")

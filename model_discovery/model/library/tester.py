@@ -85,12 +85,13 @@ def run(scale,model_name,args,training_token_multiplier=20,path=None): # do a si
     args.scale=scale
     args.ckpt_dir=ckpt_dir
     args.data_dir=os.environ.get("DATA_DIR")
-    args.resume=True
+    args.resume=False
     args.training_token_multiplier=training_token_multiplier
     args.logging_steps=10
     # args.port="25869"
     args.tune_lr_in_auto_bs=False
     args.lmeval_batch_size='64'
+    args.ignore_error=True
 
     # args.n_gpus = 1 # use it for the first time setup and data loading
 
