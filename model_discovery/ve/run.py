@@ -92,6 +92,7 @@ parser.add_argument("--gradient_accumulation_steps", type=int, default=1) # auto
 parser.add_argument("--auto_find_batch_size_hf", type=bool, default=False) # whether use hf auto_find_batch_size (fast but not stable) or custom one
 parser.add_argument("--ddp_find_unused_parameters", action='store_true') # whether use ddp find unused parameters feature in HF Trainer for safer but slower training
 parser.add_argument("--RANDOM_TESTING", action='store_true') # whether use random testing
+parser.add_argument("--turn_off_autotune", action='store_true') # whether use auto find batch size
 
 parser.add_argument("--eval_tasks", type=str, default='None')
 parser.add_argument("--training_data", type=str, default='None')
@@ -99,6 +100,8 @@ parser.add_argument("--tokenizer", type=str, default='None')
 parser.add_argument("--context_length", type=str, default='None') # need convert to int
 parser.add_argument("--step_slow_tolerance", type=float, default=2.5) # how much slower than the lower bound is considered slow
 parser.add_argument("--lmeval_batch_size", type=str, default='auto') # batch size for lm evaluation
+parser.add_argument("--ignore_error", action='store_true')
+
 
 # PATCH for the evolution
 parser.add_argument("--mode", type=str, default='test') # Performance profiler mode, used when optimizing training efficiency, will not resume from checkpoint
@@ -315,18 +318,19 @@ def before_train(args,log_fn):
         return args,gab,gab_config
     
     # if not args.auto_find_batch_size_hf:    
-    log_fn('Auto tuning the gradient accumulation steps...')
-    try:
-        args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
-    except Exception as e:
-        util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
-        if not (HF_MODE or args.mode == 'test'):    
-            scale=args.design_id.split('_')[-1]
-            design=args.design_id[:-len(scale)-1]
-            U.log_error_model(design,scale)
-        log_fn(f'Evaluation failed with error...','ERROR')
-        sys.exit()
-    log_fn('Auto tuning the gradient accumulation steps done.')
+    if not args.turn_off_autotune:
+        log_fn('Auto tuning the gradient accumulation steps...')
+        try:
+            args.gradient_accumulation_steps,args.ddp_find_unused_parameters = _auto_tune_setup(args,log_fn) # always use it for safety
+        except Exception as e:
+            util_logger.error(f"Error during auto tuning the gradient accumulation steps: {e}")
+            if not (HF_MODE or args.mode == 'test'):    
+                scale=args.design_id.split('_')[-1]
+                design=args.design_id[:-len(scale)-1]
+                U.log_error_model(design,scale)
+            log_fn(f'Evaluation failed with error...','ERROR')
+            sys.exit()
+        log_fn('Auto tuning the gradient accumulation steps done.')
     return args,gab,gab_config
 
 
@@ -377,7 +381,8 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
     :param args: 
         The global configuration for training.
     """
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None 
 
     if isinstance(args, dict):
         args = Namespace(**args)
@@ -436,7 +441,7 @@ def run_train(args,gab,gab_config,num_steps=None,log_fn=None) -> None:
             num_steps = int(np.ceil(training_tokens / (config.batch_tokens)))
         per_device_batch_size=(config.batch_tokens // config.context_length)//args.n_gpus//args.gradient_accumulation_steps
 
-    print(f"Training tokens: {U.strscale(training_tokens)}, num steps: {num_steps}, per device batch size: {per_device_batch_size}, num gpus: {args.n_gpus}")
+    print(f"[INFO] Training tokens: {U.strscale(training_tokens)}, num steps: {num_steps}, per device batch size: {per_device_batch_size}, num gpus: {args.n_gpus}, gradient accumulation steps: {args.gradient_accumulation_steps}")
 
     training_args=TrainingArguments(
         learning_rate=config.learning_rate,
@@ -587,7 +592,9 @@ def after_train(args,log_fn):
     util_logger.info(f"Time elapsed for finishing training: {(time.perf_counter() - start):.1f} s")
 
 def train(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None 
+
     if (not args.PERF_PROF_MODE) and args.resume and U.pexists(f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}/pretrained"):
         util_logger.info(f"Model {args.design_id} is already pretrained")
         return
@@ -596,7 +603,7 @@ def train(args,log_fn=None):
 
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):
-        check_problem(args.design_id,log_fn) # check after testing in before_train
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error) # check after testing in before_train
     free_port = find_free_port()
     util_logger.info(f"Using port for training: {free_port}")
     print('Running with args:',args)
@@ -681,11 +688,12 @@ def run_eval(args,log_fn):
     notebook_launcher(cli_evaluate, args=(None,gab,gab_config,log_fn), num_processes=args.n_gpus, use_port=free_port)
     
 def evalu(args,log_fn=None):
-    log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    # log_fn = log_fn if log_fn else lambda x,y='RUNNING': print(f'[{y}] {x}')
+    log_fn = log_fn if log_fn else lambda x,y='RUNNING': None 
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):    
-        check_problem(args.design_id,log_fn)
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error)
     start = time.perf_counter()
     log_fn('Evaluating the model...')
     try:
@@ -756,7 +764,7 @@ def report(args,log_fn=None) -> dict:
     if args.PERF_PROF_MODE: return
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):
-        check_problem(args.design_id,log_fn)
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error)
     outdir=f"{args.ckpt_dir}/{args.evoname}/ve/{args.design_id}"
     if args.resume and U.pexists(f"{outdir}/report.json"):
         util_logger.info(f"Report already exists at {outdir}/report.json")
@@ -793,7 +801,9 @@ def report(args,log_fn=None) -> dict:
     return report
 
 
-def check_problem(design_id,log_fn):
+def check_problem(design_id,log_fn,ignore_error=False):
+    if ignore_error:
+        return
     local_doc = U.read_local_doc()
     if f'{design_id}' in local_doc.get('too_slow',{}):
         time_elapsed,time_lower = local_doc['too_slow'][f'{design_id}']
@@ -815,7 +825,7 @@ def main(args,log_fn=None):
 
     HF_MODE = args.hf_config != 'none'
     if not (HF_MODE or args.mode == 'test'):
-        check_problem(args.design_id,log_fn) # check before starting
+        check_problem(args.design_id,log_fn,ignore_error=args.ignore_error) # check before starting
     
     start = time.perf_counter()
     print(f"Starting run with args: {args}")
