@@ -581,7 +581,7 @@ def post_process_leaderboard(leaderboard):
     leaderboard['avg.']=leaderboard.mean(axis=1)
     return leaderboard
 
-def export_leaderboards(evosys,design_vectors, baseline_vectors,custom_vectors):
+def export_leaderboards(evosys,design_vectors, baseline_vectors,custom_vectors={}):
     _,_,eval_metrics,_ = get_random_metrics(evosys)
     random_eval_metrics = _group_results(eval_metrics)
     design_eval_metrics = {}

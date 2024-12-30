@@ -1001,8 +1001,10 @@ def _eureka(evosys):
 
 
     combined_eureka = pd.DataFrame()
+    _scales = list(leaderboards_normed.keys())
+    sorted_scales = sorted(_scales,key=lambda x: int(x.replace('M','')))
     st.subheader('Raw Data for Computing Fixed-baseline Eureka')
-    for scale in leaderboards_normed:
+    for scale in sorted_scales:
         relative = baseline if baseline in baselines[scale] else default_baseline
         _leaderboards_normed = leaderboard_filter(leaderboards_normed[scale])
         leaderboards_relative = leaderboard_relative(_leaderboards_normed,relative=relative,absolute=absolute,filter_threshold=filter_threshold)
@@ -1046,8 +1048,10 @@ def _eureka(evosys):
         
         leaderboards_relative_remaining = leaderboards_relative.loc[remaining_rows.index]
         # mark eureka designs (rows) by the number of columns that are >= eureka_threshold_single
-        num_highlights = leaderboards_relative_remaining.apply(lambda x: (x >= eureka_threshold_single).sum(), axis=1)
-        combined_eureka[scale] = num_highlights
+        # num_highlights = leaderboards_relative_remaining.apply(lambda x: (x >= eureka_threshold_single).sum(), axis=1)
+        _highlights = leaderboards_relative_remaining.apply(lambda x: x[x >= eureka_threshold_single].sum(), axis=1)
+        _disappointments = leaderboards_relative_remaining.apply(lambda x: x[x < -eureka_threshold_single].sum(), axis=1)
+        combined_eureka[scale] = _highlights+_disappointments
 
 
 
@@ -1503,6 +1507,18 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 st.bar_chart(chart_data,x='pair',y='mean cost-effectiveness')
 
 
+    st.subheader('Verification Analysis')
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader('Score ranking')
+        scores_filtered = {k:v for k,v in avg_score.items() if k in scores_filtered}
+        sorted_socres = sorted(scores_filtered.items(),key=lambda x: x[1],reverse=True)
+        chart_data = pd.DataFrame(sorted_socres,columns=['design','score'])
+        st.dataframe(chart_data,use_container_width=True)
+
+    with col2:
+        st.subheader('Benchmark contribution')
 
 
 def _stat_func_check(func_check):

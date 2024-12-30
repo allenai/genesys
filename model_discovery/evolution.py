@@ -1752,12 +1752,14 @@ class PhylogeneticTree:
         for design in designs:
             self.G.nodes[design]['data'].reload_verifications()
 
-    def get_design_vectors(self,is_baseline=False,first_N=None): # a more numerical representation of a design, selector to use
+    def get_design_vectors(self,is_baseline=False,first_N=None,online=True): # a more numerical representation of a design, selector to use
         if is_baseline:
-            self.FM.download_baselines()
+            if online:
+                self.FM.download_baselines()
             designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
         else:
-            self.update_design_tree()
+            if online:
+                self.update_design_tree()
             designs=self.filter_by_type('DesignArtifactImplemented')
         # design_vectors = {}
         # for design in designs:
