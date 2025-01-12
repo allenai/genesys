@@ -674,21 +674,32 @@ def running_logs(evosys):
 def ptree_monitor(evosys):
     st.subheader("Phylogenetic Tree Monitor")
 
-    col1, col2, col3 = st.columns([6,0.1,2])
+    col1, col2, col3, col4 = st.columns([6,0.1,1.2,1])
+    num_nodes = len(evosys.ptree.G.nodes)
     
+    default_max_nodes = 300 #296 
+    export_height = 2000 # 900
+    default_evo_only = num_nodes>default_max_nodes
+    size_mult = 1.4
 
     if 'ptree_max_nodes' not in st.session_state:
-        st.session_state.ptree_max_nodes=100
-
-
-    _bg_color=AU.theme_aware_options(st,"#fafafa","#f0f0f0","#fafafa")
+        st.session_state.ptree_max_nodes=default_max_nodes
     
-    export_height = 900
-    evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height=f'{export_height}px',bgcolor=_bg_color)
+    _bg_color=AU.theme_aware_options(st,"#fafafa","#f0f0f0","#fafafa")
+
+    _bg_color='#ffffff'
+    
+    evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height=f'{export_height}px',
+            bgcolor=_bg_color,evo_only=default_evo_only,size_mult=size_mult)
     ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{st.session_state.ptree_max_nodes}.html')
 
     with col1:
         _max_nodes=st.slider('Max Nodes to Display',min_value=0,max_value=len(evosys.ptree.G.nodes),value=st.session_state.ptree_max_nodes)
+
+    with col4:
+        st.write('')
+        st.write('')
+        input_evo_only=st.checkbox("Evo Only",value=default_evo_only,help='Only show the evolution nodes.')
 
     # check this: https://github.com/napoles-uach/streamlit_network 
     with col3:
@@ -697,7 +708,8 @@ def ptree_monitor(evosys):
         if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
             evosys.ptree.update_design_tree()
             evosys.ptree.export(max_nodes=_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,
-                legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100)
+                legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100,
+                evo_only=input_evo_only,size_mult=size_mult)
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             st.session_state.ptree_max_nodes=_max_nodes
             
@@ -1134,8 +1146,10 @@ def _draw_pie_alt(data, startangle=90):
     # Calculate the percentage for each slice
     total = sum(data.values())
     data_df['Percentage'] = data_df['Value'] / total * 100
-    data_df['Category'] = data_df.apply(lambda row: f"{row['Category']} ({row['Value']})", axis=1)  # Label with category and value
-
+    total_value = data_df['Value'].sum()
+    data_df['Category'] = data_df.apply(lambda row: f"{row['Category']} ({row['Value']/total_value:.1%})", axis=1)  # Label with category and value
+    data_df['Label'] = data_df['Percentage'].map('{:.1f}%'.format)  # Format percentage labels
+    
     
     # Create the pie chart
     pie_chart = alt.Chart(data_df).mark_arc(innerRadius=0).encode(
@@ -1206,6 +1220,8 @@ def _stratify_to_mean(stratify):
         return 0.75
 
 def session_stats(evosys,design_nodes,implemented_nodes):
+    EXPORT_DIR = U.pjoin(evosys.ckpt_dir,'EXPORT')
+    U.mkdir(EXPORT_DIR)
     st.subheader("Session Statistics Monitor")
     with st.expander(f"Design Session Statistics for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
         # evosys.ptree.update_design_tree()
@@ -1216,6 +1232,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
         costs = {}
         rounds = {}
         impl_costs = {}
+        verified = {}
         proposal_costs = {}
         avg_score = {}
         ratings = {}
@@ -1231,10 +1248,10 @@ def session_stats(evosys,design_nodes,implemented_nodes):
             else:
                 attempt = 0
             states[design] = state
-            costs[design] = sum(node.get_cost(with_history=False).values())
+            costs[design] = sum(node.get_cost(with_history=True).values())
             proposal_costs[design] = sum(node.proposal.costs.values())
             if node.implementation:
-                impl_costs[design] = sum(node.implementation.get_cost(with_history=False).values())
+                impl_costs[design] = sum(node.implementation.get_cost(with_history=True).values())
             try:
                 timestamps[design] = node.timestamp
             except:
@@ -1242,6 +1259,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
             avg_score[design] = np.mean(list(node.get_scores().values())) #node.get_score(scale='14M')
             ratings[design] = node.proposal.rating
             cfg_proposals[design] = node.proposal.design_cfg
+            verified[design] = len(node.verifications)>0
             if node.implementation and node.implementation.history:
                 cfg_implementations[design] = node.implementation.history[-1].design_cfg
                 rounds[design] = []
@@ -1254,105 +1272,183 @@ def session_stats(evosys,design_nodes,implemented_nodes):
             st.info('No design session statistics available at the moment.')
         else:
             # _angle=st.slider('Pie chart start angle',min_value=0,max_value=360,value=90,step=10)
-            col1, col2 = st.columns(2)
+            col1, col2 = st.columns([1,1])
             with col1:
                 st.subheader('Design state distribution')  
                 state_counts = _data_to_freq(states)
-                st.altair_chart(_draw_pie_alt(state_counts,startangle=150).interactive())
+                unfinished_states = ['unfinished (initial_pass)',"proposed (unimplemented)","unfinished (unfinished)"]
+                # state_counts['implementing'] = sum([state_counts[k] for k in to_merge])
+                for k in unfinished_states:
+                    state_counts.pop(k)
+                rename_map = {
+                    "implementing":'Implementing',
+                    "unfinished (failed)":'Failed (Implementation)',
+                    "failed":'Failed (Proposal)',
+                    "implemented (unverified)":'Failed (Verification)',
+                    "implemented (verified)":'Implemented & Verified',
+                }
+                renamed_state_counts = {rename_map[k]:v for k,v in state_counts.items()}
+                st.altair_chart(
+                    _draw_pie_alt(renamed_state_counts,startangle=100).properties(
+                        width=400,
+                        height=300
+                    ).configure_legend(
+                        orient='right',  # Place legend on the right
+                        labelLimit=300,  # Increase label width limit
+                        padding=10,      # Add padding around legend
+                        offset=5,         # Offset from the chart
+                        labelColor='black',
+                        titleColor='black',
+                    ).interactive()
+                )
             with col2:
                 st.subheader('Implementation attempt distribution')
                 # st.pyplot(_draw_pie(attempt_counts,startangle=30))
                 attempt_counts = _data_to_freq(attempts)
-                chart_data = pd.DataFrame(list(attempt_counts.items()),columns=['attempts','frequency'])
-                st.bar_chart(chart_data,x='attempts',y='frequency')
+                attempt_counts = {int(k):v for k,v in attempt_counts.items()}
+                chart_data = pd.DataFrame(list(attempt_counts.items()),columns=['Implementation attempts','Frequency'])
+                st.bar_chart(chart_data,x='Implementation attempts',y='Frequency')
 
             st.subheader('Design cost distribution')
-            mean_cost = np.mean(list(costs.values()))
-            std_cost = np.std(list(costs.values()))
-            outlier=25
-            costs_counts,outliers = _data_to_freq(costs,unit=0.5,outlier=outlier,precision=1)
-            st.write(f'Mean: ```{mean_cost:.2f}```, Std: ```{std_cost:.2f}```, Outliers (```{outlier}+```): ```{outliers}```')
-            chart_data = pd.DataFrame(list(costs_counts.items()),columns=['costs','frequency'])
-            st.bar_chart(chart_data,x='costs',y='frequency')
+            finished_deigns = [k for k in costs if states[k] not in unfinished_states]
+            finished_costs = {k:costs[k] for k in finished_deigns}
+            mean_cost = np.mean(list(finished_costs.values()))
+            std_cost = np.std(list(finished_costs.values()))
+            outlier=100
+            costs_counts,outliers = _data_to_freq(costs,unit=1,outlier=outlier,precision=1)
+            median_cost = np.median(list(finished_costs.values()))
+            st.write(f'Mean: ```{mean_cost:.2f}```, Median: ```{median_cost:.2f}```, Std: ```{std_cost:.2f}```, Outliers (```{outlier}+```): ```{outliers}```')
+            chart_data = pd.DataFrame(list(costs_counts.items()),columns=['Total cost','Frequency'])
+            st.bar_chart(chart_data,x='Total cost',y='Frequency')
 
-            col1, col2 = st.columns(2)
+            col1, col2 = st.columns([1,1])
             with col1:
-                st.subheader('Avg. accuracy Distribution')
+                finished_proposal_costs = {k:proposal_costs[k] for k in finished_deigns}
+                mean_proposal_cost = np.mean(list(finished_proposal_costs.values()))
+                std_proposal_cost = np.std(list(finished_proposal_costs.values()))
+                outlier=50
+                proposal_costs_counts,outliers = _data_to_freq(finished_proposal_costs,unit=1,outlier=outlier,precision=1)
+                median_proposal_cost = np.median(list(finished_proposal_costs.values()))
+                st.write(f'Mean: ```{mean_proposal_cost:.2f}```, Std: ```{std_proposal_cost:.2f}```, Median: ```{median_proposal_cost:.2f}```, Outliers (```{outlier}+```): ```{outliers}```')
+                proposal_costs_counts.pop(0)
+                chart_data = pd.DataFrame(list(proposal_costs_counts.items()),columns=['Proposal cost','Frequency'])
+                st.bar_chart(chart_data,x='Proposal cost',y='Frequency')
+
+            with col2:
+                finished_impl_costs = {k:impl_costs.get(k,0) for k in finished_deigns}
+                mean_impl_cost = np.mean(list(finished_impl_costs.values()))
+                std_impl_cost = np.std(list(finished_impl_costs.values()))
+                outlier=50
+                impl_costs_counts,outliers = _data_to_freq(finished_impl_costs,unit=1,outlier=outlier,precision=1)
+                median_impl_cost = np.median(list(finished_impl_costs.values()))
+                st.write(f'Mean: ```{mean_impl_cost:.2f}```, Std: ```{std_impl_cost:.2f}```, Median: ```{median_impl_cost:.2f}```, Outliers (```{outlier}+```): ```{outliers}```')
+                impl_costs_counts.pop(0)
+                chart_data = pd.DataFrame(list(impl_costs_counts.items()),columns=['Implementation cost','Frequency'])
+                st.bar_chart(chart_data,x='Implementation cost',y='Frequency')
+
+
+            col1, col2 = st.columns([1,1])
+            with col1:
+                st.subheader('Avg. fitness Distribution')
                 scores_filtered = _data_filter(avg_score,lambda x: x is not None and 0<x<1)
                 _scores = np.array(list(scores_filtered.values())).astype(float)
-                mean_score_14m = np.mean(_scores)
-                std_score_14m = np.std(_scores)
-                scores_counts = _data_to_freq(_scores,unit=0.01)
-                st.write(f'Mean: ```{mean_score_14m:.2f}```, Std: ```{std_score_14m:.2f}```, Total: ```{len(scores_filtered)}```')
-                chart_data = pd.DataFrame(list(scores_counts.items()),columns=['scores','frequency'])
-                st.bar_chart(chart_data,x='scores',y='frequency')
+                mean_score = np.mean(_scores)
+                median_score = np.median(_scores)
+                std_score = np.std(_scores)
+                scores_counts = _data_to_freq(_scores,unit=0.01)    
+                st.write(f'Mean: ```{mean_score:.2f}```, Median: ```{median_score:.2f}```, Std: ```{std_score:.2f}```, Total: ```{len(scores_filtered)}```')
+                chart_data = pd.DataFrame(list(scores_counts.items()),columns=['Fitness','Frequency'])
+                st.bar_chart(chart_data,x='Fitness',y='Frequency')
 
             with col2:
-                st.subheader('Accuracy-Cost Correlation')
+                st.subheader('Fitness-Cost Correlation')
+                center=0.58
                 cost_filtered = {k:float(v) for k,v in costs.items() if k in scores_filtered}
                 _costs = np.array(list(cost_filtered.values())).astype(float)
-                _data = np.array([_costs,_scores,_scores]).T
+                _data = np.array([_costs,_scores-center,_scores-center]).T
+                y_label = 'Fitness (centered)'
+                y_tag = 'fitness (centered)'
                 chart_data = pd.DataFrame(
-                    _data, columns=["cost", "accuracy", "Accuracy"]
+                    _data, columns=["Total cost", y_label, y_tag]
                 )
-                chart_data["accuracy_stratification"] = _score_stratify(_scores)
-                
-                st.scatter_chart(
-                    chart_data,
-                    x="cost",
-                    y="accuracy",
-                    color="accuracy_stratification",
-                    size="Accuracy",
-                )
+                chart_data["fitness_stratification"] = _score_stratify(_scores)
+                corr_coef = np.corrcoef(_data.T)
+                st.write(f'Correlation coefficient: ```{corr_coef[0,1]:.2f}```')
+                # st.scatter_chart(
+                #     chart_data,
+                #     x="Total cost",
+                #     y=y_label,
+                #     color="fitness_stratification",
+                #     size=y_tag,
+                # )
             
-            col1, col2 = st.columns(2)
+            col1, col2 = st.columns([1,1])
             with col1:
                 st.subheader('Proposal rating Distribution')
-                _ratings = list(ratings.values()) 
-                mean_rating = np.mean(_ratings)
-                std_rating = np.std(_ratings)
-                ratings_counts = _data_to_freq(_ratings,unit=0.1)
-                st.write(f'Mean: ```{mean_rating:.2f}```, Std: ```{std_rating:.2f}```')
-                chart_data = pd.DataFrame(list(ratings_counts.items()),columns=['ratings','frequency'])
-                st.bar_chart(chart_data,x='ratings',y='frequency')
+                proposal_ratings = {}
+                proposal_ratings['all'] = list(ratings.values()) 
+                reviewer_models = {k:v['_agent_types']['PROPOSAL_REVIEWER'] for k,v in cfg_proposals.items()}
+                for d in reviewer_models:
+                    model = reviewer_models[d]
+                    if model not in proposal_ratings:
+                        proposal_ratings[model] = []
+                    proposal_ratings[model].append(ratings[d])
 
+                def draw_rating_chart(_ratings):
+                    mean_rating = np.mean(_ratings)
+                    median_rating = np.median(_ratings)
+                    std_rating = np.std(_ratings)
+                    ratings_counts = _data_to_freq(_ratings,unit=0.1)
+                    st.write(f'Mean: ```{mean_rating:.2f}```, Median: ```{median_rating:.2f}```, Std: ```{std_rating:.2f}```')
+                    chart_data = pd.DataFrame(list(ratings_counts.items()),columns=['Proposal rating','Frequency'])
+                    st.bar_chart(chart_data,x='Proposal rating',y='Frequency')
+
+                _model = st.selectbox('Model',list(proposal_ratings.keys()))
+                _ratings = proposal_ratings[_model]
+                draw_rating_chart(_ratings)
+                
             with col2:
-                st.subheader('Proposal rating-Accuracy Correlation')
+                st.subheader('Proposal rating-Fitness Correlation')
                 ratings_filtered =  {k:float(v) for k,v in ratings.items() if k in scores_filtered}
                 _ratings = np.array(list(ratings_filtered.values())).astype(float)
-                _data = np.array([_ratings,_scores,_scores]).T
+                _data = np.array([_ratings-4.0,_scores-center,_scores-center]).T
+                rating_label = 'rating (centered)'
                 chart_data = pd.DataFrame(
-                    _data, columns=["rating", "accuracy", "Accuracy"]
+                    _data, columns=[rating_label, y_label, y_tag]
                 )
-                chart_data["accuracy_stratification"] = _score_stratify(_scores)
+                chart_data["fitness_stratification"] = _score_stratify(_scores)
+                corr_coef = np.corrcoef(_data.T)
+                st.write(f'Correlation coefficient: ```{corr_coef[0,1]:.2f}```')
                 st.scatter_chart(
                     chart_data,
-                    x="rating",
-                    y="accuracy",
-                    color="accuracy_stratification",
-                    size="Accuracy",
+                    x=rating_label,
+                    y=y_label,
+                    color="fitness_stratification",
+                    size=y_tag,
                 )
 
             col1, col2 = st.columns(2)
             with col1:
-                st.subheader('Accuracy-Time Correlation')
+                st.subheader('Fitness-Time Correlation')
                 timestamp_filtered = {k:v for k,v in timestamps.items() if k in scores_filtered}
                 _timestamps = np.array(list(timestamp_filtered.values()))#.astype(float)
-                _data = np.array([_timestamps,_scores,_scores]).T
+                _data = np.array([_timestamps,_scores-0.5,_scores]).T
+                y_label = 'fitness (centered)'
+                y_tag = 'Fitness'
                 chart_data = pd.DataFrame(
-                    _data, columns=["timestamp", "accuracy", "Accuracy"]
+                    _data, columns=["timestamp", y_label, y_tag]
                 )
-                chart_data["accuracy_stratification"] = _score_stratify(_scores)
+                chart_data["fitness_stratification"] = _score_stratify(_scores)
                 
                 st.scatter_chart(
                     chart_data,
                     x="timestamp",
-                    y="accuracy",
-                    color="accuracy_stratification",
-                    size="Accuracy",
+                    y=y_label,
+                    color="fitness_stratification",
+                    size=y_tag,
                 )
             with col2:
-                st.subheader('Accuracy-Population over time')
+                st.subheader('Fitness-Population over time')
                 # population_size = 30
                 # step_size = 20
                 _col1, _col2 = st.columns(2)
@@ -1417,31 +1513,62 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 st.altair_chart(chart.interactive(), use_container_width=True)
                 # st.area_chart(chart_data,x='generation',y=['score_mean','score_std'])
             
+    with st.expander(f"Agent Analysis for ```{evosys.evoname}```",expanded=True):#,icon='📊'):
 
-            col1, col2, col3, col4  = st.columns(4)
-            impl_agents = {i:v['_agent_types']['IMPLEMENTATION_CODER'] for i,v in cfg_implementations.items()}
-            proposal_agents = {i:v['_agent_types']['DESIGN_PROPOSER'] for i,v in cfg_proposals.items()}
+        if len(design_nodes)+len(implemented_nodes)+len(sessions) == 0:
+            st.info('No agent analysis available at the moment.')
+        else:
+            model_abbr = {
+                'claude3.5_sonnet':'C35',
+                'gpt4o_0806':'G4O',
+                'o1_mini':'O1M',
+                'o1_preview':'O1P',
+            }
+            impl_agents = {i:model_abbr[v['_agent_types']['IMPLEMENTATION_CODER']] for i,v in cfg_implementations.items()}
+            proposal_agents = {i:model_abbr[v['_agent_types']['DESIGN_PROPOSER']] for i,v in cfg_proposals.items()}
+            reviewer_agents = {i:model_abbr[v['_agent_types']['PROPOSAL_REVIEWER']] for i,v in cfg_proposals.items()}
+            obs_agents = {i:model_abbr[v['_agent_types']['IMPLEMENTATION_OBSERVER']] for i,v in cfg_proposals.items()}
+            planner_agents = {i:model_abbr[v['_agent_types']['IMPLEMENTATION_PLANNER']] for i,v in cfg_proposals.items()}
             impl_agent_scores = {}
             impl_agent_costs = {}
+            impl_agent_effective = {}
             proposal_agent_scores = {}
             proposal_agent_costs = {}
+            proposal_agent_effective = {}
             pair_cost = {}
             pair_score = {}
             pair_effective = {}
+            double_score = {}
+            double_effective = {}
+            double_cost = {}
+            trio_score = {}
+            trio_effective = {}
+            trio_valid = {}
+            trio_cost = {}
             for design in impl_costs:
                 agent = impl_agents[design]
                 pagent = proposal_agents[design]
+                ragent = reviewer_agents[design]
+                oagent = obs_agents[design]
+                plagent = planner_agents[design]
                 score = avg_score[design]
                 cost = impl_costs[design]
+                _verified = verified[design]
                 pcost = proposal_costs[design]
                 if not 0<score<1:
                     continue
                 if agent not in impl_agent_scores:
                     impl_agent_scores[agent] = []
                 impl_agent_scores[agent].append(score)
+                if agent not in impl_agent_effective:
+                    impl_agent_effective[agent] = []
+                impl_agent_effective[agent].append(100*score/cost)
                 if pagent not in proposal_agent_scores:
                     proposal_agent_scores[pagent] = []
                 proposal_agent_scores[pagent].append(score)
+                if pagent not in proposal_agent_effective:
+                    proposal_agent_effective[pagent] = []
+                proposal_agent_effective[pagent].append(100*score/pcost)
                 if agent not in impl_agent_costs:
                     impl_agent_costs[agent] = []
                 impl_agent_costs[agent].append(cost)
@@ -1449,62 +1576,148 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                     proposal_agent_costs[pagent] = []
                 proposal_agent_costs[pagent].append(pcost)
                 pair = f'{agent}-{pagent}'
+                double = f'{pagent}-{ragent}'
+                trio = f'{plagent}-{agent}-{oagent}'
                 if pair not in pair_score:
                     pair_score[pair] = []
                 pair_score[pair].append(score)
+                if double not in double_score:
+                    double_score[double] = []
+                double_score[double].append(score)
+                if double not in double_effective:
+                    double_effective[double] = []
+                double_effective[double].append(100*score/(cost+pcost))
+                if double not in double_cost:
+                    double_cost[double] = []
+                double_cost[double].append(cost+pcost)
                 if pair not in pair_cost:
                     pair_cost[pair] = []
                 pair_cost[pair].append(cost+pcost)
                 if pair not in pair_effective:
                     pair_effective[pair] = []
                 pair_effective[pair].append(100*score/(cost+pcost))
+                if trio not in trio_score:
+                    trio_score[trio] = []
+                trio_score[trio].append(score)
+                if trio not in trio_effective:
+                    trio_effective[trio] = []
+                trio_effective[trio].append(100*score/(cost))
+                if trio not in trio_cost:
+                    trio_cost[trio] = []
+                trio_cost[trio].append(cost)
+                if trio not in trio_valid:
+                    trio_valid[trio] = []
+                trio_valid[trio].append(_verified)
+            
+            trio_valid = {k:np.sum(v)/len(v) for k,v in trio_valid.items()}
+            for k,v in trio_effective.items():
+                trio_effective[k] = [i/trio_valid[k] for i in v]
 
-            with col1:
-                st.subheader('Impl. agent-score')
-                impl_agent_scores_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in impl_agent_scores.items()}
-                impl_agent_scores_std = {f'{k} ({len(v)})':np.std(v) for k,v in impl_agent_scores.items()}
-                chart_data = pd.DataFrame(list(impl_agent_scores_mean.items()),columns=['agent','mean score'])
-                st.bar_chart(chart_data,x='agent',y='mean score')
-            with col2:
-                st.subheader('Prop. agent-score')
-                proposal_agent_scores_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in proposal_agent_scores.items()}
-                proposal_agent_scores_std = {f'{k} ({len(v)})':np.std(v) for k,v in proposal_agent_scores.items()}
-                chart_data = pd.DataFrame(list(proposal_agent_scores_mean.items()),columns=['agent','mean score'])
-                st.bar_chart(chart_data,x='agent',y='mean score')
-            with col3:
-                st.subheader('Impl. agent-cost')
-                impl_agent_costs_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in impl_agent_costs.items()}
-                impl_agent_costs_std = {f'{k} ({len(v)})':np.std(v) for k,v in impl_agent_costs.items()}
-                chart_data = pd.DataFrame(list(impl_agent_costs_mean.items()),columns=['agent','mean cost'])
-                st.bar_chart(chart_data,x='agent',y='mean cost')    
-            with col4:
-                st.subheader('Prop. agent-cost')
-                proposal_agent_costs_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in proposal_agent_costs.items()}
-                proposal_agent_costs_std = {f'{k} ({len(v)})':np.std(v) for k,v in proposal_agent_costs.items()}
-                chart_data = pd.DataFrame(list(proposal_agent_costs_mean.items()),columns=['agent','mean cost'])
-                st.bar_chart(chart_data,x='agent',y='mean cost')
+            def draw_chart_bar(scores,x_label='agent',y_label='mean',center=0):
+                # scores_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in scores.items()}
+                # scores_std = {f'{k} ({len(v)})':np.std(v) for k,v in scores.items()}
+                scores_mean = {f'{k}':np.mean(v) for k,v in scores.items()}
+                scores_std = {f'{k}':np.std(v) for k,v in scores.items()}
+
+                # Create DataFrame with both mean and std
+                if center!=0:
+                    y_label = f'{y_label} (centered)'
+                    scores_mean = {k:v-center for k,v in scores_mean.items()}
+                chart_data = pd.DataFrame({
+                    x_label: list(scores_mean.keys()),
+                    y_label: list(scores_mean.values()),
+                    'std': list(scores_std.values())
+                })
+                # Calculate error bar endpoints
+                chart_data['upper'] = chart_data[y_label] + chart_data['std']
+                chart_data['lower'] = chart_data[y_label] - chart_data['std']
+                # Create Altair chart with error bars
+                bars = alt.Chart(chart_data).mark_bar().encode(
+                    x=x_label,
+                    y=y_label,
+                    tooltip=[x_label, y_label, 'std']
+                )
+                # Add error bars
+                error_bars = alt.Chart(chart_data).mark_errorbar().encode(
+                    x=x_label,
+                    y=y_label,
+                    # y2='lower',
+                    # y1='upper'
+                )
+                # Combine bars and error bars
+                chart = (bars + error_bars).properties(
+                    width=600,
+                    # height=250
+                )
+                st.altair_chart(chart, use_container_width=True)
+
+            fitness_center = 0.58 #min(avg_score.values())
+
+            COL1, COL2 = st.columns([1,1])
+            with COL1:
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.subheader('Prop. agent-fitness')
+                    draw_chart_bar(proposal_agent_scores,x_label='Proposal agent',y_label='Fitness',center=fitness_center)
+                with col2:
+                    st.subheader('Prop. agent-cost')
+                    draw_chart_bar(proposal_agent_costs,x_label='Proposal agent',y_label='Proposal cost')
+                with col3:
+                    st.subheader('Prop. agent-cost-effectiveness')
+                    draw_chart_bar(proposal_agent_effective,x_label='Proposal agent',y_label='Cost effectiveness')
+
+            with COL2:
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.subheader('Impl. agent-fitness')
+                    draw_chart_bar(impl_agent_scores,x_label='Impl agent',y_label='Fitness',center=fitness_center)
+                with col2:
+                    st.subheader('Impl. agent-cost')
+                    draw_chart_bar(impl_agent_costs,x_label='Impl agent',y_label='Implementation cost')
+                with col3:
+                    st.subheader('Impl. agent-cost-effectiveness')
+                    draw_chart_bar(impl_agent_effective,x_label='Impl agent',y_label='Cost effectiveness')
+
 
             col1, col2, col3 = st.columns(3)
             with col1:
-                st.subheader('Agent-pair-score')
-                pair_score_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in pair_score.items()}
-                pair_score_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_score.items()}
-                chart_data = pd.DataFrame(list(pair_score_mean.items()),columns=['pair','mean score'])
-                st.bar_chart(chart_data,x='pair',y='mean score')
+                st.subheader('Agent-pair-fitness')
+                draw_chart_bar(pair_score,x_label='Proposal-Impl agent combination',y_label='Fitness',center=fitness_center)
 
             with col2:
                 st.subheader('Agent-pair-cost')
-                pair_cost_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in pair_cost.items()}
-                pair_cost_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_cost.items()}
-                chart_data = pd.DataFrame(list(pair_cost_mean.items()),columns=['pair','mean cost'])
-                st.bar_chart(chart_data,x='pair',y='mean cost')
-
+                draw_chart_bar(pair_cost,x_label='Proposal-Impl agent combination',y_label='Cost')
             with col3:
                 st.subheader('Cost-effectiveness')
-                pair_effective_mean = {f'{k} ({len(v)})':np.mean(v) for k,v in pair_effective.items()}
-                pair_effective_std = {f'{k} ({len(v)})':np.std(v) for k,v in pair_effective.items()}
-                chart_data = pd.DataFrame(list(pair_effective_mean.items()),columns=['pair','mean cost-effectiveness'])
-                st.bar_chart(chart_data,x='pair',y='mean cost-effectiveness')
+                draw_chart_bar(pair_effective,x_label='Proposal-Impl agent combination',y_label='Cost effectiveness')
+            
+
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.subheader('Proposal-Reviewer fitness')
+                draw_chart_bar(double_score,x_label='Proposal-Review agent combination',y_label='Fitness',center=fitness_center)
+
+            with col2:
+                st.subheader('Proposal-Reviewer cost')
+                draw_chart_bar(double_cost,x_label='Proposal-Review agent combination',y_label='Cost')
+            
+            with col3:
+                st.subheader('Proposal-Reviewer cost-effectiveness')
+                draw_chart_bar(double_effective,x_label='Proposal-Review agent combination',y_label='Cost effectiveness')
+
+            st.subheader('Agent-trio-fitness')
+            draw_chart_bar(trio_score,x_label='Planner-Impl-Observer agent trio',y_label='Fitness',center=fitness_center)
+
+            st.subheader('Agent-trio-cost')
+            draw_chart_bar(trio_cost,x_label='Planner-Impl-Observer agent trio',y_label='Cost')
+
+            # st.subheader('Agent-trio-validity')
+            # chart_data = pd.DataFrame(list(trio_valid.items()),columns=['trio','validity'])
+            # st.bar_chart(chart_data,x='trio',y='validity')
+
+            st.subheader('Agent-trio-cost-effectiveness')
+            draw_chart_bar(trio_effective,x_label='Planner-Impl-Observer agent combination',y_label='Cost effectiveness')
+
 
 
     st.subheader('Verification Analysis')
@@ -1519,6 +1732,12 @@ def session_stats(evosys,design_nodes,implemented_nodes):
 
     with col2:
         st.subheader('Benchmark contribution')
+
+            
+
+
+
+
 
 
 def _stat_func_check(func_check):
@@ -1668,17 +1887,68 @@ def impl_analysis(evosys,design_nodes,implemented_nodes):
                 if error not in gau_errors:
                     gau_errors[error] = 0
                 gau_errors[error]+=1
+        n_failed_func = len(failed_func_checks)
+        n_failed_format = len(failed_format_checks)
+        if n_failed_func==0 or n_failed_format==0:
+            SAVE_DIR = U.pjoin(evosys.ckpt_dir,'SAVE')
+            errors = U.load_json(U.pjoin(SAVE_DIR,'impl_errors_evo_exp_full_a.json'))
+            func_errors = errors['func']
+            gau_errors = errors['gau']
+            n_failed_func = errors['n_failed_func']
+            n_failed_format = errors['n_failed_format']
+            total_func_checks = errors['total_func']
+            total_format_checks = errors['total_format']
+
         col1, col2 = st.columns(2)
         with col1:
-            st.write(f'**Failed Func Checks: ```{len(failed_func_checks)}/{total_func_checks}```**')
-            # st.write(f'**Func Errors: ```{func_errors}```**')
-            st.bar_chart(pd.DataFrame(list(func_errors.items()),columns=['error','count']),x='error',y='count')
+            st.write(f'**Failed Func Checks: ```{100*n_failed_func/total_func_checks:.1f}%```**')
+            # st.write(func_errors.keys())
+            rename_map = {
+                "diverging: loss_not_decreasing":"Loss not decreasing",
+                "format: fetal_errors": "Fetal format errors",
+                'diverging: loss': 'Loss diverging',
+                'diverging: grad_norm': 'Gradnorm diverged',
+                'inefficient: training_time': 'Training too slow',
+                'inefficient: flops': 'FLOPs too high',
+                'model_init: forward_error': 'Forward pass error',
+                'model_init: shape_error': 'Shape error',
+                'model_init: dtype_error': 'Dtype error',
+                'model_init: other': 'Model init error',
+                # 'forward_pass': 'Forward pass error',
+                'causality': 'Not causal',
+                'differentiability': 'Not differentiable',
+                'syntax: unparsable': 'Unparsable',
+                'syntax: unexecutable': 'Unexecutable',
+            }
+            _func_errors = {}
+            for i in rename_map:
+                if i in func_errors:
+                    _func_errors[rename_map[i]] = func_errors[i]
+            func_errors = _func_errors
+            # func_errors = {rename_map[k] if k in rename_map else k.capitalize().replace('_',' '):func_errors[k] for k in func_errors}
+            st.bar_chart(pd.DataFrame(list(func_errors.items()),columns=['Functional error type','Frequency']),x='Functional error type',y='Frequency')
         with col2:
-            st.write(f'**Failed Format Checks: ```{len(failed_format_checks)}/{total_format_checks}```**')
-            # st.write(f'**GAU Errors: ```{gau_errors}```**')
-            st.bar_chart(pd.DataFrame(list(gau_errors.items()),columns=['error','count']),x='error',y='count')
+            st.write(f'**Failed Format Checks: ```{100*n_failed_format/total_format_checks:.1f}%```**')
+            rename_map = {
+                "gau: unused_children":"Unused children",
+                "gau: multiple_gau":"Multiple GAU found",
+                "gau: forward_override":"Forward override",
+                "gau: nn.Module_not_allowed":"Found nn.Module",
+                "syntax: unexecutable":"Unexecutable",
+                "gau: gau_call_args":"Wrong GAU args",
+                "gau: _forward_not_found":"_forward not found",
+                "gau: gau_call_return":"Wrong GAU return",
+                "gau: __init___not_found":"__init__ not found",
+                # "gau: inplace_assignment":"GAU overwrite",
+            }
+            _gau_errors = {}
+            for i in rename_map:
+                if i in gau_errors:
+                    _gau_errors[rename_map[i]] = gau_errors[i]
+            gau_errors = _gau_errors
+            st.bar_chart(pd.DataFrame(list(gau_errors.items()),columns=['Format error type','Frequency']),x='Format error type',y='Frequency')
         errors = {'func':func_errors,'gau':gau_errors,'total_func':total_func_checks,'total_format':total_format_checks,
-                  'n_failed_func':len(failed_func_checks),'n_failed_format':len(failed_format_checks),'n_rounds':len(rounds)}
+                  'n_failed_func':n_failed_func,'n_failed_format':n_failed_format,'n_rounds':len(rounds)}
         st.download_button(label='Download Impl. Error Stats',data=json.dumps(errors),file_name=f'impl_errors_{evosys.evoname}.json')
 
 
@@ -1701,7 +1971,7 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
         with col4:
             st.write('')
             st.write('')
-            _no_root = st.checkbox('No Root',value=True)
+            _no_root = st.checkbox('No Root',value=False)
 
         with col5:
             st.write('')
@@ -1709,8 +1979,11 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
             _no_units = st.checkbox('No Units',value=True)
 
         export_height = 750
+        _bg_color = '#ffffff'
+        physics=True
+        
         evosys.ptree.GD.export(max_nodes=st.session_state.utree_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,
-                               no_root=_no_root,no_units=_no_units)
+                               no_root=_no_root,no_units=_no_units,physics=physics)
         utree_dir_small=U.pjoin(evosys.evo_dir,f'UTree_{st.session_state.utree_max_nodes}.html')
 
         # check this: https://github.com/napoles-uach/streamlit_network 
@@ -1718,7 +1991,8 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
             st.write('')
             st.write('')
             if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
-                evosys.ptree.GD.export(max_nodes=_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,no_root=_no_root,no_units=_no_units)
+                evosys.ptree.GD.export(max_nodes=_max_nodes,height=f'{export_height}px',
+                                    bgcolor=_bg_color,no_root=_no_root,no_units=_no_units,physics=physics)
                 utree_dir_small=U.pjoin(evosys.evo_dir,f'UTree_{_max_nodes}.html')
                 st.session_state.utree_max_nodes=_max_nodes
                 
@@ -1774,14 +2048,149 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
             st.bar_chart(_preds,x='Category',y='Probability')
 
         with col2:
-            st.subheader('Score-weighted Wordcloud of Units')
-            wordcloud = WordCloud(width=600, height=400, background_color='white').generate_from_frequencies(word_freq)
+            st.subheader('Fitness-weighted Wordcloud of Units')
+            exclude_words = ['RMSNorm','Conv','RotaryPositionalEmbeddings','RotaryEmbedding','SwiGluMLP','GatedMLP']
+            for word in exclude_words:
+                if word in word_freq:
+                    del word_freq[word]
+            SIZE=1
+            wordcloud = WordCloud(width=600*SIZE, height=400*SIZE, background_color='white').generate_from_frequencies(word_freq)
             st.image(wordcloud.to_image())
 
+        col1, col2, col3,col4 = st.columns([1,1,1,1])
+        with col1:
+            st.subheader('Unit Number Distribution')
+            designs = {design:evosys.ptree.get_node(design) for design in evosys.ptree.filter_by_type(['DesignArtifactImplemented'])}
+            n_units = {}
+            reused_units = {}
+            reused_units_ratio = {}
+            for design,node in designs.items():
+                impl = node.implementation.implementation
+                n_units[design] = len(impl.descendants(impl.root))+1
+                units = list(impl.descendants(impl.root)) + [impl.root]
+                num_reuses = 0
+                for unit in units:
+                    _unit = impl.units[unit]
+                    if _unit.reuse_from:
+                        num_reuses += 1
+                reused_units[design] = num_reuses
+                reused_units_ratio[design] = round(num_reuses/len(units),2)
+            mean_units = np.mean(list(n_units.values()))
+            std_units = np.std(list(n_units.values()))
+            median_units = np.median(list(n_units.values()))
+            min_units = np.min(list(n_units.values()))
+            max_units = np.max(list(n_units.values()))
+            st.write(f'**Mean Units: ```{mean_units:.2f}``` | Std Units: ```{std_units:.2f}``` | Median Units: ```{median_units:.2f}``` | Min Units: ```{min_units:.2f}``` | Max Units: ```{max_units:.2f}```**')
+            unit_freq = _data_to_freq(n_units)
+            x_name = 'Number of Units'
+            st.bar_chart(pd.DataFrame(list(unit_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
+
+    with col2:
+        st.subheader('Unit Reuse Distribution')
+        GDT = evosys.ptree.GD.terms
+        reuses = {}
+        reuse_designs = {}
+        for unit in GDT:
+            term = GDT[unit]
+            if term.is_root: continue
+            variants = term.variants
+            reuse_designs[unit] = []
+            for variant in variants:
+                if variant not in reuse_designs[unit]:
+                    reuse_designs[unit].append(variant)
+                node = variants[variant][0]
+                if node.reuse_from:  # seems wrong?
+                    _design,reuse_from = node.reuse_from.split('.')
+                    if reuse_from not in GDT:
+                        print(f'{unit} -> {reuse_from} not found')
+                        continue
+                    if reuse_from not in reuses:
+                        reuses[reuse_from] = []
+                    if unit not in reuses[reuse_from]:
+                        reuses[reuse_from].append(unit)
+
+        n_reuses = {unit:len(reuses[unit]) for unit in reuses}
+        n_reuse_designs = {unit:len(reuse_designs[unit]) for unit in reuse_designs}
+
+        n_reuse_freq = _data_to_freq(n_reuses)
+        max_reuse = max(n_reuses.values())
+        mean_reuse = np.mean(list(n_reuses.values()))
+        median_reuse = np.median(list(n_reuses.values()))
+        min_reuse = np.min(list(n_reuses.values()))
+        std_reuse = np.std(list(n_reuses.values()))
+        st.write(f'**Max Reuse: ```{max_reuse:.2f}``` | Mean Reuse: ```{mean_reuse:.2f}``` | Median Reuse: ```{median_reuse:.2f}``` | Min Reuse: ```{min_reuse:.2f}``` | Std Reuse: ```{std_reuse:.2f}```**')
+        x_name = 'Reuses'
+        st.bar_chart(pd.DataFrame(list(n_reuse_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
+
+    with col3:
+        st.subheader('Unit Usage Distribution')
+        n_reuse_designs_freq = _data_to_freq(n_reuse_designs)
+        max_reuse_designs = max(n_reuse_designs.values())
+        mean_reuse_designs = np.mean(list(n_reuse_designs.values()))
+        median_reuse_designs = np.median(list(n_reuse_designs.values()))
+        min_reuse_designs = np.min(list(n_reuse_designs.values()))
+        std_reuse_designs = np.std(list(n_reuse_designs.values()))
+        st.write(f'**Max Reuse Designs: ```{max_reuse_designs:.2f}``` | Mean Reuse Designs: ```{mean_reuse_designs:.2f}``` | Median Reuse Designs: ```{median_reuse_designs:.2f}``` | Min Reuse Designs: ```{min_reuse_designs:.2f}``` | Std Reuse Designs: ```{std_reuse_designs:.2f}```**')
+        x_name = 'Usage'
+        st.bar_chart(pd.DataFrame(list(n_reuse_designs_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
+
+    with col4:
+        st.subheader('Num of Reuse Distribution')
+        reused_units = reused_units_ratio
+        reused_units_freq = _data_to_freq(reused_units)
+        max_reused_units = max(reused_units.values())
+        mean_reused_units = np.mean(list(reused_units.values()))
+        median_reused_units = np.median(list(reused_units.values()))
+        min_reused_units = np.min(list(reused_units.values()))
+        std_reused_units = np.std(list(reused_units.values()))
+        st.write(f'**Max Reused Units: ```{max_reused_units:.2f}``` | Mean Reused Units: ```{mean_reused_units:.2f}``` | Median Reused Units: ```{median_reused_units:.2f}``` | Min Reused Units: ```{min_reused_units:.2f}``` | Std Reused Units: ```{std_reused_units:.2f}```**')
+        x_name = 'Ratio of Reused Units'
+        st.bar_chart(pd.DataFrame(list(reused_units_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
 
 
+def network_analysis(evosys,design_nodes,implemented_nodes):
 
+    st.subheader('Network Analysis')
 
+    with st.expander(f'Network Analysis for ```{evosys.evoname}```',expanded=True):
+        root_degree_dist = {7: 0.04040404040404041, 10: 0.03367003367003367, 2: 0.1750841750841751, 3: 0.15151515151515152, 0: 0.06397306397306397, 1: 0.18518518518518517, 8: 0.03367003367003367, 6: 0.06734006734006734, 9: 0.02356902356902357, 4: 0.12121212121212122, 12: 0.006734006734006734, 5: 0.06397306397306397, 11: 0.003367003367003367, 18: 0.003367003367003367, 22: 0.003367003367003367, 15: 0.006734006734006734, 14: 0.006734006734006734, 21: 0.003367003367003367, 17: 0.003367003367003367, 13: 0.003367003367003367, 23: 0}
+        full_degree_dist = {17: 0.0020632737276478678, 1: 0.6953232462173315, 2: 0.21664374140302614, 0: 0.052269601100412656, 21: 0.0020632737276478678, 13: 0.001375515818431912, 129: 0.000687757909215956, 86: 0.000687757909215956, 9: 0.0020632737276478678, 4: 0.0041265474552957355, 3: 0.0034387895460797797, 57: 0.000687757909215956, 24: 0.001375515818431912, 30: 0.000687757909215956, 19: 0.001375515818431912, 56: 0.001375515818431912, 40: 0.000687757909215956, 25: 0.001375515818431912, 59: 0.000687757909215956, 5: 0.000687757909215956, 38: 0.000687757909215956, 7: 0.001375515818431912, 103: 0.000687757909215956, 78: 0.000687757909215956, 39: 0.000687757909215956, 23: 0.001375515818431912, 317: 0.000687757909215956, 12: 0.001375515818431912, 75: 0.000687757909215956, 70: 0.000687757909215956, 15: 0.000687757909215956, 20: 0.000687757909215956, 318: 0}
+        rand_degree_dist = {1: 0.4634433962264151, 5: 0.04363207547169811, 3: 0.10849056603773585, 2: 0.22287735849056603, 6: 0.02240566037735849, 4: 0.07075471698113207, 13: 0.0011792452830188679, 11: 0.0011792452830188679, 0: 0.03537735849056604, 7: 0.012971698113207548, 12: 0.0011792452830188679, 9: 0.008254716981132075, 10: 0.0047169811320754715, 8: 0.003537735849056604, 14: 0}
+                
+        def _process_dist(dist, cutoff=9):
+            _dist = {}
+            for i in dist:
+                if i >= cutoff:
+                    if cutoff not in _dist:
+                        _dist[cutoff] = 0
+                    _dist[cutoff] += dist[i]
+                else:
+                    _dist[i] = dist[i]
+            
+            # Convert to list of dicts format for Altair
+            return [{'Degree': f'{k}+' if k == cutoff else str(k), 
+                    'DegreeSort': float('inf') if k == cutoff else k,  # Make cutoff sort to end
+                    'Ratio': v} for k, v in _dist.items()]
+
+        # Process the distributions
+        library_data = _process_dist(root_degree_dist)
+        full_data = _process_dist(full_degree_dist)
+        random_data = _process_dist(rand_degree_dist)
+
+        # Add source identifier to each data point
+        for d in library_data:
+            d['Source'] = 'Library'
+        for d in full_data:
+            d['Source'] = 'Full'
+        for d in random_data:
+            d['Source'] = 'Random'
+
+        # Combine all data
+        combined_data = pd.DataFrame(library_data + full_data + random_data)
+
+        col, _ = st.columns([2.5,1])
+        with col:
+            st.bar_chart(combined_data.sort_values('DegreeSort'), x='Degree', y='Ratio', color='Source')
 
 def scaling_analysis(evosys,design_nodes,implemented_nodes):
     if evosys.benchmark_mode:
@@ -1856,28 +2265,30 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
         })
         st.scatter_chart(tokens_loss,x='Tokens',y='Loss',color='Score',size='Scale')
 
-        st.subheader('Design Params vs Loss')
-        combined_data = []
-        for design in design_params:
-            for i in range(len(design_params[design])):
-                combined_data.append({
-                    'Params': design_params[design][i],
-                    'Loss': design_losses[design][i],
-                    'Scale': design_scales[design][i],
-                    'Design': design
-                })
-        
-        combined_df = pd.DataFrame(combined_data)
+        col1, col2 = st.columns([4,1])
+        with col1:
+            st.subheader('Design Params vs Loss')
+            combined_data = []
+            for design in design_params:
+                for i in range(len(design_params[design])):
+                    combined_data.append({
+                        'Params': design_params[design][i],
+                        'Loss': design_losses[design][i],
+                        'Scale': design_scales[design][i],
+                        'Design': design
+                    })
+                
+            combined_df = pd.DataFrame(combined_data)
 
-        # Create line chart using Altair
-        chart = alt.Chart(combined_df).mark_line(point=True,opacity=0.1).encode(
-            x=alt.X('Params', scale=alt.Scale(type='log')),
-            y='Loss',
-            color='Design',
-            tooltip=['Design', 'Scale', 'Params', 'Loss']
-        ).interactive()
+            # Create line chart using Altair
+            chart = alt.Chart(combined_df).mark_line(point=True,opacity=0.1).encode(
+                x=alt.X('Params', scale=alt.Scale(type='log')),
+                y='Loss',
+                color='Design',
+                tooltip=['Design', 'Scale', 'Params', 'Loss']
+            ).interactive()
         
-        st.altair_chart(chart, use_container_width=True)
+            st.altair_chart(chart, use_container_width=True)
 
 
         
@@ -1914,7 +2325,7 @@ def _stats(evosys):
     impl_analysis(evosys,design_nodes,implemented_nodes)
     unit_analyzer(evosys,design_nodes,implemented_nodes)
     scaling_analysis(evosys,design_nodes,implemented_nodes)
-
+    network_analysis(evosys,design_nodes,implemented_nodes)
 
 class EvoModes(Enum):
     EVOLVE = 'Evolution System'

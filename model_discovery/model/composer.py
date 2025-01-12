@@ -132,7 +132,7 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         return matches # tuples of (node,tree_name,decl)
     
 
-    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None,bgcolor="#fafafa"):
+    def viz(self,G,height=5000,width="100%",layout=False,max_nodes=None,bgcolor="#fafafa",physics=True):
         nt=Network(
             directed=True,height=height,width=width,
             layout=layout, 
@@ -144,15 +144,39 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
         nt.from_nx(G)
         fname='UTree' if not layout else 'UTree_layout'
         if max_nodes: fname+=f'_{max_nodes}'
+        nt.toggle_physics(physics)
         nt.show(U.pjoin(self.ptree.db_dir, '..', fname+'.html'))
 
     def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee",color_root='yellow',size_root=25,
-               color_term='red',size_term=20,color_variant='blue',size_variant=10,no_root=False,no_units=False): #,with_ext=False
+               color_term='red',size_term=20,color_variant='blue',size_variant=10,no_root=False,no_units=False,physics=True): #,with_ext=False
+
+        degrees = {}
+        n_reuses = {}
+        for unit in self.terms:
+            term = self.terms[unit]
+            variants = term.variants
+            for variant in variants:
+                node = variants[variant][0]
+                if node.reuse_from:  # seems wrong?
+                    _,reuse_from = node.reuse_from.split('.')
+                    if reuse_from not in self.terms:
+                        continue
+                    if reuse_from not in degrees:
+                        degrees[reuse_from] = 0
+                    degrees[reuse_from]+=1
+                    if unit not in degrees:
+                        degrees[unit] = 0
+                    degrees[unit]+=1
+                    if reuse_from not in n_reuses:
+                        n_reuses[reuse_from] = 0
+                    n_reuses[reuse_from]+=1
+        sorted_degrees = sorted(degrees.items(), key=lambda x: x[1], reverse=True)
+
         G=nx.DiGraph()
         variant_edges=[]
         reuse_edges=[]
         cnt=0
-        for name in self.terms:
+        for name,degree in sorted_degrees:
             if max_nodes and cnt>=max_nodes:
                 break
             term=self.terms[name]
@@ -160,11 +184,28 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
                 continue
             cnt+=1
             # add the term node
+            n_reused = n_reuses.get(name,0)
+            size = size_term if not term.is_root else size_root
+            if term.is_root:
+                color = color_root
+            else:
+                if n_reused<2:
+                    color = '#b9dec9'
+                elif n_reused<4:
+                    color = '#9eccab'
+                elif n_reused<8:
+                    color = '#8cc269'
+                elif n_reused<16:
+                    color = '#229453'
+                elif n_reused<32:
+                    color = '#41b349'
+                else: # n_reused<64:
+                    color = '#20a162'
             G.add_node(
                 name,
                 title=name,
-                size=size_term if not term.is_root else size_root,
-                color=color_term if not term.is_root else color_root,
+                size=size+max(0,int(math.log(n_reused,2)))*2 if n_reused else size,
+                color=color,
             )
 
             for variant,content in term.variants.items():
@@ -193,10 +234,11 @@ class GAUDict: # GAU code book, registry of GAUs, shared by a whole evolution
                 G.add_edge(edge[0],edge[1],color=color_variant)
         for edge in reuse_edges:
             if edge[0] in G.nodes and edge[1] in G.nodes:
-                G.add_edge(edge[0],edge[1],color=color_term)
+                G.add_edge(edge[0],edge[1])#,color=color_term)
         fname='unit_tree'
         if max_nodes: fname+=f'_{max_nodes}'
-        self.viz(G,max_nodes=max_nodes,height=height,layout=layout,bgcolor=bgcolor)
+        self.viz(G,max_nodes=max_nodes,height=height,layout=layout,bgcolor=bgcolor,physics=physics)
+        return G
 
 
     

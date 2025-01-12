@@ -303,3 +303,22 @@ def tester(evosys,project_dir):
     #     total_tokens = system_tokens + prompt_tokens + sum(history_tokens)
     #     st.write('after',total_tokens,system_tokens,prompt_tokens,sum(history_tokens),len(history))
     #     # break
+
+
+    def load_results(evosys,fname):
+        ckptdir=os.environ['CKPT_DIR']
+        dir=os.path.join(ckptdir,'RESULTS')
+        with open(os.path.join(dir,f'{fname}_results.json'),'r') as f:
+            all_results = json.load(f)
+        print(f'{fname}: {len(all_results)}/{len(evosys.ptree.G.nodes)} loaded')
+        for d in all_results:
+            if d not in evosys.ptree.G.nodes:
+                print(f'{d} not in evosys.ptree.G.nodes')
+                continue
+            for scale in evosys.ptree.G.nodes[d]['data'].verifications:
+                results = all_results[d][scale]
+                evosys.ptree.G.nodes[d]['data'].verifications[scale].verification_report['eval_results.json']['results'] = results
+        return evosys
+
+
+    evosys = load_results(evosys,'full_aug')

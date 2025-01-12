@@ -47,7 +47,7 @@ def _view_tree(tree):
     with st.expander('View detailed tree'):
         st.write(tree.view()[0],unsafe_allow_html=True)
     
-    col1, col2 = st.columns([1,1.5])
+    col1, col2 = st.columns([1,1])
     with col1:
         updated_state = tree.export(800,light_mode=False)
 
@@ -581,19 +581,14 @@ def post_process_leaderboard(leaderboard):
     leaderboard['avg.']=leaderboard.mean(axis=1)
     return leaderboard
 
-def export_leaderboards(evosys,design_vectors, baseline_vectors,custom_vectors={}):
+def export_leaderboards(evosys,design_vectors, baseline_vectors):
     _,_,eval_metrics,_ = get_random_metrics(evosys)
     random_eval_metrics = _group_results(eval_metrics)
     design_eval_metrics = {}
     baseline_eval_metrics = {}
-    custom_eval_metrics = {}
-    for mode in ['design','baseline','custom']:
-        if mode == 'custom':
-            vectors = custom_vectors
-            eval_metrics = custom_eval_metrics
-        else:
-            vectors = design_vectors if mode == 'design' else baseline_vectors
-            eval_metrics = design_eval_metrics if mode == 'design' else baseline_eval_metrics
+    for mode in ['design','baseline']:
+        vectors = design_vectors if mode == 'design' else baseline_vectors
+        eval_metrics = design_eval_metrics if mode == 'design' else baseline_eval_metrics
         for acronym in vectors:
             _eval_metrics = get_raw_metrics(vectors[acronym])[2]
             if len(_eval_metrics) > 0:
@@ -612,14 +607,10 @@ def export_leaderboards(evosys,design_vectors, baseline_vectors,custom_vectors={
         leaderboards_unnormed_l[scale] = pd.DataFrame(list(random_unnormed_metrics['lower_is_better'].items()), columns=['metrics', 'random']).set_index('metrics')
         _design_eval_metrics = design_eval_metrics[scale]
         _baseline_eval_metrics = baseline_eval_metrics.get(scale,{})
-        _custom_eval_metrics = custom_eval_metrics.get(scale,{})
-        for mode in ['baseline','design','custom']:
-            if mode == 'custom':
-                _eval_metrics = _custom_eval_metrics
-            else:
-                _eval_metrics = _design_eval_metrics if mode == 'design' else _baseline_eval_metrics
+        for mode in ['baseline','design']:
+            _eval_metrics = _design_eval_metrics if mode == 'design' else _baseline_eval_metrics
             for acronym in _eval_metrics:
-                colname = acronym if mode in ['custom','design'] else acronym+' (baseline)'
+                colname = acronym if mode in ['design'] else acronym+' (baseline)'
                 _01_normed_metrics,_unnormed_metrics=_flat_weighted_metrics(_eval_metrics[acronym])
                 _leaderboards_normed = pd.DataFrame(list(_01_normed_metrics.items()),columns=['metrics',colname]).set_index('metrics')
                 leaderboards_normed[scale] = pd.concat([leaderboards_normed[scale],_leaderboards_normed],axis=1)
@@ -693,14 +684,19 @@ def selector_lab(evosys,project_dir):
         st.warning('Experiment visualization is not available for agent benchmark.')
         return
 
+    pre_filter = st.text_input('Pre-filter designs (exact match, comma separated)',value='')
+    if pre_filter:
+        pre_filter = [i.strip() for i in pre_filter.split(',')]
+
     with st.status('Loading latest data...'):
-        design_vectors = evosys.ptree.get_design_vectors()
+        design_vectors = evosys.ptree.get_design_vectors(pre_filter=pre_filter)
         baseline_vectors = evosys.ptree.get_baseline_vectors()
         custom_vectors = evosys.ptree.get_custom_vectors('CUSTOM_HOLD')
+        design_vectors.update(custom_vectors)
 
     st.subheader('Real-time Leaderboard')
     with st.status('Generating leaderboard...',expanded=True):
-        leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors,custom_vectors)
+        leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
         cols = st.columns([1,1,3,1])
         with cols[0]:
             scale = st.selectbox('Select scale',options=list(sorted(leaderboards_normed.keys(),key=lambda x:U.letternum2num(x) if x != 'all' else 1e10)))

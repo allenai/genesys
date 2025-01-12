@@ -1686,13 +1686,13 @@ class PhylogeneticTree:
         shutil.rmtree(self.session_dir(sess_id))
 
     def get_design_session(self,sess_id:str):
-        if sess_id not in self.design_sessions and self.FM:
-            sessdata = self.FM.get_design_session(sess_id)
-            if sessdata:
-                sessdata['mode']=DesignModes(sessdata['mode'])
-                self.design_sessions[sess_id] = sessdata
-                self.save_session(sess_id)
-                print(f'Downloaded session {sess_id}')
+        # if sess_id not in self.design_sessions and self.FM:
+        #     sessdata = self.FM.get_design_session(sess_id)
+        #     if sessdata:
+        #         sessdata['mode']=DesignModes(sessdata['mode'])
+        #         self.design_sessions[sess_id] = sessdata
+        #         self.save_session(sess_id)
+        #         print(f'Downloaded session {sess_id}')
         if sess_id not in self.design_sessions:
             return None
         return self.design_sessions[sess_id]
@@ -1752,15 +1752,18 @@ class PhylogeneticTree:
         for design in designs:
             self.G.nodes[design]['data'].reload_verifications()
 
-    def get_design_vectors(self,is_baseline=False,first_N=None,online=True): # a more numerical representation of a design, selector to use
-        if is_baseline:
-            if online:
-                self.FM.download_baselines()
-            designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+    def get_design_vectors(self,is_baseline=False,first_N=None,online=True,pre_filter=[]): # a more numerical representation of a design, selector to use
+        if pre_filter:
+            designs = pre_filter
         else:
-            if online:
-                self.update_design_tree()
-            designs=self.filter_by_type('DesignArtifactImplemented')
+            if is_baseline:
+                if online:
+                    self.FM.download_baselines()
+                designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
+            else:
+                if online:
+                    self.update_design_tree()
+                designs=self.filter_by_type('DesignArtifactImplemented')
         # design_vectors = {}
         # for design in designs:
         #     design_vectors[design] = self.get_design_vector(design,is_baseline)
@@ -1820,11 +1823,12 @@ class PhylogeneticTree:
         print(f'{len(os.listdir(dir))} files found in {dir}')
         for file in os.listdir(dir):
             model_scale=file.split('-')[0]
-            _,scale=model_scale.split('_')
+            # _,scale=model_scale.split('_')
             report=U.load_json(U.pjoin(dir,file,'report.json'))
             assert report, f'No report found for {file}'
-            vector = {}
-            vector['verifications']={scale:report}
+            vector = {'verifications':{}}
+            for _scale in self.target_scales: # show it in all scales
+                vector['verifications'][_scale]=report
             vector['proposal_rating']=0
             vector['units']={}
             vectors[file]=vector
@@ -2386,7 +2390,7 @@ class PhylogeneticTree:
             self.load_design_sessions()
             self.GD = GAUDict.from_ptree(self)
 
-    def load_graph(self,max_nodes=None):
+    def load_graph(self,max_nodes=None,evo_only=False):
         edges_to_add = []
         count=0
         G=nx.DiGraph()
@@ -2402,7 +2406,13 @@ class PhylogeneticTree:
                 implemented_designs.append(artifact)
             else:
                 other_designs.append(artifact)
-        
+
+        all_designs=implemented_designs+other_designs
+        # sort all designs by timestamps
+        timestamps = {idx:node.timestamp for idx,node in enumerate(all_designs)}
+        timestamps = sorted(timestamps.items(), key=lambda x: x[1])
+        all_designs = [all_designs[idx] for idx, _ in timestamps]
+
         # Load primary library
         core_refs=[]
         other_refs=[]
@@ -2411,9 +2421,11 @@ class PhylogeneticTree:
             if ref.type in ['ReferenceCore','ReferenceCoreWithTree']:
                 core_refs.append(ref)
             else:
+                if evo_only:
+                    continue
                 other_refs.append(ref)
 
-        nodes_to_add=implemented_designs+other_designs+core_refs+other_refs
+        nodes_to_add=core_refs+other_refs+all_designs
         for data in nodes_to_add:
             if max_nodes and count>max_nodes:
                 break
@@ -2542,12 +2554,13 @@ class PhylogeneticTree:
 
 
     def export(self,max_nodes=None,height=5000,layout=False,bgcolor="#eeeeee",
-               legend_x=-300,legend_y=-250,legend_step=100,legend_font_size=20,legend_width_constraint=100): #,with_ext=False
+               legend_x=-300,legend_y=-250,legend_step=100,legend_font_size=20,
+               legend_width_constraint=100,evo_only=False,size_mult=1): #,with_ext=False
         G=nx.DiGraph()
         if not max_nodes or max_nodes==0 or max_nodes>=len(self.G.nodes):
             _G=self.G.copy()
         else:
-            _G=self.load_graph(max_nodes)
+            _G=self.load_graph(max_nodes,evo_only)
 
         design_children = self.get_design_children()
         for idx,node in enumerate(_G.nodes):
@@ -2571,6 +2584,7 @@ class PhylogeneticTree:
                         size=NODE_SIZE_MAP[scale]
                 n_children = len(design_children.get(data.acronym,[]))
                 size+=max(0,int(math.log(n_children,2)))*2 if n_children else 0
+                size=int(size*size_mult)
             elif data.type=='Reference':
                 color=REFERENCE_COLOR
                 citations=data.citationCount
