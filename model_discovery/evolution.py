@@ -1324,7 +1324,12 @@ class DesignArtifact(NodeObject):
         tail = self.sess_id.split('-')[-1]
         timestr=self.sess_id[:-len(tail)-1]
         timeformat='%Y-%m-%d-%H-%M-%S'
-        return datetime.strptime(timestr, timeformat)
+        try:
+            return datetime.strptime(timestr, timeformat)
+        except ValueError:
+            # set to the minimal time 1970-01-01 00:00:00
+            print(f'Warning: Failed to parse timestamp for {self.sess_id}, set to minimal time')
+            return datetime.min
 
     def is_finished(self,challenging_threshold):
         if self.implementation and self.implementation.status=='implemented':
@@ -2407,7 +2412,7 @@ class PhylogeneticTree:
             else:
                 other_designs.append(artifact)
 
-        all_designs=implemented_designs+other_designs
+        all_designs: list[DesignArtifact] = implemented_designs+other_designs
         # sort all designs by timestamps
         timestamps = {idx:node.timestamp for idx,node in enumerate(all_designs)}
         timestamps = sorted(timestamps.items(), key=lambda x: x[1])
