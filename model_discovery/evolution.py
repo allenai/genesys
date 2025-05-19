@@ -11,12 +11,12 @@ try: # a stupid patch
     os.environ['TOGETHER_API_KEY']=TOGETHER_API_KEY
     os.environ['ANTHROPIC_API_KEY']=ANTHROPIC_API_KEY
     os.environ['HF_KEY']=HF_KEY
-    os.environ['HF_HUB_KEY']=HF_HUB_KEY
-    os.environ['GITHUB_TOKEN']=GITHUB_TOKEN
+    # os.environ['HF_HUB_KEY']=HF_HUB_KEY
+    # os.environ['GITHUB_TOKEN']=GITHUB_TOKEN
     os.environ['WANDB_API_KEY']=WANDB_API_KEY
     os.environ['S2_API_KEY']=S2_API_KEY
-    os.environ['AWS_SECRET_ACCESS_KEY']=AWS_SECRET_ACCESS_KEY
-    os.environ['AWS_ACCESS_KEY_ID']=AWS_ACCESS_KEY_ID
+    # os.environ['AWS_SECRET_ACCESS_KEY']=AWS_SECRET_ACCESS_KEY
+    # os.environ['AWS_ACCESS_KEY_ID']=AWS_ACCESS_KEY_ID
     os.environ['MATHPIX_API_ID']=MATHPIX_API_ID
     os.environ['PINECONE_API_KEY']=PINECONE_API_KEY
     os.environ['COHERE_API_KEY']=COHERE_API_KEY

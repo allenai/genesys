@@ -3,60 +3,58 @@
 Utils and code for model discovery experiments. 
 
 
-# How to use Genesys CLI/GUI
-
-
-1. Set up  first (see below)
-2. Run `genesys <command> [args]` to use the CLI
-3. Run `genesys gui` to start the GUI
-
-
 # Setting up 
 
-1. Clone the repo (clone with token for internal) and cd into it
-
-2. Export the environment variables and API keys
-
+[1] Clone the repo, assume its under your home directory ~
+[2] Create a virtual env with pytorch, move to the repo, and install genesys cli
+```shell
+conda create -n genesys python=3.12 -y \
+&& conda activate genesys \
+&& cd ~/model_discovery \ 
+&& conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia -y \
+&& pip install -e .
+```
+[3] Setup LLM API keys
 ```shell
 export MY_OPENAI_KEY=YOURKEY
 export TOGETHER_API_KEY=YOURKEY
 export ANTHROPIC_API_KEY=YOURKEY
 export HF_KEY=YOURKEY
-export HF_HUB_KEY=YOURKEY
-export GITHUB_TOKEN=YOURKEY
 export WANDB_API_KEY=YOURKEY
-export AWS_SECRET_ACCESS_KEY=YOURKEY
-export AWS_ACCESS_KEY_ID=YOURKEY
 export S2_API_KEY=YOURKEY
-export DATA_DIR=~/model_discovery/data # assume you are using the home dir 
-export CKPT_DIR=~/model_discovery/ckpt # assume you are using the home dir 
-export DB_KEY_PATH=~/model_discovery/secrets/db_key.json # provide yours
+export DATA_DIR=~/model_discovery/data # change it to a directory you like
+export CKPT_DIR=~/model_discovery/ckpt # change it to a directory you like
+export DB_KEY_PATH=~/model_discovery/secrets/db_key.json # provide yours, see item 4 below
 export HF_DATASETS_TRUST_REMOTE_CODE=1
 export PINECONE_API_KEY=YOURKEY
 export COHERE_API_KEY=YOURKEY
 export PERPLEXITY_API_KEY=YOURKEY
-export MATHPIX_API_ID=YOURKEY # optional
+export MATHPIX_API_ID=YOURKEY # optional, it provides pdf to text service, useful if you need to get paper from arxiv url for example, its not used in the paper but you may try it yourself
 ```
-
-3. Make the virtual env and install the requirements 
-
+[4] Setup a firebase backend, and store the secret json in DB_KEY_PATH, this is required for the distributed search
+[5] Setup a pinecone vectorstore (:red[TODO] need to provide more instructions later), this is needed if you wanna vector search, you may also build your own
+[6] Setup, notice that you may need to install exec_utils manually before it, if its not public yet
 ```shell
-conda create -n genesys python=3.12 -y \
-&& conda activate genesys \
-&& cd ~/model_discovery \
-&& conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia -y \
-&& pip install -e . \
-&& genesys setup \
+genesys setup \ 
 && pip install -r requirements_optional.txt # optional
 ```
-Hint: use ```bash scripts/setup_env.sh -d``` to prepare datasets only
-
-Note: You need to install exec_utils in some way; You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
-
-4. Test with the gui
+If you want to prepare the datasets only, use ```bash scripts/setup_env.sh -d```. 
+You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
+[7] Test your setup by launching a node
+```shell
+genesys node -v
 ```
+[8] Launch the gui
+```shell
 genesys gui
 ```
+
+
+# How to use Genesys CLI/GUI
+
+
+1. Run `genesys <command> [args]` to use the CLI
+2. Run `genesys gui` to start the GUI
 
 
 # Hints
