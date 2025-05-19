@@ -5,15 +5,15 @@ Utils and code for model discovery experiments.
 
 # Setting up 
 
-[1] Clone the repo, assume its under your home directory ~
+[1] Clone the repo, assume its under your home directory `~`
 
 [2] Create a virtual env with pytorch, move to the repo, and install genesys cli
 ```shell
-conda create -n genesys python=3.12 -y \
-&& conda activate genesys \
-&& cd ~/model_discovery \ 
-&& conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia -y \
-&& pip install -e .
+conda create -n genesys python=3.12 -y && \
+conda activate genesys && \
+cd ~/model_discovery && \
+conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=11.8 -c pytorch -c nvidia -y && \
+pip install -e .
 ```
 
 [3] Setup LLM API keys
@@ -38,17 +38,18 @@ export MATHPIX_API_ID=YOURKEY # optional, it provides pdf to text service, usefu
 
 [5] Setup a pinecone vectorstore (:red[TODO] need to provide more instructions later), this is needed if you wanna vector search, you may also build your own
 
-[6] Setup, notice that you may need to install exec_utils manually before it, if its not public yet
+[6] Setup, notice that you may need to install `exec_utils` manually before it, if its not public yet
 ```shell
-genesys setup \ 
-&& pip install -r requirements_optional.txt # optional
+genesys setup && \ 
+pip install -r requirements_optional.txt # optional
 ```
-If you want to prepare the datasets only, use ```bash scripts/setup_env.sh -d```. 
-You may need to manually install some dependencies if they are missing during runtime, then go back to install requirements.txt, the requirements.txt is self-conflict a little bit. 
+Hint 1: If you want to prepare the datasets only, use `genesys setup -d`. 
+
+Hint 2: You can simply install requirements by `genesys setup -s` as preparing datasets takes a long time.
 
 [7] Test your setup by launching a node
 ```shell
-genesys node -v
+genesys node
 ```
 
 [8] Launch the gui
