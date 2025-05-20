@@ -261,6 +261,7 @@ def home(evosys,project_dir):
       # st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
 
       st.caption(f"Today is :blue[{datetime.now().strftime('%b %d, %Y, %A')}].")
+      st.metric(label="Temperature 📴", value="70 °F", delta="1.2 °F")
 
 
     howtouse()
