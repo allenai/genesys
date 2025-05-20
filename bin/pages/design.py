@@ -633,7 +633,7 @@ def _design_tuning(evosys,project_dir):
                 _value = 1 if not st.session_state.is_demo else 3
                 termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=_value,disabled=st.session_state.is_demo)
             with cols[1]:
-                _value = 0.05 if st.session_state.is_demo else 0.0
+                _value = 0.02 if st.session_state.is_demo else 0.0
                 termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0.0,value=_value,disabled=st.session_state.is_demo)
             with cols[2]:
                 termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0.0,value=0.0,disabled=st.session_state.is_demo)
@@ -678,7 +678,7 @@ def _design_tuning(evosys,project_dir):
             with cols[0]:
                 ckpts=[i for i in os.listdir(evosys.ckpt_dir) if i!='.node.json']
                 current_ckpt = evosys.evoname
-                selected_ckpt = st.selectbox(label="Select folder",options=ckpts,index=ckpts.index(current_ckpt))
+                selected_ckpt = st.selectbox(label="Select folder",options=ckpts,index=ckpts.index(current_ckpt),disabled=st.session_state.is_demo)
                 db_dir = U.pjoin(evosys.ckpt_dir,selected_ckpt,'db')
             with cols[1]:
                 folders=[]
