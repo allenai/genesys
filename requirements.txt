@@ -25,6 +25,9 @@ streamlit_timeline
 streamlit-flow-component==1.5.0
 st-theme
 arxiv
+torchtune==0.2.0 # higher version has problem of initializing CUDA early
+torchao
+triton
 anthropic>=0.34.2
 langchain_openai>=0.2.0
 langchain_anthropic>=0.2.1
