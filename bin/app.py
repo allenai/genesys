@@ -72,6 +72,8 @@ else:
 if 'use_cache' not in st.session_state:
     st.session_state.use_cache = False # as it needs update online sometimes
 
+st.session_state.daily_usage_limit = 5
+
 # Setup the evo system
 
 @st.cache_resource()

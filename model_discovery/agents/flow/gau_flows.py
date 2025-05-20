@@ -49,7 +49,7 @@ GAU_BASE=inspect.getsource(GAUBase)
 GAB_BASE=inspect.getsource(GABBase)
 
 O1_MODELS = ['o1_preview','o1_mini']
-GPT_MODELS = ['gpt4o_0806','gpt4o_mini']
+GPT_MODELS = ['gpt4o_0806','gpt4o_mini']#,'gpt-4.1-nano']
 CLAUDE_MODELS = ['claude3.5_sonnet']
 NONE_MODEL = ['None']
 AGENT_TYPES = GPT_MODELS+CLAUDE_MODELS+O1_MODELS
@@ -198,6 +198,7 @@ class GUFlow(
             'gpt4o_mini':self.system.designer,
             'o1_preview':self.system.designer,
             'o1_mini':self.system.designer,
+            'gpt-4.1-nano':self.system.designer,
             'None':None, # None for search assistiant 
         }
         AGENT_TYPES_MODEL_NAMES = {
@@ -206,6 +207,7 @@ class GUFlow(
             'gpt4o_mini':'gpt-4o-mini',
             'o1_preview':'o1-preview',
             'o1_mini':'o1-mini',
+            'gpt-4.1-nano':'gpt-4.1-nano',
             'None':None,
         }
 
@@ -307,6 +309,7 @@ class GUFlow(
         for agent,cost in self.costs.items():
             self.stream.write(f' - *{agent} Cost*: {cost}')
         self.stream.write(f'###### **Session Total Cost**: {self.total_cost}')
+        U.log_daily_usage(self.sess_id,self.total_cost)
 
     def call_dialog(self,tid,prompt,context=None):
         callee=self.dialog.get_alias(tid)
@@ -576,7 +579,7 @@ class GUFlow(
                         self.stream.write(f'# Detail\n{detail}')
                         self.stream.write(f'# Ready\n{ready}')
                     self.print_raw_output(out,'DESIGN_PROPOSER')
-
+            
                 _MIN_ROUNDS=max(min(2,self.max_attemps['max_search_rounds'])-attempt,0)
                 _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS) if self.max_attemps['max_search_rounds']>0 else 0
                 for i in range(_MAX_ROUNDS):

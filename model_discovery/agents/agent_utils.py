@@ -88,6 +88,10 @@ OPENAI_COSTS_DICT={
         'input':3/1e6,
         'output':12/1e6,
     },
+    'gpt-4.1-nano':{
+        'input': 0.1/1e6,
+        'output': 0.4/1e6,
+    },
 }
 
 def openai_costs(usage,model_name):
@@ -122,6 +126,7 @@ OPENAI_TOKEN_LIMITS={
     "gpt-4o-mini":128000,
     "o1-preview":128000,
     "o1-mini":128000,
+    'gpt-4.1-nano':1047576,
 }
 
 OPENAI_OUTPUT_BUFFER={
@@ -129,6 +134,7 @@ OPENAI_OUTPUT_BUFFER={
     "gpt-4o-mini":16384,
     "o1-preview":32768,
     "o1-mini":32768,
+    'gpt-4.1-nano':32768,
 }
 
 ANTHROPIC_TOKEN_LIMITS={
@@ -158,6 +164,8 @@ def get_token_limit(model_name):
 
 def _encode_text(text,model_name,truncate=None):
     if 'gpt' in model_name or 'o1' in model_name:
+        if model_name == 'gpt-4.1-nano':
+            model_name = 'gpt-4o'
         enc=tiktoken.encoding_for_model(model_name)
         tokens = enc.encode(text)
     elif 'claude' in model_name:
@@ -174,6 +182,8 @@ def _encode_text(text,model_name,truncate=None):
 
 def decode_text(tokens,model_name):
     if 'gpt' in model_name or 'o1' in model_name:
+        if model_name == 'gpt-4.1-nano':
+            model_name = 'gpt-4o'
         enc=tiktoken.encoding_for_model(model_name)
         return enc.decode(tokens)
     elif 'claude' in model_name:

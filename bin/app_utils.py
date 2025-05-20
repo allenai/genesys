@@ -164,6 +164,10 @@ def running_status(st,evosys):
   #   URL='https://console.firebase.google.com/u/0/project/model-discovery/firestore/databases/-default-/data'
   #   st.write(f'⛅ [**Cloud Status**]({URL})')
 
+  if st.session_state.is_demo:
+    daily_usage = U.get_daily_usage(total=True)
+    st.progress(min(1.0,daily_usage/st.session_state.daily_usage_limit),text=f'💰 Daily limit: ```{daily_usage:.3f}```/```{st.session_state.daily_usage_limit:.2f}```')
+
   if st.session_state.evo_running:
     if evosys.benchmark_mode:
       title='***Bench Running***'

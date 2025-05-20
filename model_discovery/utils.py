@@ -10,6 +10,7 @@ import torch
 import yaml
 import zipfile
 from contextlib import contextmanager
+from datetime import datetime
 
 pjoin=os.path.join
 psplit=os.path.split
@@ -301,6 +302,34 @@ def save_local_doc(data):
     if CKPT_DIR is None:
         return
     save_json(data,pjoin(CKPT_DIR,'.node.json'))
+
+
+def daily_usage():
+    CKPT_DIR=os.environ.get('CKPT_DIR',None)
+    assert CKPT_DIR is not None, 'CKPT_DIR is not set'
+    daily_usage_file = pjoin(CKPT_DIR,'.daily_usage.json')
+    if not pexists(daily_usage_file):
+        save_json({},daily_usage_file)
+    return load_json(daily_usage_file)
+
+def log_daily_usage(sess_id,cost):
+  CKPT_DIR=os.environ.get('CKPT_DIR',None)
+  assert CKPT_DIR is not None, 'CKPT_DIR is not set'
+  today = datetime.now().strftime('%Y%m%d')
+  _daily_usage = daily_usage()
+  if today not in _daily_usage:
+    _daily_usage[today] = {}
+  _daily_usage[today][sess_id] = cost
+  save_json(_daily_usage,pjoin(CKPT_DIR,'.daily_usage.json'))
+  return _daily_usage 
+
+def get_daily_usage(total=False):
+  today = datetime.now().strftime('%Y%m%d')
+  _daily_usage = daily_usage()
+  if total:
+    return sum(_daily_usage.get(today, {}).values())
+  else:
+    return _daily_usage.get(today, {})
 
 
 def break_sentence(text, max_length=100):

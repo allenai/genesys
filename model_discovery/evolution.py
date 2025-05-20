@@ -175,6 +175,8 @@ class FirestoreManager:
                     #     self.collection.document('index').update({id: index_updates})
 
     def upload_experiment(self,exp,config=None):
+        if self.demo_mode:
+            return
         collection=self.remote_db.collection('experiments')
         to_set={}
         if config:
@@ -330,6 +332,8 @@ class FirestoreManager:
         :param overwrite: Whether to overwrite existing data
         :return: True if upload was successful, False otherwise
         """
+        if self.demo_mode:
+            return True
         try:
             ref.set(data, merge=merge)
             return True
@@ -338,6 +342,8 @@ class FirestoreManager:
             return False
 
     def upload_key_data(self, design_id, key, data, overwrite=False, verbose=False):
+        if self.demo_mode:
+            return True
         key=str(key)
         design_ref = self.collection.document(design_id)
         if design_id not in self.index:
@@ -357,6 +363,8 @@ class FirestoreManager:
         return True
 
     def upload_collection_key_data(self, design_id, collection_name, key, data, overwrite=False, verbose=False,collection=None):
+        if self.demo_mode:
+            return True
         key=str(key)
         collection = collection if collection is not None else self.collection
         design_ref = collection.document(design_id)
@@ -380,6 +388,8 @@ class FirestoreManager:
         return True
             
     def upload_implementation(self, design_id, implementation, overwrite=False,verbose=False,gab=False):
+        if self.demo_mode:
+            return
         history=implementation.pop('history')
         if not self.upload_key_data(design_id,'implementation',implementation,overwrite,verbose=verbose):
             # try to upload again by making it smaller
@@ -430,6 +440,8 @@ class FirestoreManager:
                         print(f'Failed to upload round "{round_idx}" for design "{design_id}" implementation history "{idx}"')
 
     def upload_verification(self, design_id, verification, scale, overwrite=False, verbose=False,is_baseline=False,protect_keys=[]):
+        if self.demo_mode:
+            return
         collection = self.baseline_collection if is_baseline else self.collection
         Index = self.baseline_index if is_baseline else self.index  
         reports=verification.pop('verification_report')
@@ -526,9 +538,13 @@ class FirestoreManager:
         return design
 
     def upload_metadata(self,design_id,metadata,overwrite=False,verbose=False):
+        if self.demo_mode:
+            return
         self.upload_key_data(design_id,'metadata',metadata,overwrite,verbose=verbose)
 
     def upload_proposal(self,design_id,proposal,overwrite=False,verbose=False):
+        if self.demo_mode:
+            return
         if not self.upload_key_data(design_id,'proposal',proposal,overwrite,verbose=verbose):
             # try to upload again by making it smaller
             print('try to upload again by making it smaller')
@@ -549,6 +565,8 @@ class FirestoreManager:
                 print('*** failed to upload even after removing search stacks')
     
     def upload_proposal_traces(self,design_id,proposal_traces,overwrite=False,verbose=False):
+        if self.demo_mode:
+            return
         for trace_id,trace in proposal_traces.items():
             if not self.upload_collection_key_data(design_id,'proposal_traces',trace_id,trace,overwrite,verbose=verbose):
                 # try to upload again by making it smaller
@@ -576,6 +594,8 @@ class FirestoreManager:
         :param design_id: The acronym of the design
         :param overwrite: Whether to overwrite existing data
         """
+        if self.demo_mode:
+            return
         # Upload metadata.json
         if 'metadata' in design:
             self.upload_metadata(design_id,design['metadata'],overwrite,verbose=verbose)
@@ -632,7 +652,7 @@ class FirestoreManager:
         return _proposed<=0 or _reranked<=0
     
     def upload_design_session(self,sess_id,sessdata,overwrite=False,verbose=False):
-        if not sessdata:
+        if not sessdata or self.demo_mode:
             return
         progress = self.to_session_progress(sessdata)
         if self.progress_leq(self.sess_index.get(sess_id,{}),sessdata) and not overwrite:
@@ -655,6 +675,8 @@ class FirestoreManager:
         return log_ref.to_dict()
     
     def upload_baselines(self,overwrite=False,verbose=False):
+        if self.demo_mode:
+            return
         corerefs=self.ptree.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
         baseline_index=self.get_baseline_index()
         for coreref in corerefs:
@@ -1611,6 +1633,7 @@ class PhylogeneticTree:
         self.remote_db = remote_db
         self.token_mults = token_mults
         self.benchmark_mode = benchmark_mode
+        self.demo_mode = demo_mode
         if use_remote_db and self.remote_db is not None:
             self.FM = FirestoreManager(self,evoname,db_dir,self.remote_db,demo_mode=demo_mode)
             self.FM.sync_from_db()
@@ -2979,7 +3002,7 @@ BUDGET_TYPES = ['design_bound','verify_bound']
     #cache="query_system",
 )
 class EvolutionSystem(exec_utils.System):
-    def __init__(self,agent_system,config,silent=False,demo_mode=False,**kwargs):
+    def __init__(self,agent_system,config,silent=False,demo_mode=True,**kwargs): # FIXME: demo_mode is True by default
         self.agents = agent_system
         self._config = config
         self.params=config.params
@@ -2991,7 +3014,7 @@ class EvolutionSystem(exec_utils.System):
         self.benchmark_mode = False
         if demo_mode:
             print('Building in demo mode')
-            self.set_demo_mode()
+            self.demo_mode = True
         self.load(**kwargs)
 
     def set_demo_mode(self):
@@ -3060,7 +3083,7 @@ class EvolutionSystem(exec_utils.System):
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],
                 self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],
                 CM=self.CM,token_mults=self.ve_cfg.get('training_token_multipliers',DEFAULT_TOKEN_MULTS),
-                benchmark_mode=self.params['benchmark_mode'])
+                benchmark_mode=self.params['benchmark_mode'],demo_mode=self.demo_mode)
         unfinished_designs = self.ptree.get_unfinished_designs()
         print(f"***$$$ Phylogenetic tree loaded with {len(self.ptree.G.nodes)} nodes and {len(unfinished_designs)}/{len(self.ptree.design_sessions)} design sessions from {self.ptree.db_dir}.")
         

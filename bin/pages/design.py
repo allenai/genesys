@@ -528,6 +528,9 @@ def _design_tuning(evosys,project_dir):
     if st.session_state.evo_running:
         st.warning("**NOTE:** Evolution system is running. Design engine is taken over by the system.")
 
+    if st.session_state.is_demo:
+        st.warning("Demo mode: most settings are disabled. Search is disabled, all in simplest setup.")
+
     db_dir = evosys.ptree.db_dir
     design_cfg = evosys.design_cfg.copy()
     design_cfg['agent_types']=U.safe_get_cfg_dict(design_cfg,'agent_types',DEFAULT_AGENTS)
@@ -554,7 +557,7 @@ def _design_tuning(evosys,project_dir):
                 mode = DesignModes.CROSSOVER
         with col2:
             # st.markdown("#### Configure the base models for each agent")
-            AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini']
+            # AGENT_TYPES = ['claude3.5_sonnet','gpt4o_0806','gpt4o_mini','gpt-4.1-nano']
             agent_type_labels = {
                 'DESIGN_PROPOSER':'Proposal Agent',
                 'PROPOSAL_REVIEWER':'Proposal Reviewer',
@@ -568,11 +571,21 @@ def _design_tuning(evosys,project_dir):
             for i,agent in enumerate(agent_type_labels):
                 with cols[i]:
                     options=AGENT_OPTIONS[agent].copy()
-                    if agent in ['IMPLEMENTATION_PLANNER']:
+                    options += ['gpt-4.1-nano']
+                    if agent in ['IMPLEMENTATION_PLANNER','IMPLEMENTATION_OBSERVER']:
                         options+=['None']
                     options+=['hybrid']
                     index = options.index(design_cfg['agent_types'][agent]) if design_cfg['agent_types'][agent] in options else 0
-                    agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT')
+
+                    if st.session_state.is_demo:
+                        _disabled = agent not in ['IMPLEMENTATION_PLANNER','IMPLEMENTATION_OBSERVER']
+                        if agent in ['IMPLEMENTATION_PLANNER','IMPLEMENTATION_OBSERVER']:
+                            options = ['gpt-4.1-nano','None']
+                        if agent!='SEARCH_ASSISTANT':
+                            index = options.index('gpt-4.1-nano')
+                    else:
+                        _disabled= agent=='SEARCH_ASSISTANT'
+                    agent_types[agent] = st.selectbox(label=agent_type_labels[agent],options=options,index=index,disabled=_disabled)
             design_cfg['agent_types'] = agent_types
         if any(['hybrid' in design_cfg['agent_types'][i] for i in design_cfg['agent_types']]):
             st.caption('***NOTE:** Hybrid agent is a weighted random selection of the options at the beginning of design. It will apply the default weights which will be presented later when it runs.*')
@@ -589,7 +602,7 @@ def _design_tuning(evosys,project_dir):
             cols = st.columns(len(sources))
             for i,source in enumerate(sources):
                 with cols[i]:
-                    value=1
+                    value=min(1,sources[source])
                     display_name = f'{source} ({sources[source]})'
                     if source=='ReferenceCoreWithTree':
                         display_name = f'RefCoreWithTree ({sources[source]})'
@@ -599,7 +612,7 @@ def _design_tuning(evosys,project_dir):
                         value=0
                     elif source=='ReferenceWithCode':
                         display_name = f'RefWithCode ({sources[source]})'
-                    n_sources[source] = st.number_input(label=display_name,min_value=0,value=value)#,max_value=1,disabled=True)
+                    n_sources[source] = st.number_input(label=display_name,min_value=0,value=value,disabled=st.session_state.is_demo)#,max_value=1,disabled=True)
         with _scol2:
             # st.markdown("##### Input Settings")
             design_cfg['crossover_no_ref'] = st.checkbox("Crossover no ref",value=design_cfg.get('crossover_no_ref',True),
@@ -617,20 +630,23 @@ def _design_tuning(evosys,project_dir):
             st.markdown("##### Configure termination conditions and budgets (0 is no limit)")
             cols=st.columns(4)
             with cols[0]:
-                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=3)
+                _value = 1 if not st.session_state.is_demo else 3
+                termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=_value,disabled=st.session_state.is_demo)
             with cols[1]:
-                termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0,value=0)
+                _value = 0.005 if st.session_state.is_demo else 0.0
+                termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0.0,value=_value,disabled=st.session_state.is_demo)
             with cols[2]:
-                termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0,value=0)
+                termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0.0,value=0.0,disabled=st.session_state.is_demo)
             with cols[3]:
-                max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=4)
+                _value = 3 if not st.session_state.is_demo else 0
+                max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=_value,disabled=st.session_state.is_demo)
         with col2:
             st.markdown("##### Configure the threshold for rating the design")
             cols=st.columns(2)
             with cols[0]:
-                threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0,max_value=5,value=4)
+                threshold['proposal_rating'] = st.slider(label="Proposal rating",min_value=0,max_value=5,value=1,disabled=st.session_state.is_demo)
             with cols[1]:
-                threshold['implementation_rating'] = st.slider(label="Implementation rating",min_value=0,max_value=5,value=3)
+                threshold['implementation_rating'] = st.slider(label="Implementation rating",min_value=0,max_value=5,value=1,disabled=st.session_state.is_demo)
         design_cfg['termination'] = termination
         design_cfg['threshold'] = threshold 
 
@@ -640,16 +656,16 @@ def _design_tuning(evosys,project_dir):
             st.markdown("##### Configure max number of attempts")
             cols=st.columns(3)
             with cols[0]:
-                max_attempts['design_proposal'] = st.number_input(label="Proposal attempts",min_value=3,value=5)
+                max_attempts['design_proposal'] = st.number_input(label="Proposal attempts",min_value=3,value=3,disabled=st.session_state.is_demo)
             with cols[1]:
-                max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=5)
+                max_attempts['implementation_debug'] = st.number_input(label="Debug attempts",min_value=3,value=3,disabled=st.session_state.is_demo)
             with cols[2]:
-                max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0)
+                max_attempts['post_refinement'] = st.number_input(label="Post refinements",min_value=0,value=0,disabled=st.session_state.is_demo)
         design_cfg['max_attemps'] = max_attempts
 
         with col2:
             # st.markdown("##### Other settings")
-            design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg.get('use_unlimited_prompt',False))
+            design_cfg['use_unlimited_prompt']=st.checkbox('Use unlimited prompt',value=design_cfg.get('use_unlimited_prompt',False),disabled=st.session_state.is_demo)
             design_cfg['unittest_pass_required']=st.checkbox('Unittests pass required',value=design_cfg.get('unittest_pass_required',False))
                 # help='Whether require the coder to pass self-generated unit tests before the code is accepted.')
             design_cfg['no_f_checkers']=st.checkbox('No F-Checkers',value=design_cfg.get('no_f_checkers',False),
@@ -696,27 +712,29 @@ def _design_tuning(evosys,project_dir):
 
         cols=st.columns([2,2,2,3,2,3])
         with cols[0]:
-            search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1)
+            search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[1]:
-            search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1)
+            search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[2]:
-            search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1)
+            search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[3]:
-            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 is disabled)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+            _value = 0.2 if not st.session_state.is_demo else 0.0
+            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 is disabled)",min_value=0.0,max_value=1.0,value=_value,step=0.01,disabled=st.session_state.is_demo)
         with cols[4]:
-            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1)
+            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[5]:
-            search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01)
+            search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01,disabled=st.session_state.is_demo)
 
         cols=st.columns([2,2,2,2,2])
         with cols[0]:
-            search_cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1)
+            search_cfg['result_limits']['s2']=st.number_input("S2 Search Result Limit",value=5,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[1]:
-            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['arxiv']=st.number_input("Arxiv Search Result Limit",value=3,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[2]:
-            search_cfg['result_limits']['pwc']=st.number_input("PwC Result Limit",value=3,min_value=0,step=1)
+            search_cfg['result_limits']['pwc']=st.number_input("PwC Result Limit",value=3,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[3]:
-            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
+            _index = 2 if not st.session_state.is_demo else 0
+            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=_index,disabled=st.session_state.is_demo)
         with cols[4]:
             search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=4000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
        
@@ -748,7 +766,9 @@ def _design_tuning(evosys,project_dir):
     with cols[4]:
         st.write('')
         st.write('')
-        resume = st.checkbox(label="Resume",value=True,help='If checked, will randomly resume the unfinished design session if any.')
+        _value = not st.session_state.is_demo
+        resume = st.checkbox(label="Resume",value=_value,
+                help='If checked, will randomly resume the unfinished design session if any.',disabled=st.session_state.is_demo)
     with cols[5]:
         st.write('')
         st.write('')
@@ -777,7 +797,9 @@ def _design_tuning(evosys,project_dir):
                 select_cfg['n_sources']=n_sources
                 manual_seed = None if manual_seed == 'None' else manual_seed
                 manual_refs = None if manual_refs == 'None' else manual_refs.split(',')
-                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,sess_id=sess_id,resume=resume)
+                cpu_only = st.session_state.is_demo
+                evosys.design(select_cfg,design_cfg,search_cfg,user_input=user_input,n_seeds=n_seeds,
+                    sess_id=sess_id,resume=resume,cpu_only=cpu_only)
     
     elif view_log_btn:
         show_log(load_log(selected_design_log_path))
