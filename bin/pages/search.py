@@ -29,19 +29,26 @@ def paper_search(evosys,project_dir):
         cols=st.columns([2,2,2,3,2,3])
         with cols[0]:
             search_cfg['result_limits']['lib']=st.number_input("Library Primary",value=5,min_value=0,step=1,
-                help='The core library with 300+ state-of-the-art language model architecture related papers.')
+                help='The core library with 300+ state-of-the-art language model architecture related papers.',
+                disabled=st.session_state.is_demo
+            )
         with cols[1]:
             search_cfg['result_limits']['lib2']=st.number_input("Library Secondary",value=0,min_value=0,step=1,
-                help='The secondary library of the papers that are cited by the primary library.')
+                help='The secondary library of the papers that are cited by the primary library.',
+                disabled=st.session_state.is_demo
+            )
         with cols[2]:
             search_cfg['result_limits']['libp']=st.number_input("Library Plus",value=0,min_value=0,step=1,
-                help='The library of the papers that are recommended by Semantic Scholar for core library papers.')
+                help='The library of the papers that are recommended by Semantic Scholar for core library papers.',
+                disabled=st.session_state.is_demo
+            )
         with cols[3]:
-            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means disable)",min_value=0.0,max_value=1.0,value=0.2,step=0.01)
+            _value = 0.2 if not st.session_state.is_demo else 0.0
+            search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 means disable)",min_value=0.0,max_value=1.0,value=_value,step=0.01,disabled=st.session_state.is_demo)
         with cols[4]:
-            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1)
+            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[5]:
-            search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01)
+            search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01,disabled=st.session_state.is_demo)
 
         cols=st.columns([2,2,2,2,2,1])
         with cols[0]:
@@ -51,15 +58,16 @@ def paper_search(evosys,project_dir):
         with cols[2]:
             search_cfg['result_limits']['pwc']=st.number_input("Papers w/ Code Result Limit",value=3,min_value=0,step=1)
         with cols[3]:
-            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=2)
+            _index = 2 if not st.session_state.is_demo else 0
+            search_cfg['perplexity_settings']['model_size']=st.selectbox("Perplexity Model Size",options=['none','small','large','huge'],index=_index,disabled=st.session_state.is_demo)
         with cols[4]:
             search_cfg['perplexity_settings']['max_tokens']=st.number_input("Perplexity Max Tokens",value=2000,min_value=500,step=100,disabled=search_cfg['perplexity_settings']['model_size']=='none')
         with cols[5]:
             st.write("")
             st.write("")
-            prompting=st.checkbox("Prompt",value=False)
+            prompting=st.checkbox("Prompt",value=False,disabled=st.session_state.is_demo)
 
-        analysis=st.text_area("Instructs to the Search Agent",placeholder='Please finds me information about ...',height=100)
+        analysis=st.text_area("Instructs to the Search Agent",placeholder='Please finds me information about ...',height=100,disabled=st.session_state.is_demo)
 
     sss=evosys.agents.sss
     sss.reconfig(search_cfg,st)
@@ -71,7 +79,7 @@ def paper_search(evosys,project_dir):
         with st.expander("Service Connection",expanded=True):
             display_status('Cohere',sss.co is not None)
             display_status('Pinecone',sss.pc is not None)
-            display_status('Perplexity',sss.ppl_key_set)
+            display_status('Perplexity',sss.ppl_key_set and not st.session_state.is_demo)
             display_status('Semantic Scholar',sss.s2_key_set)
     
     details=st.text_area("Search Content with Detailed Query (for vector store search)",placeholder='I want to ask about ...',height=100)
@@ -243,9 +251,9 @@ def units_search(evosys,project_dir):
     with st.expander("Search Configurations",expanded=True):
         cols = st.columns([1,1.5,1,1.5,1])
         with cols[0]:
-            _unit_search_cfg['top_k']=st.number_input("Top K",value=_unit_search_cfg['top_k'],min_value=1,step=1)
+            _unit_search_cfg['top_k']=st.number_input("Top K",value=_unit_search_cfg['top_k'],min_value=1,step=1,disabled=st.session_state.is_demo)
         with cols[1]:
-            _unit_search_cfg['cutoff']=st.slider("Cutoff",min_value=0.0,max_value=1.0,value=_unit_search_cfg['cutoff'],step=0.01)
+            _unit_search_cfg['cutoff']=st.slider("Cutoff",min_value=0.0,max_value=1.0,value=_unit_search_cfg['cutoff'],step=0.01,disabled=st.session_state.is_demo)
         with cols[2]:
             if _unit_embedding_model in _embeddding_models['OpenAI']:
                 embedding_model_type = 'OpenAI'
@@ -254,24 +262,28 @@ def units_search(evosys,project_dir):
             elif _unit_embedding_model in _embeddding_models['Together']:
                 embedding_model_type = 'Together'
             _model_types = list(_embeddding_models.keys())
-            embedding_model_type = st.selectbox("Embedding Model Type",options=_model_types,index=_model_types.index(embedding_model_type))
+            if st.session_state.is_demo:
+                embedding_model_type = 'OpenAI'
+            embedding_model_type = st.selectbox("Embedding Model Type",options=_model_types,index=_model_types.index(embedding_model_type),disabled=st.session_state.is_demo)
         with cols[3]:
             _index=_embeddding_models[embedding_model_type].index(_unit_embedding_model) if _unit_embedding_model in _embeddding_models[embedding_model_type] else 0
-            _unit_embedding_model=st.selectbox("Embedding Model",options=_embeddding_models[embedding_model_type],index=_index)
+            if st.session_state.is_demo:
+                _index = 1
+            _unit_embedding_model=st.selectbox("Embedding Model",options=_embeddding_models[embedding_model_type],index=_index,disabled=st.session_state.is_demo)
         with cols[4]:
             embedding_distances = [i.value for i in EmbeddingDistance]
-            _unit_embedding_distance=st.selectbox("Embedding Distance",options=embedding_distances,index=embedding_distances.index(_unit_embedding_distance))
+            _unit_embedding_distance=st.selectbox("Embedding Distance",options=embedding_distances,index=embedding_distances.index(_unit_embedding_distance),disabled=st.session_state.is_demo)
     _cfg['unit_search'] = _unit_search_cfg
     _cfg['embedding_models']['unitcode'] = _unit_embedding_model
     _cfg['embedding_distances']['unitcode'] = _unit_embedding_distance
 
-    desc_query=st.text_input("Unit description (you can paste here)")
-    code_query=st.text_area("Unit code query (you can paste here)")
+    desc_query=st.text_input("Unit description (you can paste here)",disabled=st.session_state.is_demo)
+    code_query=st.text_area("Unit code query (you can paste here)",disabled=st.session_state.is_demo)
     cols=st.columns([1,1,3])
     with cols[0]:
-        search_unit_code_btn=st.button("Search Units by Code")
+        search_unit_code_btn=st.button("Search Units by Code",use_container_width=True,disabled=st.session_state.is_demo)
     with cols[1]:
-        search_unit_desc_btn=st.button("Search Units by Description")
+        search_unit_desc_btn=st.button("Search Units by Description",use_container_width=True,disabled=st.session_state.is_demo)
 
     if search_unit_code_btn or search_unit_desc_btn:
         with st.spinner('Searching...'):
@@ -301,11 +313,11 @@ def proposal_search(evosys,project_dir):
     with st.expander("Search Configurations",expanded=True):
         cols = st.columns([1,1,1.5,1,1.3,1])
         with cols[0]:
-            _proposal_search_cfg['top_k']=st.number_input("Top K",value=_proposal_search_cfg['top_k'],min_value=0,step=1)
+            _proposal_search_cfg['top_k']=st.number_input("Top K",value=_proposal_search_cfg['top_k'],min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[1]:
-            _proposal_search_cfg['sibling']=st.number_input("Sibling Top K",value=_proposal_search_cfg['sibling'],min_value=0,step=1)
+            _proposal_search_cfg['sibling']=st.number_input("Sibling Top K",value=_proposal_search_cfg['sibling'],min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[2]:
-            _proposal_search_cfg['cutoff']=st.slider("Cutoff",min_value=0.0,max_value=1.0,value=_proposal_search_cfg['cutoff'],step=0.01)
+            _proposal_search_cfg['cutoff']=st.slider("Cutoff",min_value=0.0,max_value=1.0,value=_proposal_search_cfg['cutoff'],step=0.01,disabled=st.session_state.is_demo)
         with cols[3]:
             if _proposal_embedding_model in _embeddding_models['OpenAI']:
                 embedding_model_type = 'OpenAI'
@@ -314,20 +326,24 @@ def proposal_search(evosys,project_dir):
             elif _proposal_embedding_model in _embeddding_models['Together']:
                 embedding_model_type = 'Together'
             _model_types = list(_embeddding_models.keys())
-            embedding_model_type = st.selectbox("Embedding Model Type",options=_model_types,index=_model_types.index(embedding_model_type))
+            if st.session_state.is_demo:
+                embedding_model_type = 'OpenAI'
+            embedding_model_type = st.selectbox("Embedding Model Type",options=_model_types,index=_model_types.index(embedding_model_type),disabled=st.session_state.is_demo)
         with cols[4]:
             _index=_embeddding_models[embedding_model_type].index(_proposal_embedding_model) if _proposal_embedding_model in _embeddding_models[embedding_model_type] else 0
-            _proposal_embedding_model=st.selectbox("Embedding Model",options=_embeddding_models[embedding_model_type],index=_index)
+            if st.session_state.is_demo:
+                _index = 1
+            _proposal_embedding_model=st.selectbox("Embedding Model",options=_embeddding_models[embedding_model_type],index=_index,disabled=st.session_state.is_demo)
         with cols[5]:
             embedding_distances = [i.value for i in EmbeddingDistance]
-            _proposal_embedding_distance=st.selectbox("Embedding Distance",options=embedding_distances,index=embedding_distances.index(_proposal_embedding_distance))
+            _proposal_embedding_distance=st.selectbox("Embedding Distance",options=embedding_distances,index=embedding_distances.index(_proposal_embedding_distance),disabled=st.session_state.is_demo)
     _cfg['proposal_search'] = _proposal_search_cfg
     _cfg['embedding_models']['proposal'] = _proposal_embedding_model
     _cfg['embedding_distances']['proposal'] = _proposal_embedding_distance
 
     st.subheader("Proposal Search Engine")
-    query=st.text_area("Proposal query (you can paste here)")
-    search_proposal_btn=st.button("Search Proposal")
+    query=st.text_area("Proposal query (you can paste here)",disabled=st.session_state.is_demo)
+    search_proposal_btn=st.button("Search Proposal",disabled=st.session_state.is_demo)
 
     if search_proposal_btn:
         with st.spinner('Searching...'):
@@ -349,6 +365,8 @@ def search(evosys,project_dir):
         # mode=st.radio('Playground Options',options=['Paper','Units','Proposal','Explorer'],index=0)
         mode=st.selectbox("Playground Options",options=['Paper Search','Units Search','Proposal Search','Explorers'])
 
+    if st.session_state.is_demo:
+        st.warning("Demo mode: Some search features are disabled.")
 
     if mode=='Paper Search':
         paper_search(evosys,project_dir)
