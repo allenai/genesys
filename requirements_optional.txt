@@ -1,4 +1,7 @@
 causal-conv1d # optional
 mamba-ssm==2.2.2 # optional
 flash-attn # optional
+triton
+torchtune==0.2.0 # higher version has problem of initializing CUDA early
+torchao
 # python-weather # optional

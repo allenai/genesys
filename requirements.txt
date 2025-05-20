@@ -8,14 +8,11 @@ pydot
 pyvis
 astor
 networkx
-triton
 wandb==0.18.5
 transformers==4.43.3
 datasets
 evaluate
 accelerate
-torchtune==0.2.0 # higher version has problem of initializing CUDA early
-torchao
 boto3
 pydantic==2.9.2
 typing-extensions==4.12.2
