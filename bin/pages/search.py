@@ -369,7 +369,7 @@ def search(evosys,project_dir):
         mode=st.selectbox("Sub-tabs",options=['Paper Search','Units Search','Proposal Search','Explorers'])
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: Some search features are disabled.")
+        st.warning("***Demo mode:** Some search features are disabled. Paper and unit search are slow in CPU-only mode for demo.*")
 
     if mode=='Paper Search':
         paper_search(evosys,project_dir)

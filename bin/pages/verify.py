@@ -451,7 +451,7 @@ def verify_engine(evosys,project_dir):
     DISABLE_VERIFICATION=False
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: the verification engine is disabled.")
+        st.warning("***Demo mode:** the verification engine is disabled.*")
         DISABLE_VERIFICATION = True
 
 

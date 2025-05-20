@@ -209,7 +209,7 @@ def _view_dialogs(evosys):
     st.title('Agent Dialog Viewer')
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: this tab is not available.")
+        st.warning("***Demo mode:** this tab is not available.*")
 
     with st.sidebar:
         folders = [i for i in list(os.listdir(U.pjoin(evosys.ckpt_dir))) if not i.endswith('.json')]
@@ -245,7 +245,7 @@ def _view_sessions(evosys):
     st.title('Local Session Logs')
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: this tab is not available.")
+        st.warning("***Demo mode:** this tab is not available.*")
 
     with st.sidebar:
         _folders = os.listdir(U.pjoin(evosys.ckpt_dir))

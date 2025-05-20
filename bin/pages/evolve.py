@@ -507,7 +507,7 @@ def evolution_launch_pad(evosys):
         # st.info(f'The command center is already running for namespace ```{_evoname}```. You are in passive observation mode.')
 
     if st.session_state.is_demo:
-        st.warning('***Demo mode: No real evolution will be launched, but it will show how the evolution system works***')
+        st.warning('***Demo mode:** No real evolution will be launched, but it will show how the evolution system works.*')
 
     st.header("Launch Pad")
     col1, col2, col3, col4,col5,col6 = st.columns([1,1,1,1,1,0.9],gap='small')

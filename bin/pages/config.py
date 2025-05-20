@@ -37,7 +37,7 @@ from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,
 
 def apply_config(evosys,config):
     if st.session_state.is_demo:
-        st.warning("Demo mode: No real config will be applied")
+        st.toast("***Demo mode:** No real config will be applied*")
         return
     if config['params']['evoname']!=evosys.params['evoname']:
         evosys.switch_ckpt(config['params']['evoname'],load_params=False)
@@ -50,7 +50,7 @@ def apply_config(evosys,config):
 
 def apply_env_vars(evosys,env_vars):
     if st.session_state.is_demo:
-        st.warning("Demo mode: No real config will be applied")
+        st.toast("***Demo mode:** No real config will be applied*")
         return
     changed=False
     for k,v in env_vars.items():
@@ -69,7 +69,7 @@ def apply_env_vars(evosys,env_vars):
 
 def apply_select_config(evosys,select_cfg):
     if st.session_state.is_demo:
-        st.warning("Demo mode: No real config will be applied")
+        st.toast("***Demo mode:** No real config will be applied*")
         return
     total_n_seeds_dist = sum(select_cfg['n_seeds_dist'].values())
     if total_n_seeds_dist > 0:
@@ -87,7 +87,7 @@ def apply_select_config(evosys,select_cfg):
 
 def apply_design_config(evosys,design_cfg):
     if st.session_state.is_demo:
-        st.warning("Demo mode: No real config will be applied")
+        st.toast("***Demo mode:** No real config will be applied*")
         return
     with st.spinner('Applying and saving design config...'):
         evosys.reconfig(design_cfg=design_cfg)
@@ -95,7 +95,7 @@ def apply_design_config(evosys,design_cfg):
         st.rerun()
 def apply_search_config(evosys,search_cfg):
     if st.session_state.is_demo:
-        st.warning("Demo mode: No real config will be applied")
+        st.toast("***Demo mode:** No real config will be applied*")
         return
     with st.spinner('Applying and saving search config...'):    
         evosys.reconfig(search_cfg=search_cfg)
@@ -104,7 +104,7 @@ def apply_search_config(evosys,search_cfg):
 
 def apply_ve_config(evosys,ve_cfg):
     if st.session_state.is_demo:
-        st.warning("Demo mode: No real config will be applied")
+        st.toast("***Demo mode:** No real config will be applied*")
         return
     with st.spinner('Applying and saving ve config...'):    
         evosys.reconfig(ve_cfg=ve_cfg)
@@ -1118,7 +1118,7 @@ def config(evosys,project_dir):
     # st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: You cannot change the config, its only for viewing.")
+        st.warning("***Demo mode:** You cannot change the config, its only for viewing.*")
 
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")

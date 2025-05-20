@@ -20,7 +20,7 @@ def design_selector(evosys,project_dir):
     st.title('Design Selector')
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: You can play with the selector settings here.")
+        st.warning("***Demo mode:** You can play with the selector settings here.*")
 
     seed_dist = copy.deepcopy(DEFAULT_SEED_DIST)
 
@@ -190,7 +190,7 @@ def verify_selector(evosys,project_dir):
     st.title('Verify Selector')
 
     if st.session_state.is_demo:
-        st.warning("Demo mode: You can play with the selector settings here.")
+        st.warning("***Demo mode:** You can play with the selector settings here.*")
 
     with st.sidebar:
         unverified = evosys.ptree.get_unverified_scales()
