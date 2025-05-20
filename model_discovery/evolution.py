@@ -6,25 +6,7 @@ import os
 import sys
 import pathlib
 try: # a stupid patch 
-    from .secrets import *
-    os.environ['MY_OPENAI_KEY']=MY_OPENAI_KEY
-    os.environ['TOGETHER_API_KEY']=TOGETHER_API_KEY
-    os.environ['ANTHROPIC_API_KEY']=ANTHROPIC_API_KEY
-    os.environ['HF_KEY']=HF_KEY
-    # os.environ['HF_HUB_KEY']=HF_HUB_KEY
-    # os.environ['GITHUB_TOKEN']=GITHUB_TOKEN
-    os.environ['WANDB_API_KEY']=WANDB_API_KEY
-    os.environ['S2_API_KEY']=S2_API_KEY
-    # os.environ['AWS_SECRET_ACCESS_KEY']=AWS_SECRET_ACCESS_KEY
-    # os.environ['AWS_ACCESS_KEY_ID']=AWS_ACCESS_KEY_ID
-    os.environ['MATHPIX_API_ID']=MATHPIX_API_ID
-    os.environ['PINECONE_API_KEY']=PINECONE_API_KEY
-    os.environ['COHERE_API_KEY']=COHERE_API_KEY
-    os.environ['PERPLEXITY_API_KEY']=PERPLEXITY_API_KEY
-    os.environ['DATA_DIR']=DATA_DIR
-    os.environ['CKPT_DIR']=CKPT_DIR
-    os.environ['DB_KEY_PATH']=DB_KEY_PATH
-    os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'  
+    from model_discovery.secrets import *
 except:
     pass
 

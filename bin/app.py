@@ -1,6 +1,11 @@
 import sys,os
 sys.path.append('.')
 
+try: # a stupid patch 
+    from model_discovery.secrets import *
+except:
+    pass
+    
 import time
 import pathlib
 import functools as ft
