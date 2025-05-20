@@ -5,7 +5,19 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     git \
+    wget \
     && rm -rf /var/lib/apt/lists/*
+
+
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
+    && rm Miniconda3-latest-Linux-x86_64.sh
+    # && source ~/.bashrc
+
+
+ENV PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:$PATH
+
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # [1] Clone the repo, assume its under your home directory ~
 ARG GITHUB_TOKEN
@@ -35,17 +47,19 @@ COPY secrets/db_key.json ${DB_KEY_PATH}
 # its for more gurantees
 COPY model_discovery/secrets.py /home/model_discovery/model_discovery/secrets.py
 
-# [5] Copy ckpt data
-RUN mkdir -p /home/model_discovery/ckpt
-COPY ckpt/ /home/model_discovery/ckpt/
 
-# [6] Setup, notice that you may need to install exec_utils manually before it, if its not public yet
+# [5] Setup, notice that you may need to install exec_utils manually before it, if its not public yet
 RUN pip install git+https://${GITHUB_TOKEN}@github.com/allenai/exec_utils.git
 # skip data prep, mount from beaker
+ENV DATA_DIR=/home/model_discovery/data
+ENV CKPT_DIR=/home/model_discovery/ckpt
+RUN mkdir -p ${DATA_DIR} ${CKPT_DIR}
 RUN bash scripts/setup_requirements.sh
-# Install optional dependencies
-RUN pip install -r requirements_optional.txt
 
+# [6] Copy ckpt data
+COPY ckpt/evo_exp_full_a ${CKPT_DIR}/evo_exp_full_a
+COPY ckpt/RESULTS ${CKPT_DIR}/RESULTS
+COPY ckpt/.setting.json ${CKPT_DIR}/.setting.json
 
 # [7] Deploy the GUI
 EXPOSE 8501
@@ -53,9 +67,11 @@ HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # [8] Set entrypoint: 1. activate genesys, 2. run the gui by genesys gui
 ENTRYPOINT ["conda", "run", "-n", "genesys", "/bin/bash", "-c"]
-CMD ["genesys", "gui"]
+# CMD ["streamlit run bin/app.py --server.port=8501 --server.address=0.0.0.0"]
+CMD ["genesys gui"]
+
 
 # Usages
-# docker build -t genesys-demo .
-# docker run -p 8501:8501 genesys-demo 
+# docker build --build-arg GITHUB_TOKEN="your_actual_github_pat_here" -t genesys-demo .
+# docker run -p 18501:8501 genesys-demo 
 
