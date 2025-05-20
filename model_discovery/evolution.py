@@ -105,11 +105,12 @@ __all__ = [
 
 
 class FirestoreManager:
-    def __init__(self, ptree, evoname, db_dir, remote_db):
+    def __init__(self, ptree, evoname, db_dir, remote_db, demo_mode=False):
         self.ptree = ptree
         self.db_dir = db_dir
         self.evoname = evoname
         self.remote_db = remote_db
+        self.demo_mode=demo_mode
         self.collection=remote_db.collection(evoname)
         self.baseline_collection=remote_db.collection('baselines')
         self.key_dict={
@@ -691,6 +692,8 @@ class FirestoreManager:
             
     
     def sync_sessions_to_db(self,overwrite=False,verbose=False):
+        if self.demo_mode:
+            return
         sessions_dir=U.pjoin(self.db_dir,'sessions')
         sessions=os.listdir(sessions_dir)
         self.get_design_sessions_index()
@@ -699,6 +702,8 @@ class FirestoreManager:
             self.upload_design_session(sess_id,sessdata,overwrite=overwrite,verbose=verbose)
 
     def sync_to_db(self,overwrite=False,verbose=False): # upload all local designs to db, TODO: maybe need check self-consistency before upload
+        if self.demo_mode:
+            return
         self.get_index()
         designs=os.listdir(U.pjoin(self.db_dir,'designs'))
         for design_id in designs:
@@ -848,6 +853,8 @@ class FirestoreManager:
                     self.ptree.get_design_session(sess_id)
 
     def sync_from_db(self,overwrite=False): # download all designs from db if out of date
+        if self.demo_mode:
+            return
         self.get_index()
         self.get_baseline_index()
         for design_id in self.index:
@@ -864,6 +871,8 @@ class FirestoreManager:
         # self.del_design_sessions_index(sess_id)
 
     def sync(self,overwrite=False,verbose=False):
+        if self.demo_mode:
+            return
         self.sync_to_db(overwrite=overwrite,verbose=verbose)
         self.sync_from_db(overwrite=overwrite)
 
@@ -1576,7 +1585,7 @@ class PhylogeneticTree:
     | ... # units, etc.
     """
     def __init__(self, evoname, target_scales, db_dir: str, db_only=False, remote_db=None, use_remote_db=True,
-                 challenging_threshold=3,CM=None,token_mults=None,benchmark_mode=False): 
+                 challenging_threshold=3,CM=None,token_mults=None,benchmark_mode=False,demo_mode=False): 
         self.evoname = evoname
         self.target_scales = target_scales
         self.db_dir = db_dir
@@ -1596,7 +1605,7 @@ class PhylogeneticTree:
         self.token_mults = token_mults
         self.benchmark_mode = benchmark_mode
         if use_remote_db and self.remote_db is not None:
-            self.FM = FirestoreManager(self,evoname,db_dir,self.remote_db)
+            self.FM = FirestoreManager(self,evoname,db_dir,self.remote_db,demo_mode=demo_mode)
             self.FM.sync_from_db()
         self.load()
 
@@ -2970,6 +2979,16 @@ class EvolutionSystem(exec_utils.System):
         self.ve_cfg = {}
         self.benchmark_mode = False
         self.load(**kwargs)
+
+    def set_demo_mode(self):
+        self.demo_mode = True
+        self.ptree.demo_mode = True
+        self.ptree.FM.demo_mode = True
+    
+    def unset_demo_mode(self):
+        self.demo_mode = False
+        self.ptree.demo_mode = False
+        self.ptree.FM.demo_mode = False
 
     def load(self,**kwargs):
         self.remote_db = None

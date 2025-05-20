@@ -99,14 +99,16 @@ def build_evo_system(name):
                     results = all_results[d][scale]
                     evosys.ptree.G.nodes[d]['data'].verifications[scale].verification_report['eval_results.json']['results'] = results
             return evosys
-
         evo_system = load_results(evo_system,'full_aug')
+        evo_system.set_demo_mode()
     return evo_system
 
 
 
 setting=AU.get_setting()
 default_namespace=setting.get('default_namespace','test_evo_000')
+if DEMO_MODE:
+    default_namespace = 'evo_exp_full_a'
 
 evosys = build_evo_system(default_namespace)
 

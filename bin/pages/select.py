@@ -181,7 +181,7 @@ def verify_selector(evosys,project_dir):
 
     with st.sidebar:
         unverified = evosys.ptree.get_unverified_scales()
-        _select_design = st.selectbox('Select a design',options=list(unverified.keys()))
+        _select_design = st.selectbox('Verification status',options=list(unverified.keys()))
         with st.expander('Unverified scales',expanded=True):
             if _select_design is not None:
                 st.write(unverified[_select_design])
@@ -297,7 +297,7 @@ def verify_selector(evosys,project_dir):
         if design_id is None:
             st.warning('No design to verify.')
         else:
-            st.write(f'Selected {design_id} at scale {scale} to be verified.')
+            st.markdown(f'### Selected design: {design_id}\n\n### Selected scale: {scale}')
 
 
 

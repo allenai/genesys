@@ -449,6 +449,12 @@ def verify_engine(evosys,project_dir):
     st.title("Verification Engine")
 
     DISABLE_VERIFICATION=False
+
+    if st.session_state.is_demo:
+        st.warning("Demo mode: the verification engine is disabled.")
+        DISABLE_VERIFICATION = True
+
+
     if st.session_state.listening_mode and st.session_state.listener.accept_verify_job:
         st.warning("**WARNING:** You are running a listener with GPUs. Verification engine is taken over by the system.")
         DISABLE_VERIFICATION=True
