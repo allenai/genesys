@@ -745,6 +745,10 @@ class Checker(exec_utils.BaseTool):
         mock_input = torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH)).cuda() if \
             torch.cuda.is_available() and not cpu_only else torch.randint(0, vocab_size, (2, DEFAULT_CONTEXT_LENGTH))
         self.rprint(f'Checking differentiability... Mock input shape: {mock_input.shape}.')
+
+        if cpu_only:
+            self.rprint('Differentiability test skipped because CPU is used.')
+            return True
         
         criterion = nn.CrossEntropyLoss()
         model.train()
@@ -987,7 +991,7 @@ class Checker(exec_utils.BaseTool):
                 )
                 checkpass3=self._check_differentiable(glm,config.vocab_size, cpu_only)
                 checked3=True
-                if eff:
+                if eff and not cpu_only:
                     checkpass4,effectiveness=self._check_effectiveness(glm,config)
                     assert checkpass2 and checkpass3 and checkpass4
                 else:

@@ -633,7 +633,7 @@ def _design_tuning(evosys,project_dir):
                 _value = 1 if not st.session_state.is_demo else 3
                 termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=_value,disabled=st.session_state.is_demo)
             with cols[1]:
-                _value = 0.005 if st.session_state.is_demo else 0.0
+                _value = 0.05 if st.session_state.is_demo else 0.0
                 termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0.0,value=_value,disabled=st.session_state.is_demo)
             with cols[2]:
                 termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0.0,value=0.0,disabled=st.session_state.is_demo)
@@ -721,7 +721,8 @@ def _design_tuning(evosys,project_dir):
             _value = 0.2 if not st.session_state.is_demo else 0.0
             search_cfg['rerank_ratio']=st.slider("Rerank Scale Ratio (0 is disabled)",min_value=0.0,max_value=1.0,value=_value,step=0.01,disabled=st.session_state.is_demo)
         with cols[4]:
-            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=3,min_value=0,step=1,disabled=st.session_state.is_demo)
+            _value = 3 if not st.session_state.is_demo else 0
+            search_cfg['proposal_search_cfg']['top_k']=st.number_input("Proposal Top K",value=_value,min_value=0,step=1,disabled=st.session_state.is_demo)
         with cols[5]:
             search_cfg['proposal_search_cfg']['cutoff']=st.slider("Proposal Search Cutoff",min_value=0.0,max_value=1.0,value=0.5,step=0.01,disabled=st.session_state.is_demo)
 
@@ -762,13 +763,16 @@ def _design_tuning(evosys,project_dir):
     with cols[3]:
         st.write('')  
         st.write('')
-        submit = st.button(label="***Run***",use_container_width=True)
+        if st.session_state.is_demo and AU.daily_usage_status(st)>=1.0:
+            submit = st.button(label="***Run***",use_container_width=True,disabled=True)
+            st.warning("**NOTE:** Daily limit of the demo reached. Please try again tomorrow.")
+        else:
+            submit = st.button(label="***Run***",use_container_width=True)
+
     with cols[4]:
         st.write('')
         st.write('')
-        _value = not st.session_state.is_demo
-        resume = st.checkbox(label="Resume",value=_value,
-                help='If checked, will randomly resume the unfinished design session if any.',disabled=st.session_state.is_demo)
+        resume = st.checkbox(label="Resume",value=True, help='If checked, will randomly resume the unfinished design session if any.')
     with cols[5]:
         st.write('')
         st.write('')

@@ -444,10 +444,10 @@ class GUFlow(
             USE_ISEARCH=True
         if USE_ISEARCH:
             USE_2STAGE=False
-        # UNSTRUCT_PROPOSER='o1' in self._agent_types['DESIGN_PROPOSER']
-        # UNSTRUCT_REVIEWER='o1' in self._agent_types['PROPOSAL_REVIEWER']
-        UNSTRUCT_PROPOSER=True
-        UNSTRUCT_REVIEWER=True
+        UNSTRUCT_PROPOSER='o1' in self._agent_types['DESIGN_PROPOSER']
+        UNSTRUCT_REVIEWER='o1' in self._agent_types['PROPOSAL_REVIEWER']
+        # UNSTRUCT_PROPOSER=True
+        # UNSTRUCT_REVIEWER=True
 
 
         traces=[]
@@ -778,7 +778,10 @@ class GUFlow(
             ### Review
             USE_ISEARCH_REVIEW=self.search_settings['proposal_review_search']
             self.log_fn(f'Searching for similar designs...','PROPOSAL')
-            _,top_k_pps=self.sss.query_design_proposals(proposal)
+            if self.cpu_only:
+                top_k_pps=''
+            else:
+                _,top_k_pps=self.sss.query_design_proposals(proposal)
             self.log_fn(f'Search finished.','PROPOSAL')
             _proposal=f'Abstract: {abstract}\n\n{proposal}' if abstract else proposal
             # self.stream.markdown(top_k_pps)
@@ -1229,7 +1232,10 @@ class GUFlow(
         for unit in unimplemented_units:
             desc=self.tree.get_unit_desc(unit)
             if desc is not None:
-                items,_=self.system.sss.query_units_by_desc(desc)
+                if self.cpu_only:
+                    items={}
+                else:
+                    items,_=self.system.sss.query_units_by_desc(desc)
                 if items:
                     prt+=f'#### Recommended Unit Reuses for unimplemented unit: {unit}\n\n'
                 for unit_name in items:
@@ -1941,7 +1947,10 @@ class GUFlow(
                     implementation_observer_tid=self.dialog.fork(main_tid,USER_CALLER,IMPLEMENTATION_OBSERVER,context=context_implementation_observer,
                                 alias='implementation_observer',note=f'Observing implementation...')
                     self.log_fn(f'Searching similar units for {selection}...','IMPLEMENTATION')
-                    unit_codes=self.system.sss.query_units_by_code(reformatted_code)[1]
+                    if self.cpu_only:
+                        unit_codes=''
+                    else:
+                        unit_codes=self.system.sss.query_units_by_code(reformatted_code)[1]
                     self.log_fn(f'Searching finished.','IMPLEMENTATION')
                     REUSE_UNIT_PROMPT = P.gen_REUSE_UNIT_PROMPT(reformatted_code,reuse_from,reuse_type,self.design_mode,TYPE='observer')
                     if REFINE:

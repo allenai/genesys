@@ -157,6 +157,11 @@ def system_status(st,evosys,title,icon):
       st.write(f'Budget Type: ```{evosys.params["budget_type"]}```')
 
 
+def daily_usage_status(st):
+  daily_usage = U.get_daily_usage(total=True)
+  return min(1.0,daily_usage/st.session_state.daily_usage_limit)
+
+
 def running_status(st,evosys):
   db_status = f'📶' if evosys.ptree.remote_db else '📴'
   st.write(f'🏠 **Namespace\n```{evosys.evoname}```{db_status}**')
@@ -165,8 +170,7 @@ def running_status(st,evosys):
   #   st.write(f'⛅ [**Cloud Status**]({URL})')
 
   if st.session_state.is_demo:
-    daily_usage = U.get_daily_usage(total=True)
-    st.progress(min(1.0,daily_usage/st.session_state.daily_usage_limit),text=f'💰 Daily limit: ```{daily_usage:.3f}```/```{st.session_state.daily_usage_limit:.2f}```')
+    st.progress(daily_usage_status(st),text=f'💰 *Daily limit*: ```{daily_usage:.2f}```/```{st.session_state.daily_usage_limit:.2f}```')
 
   if st.session_state.evo_running:
     if evosys.benchmark_mode:
