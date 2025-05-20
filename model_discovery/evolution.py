@@ -1539,6 +1539,13 @@ class DesignArtifact(NodeObject):
                     return f'{status}:{n_tries}'
                 return f'unfinished ({status}):{n_tries}'
 
+    def to_dict(self):
+        dict=asdict(self)
+        dict['proposal']=self.proposal.to_dict()
+        dict['implementation']=self.implementation.to_dict()
+        dict['verifications']={scale:verification.to_dict() for scale,verification in self.verifications.items()}
+        return dict
+
 # def write_dot(G, path):
 #     """Write NetworkX graph G to Graphviz dot format on path.
 
@@ -1834,6 +1841,8 @@ class PhylogeneticTree:
         ckpt_dir=os.environ.get('CKPT_DIR')
         dir=U.pjoin(ckpt_dir,folder)
         vectors={}
+        if not os.path.exists(dir):
+            return {}
         print(f'{len(os.listdir(dir))} files found in {dir}')
         for file in os.listdir(dir):
             model_scale=file.split('-')[0]

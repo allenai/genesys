@@ -204,7 +204,10 @@ def run_design_thread(evosys,sess_id=None,params=None,cli=False, cpu_only=False,
         return None,msg
 
 def _design_engine(evosys,project_dir):
-    st.title("Model Design Engine")
+    st.title("Design Engine Playground")
+
+    if st.session_state.is_demo:
+        st.warning("Demo mode: design engine is disabled.")
     
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. If there is an evolution running, running design threads in the same namespace will cause unexpected errors.")
@@ -290,9 +293,9 @@ def _design_engine(evosys,project_dir):
                 st.write('**Search Config**')
                 st.write(evosys.search_cfg)
     with col2:
-        rand_resume_btn = st.button('***Random Resume***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.evo_running)
+        rand_resume_btn = st.button('***Random Resume***',use_container_width=True,disabled=len(unfinished_designs)==0 or st.session_state.evo_running or st.session_state.is_demo)
     with col3:
-        new_session_btn = st.button('***Launch New Session***',use_container_width=True,disabled=st.session_state.evo_running)
+        new_session_btn = st.button('***Launch New Session***',use_container_width=True,disabled=st.session_state.evo_running or st.session_state.is_demo)
         
     if rand_resume_btn:
         sess_id = random.choice(unfinished_designs)
@@ -381,7 +384,7 @@ def _design_engine(evosys,project_dir):
 
     if analyze_btn:
         all_logs,local_sessions = load_logs(U.pjoin(evosys.ptree.db_dir,'sessions'))
-        with st.status('Analyzing Logs...'):
+        with st.status('Analyzing Logs...',expanded=True):
             st.write(f'###### Design sessions in this node for ```{evosys.evoname}```')
             st.write(f'Total number of sessions: {len(local_sessions)}')
             st.write(f'Total number of logs: {len(all_logs)}')
@@ -406,7 +409,10 @@ def stat_logs(logs):
     end_labels = {}
     for _,label in END_REASONS_LABELS.items():
         end_labels[label] = 0
-    end_reasons[str(EndReasons.UNFINISHED)] = 0
+    end_reasons['Unfinished'] = 0
+    if len(logs) == 0:
+        st.warning('There is no logs detected')
+        return
     for log in logs:
         unfinished = True
         for _log in log:
@@ -417,7 +423,7 @@ def stat_logs(logs):
                     end_reasons[reason] = 0
                 end_reasons[reason] += 1
         if unfinished:
-            end_reasons[str(EndReasons.UNFINISHED)] += 1
+            end_reasons['Unfinished'] += 1
     
     st.write(end_reasons)
 
@@ -806,7 +812,7 @@ def design(evosys,project_dir):
         # if st.button(btn_text,use_container_width=True):
         #     st.session_state['design_tab'] = 'design_tunner'
         #     # st.rerun()
-        choose_mode=st.selectbox("Choose a Mode",options=['Design Agents','Design Engine'],index=0)
+        choose_mode=st.selectbox("Sub-tabs",options=['Design Agents','Design Engine'],index=0)
 
     # if st.session_state['design_tab']=='design_tunner':
     #     _design_tuning(evosys,project_dir)

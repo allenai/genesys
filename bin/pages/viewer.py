@@ -35,7 +35,7 @@ from bin.pages.design import show_log,load_log
 
 
 class ViewModes(Enum):
-    METRICS = 'Experiment Visulizer'
+    METRICS = 'Design Leaderboard'
     DESIGNS = 'Design Artifacts'
     SESSIONS = 'Local Session Logs'
     DIALOGS = 'Local Agent Dialogs'
@@ -44,7 +44,7 @@ class ViewModes(Enum):
 
 
 def _view_tree(tree):
-    with st.expander('View detailed tree'):
+    with st.expander('View detailed tree and code'):
         st.write(tree.view()[0],unsafe_allow_html=True)
     
     col1, col2 = st.columns([1,1])
@@ -59,7 +59,7 @@ def _view_tree(tree):
             with st.container(height=750):
                 st.code(source,line_numbers=True)
         else:
-            st.markdown('### Select a node to view the source of the node here.')
+            st.markdown('### Select a node to view the source.')
 
 
 
@@ -67,11 +67,10 @@ def _view_designs(evosys):
     st.title('Design Artifact Viewer')
 
     
-    with st.status('Loading design artifacts...'):
+    with st.status('Loading design artifacts... *(Please download the artifact to view the full design trace)*'):
         design_artifacts = evosys.ptree.filter_by_type(['DesignArtifactImplemented','DesignArtifact'])
         acronyms= evosys.ptree.filter_by_type(['ReferenceCoreWithTree'])
         # corerefs_with_tree = {acronym:evosys.ptree.get_node(acronym) for acronym in acronyms}
-
 
     with st.sidebar:
         category = st.selectbox('Select a category',['Design Artifacts','Seed Trees'])
@@ -99,6 +98,11 @@ def _view_designs(evosys):
     if category == 'Design Artifacts':
         if design_artifacts:
             design=evosys.ptree.get_node(selected_design)
+
+            with st.sidebar:
+                data = design.to_dict()
+                st.download_button('Download Design',json.dumps(data,indent=4),file_name=f'{selected_design}.json')
+
             sessdata = design.sess_snapshot
             with st.expander(f'Meta Data for {selected_design}',expanded=False):
                 metadata = {
@@ -146,7 +150,7 @@ def _view_designs(evosys):
                                 project=wandb_ids['project']
                                 entity=wandb_ids['entity']
                                 url=f'https://wandb.ai/{entity}/{project}/runs/{wandb_id}'
-                                st.write(f'WANDB URL: {url}')
+                                st.write(f'Weights & Biases: {url}')
                         # eval_results = reports.get('eval_results.json',{}).get('results',{})
             else:
                 st.warning('No verification results found for this design.')
@@ -195,6 +199,9 @@ def _view_designs(evosys):
 def _view_dialogs(evosys):
     st.title('Agent Dialog Viewer')
 
+    if st.session_state.is_demo:
+        st.warning("Demo mode: this tab is not available.")
+
     with st.sidebar:
         folders = [i for i in list(os.listdir(U.pjoin(evosys.ckpt_dir))) if not i.endswith('.json')]
         evoname = st.selectbox("Select a folder", folders)
@@ -227,6 +234,9 @@ def _view_dialogs(evosys):
 
 def _view_sessions(evosys):
     st.title('Local Session Logs')
+
+    if st.session_state.is_demo:
+        st.warning("Demo mode: this tab is not available.")
 
     with st.sidebar:
         _folders = os.listdir(U.pjoin(evosys.ckpt_dir))
@@ -308,9 +318,9 @@ def _view_flows(evosys,selected_flow,flow):
                     else:
                         st.markdown(f'### Node ID {node_id} does not have a source.')
                 else:
-                    st.markdown('### Select a node to view the source of the node here.')
+                    st.markdown('### Select a node to view the source.')
             else:
-                st.markdown('### Select a node to view the source of the node here.')
+                st.markdown('### Select a node to view the source.')
     else:
         light_mode = True # st_theme()['base']=='light'
         flow.export(800,light_mode=light_mode)
@@ -678,10 +688,10 @@ def leaderboard_filter(leaderboard,task_filter=[]):
     return filtered_leaderboard
 
 def selector_lab(evosys,project_dir):
-    st.title('*Experiment Visualizer*')
+    st.title('*Design Leaderboard*')
 
     if evosys.benchmark_mode:
-        st.warning('Experiment visualization is not available for agent benchmark.')
+        st.warning('Design Leaderboard is not available for agent benchmark.')
         return
 
     pre_filter = st.text_input('Pre-filter designs (exact match, comma separated)',value='')
@@ -1017,7 +1027,7 @@ def viewer(evosys,project_dir):
         #     modes = [ViewModes.METRICS.value,ViewModes.DESIGNS.value,ViewModes.SESSIONS.value]
         # else:
         modes = list([i.value for i in ViewModes])
-        view_mode = st.selectbox("Choose a view", modes)
+        view_mode = st.selectbox("Sub-tabs", modes)
         view_mode = ViewModes(view_mode)
         # if view_mode == ViewModes.FLOW:
         #     # Lagacy flows for development

@@ -363,7 +363,7 @@ def search(evosys,project_dir):
         AU.running_status(st,evosys)
 
         # mode=st.radio('Playground Options',options=['Paper','Units','Proposal','Explorer'],index=0)
-        mode=st.selectbox("Playground Options",options=['Paper Search','Units Search','Proposal Search','Explorers'])
+        mode=st.selectbox("Sub-tabs",options=['Paper Search','Units Search','Proposal Search','Explorers'])
 
     if st.session_state.is_demo:
         st.warning("Demo mode: Some search features are disabled.")

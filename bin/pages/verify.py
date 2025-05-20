@@ -446,7 +446,7 @@ def stream_output(process, key):
 
 def verify_engine(evosys,project_dir):
     
-    st.title("Verification Engine")
+    st.title("Verification Engine Playground")
 
     DISABLE_VERIFICATION=False
 
@@ -1173,7 +1173,7 @@ def verify(evosys,project_dir):
 
     with st.sidebar:
         AU.running_status(st,evosys)
-        choose_mode=st.selectbox("Choose Mode",options=['Verification Engine','Budget Tools'])
+        choose_mode=st.selectbox("Sub-tabs",options=['Budget Tools','Verification Engine'])
 
     if choose_mode=='Verification Engine':
         verify_engine(evosys,project_dir)
