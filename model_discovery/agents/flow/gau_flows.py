@@ -1867,6 +1867,8 @@ class GUFlow(
                                 check_report = check_report.replace('All tests passed!','Checker checks passed, but unit tests failed. You must implement the unit tests and pass them.')
                     
                         self.stream.write(f'### Check passed: {checkpass}')
+                        if self.cpu_only:
+                            self.stream.write('Note: Differentiability and effectiveness tests are skipped because CPU-only mode is used.')
                         self.stream.write(f'### Check Report\n```python\n{check_report}\n```')
                         self.stream.write(f'### Check Output\n```python\n{check_results}\n```')
                         self.stream.write(f'### Reformatted GAB Code\n')
