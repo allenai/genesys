@@ -137,8 +137,8 @@ def build_evo_system(name):
 
 setting=AU.get_setting()
 default_namespace=setting.get('default_namespace','test_evo_000')
-if DEMO_MODE:
-    default_namespace = 'evo_exp_full_a'
+# if DEMO_MODE:
+#     default_namespace = 'evo_exp_full_a'
 
 evosys = build_evo_system(default_namespace)
 
