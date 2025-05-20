@@ -19,6 +19,9 @@ from model_discovery.agents.roles.selector import *
 def design_selector(evosys,project_dir):
     st.title('Design Selector')
 
+    if st.session_state.is_demo:
+        st.warning("Demo mode: You can play with the selector settings here.")
+
     seed_dist = copy.deepcopy(DEFAULT_SEED_DIST)
 
     with st.sidebar:
@@ -179,6 +182,9 @@ def design_selector(evosys,project_dir):
 def verify_selector(evosys,project_dir):
     st.title('Verify Selector')
 
+    if st.session_state.is_demo:
+        st.warning("Demo mode: You can play with the selector settings here.")
+
     with st.sidebar:
         unverified = evosys.ptree.get_unverified_scales()
         _select_design = st.selectbox('Verification status',options=list(unverified.keys()))
@@ -307,7 +313,6 @@ def select(evosys,project_dir):
         # AU.running_status(st,evosys)
 
         mode=st.selectbox('Choose a Selector',options=['Design Selector','Verify Selector'],index=0)
-
 
     if mode=='Design Selector':
         design_selector(evosys,project_dir)
