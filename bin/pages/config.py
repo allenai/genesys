@@ -36,6 +36,9 @@ from model_discovery.configs.const import TARGET_SCALES, DEFAULT_CONTEXT_LENGTH,
 
 
 def apply_config(evosys,config):
+    if st.session_state.is_demo:
+        st.warning("Demo mode: No real config will be applied")
+        return
     if config['params']['evoname']!=evosys.params['evoname']:
         evosys.switch_ckpt(config['params']['evoname'],load_params=False)
     evosys.reconfig(design_cfg=config['design_cfg'],select_cfg=config['select_cfg'],search_cfg=config['search_cfg'])
@@ -46,6 +49,9 @@ def apply_config(evosys,config):
 
 
 def apply_env_vars(evosys,env_vars):
+    if st.session_state.is_demo:
+        st.warning("Demo mode: No real config will be applied")
+        return
     changed=False
     for k,v in env_vars.items():
         if v:
@@ -62,6 +68,9 @@ def apply_env_vars(evosys,env_vars):
     return changed
 
 def apply_select_config(evosys,select_cfg):
+    if st.session_state.is_demo:
+        st.warning("Demo mode: No real config will be applied")
+        return
     total_n_seeds_dist = sum(select_cfg['n_seeds_dist'].values())
     if total_n_seeds_dist > 0:
         for k in select_cfg['n_seeds_dist']:
@@ -77,17 +86,26 @@ def apply_select_config(evosys,select_cfg):
         st.toast("The sum of the weights of the seeds distribution is 0, failed to apply select config.")
 
 def apply_design_config(evosys,design_cfg):
+    if st.session_state.is_demo:
+        st.warning("Demo mode: No real config will be applied")
+        return
     with st.spinner('Applying and saving design config...'):
         evosys.reconfig(design_cfg=design_cfg)
         st.toast("Applied and saved design config")
         st.rerun()
 def apply_search_config(evosys,search_cfg):
+    if st.session_state.is_demo:
+        st.warning("Demo mode: No real config will be applied")
+        return
     with st.spinner('Applying and saving search config...'):    
         evosys.reconfig(search_cfg=search_cfg)
         st.toast("Applied and saved search config")
         st.rerun()
 
 def apply_ve_config(evosys,ve_cfg):
+    if st.session_state.is_demo:
+        st.warning("Demo mode: No real config will be applied")
+        return
     with st.spinner('Applying and saving ve config...'):    
         evosys.reconfig(ve_cfg=ve_cfg)
         st.toast("Applied and saved ve config")
@@ -112,7 +130,8 @@ def evosys_config(evosys):
                 subcol1, subcol2, subcol3 = st.columns([1,1,0.3])
                 with subcol1:
                     target_scale=st.select_slider('Target Scale',options=TARGET_SCALES,value=evosys.params['scales'].split(',')[-1],
-                        help='The largest scale to train, will train `N Target` models at this scale.',disabled=evosys.benchmark_mode)
+                        help='The largest scale to train, will train `N Target` models at this scale.',
+                        disabled=evosys.benchmark_mode or st.session_state.is_demo)
                     scales=[]
                     for s in TARGET_SCALES:
                         if int(target_scale.replace('M',''))>=int(s.replace('M','')):
@@ -122,7 +141,8 @@ def evosys_config(evosys):
                     _params['selection_ratio']=st.slider('Selection Ratio',min_value=0.0,max_value=1.0,value=evosys.params['selection_ratio'],disabled=evosys.benchmark_mode,
                         help='The ratio of designs to keep from lower scale, e.g. targets 8 models on 70M with selection ratio 0.5 will train 16 models on 35M, 32 models on 14M.')
                 with subcol3:
-                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1,disabled=evosys.benchmark_mode)
+                    _params['n_target']=st.number_input('N Target',value=evosys.params['n_target'],min_value=1,step=1,
+                        disabled=evosys.benchmark_mode or st.session_state.is_demo)
                 
 
                 _verify_budget = evosys.get_verify_budget(full=True)
@@ -134,11 +154,12 @@ def evosys_config(evosys):
                     for scale in _params['scales'].split(',')[::-1]:
                         _verify_budget[scale]=int(np.ceil(budget))
                         budget/=_params['selection_ratio']
-                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will over write the above)*',value=_params_manual_set_budget,disabled=evosys.benchmark_mode)
+                _manual_set_budget=st.checkbox('Use fine-grained verify budget below *(will over write the above)*',value=_params_manual_set_budget,
+                    disabled=evosys.benchmark_mode or st.session_state.is_demo)
                 sorted_keys = sorted(list(_verify_budget.keys()),key=lambda x: int(x.replace('M','')))
                 _verify_budget = {k: _verify_budget[k] for k in sorted_keys}
                 _verify_budget_df = pd.DataFrame(_verify_budget,index=['#'])
-                _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True,disabled=evosys.benchmark_mode)
+                _verify_budget_df = st.data_editor(_verify_budget_df,hide_index=True,disabled=evosys.benchmark_mode or st.session_state.is_demo)
                 _verify_budget=_verify_budget_df.to_dict(orient='records')[0]
                 _verify_budget={k:v for k,v in _verify_budget.items() if v!=0}
                 if _manual_set_budget:
@@ -148,13 +169,16 @@ def evosys_config(evosys):
 
                 subcol1, subcol2, subcol3 = st.columns([1.2,2,2])
                 with subcol1:
-                    _params['max_samples']=st.number_input('Max Samples',value=evosys.params.get('max_samples',0),min_value=0,step=1,disabled=evosys.benchmark_mode,
+                    _params['max_samples']=st.number_input('Max Samples',value=evosys.params.get('max_samples',0),min_value=0,step=1,
+                        disabled=evosys.benchmark_mode or st.session_state.is_demo,
                         help='Design-bound by the number of designs in the population to generate in total. 0 means no limit.')
                 with subcol2:
-                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,disabled=evosys.benchmark_mode,
+                    _params['design_budget']=st.number_input('Design Budget ($)',value=evosys.params['design_budget'],min_value=0,step=100,
+                        disabled=evosys.benchmark_mode or st.session_state.is_demo,
                         help='The total budget for running model design agents, 0 means no budget limit.')
                 with subcol3:
-                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),disabled=evosys.benchmark_mode,
+                    bound_type=st.selectbox('Budget Type',options=BUDGET_TYPES,index=BUDGET_TYPES.index(evosys.params['budget_type']),
+                        disabled=evosys.benchmark_mode or st.session_state.is_demo,
                         help=(
                             '**Design bound:** terminate the evolution after the design budget is used up, and will automatically promote verify budget; \n\n'
                             '**Verify bound:** terminate the evolution after the verify budget is used up, and will automatically promote design budget.\n\n'
@@ -177,14 +201,15 @@ def evosys_config(evosys):
                 cols = st.columns([1,1.4,1.3])
       
                 with cols[1]:
-                    _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,disabled=st.session_state.evo_running,
+                    _params['benchmark_mode'] = st.checkbox('Benchmark Mode',value=evosys.benchmark_mode,
+                        disabled=st.session_state.evo_running or st.session_state.is_demo,
                         help='Whether it is an agent benchmark experiment. If checked, you can ignore most of the settings above.')
                 
                 with cols[2]:
                     _params['use_remote_db']=st.checkbox('Use Remote DB',value=evosys.params['use_remote_db'], disabled=True)
 
                 with cols[0]:
-                    apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running)
+                    apply_btn = st.form_submit_button("Apply and Save",disabled=st.session_state.evo_running or st.session_state.is_demo)
 
                 if apply_btn:
                     with st.spinner("Applying and saving..."):
@@ -222,7 +247,7 @@ def evosys_config(evosys):
                     settings['Network Group ID']=evosys.CM.group_id
                 # settings['Benchmark Mode']=evosys.benchmark_mode
                 st.write(settings)
-                st.form_submit_button("Refresh")
+                st.form_submit_button("Refresh", disabled=st.session_state.is_demo)
 
         # with st.form("Benchmark Settings"):
         #     if not evosys.benchmark_mode:
@@ -329,6 +354,7 @@ def ve_config(evosys):
             st.form_submit_button("Save and Apply",
                 on_click=apply_ve_config,args=(evosys,_ve_cfg),
                 # disabled=st.session_state.evo_running,
+                disabled=st.session_state.is_demo,
                 help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
             )   
 
@@ -402,7 +428,8 @@ def select_config(evosys):
                                 label = 'DesignArtImpl.'
                             else:
                                 label = 'DesignArtifact'
-                            n_sources[source] = st.number_input(label=label,min_value=0,value=n_sources[source])#,disabled=True)
+                            n_sources[source] = st.number_input(label=label,min_value=0,value=n_sources[source],
+                                disabled=st.session_state.is_demo)
                         else:
                             if source == 'ReferenceCoreWithTree':
                                 label = 'RefCoreWithTree'
@@ -410,15 +437,20 @@ def select_config(evosys):
                                 label = 'RefWithCode'
                             else:
                                 label = source
-                            n_sources[source] = st.number_input(label=f'{label} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source])#,disabled=True)
+                            n_sources[source] = st.number_input(label=f'{label} ({sources[source]})',min_value=0,value=n_sources[source],max_value=sources[source],
+                                disabled=st.session_state.is_demo)
                 select_cfg['n_sources']=n_sources
                 select_cfg['seed_dist']=seed_dist
             with Col2:
                 st.write('###### Other Settings')
                 # st.write('')
                 # st.write('')
-                select_cfg['random_allow_tree']=st.checkbox('Random Allow Tree',value=random_allow_tree,help='If true, will allow the random selector to select from evo tree nodes.')
-                select_cfg['verify_all']=st.checkbox('Verify All Designs',value=select_cfg.get('verify_all',False),help='If true, will verify all designs at the lowest scale.')
+                select_cfg['random_allow_tree']=st.checkbox('Random Allow Tree',value=random_allow_tree,
+                    help='If true, will allow the random selector to select from evo tree nodes.',
+                    disabled=st.session_state.is_demo)
+                select_cfg['verify_all']=st.checkbox('Verify All Designs',value=select_cfg.get('verify_all',False),
+                    help='If true, will verify all designs at the lowest scale.',
+                    disabled=st.session_state.is_demo)
 
 
             Col1,Col2 = st.columns([5,2.8])
@@ -426,13 +458,15 @@ def select_config(evosys):
                 st.markdown('###### Configure the Number of Seeds Distribution')
                 cols=st.columns([1,1,2.7])
                 with cols[0]:
-                    n_seeds_settings['warmup_rounds_crossover']=st.number_input('Warmup (Crossover)',min_value=0,value=n_seeds_settings['warmup_rounds_crossover'])
+                    n_seeds_settings['warmup_rounds_crossover']=st.number_input('Warmup (Crossover)',min_value=0,value=n_seeds_settings['warmup_rounds_crossover'],
+                        disabled=st.session_state.is_demo)
                 with cols[1]:
-                    n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'])
+                    n_seeds_settings['warmup_rounds_scratch']=st.number_input('Warmup (Scratch)',min_value=0,value=n_seeds_settings['warmup_rounds_scratch'],
+                        disabled=st.session_state.is_demo)
                 with cols[2]:
                     n_seeds_dist = U.sort_dict_by_scale(n_seeds_dist)
                     n_seeds_dist_df = pd.DataFrame(n_seeds_dist,index=['p (%)'])
-                    n_seeds_dist_df = st.data_editor(n_seeds_dist_df*100,use_container_width=True)
+                    n_seeds_dist_df = st.data_editor(n_seeds_dist_df*100,use_container_width=True,disabled=st.session_state.is_demo)
                     n_seeds_dist = n_seeds_dist_df.to_dict(orient='records')[0]
                     n_seeds_dist = {k:v/100 for k,v in n_seeds_dist.items()}
                 select_cfg['n_seeds_dist']=n_seeds_dist
@@ -444,7 +478,7 @@ def select_config(evosys):
                 for seed_design in seed_designs:
                     seed_design_dist[seed_design] = seed_design_dist.get(seed_design,1/len(seed_designs))
                 seed_design_dist_df = pd.DataFrame(seed_design_dist,index=['Weights'])
-                seed_design_dist_df = st.data_editor(seed_design_dist_df*100,hide_index=True,use_container_width=True)
+                seed_design_dist_df = st.data_editor(seed_design_dist_df*100,hide_index=True,use_container_width=True,disabled=st.session_state.is_demo)
                 seed_design_dist = seed_design_dist_df.to_dict(orient='records')[0]
                 seed_design_dist = {k:v/100 for k,v in seed_design_dist.items()}
                 select_cfg['seed_design_dist'] = seed_design_dist
@@ -452,6 +486,7 @@ def select_config(evosys):
             st.form_submit_button("Save and Apply",
                 on_click=apply_select_config,args=(evosys,select_cfg),
                 # disabled=st.session_state.evo_running,
+                disabled=st.session_state.is_demo,
             )   
 
 
@@ -498,7 +533,8 @@ def design_config(evosys):
                         index=len(options)-1
                     options += ['hybrid']
                     index = options.index(design_cfg['agent_types'][agent]) if design_cfg['agent_types'][agent] in options else 0
-                    agent_types[agent] = st.selectbox(label=AGENT_TYPE_LABELS[agent],options=options,index=index,disabled=agent=='SEARCH_ASSISTANT',help=help)
+                    agent_types[agent] = st.selectbox(label=AGENT_TYPE_LABELS[agent],options=options,index=index,
+                        disabled=agent=='SEARCH_ASSISTANT' or st.session_state.is_demo,help=help)
             design_cfg['agent_types'] = agent_types
             st.caption('***Note:** If you choose "hybrid", you will need to configure the weights for each agent below in advanced configs later.*')
 
@@ -563,7 +599,8 @@ def design_config(evosys):
                     num_samples['implementation']=st.number_input(label="Impl. Samples",min_value=1,value=design_cfg['num_samples']['implementation'])
                 with cols[2]:
                     rerank_methods=['random','rating']
-                    num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),disabled=True)
+                    num_samples['rerank_method']=st.selectbox(label="Rerank Method",options=rerank_methods,index=rerank_methods.index('rating'),
+                    disabled=True)
             design_cfg['num_samples']=num_samples
 
             with col3:
@@ -576,18 +613,21 @@ def design_config(evosys):
             cols = st.columns([0.9,1,1,3.3])
             with cols[1]:
                 if evosys.benchmark_mode:
-                    _use_naive_flow=st.checkbox('*Use Naive Flow*',value=design_cfg['flow_type']=='naive',disabled=not evosys.benchmark_mode,
+                    _use_naive_flow=st.checkbox('*Use Naive Flow*',value=design_cfg['flow_type']=='naive',
+                        disabled=not evosys.benchmark_mode or st.session_state.is_demo,
                         help='If true, will use the Naive GAB Coder and Observer instead of the GAUTree Coder and Observer. Only applicable in benchmark mode.')
                     design_cfg['flow_type']='naive' if _use_naive_flow else 'gau'
             with cols[2]:
                 if evosys.benchmark_mode:
-                    design_cfg['no_f_checkers']=st.checkbox('*No F-Checkers*',value=design_cfg['no_f_checkers'],disabled=not evosys.benchmark_mode,
+                    design_cfg['no_f_checkers']=st.checkbox('*No F-Checkers*',value=design_cfg['no_f_checkers'],
+                        disabled=not evosys.benchmark_mode or st.session_state.is_demo,
                         help='If true, will turn off the Functional Checkers when checking the implementation code. Only applicable in benchmark mode.')
 
             with cols[0]:
                 st.form_submit_button("Save and Apply",
                     on_click=apply_design_config,args=(evosys,design_cfg),
                     # disabled=st.session_state.evo_running,
+                    disabled=st.session_state.is_demo,
                 )   
 
 
@@ -731,6 +771,7 @@ def search_config(evosys):
             st.form_submit_button("Save and Apply",
                 on_click=apply_search_config,args=(evosys,search_cfg),
                 # disabled=st.session_state.evo_running,
+                disabled=st.session_state.is_demo,
             )
 
 
@@ -794,6 +835,7 @@ def hybrid_agent_weights(evosys):
         st.button("Save and Apply",key='save_agent_weights',
             on_click=apply_design_config,args=(evosys,design_cfg),
             # disabled=st.session_state.evo_running,
+            disabled=st.session_state.is_demo,
             help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
         )   
         
@@ -880,6 +922,7 @@ def selector_ranking_exploration_config(evosys):
             st.form_submit_button("Save and Apply",
                 on_click=apply_select_config,args=(evosys,select_cfg),
                 # disabled=st.session_state.evo_running,
+                disabled=st.session_state.is_demo,
                 help='Before a design thread is started, the agent type of each role will be randomly selected based on the weights.'
             )   
 
@@ -894,24 +937,24 @@ def env_vars_settings(evosys):
             st.info("**NOTE:** Leave the fields blank to use the default values. The settings here may not persist, so **better set them by exporting environment variables**.")
             col1,col2,col3,col4=st.columns(4)
             with col1:
-                env_vars['DB_KEY_PATH']=st.text_input('Database Key Path',value=os.environ.get("DB_KEY_PATH"))
-                env_vars['CKPT_DIR']=st.text_input('Checkpoint Directory',value=os.environ.get("CKPT_DIR"))
-                env_vars['DATA_DIR']=st.text_input('Data Directory',value=os.environ.get("DATA_DIR"))
+                env_vars['DB_KEY_PATH']=st.text_input('Database Key Path',value=os.environ.get("DB_KEY_PATH"),disabled=st.session_state.is_demo)
+                env_vars['CKPT_DIR']=st.text_input('Checkpoint Directory',value=os.environ.get("CKPT_DIR"),disabled=st.session_state.is_demo)
+                env_vars['DATA_DIR']=st.text_input('Data Directory',value=os.environ.get("DATA_DIR"),disabled=st.session_state.is_demo)
             with col2:
-                env_vars['WANDB_API_KEY']=st.text_input('Weights & Biases API Key',type='password')
-                env_vars['HF_KEY']=st.text_input('Huggingface API Key',type='password')
-                env_vars['PINECONE_API_KEY']=st.text_input('Pinecone API Key',type='password')
+                env_vars['WANDB_API_KEY']=st.text_input('Weights & Biases API Key',type='password',disabled=st.session_state.is_demo)
+                env_vars['HF_KEY']=st.text_input('Huggingface API Key',type='password',disabled=st.session_state.is_demo)
+                env_vars['PINECONE_API_KEY']=st.text_input('Pinecone API Key',type='password',disabled=st.session_state.is_demo)
             with col3:
-                env_vars['MY_OPENAI_KEY']=st.text_input('OpenAI API Key',type='password')
-                env_vars['ANTHROPIC_API_KEY']=st.text_input('Anthropic API Key',type='password')
-                env_vars['TOGETHER_API_KEY']=st.text_input('Together API Key',type='password')
+                env_vars['MY_OPENAI_KEY']=st.text_input('OpenAI API Key',type='password',disabled=st.session_state.is_demo)
+                env_vars['ANTHROPIC_API_KEY']=st.text_input('Anthropic API Key',type='password',disabled=st.session_state.is_demo)
+                env_vars['TOGETHER_API_KEY']=st.text_input('Together API Key',type='password',disabled=st.session_state.is_demo)
             with col4:
-                env_vars['S2_API_KEY']=st.text_input('Semantic Scholar API Key',type='password')
-                env_vars['COHERE_API_KEY']=st.text_input('Cohere API Key',type='password')
-                env_vars['PERPLEXITY_API_KEY']=st.text_input('Perplexity API Key',type='password')
+                env_vars['S2_API_KEY']=st.text_input('Semantic Scholar API Key',type='password',disabled=st.session_state.is_demo)
+                env_vars['COHERE_API_KEY']=st.text_input('Cohere API Key',type='password',disabled=st.session_state.is_demo)
+                env_vars['PERPLEXITY_API_KEY']=st.text_input('Perplexity API Key',type='password',disabled=st.session_state.is_demo)
                 # optional: mathpix api key, aws keys
 
-            if st.form_submit_button("Apply *(will not save any secrets)*",disabled=st.session_state.evo_running):
+            if st.form_submit_button("Apply *(will not save any secrets)*",disabled=st.session_state.evo_running or st.session_state.is_demo):
                 changed=apply_env_vars(evosys,env_vars)
                 if changed:
                     evosys.reload()
@@ -947,11 +990,13 @@ def local_experiments(evosys):
         st.header(f"Local Experiments")
     with col2:
         st.write('')
-        if st.button("*Upload to Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None):# or st.session_state.evo_running):
+        if st.button("*Upload to Remote DB*",use_container_width=True,
+            disabled=evosys.ptree.remote_db is None or st.session_state.is_demo):# or st.session_state.evo_running):
             sync_exps_to_db(evosys)
     with col3:
         st.write('')
-        if st.button("*Download from Remote DB*",use_container_width=True,disabled=evosys.ptree.remote_db is None):# or st.session_state.evo_running):
+        if st.button("*Download from Remote DB*",use_container_width=True,
+            disabled=evosys.ptree.remote_db is None or st.session_state.is_demo):# or st.session_state.evo_running):
             sync_exps_from_db(evosys)
     
     def delete_exp(dir,evoname):
@@ -976,8 +1021,24 @@ def local_experiments(evosys):
     
     default_namespace=setting.get('default_namespace','test_evo_000')
 
+    notes = {
+        'evo_exp_full_a': 'Full evolution',
+        # 'evo_rtree_full_a': 'R-Tree',
+        # 'evo_rand_full_a': 'Random',
+        # 'evo_vani_full_a': 'Vani',
+        # 'evo_base_full_a': 'Base',
+        # "agent_full_a": 'Full',
+        # "agent_nof_a": '',
+        # "agent_nop_a": '',
+        # "agent_noob_a": 'Noob',
+        # "agent_base_c": 'Base',
+    }
+
+
     experiments={}
     for ckpt in os.listdir(CKPT_DIR):
+        if st.session_state.is_demo:
+            if not ckpt in notes: continue
         if ckpt.startswith('.'): continue
         exp_dir=U.pjoin(CKPT_DIR,ckpt)
         ckpt_config_path=U.pjoin(exp_dir,'config.json')
@@ -1010,7 +1071,9 @@ def local_experiments(evosys):
         experiment['use_remote_db']=ckpt_config.get('params',{}).get('use_remote_db',False)
         experiment['group_id']=ckpt_config.get('params',{}).get('group_id','default')
         experiment['benchmark_mode']=ckpt_config.get('params',{}).get('benchmark_mode',False)
-        
+        if st.session_state.is_demo:
+            experiment['note']=notes[ckpt]
+
         if ckpt==default_namespace:
             default_btn=('Default',None,True)
         else:
@@ -1047,6 +1110,9 @@ def config(evosys,project_dir):
     st.title("Experiment Management")
 
     # st.info("**NOTE:** Remember to upload your config to make the changes permanent and downloadable for nodes.")
+
+    if st.session_state.is_demo:
+        st.warning("Demo mode: You cannot change the config, its only for viewing.")
 
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. Modifying configurations may cause unexpected errors to any running evolution.")
@@ -1099,7 +1165,8 @@ def config(evosys,project_dir):
             uploaded_config = json.load(uploaded_file)
             with st.expander("Loaded Config",expanded=False):
                 st.write(uploaded_config)
-            st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,),disabled=st.session_state.evo_running)
+            st.button("Apply Uplaoded Config",on_click=apply_config,args=(evosys,uploaded_config,),
+                disabled=st.session_state.evo_running or st.session_state.is_demo)
 
 
 if __name__ == "__main__":

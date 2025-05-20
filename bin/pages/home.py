@@ -29,7 +29,10 @@ logo=AU.svg_to_image(logo_path)
 def tabs():
     st.subheader('Tabs')
 
-    tabs=st.tabs(['Evolve','Design','Verify','Search','Select','Viewer','Config','Listen'])
+    _tabs = ['Evolve','Design','Verify','Search','Select','Viewer','Config']
+    if not st.session_state.is_demo:
+        _tabs.append('Listen')
+    tabs=st.tabs(_tabs)
 
     with tabs[0]:
       st.markdown('''
@@ -71,10 +74,11 @@ Multiple views of the system states and results.
 Configure the experiment settings. Recommended to set it up before running.
 ''')  
 
-    with tabs[7]:
-      st.markdown('''
-Listening mode, accepting commands from master node. Can also run it in the CLI using `genesys listen [args]`.
-''')  
+    if not st.session_state.is_demo:
+      with tabs[7]:
+        st.markdown('''
+  Listening mode, accepting commands from master node. Can also run it in the CLI using `genesys listen [args]`.
+  ''')  
 
 
 
@@ -234,10 +238,9 @@ recommended to run it in GPU-available sessions. The machine that runs the
 master node can also run a worker node at the same time.
 ''')
 
-
-    with st.expander('Notes about Selector design and the Evolution Process',icon='🎼'):
-      with open('bin/assets/selector_notes.md','r') as f:
-        st.markdown(f.read())
+    # with st.expander('Notes about Selector design and the Evolution Process',icon='🎼'):
+    #   with open('bin/assets/selector_notes.md','r') as f:
+    #     st.markdown(f.read())
   
 
 

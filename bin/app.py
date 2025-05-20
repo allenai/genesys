@@ -197,7 +197,7 @@ pages = {
     'Viewer': viewer,
     'Config': config,
 }
-if not DEPLOY_MODE:
+if not (DEPLOY_MODE or DEMO_MODE):
     pages['Listen'] = listen
     pages['Tester'] = tester
 
