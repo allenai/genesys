@@ -444,8 +444,10 @@ class GUFlow(
             USE_ISEARCH=True
         if USE_ISEARCH:
             USE_2STAGE=False
-        UNSTRUCT_PROPOSER='o1' in self._agent_types['DESIGN_PROPOSER']
-        UNSTRUCT_REVIEWER='o1' in self._agent_types['PROPOSAL_REVIEWER']
+        # UNSTRUCT_PROPOSER='o1' in self._agent_types['DESIGN_PROPOSER']
+        # UNSTRUCT_REVIEWER='o1' in self._agent_types['PROPOSAL_REVIEWER']
+        UNSTRUCT_PROPOSER=True
+        UNSTRUCT_REVIEWER=True
 
 
         traces=[]

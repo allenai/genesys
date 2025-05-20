@@ -4700,6 +4700,7 @@ def gen_SELECTION_DEBUG_prompt(selections,SELECTIONS):
    succeed=False
    selections=list(set([i.strip() for i in selections]))
    if len(selections)==0:
+      selection = None
       prompt=f"No selection is detected, please provide a selection from {SELECTIONS} in a quoted block like this: ```selection YOUR_SELECTION```. Do not include any other text in your response."
    else:
       for selection in selections:
