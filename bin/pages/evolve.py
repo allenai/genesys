@@ -79,6 +79,8 @@ class CommandCenter:
 
     def build_connection(self,active_mode=True):
         # check if the node_id is already in the collection
+        if st.session_state.is_demo:
+            return
         evoname, _ = _is_running(self.evosys)
         self.active_mode = active_mode
         if evoname:
@@ -240,6 +242,8 @@ class CommandCenter:
 
     def stop(self):
         self.running = False
+        if st.session_state.is_demo:
+            return
         if self.doc_ref.get().exists:
             self.doc_ref.update({'status': 'stopped'})
         # self.cleanup()
@@ -286,6 +290,8 @@ class CommandCenter:
 
 def x_evolve_passive(command_center,cli=False): # extereme evolution 
     thread = threading.Thread(target=command_center.run)
+    if st.session_state.is_demo:
+        return thread, None
     if not cli:
         add_script_run_ctx(thread)  # Add Streamlit context to the thread
     thread.start()
@@ -325,7 +331,7 @@ def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,al
     if len(evosys.CM.get_active_connections())==0 and active_mode:
         st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
     command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st,allow_resume=allow_resume) # launch a passive command center first
-    if active_mode:
+    if active_mode and not st.session_state.is_demo:
         st.session_state.evo_process_pid = x_evolve(command_center)
         time.sleep(5)
     command_center.build_connection(active_mode=False) # launch a passive 
@@ -358,7 +364,10 @@ def stop_evo(evosys):
         if st.session_state.evo_passive_thread:
             print(f'Stopping thread {st.session_state.evo_passive_thread}')
             st.session_state.command_center.stop()
-            st.session_state.evo_passive_thread.join(timeout=5)
+            try:
+                st.session_state.evo_passive_thread.join(timeout=5)
+            except Exception as e:
+                pass
             if st.session_state.evo_passive_thread.is_alive():
                 print("Thread did not terminate, forcing exit")
             st.session_state.evo_passive_thread = None
@@ -494,7 +503,9 @@ def evolution_launch_pad(evosys):
         # _evoname = st.session_state.command_center.evoname
         # st.info(f'The command center is already running for namespace ```{_evoname}```. You are in passive observation mode.')
 
-    
+    if st.session_state.is_demo:
+        st.warning('***Demo mode: No real evolution will be launched, but it will show how the evolution system works***')
+
     st.header("Launch Pad")
     col1, col2, col3, col4,col5,col6 = st.columns([1,1,1,1,1,0.9],gap='small')
     with col1:
@@ -677,10 +688,10 @@ def ptree_monitor(evosys):
     col1, col2, col3, col4 = st.columns([6,0.1,1.2,1])
     num_nodes = len(evosys.ptree.G.nodes)
     
-    default_max_nodes = 300 #296 
-    export_height = 2000 # 900
+    default_max_nodes = min(300,num_nodes) #296 
+    export_height = 900 # 900
     default_evo_only = num_nodes>default_max_nodes
-    size_mult = 1.4
+    size_mult = 1
 
     if 'ptree_max_nodes' not in st.session_state:
         st.session_state.ptree_max_nodes=default_max_nodes
@@ -705,7 +716,7 @@ def ptree_monitor(evosys):
     with col3:
         st.write('')
         st.write('')
-        if st.button(f'Refresh & Sync Tree'):#,use_container_width=True):
+        if st.button(f'Reload',use_container_width=True):
             evosys.ptree.update_design_tree()
             evosys.ptree.export(max_nodes=_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,
                 legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100,
@@ -1297,8 +1308,8 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                         labelLimit=300,  # Increase label width limit
                         padding=10,      # Add padding around legend
                         offset=5,         # Offset from the chart
-                        labelColor='black',
-                        titleColor='black',
+                        labelColor='white',
+                        titleColor='white',
                     ).interactive()
                 )
             with col2:
@@ -1374,13 +1385,13 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 chart_data["fitness_stratification"] = _score_stratify(_scores)
                 corr_coef = np.corrcoef(_data.T)
                 st.write(f'Correlation coefficient: ```{corr_coef[0,1]:.2f}```')
-                # st.scatter_chart(
-                #     chart_data,
-                #     x="Total cost",
-                #     y=y_label,
-                #     color="fitness_stratification",
-                #     size=y_tag,
-                # )
+                st.scatter_chart(
+                    chart_data,
+                    x="Total cost",
+                    y=y_label,
+                    color="fitness_stratification",
+                    size=y_tag,
+                )
             
             col1, col2 = st.columns([1,1])
             with col1:
@@ -1653,30 +1664,30 @@ def session_stats(evosys,design_nodes,implemented_nodes):
 
             fitness_center = 0.58 #min(avg_score.values())
 
-            COL1, COL2 = st.columns([1,1])
-            with COL1:
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    st.subheader('Prop. agent-fitness')
-                    draw_chart_bar(proposal_agent_scores,x_label='Proposal agent',y_label='Fitness',center=fitness_center)
-                with col2:
-                    st.subheader('Prop. agent-cost')
-                    draw_chart_bar(proposal_agent_costs,x_label='Proposal agent',y_label='Proposal cost')
-                with col3:
-                    st.subheader('Prop. agent-cost-effectiveness')
-                    draw_chart_bar(proposal_agent_effective,x_label='Proposal agent',y_label='Cost effectiveness')
+            # COL1, COL2 = st.columns([1,1])
+            # with COL1:
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.subheader('Prop. agent-fitness')
+                draw_chart_bar(proposal_agent_scores,x_label='Proposal agent',y_label='Fitness',center=fitness_center)
+            with col2:
+                st.subheader('Prop. agent-cost')
+                draw_chart_bar(proposal_agent_costs,x_label='Proposal agent',y_label='Proposal cost')
+            with col3:
+                st.subheader('Prop. cost-effect')
+                draw_chart_bar(proposal_agent_effective,x_label='Proposal agent',y_label='Cost effectiveness')
 
-            with COL2:
-                col1, col2, col3 = st.columns(3)
-                with col1:
-                    st.subheader('Impl. agent-fitness')
-                    draw_chart_bar(impl_agent_scores,x_label='Impl agent',y_label='Fitness',center=fitness_center)
-                with col2:
-                    st.subheader('Impl. agent-cost')
-                    draw_chart_bar(impl_agent_costs,x_label='Impl agent',y_label='Implementation cost')
-                with col3:
-                    st.subheader('Impl. agent-cost-effectiveness')
-                    draw_chart_bar(impl_agent_effective,x_label='Impl agent',y_label='Cost effectiveness')
+            # with COL2:
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.subheader('Impl. agent-fitness')
+                draw_chart_bar(impl_agent_scores,x_label='Impl agent',y_label='Fitness',center=fitness_center)
+            with col2:
+                st.subheader('Impl. agent-cost')
+                draw_chart_bar(impl_agent_costs,x_label='Impl agent',y_label='Implementation cost')
+            with col3:
+                st.subheader('Impl. agent-cost-effect')
+                draw_chart_bar(impl_agent_effective,x_label='Impl agent',y_label='Cost effectiveness')
 
 
             col1, col2, col3 = st.columns(3)
@@ -1702,7 +1713,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 draw_chart_bar(double_cost,x_label='Proposal-Review agent combination',y_label='Cost')
             
             with col3:
-                st.subheader('Proposal-Reviewer cost-effectiveness')
+                st.subheader('Proposal-Reviewer CE')
                 draw_chart_bar(double_effective,x_label='Proposal-Review agent combination',y_label='Cost effectiveness')
 
             st.subheader('Agent-trio-fitness')
@@ -1719,22 +1730,18 @@ def session_stats(evosys,design_nodes,implemented_nodes):
             draw_chart_bar(trio_effective,x_label='Planner-Impl-Observer agent combination',y_label='Cost effectiveness')
 
 
+    # st.subheader('Verification Analysis')
 
-    st.subheader('Verification Analysis')
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     st.subheader('Score ranking')
+    #     scores_filtered = {k:v for k,v in avg_score.items() if k in scores_filtered}
+    #     sorted_socres = sorted(scores_filtered.items(),key=lambda x: x[1],reverse=True)
+    #     chart_data = pd.DataFrame(sorted_socres,columns=['design','score'])
+    #     st.dataframe(chart_data,use_container_width=True)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.subheader('Score ranking')
-        scores_filtered = {k:v for k,v in avg_score.items() if k in scores_filtered}
-        sorted_socres = sorted(scores_filtered.items(),key=lambda x: x[1],reverse=True)
-        chart_data = pd.DataFrame(sorted_socres,columns=['design','score'])
-        st.dataframe(chart_data,use_container_width=True)
-
-    with col2:
-        st.subheader('Benchmark contribution')
-
-            
-
+    # with col2:
+    #     st.subheader('Benchmark contribution')
 
 
 
@@ -1890,7 +1897,7 @@ def impl_analysis(evosys,design_nodes,implemented_nodes):
         n_failed_func = len(failed_func_checks)
         n_failed_format = len(failed_format_checks)
         if n_failed_func==0 or n_failed_format==0:
-            SAVE_DIR = U.pjoin(evosys.ckpt_dir,'SAVE')
+            SAVE_DIR = U.pjoin(evosys.ckpt_dir,'RESULTS')
             errors = U.load_json(U.pjoin(SAVE_DIR,'impl_errors_evo_exp_full_a.json'))
             func_errors = errors['func']
             gau_errors = errors['gau']
@@ -2059,7 +2066,7 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
 
         col1, col2, col3,col4 = st.columns([1,1,1,1])
         with col1:
-            st.subheader('Unit Number Distribution')
+            st.subheader('Num of Units')
             designs = {design:evosys.ptree.get_node(design) for design in evosys.ptree.filter_by_type(['DesignArtifactImplemented'])}
             n_units = {}
             reused_units = {}
@@ -2080,13 +2087,13 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
             median_units = np.median(list(n_units.values()))
             min_units = np.min(list(n_units.values()))
             max_units = np.max(list(n_units.values()))
-            st.write(f'**Mean Units: ```{mean_units:.2f}``` | Std Units: ```{std_units:.2f}``` | Median Units: ```{median_units:.2f}``` | Min Units: ```{min_units:.2f}``` | Max Units: ```{max_units:.2f}```**')
+            st.caption(f'**Mean: ```{mean_units:.2f}``` | Std: ```{std_units:.2f}``` | Median: ```{median_units:.2f}``` | Min: ```{min_units:.2f}``` | Max: ```{max_units:.2f}```**')
             unit_freq = _data_to_freq(n_units)
             x_name = 'Number of Units'
             st.bar_chart(pd.DataFrame(list(unit_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
 
     with col2:
-        st.subheader('Unit Reuse Distribution')
+        st.subheader('Unit Reuse')
         GDT = evosys.ptree.GD.terms
         reuses = {}
         reuse_designs = {}
@@ -2118,24 +2125,24 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
         median_reuse = np.median(list(n_reuses.values()))
         min_reuse = np.min(list(n_reuses.values()))
         std_reuse = np.std(list(n_reuses.values()))
-        st.write(f'**Max Reuse: ```{max_reuse:.2f}``` | Mean Reuse: ```{mean_reuse:.2f}``` | Median Reuse: ```{median_reuse:.2f}``` | Min Reuse: ```{min_reuse:.2f}``` | Std Reuse: ```{std_reuse:.2f}```**')
+        st.caption(f'**Max: ```{max_reuse:.2f}``` | Mean: ```{mean_reuse:.2f}``` | Median: ```{median_reuse:.2f}``` | Min: ```{min_reuse:.2f}``` | Std: ```{std_reuse:.2f}```**')
         x_name = 'Reuses'
         st.bar_chart(pd.DataFrame(list(n_reuse_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
 
     with col3:
-        st.subheader('Unit Usage Distribution')
+        st.subheader('Unit Usage')
         n_reuse_designs_freq = _data_to_freq(n_reuse_designs)
         max_reuse_designs = max(n_reuse_designs.values())
         mean_reuse_designs = np.mean(list(n_reuse_designs.values()))
         median_reuse_designs = np.median(list(n_reuse_designs.values()))
         min_reuse_designs = np.min(list(n_reuse_designs.values()))
         std_reuse_designs = np.std(list(n_reuse_designs.values()))
-        st.write(f'**Max Reuse Designs: ```{max_reuse_designs:.2f}``` | Mean Reuse Designs: ```{mean_reuse_designs:.2f}``` | Median Reuse Designs: ```{median_reuse_designs:.2f}``` | Min Reuse Designs: ```{min_reuse_designs:.2f}``` | Std Reuse Designs: ```{std_reuse_designs:.2f}```**')
+        st.caption(f'**Max: ```{max_reuse_designs:.2f}``` | Mean: ```{mean_reuse_designs:.2f}``` | Median: ```{median_reuse_designs:.2f}``` | Min: ```{min_reuse_designs:.2f}``` | Std: ```{std_reuse_designs:.2f}```**')
         x_name = 'Usage'
         st.bar_chart(pd.DataFrame(list(n_reuse_designs_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
 
     with col4:
-        st.subheader('Num of Reuse Distribution')
+        st.subheader('Num of Reuse')
         reused_units = reused_units_ratio
         reused_units_freq = _data_to_freq(reused_units)
         max_reused_units = max(reused_units.values())
@@ -2143,7 +2150,7 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
         median_reused_units = np.median(list(reused_units.values()))
         min_reused_units = np.min(list(reused_units.values()))
         std_reused_units = np.std(list(reused_units.values()))
-        st.write(f'**Max Reused Units: ```{max_reused_units:.2f}``` | Mean Reused Units: ```{mean_reused_units:.2f}``` | Median Reused Units: ```{median_reused_units:.2f}``` | Min Reused Units: ```{min_reused_units:.2f}``` | Std Reused Units: ```{std_reused_units:.2f}```**')
+        st.caption(f'**Max: ```{max_reused_units:.2f}``` | Mean: ```{mean_reused_units:.2f}``` | Median: ```{median_reused_units:.2f}``` | Min: ```{min_reused_units:.2f}``` | Std: ```{std_reused_units:.2f}```**')
         x_name = 'Ratio of Reused Units'
         st.bar_chart(pd.DataFrame(list(reused_units_freq.items()),columns=[x_name,'Frequency']),x=x_name,y='Frequency')
 
@@ -2348,7 +2355,11 @@ def evolve(evosys,project_dir):
         AU.running_status(st,evosys)
 
         _index = 1 if evosys.benchmark_mode else 0
-        mode = st.selectbox("Mode",options=[i.value for i in EvoModes],index=_index,
+        if st.session_state.is_demo:
+            options = [i.value for i in EvoModes if i != EvoModes.EUREKA]
+        else:
+            options = [i.value for i in EvoModes]
+        mode = st.selectbox("Sub-tabs",options=options,index=_index,
             help='Choose the mode to view the evolution system or the agent benchmark.'
         )
         mode = EvoModes(mode)

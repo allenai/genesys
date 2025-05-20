@@ -135,18 +135,21 @@ def system_status(st,evosys,title,icon):
       n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
 
       st.write(f'Designs: :blue[{n_designs}] (**:green[{n_implemented}]**)')
+      design_cost = evosys.ptree.design_cost if not st.session_state.is_demo else 99999.99
       if evosys.design_budget_limit>0:
-          text=f'💲: {evosys.ptree.design_cost:.2f}/{evosys.design_budget_limit:.2f}'
-          st.progress(min(1.0,evosys.ptree.design_cost/evosys.design_budget_limit),text=text)
+          text=f'💲: {design_cost:.2f}/{evosys.design_budget_limit:.2f}'
+          st.progress(min(1.0,design_cost/evosys.design_budget_limit),text=text)
       else:
-          text=f'💲: {evosys.ptree.design_cost:.2f}/♾️'
+          text=f'💲: {design_cost:.2f}/♾️'
           st.progress(1.0,text=text)
 
       _verify_budget = U.sort_dict_by_scale(evosys.selector._verify_budget,False)
       for scale,num in _verify_budget.items():
-          remaining = num-evosys.selector.verify_budget[scale] 
-          text=f'{scale}: {remaining}/{num}'
-          st.progress(min(1.0,remaining/num),text=text)
+        finished = num-evosys.selector.verify_budget[scale] 
+        if st.session_state.is_demo and finished == 0:
+            continue
+        text=f'{scale}: {finished}/{num}'
+        st.progress(min(1.0,finished/num),text=text)
       st.write(f'Budget Type: ```{evosys.params["budget_type"]}```')
 
 

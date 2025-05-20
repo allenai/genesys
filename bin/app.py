@@ -18,6 +18,9 @@ import bin.app_utils as AU
 custom_args = sys.argv[1:]
 
 DEPLOY_MODE = 'deploy' in custom_args or '--deploy' in custom_args or '-d' in custom_args or 'd' in custom_args
+DEMO_MODE = 'demo' in custom_args or '--demo' in custom_args or '-m' in custom_args or 'm' in custom_args
+
+DEMO_MODE = True
 
 
 current_dir = pathlib.Path(__file__).parent
@@ -78,6 +81,26 @@ def build_evo_system(name):
         stream=st,
         # cache_type='diskcache',
     )
+    
+    if DEMO_MODE:
+        # dump the data so no need to load from firebase WIP
+        import json
+        def load_results(evosys,fname):
+            ckptdir=os.environ['CKPT_DIR']
+            dir=os.path.join(ckptdir,'RESULTS')
+            with open(os.path.join(dir,f'{fname}_results.json'),'r') as f:
+                all_results = json.load(f)
+            print(f'{fname}: {len(all_results)}/{len(evosys.ptree.G.nodes)} loaded')
+            for d in all_results:
+                if d not in evosys.ptree.G.nodes:
+                    print(f'{d} not in evosys.ptree.G.nodes')
+                    continue
+                for scale in evosys.ptree.G.nodes[d]['data'].verifications:
+                    results = all_results[d][scale]
+                    evosys.ptree.G.nodes[d]['data'].verifications[scale].verification_report['eval_results.json']['results'] = results
+            return evosys
+
+        evo_system = load_results(evo_system,'full_aug')
     return evo_system
 
 
@@ -86,6 +109,7 @@ setting=AU.get_setting()
 default_namespace=setting.get('default_namespace','test_evo_000')
 
 evosys = build_evo_system(default_namespace)
+
 
 
 # Setup the streamlit session state
@@ -110,6 +134,7 @@ if 'listener_connections' not in st.session_state:
 
 
 st.session_state.is_deploy = DEPLOY_MODE
+st.session_state.is_demo = DEMO_MODE
 st.session_state.current_theme = st_theme()
 
 
