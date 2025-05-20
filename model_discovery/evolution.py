@@ -76,8 +76,8 @@ from typing import (
     Union
 )
 from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
-from exec_utils.factory import _check_config
 from exec_utils import BuildSystem as NativeBuild
+from exec_utils.factory import Registry, build_config
 from exec_utils.aliases import ConfigType
 from google.cloud.firestore import DELETE_FIELD
 
@@ -2374,16 +2374,18 @@ class PhylogeneticTree:
             i += 1
         return f"{acronym}_{i}"
 
-    def filter_by_type(self,types):
+    def filter_by_type(self,types,ret_data=False):
         if isinstance(types, str):
             types=[types]
-        nodes=[]
+        nodes={}
         for node in self.G.nodes:
             design = self.get_node(node)
             if design is None:
                 continue
             if design.type in types:
-                nodes.append(node)
+                nodes[node] = design
+        if not ret_data:
+            return list(nodes.keys())
         return nodes
     
     def remove_redundant_edges(self,G):
@@ -2977,7 +2979,7 @@ BUDGET_TYPES = ['design_bound','verify_bound']
     #cache="query_system",
 )
 class EvolutionSystem(exec_utils.System):
-    def __init__(self,agent_system,config,silent=False,**kwargs):
+    def __init__(self,agent_system,config,silent=False,demo_mode=False,**kwargs):
         self.agents = agent_system
         self._config = config
         self.params=config.params
@@ -2987,6 +2989,9 @@ class EvolutionSystem(exec_utils.System):
         self.select_cfg = {}
         self.ve_cfg = {}
         self.benchmark_mode = False
+        if demo_mode:
+            print('Building in demo mode')
+            self.set_demo_mode()
         self.load(**kwargs)
 
     def set_demo_mode(self):
@@ -3673,6 +3678,7 @@ def BuildEvolution(
         config: Optional[ConfigType] = None,
         stream: Optional[ModuleType] = None,
         silent: Optional[bool] = False,
+        demo_mode: Optional[bool] = False,
         **kwargs
     ) -> EvolutionSystem:
     """Factory for loading evolution system 
@@ -3682,7 +3688,12 @@ def BuildEvolution(
 
     """
     kwargs["system_type"] = "evolution"
-    evolution = NativeBuild(config,silent=silent,**kwargs)
+    # evolution = NativeBuild(config,silent=silent,demo_mode=demo_mode,**kwargs)
+    kwargs['demo_mode'] = demo_mode
+    kwargs['silent'] = silent
+    if config is None:
+        config = build_config(**kwargs)
+    evolution = Registry.build_model("system_type",config,**kwargs)
     if stream:
         evolution.link_stream(stream)
     return evolution

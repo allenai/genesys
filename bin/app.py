@@ -61,12 +61,16 @@ if not DEPLOY_MODE:
     listen = import_and_reload('listen').listen
     tester = import_and_reload('tester').tester
     launch_listener = import_and_reload('listen').launch_listener
+    export_leaderboards = import_and_reload('viewer').export_leaderboards
 else:
     from bin.pages import home,viewer,design,evolve,verify,config,search,select,listen
     from bin.pages.listen import launch_listener
+    from bin.pages.viewer import export_leaderboards
 
 
 
+if 'use_cache' not in st.session_state:
+    st.session_state.use_cache = False # as it needs update online sometimes
 
 # Setup the evo system
 
@@ -79,10 +83,12 @@ def build_evo_system(name):
         params=params,
         do_cache=False,
         stream=st,
+        demo_mode=DEMO_MODE,
         # cache_type='diskcache',
     )
     
     if DEMO_MODE:
+        evo_system.set_demo_mode()
         # dump the data so no need to load from firebase WIP
         import json
         def load_results(evosys,fname):
@@ -100,7 +106,24 @@ def build_evo_system(name):
                     evosys.ptree.G.nodes[d]['data'].verifications[scale].verification_report['eval_results.json']['results'] = results
             return evosys
         evo_system = load_results(evo_system,'full_aug')
-        evo_system.set_demo_mode()
+        st.session_state.use_cache = True
+
+    if st.session_state.use_cache:
+        print('pre-load design artifacts and leaderboard')
+        st.session_state.pre_filter = []
+        st.session_state.filter_by_types = {}
+        sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
+        for source in sources:
+            st.session_state.filter_by_types[source] = evo_system.ptree.filter_by_type(source,ret_data=True)
+        st.session_state.implemented_designs = st.session_state.filter_by_types['DesignArtifactImplemented']
+        st.session_state.unimplemented_designs = st.session_state.filter_by_types['DesignArtifact']
+        st.session_state.design_artifacts = {**st.session_state.implemented_designs,**st.session_state.unimplemented_designs}
+        st.session_state.acronyms = st.session_state.filter_by_types['ReferenceCoreWithTree']
+        st.session_state.design_vectors = evo_system.ptree.get_design_vectors(pre_filter=[])
+        st.session_state.baseline_vectors = evo_system.ptree.get_baseline_vectors()
+        st.session_state.custom_vectors = evo_system.ptree.get_custom_vectors('CUSTOM_HOLD')
+        st.session_state.design_vectors.update(st.session_state.custom_vectors)
+        st.session_state.leaderboards_normed,st.session_state.leaderboards_unnormed_h,st.session_state.leaderboards_unnormed_l,st.session_state.baselines=export_leaderboards(evo_system,st.session_state.design_vectors,st.session_state.baseline_vectors)
     return evo_system
 
 
@@ -111,7 +134,6 @@ if DEMO_MODE:
     default_namespace = 'evo_exp_full_a'
 
 evosys = build_evo_system(default_namespace)
-
 
 
 # Setup the streamlit session state

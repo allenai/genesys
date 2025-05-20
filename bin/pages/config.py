@@ -409,8 +409,11 @@ def select_config(evosys):
                 with cols[2]:
                     seed_dist['warmup_rounds'] = st.number_input('Warmup (Restart)',min_value=0,value=seed_dist['warmup_rounds'],
                         help="Number of verified designs are produced. In warmup rounds, at least one seed will be selected from the initial seeds. After warmup, the probability of selecting from initial seeds is determined by restart scheduler.")
-
-            sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
+            
+            if st.session_state.use_cache:
+                sources={i:len(st.session_state.filter_by_types[i]) for i in DEFAULT_N_SOURCES}
+            else:
+                sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
         
             Col1,Col2 = st.columns([4.5,1.1])
             with Col1:
@@ -473,7 +476,10 @@ def select_config(evosys):
                 select_cfg['n_seeds_settings']=n_seeds_settings
             with Col2:
                 st.markdown('###### Distribution of Seed Designs (%)')
-                seed_designs = evosys.ptree.filter_by_type('ReferenceCoreWithTree')
+                if st.session_state.use_cache:
+                    seed_designs = st.session_state.filter_by_types['ReferenceCoreWithTree']
+                else:
+                    seed_designs = evosys.ptree.filter_by_type('ReferenceCoreWithTree')
                 seed_design_dist = select_cfg.get('seed_design_dist',{})
                 for seed_design in seed_designs:
                     seed_design_dist[seed_design] = seed_design_dist.get(seed_design,1/len(seed_designs))

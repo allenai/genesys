@@ -130,9 +130,13 @@ def system_status(st,evosys,title,icon):
   with st.expander(f"{title}",expanded=True,icon=icon):
       settings={}
       settings['Experiment Directory']=evosys.evo_dir
-        
-      n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
-      n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
+      
+      if st.session_state.use_cache:
+        n_implemented = len(st.session_state.implemented_designs)
+        n_designs = n_implemented + len(st.session_state.unimplemented_designs)
+      else:
+        n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
+        n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
 
       st.write(f'Designs: :blue[{n_designs}] (**:green[{n_implemented}]**)')
       design_cost = evosys.ptree.design_cost if not st.session_state.is_demo else 99999.99

@@ -181,7 +181,10 @@ def unit_explorer(evosys,project_dir):
         with st.expander("Raw data",expanded=False):
             st.write(unit)
 
-    designs=GD.ptree.filter_by_type('DesignArtifactImplemented')
+    if st.session_state.use_cache:
+        designs=st.session_state.filter_by_types['DesignArtifactImplemented']
+    else:
+        designs=GD.ptree.filter_by_type('DesignArtifactImplemented')
     cols = st.columns(3)
     with cols[0]:
         choose_design=st.selectbox("Choose a Design",options=list(designs))

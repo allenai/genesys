@@ -25,7 +25,10 @@ def design_selector(evosys,project_dir):
     seed_dist = copy.deepcopy(DEFAULT_SEED_DIST)
 
     with st.sidebar:
-        designs = evosys.ptree.filter_by_type('DesignArtifactImplemented')
+        if st.session_state.use_cache:
+            designs = st.session_state.filter_by_types['DesignArtifactImplemented']
+        else:
+            designs = evosys.ptree.filter_by_type('DesignArtifactImplemented')
         st.success(f'Number of designs: ```{len(designs)}```')
         # select_design = st.selectbox('Select a design',options=['None']+[d.acronym for d in designs])
         # with st.expander('Selected Design',expanded=True):
@@ -57,7 +60,11 @@ def design_selector(evosys,project_dir):
 
         n_sources = DEFAULT_N_SOURCES
 
-        sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
+        if st.session_state.use_cache:
+            sources={i:len(st.session_state.filter_by_types[i]) for i in DEFAULT_N_SOURCES}
+        else:
+            sources={i:len(evosys.ptree.filter_by_type(i)) for i in DEFAULT_N_SOURCES}
+
         st.markdown("###### Configure the number of *references* from each source")
         cols = st.columns(len(sources))
         for i,source in enumerate(sources):

@@ -552,9 +552,15 @@ def verify_engine(evosys,project_dir):
     with col1:
         node_type=st.selectbox("Select Type",options=['Agent Designs (Implemented)','Human Baselines (Seed Tree)','Random Baselines'])
         if node_type=='Agent Designs (Implemented)':
-            designs=evosys.ptree.filter_by_type(['DesignArtifactImplemented'])
+            if st.session_state.use_cache:
+                designs=st.session_state.filter_by_types['DesignArtifactImplemented']
+            else:
+                designs=evosys.ptree.filter_by_type(['DesignArtifactImplemented'])
         elif node_type=='Human Baselines (Seed Tree)':
-            designs=evosys.ptree.filter_by_type(['ReferenceCoreWithTree','ReferenceCore'])
+            if st.session_state.use_cache:
+                designs=st.session_state.filter_by_types['ReferenceCoreWithTree'] + st.session_state.filter_by_types['ReferenceCore']
+            else:
+                designs=evosys.ptree.filter_by_type(['ReferenceCoreWithTree','ReferenceCore'])
         else:
             designs=[]
         

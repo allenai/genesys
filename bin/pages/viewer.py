@@ -35,8 +35,8 @@ from bin.pages.design import show_log,load_log
 
 
 class ViewModes(Enum):
-    METRICS = 'Design Leaderboard'
     DESIGNS = 'Design Artifacts'
+    METRICS = 'Design Leaderboard'
     SESSIONS = 'Local Session Logs'
     DIALOGS = 'Local Agent Dialogs'
     # FLOW = 'Agent Flows (Experimental)'
@@ -63,18 +63,28 @@ def _view_tree(tree):
 
 
 
+class DesignCategory(Enum):
+    DESIGNS = 'Discovered Designs'
+    SEEDS = 'Human Seed Designs'
+
+
 def _view_designs(evosys):
     st.title('Design Artifact Viewer')
 
     
     with st.status('Loading design artifacts... *(Please download the artifact to view the full design trace)*'):
-        design_artifacts = evosys.ptree.filter_by_type(['DesignArtifactImplemented','DesignArtifact'])
-        acronyms= evosys.ptree.filter_by_type(['ReferenceCoreWithTree'])
+        if st.session_state.use_cache:
+            design_artifacts = st.session_state.design_artifacts
+            acronyms = st.session_state.acronyms
+        else:
+            design_artifacts = evosys.ptree.filter_by_type(['DesignArtifactImplemented','DesignArtifact'],ret_data=True)
+            acronyms= evosys.ptree.filter_by_type(['ReferenceCoreWithTree'],ret_data=True)
         # corerefs_with_tree = {acronym:evosys.ptree.get_node(acronym) for acronym in acronyms}
 
+
     with st.sidebar:
-        category = st.selectbox('Select a category',['Design Artifacts','Seed Trees'])
-        if category == 'Design Artifacts':
+        category = st.selectbox('Select a category',[i.value for i in DesignCategory])
+        if category == DesignCategory.DESIGNS.value:
             # sort by alphabetical order
             designs = sorted(list(design_artifacts))
             selected_design = st.selectbox('Select a design',designs)
@@ -95,13 +105,12 @@ def _view_designs(evosys):
     #     st.markdown('### Relative to Random (%)')
     #     st.dataframe(df_norm)
 
-    if category == 'Design Artifacts':
+    if category == DesignCategory.DESIGNS.value:
         if design_artifacts:
-            design=evosys.ptree.get_node(selected_design)
+            design=design_artifacts[selected_design]
 
             with st.sidebar:
-                data = design.to_dict()
-                st.download_button('Download Design',json.dumps(data,indent=4),file_name=f'{selected_design}.json')
+                st.download_button('Download Design',json.dumps(design.to_dict(),indent=4),file_name=f'{selected_design}.json')
 
             sessdata = design.sess_snapshot
             with st.expander(f'Meta Data for {selected_design}',expanded=False):
@@ -157,8 +166,8 @@ def _view_designs(evosys):
         else:
             st.warning('No design artifacts found in the experiment directory')
     
-    elif acronyms and category == 'Seed Trees':
-        coreref = evosys.ptree.get_node(selected_coreref)
+    elif acronyms and category == DesignCategory.SEEDS.value:
+        coreref = acronyms[selected_coreref]
         with st.expander(f'Meta Data for {selected_coreref}',expanded=False):
             metadata = {
                 'Reference ID': coreref.acronym,
@@ -694,19 +703,50 @@ def selector_lab(evosys,project_dir):
         st.warning('Design Leaderboard is not available for agent benchmark.')
         return
 
-    pre_filter = st.text_input('Pre-filter designs (exact match, comma separated)',value='')
+    _filter_title = 'Pre-filter designs (exact match, comma separated)' 
+    if st.session_state.use_cache:
+        _filter_title += ' *:red[Demo mode: change it will takes time to reload]*'
+    pre_filter = st.text_input(_filter_title,value='')
     if pre_filter:
         pre_filter = [i.strip() for i in pre_filter.split(',')]
+    else:
+        pre_filter = []        
+    
+    need_reload = not (st.session_state.use_cache and pre_filter == st.session_state.pre_filter)
 
     with st.status('Loading latest data...'):
-        design_vectors = evosys.ptree.get_design_vectors(pre_filter=pre_filter)
-        baseline_vectors = evosys.ptree.get_baseline_vectors()
-        custom_vectors = evosys.ptree.get_custom_vectors('CUSTOM_HOLD')
-        design_vectors.update(custom_vectors)
+        need_reload = not (st.session_state.use_cache and pre_filter == st.session_state.pre_filter)
+        if not need_reload:
+            design_vectors = st.session_state.design_vectors
+        else:
+            design_vectors = evosys.ptree.get_design_vectors(pre_filter=pre_filter)
+            st.session_state.pre_filter = pre_filter
+        if st.session_state.use_cache:
+            baseline_vectors = st.session_state.baseline_vectors
+            custom_vectors = st.session_state.custom_vectors
+        else:
+            baseline_vectors = evosys.ptree.get_baseline_vectors()
+            custom_vectors = evosys.ptree.get_custom_vectors('CUSTOM_HOLD')
+        if need_reload:
+            design_vectors.update(custom_vectors)
+            st.session_state.design_vectors = design_vectors
 
     st.subheader('Real-time Leaderboard')
     with st.status('Generating leaderboard...',expanded=True):
-        leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
+        if need_reload:
+            leaderboards_normed,leaderboards_unnormed_h,leaderboards_unnormed_l,baselines=export_leaderboards(evosys,design_vectors,baseline_vectors)
+        else:
+            leaderboards_normed = st.session_state.leaderboards_normed
+            leaderboards_unnormed_h = st.session_state.leaderboards_unnormed_h
+            leaderboards_unnormed_l = st.session_state.leaderboards_unnormed_l
+            baselines = st.session_state.baselines
+
+        if need_reload:
+            st.session_state.leaderboards_normed = leaderboards_normed
+            st.session_state.leaderboards_unnormed_h = leaderboards_unnormed_h
+            st.session_state.leaderboards_unnormed_l = leaderboards_unnormed_l
+            st.session_state.baselines = baselines
+        
         cols = st.columns([1,1,3,1])
         with cols[0]:
             scale = st.selectbox('Select scale',options=list(sorted(leaderboards_normed.keys(),key=lambda x:U.letternum2num(x) if x != 'all' else 1e10)))

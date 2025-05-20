@@ -259,7 +259,10 @@ class CommandCenter:
                 return
             elif len(_command)==3:
                 design_id, scale = _command[1:]
-                models = self.evosys.ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
+                if st.session_state.use_cache:
+                    models = st.session_state.filter_by_types['DesignArtifactImplemented'] + st.session_state.filter_by_types['ReferenceCoreWithTree']
+                else:
+                    models = self.evosys.ptree.filter_by_type(['DesignArtifactImplemented','ReferenceCoreWithTree'])
                 if design_id not in models:
                     st.toast(f'Design {design_id} not found.',icon='🚨')
                     return
@@ -724,8 +727,12 @@ def ptree_monitor(evosys):
             ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
             st.session_state.ptree_max_nodes=_max_nodes
             
-    n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
-    n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
+    if st.session_state.use_cache:
+        n_implemented = len(st.session_state.filter_by_types['DesignArtifactImplemented'])
+        n_designs = n_implemented + len(st.session_state.filter_by_types['DesignArtifact'])
+    else:
+        n_implemented = len(evosys.ptree.filter_by_type('DesignArtifactImplemented'))
+        n_designs = n_implemented + len(evosys.ptree.filter_by_type('DesignArtifact'))
     
     st.write(f'**First {st.session_state.ptree_max_nodes} nodes under the namespace ```{evosys.evoname}```**, :red[{n_designs}] designs, :blue[{n_implemented}] implemented. *(Node Size by # of citations or children)*.')
             # 'Legend: :red[Seed Designs (*Displayed Pink*)] | :blue[Design Artifacts] | :orange[Reference w/ Code] | :violet[Reference w/o Code] *(Size by # of citations)*')
@@ -994,7 +1001,7 @@ BASIC_BASELINES = [
 ]
 
 def _eureka(evosys):
-    st.title("Eureka Moments")
+    st.title("Eureka Moments (Experimental)")
     default_baseline = 'random'
     cols = st.columns(5)
     with cols[0]:
@@ -2067,7 +2074,10 @@ def unit_analyzer(evosys,design_nodes,implemented_nodes):
         col1, col2, col3,col4 = st.columns([1,1,1,1])
         with col1:
             st.subheader('Num of Units')
-            designs = {design:evosys.ptree.get_node(design) for design in evosys.ptree.filter_by_type(['DesignArtifactImplemented'])}
+            if st.session_state.use_cache:
+                designs = {design:evosys.ptree.get_node(design) for design in st.session_state.filter_by_types['DesignArtifactImplemented']}
+            else:
+                designs = {design:evosys.ptree.get_node(design) for design in evosys.ptree.filter_by_type(['DesignArtifactImplemented'])}
             n_units = {}
             reused_units = {}
             reused_units_ratio = {}
@@ -2325,9 +2335,13 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
 
 
 def _stats(evosys):
-    st.title("Experiment Statistics")
-    design_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifact')]
-    implemented_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifactImplemented')]
+    st.title("Evolution Statistics")
+    if st.session_state.use_cache:
+        design_nodes = [evosys.ptree.get_node(i) for i in st.session_state.filter_by_types['DesignArtifact']]
+        implemented_nodes = [evosys.ptree.get_node(i) for i in st.session_state.filter_by_types['DesignArtifactImplemented']]
+    else:
+        design_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifact')]
+        implemented_nodes = [evosys.ptree.get_node(i) for i in evosys.ptree.filter_by_type('DesignArtifactImplemented')]
     session_stats(evosys,design_nodes,implemented_nodes)
     impl_analysis(evosys,design_nodes,implemented_nodes)
     unit_analyzer(evosys,design_nodes,implemented_nodes)
@@ -2337,7 +2351,7 @@ def _stats(evosys):
 class EvoModes(Enum):
     EVOLVE = 'Evolution System'
     BENCH = 'Agent Benchmark'
-    STATS = 'Experiment Statistics'
+    STATS = 'Evolution Statistics'
     EUREKA = 'Eureka Moments'
 
 
@@ -2356,7 +2370,7 @@ def evolve(evosys,project_dir):
 
         _index = 1 if evosys.benchmark_mode else 0
         if st.session_state.is_demo:
-            options = [i.value for i in EvoModes if i != EvoModes.EUREKA]
+            options = [i.value for i in EvoModes if i not in [EvoModes.EUREKA,EvoModes.BENCH]]
         else:
             options = [i.value for i in EvoModes]
         mode = st.selectbox("Sub-tabs",options=options,index=_index,

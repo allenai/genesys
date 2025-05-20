@@ -578,7 +578,10 @@ def _design_tuning(evosys,project_dir):
             st.caption('***NOTE:** Hybrid agent is a weighted random selection of the options at the beginning of design. It will apply the default weights which will be presented later when it runs.*')
 
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
-        sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
+        if st.session_state.use_cache:
+            sources={i:len(st.session_state.filter_by_types[i]) for i in sources}
+        else:
+            sources={i:len(evosys.ptree.filter_by_type(i)) for i in sources}
         
         _scol1,_scol2 = st.columns([5,1])
         with _scol1:
@@ -727,7 +730,13 @@ def _design_tuning(evosys,project_dir):
     with cols[0]:
         user_input = st.text_input(label = "Add any additional instructions (optional)", help='Will be combined with selector\'s instructions (if any)')
     with cols[1]:
-        manual_seed = st.selectbox(label="Manual seed",options=['None']+evosys.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented']),
+        _options = ['None']
+        if st.session_state.use_cache:
+            _options += list(st.session_state.filter_by_types['ReferenceCoreWithTree']) + list(st.session_state.filter_by_types['DesignArtifactImplemented'])
+        else:
+            _options += list(evosys.ptree.filter_by_type(['ReferenceCoreWithTree','DesignArtifactImplemented']))
+        _options = sorted(_options)
+        manual_seed = st.selectbox(label="Manual seed",options=_options,
             help='Will override selector\'s selection')
     with cols[2]:
         # EXPERIMENT_RUNS = st.number_input(label="Number of design runs",min_value=1,value=1,disabled=True)
