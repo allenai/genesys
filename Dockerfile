@@ -57,11 +57,13 @@ RUN mkdir -p ${DATA_DIR} ${CKPT_DIR}
 RUN pip install paperswithcode-client>=0.3.1 
 RUN pip uninstall lm_eval -y 
 RUN pip install -r requirements.txt
+RUN pip install hf_xet
 
 # [6] Copy ckpt data
 COPY ckpt/evo_exp_full_a ${CKPT_DIR}/evo_exp_full_a
 COPY ckpt/RESULTS ${CKPT_DIR}/RESULTS
 COPY ckpt/.setting.json ${CKPT_DIR}/.setting.json
+COPY data/ ${DATA_DIR}/
 
 # [7] Deploy the GUI
 EXPOSE 8501

@@ -86,6 +86,7 @@ def build_evo_system(name):
     params={
         'evoname':name,
     }
+    print(f'Building evo system with params: {params}')
     evo_system = BuildEvolution(
         params=params,
         do_cache=False,
@@ -95,6 +96,7 @@ def build_evo_system(name):
     )
     
     if DEMO_MODE:
+        print('Setting up for demo mode')
         evo_system.set_demo_mode()
         # dump the data so no need to load from firebase WIP
         import json
