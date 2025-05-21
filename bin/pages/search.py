@@ -18,6 +18,9 @@ import bin.app_utils as AU
 
 def paper_search(evosys,project_dir):
 
+    if st.session_state.is_demo:
+        st.warning("***Demo mode:** Some search features are disabled.*")
+
     st.subheader("Paper Search Engine")
 
     with st.expander("Search Configurations",expanded=True):
@@ -240,6 +243,9 @@ _embeddding_models = {
 def units_search(evosys,project_dir):
     sss=evosys.agents.sss
 
+    if st.session_state.is_demo:
+        st.error("***Demo mode:** Unit search is slow in CPU-only mode, disabled for demo.*")
+
     with st.sidebar:
         st.success(f'Number of units: ```{len(sss.unit_codes)}```')
 
@@ -305,6 +311,11 @@ def proposal_search(evosys,project_dir):
     sss=evosys.agents.sss
     cfg_backup = copy.deepcopy(sss.cfg)
 
+    
+    if st.session_state.is_demo:
+        st.error("***Demo mode:** Proposal search is slow in CPU-only mode, disabled for demo.*")
+
+
     with st.sidebar:
         st.success(f'Number of proposals: ```{len(sss.design_proposals)}```')
 
@@ -367,9 +378,6 @@ def search(evosys,project_dir):
 
         # mode=st.radio('Playground Options',options=['Paper','Units','Proposal','Explorer'],index=0)
         mode=st.selectbox("Sub-tabs",options=['Paper Search','Units Search','Proposal Search','Explorers'])
-
-    if st.session_state.is_demo:
-        st.warning("***Demo mode:** Some search features are disabled. Paper and unit search are slow in CPU-only mode for demo.*")
 
     if mode=='Paper Search':
         paper_search(evosys,project_dir)

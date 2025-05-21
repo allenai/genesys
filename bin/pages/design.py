@@ -207,7 +207,7 @@ def _design_engine(evosys,project_dir):
     st.title("Design Engine Playground")
 
     if st.session_state.is_demo:
-        st.warning("***Demo mode:** design engine is disabled.*")
+        st.error("***Demo mode:** design engine is disabled.*")
     
     if st.session_state.listening_mode:
         st.warning("**WARNING:** You are running in listening mode. If there is an evolution running, running design threads in the same namespace will cause unexpected errors.")

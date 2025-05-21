@@ -703,9 +703,6 @@ def ptree_monitor(evosys):
 
     _bg_color='#ffffff'
     
-    evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height=f'{export_height}px',
-            bgcolor=_bg_color,evo_only=default_evo_only,size_mult=size_mult)
-    ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{st.session_state.ptree_max_nodes}.html')
 
     with col1:
         _max_nodes=st.slider('Max Nodes to Display',min_value=0,max_value=len(evosys.ptree.G.nodes),value=st.session_state.ptree_max_nodes)
@@ -719,14 +716,25 @@ def ptree_monitor(evosys):
     with col3:
         st.write('')
         st.write('')
-        if st.button(f'Reload',use_container_width=True):
-            evosys.ptree.update_design_tree()
-            evosys.ptree.export(max_nodes=_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,
-                legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100,
-                evo_only=input_evo_only,size_mult=size_mult)
-            ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
-            st.session_state.ptree_max_nodes=_max_nodes
+        reload_btn = st.button(f'Reload',use_container_width=True)
             
+    if reload_btn:
+        if not st.session_state.evo_running:
+            evosys.ptree.update_design_tree()
+        ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{_max_nodes}.html')
+        if not (st.session_state.use_cache and os.path.exists(ptree_dir_small)):
+            with st.status(f'Exporting ptree for {st.session_state.ptree_max_nodes} nodes...',expanded=False):
+                evosys.ptree.export(max_nodes=_max_nodes,height=f'{export_height}px',bgcolor=_bg_color,
+                    legend_font_size=12,legend_width_constraint=100,legend_x=-2400,legend_y=-200,legend_step=100,
+                    evo_only=input_evo_only,size_mult=size_mult)
+        st.session_state.ptree_max_nodes=_max_nodes
+    else:
+        ptree_dir_small=U.pjoin(evosys.evo_dir,f'PTree_{st.session_state.ptree_max_nodes}.html')
+        if not (st.session_state.use_cache and os.path.exists(ptree_dir_small)):
+            with st.status(f'Exporting ptree for {st.session_state.ptree_max_nodes} nodes...',expanded=False):
+                evosys.ptree.export(max_nodes=st.session_state.ptree_max_nodes,height=f'{export_height}px',
+                    bgcolor=_bg_color,evo_only=default_evo_only,size_mult=size_mult)
+                
     if st.session_state.use_cache:
         n_implemented = len(st.session_state.filter_by_types['DesignArtifactImplemented'])
         n_designs = n_implemented + len(st.session_state.filter_by_types['DesignArtifact'])
