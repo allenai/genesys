@@ -38,6 +38,7 @@ from .agents.flow.gau_flows import gu_design,DesignModes,RunningModes,\
 from .agents.search_utils import SuperScholarSearcher
 
 import model_discovery.utils as U
+from exec_utils.config import build_config
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
@@ -740,8 +741,11 @@ def BuildSystem(
     # elif "wdir" not in kwargs:
     #     wdir = f"{SYSTEM_OUT}/{time.strftime('%Y%m%d_%H%M%S')}"
     #     kwargs["wdir"] = wdir
-        
-    return BuildSystem(config,**kwargs)
+    if config is None:
+        config = build_config(**kwargs)
+    agent_system = ModelDiscoverySystem.from_config(config,**kwargs)
+    return agent_system
+    # return BuildSystem(config,**kwargs)
 
 
 
