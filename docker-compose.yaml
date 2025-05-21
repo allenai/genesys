@@ -1,0 +1,14 @@
+version: '3'
+services:
+    genesys:
+        build: .
+        ports:
+            - 8501:8501
+        restart: unless-stopped # Or 'always', 'on-failure'
+        # volumes:
+        #   - .:/root/genesys
+        environment:
+            - PYTHONUNBUFFERED=1
+            - LOG_LEVEL=DEBUG
+            - STREAMLIT_CLIENT_SHOW_ERROR_DETAILS=true
+

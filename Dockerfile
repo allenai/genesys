@@ -23,8 +23,7 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 
 
 # [1] Clone the repo, assume its under your home directory ~
-ARG GITHUB_TOKEN
-RUN git clone https://${GITHUB_TOKEN}@github.com/allenai/genesys.git /root/genesys
+COPY . /root/genesys
 
 # [2] Create a virtual env with pytorch, move to the repo, and install genesys cli
 
@@ -69,7 +68,7 @@ CMD ["genesys gui"]
 
 
 # Usages
-# docker build --build-arg GITHUB_TOKEN="your_actual_github_pat_here" -t genesys-demo .
+# docker build -t genesys-demo .
 # docker run -p 8502:8501 genesys-demo 
 
 # Permissions
