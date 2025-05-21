@@ -3710,7 +3710,6 @@ def BuildEvolution(
     """
     kwargs["system_type"] = "evolution"
     # evolution = NativeBuild(config,silent=silent,demo_mode=demo_mode,**kwargs)
-    kwargs['demo_mode'] = demo_mode
     kwargs['silent'] = silent
     # evolution = Registry.build_model("system_type",config,**kwargs)
     if config is None:
