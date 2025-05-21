@@ -1875,7 +1875,7 @@ class PhylogeneticTree:
         return nodes
 
     # How to handle variants? i.e., in GPT, there are optional pre-conv and post-conv, maybe just all of them to the tree, let selector to choose
-    def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None,overwrite=False): # new design session, a session explore the steps from a selected node
+    def new_design(self, seed_ids, ref_ids, instruct, num_samples, sess_id=None,overwrite=False,demo_mode=False): # new design session, a session explore the steps from a selected node
         if len(seed_ids)==0:
             mode=DesignModes.SCRATCH
         elif len(seed_ids)==1:
@@ -1886,6 +1886,8 @@ class PhylogeneticTree:
         hash_tail=hashlib.sha256(f"{sorted(ref_ids)}{sorted(seed_ids)}{instruct}{mode.value}".encode()).hexdigest()
         if sess_id is None:
             sess_id = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}-{hash_tail[-6:]}"
+            if demo_mode:
+                sess_id = f"{sess_id}demo"
         if sess_id in self.design_sessions and not overwrite:
             print(f'Session {sess_id} already exists.')
             return sess_id
@@ -3499,7 +3501,8 @@ class EvolutionSystem(ExecSystem):
             search_cfg=search_cfg,
             silent=silent,
             cpu_only=cpu_only,
-            log_collection=log_collection
+            log_collection=log_collection,
+            demo_mode=self.demo_mode
         )
 
     def choose(self): # For sequential evolution, not needed for parallel

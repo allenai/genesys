@@ -572,6 +572,7 @@ class ModelDiscoverySystem(ExecSystem):
         silent=False,
         cpu_only=False,
         log_collection=None,
+        demo_mode=False,
         **kwargs
     ) -> list:
         """Main function for implementing system calls.
@@ -633,7 +634,7 @@ class ModelDiscoverySystem(ExecSystem):
                 stream.write('Crossover no ref is set to True, ignore all references')
                 refs=None
             ref_ids = [ref.acronym for ref in refs] if refs else []
-            sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'])
+            sess_id=self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], demo_mode=demo_mode)
             stream.write(f"Starting new design session: {sess_id}")
         else: # resuming a session or creating a new session with a given id
             sessdata = self.ptree.get_design_session(sess_id)
@@ -643,7 +644,7 @@ class ModelDiscoverySystem(ExecSystem):
                     stream.write('Crossover no ref is set to True, ignore all references')
                     refs=None
                 ref_ids = [ref.acronym for ref in refs] if refs else []
-                self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], sess_id)
+                self.ptree.new_design(seed_ids, ref_ids, instruct, design_cfg['num_samples'], sess_id, demo_mode=demo_mode)
                 stream.write(f"Starting new design session: {sess_id}")
             else:
                 stream.write(f"Restoring design session: {sess_id}")
