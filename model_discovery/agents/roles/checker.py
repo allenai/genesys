@@ -666,12 +666,14 @@ class Checker(BaseTool):
         parameters are within a certain range)
 
     """
-    def __init__(self,silent=False):
+    def __init__(self,silent=False,demo=False):
         self.silent=silent
         self.report = ''
         self.hints = []
         self.format_checker = GABFormatChecker()
-        self.effective_checker = EffectiveChecker()
+        if not demo:
+            print(f'Skipping effective checker for demo mode')
+            self.effective_checker = EffectiveChecker()
 
     def rprint(self, msg) -> None:
         """Log information of check and adds to report 

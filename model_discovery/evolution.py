@@ -3667,6 +3667,7 @@ class EvolutionSystem(ExecSystem):
         print(f'Building agent system with kwargs: {kwargs}')
         agent = BuildSystem(
             config,
+            demo_mode=demo_mode,
             **kwargs
         )
         print(f'Agent system built, starting to build evolution system')

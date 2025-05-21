@@ -667,7 +667,7 @@ class ModelDiscoverySystem(ExecSystem):
         
 
     @classmethod
-    def from_config(cls: Type[C],config: ConfigType,**kwargs) -> C:
+    def from_config(cls: Type[C],config: ConfigType,demo_mode: bool = False,**kwargs) -> C:
         """The main method for instantiating system instances from configuration. 
 
         :param config: 
@@ -685,7 +685,7 @@ class ModelDiscoverySystem(ExecSystem):
             agent_model_type="designer_agent"
         )
         print(f'Building checker')
-        checker = Checker()
+        checker = Checker(demo=demo_mode)
         # reviewers = {
         #     'balance': BuildAgent(
         #         config,
@@ -727,6 +727,7 @@ class ModelDiscoverySystem(ExecSystem):
 
 def BuildSystem(
         config: Optional[ConfigType] = None,
+        demo_mode: bool = False,
         **kwargs
     ) -> ModelDiscoverySystem:
     """Factory for building an overall system
@@ -751,7 +752,7 @@ def BuildSystem(
     if config is None:
         config = build_config(**kwargs)
     print(f'Starting to build agent system')
-    agent_system = ModelDiscoverySystem.from_config(config,**kwargs)
+    agent_system = ModelDiscoverySystem.from_config(config,demo_mode=demo_mode,**kwargs)
     return agent_system
     # return BuildSystem(config,**kwargs)
 
