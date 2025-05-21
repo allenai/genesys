@@ -24,7 +24,7 @@ import uuid
 import time
 
 from exec_utils.aliases import ConfigType
-from exec_utils.factory import BuildAgent, BuildTool
+from exec_utils.factory import BuildAgent
 from exec_utils.models.model_agent import SimpleLMAgent
 from exec_utils.tools.tool import BaseTool
 from exec_utils.system import System as ExecSystem
@@ -41,6 +41,8 @@ from .agents.search_utils import SuperScholarSearcher
 
 import model_discovery.utils as U
 from exec_utils.config import build_config
+from exec_utils.utils import create_agent_config
+
 
 C = TypeVar("C",bound="ModelDiscoverySystem")
 
@@ -51,6 +53,7 @@ __all__ = [
 
 PROJ_SRC = os.path.abspath(os.path.dirname(__file__))
 SYSTEM_OUT = os.path.abspath(f"{PROJ_SRC}/../_runs")
+
 
 
 
@@ -681,10 +684,8 @@ class ModelDiscoverySystem(ExecSystem):
             agent_file=config.designer_spec,
             agent_model_type="designer_agent"
         )
-        print(f'Building checker tool')
-        checker = BuildTool(
-            tool_type="checker",
-        )
+        print(f'Building checker')
+        checker = Checker()
         # reviewers = {
         #     'balance': BuildAgent(
         #         config,
