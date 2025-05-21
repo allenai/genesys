@@ -25,7 +25,7 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 
 # [1] Clone the repo, assume its under your home directory ~
 ARG GITHUB_TOKEN
-RUN git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /home/model_discovery
+RUN git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /root/model_discovery
 
 # [2] Create a virtual env with pytorch, move to the repo, and install genesys cli
 
@@ -33,25 +33,25 @@ RUN git clone https://${GITHUB_TOKEN}@github.com/allenai/model_discovery.git /ho
 # RUN conda create -n genesys python=3.12 -y
 # SHELL ["conda", "run", "-n", "genesys", "/bin/bash", "-c"]
 # RUN conda install -c conda-forge ittapi intel-openmp tbb -y
-WORKDIR /home/model_discovery
+# ~ should be /root/ in the image
+WORKDIR /root/model_discovery
 # RUN conda install pytorch==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
 # RUN conda install pytorch==2.4.1 cpuonly -c pytorch -y
 RUN pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
 RUN pip install -e .
 
 # [4] Setup a firebase backend, and store the secret json in DB_KEY_PATH, this is required for the distributed search
-RUN mkdir -p /home/model_discovery/secrets
-ENV DB_KEY_PATH=/home/model_discovery/secrets/db_key.json
+ENV DB_KEY_PATH=/root/model_discovery/secrets/db_key.json
+RUN mkdir -p /root/model_discovery/secrets
 COPY secrets/db_key.json ${DB_KEY_PATH}
 # its for more gurantees
-COPY model_discovery/secrets.py /home/model_discovery/model_discovery/secrets.py
-
+COPY model_discovery/secrets.py /root/model_discovery/model_discovery/secrets.py
 
 # [5] Setup, notice that you may need to install exec_utils manually before it, if its not public yet
 RUN pip install git+https://${GITHUB_TOKEN}@github.com/allenai/exec_utils.git
 # skip data prep, mount from beaker
-ENV DATA_DIR=/home/model_discovery/data
-ENV CKPT_DIR=/home/model_discovery/ckpt
+ENV DATA_DIR=/root/model_discovery/data
+ENV CKPT_DIR=/root/model_discovery/ckpt
 RUN mkdir -p ${DATA_DIR} ${CKPT_DIR}
 # RUN bash scripts/setup_requirements.sh
 RUN pip install paperswithcode-client>=0.3.1 

@@ -1541,6 +1541,7 @@ def session_stats(evosys,design_nodes,implemented_nodes):
                 'gpt4o_0806':'G4O',
                 'o1_mini':'O1M',
                 'o1_preview':'O1P',
+                'gpt-4.1-nano':'G41N',
             }
             impl_agents = {i:model_abbr[v['_agent_types']['IMPLEMENTATION_CODER']] for i,v in cfg_implementations.items()}
             proposal_agents = {i:model_abbr[v['_agent_types']['DESIGN_PROPOSER']] for i,v in cfg_proposals.items()}
