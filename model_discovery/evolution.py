@@ -2994,9 +2994,11 @@ class EvolutionSystem(exec_utils.System):
         self.select_cfg = {}
         self.ve_cfg = {}
         self.benchmark_mode = False
+        self.demo_mode = demo_mode
         if demo_mode:
             print('Building in demo mode')
-            self.demo_mode = True
+        else:
+            print('Building in normal mode')
         self.load(**kwargs)
 
     def set_demo_mode(self):
