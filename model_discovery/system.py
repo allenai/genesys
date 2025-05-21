@@ -743,6 +743,7 @@ def BuildSystem(
     #     kwargs["wdir"] = wdir
     if config is None:
         config = build_config(**kwargs)
+    print(f'Starting to build agent system')
     agent_system = ModelDiscoverySystem.from_config(config,**kwargs)
     return agent_system
     # return BuildSystem(config,**kwargs)

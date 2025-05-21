@@ -58,7 +58,7 @@ from typing import (
     Union
 )
 from .system import BuildSystem,PrintSystem,DesignModes,RunningModes,DESIGN_TERMINAL_STATES,DESIGN_ACTIVE_STATES,DESIGN_ZOMBIE_THRESHOLD
-from exec_utils import BuildSystem as NativeBuild
+# from exec_utils import BuildSystem as NativeBuild
 from exec_utils.factory import Registry, build_config
 from exec_utils.aliases import ConfigType
 from google.cloud.firestore import DELETE_FIELD
@@ -3678,6 +3678,7 @@ class EvolutionSystem(exec_utils.System):
             config,
             **kwargs
         )
+        print(f'Agent system built, starting to build evolution system')
         return cls(agent,config,silent=silent, demo_mode=demo_mode) 
 
 def BuildEvolution(
@@ -3705,6 +3706,7 @@ def BuildEvolution(
             updated_kwargs["do_caching"] = kwargs["do_caching"]
     print(f'Building evolution system with kwargs: {kwargs}')
     evolution = EvolutionSystem.from_config(config,**kwargs)
+    print(f'Evolution system built')
     if stream:
         evolution.link_stream(stream)
     return evolution
