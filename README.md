@@ -1,6 +1,15 @@
 # Genesys
 
 Utils and code for model discovery experiments. 
+You can play with the demo here: https://genesys-demo-gcp-859914516308.us-central1.run.app/.
+Notice that it may take some time to load.
+You can access the experiment data in subtabs:
+ - Evolution statistics: Evolve - Evolution Statistics
+ - Discovered Designs: Viewer - Design Artifacts (you can download the artifacts here)
+ - Design Leaderboard: Viewer - Design Leaderboard
+
+
+
 
 
 # Setting up 
