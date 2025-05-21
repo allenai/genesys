@@ -3697,13 +3697,13 @@ def BuildEvolution(
     # evolution = NativeBuild(config,silent=silent,demo_mode=demo_mode,**kwargs)
     kwargs['demo_mode'] = demo_mode
     kwargs['silent'] = silent
-    print(f'Building evolution system with kwargs: {kwargs}')
     # evolution = Registry.build_model("system_type",config,**kwargs)
     if config is None:
         config = build_config(**kwargs)
         updated_kwargs = {}
         if "do_caching" in kwargs:
             updated_kwargs["do_caching"] = kwargs["do_caching"]
+    print(f'Building evolution system with kwargs: {kwargs}')
     evolution = EvolutionSystem.from_config(config,**kwargs)
     if stream:
         evolution.link_stream(stream)
