@@ -705,12 +705,10 @@ def selector_lab(evosys,project_dir):
         st.warning('Design Leaderboard is not available for agent benchmark.')
         return
 
-    _filter_title = 'Pre-filter designs (exact match, comma separated)' 
-    if st.session_state.use_cache:
-        _filter_title += ' *:red[Demo mode: change it will takes time to reload]*'
-    pre_filter = st.text_input(_filter_title,value='')
-    if pre_filter:
-        pre_filter = [i.strip() for i in pre_filter.split(',')]
+    
+    if not st.session_state.use_cache:
+        pre_filter = st.text_input('Pre-filter designs (exact match, comma separated)' ,value='')
+        pre_filter = [i.strip() for i in pre_filter.split(',')] if pre_filter else []
     else:
         pre_filter = []        
     
