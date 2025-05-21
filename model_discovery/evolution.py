@@ -248,6 +248,8 @@ class FirestoreManager:
         return self.baseline_index
 
     def update_index(self,merge=True,is_baseline=False,chunk_size=500):
+        if self.demo_mode:
+            return
         if is_baseline:
             self.safe_upload(self.baseline_collection.document('index'),self.compress_index(self.baseline_index),merge=merge)
         else:

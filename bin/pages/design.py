@@ -529,7 +529,7 @@ def _design_tuning(evosys,project_dir):
         st.warning("**NOTE:** Evolution system is running. Design engine is taken over by the system.")
 
     if st.session_state.is_demo:
-        st.warning("***Demo mode:** most settings are disabled. Search is disabled, all in simplest setup.*")
+        st.warning("***Demo mode:** Some search features are disabled, all in simplest setup.*")
 
     db_dir = evosys.ptree.db_dir
     design_cfg = evosys.design_cfg.copy()
@@ -633,12 +633,12 @@ def _design_tuning(evosys,project_dir):
                 _value = 1 if not st.session_state.is_demo else 3
                 termination['max_failed_rounds'] = st.number_input(label="Max failed rounds",min_value=1,value=_value,disabled=st.session_state.is_demo)
             with cols[1]:
-                _value = 0.02 if st.session_state.is_demo else 0.0
+                _value = 0.05 if st.session_state.is_demo else 0.0
                 termination['max_total_budget'] = st.number_input(label="Max total budget",min_value=0.0,value=_value,disabled=st.session_state.is_demo)
             with cols[2]:
                 termination['max_debug_budget'] = st.number_input(label="Max debug budget",min_value=0.0,value=0.0,disabled=st.session_state.is_demo)
             with cols[3]:
-                _value = 3 if not st.session_state.is_demo else 0
+                _value = 3 if not st.session_state.is_demo else 1
                 max_attempts['max_search_rounds'] = st.number_input(label="Max search rounds",min_value=0,value=_value,disabled=st.session_state.is_demo)
         with col2:
             st.markdown("##### Configure the threshold for rating the design")

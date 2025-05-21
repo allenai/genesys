@@ -867,7 +867,7 @@ class GUFlow(
                         self.stream.write(f'### Ready\n{ready}')
                     self.print_raw_output(out,'PROPOSAL_REVIEWER')
                 
-                _MIN_ROUNDS=2
+                _MIN_ROUNDS=max(min(2,self.max_attemps['max_search_rounds'])-attempt,0)
                 _MAX_ROUNDS=max(self.max_attemps['max_search_rounds'],_MIN_ROUNDS) if self.max_attemps['max_search_rounds']>0 else 0
                 for i in range(_MAX_ROUNDS):
                     with self.status_handler(f'Searching... round {i+1}...'):
