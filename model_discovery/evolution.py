@@ -2997,8 +2997,6 @@ class EvolutionSystem(exec_utils.System):
         self.demo_mode = demo_mode
         if demo_mode:
             print('Building in demo mode')
-        else:
-            print('Building in normal mode')
         self.load(**kwargs)
 
     def set_demo_mode(self):
@@ -3700,6 +3698,7 @@ def BuildEvolution(
     kwargs['silent'] = silent
     if config is None:
         config = build_config(**kwargs)
+    print(f'Building evolution system with kwargs: {kwargs}')
     evolution = Registry.build_model("system_type",config,**kwargs)
     if stream:
         evolution.link_stream(stream)
