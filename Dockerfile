@@ -80,6 +80,11 @@ CMD ["genesys gui"]
 # docker build --build-arg GITHUB_TOKEN="your_actual_github_pat_here" -t genesys-demo .
 # docker run -p 8502:8501 genesys-demo 
 
+# Permissions
+# gcloud auth login
+# gcloud auth configure-docker us-central1-docker.pkg.dev
+
+# Push to GCP
 # docker tag genesys-demo us-central1-docker.pkg.dev/model-discovery/genesys/genesys-demo-gcp:latest
 # docker push us-central1-docker.pkg.dev/model-discovery/genesys/genesys-demo-gcp:latest
 

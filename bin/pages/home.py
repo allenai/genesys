@@ -27,7 +27,7 @@ logo=AU.svg_to_image(logo_path)
   
 
 def tabs():
-    st.subheader('Tabs')
+    st.markdown('## Core Components')
 
     _tabs = ['Evolve','Design','Verify','Search','Select','Viewer','Config']
     if not st.session_state.is_demo:
@@ -45,7 +45,7 @@ namespaces to save your experiments.
 
     with tabs[1]:
       st.markdown('''
-Sampler for sampling single design based on the seed.
+Sampler for sampling single design based on the inputs.
 ''')
 
     with tabs[2]:
@@ -87,13 +87,16 @@ def howtouse():
 
     # col1,col2=st.columns([1.45,1])
     # with col1: 
-    st.markdown('# Welcome to Genesys')
+    if st.session_state.is_demo:
+      st.markdown('# Welcome to Genesys *:orange[Demo]*')
+    else:
+      st.markdown('# Welcome to Genesys')
     # with col2:
     #   st.write('')
     #   st.image(logo,width=80)
     
     st.markdown('''
-The Genesys Genetic Programming Model Discovery System is a system aimed at using large language model
+The Genesys (**Gene**tic discovery **sys**tem) is a system aimed at using LLM
 agents to discover novel and human-level autoregressive language model designs by genetic programming.
 This is a graphical user interface (GUI) for Genesys. You can
 use it to run experiments, view results, and tune the agents. 
@@ -159,7 +162,7 @@ The evolution is distributed, asynchronous and parallel (see details below). To 
     # st.markdown(welcome)
 
     st.markdown('''
-### Tips and Checklists for running the evolution
+### Tips and Checklists before running the evolution
 
 - [ ] Configure the experiment settings in the **Config** tab before running.
   
@@ -194,24 +197,26 @@ The evolution is distributed, asynchronous and parallel (see details below). To 
 - Or play with the design engine in the **:blue[Design]** tab.
 - Or play with the knowledge base in the **:blue[Search]** tab.
 - Or tunning the selector in the **:blue[Select]** tab.
-- Or train a design in the verification **:blue[Engine]** tab.
+- Or train a design in the verification engine **:blue[Verify]** tab.
 
 3. View the system states and results in the **:blue[Viewer]** tab. 
 - Or check the remote design base in the Firestore.
 ''')
 
     with col2:
+      tabs()
+#       st.markdown('''
+# ## Core Components
+
+# 1. **Select**: The selector sample seed node(s) from the tree for the next round of evolution.
+# 2. **Design**: The designer will sample a new design based on the seed(s).
+# 3. **Search**: The designer agent can search the knowledge base during the design process.
+# 4. **Verify**: The verification engine can be used to train a **chosen design** 
+# (not necessarily the new design and not necessarily taking turns with the design step) 
+# on a given scale and evaluate the performance using the customed LM-Eval.
+# 5. **Evolve**: The evolution loop will repeat the above processes asynchronously. 
+
       st.markdown('''
-## Core Components
-
-1. **Select**: The selector sample seed node(s) from the tree for the next round of evolution.
-2. **Design**: The designer will sample a new design based on the seed(s).
-3. **Search**: The designer agent can search the knowledge base during the design process.
-4. **Verify**: The verification engine can be used to train a **chosen design** 
-(not necessarily the new design and not necessarily taking turns with the design step) 
-on a given scale and evaluate the performance using the customed LM-Eval.
-5. **Evolve**: The evolution loop will repeat the above processes asynchronously. 
-
 ## Icon Guideline
 
  * **Namespace**: The experiment name, 📶 is online with remote DB connected, 📴 means offline.
@@ -242,6 +247,9 @@ master node can also run a worker node at the same time.
     #   with open('bin/assets/selector_notes.md','r') as f:
     #     st.markdown(f.read())
   
+    # center the text and put to bottom of the page
+    # st.divider()
+    # st.markdown('<div style="text-align: center; margin-top: 100px;">Made with ❤️ by Junyan Cheng | 🌐 <a href="https://junyan.ch">Junyan.ch</a></div>', unsafe_allow_html=True)
 
 
 def home(evosys,project_dir):
@@ -261,8 +269,22 @@ def home(evosys,project_dir):
       # st.caption(f":blue[{datetime.now().strftime('%b %d, %Y, %A')}]. {city} temperature :blue[{temprature} °F].")
 
       st.caption(f"Today is :blue[{datetime.now().strftime('%b %d, %Y, %A')}].")
-      st.metric(label="Temperature 📴", value="70 °F", delta="1.2 °F")
+      # st.metric(label="Temperature 📴", value="70 °F", delta="1.2 °F")
+
+      if st.session_state.is_demo:
+        st.markdown('''
+## 💡:orange[*Demo hints*]
+
+Find our results on these sub-tabs *(in sidebar)*:
+ - **Evolve - Evolution Statistics**
+ - **Viewer - Design Artifacts**
+ - **Viewer - Design Leaderboard**
+
+*Explore more features in the **sub-tabs**, enjoy!* ♥️
+
+''')
+
 
 
     howtouse()
-    tabs()
+    # tabs()

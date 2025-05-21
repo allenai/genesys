@@ -161,7 +161,7 @@ def daily_usage_status(st, show = False):
   daily_usage = U.get_daily_usage(total=True)
   _status = min(1.0,daily_usage/st.session_state.daily_usage_limit)
   if show:
-    st.progress(_status,text=f'💰 *Daily limit*: ```{daily_usage:.2f}```/```{st.session_state.daily_usage_limit:.2f}```')
+    st.progress(_status,text=f'💰 :orange[*Daily limit:*] ```{daily_usage:.2f}```/```{st.session_state.daily_usage_limit:.2f}```')
   return _status
 
 def running_status(st,evosys):
