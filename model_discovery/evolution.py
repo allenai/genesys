@@ -3171,15 +3171,15 @@ class EvolutionSystem(ExecSystem):
         if self.params['no_agent']:
             self.agents = None
         else:
-            self.agents = BuildSystem(
-                debug_steps=False, # True for debugging, but very long
-                # cache_type="diskcache", #<-- agent caching method 
-                temperature=0.1,
-                jupyter=False,
-                # cache_id=919,
-                #from_json='/path/to/config'
-                **kwargs
-            )
+            # self.agents = BuildSystem(
+            #     debug_steps=False, # True for debugging, but very long
+            #     # cache_type="diskcache", #<-- agent caching method 
+            #     temperature=0.1,
+            #     jupyter=False,
+            #     # cache_id=919,
+            #     #from_json='/path/to/config'
+            #     **kwargs
+            # )
             self.agents.bind_ptree(self.ptree,self.stream)
             # self.ptree.export()
 
