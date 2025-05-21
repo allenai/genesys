@@ -7,6 +7,7 @@ You can access the experiment data in subtabs:
  - Evolution statistics: Evolve - Evolution Statistics
  - Discovered Designs: Viewer - Design Artifacts (you can download them here)
  - Design Leaderboard: Viewer - Design Leaderboard
+ 
 There are many other features from the GUI, you can explore them. Here is a short demo video that briefly show some of the features https://drive.google.com/file/d/1JG0hNAJuaPZWUKfwrwoF_ufh0GJuLO7z/view?usp=sharing.
 
 
