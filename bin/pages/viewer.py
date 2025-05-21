@@ -202,19 +202,27 @@ def _view_designs(evosys):
             st.warning('No verification results found for this core reference.')
     
 
-
+def _select_folder(evosys):
+    with st.sidebar:
+        if st.session_state.is_demo:
+            folders = ['evo_exp_full_a']
+        else:
+            _folders = os.listdir(U.pjoin(evosys.ckpt_dir))
+            folders = []
+            for folder in _folders:
+                if os.path.exists(U.pjoin(evosys.ckpt_dir,folder,'config.json')):
+                    folders.append(folder)
+        evoname = st.selectbox("Select a folder", folders, disabled=st.session_state.is_demo,index=0)
+    return evoname
 
 
 def _view_dialogs(evosys):
     st.title('Agent Dialog Viewer')
 
     if st.session_state.is_demo:
-        st.warning("***Demo mode:** this tab is not available.*")
+        st.warning("***Demo mode:** this tab is experimental.*")
 
-    with st.sidebar:
-        folders = [i for i in list(os.listdir(U.pjoin(evosys.ckpt_dir))) if not i.endswith('.json')]
-        evoname = st.selectbox("Select a folder", folders)
-
+    evoname = _select_folder(evosys)
     sess_dir = U.pjoin(evosys.ckpt_dir, evoname, 'db', 'sessions')
 
     if not os.path.exists(sess_dir):
@@ -245,15 +253,9 @@ def _view_sessions(evosys):
     st.title('Local Session Logs')
 
     if st.session_state.is_demo:
-        st.warning("***Demo mode:** this tab is not available.*")
+        st.warning("***Demo mode:** this tab is experimental.*")
 
-    with st.sidebar:
-        _folders = os.listdir(U.pjoin(evosys.ckpt_dir))
-        folders = []
-        for folder in _folders:
-            if os.path.exists(U.pjoin(evosys.ckpt_dir,folder,'config.json')):
-                folders.append(folder)
-        evoname = st.selectbox("Select a folder", folders)
+    evoname = _select_folder(evosys)
 
     sess_dir = U.pjoin(evosys.ckpt_dir, evoname, 'db', 'sessions')
 
