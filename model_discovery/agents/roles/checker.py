@@ -5,7 +5,8 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import importlib
-import exec_utils
+from exec_utils.register import Registry as ExecRegistry
+from exec_utils.tools.tool import BaseTool
 import numpy as np
 import os
 import io,contextlib
@@ -646,11 +647,11 @@ __all__ = [
     "Checker"
 ]
 
-@exec_utils.Registry(
+@ExecRegistry(
     resource_type="tool_type",
     name="checker",
 )
-class Checker(exec_utils.BaseTool):
+class Checker(BaseTool):
     """Checker for checking the correctness of model designs.  
     
 

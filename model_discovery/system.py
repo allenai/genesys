@@ -1,6 +1,5 @@
 ''' System of Review & Design Agents for Model Discovery '''
 
-import exec_utils
 import pathlib
 import os
 
@@ -25,10 +24,13 @@ import uuid
 import time
 
 from exec_utils.aliases import ConfigType
-from exec_utils import (
-    BuildAgent,
-    BuildTool
-)
+from exec_utils.factory import BuildAgent, BuildTool
+from exec_utils.models.model_agent import SimpleLMAgent
+from exec_utils.tools.tool import BaseTool
+from exec_utils.system import System as ExecSystem
+from exec_utils.register import Registry as ExecRegistry
+from exec_utils.param import ModuleParams as ExecModuleParams
+from exec_utils.param import ParamField as ExecParamField
 from .agents.roles import *
 from .agents.flow.alang import AgentDialogManager
 
@@ -52,8 +54,9 @@ SYSTEM_OUT = os.path.abspath(f"{PROJ_SRC}/../_runs")
 
 
 
-@exec_utils.Registry("config","discovery_system")
-class CustomParams(exec_utils.ModuleParams):
+
+@ExecRegistry("config","discovery_system")
+class CustomParams(ExecModuleParams):
     """Parameters for working with this discovery system 
     
     :param max_design_attempts: 
@@ -77,21 +80,21 @@ class CustomParams(exec_utils.ModuleParams):
        The name identifier of the model search session. 
 
     """
-    max_design_attempts: int = exec_utils.ParamField(
+    max_design_attempts: int = ExecParamField(
         default=10,
         metadata={
             "help"         : 'The maximum number of designer queries',
             "exclude_hash" : True,
         }
     )
-    max_design_refines: int = exec_utils.ParamField(
+    max_design_refines: int = ExecParamField(
         default=10,
         metadata={
             "help"         : 'The maximum number of designer refinements',
             "exclude_hash" : True,
         }
     )
-    reviewer_threshold: int = exec_utils.ParamField(
+    reviewer_threshold: int = ExecParamField(
         default=3,
         metadata={
             "help"         : 'The threshold for accepting a design',
@@ -99,7 +102,7 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
     ### agent profiles
-    designer_spec: str = exec_utils.ParamField(
+    designer_spec: str = ExecParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/../etc/agent_spec/designer.json'
         ),
@@ -135,7 +138,7 @@ class CustomParams(exec_utils.ModuleParams):
     #         "exclude_hash" : True,
     #     }
     # )
-    debugger_spec: str = exec_utils.ParamField(
+    debugger_spec: str = ExecParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/../etc/agent_spec/debugger.json'
         ),
@@ -144,7 +147,7 @@ class CustomParams(exec_utils.ModuleParams):
             "exclude_hash" : True,
         }
     )
-    claude_spec: str = exec_utils.ParamField(
+    claude_spec: str = ExecParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/../etc/agent_spec/claude.json'
         ),
@@ -154,7 +157,7 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
     ### code information
-    block_template: str = exec_utils.ParamField(
+    block_template: str = ExecParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/agents/prompts/gab_template.py'
         ),
@@ -162,7 +165,7 @@ class CustomParams(exec_utils.ModuleParams):
             "help"         : 'Location of block for prompting ',
         }
     )
-    gam_template: str = exec_utils.ParamField(
+    gam_template: str = ExecParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/agents/prompts/gam_prompt.py'
         ),
@@ -170,7 +173,7 @@ class CustomParams(exec_utils.ModuleParams):
             "help" : 'Location of code prompting ',
         }
     )
-    gam_implementation: str = exec_utils.ParamField(
+    gam_implementation: str = ExecParamField(
         default=os.path.abspath(
             f'{PROJ_SRC}/model/gam.py'
         ),
@@ -179,14 +182,14 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
     ### debugging
-    debug_steps: bool = exec_utils.ParamField(
+    debug_steps: bool = ExecParamField(
         default=True,
         metadata={
             "help"         : 'Debug the steps of the system',
             "exclude_hash" : True,
         }
     )
-    jupyter: bool = exec_utils.ParamField(
+    jupyter: bool = ExecParamField(
         default=False,
         metadata={
             "help"         : 'Inside of jupyter',
@@ -194,14 +197,14 @@ class CustomParams(exec_utils.ModuleParams):
         }
     )
     #### name of the system run 
-    run_name: str = exec_utils.ParamField(
+    run_name: str = ExecParamField(
         default='demo',
         metadata={
             "help"         : 'The name of the run',
             "exclude_hash" : True,
         }
     )
-    from_json: str = exec_utils.ParamField(
+    from_json: str = ExecParamField(
         default='',
         metadata={
             "help"         : 'The location of json',
@@ -406,12 +409,12 @@ DEFAULT_MUTATION_NO_TREE=True
 DEFAULT_SCRATCH_NO_TREE=False
 DEFAULT_USE_UNLIMITED_PROMPT=False
 
-@exec_utils.Registry(
+@ExecRegistry(
     resource_type="system_type",
     name="model_discovery_system",
     #cache="query_system",
 )
-class ModelDiscoverySystem(exec_utils.System):
+class ModelDiscoverySystem(ExecSystem):
     """Overall system for discovery
     
     Attributes
@@ -446,11 +449,10 @@ class ModelDiscoverySystem(exec_utils.System):
 
     def __init__(
         self,
-        designer : Type[exec_utils.SimpleLMAgent],
-        # reviewers : Dict[str,Type[exec_utils.SimpleLMAgent]],
-        checker  : Type[exec_utils.BaseTool], 
-        debugger : Type[exec_utils.SimpleLMAgent],
-        claude : Type[exec_utils.SimpleLMAgent],
+        designer : Type[SimpleLMAgent],
+        checker  : Type[BaseTool], 
+        debugger : Type[SimpleLMAgent],
+        claude : Type[SimpleLMAgent],
         *,
         config: ConfigType 
     ) -> None:
@@ -732,7 +734,7 @@ def BuildSystem(
     >>> system = BuildSystem() 
 
     """
-    from exec_utils import BuildSystem
+    # from exec_utils import BuildSystem
     kwargs["system_type"] = "model_discovery_system"
     
     # if config and not config.wdir:

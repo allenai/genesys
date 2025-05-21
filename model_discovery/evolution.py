@@ -17,7 +17,8 @@ os.environ['DB_KEY_PATH'] = os.path.expanduser(os.environ['DB_KEY_PATH'])
 
 import sys
 import re
-import exec_utils
+from exec_utils.register import Registry as ExecRegistry
+from exec_utils.system import System as ExecSystem
 from datetime import datetime, timedelta, timezone
 import json
 import copy
@@ -2968,22 +2969,12 @@ DEFAULT_RANDOM_ALLOW_TREE = True
 BUDGET_TYPES = ['design_bound','verify_bound']
 
 
-# @exec_utils.Registry("config","evolution")
-# class CustomParams(exec_utils.ModuleParams):
-#     strparams: str = exec_utils.ParamField(
-#         default='',
-#         metadata={
-#             "help"         : '";" separated parameters, e.g. "param1=val1;param2=val2", just use it for now',
-#             "exclude_hash" : True,
-#         }
-#     )
-
-@exec_utils.Registry(
+@ExecRegistry(
     resource_type="system_type",
     name="evolution",
     #cache="query_system",
 )
-class EvolutionSystem(exec_utils.System):
+class EvolutionSystem(ExecSystem):
     def __init__(self,agent_system,config,silent=False,demo_mode=False,**kwargs): 
         self.agents = agent_system
         self._config = config

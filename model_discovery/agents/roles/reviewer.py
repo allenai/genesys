@@ -7,7 +7,8 @@ from typing import (
     Optional,
     Any
 )
-import exec_utils
+from exec_utils.register import Registry as ExecRegistry
+from exec_utils.models.model_agent import SimpleLMAgent
 import json
 import re
 
@@ -20,12 +21,12 @@ __all__ = [
 
 
 
-@exec_utils.Registry(
+@ExecRegistry(
     resource_type="agent_model_type",
     name="reviewer_agent",
     cache="query" #<--- set to `None` if you don't want caching
 )
-class ReviewerAgent(exec_utils.SimpleLMAgent):
+class ReviewerAgent(SimpleLMAgent):
     """Agent for reviewing designs. 
 
     """

@@ -8,7 +8,8 @@ from typing import (
     Any
 )
 import re
-import exec_utils 
+from exec_utils.register import Registry as ExecRegistry
+from exec_utils.models.model_agent import SimpleLMAgent
 import random
 from ..agent_utils import claude__call__,ModelOutputPlus
 
@@ -17,12 +18,12 @@ __all__ = [
     "ClaudeAgent",
 ]
 
-@exec_utils.Registry(
+@ExecRegistry(
     resource_type="agent_model_type",
     name="claude_agent",
     cache=None
 )
-class ClaudeAgent(exec_utils.SimpleLMAgent):
+class ClaudeAgent(SimpleLMAgent):
     """Claude Base Agent 
     
     Methods 
