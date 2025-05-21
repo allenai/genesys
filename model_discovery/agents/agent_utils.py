@@ -429,14 +429,14 @@ def call_model_structured(model,message,response_format, logprobs=False) -> Mode
     
     # XXX: patches for o1 beta stage
     fn_kwargs={}
+    if model._config.model_name in OPENAI_OUTPUT_BUFFER:
+        fn_kwargs['max_completion_tokens'] = OPENAI_OUTPUT_BUFFER[model._config.model_name] - 1
     if model._config.model_name in ['o1-mini','o1-preview']: 
         message=o1_beta_message_patch(message)
         logprobs=False 
-        fn_kwargs['max_completion_tokens']=model._config.max_output_tokens*4-1 # leave spaces for raesoning tokens
         model_fn=model.model_obj.chat.completions.create # parse is not supported for o1 
         response_format=None
     else:
-        fn_kwargs['max_completion_tokens']=model._config.max_output_tokens
         fn_kwargs['temperature']=model._config.temperature
 
 
@@ -674,10 +674,11 @@ def call_model_claude(model,message,system,response_format, logprobs=False,use_c
     else:
         tools_args={}
         
+    max_tokens=ANTHROPIC_OUTPUT_BUFFER[model._config.model_name]
     # TODO: guard here 
     RET=anthropic.Anthropic().messages.create(
         model=model._config.model_name, # model in config is ignored
-        max_tokens=model._config.max_output_tokens,
+        max_tokens=max_tokens,
         messages=message, 
         temperature=model._config.temperature,
         system=system, # claude does not has system role, system prompt must be passed separately
