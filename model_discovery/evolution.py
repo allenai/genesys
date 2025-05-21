@@ -2984,7 +2984,7 @@ BUDGET_TYPES = ['design_bound','verify_bound']
     #cache="query_system",
 )
 class EvolutionSystem(exec_utils.System):
-    def __init__(self,agent_system,config,silent=False,demo_mode=True,**kwargs): # FIXME: demo_mode is True by default
+    def __init__(self,agent_system,config,silent=False,demo_mode=False,**kwargs): 
         self.agents = agent_system
         self._config = config
         self.params=config.params
@@ -3665,7 +3665,7 @@ class EvolutionSystem(exec_utils.System):
             U.write_local_doc(local_doc)
 
     @classmethod
-    def from_config(cls,config,silent=False,**kwargs):
+    def from_config(cls,config,silent=False, demo_mode=False, **kwargs):
         """Loads all the evolution components from configuration 
 
         :param config:
@@ -3673,11 +3673,12 @@ class EvolutionSystem(exec_utils.System):
 
         """
         config.system_type = "model_discovery_system"
+        print(f'Building agent system with kwargs: {kwargs}')
         agent = BuildSystem(
             config,
             **kwargs
         )
-        return cls(agent,config,silent=silent) 
+        return cls(agent,config,silent=silent, demo_mode=demo_mode) 
 
 def BuildEvolution(
         config: Optional[ConfigType] = None,
@@ -3699,7 +3700,8 @@ def BuildEvolution(
     if config is None:
         config = build_config(**kwargs)
     print(f'Building evolution system with kwargs: {kwargs}')
-    evolution = Registry.build_model("system_type",config,**kwargs)
+    # evolution = Registry.build_model("system_type",config,**kwargs)
+    evolution = EvolutionSystem.from_config(config,**kwargs)
     if stream:
         evolution.link_stream(stream)
     return evolution
