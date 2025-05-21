@@ -27,8 +27,8 @@ DEMO_MODE = 'demo' in custom_args or '--demo' in custom_args or '-m' in custom_a
 
 DEMO_MODE = True
 
-if DEMO_MODE:
-    DEPLOY_MODE = True
+# if DEMO_MODE:
+#     DEPLOY_MODE = True
 
 current_dir = pathlib.Path(__file__).parent
 logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')

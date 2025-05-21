@@ -12,7 +12,6 @@ except:
 
 os.environ['DATA_DIR'] = os.path.expanduser(os.environ['DATA_DIR'])
 os.environ['CKPT_DIR'] = os.path.expanduser(os.environ['CKPT_DIR'])
-os.environ['DB_KEY_PATH'] = os.path.expanduser(os.environ['DB_KEY_PATH'])
 
 
 import sys
@@ -39,7 +38,7 @@ import math
 import multiprocessing
 import shutil
 from google.cloud import firestore
-
+import json
 
 try:
     multiprocessing.set_start_method('spawn')
@@ -3007,14 +3006,32 @@ class EvolutionSystem(ExecSystem):
     def load(self,**kwargs):
         self.remote_db = None
         self.CM = None
-        db_key_path = os.environ.get("DB_KEY_PATH",None)
-        if U.pexists(db_key_path):
-            self.remote_db = firestore.Client.from_service_account_json(db_key_path)
-            self.CM = ConnectionManager(self.params['evoname'], 'default', self.remote_db, self.stream)
-            print(f'Remote db connected.')
+        _db_key = os.environ.get("DB_KEY",None)
+        _db_key_id = os.environ.get("DB_KEY_ID",None)
+        if _db_key and _db_key_id:
+            db_key = {
+                "type": "service_account",
+                "project_id": "model-discovery",
+                "private_key_id": _db_key_id,
+                "private_key": _db_key,
+                "client_email": "firebase-adminsdk-132u9@model-discovery.iam.gserviceaccount.com",
+                "client_id": "115195001750328224824",
+                "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                "token_uri": "https://oauth2.googleapis.com/token",
+                "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-132u9%40model-discovery.iam.gserviceaccount.com",
+                "universe_domain": "googleapis.com"
+            }
+            # create a temp file to store the db key and remove it after use
+            with tempfile.NamedTemporaryFile(delete_on_close=True) as fp:
+                fp.write(json.dumps(db_key).encode('utf-8'))
+                fp.flush()
+                self.remote_db = firestore.Client.from_service_account_json(fp.name)
+                self.CM = ConnectionManager(self.params['evoname'], 'default', self.remote_db, self.stream)
+                print(f'Remote db connected.')
+                fp.close()
         else:
-            raise ValueError(f'No db key found at {db_key_path}. Only distributed evolution is supported now.')
-            print(f'No db key found at {db_key_path}, using local db only. Will sync when remote db key is available.')
+            print(f'No db key found, using local db only.')
 
         # set the name and save dir
         assert 'evoname' in self.params, "evoname is required"

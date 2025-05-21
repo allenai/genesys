@@ -943,7 +943,7 @@ def env_vars_settings(evosys):
             st.info("**NOTE:** Leave the fields blank to use the default values. The settings here may not persist, so **better set them by exporting environment variables**.")
             col1,col2,col3,col4=st.columns(4)
             with col1:
-                env_vars['DB_KEY_PATH']=st.text_input('Database Key Path',value=os.environ.get("DB_KEY_PATH"),disabled=st.session_state.is_demo)
+                env_vars['DB_KEY_PATH']=st.text_input('Database Key Path',value=os.environ.get("DB_KEY_PATH",None),disabled=st.session_state.is_demo)
                 env_vars['CKPT_DIR']=st.text_input('Checkpoint Directory',value=os.environ.get("CKPT_DIR"),disabled=st.session_state.is_demo)
                 env_vars['DATA_DIR']=st.text_input('Data Directory',value=os.environ.get("DATA_DIR"),disabled=st.session_state.is_demo)
             with col2:
