@@ -3023,7 +3023,7 @@ class EvolutionSystem(ExecSystem):
                 "universe_domain": "googleapis.com"
             }
             # create a temp file to store the db key and remove it after use
-            with tempfile.NamedTemporaryFile(delete_on_close=True) as fp:
+            with tempfile.NamedTemporaryFile(delete=True) as fp:
                 fp.write(json.dumps(db_key).encode('utf-8'))
                 fp.flush()
                 self.remote_db = firestore.Client.from_service_account_json(fp.name)

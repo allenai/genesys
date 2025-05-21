@@ -8,7 +8,6 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 # FROM ubuntu:20.04
 
 # Optional: Not needed if using ai2 docker image
-
 # RUN apt-get update && apt-get install -y \
 #     build-essential \
 #     curl \
