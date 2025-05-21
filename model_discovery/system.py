@@ -678,7 +678,10 @@ class ModelDiscoverySystem(ExecSystem):
 
         """
         ### creates designer and reviewer agents
-        
+
+        if demo_mode:
+            print(f'Building agents in demo mode')
+
         print(f'Building designer agent')
         designer = BuildAgent(
             config,

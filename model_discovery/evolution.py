@@ -3686,7 +3686,7 @@ class EvolutionSystem(ExecSystem):
 
         """
         config.system_type = "model_discovery_system"
-        print(f'Building agent system with kwargs: {kwargs}')
+        print(f'Building agent system with kwargs: {kwargs}, demo_mode: {demo_mode}')
         agent = BuildSystem(
             config,
             demo_mode=demo_mode,
@@ -3719,7 +3719,7 @@ def BuildEvolution(
         if "do_caching" in kwargs:
             updated_kwargs["do_caching"] = kwargs["do_caching"]
     print(f'Building evolution system with kwargs: {kwargs}')
-    evolution = EvolutionSystem.from_config(config,**kwargs)
+    evolution = EvolutionSystem.from_config(config,demo_mode=demo_mode,**kwargs)
     print(f'Evolution system built')
     if stream:
         evolution.link_stream(stream)
