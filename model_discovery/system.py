@@ -675,11 +675,13 @@ class ModelDiscoverySystem(ExecSystem):
         """
         ### creates designer and reviewer agents
         
+        print(f'Building designer agent')
         designer = BuildAgent(
             config,
             agent_file=config.designer_spec,
             agent_model_type="designer_agent"
         )
+        print(f'Building checker tool')
         checker = BuildTool(
             tool_type="checker",
         )
@@ -700,11 +702,13 @@ class ModelDiscoverySystem(ExecSystem):
         #         agent_model_type="reviewer_agent"
         #     )
         # }
+        print(f'Building debugger agent')
         debugger = BuildAgent(
             config,
             agent_file=config.debugger_spec,
             agent_model_type="designer_agent"
         )
+        print(f'Building claude agent')
         claude = BuildAgent(
             config,
             agent_file=config.claude_spec,
