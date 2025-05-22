@@ -1929,12 +1929,12 @@ def impl_analysis(evosys,design_nodes,implemented_nodes):
         n_failed_func = len(failed_func_checks)
         n_failed_format = len(failed_format_checks)
         if n_failed_func==0 or n_failed_format==0:
-            SAVE_DIR = U.pjoin(evosys.ckpt_dir,'RESULTS')
-            errors = U.load_json(U.pjoin(SAVE_DIR,'impl_errors_evo_exp_full_a.json'))
-            func_errors = errors['func']
-            gau_errors = errors['gau']
-            n_failed_func = errors['n_failed_func']
-            n_failed_format = errors['n_failed_format']
+            SAVE_DIR = U.pjoin(evosys.ckpt_dir,evosys.evoname)
+            errors = U.load_json(U.pjoin(SAVE_DIR,f'impl_errors_{evosys.evoname}.json'))
+            func_errors = errors.get('func',{})
+            gau_errors = errors.get('gau',{})
+            n_failed_func = errors.get('n_failed_func',0)
+            n_failed_format = errors.get('n_failed_format',0)
             total_func_checks = errors['total_func']
             total_format_checks = errors['total_format']
 
@@ -2238,7 +2238,7 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
     if evosys.benchmark_mode:
         return
     st.subheader('Scaling Analysis')
-    api = wandb.Api()
+    api = None 
     token_mults = evosys.ptree.token_mults
     with st.expander(f"Scaling Analysis for ```{evosys.evoname}```",expanded=True):
         bows = {}
@@ -2256,6 +2256,10 @@ def scaling_analysis(evosys,design_nodes,implemented_nodes):
                     wandb_ids = report['wandb_ids.json']
                     trainer_state = report.get('trainer_state.json',{})
                     if not trainer_state or 'loss' not in trainer_state:
+                        if st.session_state.is_demo:
+                            continue
+                        if api is None:
+                            api = wandb.Api()
                         run = api.run(f"{wandb_ids['entity']}/{wandb_ids['project']}/{wandb_ids['pretrain']['id']}")
                         metrics = run.summary  # Summary includes the latest metrics logged, e.g., accuracy, loss
                         trainer_state['loss'] = metrics.get('train/loss')
