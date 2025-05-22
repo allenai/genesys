@@ -18,8 +18,11 @@ _REQUIRED_ENV_VARS = [
     # 'DB_KEY_ID',
 ]
 
-# load from secrets.py
-from model_discovery.secrets import *
+# load from secrets.py, for test only
+try: 
+    from model_discovery.secrets import *
+except:
+    pass
 
 for var in _REQUIRED_ENV_VARS:
     assert os.environ.get(var,None) is not None, f"Environment variable {var} is not set"

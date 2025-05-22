@@ -198,6 +198,12 @@ def running_status(st,evosys):
           st.write(f'```{node_id}```{_design_status}{_verify_status}')
       else:
         st.info('No active connections')
+  else:
+     if st.session_state.is_demo:
+        with st.expander(f"🌐 Connections: ```0```",expanded=False):
+          st.write(f'***Group ID:***\n```null```')
+          st.info('Offline, no connections.')
+          
 
 
   running_verifications=[key for key,process in st.session_state.get('running_verifications',{}).items() if process.poll() is None]

@@ -22,12 +22,12 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 # ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 
-RUN mkdir -p /home/junyan 
-ENV DATA_DIR=/home/junyan/genesys/data
-ENV CKPT_DIR=/home/junyan/genesys/ckpt
+RUN mkdir -p /root
+ENV DATA_DIR=/root/genesys/data
+ENV CKPT_DIR=/root/genesys/ckpt
 RUN mkdir -p ${DATA_DIR} ${CKPT_DIR}
 
-WORKDIR /home/junyan/genesys
+WORKDIR /root/genesys
 
 
 
@@ -40,15 +40,15 @@ RUN pip install paperswithcode-client>=0.3.1
 RUN pip uninstall lm_eval -y 
 RUN pip install hf_xet
 
-COPY ./requirements.txt /home/junyan/genesys/requirements.txt
+COPY ./requirements.txt /root/genesys/requirements.txt
 RUN pip install -r requirements.txt
 
-COPY ./scripts/demo_data_download.py /home/junyan/genesys/scripts/demo_data_download.py
+COPY ./scripts/demo_data_download.py /root/genesys/scripts/demo_data_download.py
 RUN python scripts/demo_data_download.py
 
 
 
-COPY . /home/junyan/genesys
+COPY . /root/genesys
 RUN pip install -e .
 
 # [5] Deploy the GUI

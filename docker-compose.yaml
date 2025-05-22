@@ -18,8 +18,6 @@ services:
             - MY_OPENAI_KEY=${MY_OPENAI_KEY}
             - S2_API_KEY=${S2_API_KEY}
             - PINECONE_API_KEY=${PINECONE_API_KEY}
-            - DB_KEY=${DB_KEY}
-            - DB_KEY_ID=${DB_KEY_ID}
             - DATA_DIR=${DATA_DIR}
             - CKPT_DIR=${CKPT_DIR}
             - HF_KEY=${HF_KEY}

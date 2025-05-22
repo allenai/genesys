@@ -105,8 +105,6 @@ def build_evo_system(name):
         def load_results(evosys,fname):
             ckptdir=os.environ['CKPT_DIR']
             dir=os.path.join(ckptdir,'RESULTS')
-            print(f'Loading results from {dir}',os.path.exists(dir))
-            print('Check',os.listdir('/root'))
             with open(os.path.join(dir,f'{fname}_results.json'),'r') as f:
                 all_results = json.load(f)
             print(f'{fname}: {len(all_results)}/{len(evosys.ptree.G.nodes)} loaded')

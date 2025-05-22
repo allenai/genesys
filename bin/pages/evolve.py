@@ -45,6 +45,8 @@ CC_COMMAND_DELAY = 2 # seconds
 
 
 def _is_running(evosys):
+    if st.session_state.is_demo:
+        return None, None
     collection = evosys.remote_db.collection('experiment_connections')
     docs = collection.get()
     for doc in docs:
@@ -68,13 +70,18 @@ class CommandCenter:
         self.max_designs_per_node=max_designs_per_node
         self.max_designs_total=max_designs_total
         self.st=stream
-        self.doc_ref = evosys.remote_db.collection('experiment_connections').document(self.evosys.evoname)
+        if not st.session_state.is_demo:
+            self.doc_ref = evosys.remote_db.collection('experiment_connections').document(self.evosys.evoname)
+        else:
+            self.doc_ref = None
         self.running = False
         self.poll_freq=CC_POLL_FREQ
         self.zombie_threshold = CC_ZOMBIE_THRESHOLD  # seconds
         self.allow_resume = allow_resume
 
     def read_logs(self):
+        if st.session_state.is_demo:
+            return {}
         return self.evosys.CM.get_log_ref().get().to_dict()
 
     def build_connection(self,active_mode=True):
@@ -198,8 +205,9 @@ class CommandCenter:
         return to_sleep,verify_workloads,design_workloads
 
     def run(self):
-        self.evosys.sync_to_db() # sync the config to the db
-        self.evosys.CM.start_log()
+        if not st.session_state.is_demo:
+            self.evosys.sync_to_db() # sync the config to the db
+            self.evosys.CM.start_log()
         self.running = True
         mode = 'active mode' if self.active_mode else 'passive mode'
         _type = 'Benchmark' if self.evosys.benchmark_mode else 'Evolution'
@@ -282,10 +290,15 @@ class CommandCenter:
         st.toast(f'Command {command} sent. Please refresh the page to see the latest command stack.',icon='✅')
 
     def clear_user_command_stack(self):
+        if st.session_state.is_demo:
+            return
         self.doc_ref.set({'user_command_stack': []},merge=True)
 
     def show_user_command_stack(self):
-        user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
+        if st.session_state.is_demo:
+            user_commands = []
+        else:
+            user_commands = self.doc_ref.get().to_dict().get('user_command_stack',[])
         if len(user_commands)==0:
             st.info('No command stacks available at the moment.')
         else:
@@ -331,8 +344,11 @@ def x_evolve(command_center):
 
 
 def launch_evo(evosys,max_designs_per_node,max_designs_total,active_mode=True,allow_resume=True):
-    if len(evosys.CM.get_active_connections())==0 and active_mode:
-        st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
+    if st.session_state.is_demo:
+        st.toast('Evolution is not really running in demo mode.',icon='🚨')
+    else:
+        if active_mode and len(evosys.CM.get_active_connections())==0:
+            st.toast('No nodes connected. Please remember to launch nodes.',icon='🚨')
     command_center = CommandCenter(evosys,max_designs_per_node,max_designs_total,st,allow_resume=allow_resume) # launch a passive command center first
     if active_mode and not st.session_state.is_demo:
         st.session_state.evo_process_pid = x_evolve(command_center)
@@ -387,11 +403,11 @@ def stop_evo(evosys):
 
 
 def network_status(evosys,benchmark_mode=False):
-    group_id = evosys.CM.group_id
+    group_id = 'null' if st.session_state.is_demo else evosys.CM.group_id
     st.write(f'#### *Network Group ```{group_id}``` Status*')
 
     with st.expander('Nodes Running Status',expanded=True):
-        nodes = evosys.CM.get_active_connections()
+        nodes = None if st.session_state.is_demo else evosys.CM.get_active_connections()
         if not nodes or len(nodes)==0:
             st.info('No active working nodes connected')
         else:
@@ -418,7 +434,7 @@ def network_status(evosys,benchmark_mode=False):
             st.dataframe(nodes_df,use_container_width=True)
             
         CC = st.session_state.command_center
-        active_design_sessions = evosys.CM.get_active_design_sessions()
+        active_design_sessions = [] if st.session_state.is_demo else evosys.CM.get_active_design_sessions()
         # if CC is None:
         st.write(f'##### Active Design Sessions ```{len(active_design_sessions)}```')
         # else:
@@ -447,7 +463,7 @@ def network_status(evosys,benchmark_mode=False):
         else:
             st.info('No active design sessions')
 
-        running_verifications = evosys.CM.get_running_verifications()
+        running_verifications = {} if st.session_state.is_demo else evosys.CM.get_running_verifications()
         running_verifications = {v:running_verifications[v] for v in running_verifications if running_verifications[v]['heartbeat'] is not None}
         st.write(f'##### Running Verifications ```{len(running_verifications)}```')
         if len(running_verifications)>0:
@@ -544,13 +560,13 @@ def evolution_launch_pad(evosys):
             title2 = f"***Launch Evolution*** 🚀"
             run_evo_btn = st.button(
                 AU.theme_aware_options(st,title1,title2,title1),
-                disabled=not evosys.remote_db or passive_mode or evosys.benchmark_mode,
+                disabled=passive_mode or evosys.benchmark_mode,
                 use_container_width=True
             ) 
         else:
             stop_evo_btn = st.button(
                 "***Stop Evolution*** 🛑",
-                disabled=not evosys.remote_db,
+                # disabled=not evosys.remote_db,
                 use_container_width=True
             )
     
@@ -579,12 +595,12 @@ design # design a new model
         st.write('')
         st.write('')
         send_command_btn = st.button('Send Command',use_container_width=True,
-                disabled=not st.session_state.evo_running)
+                disabled=not st.session_state.evo_running or st.session_state.is_demo)
     with cols[2]:
         st.write('')
         st.write('')
         clear_command_btn = st.button('Clear Command',use_container_width=True,
-                disabled=not st.session_state.evo_running)
+                disabled=not st.session_state.evo_running or st.session_state.is_demo)
     with cols[3]:
         st.write('')
         st.write('')
@@ -2397,8 +2413,9 @@ def evolve(evosys,project_dir):
                 mime="text/json",
                 use_container_width=True
             )
-        
-    assert evosys.remote_db, "You must connect to a remote database to run the evolution."
+    
+    if not st.session_state.is_demo:    
+        assert evosys.remote_db, "You must connect to a remote database to run the evolution."
 
     if mode in [EvoModes.EVOLVE,EvoModes.BENCH]:
         running_evoname,running_group_id = _is_running(evosys)
