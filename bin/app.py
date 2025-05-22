@@ -40,6 +40,7 @@ st.set_page_config(page_title="Genesys", layout="wide",page_icon=logo)
 
 
 from model_discovery import BuildEvolution
+from model_discovery.agents.flow.alang import DialogTreeViewer
 
 from streamlit_navigation_bar import st_navbar
 
@@ -80,6 +81,9 @@ else:
 
 if 'use_cache' not in st.session_state:
     st.session_state.use_cache = False # as it needs update online sometimes
+
+if DEMO_MODE:
+    st.session_state.use_cache = True
 
 st.session_state.daily_usage_limit = 5
 
@@ -122,30 +126,51 @@ def build_evo_system(name):
         #             evosys.ptree.G.nodes[d]['data'].verifications[scale].verification_report['eval_results.json']['results'] = results
         #     return evosys
         # evo_system = load_results(evo_system,'full_aug')
-        st.session_state.use_cache = True
+        
 
     t1 = time.time()
     print(f'Time taken to setup evo system: {t1-t0:.2f} seconds')
-
+    
+    cache = {}
+    t1 = time.time()
     if st.session_state.use_cache:
-        st.session_state.pre_filter = []
-        st.session_state.filter_by_types = {}
+        cache['pre_filter'] = []
+        cache['filter_by_types'] = {}
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
         for source in sources:
-            st.session_state.filter_by_types[source] = evo_system.ptree.filter_by_type(source,ret_data=True)
-        st.session_state.implemented_designs = st.session_state.filter_by_types['DesignArtifactImplemented']
-        st.session_state.unimplemented_designs = st.session_state.filter_by_types['DesignArtifact']
-        st.session_state.design_artifacts = {**st.session_state.implemented_designs,**st.session_state.unimplemented_designs}
-        st.session_state.acronyms = st.session_state.filter_by_types['ReferenceCoreWithTree']
-        st.session_state.design_vectors = evo_system.ptree.get_design_vectors(pre_filter=[])
-        st.session_state.baseline_vectors = evo_system.ptree.get_baseline_vectors()
-        st.session_state.custom_vectors = evo_system.ptree.get_custom_vectors('CUSTOM_HOLD')
-        st.session_state.design_vectors.update(st.session_state.custom_vectors)
-        st.session_state.leaderboards_normed,st.session_state.leaderboards_unnormed_h,st.session_state.leaderboards_unnormed_l,st.session_state.baselines=export_leaderboards(evo_system,st.session_state.design_vectors,st.session_state.baseline_vectors)
+            cache['filter_by_types'][source] = evo_system.ptree.filter_by_type(source,ret_data=True)
+        cache['implemented_designs'] = cache['filter_by_types']['DesignArtifactImplemented']
+        cache['unimplemented_designs'] = cache['filter_by_types']['DesignArtifact']
+        cache['design_artifacts'] = {**cache['implemented_designs'],**cache['unimplemented_designs']}
+        cache['acronyms'] = cache['filter_by_types']['ReferenceCoreWithTree']
+        cache['design_vectors'] = evo_system.ptree.get_design_vectors(pre_filter=[])
+        cache['baseline_vectors'] = evo_system.ptree.get_baseline_vectors()
+        cache['custom_vectors'] = evo_system.ptree.get_custom_vectors('CUSTOM_HOLD')
+        cache['design_vectors'].update(cache['custom_vectors'])
+        cache['leaderboards_normed'],cache['leaderboards_unnormed_h'],cache['leaderboards_unnormed_l'],cache['baselines']=export_leaderboards(evo_system,cache['design_vectors'],cache['baseline_vectors'])
+        cache['dialogs'] = {}
+        if DEMO_MODE:
+            folders = ['evo_exp_full_a']
+        else:
+            _folders = os.listdir(U.pjoin(evo_system.ckpt_dir))
+            folders = []
+            for folder in _folders:
+                if os.path.exists(U.pjoin(evo_system.ckpt_dir,folder,'config.json')):
+                    folders.append(folder)
+        for evoname in folders:
+            sess_dir = U.pjoin(evo_system.ckpt_dir, evoname, 'db', 'sessions')
+            if evoname not in cache['dialogs']:
+                cache['dialogs'][evoname] = {}
+            for d in os.listdir(sess_dir):
+                if d not in cache['dialogs'][evoname]:
+                    try:
+                        cache['dialogs'][evoname][d] = DialogTreeViewer(U.pjoin(sess_dir, d,'log'))
+                    except Exception as e:
+                        cache['dialogs'][evoname][d+' (Failed to load)'] = str(e)
+
     t2 = time.time()
     print(f'Time taken to pre-load design artifacts and leaderboard: {t2-t1:.2f} seconds')
-    st.session_state.system_built = True
-    return evo_system
+    return evo_system,cache
 
 
 
@@ -158,7 +183,28 @@ if not st.session_state.system_built:
     st.toast('Welcome to Genesys! System is preparing, please wait (it takes around 25s)...',icon='👋')
     st.toast(f'Start building Genesys and loading data...',icon='🔥')
 
-evosys = build_evo_system(default_namespace)
+evosys,all_cache = build_evo_system(default_namespace)
+
+if st.session_state.use_cache:
+    if not st.session_state.system_built:
+        st.session_state.pre_filter = all_cache['pre_filter']
+        st.session_state.filter_by_types = all_cache['filter_by_types']
+        st.session_state.implemented_designs = all_cache['implemented_designs']
+        st.session_state.unimplemented_designs = all_cache['unimplemented_designs']
+        st.session_state.design_artifacts = all_cache['design_artifacts']
+        st.session_state.acronyms = all_cache['acronyms']
+        st.session_state.design_vectors = all_cache['design_vectors']
+        st.session_state.baseline_vectors = all_cache['baseline_vectors']
+        st.session_state.custom_vectors = all_cache['custom_vectors']
+        st.session_state.design_vectors.update(st.session_state.custom_vectors)
+        st.session_state.leaderboards_normed = all_cache['leaderboards_normed']
+        st.session_state.leaderboards_unnormed_h = all_cache['leaderboards_unnormed_h']
+        st.session_state.leaderboards_unnormed_l = all_cache['leaderboards_unnormed_l']
+        st.session_state.baselines = all_cache['baselines']
+        st.session_state.dialogs = all_cache['dialogs']
+        st.session_state.system_built = True
+
+
 
 
 # Setup the streamlit session state
