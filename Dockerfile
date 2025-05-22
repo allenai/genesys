@@ -3,8 +3,6 @@
 FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04	
 # FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu20.04
 # FROM nvidia/cuda:11.8.0-base-ubuntu20.04
-
-
 # FROM ubuntu:20.04
 
 # Optional: Not needed if using ai2 docker image
@@ -20,7 +18,6 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 # # RUN . ~/.bashrc
 # ENV PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:$PATH
 # ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-
 
 
 
@@ -52,20 +49,17 @@ RUN python scripts/demo_data_download.py
 COPY . /root/genesys
 RUN pip install -e .
 
-# remove it when deploy, its unsafe, only do that in private repo
-# COPY ./model_discovery/secrets.py /root/genesys/model_discovery/secrets.py
-
-# [5] Deploy the GUI
 EXPOSE 8501
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
-# [6] Set entrypoint: 1. activate genesys, 2. run the gui by genesys gui
 ENTRYPOINT ["/bin/bash", "-c"]
 CMD ["genesys gui"]
 
 
-# Usages
-# docker build -t genesys-demo .
+###### Usages ######
+
+# Build the image
+# docker build -build-arg GITHUB_TOKEN=your_github_token -t genesys-demo .
 # docker run -p 8502:8501 genesys-demo 
 
 # Permissions
