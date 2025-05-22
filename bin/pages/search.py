@@ -95,15 +95,24 @@ def paper_search(evosys,project_dir):
         st.write("")
         search_btn=st.button("Search",use_container_width=True)
     if search_btn:
-        with st.spinner('Searching...'):    
-            prt=sss(query,details,analysis,prompt=prompting)
-            st.markdown(prt,unsafe_allow_html=True)
+        if not query and not details and not analysis:
+            st.toast('The search queries are empty, please type something in the search boxes.',icon='🚨')
+            return
+        else:
+            with st.spinner('Searching...'):    
+                prt=sss(query,details,analysis,prompt=prompting)
+                st.markdown(prt,unsafe_allow_html=True)
     else:
         st.info(f'**NOTE:** All settings here will only be applied to this playground. The playground will directly work on the selected running namespace ```{evosys.evoname}```.')
     
 
 def library_explorer(evosys,project_dir):
     st.subheader("Library Explorer")
+
+    if len(evosys.ptree.G.nodes) == 0:
+        st.warning('No library available at the moment.')
+        return
+
     
     primary_lib_index = U.read_file(U.pjoin(LIBRARY_DIR,'INDEX.md'))
     with st.expander("Primary Library Index (may look messy)",expanded=False):
@@ -155,6 +164,10 @@ def unit_explorer(evosys,project_dir):
     st.subheader("Unit Dictionary Explorer")
 
     GD = evosys.ptree.GD
+
+    if len(GD.terms) == 0:
+        st.warning('No units available at the moment.')
+        return
 
     cols=st.columns(2)
     with cols[0]:
@@ -212,8 +225,11 @@ def proposal_explorer(evosys,project_dir):
     
     sss=evosys.agents.sss
     st.subheader("Design Proposal Explorer")
-    select_design=st.selectbox("Choose a Design Proposal available for search",options=['None']+list(sss.design_proposals.keys()))
-    select_design = None if select_design == 'None' else select_design
+    if len(sss.design_proposals) == 0:
+        st.warning('No design proposals available at the moment.')
+        return
+
+    select_design=st.selectbox("Choose a Design Proposal available for search",options=list(sss.design_proposals.keys()))
     
     if select_design is not None:
         with st.expander("Proposal Details",expanded=True):
@@ -224,7 +240,7 @@ def proposal_explorer(evosys,project_dir):
 def explorers(evosys,project_dir):
 
     with st.sidebar:
-        mode=st.selectbox("Choose an Explorer",options=['Unit Explorer','Proposal Explorer','Library Explorer'],index=0)
+        mode=st.selectbox("Choose an Explorer",options=['Library Explorer','Proposal Explorer','Unit Explorer'],index=0)
 
     if mode=='Library Explorer':
         library_explorer(evosys,project_dir)
