@@ -22,47 +22,40 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 # ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 
-# [1] Clone the repo, assume its under your home directory ~
-COPY . /root/genesys
-
-# [2] Create a virtual env with pytorch, move to the repo, and install genesys cli
-
-# conda create -n genesys python=3.12 -y && \
-# RUN conda create -n genesys python=3.12 -y
-# SHELL ["conda", "run", "-n", "genesys", "/bin/bash", "-c"]
-# RUN conda install -c conda-forge ittapi intel-openmp tbb -y
-# ~ should be /root/ in the image
-WORKDIR /root/genesys
-# RUN conda install pytorch==2.4.1  pytorch-cuda=11.8 -c pytorch -c nvidia
-# RUN conda install pytorch==2.4.1 cpuonly -c pytorch -y
-RUN pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
-RUN pip install -e .
-
-# [3] Setup, notice that you may need to install exec_utils manually before it, if its not public yet
-RUN pip install git+https://${GITHUB_TOKEN}@github.com/allenai/exec_utils.git
-# skip data prep, mount from beaker
-ENV DATA_DIR=/root/genesys/data
-ENV CKPT_DIR=/root/genesys/ckpt
+RUN mkdir -p /home/junyan 
+ENV DATA_DIR=/home/junyan/genesys/data
+ENV CKPT_DIR=/home/junyan/genesys/ckpt
 RUN mkdir -p ${DATA_DIR} ${CKPT_DIR}
-# RUN bash scripts/setup_requirements.sh
+
+WORKDIR /home/junyan/genesys
+
+
+
+RUN pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
+
+
+ARG GITHUB_TOKEN
+RUN pip install git+https://${GITHUB_TOKEN}@github.com/allenai/exec_utils.git
 RUN pip install paperswithcode-client>=0.3.1 
 RUN pip uninstall lm_eval -y 
-RUN pip install -r requirements.txt
 RUN pip install hf_xet
 
-# [4] Copy ckpt data and secrets
-COPY model_discovery/secrets.py /root/genesys/model_discovery/secrets.py
-# COPY ckpt/ ${CKPT_DIR}/
-# COPY data/ ${DATA_DIR}/
+COPY ./requirements.txt /home/junyan/genesys/requirements.txt
+RUN pip install -r requirements.txt
+
+COPY ./scripts/demo_data_download.py /home/junyan/genesys/scripts/demo_data_download.py
 RUN python scripts/demo_data_download.py
+
+
+
+COPY . /home/junyan/genesys
+RUN pip install -e .
 
 # [5] Deploy the GUI
 EXPOSE 8501
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health
 
 # [6] Set entrypoint: 1. activate genesys, 2. run the gui by genesys gui
-# ENTRYPOINT ["conda", "run", "-n", "genesys", "/bin/bash", "-c"]
-# CMD ["streamlit run bin/app.py --server.port=8501 --server.address=0.0.0.0"]
 ENTRYPOINT ["/bin/bash", "-c"]
 CMD ["genesys gui"]
 

@@ -1,14 +1,26 @@
-version: '3'
+# version: '3'
 services:
     genesys:
-        build: .
+        build: 
+            context: .
+            args:
+                - GITHUB_TOKEN=${GITHUB_TOKEN}
+        image: genesys-demo:latest
         ports:
-            - 8501:8501
-        restart: unless-stopped # Or 'always', 'on-failure'
+            - 8502:8501
+        # restart: on-failure # unless-stopped, always, on-failure
         # volumes:
         #   - .:/root/genesys
         environment:
             - PYTHONUNBUFFERED=1
             - LOG_LEVEL=DEBUG
             - STREAMLIT_CLIENT_SHOW_ERROR_DETAILS=true
+            - MY_OPENAI_KEY=${MY_OPENAI_KEY}
+            - S2_API_KEY=${S2_API_KEY}
+            - PINECONE_API_KEY=${PINECONE_API_KEY}
+            - DB_KEY=${DB_KEY}
+            - DB_KEY_ID=${DB_KEY_ID}
+            - DATA_DIR=${DATA_DIR}
+            - CKPT_DIR=${CKPT_DIR}
+            - HF_KEY=${HF_KEY}
 

@@ -252,10 +252,10 @@ def setup(args,log_fn=None) -> None:
         args.data_dir=os.environ.get("DATA_DIR")
     if not args.ckpt_dir:
         args.ckpt_dir=os.environ.get("CKPT_DIR")
-    if not os.environ.get("HF_KEY"):
-        raise ValueError('Must set HF_KEY')
-    if not os.environ.get("WANDB_API_KEY"):
-        raise ValueError('Must set WANDB_API_KEY')
+    # if not os.environ.get("HF_KEY"):
+    #     raise ValueError('Must set HF_KEY')
+    # if not os.environ.get("WANDB_API_KEY"):
+    #     raise ValueError('Must set WANDB_API_KEY')
     if not args.data_dir:
         raise ValueError('Must specify the data directory via `--data_dir`')
     if not args.ckpt_dir:

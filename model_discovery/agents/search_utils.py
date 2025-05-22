@@ -982,7 +982,8 @@ class SuperScholarSearcher:
             pdf=pypdf.PdfReader(file_path)
             if len(pdf.pages)>max_pages:
                 return None # skip the paper
-        
+        if 'MATHPIX_API_KEY' not in os.environ:
+            return None
         loader=MathpixPDFLoader(file_path,mathpix_api_id=os.environ['MATHPIX_API_KEY'])
         data=loader.load()
         text=''

@@ -27,8 +27,8 @@ DEMO_MODE = 'demo' in custom_args or '--demo' in custom_args or '-m' in custom_a
 
 DEMO_MODE = True
 
-# if DEMO_MODE:
-#     DEPLOY_MODE = True
+if DEMO_MODE:
+    DEPLOY_MODE = True
 
 current_dir = pathlib.Path(__file__).parent
 logo_path = U.pjoin(current_dir,'assets','storm_logo.svg')
@@ -105,6 +105,8 @@ def build_evo_system(name):
         def load_results(evosys,fname):
             ckptdir=os.environ['CKPT_DIR']
             dir=os.path.join(ckptdir,'RESULTS')
+            print(f'Loading results from {dir}',os.path.exists(dir))
+            print('Check',os.listdir('/root'))
             with open(os.path.join(dir,f'{fname}_results.json'),'r') as f:
                 all_results = json.load(f)
             print(f'{fname}: {len(all_results)}/{len(evosys.ptree.G.nodes)} loaded')

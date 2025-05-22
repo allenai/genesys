@@ -5,13 +5,28 @@ from __future__ import annotations
 import os
 import sys
 import pathlib
-try: # a stupid patch 
-    from model_discovery.secrets import *
-except:
-    pass
+
+_REQUIRED_ENV_VARS = [
+    'MY_OPENAI_KEY',
+    'DATA_DIR',
+    'CKPT_DIR',
+    'HF_KEY',
+    # 'WANDB_API_KEY',
+    'S2_API_KEY',
+    'PINECONE_API_KEY',
+    # 'DB_KEY',
+    # 'DB_KEY_ID',
+]
+
+# load from secrets.py
+from model_discovery.secrets import *
+
+for var in _REQUIRED_ENV_VARS:
+    assert os.environ.get(var,None) is not None, f"Environment variable {var} is not set"
 
 os.environ['DATA_DIR'] = os.path.expanduser(os.environ['DATA_DIR'])
 os.environ['CKPT_DIR'] = os.path.expanduser(os.environ['CKPT_DIR'])
+os.environ['HF_DATASETS_TRUST_REMOTE_CODE']='1'
 
 
 import sys
@@ -1613,7 +1628,7 @@ class PhylogeneticTree:
         self.FM = None
         self.GD = None
         self.CM = CM
-        self.use_remote_db=use_remote_db
+        self.use_remote_db=use_remote_db and remote_db is not None
         self.remote_db = remote_db
         self.token_mults = token_mults
         self.benchmark_mode = benchmark_mode
@@ -1623,11 +1638,18 @@ class PhylogeneticTree:
             self.FM.sync_from_db()
         self.load()
 
-        random_baseline = self.remote_db.collection('random_baseline').document('eval_results.json').get()
-        self.random_baseline = random_baseline.to_dict() if random_baseline.exists else {}
-        assert self.random_baseline, 'No random baseline eval results found, please run `bash scripts/run_verify.sh --RANDOM_TESTING` first'
-        if self.FM:
-            self.FM.upload_baselines()
+        random_baseline_path = U.pjoin('model_discovery','ve','random_baseline.json')
+        if U.pexists(random_baseline_path):
+            self.random_baseline = U.load_json(random_baseline_path)
+        else:
+            print('No random baseline found, downloading from remote db')
+            if self.use_remote_db:
+                random_baseline = self.remote_db.collection('random_baseline').document('eval_results.json').get()
+                self.random_baseline = random_baseline.to_dict() if random_baseline.exists else {}
+                assert self.random_baseline, 'No random baseline eval results found, please run `bash scripts/run_verify.sh --RANDOM_TESTING` first'
+                if self.FM:
+                    self.FM.upload_baselines()
+                U.save_json(self.random_baseline,random_baseline_path)
         
     # new design: proposal -> implement -> verify
 
@@ -1689,7 +1711,8 @@ class PhylogeneticTree:
         # children = self.get_design_children()
         if design_id not in self.G:
             return
-        self.FM.delete_design(design_id)
+        if self.FM:
+            self.FM.delete_design(design_id)
         self.G.remove_node(design_id)
         shutil.rmtree(self.design_dir(design_id))
         # TODO: update metadata, may cause trouble
@@ -1709,7 +1732,8 @@ class PhylogeneticTree:
     def del_session(self,sess_id):
         if sess_id not in self.design_sessions:
             return
-        self.FM.delete_session(sess_id)
+        if self.FM:
+            self.FM.delete_session(sess_id)
         self.design_sessions.pop(sess_id)
         shutil.rmtree(self.session_dir(sess_id))
 
@@ -1775,7 +1799,8 @@ class PhylogeneticTree:
             return budgets
     
     def update_baselines(self):
-        self.FM.download_baselines()
+        if self.FM:
+            self.FM.download_baselines()
         designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
         for design in designs:
             self.G.nodes[design]['data'].reload_verifications()
@@ -1785,7 +1810,7 @@ class PhylogeneticTree:
             designs = pre_filter
         else:
             if is_baseline:
-                if online:
+                if online and self.FM:
                     self.FM.download_baselines()
                 designs=self.filter_by_type(['ReferenceCore','ReferenceCoreWithTree'])
             else:
@@ -2111,6 +2136,8 @@ class PhylogeneticTree:
         if self.FM:
             self.FM.sync()
             updated_terms=self.FM.updated_terms
+        else:
+            updated_terms=[]
         edges_to_add = []
         for id in os.listdir(U.pjoin(self.db_dir,'designs')):
             if id not in self.G.nodes:
@@ -2148,7 +2175,10 @@ class PhylogeneticTree:
         return False
     
     def get_running_designs(self):
-        return list(self.CM.get_active_design_sessions().keys())
+        if self.CM:
+            return list(self.CM.get_active_design_sessions().keys())
+        else:
+            return []
 
     def get_unfinished_designs(self,return_finished=False): # MARK: read all unfinished designs in all nodes
         self.load_design_sessions()
@@ -2280,10 +2310,11 @@ class PhylogeneticTree:
         design_artifact = DesignArtifact(sess_id=sess_id, acronym=acronym, seed_ids=seeds, title=title, proposal=proposal)
         self.G.add_node(acronym, data=design_artifact)
         self.session_append(sess_id,'proposed',acronym)
-        self.FM.upload_metadata(acronym,metadata,overwrite=True)
-        self.FM.upload_proposal(acronym,proposal.to_dict(),overwrite=True)
-        self.FM.upload_proposal_traces(acronym,_proposal_traces,overwrite=True)
-        self.FM.update_index()
+        if self.FM:
+            self.FM.upload_metadata(acronym,metadata,overwrite=True)
+            self.FM.upload_proposal(acronym,proposal.to_dict(),overwrite=True)
+            self.FM.upload_proposal_traces(acronym,_proposal_traces,overwrite=True)
+            self.FM.update_index()
 
     def save_session(self,sess_id: str,overwrite=False):
         sessdata=self.design_sessions[sess_id]        
@@ -2314,7 +2345,8 @@ class PhylogeneticTree:
         implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
-        self.GD.new_term(acronym,tree)
+        if self.GD: 
+            self.GD.new_term(acronym,tree)
         # Tune in all target scales, XXX: seems no need for now
         if status=='implemented':
             codes = {}
@@ -2322,8 +2354,9 @@ class PhylogeneticTree:
             # for scale in self.target_scales:
             #     codes[scale] = check_tune(scale,acronym, code=_code,check_only=True,cpu_only=True,reformat_only=True)
             U.save_json(codes, U.pjoin(self.design_dir(acronym), 'codes.json'))
-        self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
-        self.FM.update_index()
+        if self.FM:
+            self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
+            self.FM.update_index()
 
     def implement_gab(self,acronym:str,code,ROUNDS,status,costs,design_cfg,user_input):
         design_artifact=self.get_node(acronym)
@@ -2338,15 +2371,17 @@ class PhylogeneticTree:
         implementation.save(self.design_dir(acronym))
         design_artifact.implementation=implementation
         self.G.nodes[acronym]['data']=design_artifact
-        self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
-        self.FM.update_index()
+        if self.FM:
+            self.FM.upload_implementation(acronym,implementation.to_dict(),overwrite=True)
+            self.FM.update_index()
 
     def verify(self, acronym: str, scale: str, verification_report, RANDOM_TESTING=False, token_mult=20): # attach a verification report under a scale to an implemented node
         if 'eval_results.json' not in verification_report:
             return
         if RANDOM_TESTING:
             eval_results = verification_report['eval_results.json']
-            self.remote_db.collection('random_baseline').document('eval_results.json').set(eval_results)
+            if self.remote_db:
+                self.remote_db.collection('random_baseline').document('eval_results.json').set(eval_results)
             return
         # if 'trainer_state.json' not in verification_report:
         #     return
@@ -2357,13 +2392,15 @@ class PhylogeneticTree:
         self.G.nodes[acronym]['data']=design_artifact
         if design_artifact.type=='DesignArtifactImplemented':
             verification.save(self.design_dir(acronym))
-            self.FM.upload_verification(acronym,verification.to_dict(),scale,overwrite=True)
-            self.FM.update_index()
+            if self.FM:
+                self.FM.upload_verification(acronym,verification.to_dict(),scale,overwrite=True)
+                self.FM.update_index()
         else:
             # for baselines, it should be saved in repo already, can be synced by github
             verification.save(self.coreref_dir(acronym,token_mult))
-            self.FM.upload_baselines(overwrite=True,verbose=True)
-            self.FM.update_index(is_baseline=True)
+            if self.FM:
+                self.FM.upload_baselines(overwrite=True,verbose=True)
+                self.FM.update_index(is_baseline=True)
 
     def unique_acronym(self, acronym: str, max_length=32) -> str:
         acronym = acronym.lower()
@@ -2996,12 +3033,14 @@ class EvolutionSystem(ExecSystem):
     def set_demo_mode(self):
         self.demo_mode = True
         self.ptree.demo_mode = True
-        self.ptree.FM.demo_mode = True
+        if self.ptree.FM:   
+            self.ptree.FM.demo_mode = True
     
     def unset_demo_mode(self):
         self.demo_mode = False
         self.ptree.demo_mode = False
-        self.ptree.FM.demo_mode = False
+        if self.ptree.FM:   
+            self.ptree.FM.demo_mode = True
 
     def load(self,**kwargs):
         self.remote_db = None
@@ -3311,31 +3350,33 @@ class EvolutionSystem(ExecSystem):
             self.stream.write("Hello from the evolution system")
 
     def sync_to_db(self):
-        collection=self.remote_db.collection('experiments')
-        config=U.load_json(U.pjoin(self.evo_dir,'config.json'))
-        design_cfg = copy.deepcopy(self.design_cfg)
-        if 'running_mode' in design_cfg:
-            if not isinstance(design_cfg['running_mode'],str):
-                design_cfg['running_mode'] = design_cfg['running_mode'].value
-        config.update({
-            'params': self.params,
-            'design_cfg': design_cfg,
-            'search_cfg': self.search_cfg,
-            'select_cfg': self.select_cfg,
-        })
-        collection.document(self.evoname).set({'config': config})
+        if self.remote_db:
+            collection=self.remote_db.collection('experiments')
+            config=U.load_json(U.pjoin(self.evo_dir,'config.json'))
+            design_cfg = copy.deepcopy(self.design_cfg)
+            if 'running_mode' in design_cfg:
+                if not isinstance(design_cfg['running_mode'],str):
+                    design_cfg['running_mode'] = design_cfg['running_mode'].value
+            config.update({
+                'params': self.params,
+                'design_cfg': design_cfg,
+                'search_cfg': self.search_cfg,
+                'select_cfg': self.select_cfg,
+            })
+            collection.document(self.evoname).set({'config': config})
         
     def sync_from_db(self,evoname=None):
         if evoname is None:
             evoname=self.evoname
-        collection=self.remote_db.collection('experiments')
-        doc=collection.document(evoname).get()
-        if doc.exists:
-            doc=doc.to_dict()
-            config=doc.get('config',{})
-            evo_dir=U.pjoin(self.ckpt_dir,evoname)
-            U.mkdir(evo_dir)
-            U.save_json(config,U.pjoin(evo_dir,'config.json'))
+        if self.remote_db:
+            collection=self.remote_db.collection('experiments')
+            doc=collection.document(evoname).get()
+            if doc.exists:
+                doc=doc.to_dict()
+                config=doc.get('config',{})
+                evo_dir=U.pjoin(self.ckpt_dir,evoname)
+                U.mkdir(evo_dir)
+                U.save_json(config,U.pjoin(evo_dir,'config.json'))
 
     def load_config(self):
         if self.remote_db:
@@ -3507,7 +3548,10 @@ class EvolutionSystem(ExecSystem):
         Given the seeds which direct the global direction, the agent system should be fully responsible for the best local move
         """
 
-        log_collection = self.CM.log_doc_ref.collection('design_sessions') if self.CM else None
+        if self.CM:
+            log_collection = self.CM.log_doc_ref.collection('design_sessions')
+        else:
+            log_collection = None
 
         self.agents(
             user_input,
