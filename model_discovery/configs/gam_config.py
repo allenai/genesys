@@ -38,8 +38,12 @@ class GAMConfig(PretrainedConfig):
 
     def __post_init__(self):
         super().__init__()  # Initialize superclass with necessary arguments
-        tokenizer = AutoTokenizer.from_pretrained(self.tokenizer)
-        self.vocab_size = tokenizer.vocab_size  # around 32000 for llama
+        try:
+            tokenizer = AutoTokenizer.from_pretrained(self.tokenizer)
+            self.vocab_size = tokenizer.vocab_size  # around 32000 for llama
+        except:
+            assert self.tokenizer == DEFAULT_TOKENIZER, f'{self.tokenizer} not found, please check your HF_KEY'
+            self.vocab_size = 32000
 
     def to_str(self): 
         return "\n".join(f"{key}: {value}" for key, value in self.to_dict().items())

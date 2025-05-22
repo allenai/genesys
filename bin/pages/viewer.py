@@ -8,7 +8,6 @@ import pyflowchart as pfc
 import streamlit.components.v1 as components
 import matplotlib.pyplot as plt
 from subprocess import check_output
-from streamlit_markmap import markmap
 from streamlit_timeline import timeline
 from enum import Enum
 import pandas as pd
@@ -40,6 +39,30 @@ class ViewModes(Enum):
     SESSIONS = 'Local Session Logs'
     DIALOGS = 'Local Agent Dialogs'
     # FLOW = 'Agent Flows (Experimental)'
+
+
+
+def markmap(data, height=600):
+    data = str(data)
+    markdown_style = '''
+            <style>
+                svg {{
+                    width: 100%;
+                    height: {}px;
+                }}
+                body {{
+                    background-color: white;
+                }}
+            </style>'''.format(height)
+    markdown_html = f'''
+        {markdown_style}
+        <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+            
+        <div class='markmap'>{data}</div>
+    '''
+
+    markmap_component = components.html(markdown_html, height=height)
+    return markmap_component
 
 
 

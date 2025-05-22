@@ -10,7 +10,7 @@ _REQUIRED_ENV_VARS = [
     'MY_OPENAI_KEY',
     'DATA_DIR',
     'CKPT_DIR',
-    'HF_KEY',
+    # 'HF_KEY',
     # 'WANDB_API_KEY',
     'S2_API_KEY',
     'PINECONE_API_KEY',
