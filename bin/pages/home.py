@@ -95,13 +95,19 @@ def howtouse():
     #   st.write('')
     #   st.image(logo,width=80)
     
+
+
     st.markdown('''
 The Genesys (**Gene**tic discovery **sys**tem) is a system aimed at using LLM
 agents to discover novel and human-level autoregressive language model designs by genetic programming.
 This is a graphical user interface (GUI) for Genesys. You can
 use it to run experiments, view results, and tune the agents. 
 We use this GUI to monitor and manage the evolution process. While CLI to launch the nodes.
-* ***Why not just CLI?*** CLI is *insufficient* to provide necessary
+''')
+
+
+    st.markdown('''
+                * ***Why not just CLI?*** CLI is *insufficient* to provide necessary
   **observability** and **manageability** with such a complicated system. In a
   CLI, it is hard to manage the experiment states (e.g., launching multiple
   design threads, running verifications on multiple nodes), and there is no way
@@ -113,12 +119,20 @@ We use this GUI to monitor and manage the evolution process. While CLI to launch
   create a subprocess to run the low-level CLI instructions. You can install the
   CLI by `pip install -e .` and run it by `genesys <command> [args]`. See details below.
 ''')
-
+    
     title_color=AU.theme_aware_options(st,"rainbow","violet","violet")
-      
+
     st.markdown(f'''
 ## :{title_color}[How to launch the evolution?] 
+''')
+    
 
+    st.video('https://youtu.be/YHBpzImL0vM')
+
+
+
+      
+    st.markdown(f'''
 The evolution is distributed, asynchronous and parallel (see details below). To set it up:
 
 1. Configure the experiment settings:
@@ -275,12 +289,12 @@ def home(evosys,project_dir):
         st.markdown('''
 ## 💡:orange[*Demo hints*]
 
-Find our results on these sub-tabs *(in sidebar)*:
+Find our results on these pages *(in sidebar)*:
  - **Evolve - Evolution Statistics**
  - **Viewer - Design Artifacts**
  - **Viewer - Design Leaderboard**
 
-*Explore more features in the **sub-tabs**, enjoy!* ♥️
+*Explore more features in the **pages**, enjoy!* ♥️
 
 ''')
 

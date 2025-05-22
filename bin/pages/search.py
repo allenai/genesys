@@ -377,7 +377,7 @@ def search(evosys,project_dir):
         AU.running_status(st,evosys)
 
         # mode=st.radio('Playground Options',options=['Paper','Units','Proposal','Explorer'],index=0)
-        mode=st.selectbox("Sub-tabs",options=['Paper Search','Units Search','Proposal Search','Explorers'])
+        mode=st.selectbox("Pages",options=['Paper Search','Library Explorers','Units Search','Proposal Search'])
 
     if mode=='Paper Search':
         paper_search(evosys,project_dir)

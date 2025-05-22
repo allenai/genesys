@@ -1179,7 +1179,7 @@ def verify(evosys,project_dir):
 
     with st.sidebar:
         AU.running_status(st,evosys)
-        choose_mode=st.selectbox("Sub-tabs",options=['Budget Tools','Verification Engine'])
+        choose_mode=st.selectbox("Pages",options=['Budget Tools','Verification Engine'])
 
     if choose_mode=='Verification Engine':
         verify_engine(evosys,project_dir)

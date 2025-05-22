@@ -406,7 +406,7 @@ def network_status(evosys,benchmark_mode=False):
     group_id = 'null' if st.session_state.is_demo else evosys.CM.group_id
     st.write(f'#### *Network Group ```{group_id}``` Status*')
 
-    with st.expander('Nodes Running Status',expanded=True):
+    with st.expander('Nodes Running Status',expanded=False):
         nodes = None if st.session_state.is_demo else evosys.CM.get_active_connections()
         if not nodes or len(nodes)==0:
             st.info('No active working nodes connected')
@@ -2402,9 +2402,7 @@ def evolve(evosys,project_dir):
             options = [i.value for i in EvoModes if i not in [EvoModes.EUREKA,EvoModes.BENCH]]
         else:
             options = [i.value for i in EvoModes]
-        mode = st.selectbox("Sub-tabs",options=options,index=_index,
-            help='Choose the mode to view the evolution system or the agent benchmark.'
-        )
+        mode = st.selectbox("Pages",options=options,index=_index)
         mode = EvoModes(mode)
 
         st.button('🔄 Refresh',use_container_width=True)

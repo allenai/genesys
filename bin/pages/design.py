@@ -847,7 +847,7 @@ def design(evosys,project_dir):
         # if st.button(btn_text,use_container_width=True):
         #     st.session_state['design_tab'] = 'design_tunner'
         #     # st.rerun()
-        choose_mode=st.selectbox("Sub-tabs",options=['Design Agents','Design Engine'],index=0)
+        choose_mode=st.selectbox("Pages",options=['Design Agents','Design Engine'],index=0)
 
     # if st.session_state['design_tab']=='design_tunner':
     #     _design_tuning(evosys,project_dir)

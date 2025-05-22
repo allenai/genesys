@@ -1092,7 +1092,7 @@ def viewer(evosys,project_dir):
         #     modes = [ViewModes.METRICS.value,ViewModes.DESIGNS.value,ViewModes.SESSIONS.value]
         # else:
         modes = list([i.value for i in ViewModes])
-        view_mode = st.selectbox("Sub-tabs", modes)
+        view_mode = st.selectbox("Pages", modes)
         view_mode = ViewModes(view_mode)
         # if view_mode == ViewModes.FLOW:
         #     # Lagacy flows for development
