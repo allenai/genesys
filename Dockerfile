@@ -49,10 +49,11 @@ RUN pip install -r requirements.txt
 COPY ./scripts/demo_data_download.py /root/genesys/scripts/demo_data_download.py
 RUN python scripts/demo_data_download.py
 
-
-
 COPY . /root/genesys
 RUN pip install -e .
+
+# remove it when deploy, its unsafe, only do that in private repo
+# COPY ./model_discovery/secrets.py /root/genesys/model_discovery/secrets.py
 
 # [5] Deploy the GUI
 EXPOSE 8501

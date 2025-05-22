@@ -166,7 +166,7 @@ def daily_usage_status(st, show = False):
 
 def running_status(st,evosys):
   db_status = f'📶' if evosys.ptree.remote_db else '📴'
-  st.write(f'🏠 **Namespace\n```{evosys.evoname}```{db_status}**')
+  st.write(f'🏠 **Namespace\n```{evosys.evoname}``` {db_status}**')
   # if evosys.remote_db:
   #   URL='https://console.firebase.google.com/u/0/project/model-discovery/firestore/databases/-default-/data'
   #   st.write(f'⛅ [**Cloud Status**]({URL})')
