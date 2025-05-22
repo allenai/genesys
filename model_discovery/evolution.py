@@ -3107,14 +3107,13 @@ class EvolutionSystem(ExecSystem):
 
         self.scales=[eval(f'GAMConfig_{scale}()') for scale in self.target_scales]
 
-        if self.stream:
-            self.stream.write(f"Evolution system initialized with scales: {self.target_scales}")
-            self.stream.write(f"Budget type: {self.params['budget_type']}")
-            if self.max_samples>0:
-                self.stream.write(f'Max samples: {self.max_samples}')
-            self.stream.write(f'Design budget: {self.design_budget_limit}')
-            self.stream.write(f"Verify budgets: {self._verify_budget}")
-            self.stream.write(f"Checkpoint directory: {self.evo_dir}")
+        print(f"Evolution system initialized with scales: {self.target_scales}")
+        print(f"Budget type: {self.params['budget_type']}")
+        if self.max_samples>0:
+            print(f'Max samples: {self.max_samples}')
+        print(f'Design budget: {self.design_budget_limit}')
+        print(f"Verify budgets: {self._verify_budget}")
+        print(f"Checkpoint directory: {self.evo_dir}")
 
         self.ptree=PhylogeneticTree(self.evoname,self.target_scales,U.pjoin(self.evo_dir,'db'),self.params['db_only'],
                 self.remote_db,self.params['use_remote_db'],challenging_threshold=self.params['challenging_threshold'],
