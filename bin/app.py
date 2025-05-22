@@ -180,7 +180,7 @@ if DEMO_MODE:
     default_namespace = 'evo_exp_full_a'
 
 if not st.session_state.system_built:
-    st.toast('Welcome to Genesys! System is preparing, please wait (it takes around 25s)...',icon='👋')
+    st.toast('Welcome to Genesys! System is preparing, please wait (it may take a while)...',icon='👋')
     st.toast(f'Start building Genesys and loading data...',icon='🔥')
 
 evosys,all_cache = build_evo_system(default_namespace)
