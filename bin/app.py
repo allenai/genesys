@@ -89,6 +89,7 @@ def build_evo_system(name):
         'evoname':name,
     }
     print(f'Building evo system with params: {params}')
+    t0 = time.time()
     evo_system = BuildEvolution(
         params=params,
         do_cache=False,
@@ -96,7 +97,6 @@ def build_evo_system(name):
         demo_mode=DEMO_MODE,
         # cache_type='diskcache',
     )
-    
     if DEMO_MODE:
         print('Setting up for demo mode')
         evo_system.set_demo_mode()
@@ -119,6 +119,9 @@ def build_evo_system(name):
         # evo_system = load_results(evo_system,'full_aug')
         st.session_state.use_cache = True
 
+    t1 = time.time()
+    print(f'Time taken to setup evo system: {t1-t0:.2f} seconds')
+
     if st.session_state.use_cache:
         print('pre-load design artifacts and leaderboard')
         st.session_state.pre_filter = []
@@ -135,6 +138,8 @@ def build_evo_system(name):
         st.session_state.custom_vectors = evo_system.ptree.get_custom_vectors('CUSTOM_HOLD')
         st.session_state.design_vectors.update(st.session_state.custom_vectors)
         st.session_state.leaderboards_normed,st.session_state.leaderboards_unnormed_h,st.session_state.leaderboards_unnormed_l,st.session_state.baselines=export_leaderboards(evo_system,st.session_state.design_vectors,st.session_state.baseline_vectors)
+    t2 = time.time()
+    print(f'Time taken to pre-load design artifacts and leaderboard: {t2-t1:.2f} seconds')
     print('done building evo system')
     return evo_system
 

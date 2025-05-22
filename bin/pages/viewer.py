@@ -251,18 +251,20 @@ def _view_dialogs(evosys):
     if not os.path.exists(sess_dir):
         st.warning("No dialogs found in the log directory")
     else:
-        dialogs = {}
+        if 'dialogs' not in st.session_state:
+            st.session_state.dialogs = {}
         for d in os.listdir(sess_dir):
-            try:
-                dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d,'log'))
-            except Exception as e:
-                dialogs[d+' (Failed to load)'] = str(e)
-
-        if not dialogs:
+            if d not in st.session_state.dialogs:
+                try:
+                    st.session_state.dialogs[d] = DialogTreeViewer(U.pjoin(sess_dir, d,'log'))
+                except Exception as e:
+                    st.session_state.dialogs[d+' (Failed to load)'] = str(e)
+            
+        if not st.session_state.dialogs:
             st.warning("No dialogs found in the log directory")
         else:
-            selected_dialog = st.selectbox("Select a dialog", list(dialogs.keys()))
-            dialog = dialogs[selected_dialog]
+            selected_dialog = st.selectbox("Select a dialog", list(st.session_state.dialogs.keys()))
+            dialog = st.session_state.dialogs[selected_dialog]
             if isinstance(dialog,str):
                 st.warning('Failed to load the dialog: '+dialog)
             else:
