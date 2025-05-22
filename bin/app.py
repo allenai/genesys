@@ -37,6 +37,8 @@ logo=AU.svg_to_image(logo_path)
 st.set_page_config(page_title="Genesys", layout="wide",page_icon=logo)
 
 
+
+
 from model_discovery import BuildEvolution
 
 from streamlit_navigation_bar import st_navbar
@@ -83,12 +85,15 @@ st.session_state.daily_usage_limit = 5
 
 # Setup the evo system
 
+if 'system_built' not in st.session_state:
+    st.session_state.system_built = False
+
+
 @st.cache_resource()
 def build_evo_system(name):
     params={
         'evoname':name,
     }
-    print(f'Building evo system with params: {params}')
     t0 = time.time()
     evo_system = BuildEvolution(
         params=params,
@@ -123,7 +128,6 @@ def build_evo_system(name):
     print(f'Time taken to setup evo system: {t1-t0:.2f} seconds')
 
     if st.session_state.use_cache:
-        print('pre-load design artifacts and leaderboard')
         st.session_state.pre_filter = []
         st.session_state.filter_by_types = {}
         sources = ['ReferenceCoreWithTree', 'DesignArtifactImplemented', 'DesignArtifact', 'ReferenceCore', 'ReferenceWithCode', 'Reference']
@@ -140,7 +144,7 @@ def build_evo_system(name):
         st.session_state.leaderboards_normed,st.session_state.leaderboards_unnormed_h,st.session_state.leaderboards_unnormed_l,st.session_state.baselines=export_leaderboards(evo_system,st.session_state.design_vectors,st.session_state.baseline_vectors)
     t2 = time.time()
     print(f'Time taken to pre-load design artifacts and leaderboard: {t2-t1:.2f} seconds')
-    print('done building evo system')
+    st.session_state.system_built = True
     return evo_system
 
 
@@ -149,6 +153,10 @@ setting=AU.get_setting()
 default_namespace=setting.get('default_namespace','test_evo_000')
 if DEMO_MODE:
     default_namespace = 'evo_exp_full_a'
+
+if not st.session_state.system_built:
+    st.toast('Welcome to Genesys! System is preparing, please wait...',icon='👋')
+    st.toast(f'Start building Genesys and loading data...',icon='🔥')
 
 evosys = build_evo_system(default_namespace)
 
