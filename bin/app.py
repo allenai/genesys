@@ -135,6 +135,7 @@ def build_evo_system(name):
         st.session_state.custom_vectors = evo_system.ptree.get_custom_vectors('CUSTOM_HOLD')
         st.session_state.design_vectors.update(st.session_state.custom_vectors)
         st.session_state.leaderboards_normed,st.session_state.leaderboards_unnormed_h,st.session_state.leaderboards_unnormed_l,st.session_state.baselines=export_leaderboards(evo_system,st.session_state.design_vectors,st.session_state.baseline_vectors)
+    print('done building evo system')
     return evo_system
 
 

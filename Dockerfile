@@ -22,7 +22,10 @@ FROM ghcr.io/allenai/cuda:11.8-cudnn8-dev-ubuntu20.04
 # ENV LD_LIBRARY_PATH=/usr/local/cuda/lib:/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 
+
+
 RUN mkdir -p /root
+#  !!! Notice that the ~ in the image is /root, so dont set dir to ~/ !!!
 ENV DATA_DIR=/root/genesys/data
 ENV CKPT_DIR=/root/genesys/ckpt
 RUN mkdir -p ${DATA_DIR} ${CKPT_DIR}
