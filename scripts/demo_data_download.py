@@ -12,7 +12,7 @@ def unzip_file(file_path, output_path):
 
 if __name__ == '__main__':
     data_url = "https://drive.google.com/uc?id=11xg5FuBjSn1pXqR8vJwfoxN1ypY_Xntv"
-    ckpt_url = "https://drive.google.com/uc?id=18Urpigfm6hAVr0tFdy7-ImcuBl9qvwa3"
+    ckpt_url = "https://drive.google.com/uc?id=14Gtz36lY88L1n1w_jIZjb57zJwRo28f8"
 
     # if not os.path.exists('data/blimp_filtered'):
     download_from_google_drive(data_url, 'data.zip')
