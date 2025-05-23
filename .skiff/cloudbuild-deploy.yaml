@@ -6,14 +6,14 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: [
     'build',
-    '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME-app:latest',
-    '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME-app:$COMMIT_SHA',
+    '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest',
+    '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA',
     '--cache-from', 'gcr.io/$PROJECT_ID/$REPO_NAME-app:latest',
     '--build-arg', 'BUILDKIT_INLINE_CACHE=1',
     '.'
   ]
   waitFor: [ '-' ]
-  dir: 'app'
+  dir: '.'
 - id: 'app.push'
   name: 'gcr.io/cloud-builders/docker'
   args: [
@@ -21,26 +21,6 @@ steps:
     'gcr.io/$PROJECT_ID/$REPO_NAME-app:$COMMIT_SHA',
   ]
   waitFor: [ 'app.build' ]
-- id: 'proxy.build'
-  name: 'gcr.io/cloud-builders/docker'
-  args: [
-    'build',
-    '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME-proxy:latest',
-    '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME-proxy:$COMMIT_SHA',
-    '--cache-from', 'gcr.io/$PROJECT_ID/$REPO_NAME-proxy:latest',
-    '--build-arg', 'CONF_FILE=prod.conf',
-    '--build-arg', 'BUILDKIT_INLINE_CACHE=1',
-    '.'
-  ]
-  waitFor: [ '-' ]
-  dir: 'proxy'
-- id: 'proxy.push'
-  name: 'gcr.io/cloud-builders/docker'
-  args: [
-    'push',
-    'gcr.io/$PROJECT_ID/$REPO_NAME-proxy:$COMMIT_SHA'
-  ]
-  waitFor: [ 'proxy.build' ]
 # Generate our Kubernetes configuration
 - id: 'config'
   name: 'gcr.io/ai2-reviz/jsonnet'
