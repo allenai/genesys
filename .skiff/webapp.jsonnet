@@ -12,7 +12,7 @@ local config = import '../skiff.json';
 local util = import './util.libsonnet';
 
 function(
-    appImage, proxyImage, cause, sha, env='prod', branch='', repo='',
+    appImage, cause, sha, env='prod', branch='', repo='',
     buildId=''
 )
     // Produce a list of hostnames served by your application.
@@ -321,7 +321,7 @@ function(
                     nodeSelector: nodeSelector,
                     containers: [
                         {
-                            name: fullyQualifiedName + '-app',
+                            name: fullyQualifiedName,
                             image: appImage,
                             # The "probes" below allow Kubernetes to determine
                             # if your application is working properly.
@@ -381,21 +381,6 @@ function(
                                 }
                             ],
                         },
-                        {
-                            name: fullyQualifiedName + '-proxy',
-                            image: proxyImage,
-                            readinessProbe: {
-                                httpGet: proxyHealthCheck + {
-                                    path: '/?check=rdy'
-                                }
-                            },
-                            resources: {
-                                requests: {
-                                   cpu: 0.1,
-                                   memory: '100M'
-                                }
-                            }
-                        }
                     ]
                 }
             }
