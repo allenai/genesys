@@ -13,7 +13,7 @@ There are many other features from the GUI, you can explore them. Here is a shor
 
 
 
-# Setting up 
+# Installation
 
 [1] Clone the repo, assume its under your home directory `~`
 
