@@ -126,7 +126,7 @@ function(
     local proxyPort = 8080;
 
     // The port the streamlit app is bound to.
-    local appPort = 8000;
+    local appPort = 8501;
 
     // This is used to verify that the proxy (and thereby the UI portion of the
     // application) is healthy. If this fails the application won't receive traffic,
@@ -368,8 +368,8 @@ function(
                             # https://skiff.allenai.org/resources.html
                             resources: {
                                 requests: {
-                                    cpu: 0.1,
-                                    memory: '500M'
+                                    cpu: 8,
+                                    memory: '16G'
                                 },
                                 limits: { }
                                    + gpuLimits # only the first container should have gpuLimits applied
