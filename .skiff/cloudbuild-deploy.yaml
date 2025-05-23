@@ -48,7 +48,7 @@ steps:
     'webapp.yaml'
   ]
   dir: '.skiff'
-  waitFor: [ 'app.push', 'proxy.push', 'config' ]
+  waitFor: [ 'app.push', 'config' ]
 substitutions:
   _ENV: prod
 images: [
