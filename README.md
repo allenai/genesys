@@ -48,7 +48,7 @@ export MATHPIX_API_ID=YOURKEY # optional, it provides pdf to text service, usefu
 
 [5] Setup a pinecone vectorstore (:red[TODO] need to provide more instructions later), this is needed if you wanna vector search, you may also build your own
 
-[6] Setup, notice that you may need to install `exec_utils` manually before it, if its not public yet
+[6] Setup the requirements
 ```shell
 genesys setup && \ 
 pip install -r requirements_optional.txt # optional

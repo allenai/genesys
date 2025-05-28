@@ -34,8 +34,8 @@ WORKDIR /root/genesys
 RUN pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cpu
 
 
-ARG GITHUB_TOKEN
-RUN pip install git+https://${GITHUB_TOKEN}@github.com/allenai/exec_utils.git
+# ARG GITHUB_TOKEN
+# RUN pip install git+https://${GITHUB_TOKEN}@github.com/allenai/exec_utils.git
 RUN pip install paperswithcode-client>=0.3.1 
 RUN pip uninstall lm_eval -y 
 RUN pip install hf_xet
