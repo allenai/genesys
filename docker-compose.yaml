@@ -3,8 +3,8 @@ services:
     genesys:
         build: 
             context: .
-            args:
-                - GITHUB_TOKEN=${GITHUB_TOKEN}
+            # args:
+            #     - GITHUB_TOKEN=${GITHUB_TOKEN}
         image: genesys-demo:latest
         ports:
             - 8502:8501
