@@ -177,7 +177,7 @@ function(
                                     service: {
                                         name: fullyQualifiedName,
                                         port: {
-                                            number: appPort
+                                            number: proxyPort
                                         }
                                     }
                                 }
@@ -215,7 +215,7 @@ function(
                                     service: {
                                         name: fullyQualifiedName,
                                         port: {
-                                            number: appPort
+                                            number: proxyPort
                                         }
                                     }
                                 }
@@ -253,7 +253,7 @@ function(
                                     service: {
                                         name: fullyQualifiedName,
                                         port: {
-                                            number: appPort
+                                            number: proxyPort
                                         }
                                     }
                                 }
@@ -347,7 +347,7 @@ function(
                             # with you to craft the right livenessProbe.
                             readinessProbe: {
                                 httpGet: appHealthCheck + {
-                                    path: '/_stcore/health'
+                                    path: '/?check=rdy'
                                 },
                                 periodSeconds: 10,
                                 failureThreshold: 3
@@ -472,7 +472,7 @@ function(
             selector: selectorLabels,
             ports: [
                 {
-                    port: appPort,
+                    port: proxyPort,
                     name: 'http'
                 }
             ]
