@@ -759,14 +759,15 @@ class GAUTree:
 
 
     def _traverse(self,parent,flow_nodes,flow_edges,with_code=False):
-        children=self.units[parent].children
-        for child in children:
-            code = f'\n\n```python\n{self.units[child].code}\n```' if with_code else ''
-            node=StreamlitFlowNode(child,(0,0),{'content':f'{child}{code}'})
-            flow_nodes[child] = node
-            flow_edges.append(StreamlitFlowEdge(f'{parent}-{child}',parent,child,animated=True,
-                                                style={'markerEnd': 'url(#arrow)'}))
-            flow_nodes,flow_edges = self._traverse(child,flow_nodes,flow_edges,with_code)
+        if parent in self.units: 
+            children=self.units[parent].children
+            for child in children:
+                code = f'\n\n```python\n{self.units[child].code}\n```' if with_code else ''
+                node=StreamlitFlowNode(child,(0,0),{'content':f'{child}{code}'})
+                flow_nodes[child] = node
+                flow_edges.append(StreamlitFlowEdge(f'{parent}-{child}',parent,child,animated=True,
+                                                    style={'markerEnd': 'url(#arrow)'}))
+                flow_nodes,flow_edges = self._traverse(child,flow_nodes,flow_edges,with_code)
         return flow_nodes,flow_edges
 
 
