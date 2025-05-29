@@ -473,6 +473,7 @@ function(
             ports: [
                 {
                     port: proxyPort,
+                    targetPort: appPort,   // Pods are listening on this port (8501)
                     name: 'http'
                 }
             ]
