@@ -126,7 +126,7 @@ function(
     local proxyPort = 8080;
 
     // The port the streamlit app is bound to.
-    local appPort = 8501;
+    local appPort = 8502;
 
     // This is used to verify that the proxy (and thereby the UI portion of the
     // application) is healthy. If this fails the application won't receive traffic,
@@ -473,7 +473,6 @@ function(
             ports: [
                 {
                     port: proxyPort,
-                    targetPort: appPort,   // Pods are listening on this port (8501)
                     name: 'http'
                 }
             ]
