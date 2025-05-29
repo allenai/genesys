@@ -347,7 +347,7 @@ function(
                             # with you to craft the right livenessProbe.
                             readinessProbe: {
                                 httpGet: appHealthCheck + {
-                                    path: '/?check=rdy'
+                                    path: '/_stcore/health'
                                 },
                                 periodSeconds: 10,
                                 failureThreshold: 3
@@ -472,7 +472,7 @@ function(
             selector: selectorLabels,
             ports: [
                 {
-                    port: proxyPort,
+                    port: appPort,
                     name: 'http'
                 }
             ]
