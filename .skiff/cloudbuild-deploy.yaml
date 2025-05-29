@@ -8,7 +8,7 @@ steps:
     'build',
     '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest',
     '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA',
-    '--cache-from', 'gcr.io/$PROJECT_ID/$REPO_NAME-app:latest',
+    '--cache-from', 'gcr.io/$PROJECT_ID/$REPO_NAME:latest',
     '--build-arg', 'BUILDKIT_INLINE_CACHE=1',
     '.'
   ]
@@ -18,7 +18,7 @@ steps:
   name: 'gcr.io/cloud-builders/docker'
   args: [
     'push',
-    'gcr.io/$PROJECT_ID/$REPO_NAME-app:$COMMIT_SHA',
+    'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA',
   ]
   waitFor: [ 'app.build' ]
 # Generate our Kubernetes configuration
@@ -52,10 +52,8 @@ steps:
 substitutions:
   _ENV: prod
 images: [
-  'gcr.io/$PROJECT_ID/$REPO_NAME-app:$COMMIT_SHA',
-  'gcr.io/$PROJECT_ID/$REPO_NAME-app:latest',
-  'gcr.io/$PROJECT_ID/$REPO_NAME-proxy:$COMMIT_SHA',
-  'gcr.io/$PROJECT_ID/$REPO_NAME-proxy:latest'
+  'gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA',
+  'gcr.io/$PROJECT_ID/$REPO_NAME:latest'
 ]
 artifacts:
   objects:
