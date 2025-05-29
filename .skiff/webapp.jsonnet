@@ -126,7 +126,7 @@ function(
     local proxyPort = 8080;
 
     // The port the streamlit app is bound to.
-    local appPort = 8501;
+    local appPort = 8502;
 
     // This is used to verify that the proxy (and thereby the UI portion of the
     // application) is healthy. If this fails the application won't receive traffic,
@@ -375,10 +375,82 @@ function(
                                    + gpuLimits # only the first container should have gpuLimits applied
                             },
                             env: [
+                            
                                 {
-                                    name: 'STREAMLIT_ENV',
-                                    value: env,
-                                }
+                                    /**
+                                     * You can and should change this to the name of the environment 
+                                     * variable you'd like to use for accessing the secret value
+                                     * in the container. 
+                                     */
+                                    name: "CKPT_DIR",
+                                    valueFrom: {
+                                        secretKeyRef: {
+                                            name: "openaikey",
+                                            key: "CKPT_DIR"
+                                        }
+                                    }
+                                },
+                            
+                                {
+                                    /**
+                                     * You can and should change this to the name of the environment 
+                                     * variable you'd like to use for accessing the secret value
+                                     * in the container. 
+                                     */
+                                    name: "DATA_DIR",
+                                    valueFrom: {
+                                        secretKeyRef: {
+                                            name: "openaikey",
+                                            key: "DATA_DIR"
+                                        }
+                                    }
+                                },
+                            
+                                {
+                                    /**
+                                     * You can and should change this to the name of the environment 
+                                     * variable you'd like to use for accessing the secret value
+                                     * in the container. 
+                                     */
+                                    name: "MY_OPENAI_KEY",
+                                    valueFrom: {
+                                        secretKeyRef: {
+                                            name: "openaikey",
+                                            key: "MY_OPENAI_KEY"
+                                        }
+                                    }
+                                },
+                            
+                                {
+                                    /**
+                                     * You can and should change this to the name of the environment 
+                                     * variable you'd like to use for accessing the secret value
+                                     * in the container. 
+                                     */
+                                    name: "PINECONE_API_KEY",
+                                    valueFrom: {
+                                        secretKeyRef: {
+                                            name: "openaikey",
+                                            key: "PINECONE_API_KEY"
+                                        }
+                                    }
+                                },
+                            
+                                {
+                                    /**
+                                     * You can and should change this to the name of the environment 
+                                     * variable you'd like to use for accessing the secret value
+                                     * in the container. 
+                                     */
+                                    name: "S2_API_KEY",
+                                    valueFrom: {
+                                        secretKeyRef: {
+                                            name: "openaikey",
+                                            key: "S2_API_KEY"
+                                        }
+                                    }
+                                },
+                            
                             ],
                         },
                     ]
