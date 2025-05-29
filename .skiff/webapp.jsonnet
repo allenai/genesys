@@ -177,7 +177,7 @@ function(
                                     service: {
                                         name: fullyQualifiedName,
                                         port: {
-                                            number: proxyPort
+                                            number: appPort
                                         }
                                     }
                                 }
@@ -215,7 +215,7 @@ function(
                                     service: {
                                         name: fullyQualifiedName,
                                         port: {
-                                            number: proxyPort
+                                            number: appPort
                                         }
                                     }
                                 }
@@ -253,7 +253,7 @@ function(
                                     service: {
                                         name: fullyQualifiedName,
                                         port: {
-                                            number: proxyPort
+                                            number: appPort
                                         }
                                     }
                                 }
