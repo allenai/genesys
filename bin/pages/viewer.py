@@ -77,10 +77,13 @@ def _view_tree(tree):
     with col2:
         selected_id=updated_state.selected_id 
         if selected_id:
-            source=tree.units[selected_id].code
-            st.markdown(f'### Selected Unit: {selected_id}')
-            with st.container(height=750):
-                st.code(source,line_numbers=True)
+            if selected_id in tree.units:
+                source=tree.units[selected_id].code
+                st.markdown(f'### Selected Unit: {selected_id}')
+                with st.container(height=750):
+                    st.code(source,line_numbers=True)
+            else:
+                st.markdown(f'### Selected Unit: {selected_id} unimplemented yet')
         else:
             st.markdown('### Select a node to view the source.')
 
