@@ -111,6 +111,7 @@ Notice that everytime you change your DATA_DIR, you may need to reinstall it, an
 
 Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement"
 
+<!-- 
 ### create beaker image (ai2 internal) 
 You can run 
 ```
@@ -139,7 +140,6 @@ The implementation is in `model_discovery/system.py`, which loads a `designer` a
 
 
 
-
 # Model Discovery Algorithm
 
 Assumptions:
@@ -149,3 +149,4 @@ Assumptions:
 4. LLM thinking depth correlated to total output lengths in a dialog for producing one sample
 5. LLM agent can asymptotically produce a high-quality sample after a dialog with probability p
 ...
+-->
