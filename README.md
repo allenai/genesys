@@ -1,7 +1,7 @@
 # Genesys
 
 Utils and code for model discovery experiments. 
-You can play with the demo here: https://genesys-demo-gcp-859914516308.us-central1.run.app/.
+You can play with the demo here: https://genesys.allen.ai
 Notice that it may take some time to load.
 You can access our experiment data in these pages:
  - Evolution statistics: Evolve - Evolution Statistics
