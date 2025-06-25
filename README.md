@@ -1,6 +1,8 @@
 # Genesys
 
-Utils and code for model discovery experiments. 
+
+Genesys is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
+It covers the full workflow from ideation, implementation, checking, training, and evaluating.
 You can play with the demo here: https://genesys.allen.ai
 Notice that it may take some time to load.
 You can access our experiment data in these pages:
@@ -98,13 +100,11 @@ You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
 ```
 The download link for babyLM evaluation data: https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
 
-Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause errors.
-
-Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement"
+Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause errors. Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement".
 
 
 
-## Hints
+## Hints for running evolution
 
 Better separate the design nodes and verification nodes, design checkers need to use GPUs, so may cause conflicts. It is recommended to deploy few design nodes and many verification nodes as design nodes are mostly bounded by CPU and API rate limits. 
 
