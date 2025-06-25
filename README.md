@@ -111,7 +111,7 @@ model/
 
 ## About Eval Environment
 
-It should be setup if you followed the installation instruction, but if not here is how you separately set it up.
+It should be setup if you followed the installation instruction, but if not, here is how you can separately set it up.
 
 Install the custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-harness/tree/main
 
@@ -127,6 +127,11 @@ Download the [babyLM evaluation data](https://files.osf.io/v1/resources/ad7qg/pr
 
 Better separate the design nodes and verification nodes, design checkers need to use GPUs, so may cause conflicts. It is recommended to deploy few design nodes and many verification nodes as design nodes are mostly bounded by CPU and API rate limits. 
 
+
+
+## Citing
+
+Comming soon.
 
 
 <!-- 
