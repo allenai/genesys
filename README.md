@@ -16,7 +16,7 @@
     <img alt="Paper URL" src="https://img.shields.io/badge/arxiv-soon-blue">
   </a>
   <a href="https://genesys.allen.ai">
-    <img alt="Playground" src="https://img.shields.io/badge/Demo-Genesys-F0529C">
+    <img alt="Playground" src="https://img.shields.io/badge/Genesys-Demo-F0529C">
   </a>
 <!--   <a href="https://discord.gg/sZq3jTNVNG">
     <img alt="Discord" src="https://img.shields.io/badge/Discord%20-%20blue?style=flat&logo=discord&label=Ai2&color=%235B65E9">
