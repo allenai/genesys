@@ -119,9 +119,7 @@ You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
 ```
 {DATA_DIR}/blimp_filtered/adjunct_island.jsonl
 ```
-The download link for babyLM evaluation data: https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
-
-Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause errors. Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement".
+Download the [babyLM evaluation data](https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data). Notice that if you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause conflicts. Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement".
 
 
 
