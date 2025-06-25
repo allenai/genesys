@@ -5,6 +5,23 @@
   <h1>🧬 Genesys: Language Modeling by Language Models</h1>
 </div>
 
+<p align="center">
+  <a href="https://github.com/allenai/genesys/blob/main/LICENSE">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/allenai/genesys">
+  </a>
+<!--   <a href="https://github.com/allenai/genesys/releases">
+    <img alt="GitHub release" src="https://img.shields.io/github/release/allenai/OLMo.svg">
+  </a> -->
+  <a href="https://arxiv.org/pdf/xxxx.xxxxx.pdf">
+    <img alt="Paper URL" src="https://img.shields.io/badge/arxiv-soon-blue">
+  </a>
+  <a href="https://genesys.allen.ai">
+    <img alt="Playground" src="https://img.shields.io/badge/Demo-Genesys-F0529C">
+  </a>
+<!--   <a href="https://discord.gg/sZq3jTNVNG">
+    <img alt="Discord" src="https://img.shields.io/badge/Discord%20-%20blue?style=flat&logo=discord&label=Ai2&color=%235B65E9">
+  </a> -->
+</p>
 
 **Genesys** (**Gene**tic discovery **sys**tem) is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
 It covers the full workflow from ideation, implementation, checking, training, and evaluating.
