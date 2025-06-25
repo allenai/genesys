@@ -9,9 +9,9 @@
   <a href="https://github.com/allenai/genesys/blob/main/LICENSE">
     <img alt="GitHub License" src="https://img.shields.io/github/license/allenai/genesys">
   </a>
-<!--   <a href="https://github.com/allenai/genesys/releases">
-    <img alt="GitHub release" src="https://img.shields.io/github/release/allenai/OLMo.svg">
-  </a> -->
+  <a href="https://github.com/allenai/genesys/releases">
+    <img alt="GitHub release" src="https://img.shields.io/github/release/allenai/genesys.svg">
+  </a>
   <a href="https://arxiv.org/pdf/xxxx.xxxxx.pdf">
     <img alt="Paper URL" src="https://img.shields.io/badge/arxiv-soon-blue">
   </a>
