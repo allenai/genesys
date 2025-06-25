@@ -1,7 +1,12 @@
-# Genesys
+<div align="center">
+<!--   <img src="https://allenai.org/olmo/olmo-7b-animation.gif" alt="OLMo Logo" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/> -->
+  <br>
+  <br>
+  <h1>🧬 Genesys: Language Modeling by Language Models</h1>
+</div>
 
 
-Genesys is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
+Genesys (**Gene**tic Discovery **Sys**tem) is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
 It covers the full workflow from ideation, implementation, checking, training, and evaluating.
 You can play with the demo here: https://genesys.allen.ai
 Notice that it may take some time to load.
