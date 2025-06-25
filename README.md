@@ -1,5 +1,5 @@
 <div align="center">
-<!--   <img src="https://allenai.org/olmo/olmo-7b-animation.gif" alt="OLMo Logo" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/> -->
+  <img src="bin/assets/all_in_one.png" alt="Genesys Architecture" width="800" style="margin-left:'auto' margin-right:'auto' display:'block'"/>
   <br>
   <br>
   <h1>🧬 Genesys: Language Modeling by Language Models</h1>
