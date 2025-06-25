@@ -6,7 +6,7 @@
 </div>
 
 
-Genesys (**Gene**tic Discovery **Sys**tem) is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
+**Genesys** (**Gene**tic discovery **sys**tem) is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
 It covers the full workflow from ideation, implementation, checking, training, and evaluating.
 You can play with the demo here: https://genesys.allen.ai (it may take some time to load).
 Our experiment data are presented in these pages:
