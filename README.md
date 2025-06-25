@@ -15,18 +15,18 @@ There are many other features from the GUI, you can explore them. Here is a shor
 
 # Installation
 
-[1] Clone the repo, assume its under your home directory `~`
+1. Clone the repo, assume its under your home directory `~`
 
-[2] Create a virtual env with pytorch, move to the repo, and install genesys cli
+2. Create a virtual env with pytorch, move to the repo, and install genesys cli
 ```shell
 conda create -n genesys python=3.12 -y && \
 conda activate genesys && \
-cd ~/model_discovery && \
+cd ~/genesys && \
 conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=11.8 -c pytorch -c nvidia -y && \
 pip install -e .
 ```
 
-[3] Setup LLM API keys
+3. Setup LLM API keys
 ```shell
 export MY_OPENAI_KEY=YOURKEY
 export TOGETHER_API_KEY=YOURKEY
@@ -44,40 +44,29 @@ export PERPLEXITY_API_KEY=YOURKEY
 export MATHPIX_API_ID=YOURKEY # optional, it provides pdf to text service, useful if you need to get paper from arxiv url for example, its not used in the paper but you may try it yourself
 ```
 
-[4] Setup a firebase backend, and store the secret json in DB_KEY_PATH, this is required for the distributed search
+4. Setup a firebase backend, and store the secret json in DB_KEY_PATH, this is **required** for the distributed evolution
 
-[5] Setup a pinecone vectorstore (:red[TODO] need to provide more instructions later), this is needed if you wanna vector search, you may also build your own
+5. Setup a pinecone vectorstore (**optional**, if you want to use the vector search of paper chunks). You need to store the chunks in your vectorstore, refer to the code in [search_utils.py](https://github.com/allenai/genesys/blob/main/model_discovery/agents/search_utils.py)).
 
-[6] Setup the requirements
+6. Setup the requirements
 ```shell
 genesys setup && \ 
 pip install -r requirements_optional.txt # optional
 ```
-Hint 1: If you want to prepare the datasets only, use `genesys setup -d`. 
+<!-- Hint 1: If you want to prepare the datasets only, use `genesys setup -d`. 
 
-Hint 2: You can simply install requirements by `genesys setup -s` as preparing datasets takes a long time.
+Hint 2: You can simply install requirements by `genesys setup -s` as preparing datasets takes a long time. -->
 
-[7] Test your setup by launching a node
+7. Test your setup by launching a node
 ```shell
 genesys node
 ```
 
-[8] Launch the gui
+8. Launch the gui
 ```shell
 genesys gui
 ```
 
-
-# How to use Genesys CLI/GUI
-
-
-1. Run `genesys <command> [args]` to use the CLI
-2. Run `genesys gui` to start the GUI
-
-
-# Hints
-
-1. Better separate the design nodes and verification nodes, design checkers need to use GPUs, so may cause conflicts. It is recommended to deploy few design nodes and many verification nodes as design nodes are mostly bounded by CPU and API rate limits. 
 
 
 <!-- 
@@ -97,7 +86,9 @@ model/
 ```
  -->
 
-### eval 
+## About Eval Environment
+
+It should be setup if you followed the installation instruction, but if not here is how you separately set it up.
 
 Install the custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-harness/tree/main
 
@@ -107,9 +98,17 @@ You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
 ```
 The download link for babyLM evaluation data: https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data 
 
-Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft
+Notice that everytime you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause errors.
 
 Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement"
+
+
+
+## Hints
+
+Better separate the design nodes and verification nodes, design checkers need to use GPUs, so may cause conflicts. It is recommended to deploy few design nodes and many verification nodes as design nodes are mostly bounded by CPU and API rate limits. 
+
+
 
 <!-- 
 ### create beaker image (ai2 internal) 
