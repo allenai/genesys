@@ -8,9 +8,8 @@
 
 Genesys (**Gene**tic Discovery **Sys**tem) is a repository for utils and code for the distributed evolutionary system of using LLM agents to discover better LLMs. 
 It covers the full workflow from ideation, implementation, checking, training, and evaluating.
-You can play with the demo here: https://genesys.allen.ai
-Notice that it may take some time to load.
-You can access our experiment data in these pages:
+You can play with the demo here: https://genesys.allen.ai (it may take some time to load).
+Our experiment data are presented in these pages:
  - Evolution statistics: Evolve - Evolution Statistics
  - Discovered Designs: Viewer - Design Artifacts (you can download them here)
  - Design Leaderboard: Viewer - Design Leaderboard
