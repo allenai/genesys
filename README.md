@@ -25,13 +25,13 @@
 
 **Genesys** (**Gene**tic discovery **sys**tem) is a distributed evolutionary system that uses LLM agents to discover better LLMs. 
 It covers the full workflow from ideation, implementation, checking, training, and evaluating.
-You can play with the demo here: https://genesys.allen.ai (may slow for first build).
+You can play with the demo at [genesys.allen.ai](https://genesys.allen.ai) (may slow for first build).
 Our results can be found in these pages:
  - Evolution statistics: Evolve - Evolution Statistics
  - Discovered Designs: Viewer - Design Artifacts (you can download them here)
  - Design Leaderboard: Viewer - Design Leaderboard
  
-There are many other features from the GUI, you can explore them. Here is a short demo video that briefly show some of the features https://drive.google.com/file/d/1JG0hNAJuaPZWUKfwrwoF_ufh0GJuLO7z/view?usp=sharing.
+There are many other features from the GUI, you can explore them. Here is a [short demo video](https://drive.google.com/file/d/1JG0hNAJuaPZWUKfwrwoF_ufh0GJuLO7z/view?usp=sharing) that briefly show some of the features.
 
 
 
@@ -114,10 +114,8 @@ model/
 
 It should be setup if you followed the installation instruction, but if not, here is how you can separately set it up.
 
-The training corpus is available here: https://huggingface.co/datasets/chengjunyan1/smollm-12.5-corpus.
-The evaluation is based on a custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-harness/tree/main
-
-You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
+The training corpus is available in [smollm-12.5-corpus](https://huggingface.co/datasets/chengjunyan1/smollm-12.5-corpus).
+The evaluation is based on a [custmoized lm_eval](https://github.com/chengjunyan1/lm-evaluation-harness/tree/main). You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
 ```
 {DATA_DIR}/blimp_filtered/adjunct_island.jsonl
 ```
