@@ -123,7 +123,7 @@ Download the [babyLM evaluation data](https://files.osf.io/v1/resources/ad7qg/pr
 
 
 
-## Hints for running evolution
+## Hints for Evolution
 
 Better separate the design nodes and verification nodes, design checkers need to use GPUs, so may cause conflicts. It is recommended to deploy few design nodes and many verification nodes as design nodes are mostly bounded by CPU and API rate limits. 
 
