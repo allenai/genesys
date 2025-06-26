@@ -18,9 +18,9 @@
   <a href="https://genesys.allen.ai">
     <img alt="Playground" src="https://img.shields.io/badge/Genesys-Demo-FCBA03">
   </a>
-<!--   <a href="https://discord.gg/sZq3jTNVNG">
-    <img alt="Discord" src="https://img.shields.io/badge/Discord%20-%20blue?style=flat&logo=discord&label=Ai2&color=%235B65E9">
-  </a> -->
+    <a href="//www.youtube.com/watch?v=YHBpzImL0vM" target="_blank">
+        <img src="https://img.shields.io/badge/video-YouTube-red">
+    </a>
 </p>
 
 **Genesys** (**Gene**tic discovery **sys**tem) is a distributed evolutionary system that uses LLM agents to discover better LLMs. 
