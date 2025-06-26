@@ -49,7 +49,7 @@ conda install pytorch==2.4.1 torchvision==0.19.1 torchaudio==2.4.1 pytorch-cuda=
 pip install -e .
 ```
 
-3. Setup LLM API keys
+3. Setup Environment
 ```shell
 export MY_OPENAI_KEY=YOURKEY
 export TOGETHER_API_KEY=YOURKEY
@@ -57,9 +57,9 @@ export ANTHROPIC_API_KEY=YOURKEY
 export HF_KEY=YOURKEY
 export WANDB_API_KEY=YOURKEY
 export S2_API_KEY=YOURKEY
-export DATA_DIR=~/model_discovery/data # change it to a directory you like
-export CKPT_DIR=~/model_discovery/ckpt # change it to a directory you like
-export DB_KEY_PATH=~/model_discovery/secrets/db_key.json # provide yours, see item 4 below
+export DATA_DIR=~/genesys/data # change it to a directory you like
+export CKPT_DIR=~/genesys/ckpt # change it to a directory you like
+export DB_KEY_PATH=~/genesys/secrets/db_key.json # provide yours, see item 4 below
 export HF_DATASETS_TRUST_REMOTE_CODE=1
 export PINECONE_API_KEY=YOURKEY
 export COHERE_API_KEY=YOURKEY
