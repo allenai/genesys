@@ -131,7 +131,7 @@ Better separate the design nodes and verification nodes, design checkers need to
 
 ## Citing
 
-```
+```bibtex
 @misc{cheng2025languagemodelinglanguagemodels,
       title={Language Modeling by Language Models}, 
       author={Junyan Cheng and Peter Clark and Kyle Richardson},
