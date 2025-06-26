@@ -109,7 +109,7 @@ model/
 ```
  -->
 
-## About Eval Environment
+## Evaluation Environment
 
 It should be setup if you followed the installation instruction, but if not, here is how you can separately set it up.
 
