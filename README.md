@@ -27,7 +27,7 @@
 It covers the full workflow from ideation, implementation, checking, training, and evaluating.
 You can play with the demo at [genesys.allen.ai](https://genesys.allen.ai) (may slow for first build).
 Our results can be found in these pages:
- - Evolution statistics: **Evolve - Evolution Statistics**
+ - Evolution Statistics: **Evolve - Evolution Statistics**
  - Discovered Designs: **Viewer - Design Artifacts** _(you can download them here)_
  - Design Leaderboard: **Viewer - Design Leaderboard**
  
