@@ -12,8 +12,8 @@
   <a href="https://github.com/allenai/genesys/releases">
     <img alt="GitHub Release" src="https://img.shields.io/github/v/release/allenai/genesys">
   </a>
-  <a href="https://arxiv.org/pdf/xxxx.xxxxx.pdf">
-    <img alt="Paper URL" src="https://img.shields.io/badge/arxiv-soon-blue">
+  <a href="https://arxiv.org/pdf/2506.20249.pdf">
+    <img alt="Paper URL" src="https://img.shields.io/badge/arxiv-2506.20249-blue">
   </a>
   <a href="https://genesys.allen.ai">
     <img alt="Playground" src="https://img.shields.io/badge/Genesys-Demo-FCBA03">
@@ -131,7 +131,17 @@ Better separate the design nodes and verification nodes, design checkers need to
 
 ## Citing
 
-Comming soon.
+```
+@misc{cheng2025languagemodelinglanguagemodels,
+      title={Language Modeling by Language Models}, 
+      author={Junyan Cheng and Peter Clark and Kyle Richardson},
+      year={2025},
+      eprint={2506.20249},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2506.20249}, 
+}
+```
 
 
 <!-- 
