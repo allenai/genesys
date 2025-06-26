@@ -109,17 +109,19 @@ model/
 ```
  -->
 
-## Evaluation Environment
+## Verification Engine
+
 
 It should be setup if you followed the installation instruction, but if not, here is how you can separately set it up.
 
-Install the custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-harness/tree/main
+The training corpus is available here: https://huggingface.co/datasets/chengjunyan1/smollm-12.5-corpus.
+The evaluation is based on a custmoized lm_eval: https://github.com/chengjunyan1/lm-evaluation-harness/tree/main
 
 You must export DATA_DIR first, then download evaluation data in DATA_DIR, e.g.:
 ```
 {DATA_DIR}/blimp_filtered/adjunct_island.jsonl
 ```
-Download the [babyLM evaluation data](https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data). Notice that if you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause conflicts. Supported tasks: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, babyLM tasks are: "blimp_filtered","blimp_supplement".
+Download the [babyLM evaluation data](https://files.osf.io/v1/resources/ad7qg/providers/osfstorage/66358ec34664da20a0ed6acc/?zip=evaluation_data). Notice that if you change your DATA_DIR, you may need to reinstall it, and remember DO NOT INSTALL peft which may cause conflicts. The supported tasks can be found in: https://github.com/EleutherAI/lm-evaluation-harness/tree/main/lm_eval/tasks, specially, it contains babyLM tasks in "blimp_filtered" and "blimp_supplement".
 
 
 
