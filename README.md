@@ -23,7 +23,7 @@
     </a>
   </a>
     <a href="https://deepwiki.com/allenai/genesys" target="_blank">
-        <img src="https://img.shields.io/badge/Deep-Wiki-green">
+        <img src="https://img.shields.io/badge/Deep-Wiki-violet">
     </a>
 </p>
 
