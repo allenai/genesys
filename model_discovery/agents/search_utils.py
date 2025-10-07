@@ -1014,17 +1014,21 @@ class SuperScholarSearcher:
     def get_index(self,index_name=None):
         if not index_name:
             index_name=self.index_name
-        if not self.has_index(index_name):
-            self.pc.create_index(
-                name=index_name,
-                dimension=3072, # assume openai text-embedding-3-large	
-                metric="cosine", 
-                spec=ServerlessSpec(
-                    cloud='aws', 
-                    region='us-west-2'
+        try:
+            if not self.has_index(index_name):
+                self.pc.create_index(
+                    name=index_name,
+                    dimension=3072, # assume openai text-embedding-3-large	
+                    metric="cosine", 
+                    spec=ServerlessSpec(
+                        cloud='aws', 
+                        region='us-west-2'
+                    ) 
                 ) 
-            ) 
-        return self.pc.Index(index_name)
+            return self.pc.Index(index_name)
+        except Exception as e:
+            # print(f'Error getting index {index_name}: {e}')
+            return None
 
     def split_text(self,text,id,text_splitter=None):
         if not text_splitter:
@@ -1090,6 +1094,8 @@ class SuperScholarSearcher:
                     vectors[i]=vector
 
     def _build_vector_stores(self):
+        if self.index is None:
+            return
         if self.vectors is None:
             self._load_splits(load_vectors=True)
         for namespace,vectors in [
@@ -1117,6 +1123,8 @@ class SuperScholarSearcher:
         return indices,relevance_scores
 
     def _get_split_by_id(self,id,namespace):
+        if self.index is None:
+            return None
         if self.splits is None:
             self._load_splits()
         if namespace=='primary':
@@ -1129,6 +1137,8 @@ class SuperScholarSearcher:
             raise ValueError(f'Unknown namespace: {namespace}')
 
     def _get_metainfo_by_id(self,id,namespace):
+        if self.index is None:
+            return None
         if self.lib is None:
             self._load_libs()
         if namespace=='primary':
@@ -1141,6 +1151,8 @@ class SuperScholarSearcher:
             raise ValueError(f'Unknown namespace: {namespace}')
 
     def _query_index(self,query,namespace,result_limit=10):
+        if self.index is None:
+            return {},{}
         embed=self.embedding_vs.embed_query(query)
         if self.rerank_ratio>0:
             top_k=int(result_limit//self.rerank_ratio)
@@ -1187,6 +1199,8 @@ class SuperScholarSearcher:
 
     def search_lib_primary(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the selected ~300 model arch papers
+        if self.index is None:
+            return {},{}
         if result_limit<=0:
             return {},{}
         self.stream.write('*Searching primary library...*')
@@ -1195,6 +1209,8 @@ class SuperScholarSearcher:
 
     def search_lib_secondary(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the papers that are cited by the primary library, where their ideas come from  
+        if self.index is None:
+            return {},{}
         if result_limit<=0:
             return {},{}
         self.stream.write('*Searching references of library...*')
@@ -1203,6 +1219,8 @@ class SuperScholarSearcher:
 
     def search_lib_plus(self,query, result_limit=10) -> Union[None, List[Dict]]:
         # the papers recommended by S2 for the primary library  
+        if self.index is None:
+            return {},{}
         if result_limit<=0:
             return {},{}
         self.stream.write('*Searching recommended papers of library...*')
@@ -1211,6 +1229,8 @@ class SuperScholarSearcher:
 
     def search_internal(self,query,pretty=True,prompt=True) -> Union[None, List[Dict]]:
         # search for papers in the internal library
+        if self.index is None:
+            return {},{}
         sources={}
         if self.pc is not None:
             sources['Internal Library']=self.search_lib_primary(query,self.result_limits['lib'])
