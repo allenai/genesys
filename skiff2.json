@@ -1,0 +1,16 @@
+{
+    "$schema": "https://storage.googleapis.com/skiff2-general/skiff2-config.schema.json",
+    "services": [
+        {
+            "name": "genesys",
+            "cwd": ".",
+            "dockerFile": "Dockerfile",
+            "isRootService": true,
+            "allowUnauthenticated": true,
+            "machine": {
+                "minInstances": 1,
+                "cpuIdle": false
+            }
+        }
+    ]
+}
