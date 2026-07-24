@@ -1,0 +1,5 @@
+# Constraints used when regenerating requirements.lock (see header of that file).
+# Pin torch to the CPU build the Dockerfile installs, so the lock does not pull
+# torch's CUDA wheels (multi-GB, and the cause of "No space left on device").
+torch==2.4.1+cpu
+triton==3.0.0
