@@ -17,7 +17,11 @@ RUN pip uninstall lm_eval -y
 RUN pip install hf_xet
 
 COPY ./requirements.txt /root/genesys/requirements.txt
-RUN pip install -r requirements.txt
+COPY ./requirements.lock /root/genesys/requirements.lock
+# Install from the fully-pinned lockfile: pip has no versions to resolve, so it
+# skips the dependency-resolver backtracking that made unpinned builds take hours.
+# Regenerate requirements.lock from requirements.txt with uv (see the lock's header).
+RUN pip install -r requirements.lock
 
 COPY ./scripts/demo_data_download.py /root/genesys/scripts/demo_data_download.py
 RUN python scripts/demo_data_download.py

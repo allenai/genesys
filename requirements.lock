@@ -1,0 +1,1310 @@
+# Fully-pinned lockfile generated from requirements.txt to make installs fast and
+# reproducible (avoids pip's multi-hour dependency-resolver backtracking).
+# Regenerate after editing requirements.txt with:
+#   DATA_DIR=$HOME/genesys/data uv pip compile requirements.txt -o requirements.lock \
+#     --python-version 3.10 --python-platform x86_64-unknown-linux-gnu \
+#     --extra-index-url https://download.pytorch.org/whl/cpu \
+#     --index-strategy unsafe-best-match \
+#     --constraint constraints.lock.txt --emit-index-url
+# constraints.lock.txt pins: torch==2.4.1+cpu, triton==3.0.0 (match the Dockerfile's CPU torch).
+--index-url https://pypi.org/simple
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+absl-py==2.5.0
+    # via rouge-score
+accelerate==1.14.0
+    # via
+    #   -r requirements.txt
+    #   lm-eval
+aiohappyeyeballs==2.7.1
+    # via aiohttp
+aiohttp==3.14.3
+    # via
+    #   fsspec
+    #   langchain-community
+    #   langchain-together
+    #   lmql
+aiosignal==1.4.0
+    # via aiohttp
+altair==5.5.0
+    # via streamlit
+annotated-doc==0.0.4
+    # via
+    #   fastapi
+    #   typer
+annotated-types==0.8.0
+    # via pydantic
+anthropic==0.85.0
+    # via
+    #   -r requirements.txt
+    #   langchain-anthropic
+antlr4-python3-runtime==4.9.3
+    # via omegaconf
+anyio==4.14.2
+    # via
+    #   anthropic
+    #   google-genai
+    #   httpx
+    #   jupyter-server
+    #   langsmith
+    #   mcp
+    #   openai
+    #   sse-starlette
+    #   starlette
+    #   together
+argon2-cffi==25.1.0
+    # via jupyter-server
+argon2-cffi-bindings==25.1.0
+    # via argon2-cffi
+arrow==1.4.0
+    # via isoduration
+art==6.5
+    # via -r requirements.txt
+arxiv==4.0.0
+    # via -r requirements.txt
+astor==0.8.1
+    # via -r requirements.txt
+asttokens==3.0.2
+    # via stack-data
+astunparse==1.6.3
+    # via lmql
+async-lru==2.3.0
+    # via jupyterlab
+async-timeout==4.0.3
+    # via
+    #   aiohttp
+    #   langchain-classic
+attrs==26.1.0
+    # via
+    #   aiohttp
+    #   jsonlines
+    #   jsonschema
+    #   referencing
+babel==2.18.0
+    # via jupyterlab-server
+beautifulsoup4==4.15.0
+    # via
+    #   gdown
+    #   nbconvert
+bleach==6.4.0
+    # via nbconvert
+blinker==1.9.0
+    # via
+    #   flask
+    #   streamlit
+blobfile==3.2.0
+    # via torchtune
+boto3==1.43.55
+    # via -r requirements.txt
+botocore==1.43.55
+    # via
+    #   boto3
+    #   s3transfer
+bottleneck==1.6.0
+    # via langchain-google-vertexai
+cachetools==5.5.2
+    # via streamlit
+cairocffi==1.7.1
+    # via cairosvg
+cairosvg==2.9.0
+    # via -r requirements.txt
+certifi==2026.7.22
+    # via
+    #   google-cloud-aiplatform
+    #   httpcore
+    #   httpx
+    #   requests
+    #   sentry-sdk
+cffi==2.1.0
+    # via
+    #   argon2-cffi-bindings
+    #   cairocffi
+    #   cryptography
+chardet==6.0.0.post1
+    # via
+    #   mbstrdecoder
+    #   pyflowchart
+charset-normalizer==3.4.9
+    # via requests
+click==8.4.2
+    # via
+    #   flask
+    #   nltk
+    #   streamlit
+    #   together
+    #   uvicorn
+    #   wandb
+cohere==5.21.1
+    # via
+    #   -r requirements.txt
+    #   langchain-cohere
+colorama==0.4.6
+    # via
+    #   sacrebleu
+    #   tqdm-multiprocess
+coloredlogs==15.0.1
+    # via onnxruntime
+comm==0.2.3
+    # via
+    #   ipykernel
+    #   ipywidgets
+contourpy==1.3.2
+    # via matplotlib
+cryptography==45.0.7
+    # via google-auth
+cssselect2==0.9.0
+    # via cairosvg
+cycler==0.12.1
+    # via matplotlib
+cython==3.2.8
+    # via pyserini
+dataproperty==1.1.1
+    # via
+    #   pytablewriter
+    #   tabledata
+datasets==5.0.0
+    # via
+    #   -r requirements.txt
+    #   evaluate
+    #   lm-eval
+    #   torchtune
+debugpy==1.8.21
+    # via ipykernel
+decorator==5.3.1
+    # via ipython
+defusedxml==0.7.1
+    # via
+    #   cairosvg
+    #   nbconvert
+    #   nltk
+dill==0.4.1
+    # via
+    #   datasets
+    #   evaluate
+    #   lm-eval
+    #   multiprocess
+diskcache==5.6.3
+    # via -r requirements.txt
+distro==1.9.0
+    # via
+    #   anthropic
+    #   google-genai
+    #   langsmith
+    #   openai
+    #   together
+docker==7.2.0
+    # via -r requirements.txt
+docker-pycreds==0.4.0
+    # via wandb
+docstring-parser==0.18.0
+    # via
+    #   anthropic
+    #   google-cloud-aiplatform
+einops==0.8.2
+    # via -r requirements.txt
+evaluate==0.4.6
+    # via
+    #   -r requirements.txt
+    #   lm-eval
+exceptiongroup==1.3.1
+    # via
+    #   anyio
+    #   ipython
+    #   pytest
+executing==2.2.1
+    # via stack-data
+fastapi==0.139.2
+    # via pyserini
+fastavro==1.12.2
+    # via cohere
+fastjsonschema==2.21.2
+    # via nbformat
+feedparser==6.0.12
+    # via -r requirements.txt
+filelock==3.32.0
+    # via
+    #   blobfile
+    #   datasets
+    #   gdown
+    #   huggingface-hub
+    #   together
+    #   torch
+    #   transformers
+    #   triton
+flask==3.1.3
+    # via pyserini
+flatbuffers==25.12.19
+    # via onnxruntime
+fonttools==4.63.0
+    # via matplotlib
+fqdn==1.5.1
+    # via jsonschema
+frozenlist==1.8.0
+    # via
+    #   aiohttp
+    #   aiosignal
+fsspec==2026.4.0
+    # via
+    #   datasets
+    #   evaluate
+    #   huggingface-hub
+    #   torch
+gdown==6.1.0
+    # via -r requirements.txt
+getmac==0.9.5
+    # via -r requirements.txt
+gitdb==4.0.12
+    # via gitpython
+gitpython==3.1.55
+    # via
+    #   streamlit
+    #   wandb
+google-api-core==2.33.0
+    # via
+    #   google-cloud-aiplatform
+    #   google-cloud-bigquery
+    #   google-cloud-core
+    #   google-cloud-firestore
+    #   google-cloud-resource-manager
+    #   google-cloud-storage
+    #   google-cloud-vectorsearch
+google-auth==2.56.2
+    # via
+    #   google-api-core
+    #   google-cloud-aiplatform
+    #   google-cloud-bigquery
+    #   google-cloud-core
+    #   google-cloud-firestore
+    #   google-cloud-resource-manager
+    #   google-cloud-storage
+    #   google-cloud-vectorsearch
+    #   google-genai
+google-cloud-aiplatform==1.162.0
+    # via
+    #   -r requirements.txt
+    #   langchain-google-vertexai
+    #   vertexai
+google-cloud-bigquery==3.42.2
+    # via google-cloud-aiplatform
+google-cloud-core==2.6.0
+    # via
+    #   google-cloud-bigquery
+    #   google-cloud-firestore
+    #   google-cloud-storage
+google-cloud-firestore==2.27.0
+    # via -r requirements.txt
+google-cloud-resource-manager==1.18.0
+    # via google-cloud-aiplatform
+google-cloud-storage==3.13.0
+    # via
+    #   google-cloud-aiplatform
+    #   langchain-google-vertexai
+google-cloud-vectorsearch==0.11.0
+    # via langchain-google-vertexai
+google-crc32c==1.8.0
+    # via
+    #   google-cloud-storage
+    #   google-resumable-media
+google-genai==1.67.0
+    # via google-cloud-aiplatform
+google-resumable-media==2.10.0
+    # via
+    #   google-cloud-bigquery
+    #   google-cloud-storage
+googleapis-common-protos==1.75.0
+    # via
+    #   google-api-core
+    #   grpc-google-iam-v1
+    #   grpcio-status
+greenlet==3.5.4
+    # via sqlalchemy
+grpc-google-iam-v1==0.14.4
+    # via google-cloud-resource-manager
+grpcio==1.83.0
+    # via
+    #   google-api-core
+    #   google-cloud-firestore
+    #   google-cloud-resource-manager
+    #   google-cloud-vectorsearch
+    #   googleapis-common-protos
+    #   grpc-google-iam-v1
+    #   grpcio-status
+grpcio-status==1.71.2
+    # via google-api-core
+h11==0.16.0
+    # via
+    #   httpcore
+    #   langchain-together
+    #   uvicorn
+h2==4.4.0
+    # via httpx
+hf-transfer==0.1.9
+    # via -r requirements.txt
+hf-xet==1.5.2
+    # via huggingface-hub
+hpack==4.2.0
+    # via h2
+httpcore==1.0.9
+    # via httpx
+httpx==0.28.1
+    # via
+    #   -r requirements.txt
+    #   anthropic
+    #   cohere
+    #   datasets
+    #   google-genai
+    #   jupyterlab
+    #   langchain-google-vertexai
+    #   langgraph-sdk
+    #   langsmith
+    #   mcp
+    #   openai
+    #   pinecone
+    #   together
+httpx-sse==0.4.3
+    # via
+    #   langchain-community
+    #   langchain-google-vertexai
+    #   mcp
+huggingface-hub==0.36.2
+    # via
+    #   accelerate
+    #   datasets
+    #   evaluate
+    #   tokenizers
+    #   torchtune
+    #   transformers
+humanfriendly==10.0
+    # via coloredlogs
+hyperframe==6.1.0
+    # via h2
+idna==3.18
+    # via
+    #   anyio
+    #   httpx
+    #   jsonschema
+    #   requests
+    #   yarl
+iniconfig==2.3.0
+    # via pytest
+ipykernel==7.2.0
+    # via
+    #   jupyter
+    #   jupyter-console
+    #   jupyterlab
+ipython==8.39.0
+    # via
+    #   -r requirements.txt
+    #   ipykernel
+    #   ipywidgets
+    #   jupyter-console
+    #   pyvis
+ipywidgets==8.1.8
+    # via jupyter
+isoduration==20.11.0
+    # via jsonschema
+itsdangerous==2.2.0
+    # via flask
+jedi==0.20.0
+    # via ipython
+jinja2==3.1.6
+    # via
+    #   altair
+    #   flask
+    #   jupyter-server
+    #   jupyterlab
+    #   jupyterlab-server
+    #   nbconvert
+    #   pydeck
+    #   pyvis
+    #   torch
+jiter==0.16.0
+    # via
+    #   anthropic
+    #   openai
+jmespath==1.1.0
+    # via
+    #   boto3
+    #   botocore
+joblib==1.5.3
+    # via
+    #   nltk
+    #   scikit-learn
+json5==0.15.0
+    # via jupyterlab-server
+jsonlines==4.0.0
+    # via lm-eval
+jsonpatch==1.33
+    # via langchain-core
+jsonpickle==4.1.2
+    # via pyvis
+jsonpointer==3.1.1
+    # via
+    #   jsonpatch
+    #   jsonschema
+jsonschema==4.26.0
+    # via
+    #   altair
+    #   jupyter-events
+    #   jupyterlab-server
+    #   mcp
+    #   nbformat
+jsonschema-specifications==2025.9.1
+    # via jsonschema
+jupyter==1.1.1
+    # via -r requirements.txt
+jupyter-builder==1.1.1
+    # via
+    #   jupyterlab
+    #   notebook
+jupyter-client==8.8.0
+    # via
+    #   ipykernel
+    #   jupyter-console
+    #   jupyter-server
+    #   nbclient
+jupyter-console==6.6.3
+    # via jupyter
+jupyter-core==5.9.1
+    # via
+    #   ipykernel
+    #   jupyter-builder
+    #   jupyter-client
+    #   jupyter-console
+    #   jupyter-server
+    #   jupyterlab
+    #   nbclient
+    #   nbconvert
+    #   nbformat
+jupyter-events==0.12.1
+    # via jupyter-server
+jupyter-lsp==2.3.1
+    # via jupyterlab
+jupyter-server==2.20.0
+    # via
+    #   jupyter-lsp
+    #   jupyterlab
+    #   jupyterlab-server
+    #   notebook
+    #   notebook-shim
+jupyter-server-terminals==0.5.4
+    # via jupyter-server
+jupyterlab==4.6.2
+    # via
+    #   jupyter
+    #   notebook
+jupyterlab-pygments==0.3.0
+    # via nbconvert
+jupyterlab-server==2.28.0
+    # via
+    #   jupyterlab
+    #   notebook
+jupyterlab-widgets==3.0.16
+    # via ipywidgets
+kiwisolver==1.5.0
+    # via matplotlib
+langchain==1.3.11
+    # via -r requirements.txt
+langchain-anthropic==1.4.0
+    # via -r requirements.txt
+langchain-classic==1.0.8
+    # via langchain-community
+langchain-cohere==0.6.0
+    # via -r requirements.txt
+langchain-community==0.4.2
+    # via
+    #   -r requirements.txt
+    #   langchain-experimental
+langchain-core==1.4.7
+    # via
+    #   langchain
+    #   langchain-anthropic
+    #   langchain-classic
+    #   langchain-cohere
+    #   langchain-community
+    #   langchain-experimental
+    #   langchain-google-vertexai
+    #   langchain-openai
+    #   langchain-text-splitters
+    #   langchain-together
+    #   langgraph
+    #   langgraph-checkpoint
+    #   langgraph-prebuilt
+    #   langgraph-sdk
+langchain-experimental==0.4.2
+    # via -r requirements.txt
+langchain-google-vertexai==3.2.4
+    # via -r requirements.txt
+langchain-openai==1.3.3
+    # via
+    #   -r requirements.txt
+    #   langchain-together
+langchain-protocol==0.0.15
+    # via
+    #   langchain-core
+    #   langgraph-sdk
+langchain-text-splitters==1.1.2
+    # via langchain-classic
+langchain-together==0.4.0
+    # via -r requirements.txt
+langgraph==1.2.9
+    # via langchain
+langgraph-checkpoint==4.1.1
+    # via
+    #   langgraph
+    #   langgraph-prebuilt
+langgraph-prebuilt==1.1.0
+    # via langgraph
+langgraph-sdk==0.4.2
+    # via langgraph
+langsmith==0.10.10
+    # via
+    #   langchain-classic
+    #   langchain-community
+    #   langchain-core
+    #   langchain-together
+lark==1.3.1
+    # via rfc3987-syntax
+lm-eval @ git+https://github.com/chengjunyan1/lm-evaluation-harness.git@337bb2121d3dbe61f0724cca5454cb4cecdfdf92
+    # via -r requirements.txt
+lmql==0.7.3
+    # via -r requirements.txt
+lxml==6.1.1
+    # via
+    #   arxiv
+    #   blobfile
+    #   sacrebleu
+markdown==3.10.2
+    # via -r requirements.txt
+markdown-it-py==4.2.0
+    # via rich
+markupsafe==3.0.3
+    # via
+    #   flask
+    #   jinja2
+    #   nbconvert
+    #   werkzeug
+matplotlib==3.10.9
+    # via
+    #   -r requirements.txt
+    #   wordcloud
+matplotlib-inline==0.2.2
+    # via
+    #   ipykernel
+    #   ipython
+mbstrdecoder==1.1.5
+    # via
+    #   dataproperty
+    #   pytablewriter
+    #   typepy
+mcp==1.12.4
+    # via pyserini
+mdurl==0.1.2
+    # via markdown-it-py
+mistune==3.3.4
+    # via nbconvert
+more-itertools==11.1.0
+    # via lm-eval
+mpmath==1.3.0
+    # via sympy
+msgspec==0.21.1
+    # via pinecone
+multidict==6.7.1
+    # via
+    #   aiohttp
+    #   yarl
+multiprocess==0.70.19
+    # via
+    #   datasets
+    #   evaluate
+narwhals==2.24.0
+    # via altair
+nbclient==0.11.0
+    # via nbconvert
+nbconvert==7.17.1
+    # via
+    #   jupyter
+    #   jupyter-server
+nbformat==5.10.4
+    # via
+    #   jupyter-server
+    #   nbclient
+    #   nbconvert
+nest-asyncio==1.6.0
+    # via ipykernel
+networkx==3.4.2
+    # via
+    #   -r requirements.txt
+    #   pyvis
+    #   torch
+nltk==3.10.0
+    # via rouge-score
+notebook==7.6.1
+    # via jupyter
+notebook-shim==0.2.4
+    # via
+    #   jupyterlab
+    #   notebook
+numexpr==2.14.1
+    # via
+    #   langchain-google-vertexai
+    #   lm-eval
+numpy==1.26.4
+    # via
+    #   accelerate
+    #   bottleneck
+    #   contourpy
+    #   datasets
+    #   evaluate
+    #   langchain-community
+    #   lmql
+    #   matplotlib
+    #   numexpr
+    #   onnxruntime
+    #   pandas
+    #   pydeck
+    #   pyserini
+    #   rankit
+    #   rouge-score
+    #   sacrebleu
+    #   scikit-learn
+    #   scipy
+    #   streamlit
+    #   tinybenchmarks
+    #   torchtune
+    #   transformers
+    #   wordcloud
+nvidia-ml-py==13.610.43
+    # via pynvml
+omegaconf==2.3.1
+    # via torchtune
+onnxruntime==1.23.2
+    # via pyserini
+openai==2.28.0
+    # via
+    #   -r requirements.txt
+    #   langchain-openai
+    #   lmql
+    #   pyserini
+orjson==3.11.9
+    # via
+    #   langgraph-sdk
+    #   langsmith
+    #   pinecone
+ormsgpack==1.12.2
+    # via langgraph-checkpoint
+overrides==7.7.0
+    # via jupyter-server
+packaging==24.2
+    # via
+    #   accelerate
+    #   altair
+    #   datasets
+    #   evaluate
+    #   google-cloud-aiplatform
+    #   google-cloud-bigquery
+    #   huggingface-hub
+    #   ipykernel
+    #   jupyter-events
+    #   jupyter-server
+    #   jupyterlab
+    #   jupyterlab-server
+    #   langchain-core
+    #   langsmith
+    #   matplotlib
+    #   nbconvert
+    #   onnxruntime
+    #   pytest
+    #   streamlit
+    #   transformers
+    #   typepy
+    #   wheel
+pandas==2.3.3
+    # via
+    #   datasets
+    #   evaluate
+    #   pyserini
+    #   rankit
+    #   streamlit
+pandocfilters==1.5.1
+    # via nbconvert
+parso==0.8.7
+    # via jedi
+pathvalidate==3.3.1
+    # via pytablewriter
+pexpect==4.9.0
+    # via ipython
+pillow==10.4.0
+    # via
+    #   cairosvg
+    #   matplotlib
+    #   pyserini
+    #   streamlit
+    #   together
+    #   wordcloud
+pinecone==9.1.0
+    # via -r requirements.txt
+platformdirs==4.11.0
+    # via
+    #   jupyter-core
+    #   wandb
+pluggy==1.6.0
+    # via pytest
+portalocker==3.2.0
+    # via sacrebleu
+prometheus-client==0.25.0
+    # via jupyter-server
+prompt-toolkit==3.0.52
+    # via
+    #   ipython
+    #   jupyter-console
+propcache==0.5.2
+    # via
+    #   aiohttp
+    #   yarl
+proto-plus==1.28.2
+    # via
+    #   google-api-core
+    #   google-cloud-aiplatform
+    #   google-cloud-firestore
+    #   google-cloud-resource-manager
+    #   google-cloud-vectorsearch
+protobuf==5.29.6
+    # via
+    #   google-api-core
+    #   google-cloud-aiplatform
+    #   google-cloud-firestore
+    #   google-cloud-resource-manager
+    #   google-cloud-vectorsearch
+    #   googleapis-common-protos
+    #   grpc-google-iam-v1
+    #   grpcio-status
+    #   onnxruntime
+    #   proto-plus
+    #   streamlit
+    #   wandb
+psutil==7.2.2
+    # via
+    #   accelerate
+    #   ipykernel
+    #   wandb
+ptyprocess==0.7.0
+    # via
+    #   pexpect
+    #   terminado
+pure-eval==0.2.3
+    # via stack-data
+pyarrow==23.0.1
+    # via
+    #   datasets
+    #   langchain-google-vertexai
+    #   streamlit
+pyasn1==0.6.4
+    # via pyasn1-modules
+pyasn1-modules==0.4.2
+    # via google-auth
+pybind11==3.0.4
+    # via lm-eval
+pycparser==3.0
+    # via cffi
+pycryptodomex==3.23.0
+    # via blobfile
+pydantic==2.9.2
+    # via
+    #   -r requirements.txt
+    #   anthropic
+    #   cohere
+    #   fastapi
+    #   google-cloud-aiplatform
+    #   google-genai
+    #   langchain
+    #   langchain-anthropic
+    #   langchain-classic
+    #   langchain-cohere
+    #   langchain-core
+    #   langchain-google-vertexai
+    #   langgraph
+    #   langsmith
+    #   mcp
+    #   openai
+    #   pydantic-settings
+    #   together
+pydantic-core==2.23.4
+    # via
+    #   cohere
+    #   pydantic
+pydantic-settings==2.14.2
+    # via
+    #   langchain-community
+    #   mcp
+pydeck==0.9.3
+    # via streamlit
+pydot==4.0.1
+    # via -r requirements.txt
+pyflowchart==0.6.0
+    # via -r requirements.txt
+pygments==2.20.0
+    # via
+    #   ipython
+    #   jupyter-console
+    #   nbconvert
+    #   pytest
+    #   rich
+pyjnius==1.7.0
+    # via pyserini
+pynvml==13.0.1
+    # via -r requirements.txt
+pyparsing==3.3.2
+    # via
+    #   matplotlib
+    #   pydot
+pypdf==6.14.2
+    # via -r requirements.txt
+pyserini==1.2.0
+    # via -r requirements.txt
+pysocks==1.7.1
+    # via requests
+pytablewriter==1.2.1
+    # via lm-eval
+pytest==9.1.1
+    # via -r requirements.txt
+python-dateutil==2.9.0.post0
+    # via
+    #   arrow
+    #   botocore
+    #   google-cloud-bigquery
+    #   jupyter-client
+    #   matplotlib
+    #   pandas
+    #   typepy
+python-dotenv==1.2.2
+    # via
+    #   -r requirements.txt
+    #   pydantic-settings
+python-json-logger==4.1.0
+    # via jupyter-events
+python-multipart==0.0.32
+    # via mcp
+pytz==2026.2
+    # via
+    #   pandas
+    #   typepy
+pyvis==0.3.2
+    # via -r requirements.txt
+pyyaml==6.0.3
+    # via
+    #   accelerate
+    #   datasets
+    #   huggingface-hub
+    #   jupyter-events
+    #   langchain-classic
+    #   langchain-community
+    #   langchain-core
+    #   omegaconf
+    #   pyserini
+    #   transformers
+    #   wandb
+pyzmq==27.1.0
+    # via
+    #   ipykernel
+    #   jupyter-client
+    #   jupyter-console
+    #   jupyter-server
+rankit==0.3.3
+    # via -r requirements.txt
+referencing==0.37.0
+    # via
+    #   jsonschema
+    #   jsonschema-specifications
+    #   jupyter-events
+regex==2026.7.19
+    # via
+    #   nltk
+    #   sacrebleu
+    #   tiktoken
+    #   transformers
+requests==2.33.1
+    # via
+    #   arxiv
+    #   cohere
+    #   datasets
+    #   docker
+    #   evaluate
+    #   gdown
+    #   google-api-core
+    #   google-auth
+    #   google-cloud-bigquery
+    #   google-cloud-storage
+    #   google-genai
+    #   huggingface-hub
+    #   jupyterlab-server
+    #   langchain-classic
+    #   langchain-community
+    #   langchain-together
+    #   langsmith
+    #   pyserini
+    #   requests-toolbelt
+    #   streamlit
+    #   tiktoken
+    #   tinybenchmarks
+    #   transformers
+    #   wandb
+requests-toolbelt==1.0.0
+    # via langsmith
+rfc3339-validator==0.1.4
+    # via
+    #   jsonschema
+    #   jupyter-events
+rfc3986-validator==0.1.1
+    # via
+    #   jsonschema
+    #   jupyter-events
+rfc3987-syntax==1.1.0
+    # via jsonschema
+rich==13.9.4
+    # via
+    #   streamlit
+    #   together
+    #   typer
+rouge-score==0.1.2
+    # via lm-eval
+rpds-py==0.30.0
+    # via
+    #   jsonschema
+    #   referencing
+s3transfer==0.19.2
+    # via boto3
+sacrebleu==2.6.0
+    # via lm-eval
+safetensors==0.8.0
+    # via
+    #   accelerate
+    #   torchtune
+    #   transformers
+scikit-learn==1.7.2
+    # via
+    #   lm-eval
+    #   pyserini
+scipy==1.15.3
+    # via
+    #   pyserini
+    #   rankit
+    #   scikit-learn
+    #   tinybenchmarks
+send2trash==2.1.0
+    # via jupyter-server
+sentencepiece==0.2.2
+    # via
+    #   pyserini
+    #   torchtune
+sentry-sdk==2.66.1
+    # via wandb
+setproctitle==1.3.7
+    # via wandb
+setuptools==83.0.0
+    # via
+    #   pytablewriter
+    #   wandb
+sgmllib3k==1.0.0
+    # via feedparser
+shellingham==1.5.4
+    # via typer
+six==1.17.0
+    # via
+    #   astunparse
+    #   docker-pycreds
+    #   python-dateutil
+    #   rfc3339-validator
+    #   rouge-score
+smmap==5.0.3
+    # via gitdb
+sniffio==1.3.1
+    # via
+    #   anthropic
+    #   google-genai
+    #   langsmith
+    #   openai
+    #   together
+soupsieve==2.9.1
+    # via beautifulsoup4
+sqlalchemy==2.0.51
+    # via
+    #   langchain-classic
+    #   langchain-community
+sqlitedict==2.1.0
+    # via lm-eval
+sse-starlette==3.4.6
+    # via mcp
+st-theme==1.2.3
+    # via
+    #   -r requirements.txt
+    #   streamlit-navigation-bar
+stack-data==0.6.3
+    # via ipython
+starlette==1.3.1
+    # via
+    #   fastapi
+    #   mcp
+    #   sse-starlette
+streamlit==1.38.0
+    # via
+    #   -r requirements.txt
+    #   st-theme
+    #   streamlit-flow-component
+    #   streamlit-markmap
+    #   streamlit-navigation-bar
+    #   streamlit-timeline
+streamlit-flow-component==1.5.0
+    # via -r requirements.txt
+streamlit-markmap==1.0.1
+    # via -r requirements.txt
+streamlit-navigation-bar==3.3.0
+    # via -r requirements.txt
+streamlit-timeline==0.0.2
+    # via -r requirements.txt
+sympy==1.14.0
+    # via
+    #   -r requirements.txt
+    #   onnxruntime
+    #   torch
+tabledata==1.3.5
+    # via pytablewriter
+tabulate==0.10.0
+    # via
+    #   sacrebleu
+    #   together
+tcolorpy==0.1.7
+    # via pytablewriter
+tenacity==8.5.0
+    # via
+    #   google-genai
+    #   langchain-community
+    #   langchain-core
+    #   streamlit
+termcolor==3.3.0
+    # via lmql
+terminado==0.18.1
+    # via
+    #   jupyter-server
+    #   jupyter-server-terminals
+threadpoolctl==3.6.0
+    # via scikit-learn
+tiktoken==0.13.0
+    # via
+    #   -r requirements.txt
+    #   langchain-openai
+    #   lmql
+    #   pyserini
+    #   torchtune
+tinybenchmarks @ git+https://github.com/felipemaiapolo/tinyBenchmarks@e9a8b1031b0340571beb6c9ca3a27891be09a8fd
+    # via -r requirements.txt
+tinycss2==1.5.1
+    # via
+    #   bleach
+    #   cairosvg
+    #   cssselect2
+together==2.4.0
+    # via -r requirements.txt
+tokenizers==0.19.1
+    # via
+    #   cohere
+    #   transformers
+toml==0.10.2
+    # via streamlit
+tomli==2.4.1
+    # via
+    #   jupyter-builder
+    #   jupyterlab
+    #   pytest
+    #   together
+torch==2.4.1+cpu
+    # via
+    #   accelerate
+    #   lm-eval
+    #   pyserini
+torchao==0.3.1
+    # via
+    #   -r requirements.txt
+    #   torchtune
+torchtune==0.2.0
+    # via -r requirements.txt
+tornado==6.5.7
+    # via
+    #   ipykernel
+    #   jupyter-client
+    #   jupyter-server
+    #   jupyterlab
+    #   notebook
+    #   streamlit
+    #   terminado
+tqdm==4.69.0
+    # via
+    #   datasets
+    #   evaluate
+    #   gdown
+    #   huggingface-hub
+    #   nltk
+    #   openai
+    #   pyserini
+    #   together
+    #   torchtune
+    #   tqdm-multiprocess
+    #   transformers
+tqdm-multiprocess==0.0.11
+    # via lm-eval
+traitlets==5.15.1
+    # via
+    #   ipykernel
+    #   ipython
+    #   ipywidgets
+    #   jupyter-builder
+    #   jupyter-client
+    #   jupyter-console
+    #   jupyter-core
+    #   jupyter-events
+    #   jupyter-server
+    #   jupyterlab
+    #   matplotlib-inline
+    #   nbclient
+    #   nbconvert
+    #   nbformat
+transformers==4.43.3
+    # via
+    #   -r requirements.txt
+    #   lm-eval
+    #   pyserini
+triton==3.0.0
+    # via
+    #   -r requirements.txt
+typepy==1.3.5
+    # via
+    #   dataproperty
+    #   pytablewriter
+    #   tabledata
+typer==0.27.0
+    # via -r requirements.txt
+types-pyyaml==6.0.12.20260518
+    # via
+    #   langchain-cohere
+    #   together
+types-requests==2.33.0.20260712
+    # via
+    #   cohere
+    #   types-tqdm
+types-tabulate==0.10.0.20260508
+    # via together
+types-tqdm==4.69.0.20260720
+    # via together
+typing-extensions==4.12.2
+    # via
+    #   -r requirements.txt
+    #   aiohttp
+    #   aiosignal
+    #   altair
+    #   anthropic
+    #   anyio
+    #   arxiv
+    #   async-lru
+    #   beautifulsoup4
+    #   cohere
+    #   exceptiongroup
+    #   fastapi
+    #   gdown
+    #   google-cloud-aiplatform
+    #   google-genai
+    #   grpcio
+    #   huggingface-hub
+    #   ipython
+    #   jupyterlab
+    #   langchain-core
+    #   langchain-protocol
+    #   langsmith
+    #   mistune
+    #   multidict
+    #   openai
+    #   pydantic
+    #   pydantic-core
+    #   pypdf
+    #   referencing
+    #   rich
+    #   sqlalchemy
+    #   starlette
+    #   streamlit
+    #   together
+    #   torch
+    #   typing-inspection
+    #   uvicorn
+    #   wandb
+typing-inspection==0.4.2
+    # via
+    #   fastapi
+    #   pydantic-settings
+tzdata==2026.3
+    # via
+    #   arrow
+    #   pandas
+uri-template==1.3.0
+    # via jsonschema
+urllib3==2.7.0
+    # via
+    #   blobfile
+    #   botocore
+    #   docker
+    #   langchain-together
+    #   requests
+    #   sentry-sdk
+    #   types-requests
+uuid-utils==0.17.0
+    # via
+    #   langchain-core
+    #   langsmith
+uvicorn==0.51.0
+    # via
+    #   mcp
+    #   pyserini
+validators==0.35.0
+    # via langchain-google-vertexai
+vertexai==1.43.0
+    # via -r requirements.txt
+wandb==0.18.5
+    # via -r requirements.txt
+watchdog==4.0.2
+    # via streamlit
+wcwidth==0.8.2
+    # via prompt-toolkit
+webcolors==25.10.0
+    # via jsonschema
+webencodings==0.5.1
+    # via
+    #   bleach
+    #   cssselect2
+    #   tinycss2
+websocket-client==1.9.0
+    # via jupyter-server
+websockets==15.0.1
+    # via
+    #   google-genai
+    #   langgraph-sdk
+    #   langsmith
+werkzeug==3.1.8
+    # via flask
+wheel==0.47.0
+    # via astunparse
+widgetsnbextension==4.0.15
+    # via ipywidgets
+word2number==1.1
+    # via lm-eval
+wordcloud==1.9.6
+    # via -r requirements.txt
+xxhash==3.8.1
+    # via
+    #   datasets
+    #   evaluate
+    #   langgraph
+    #   langsmith
+yarl==1.24.5
+    # via aiohttp
+zstandard==0.25.0
+    # via
+    #   langsmith
+    #   lm-eval
